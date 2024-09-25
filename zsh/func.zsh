@@ -16,7 +16,7 @@ function backup() {
     cd ~/dotfiles/
     git add .
     git commit -m "update"
-    git push origin main
+    git push origin master
 }
 
 function update() {
