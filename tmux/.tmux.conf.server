@@ -1,0 +1,78 @@
+# 跳板机使用的配置,和本地的差不多,用于 tmux2.2 版本
+
+# -- optional ---------------------------------------------------------------------------------------------------------
+
+set -g default-terminal "screen-256color"
+setw -q -g utf8 on
+setw -g mode-keys vi
+
+set -g base-index 1 # 设置窗口的起始下标为1
+set -g pane-base-index 1 # 设置面板的起始下标为1
+setw -g automatic-rename off
+setw -g allow-rename off
+
+setw -g mode-keys vi
+setw -g automatic-rename off
+set -g status off
+set -s escape-time 0
+
+# -- system keymap ---------------------------------------------------------------------------------------------------------
+
+# 配置文件
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded.."
+
+set-option -g prefix2 ` # 设置一个不常用的`键作为指令前缀，按键更快些
+
+#- session keymap ---------------------------------------------------------------------------------------------------------
+bind C-t new-session                                               # create session
+
+bind-key      $   command-prompt -I #S "rename-session '%%'"
+
+
+
+# Ctrl+b        d       断开当前会话
+# Ctrl+b        D       选择要断开的会话
+# Ctrl+b        Ctrl+z  挂起当前会话
+# Ctrl+b        s       显示会话列表用于选择并切换
+
+# -- window keymap ---------------------------------------------------------------------------------------------------------
+# Ctrl+b        0~9     切换到指定窗口
+# Ctrl+b        w       打开窗口列表，用于且切换窗口
+# Ctrl+b        ,       重命名当前窗口
+# Ctrl+b        .       修改当前窗口编号（适用于窗口重新排序）
+# Ctrl+b        f       快速定位到窗口（输入关键字匹配窗口名称
+
+bind t new-window           # 新建窗口
+bind i  swap-window -t -1
+bind o  swap-window -t +1
+
+
+# -- pane keymap ---------------------------------------------------------------------------------------------------------
+# Ctrl+b        ;       切换到最后一次使用的面板
+# Ctrl+b        空格键  在自带的面板布局中循环切换
+
+# bind h splitw -v -c '#{pane_current_path}' # 水平方向新增面板，默认进入当前目录
+bind v splitw -h -c '#{pane_current_path}'   # 垂直方向新增面板，默认进入当前目录
+bind c     kill-pane                         # 关闭当前面板
+bind-key    -T prefix  m  resize-pane -Z     # 最大化当前面板，再重复一次按键后恢复正常
+bind > swap-pane -D                          # 向前置换当前面板
+bind < swap-pane -U                          # 向前置换当前面板
+bind -r h select-pane -L                     # move left
+bind -r j select-pane -D                     # move down
+bind -r k select-pane -U                     # move up
+bind -r l select-pane -R                     # move right
+
+# -- copy mode keymap ---------------------------------------------------------------------------------------------------------
+bind Enter copy-mode # enter copy mode
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-selection
+bind -t vi-copy Escape cancel
+
+# -- unbind keymap ---------------------------------------------------------------------------------------------------------
+unbind b
+unbind %
+unbind x
+unbind n
+unbind p
+unbind &
+

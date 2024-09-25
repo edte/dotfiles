@@ -1,0 +1,207 @@
+{
+  "$u.trim": {
+    "prefix": "$u.trim",
+    "body": "this.\\$u.trim($1)",
+    "description": "trim 去除空格"
+  },
+  "$u.toast": {
+    "prefix": "$u.toast",
+    "body": "this.\\$u.toast($1)",
+    "description": "toast 轻提示"
+  },
+  "$u.os": {
+    "prefix": "$u.os",
+    "body": "this.\\$u.os()",
+    "description": "os 获取平台的名称"
+  },
+  "$u.sys": {
+    "prefix": "$u.sys",
+    "body": "this.\\$u.sys()",
+    "description": "sys 获取设备的信息"
+  },
+  "$u.throttle": {
+    "prefix": "$u.throttle",
+    "body": "this.\\$u.throttle($1)",
+    "description": "throttle 节流"
+  },
+  "$u.debounce": {
+    "prefix": "$u.debounce",
+    "body": "this.\\$u.debounce($1)",
+    "description": "debounce 防抖"
+  },
+  "$u.deepClone": {
+    "prefix": "$u.deepClone",
+    "body": "this.\\$u.deepClone($1)",
+    "description": "deepClone 对象深度克隆"
+  },
+  "$u.deepMerge": {
+    "prefix": "$u.deepMerge",
+    "body": "this.\\$u.deepMerge($1)",
+    "description": "deepMerge 对象深度合并"
+  },
+  "$u.timeFormat": {
+    "prefix": "$u.timeFormat",
+    "body": "this.\\$u.timeFormat($1)",
+    "description": "timeFormat 格式化时间"
+  },
+  "$u.timeFrom": {
+    "prefix": "$u.timeFrom",
+    "body": "this.\\$u.timeFrom($1)",
+    "description": "timeFrom 多久以前"
+  },
+  "$u.route": {
+    "prefix": "$u.route",
+    "body": "this.\\$u.route($1)",
+    "description": "route 路由跳转"
+  },
+  "$u.randomArray": {
+    "prefix": "$u.randomArray",
+    "body": "this.\\$u.randomArray($1)",
+    "description": "randomArray 数组乱序"
+  },
+  "$u.guid": {
+    "prefix": "$u.guid",
+    "body": "this.\\$u.guid(32)",
+    "description": "guid 全局唯一标识符"
+  },
+  "$u.rgbToHex": {
+    "prefix": "$u.rgbToHex",
+    "body": "this.\\$u.rgbToHex($1)",
+    "description": "rgbToHex RGB转十六进制Hex"
+  },
+  "$u.hexToRgb": {
+    "prefix": "$u.hexToRgb",
+    "body": "this.\\$u.hexToRgb($1)",
+    "description": "hexToRgb 十六进制Hex转RGB"
+  },
+  "$u.colorGradient": {
+    "prefix": "$u.colorGradient",
+    "body": "this.\\$u.colorGradient($1)",
+    "description": "colorGradient 颜色渐变"
+  },
+  "$u.colorToRgba": {
+    "prefix": "$u.colorToRgba",
+    "body": "this.\\$u.colorToRgba($1)",
+    "description": "colorToRgba 颜色透明度"
+  },
+  "$u.color": {
+    "prefix": "$u.color",
+    "body": "this.\\$u.color[$1]",
+    "description": "color 颜色值"
+  },
+  "$u.queryParams": {
+    "prefix": "$u.queryParams",
+    "body": "this.\\$u.queryParams($1)",
+    "description": "queryParams 对象转URL参数"
+  },
+  "$u.test.code": {
+    "prefix": "$u.test.code",
+    "body": "this.\\$u.test.code($1)",
+    "description": "test.code 是否验证码"
+  },
+  "$u.test.array": {
+    "prefix": "$u.test.array",
+    "body": "this.\\$u.test.array($1)",
+    "description": "test.array 是否数组"
+  },
+  "$u.test.jsonString": {
+    "prefix": "$u.test.jsonString",
+    "body": "this.\\$u.test.jsonString($1)",
+    "description": "test.jsonString 是否Json字符串"
+  },
+  "$u.test.object": {
+    "prefix": "$u.test.object",
+    "body": "this.\\$u.test.object($1)",
+    "description": "test.object 是否对象"
+  },
+  "$u.test.email": {
+    "prefix": "$u.test.email",
+    "body": "this.\\$u.test.email($1)",
+    "description": "test.email 是否邮箱号"
+  },
+  "$u.test.mobile": {
+    "prefix": "$u.test.mobile",
+    "body": "this.\\$u.test.mobile($1)",
+    "description": "test.mobile 是否手机号"
+  },
+  "$u.test.url": {
+    "prefix": "$u.test.url",
+    "body": "this.\\$u.test.url($1)",
+    "description": "test.url 是否URL"
+  },
+  "$u.test.isEmpty": {
+    "prefix": "$u.test.isEmpty",
+    "body": "this.\\$u.test.isEmpty($1)",
+    "description": "test.isEmpty 是否为空"
+  },
+  "$u.test.date": {
+    "prefix": "$u.test.date",
+    "body": "this.\\$u.test.date($1)",
+    "description": "test.date 是否普通日期"
+  },
+  "$u.test.number": {
+    "prefix": "$u.test.number",
+    "body": "this.\\$u.test.number($1)",
+    "description": "test.number 是否十进制数值"
+  },
+  "$u.test.digits": {
+    "prefix": "$u.test.digits",
+    "body": "this.\\$u.test.digits($1)",
+    "description": "test.digits 是否整数"
+  },
+  "$u.test.idCard": {
+    "prefix": "$u.test.idCard",
+    "body": "this.\\$u.test.idCard($1)",
+    "description": "test.idCard 是否身份证号"
+  },
+  "$u.test.carNo": {
+    "prefix": "$u.test.carNo",
+    "body": "this.\\$u.test.carNo($1)",
+    "description": "test.carNo 是否车牌号"
+  },
+  "$u.test.amount": {
+    "prefix": "$u.test.amount",
+    "body": "this.\\$u.test.amount($1)",
+    "description": "test.amount 是否金额"
+  },
+  "$u.test.chinese": {
+    "prefix": "$u.test.chinese",
+    "body": "this.\\$u.test.chinese($1)",
+    "description": "test.chinese 是否汉字"
+  },
+  "$u.test.letter": {
+    "prefix": "$u.test.letter",
+    "body": "this.\\$u.test.letter($1)",
+    "description": "test.letter 是否字母"
+  },
+  "$u.test.enOrNum": {
+    "prefix": "$u.test.enOrNum",
+    "body": "this.\\$u.test.enOrNum($1)",
+    "description": "test.enOrNum 是否字母或者数字"
+  },
+  "$u.test.contains": {
+    "prefix": "$u.test.contains",
+    "body": "this.\\$u.test.contains($1)",
+    "description": "test.contains 是否包含某个值"
+  },
+  "$u.test.range": {
+    "prefix": "$u.test.range",
+    "body": "this.\\$u.test.range($1)",
+    "description": "test.range 数值是否在某个范围内"
+  },
+  "$u.test.rangeLength": {
+    "prefix": "$u.test.rangeLength",
+    "body": "this.\\$u.test.rangeLength($1)",
+    "description": "test.rangeLength 字符串长度是否在某个范围内"
+  },
+  "$u.random": {
+    "prefix": "$u.random",
+    "body": "this.\\$u.random($1))",
+    "description": "random 随机数值"
+  },
+  "$u.getRect": {
+    "prefix": "$u.getRect",
+    "body": "this.\\$u.getRect($1)",
+    "description": "getRect 节点布局信息"
+  }
+}

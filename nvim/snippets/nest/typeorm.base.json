@@ -1,0 +1,492 @@
+{
+  "TypeOrmModule forRoot": {
+    "prefix": ["ns_typeorm_module_root", "TypeOrmModule"],
+    "scope": "typescript",
+    "body": [
+      "TypeOrmModule.forRoot({",
+      "  type: 'mysql',",
+      "  host: 'localhost',",
+      "  port: 3306,",
+      "  username: 'root',",
+      "  password: 'root',",
+      "  database: 'test',",
+      "  entities: [__dirname + '/**/*.entity.ts'],",
+      "  autoLoadEntities: true,",
+      "  synchronize: false,",
+      "}),",
+      ""
+    ]
+  },
+  "TypeOrmModule forRootAsync": {
+    "prefix": ["ns_typeorm_module_root_async", "TypeOrmModule"],
+    "scope": "typescript",
+    "body": [
+      "TypeOrmModule.forRootAsync({",
+      "  imports: [ConfigModule],",
+      "  useFactory: async (configService: ConfigService) => ({",
+      "    type: 'mysql',",
+      "    host: configService.get('DB_HOST'),",
+      "    port: configService.get('DB_PORT'),",
+      "    username: configService.get('DB_USERNAME'),",
+      "    password: configService.get('DB_PASSWORD'),",
+      "    database: configService.get('DB_DATABASE'),",
+      "    entities: [__dirname + '/**/*.entity.ts'],",
+      "    autoLoadEntities: true,",
+      "    synchronize: false,",
+      "  }),",
+      "  inject: [ConfigService],",
+      "}),",
+      ""
+    ]
+  },
+  "TypeOrmModule forFeature": {
+    "prefix": ["ns_typeorm_module_feature", "TypeOrmModule"],
+    "scope": "typescript",
+    "body": ["TypeOrmModule.forFeature([", "  $0", "]),", ""]
+  },
+  "TypeORM Entity Base": {
+    "prefix": ["ns_typeorm_deco_entity", "@Entity"],
+    "scope": "typescript",
+    "body": [
+      "import {",
+      "  Column,",
+      "  CreateDateColumn,",
+      "  DeleteDateColumn,",
+      "  PrimaryGeneratedColumn,",
+      "  UpdateDateColumn,",
+      "} from 'typeorm';",
+      "",
+      "export abstract class BaseEntity {",
+      "  @PrimaryGeneratedColumn()",
+      "  id: number;",
+      "",
+      "  @Column({",
+      "    type: 'varchar',",
+      "    length: 100,",
+      "  })",
+      "  name: string;",
+      "",
+      "  @Column({",
+      "    name: 'is_activated',",
+      "    type: 'boolean',",
+      "    default: true,",
+      "  })",
+      "  isActivated: boolean;",
+      "",
+      "  @CreateDateColumn({",
+      "    name: 'created_at',",
+      "    type: 'timestamp',",
+      "    default: () => 'CURRENT_TIMESTAMP',",
+      "  })",
+      "  createdAt: Date;",
+      "",
+      "  @UpdateDateColumn({",
+      "    name: 'updated_at',",
+      "    type: 'timestamp',",
+      "    default: () => 'CURRENT_TIMESTAMP',",
+      "  })",
+      "  updatedAt: Date;",
+      "",
+      "  @DeleteDateColumn({",
+      "    name: 'deleted_at',",
+      "    type: 'timestamp',",
+      "    nullable: true,",
+      "    default: null,",
+      "  })",
+      "  deletedAt: Date;",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM Column enum": {
+    "prefix": ["ns_typeorm_deco_column_enum", "@Column enum"],
+    "scope": "typescript",
+    "body": [
+      "@Column({",
+      "  name: '${1:name}',",
+      "  type: 'enum',",
+      "  enum: ${2:type},",
+      "  default: ${2:type}.${3:value},",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM Column": {
+    "prefix": ["ns_typeorm_deco_column", "@Column"],
+    "scope": "typescript",
+    "body": [
+      "@Column({",
+      "  name: '${1:name}',",
+      "  type: '${2:type}',",
+      "  length: ${3:length},",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM CreateDateColumn": {
+    "prefix": ["ns_typeorm_deco_create_date_column", "@CreateDateColumn"],
+    "scope": "typescript",
+    "body": [
+      "@CreateDateColumn({",
+      "  name: '${1:name}',",
+      "  type: 'timestamp',",
+      "  default: () => 'CURRENT_TIMESTAMP',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM UpdateDateColumn": {
+    "prefix": ["ns_typeorm_deco_update_date_column", "@UpdateDateColumn"],
+    "scope": "typescript",
+    "body": [
+      "@UpdateDateColumn({",
+      "  name: '${1:name}',",
+      "  type: 'timestamp',",
+      "  default: () => 'CURRENT_TIMESTAMP',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM DeleteDateColumn": {
+    "prefix": ["ns_typeorm_deco_delete_date_column", "@DeleteDateColumn"],
+    "scope": "typescript",
+    "body": [
+      "@DeleteDateColumn({",
+      "  name: '${1:name}',",
+      "  type: 'timestamp',",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM ObjectIdColumn": {
+    "prefix": ["ns_typeorm_deco_object_id_column", "@ObjectIdColumn"],
+    "scope": "typescript",
+    "body": [
+      "@ObjectIdColumn({",
+      "  name: '${1:name}',",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM PrimaryColumn": {
+    "prefix": ["ns_typeorm_deco_primary_column", "@PrimaryColumn"],
+    "scope": "typescript",
+    "body": [
+      "@PrimaryColumn({",
+      "  name: '${1:name}',",
+      "  type: '${2:type}',",
+      "  length: ${3:length},",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM PrimaryGeneratedColumn": {
+    "prefix": [
+      "ns_typeorm_deco_primary_generated_column",
+      "@PrimaryGeneratedColumn"
+    ],
+    "scope": "typescript",
+    "body": "@PrimaryGeneratedColumn($0)"
+  },
+  "TypeORM VersionColumn": {
+    "prefix": ["ns_typeorm_deco_version_column", "@VersionColumn"],
+    "scope": "typescript",
+    "body": [
+      "@VersionColumn({",
+      "  name: '${1:name}',",
+      "  type: 'int',",
+      "  default: 1,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM ViewColumn": {
+    "prefix": ["ns_typeorm_deco_view_column", "@ViewColumn"],
+    "scope": "typescript",
+    "body": [
+      "@ViewColumn({",
+      "  name: '${1:name}',",
+      "  type: '${2:type}',",
+      "  length: ${3:length},",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM VirtualColumn": {
+    "prefix": ["ns_typeorm_deco_virtual_column", "@VirtualColumn"],
+    "scope": "typescript",
+    "body": [
+      "@VirtualColumn({",
+      "  name: '${1:name}',",
+      "  type: '${2:type}',",
+      "  length: ${3:length},",
+      "  nullable: true,",
+      "  default: null,",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM ViewEntity": {
+    "prefix": ["ns_typeorm_deco_view_entity", "@ViewEntity"],
+    "scope": "typescript",
+    "body": [
+      "@ViewEntity()",
+      "export class ${1:EntityName} {",
+      "  @ViewColumn()",
+      "  ${2:column_name}: ${3:column_type};",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM ChildEntity": {
+    "prefix": ["ns_typeorm_deco_child_entity", "@ChildEntity"],
+    "scope": "typescript",
+    "body": [
+      "import { ChildEntity } from 'typeorm';",
+      "",
+      "@ChildEntity()",
+      "export class ${1:ChildEntity} extends ${2:ParentEntity} {",
+      "  ${3:childField}: ${4:string};",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM Entity": {
+    "prefix": ["ns_typeorm_deco_entity", "@Entity"],
+    "scope": "typescript",
+    "body": [
+      "import { Entity } from 'typeorm';",
+      "",
+      "@Entity()",
+      "export class ${1:Entity} {",
+      "  ${2:field}: ${3:string};",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM TableInheritance": {
+    "prefix": ["ns_typeorm_deco_table_inheritance", "@TableInheritance"],
+    "scope": "typescript",
+    "body": [
+      "import { TableInheritance } from 'typeorm';",
+      "",
+      "@TableInheritance({ column: { type: 'varchar', name: 'type' } })",
+      "export class ${1:Entity} {",
+      "  ${2:field}: ${3:string};",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM AfterInsert": {
+    "prefix": ["ns_typeorm_deco_after_insert", "@AfterInsert"],
+    "scope": "typescript",
+    "body": ["@AfterInsert()", "afterInsert() {", "  $1", "}", ""]
+  },
+  "TypeORM AfterLoad": {
+    "prefix": ["ns_typeorm_deco_after_load", "@AfterLoad"],
+    "scope": "typescript",
+    "body": ["@AfterLoad()", "afterLoad() {", "  $1", "}", ""]
+  },
+  "TypeORM AfterRecover": {
+    "prefix": ["ns_typeorm_deco_after_recover", "@AfterRecover"],
+    "scope": "typescript",
+    "body": ["@AfterRecover()", "afterRecover() {", "  $1", "}", ""]
+  },
+  "TypeORM AfterRemove": {
+    "prefix": ["ns_typeorm_deco_after_remove", "@AfterRemove"],
+    "scope": "typescript",
+    "body": ["@AfterRemove()", "afterRemove() {", "  $1", "}", ""]
+  },
+  "TypeORM AfterSoftRemove": {
+    "prefix": ["ns_typeorm_deco_after_soft_remove", "@AfterSoftRemove"],
+    "scope": "typescript",
+    "body": ["@AfterSoftRemove()", "afterSoftRemove() {", "  $1", "}", ""]
+  },
+  "TypeORM AfterUpdate": {
+    "prefix": ["ns_typeorm_deco_after_update", "@AfterUpdate"],
+    "scope": "typescript",
+    "body": ["@AfterUpdate()", "afterUpdate() {", "  $1", "}", ""]
+  },
+  "TypeORM BeforeInsert": {
+    "prefix": ["ns_typeorm_deco_before_insert", "@BeforeInsert"],
+    "scope": "typescript",
+    "body": ["@BeforeInsert()", "beforeInsert() {", "  $1", "}", ""]
+  },
+  "TypeORM BeforeRecover": {
+    "prefix": ["ns_typeorm_deco_before_recover", "@BeforeRecover"],
+    "scope": "typescript",
+    "body": ["@BeforeRecover()", "beforeRecover() {", "  $1", "}", ""]
+  },
+  "TypeORM BeforeRemove": {
+    "prefix": ["ns_typeorm_deco_before_remove", "@BeforeRemove"],
+    "scope": "typescript",
+    "body": ["@BeforeRemove()", "beforeRemove() {", "  $1", "}", ""]
+  },
+  "TypeORM BeforeSoftRemove": {
+    "prefix": ["ns_typeorm_deco_before_soft_remove", "@BeforeSoftRemove"],
+    "scope": "typescript",
+    "body": ["@BeforeSoftRemove()", "beforeSoftRemove() {", "  $1", "}", ""]
+  },
+  "TypeORM BeforeUpdate": {
+    "prefix": ["ns_typeorm_deco_before_update", "@BeforeUpdate"],
+    "scope": "typescript",
+    "body": ["@BeforeUpdate()", "beforeUpdate() {", "  $1", "}", ""]
+  },
+  "TypeORM EventSubscriber": {
+    "prefix": ["ns_typeorm_deco_event_subscriber", "@EventSubscriber"],
+    "scope": "typescript",
+    "body": [
+      "@EventSubscriber()",
+      "export class ${1:Subscriber} implements EntitySubscriberInterface<${2:Entity}> {",
+      "  $3",
+      "}",
+      ""
+    ]
+  },
+  "TypeORM JoinColumn": {
+    "prefix": ["ns_typeorm_deco_join_column", "@JoinColumn"],
+    "scope": "typescript",
+    "body": [
+      "@JoinColumn({",
+      "  name: ${1:column_name},",
+      "  referencedColumnName: ${2:referenced_column_name},",
+      "  unique: ${3:false},",
+      "  nullable: ${4:false},",
+      "  onDelete: ${5:'CASCADE'},",
+      "  onUpdate: ${6:'CASCADE'}",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM JoinTable": {
+    "prefix": ["ns_typeorm_deco_join_table", "@JoinTable"],
+    "scope": "typescript",
+    "body": [
+      "@JoinTable({",
+      "  name: ${1:table_name},",
+      "  joinColumn: {",
+      "    name: ${2:column_name},",
+      "    referencedColumnName: ${3:referenced_column_name}",
+      "  },",
+      "  inverseJoinColumn: {",
+      "    name: ${4:column_name},",
+      "    referencedColumnName: ${5:referenced_column_name}",
+      "  }",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM ManyToMany": {
+    "prefix": ["ns_typeorm_deco_many_to_many", "@ManyToMany"],
+    "scope": "typescript",
+    "body": [
+      "@ManyToMany((${1:type}) => ${2:Entity}, (${3:alias}) => ${4:alias}.${5:relation}, {",
+      "  eager: ${6:false},",
+      "  lazy: ${7:false},",
+      "  cascade: ${8:true},",
+      "  onDelete: '${9:CASCADE}',",
+      "  onUpdate: '${10:CASCADE}',",
+      "orphanedRowAction: '${11:delete}',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM ManyToOne": {
+    "prefix": ["ns_typeorm_deco_many_to_one", "@ManyToOne"],
+    "scope": "typescript",
+    "body": [
+      "@ManyToOne((${1:type}) => ${2:Entity}, (${3:alias}) => ${4:alias}.${5:relation}, {",
+      "  eager: ${6:false},",
+      "  lazy: ${7:false},",
+      "  cascade: ${8:true},",
+      "  onDelete: '${9:CASCADE}',",
+      "  onUpdate: '${10:CASCADE}',",
+      "orphanedRowAction: '${11:delete}',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM OneToMany": {
+    "prefix": ["ns_typeorm_deco_one_to_many", "@OneToMany"],
+    "scope": "typescript",
+    "body": [
+      "@OneToMany((${1:type}) => ${2:Entity}, (${3:alias}) => ${4:alias}.${5:relation}, {",
+      "  eager: ${6:false},",
+      "  lazy: ${7:false},",
+      "  cascade: ${8:true},",
+      "  onDelete: '${9:CASCADE}',",
+      "  onUpdate: '${10:CASCADE}',",
+      "orphanedRowAction: '${11:delete}',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM OneToOne": {
+    "prefix": ["ns_typeorm_deco_one_to_one", "@OneToOne"],
+    "scope": "typescript",
+    "body": [
+      "@OneToOne((${1:type}) => ${2:Entity}, (${3:alias}) => ${4:alias}.${5:relation}, {",
+      "  eager: ${6:false},",
+      "  lazy: ${7:false},",
+      "  cascade: ${8:true},",
+      "  onDelete: '${9:CASCADE}',",
+      "  onUpdate: '${10:CASCADE}',",
+      "orphanedRowAction: '${11:delete}',",
+      "})",
+      "$0"
+    ]
+  },
+  "TypeORM RelationCount": {
+    "prefix": ["ns_typeorm_deco_relation_count", "@RelationCount"],
+    "scope": "typescript",
+    "body": ["@RelationCount(${1:alias})", "$0"]
+  },
+  "TypeORM RelationId": {
+    "prefix": ["ns_typeorm_deco_relation_id", "@RelationId"],
+    "scope": "typescript",
+    "body": ["@RelationId(${1:alias})", "$0"]
+  },
+  "TypeORM Tree": {
+    "prefix": ["ns_typeorm_deco_tree", "@Tree"],
+    "scope": "typescript",
+    "body": [
+      "@Tree('${1:tableName}')",
+      "export class ${2:EntityName} {",
+      "  @PrimaryGeneratedColumn()",
+      "  id: number;",
+      "",
+      "  @TreeParent()",
+      "  parent: ${2:EntityName};",
+      "",
+      "  @TreeChildren()",
+      "  children: ${2:EntityName}[];",
+      "}",
+      "$0"
+    ]
+  },
+  "TypeORM TreeChildren": {
+    "prefix": ["ns_typeorm_deco_tree", "@TreeChildren"],
+    "scope": "typescript",
+    "body": ["@TreeChildren()", "children: ${1:EntityName}[];", "$0"]
+  },
+  "TypeORM TreeLevelColumn": {
+    "prefix": ["ns_typeorm_deco_tree", "@TreeLevelColumn"],
+    "scope": "typescript",
+    "body": ["@TreeLevelColumn()", "level: number;", "$0"]
+  },
+  "TypeORM TreeParent": {
+    "prefix": ["ns_typeorm_deco_tree", "@TreeParent"],
+    "scope": "typescript",
+    "body": ["@TreeParent()", "parent: ${1:EntityName};", "$0"]
+  }
+}

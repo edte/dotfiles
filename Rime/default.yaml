@@ -1,0 +1,71 @@
+# 全局配置
+
+# Rime default settings
+# encoding: utf-8
+
+config_version: "2023-08-26"
+
+# 方案列表(即输入法列表)
+schema_list:
+  - schema: zrm_plus_plus
+  # - schema: english
+
+# 显示方案选单(即输入法列表)的快捷键
+switcher:
+  caption: "[方案菜单]"
+  hotkeys:
+    - Control+grave
+    - F2
+  save_options:
+    - simplification
+    - ascii_mode
+    - full_shape
+    - ascii_punct
+    - traditionalization
+    - emoji_suggestion
+
+  fold_options: true
+  abbreviate_options: true
+  option_list_separator: '／'
+
+# 候选词数量
+menu:
+  page_size: 5
+
+# 符号
+punctuator:
+  full_shape:
+    __include: symbols:/punctuator/full_shape
+  half_shape:
+    __include: symbols:/punctuator/half_shape
+
+key_binder:
+  select_first_character: "bracketleft" # lua 选词快捷键，选第一个字
+  select_last_character: "bracketright" # lua 选词快捷键，选最后一个字
+  bindings:
+    __patch:
+      - key_bindings:/emacs_editing
+      - key_bindings:/move_by_word_with_tab
+      - key_bindings:/paging_with_minus_equal
+      - key_bindings:/paging_with_comma_period
+      # - key_bindings:/numbered_mode_switch
+      - key_bindings:/optimized_mode_switch
+
+recognizer:
+  patterns:
+    camel: "[a-z]+[A-Z].*$"
+    html: "^<[a-z]+>$"
+    email: "^[A-Za-z][-_.A-Za-z]*@.*$"
+    uppercase: "[A-Z]{2,}[-_+'A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+
+# 按键效果
+ascii_composer:
+  good_old_caps_lock: true
+  switch_key:
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear

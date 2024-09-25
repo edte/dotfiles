@@ -1,0 +1,391 @@
+{
+  "u-icon": {
+    "prefix": "u-icon",
+    "body": "<u-icon name=\"$1\"></u-icon>",
+    "description": "Icon 图标"
+  },
+  "u-image": {
+    "prefix": "u-image",
+    "body": "<u-image src=\"$1\" mode=\"$2\"></u-image>",
+    "description": "Image 图片"
+  },
+  "u-button": {
+    "prefix": "u-button",
+    "body": "<u-button>$1</u-button>",
+    "description": "Button 按钮"
+  },
+  "u-row": {
+    "prefix": "u-row",
+    "body": [
+      "<u-row gutter=\"$1\">",
+      "\t<u-col span=\"$2\"></u-col>",
+      "</u-row>"
+    ],
+    "description": "Layout 布局"
+  },
+  "u-cell-group": {
+    "prefix": "u-cell-group",
+    "body": [
+      "<u-cell-group>",
+      "\t<u-cell-item icon=\"$1\" title=\"$2\"></u-cell-item>",
+      "</u-cell-group>"
+    ],
+    "description": "Cell 单元格"
+  },
+  "u-badge": {
+    "prefix": "u-badge",
+    "body": "<u-badge type=\"$1\" count=\"$2\"></u-badge>",
+    "description": "Badge 徽标数"
+  },
+  "u-tag": {
+    "prefix": "u-tag",
+    "body": "<u-tag text=\"$1\" />",
+    "description": "Tag 标签"
+  },
+  "u-input": {
+    "prefix": "u-input",
+    "body": "<u-input v-model=\"$1\" />",
+    "description": "Input 输入框"
+  },
+  "u-form": {
+    "prefix": "u-form",
+    "body": [
+      "<u-form :model=\"$1\">",
+      "\t<u-form-item label=\"$2\"></u-form-item>",
+      "</u-form>"
+    ],
+    "description": "Form 表单"
+  },
+  "u-calendar": {
+    "prefix": "u-calendar",
+    "body": "<u-calendar v-model=\"$1\" mode=\"$2\"></u-calendar>",
+    "description": "Calendar 日历"
+  },
+  "u-select": {
+    "prefix": "u-select",
+    "body": "<u-select v-model=\"$1\" :list=\"$2\"></u-select>",
+    "description": "Select 列选择器"
+  },
+  "u-keyboard": {
+    "prefix": "u-keyboard",
+    "body": "<u-keyboard mode=\"$1\" v-model=\"$2\"></u-keyboard>",
+    "description": "Keyboard 键盘"
+  },
+  "u-picker": {
+    "prefix": "u-picker",
+    "body": "<u-picker v-model=\"$1\" mode=\"$2\"></u-picker>",
+    "description": "Picker 选择器"
+  },
+  "u-rate": {
+    "prefix": "u-rate",
+    "body": "<u-rate :count=\"$1\" v-model=\"$2\"></u-rate>",
+    "description": "Rate 评分"
+  },
+  "u-search": {
+    "prefix": "u-search",
+    "body": "<u-search placeholder=\"$1\" v-model=\"$2\"></u-search>",
+    "description": "Search 搜索"
+  },
+  "u-number-box": {
+    "prefix": "u-number-box",
+    "body": "<u-number-box v-model=\"$1\" @change=\"$2\"></u-number-box>",
+    "description": "NumberBox 步进器"
+  },
+  "u-upload": {
+    "prefix": "u-upload",
+    "body": "<u-upload :action=\"$1\" :file-list=\"2\" ></u-upload>",
+    "description": "Upload 上传"
+  },
+  "u-verification-code": {
+    "prefix": "u-verification-code",
+    "body": "<u-verification-code :seconds=\"$1\" @end=\"$2\" @start=\"$3\"></u-verification-code>",
+    "description": "VerificationCode 验证码倒计时"
+  },
+  "u-field": {
+    "prefix": "u-field",
+    "body": "<u-field v-model=\"$1\" label=\"$2\" placeholder=\"$3\"></u-field>",
+    "description": "Field 输入框"
+  },
+  "u-checkbox": {
+    "prefix": "u-checkbox",
+    "body": [
+      "<u-checkbox-group>",
+      "\t<u-checkbox v-model=\"$1\">$2</u-checkbox>",
+      "</u-checkbox-group>"
+    ],
+    "description": "Checkbox 复选框"
+  },
+  "u-radio": {
+    "prefix": "u-radio",
+    "body": [
+      "<u-radio-group v-model=\"$1\">",
+      "\t<u-radio>$2</u-radio>",
+      "</u-radio-group>"
+    ],
+    "description": "Radio 单选框"
+  },
+  "u-switch": {
+    "prefix": "u-switch",
+    "body": "<u-switch v-model=\"$1\"></u-switch>",
+    "description": "Switch 开关选择器"
+  },
+  "u-slider": {
+    "prefix": "u-slider",
+    "body": "<u-slider v-model=\"$1\"></u-slider>",
+    "description": "Slider 滑动选择器"
+  },
+  "u-circle-progress": {
+    "prefix": "u-circle-progress",
+    "body": "<u-circle-progress active-color=\"$1\" :percent=\"$2\"></u-circle-progress>",
+    "description": "CircleProgress 圆形进度条"
+  },
+  "u-line-progress": {
+    "prefix": "u-line-progress",
+    "body": "<u-line-progress active-color=\"$1\" :percent=\"$2\"></u-line-progress>",
+    "description": "LineProgress 线形进度条"
+  },
+  "u-table": {
+    "prefix": "u-table",
+    "body": [
+      "<u-table>",
+      "\t<u-tr>",
+      "\t\t<u-th>$1</u-th>",
+      "\t</u-tr>",
+      "\t<u-tr>",
+      "\t\t<u-td>$2</u-td>",
+      "\t</u-tr>",
+      "</u-table>"
+    ],
+    "description": "Table 表格"
+  },
+  "u-count-down": {
+    "prefix": "u-count-down",
+    "body": "<u-count-down :timestamp=\"$1\"></u-count-down>",
+    "description": "CountDown 倒计时"
+  },
+  "u-count-to": {
+    "prefix": "u-count-to",
+    "body": "<u-count-to :start-val=\"$1\" :end-val=\"$2\"></u-count-to>",
+    "description": "CountTo 数字滚动"
+  },
+  "u-action-sheet": {
+    "prefix": "u-action-sheet",
+    "body": "<u-action-sheet :list=\"$1\" v-model=\"$2\"></u-action-sheet>",
+    "description": "ActionSheet 操作菜单"
+  },
+  "u-alert-tips": {
+    "prefix": "u-alert-tips",
+    "body": "<u-alert-tips type=\"$1\" :title=\"$2\" :description=\"$3\"></u-alert-tips>",
+    "description": "AlertTips 警告提示"
+  },
+  "u-toast": {
+    "prefix": "u-toast",
+    "body": "<u-toast ref=\"$1\" />",
+    "description": "Toast 消息提示"
+  },
+  "u-notice-bar": {
+    "prefix": "u-notice-bar",
+    "body": "<u-notice-bar mode=\"$1\" :list=\"$2\"></u-notice-bar>",
+    "description": "NoticeBar 滚动通知"
+  },
+  "u-top-tips": {
+    "prefix": "u-top-tips",
+    "body": "<u-top-tips ref=\"$1\"></u-top-tips>",
+    "description": "TopTips 顶部提示"
+  },
+  "u-collapse": {
+    "prefix": "u-collapse",
+    "body": [
+      "<u-collapse>",
+      "\t<u-collapse-item :title=\"$1\">$2</u-collapse-item>",
+      "</u-collapse>"
+    ],
+    "description": "Collapse 折叠面板"
+  },
+  "u-popup": {
+    "prefix": "u-popup",
+    "body": "<u-popup v-model=\"$1\">$2</u-popup>",
+    "description": "Popup 弹出层"
+  },
+  "u-swipe-action": {
+    "prefix": "u-swipe-action",
+    "body": "<u-swipe-action :options=\"$1\">$2</u-swipe-action>",
+    "description": "SwipeAction 滑动操作"
+  },
+  "u-modal": {
+    "prefix": "u-modal",
+    "body": "<u-modal v-model=\"$1\" :content=\"$2\"></u-modal>",
+    "description": "Modal 模态框"
+  },
+  "u-line": {
+    "prefix": "u-line",
+    "body": "<u-line color=\"$1\" />",
+    "description": "Line 线条"
+  },
+  "u-card": {
+    "prefix": "u-card",
+    "body": "<u-card :title=\"$1\"></u-card>",
+    "description": "Card 卡片"
+  },
+  "u-mask": {
+    "prefix": "u-mask",
+    "body": "<u-mask :show=\"$1\"></u-mask>",
+    "description": "Mask 遮罩层"
+  },
+  "u-no-network": {
+    "prefix": "u-no-network",
+    "body": "<u-no-network></u-no-network>",
+    "description": "NoNetwork 无网络提示"
+  },
+  "u-grid": {
+    "prefix": "u-grid",
+    "body": [
+      "<u-grid :col=\"$1\">",
+      "\t<u-grid-item>$2</u-grid-item>",
+      "</u-grid>"
+    ],
+    "description": "Grid 宫格布局"
+  },
+  "u-swiper": {
+    "prefix": "u-swiper",
+    "body": "<u-swiper :list=\"$1\"></u-swiper>",
+    "description": "Swiper 轮播图"
+  },
+  "u-time-line": {
+    "prefix": "u-time-line",
+    "body": [
+      "<u-time-line>",
+      "\t<u-time-line-item>$1</u-time-line-item>",
+      "</u-time-line>"
+    ],
+    "description": "TimeLine 时间轴"
+  },
+  "u-skeleton": {
+    "prefix": "u-skeleton",
+    "body": "<u-skeleton :loading=\"$1\" :animation=\"$2\" bgColor=\"$3\"></u-skeleton>",
+    "description": "Skeleton 骨架屏"
+  },
+  "u-sticky": {
+    "prefix": "u-sticky",
+    "body": "<u-sticky>$1</u-sticky>",
+    "description": "Sticky 吸顶"
+  },
+  "u-waterfall": {
+    "prefix": "u-waterfall",
+    "body": "<u-waterfall v-model=\"$1\"></u-waterfall>",
+    "description": "Waterfall 瀑布流"
+  },
+  "u-divider": {
+    "prefix": "u-divider",
+    "body": "<u-divider>$1</u-divider>",
+    "description": "Divider 分割线"
+  },
+  "u-dropdown": {
+    "prefix": "u-dropdown",
+    "body": [
+      "<u-dropdown>",
+      "\t<u-dropdown-item title=\"$1\">$2</u-dropdown-item>",
+      "</u-dropdown>"
+    ],
+    "description": "Dropdown 下拉菜单"
+  },
+  "u-tabbar": {
+    "prefix": "u-tabbar",
+    "body": "<u-tabbar v-model=\"$1\" :list=\"$2\"></u-tabbar>",
+    "description": "Tabbar 底部导航栏"
+  },
+  "u-back-top": {
+    "prefix": "u-back-top",
+    "body": "<u-back-top :scroll-top=\"$1\"></u-back-top>",
+    "description": "BackTop 返回顶部"
+  },
+  "u-navbar": {
+    "prefix": "u-navbar",
+    "body": "<u-navbar back-text=\"$1\" title=\"$2\"></u-navbar>",
+    "description": "Navbar 自定义导航栏"
+  },
+  "u-tabs": {
+    "prefix": "u-tabs",
+    "body": "<u-tabs :list=\"$1\" current=\"$2\"></u-tabs>",
+    "description": "tabs 标签"
+  },
+  "u-tabs-swiper": {
+    "prefix": "u-tabs-swiper",
+    "body": "<u-tabs-swiper :list=\"$1\"></u-tabs-swiper>",
+    "description": "tabsSwiper 全屏选项卡"
+  },
+  "u-subsection": {
+    "prefix": "u-subsection",
+    "body": "<u-subsection :list=\"$1\" :current=\"$2\"></u-subsection>",
+    "description": "Subsection 分段器"
+  },
+  "u-index-list": {
+    "prefix": "u-index-list",
+    "body": [
+      "<u-index-list :scrollTop=\"$1\">",
+      "\t<u-index-anchor>$2</u-index-anchor>",
+      "</u-index-list>"
+    ],
+    "description": "IndexList 索引列表"
+  },
+  "u-steps": {
+    "prefix": "u-steps",
+    "body": "<u-steps :list=\"$1\" :current=\"$2\"></u-steps>",
+    "description": "Steps 步骤条"
+  },
+  "u-empty": {
+    "prefix": "u-empty",
+    "body": "<u-empty text=\"$1\" mode=\"$2\"></u-empty>",
+    "description": "Empty 内容为空"
+  },
+  "u-link": {
+    "prefix": "u-link",
+    "body": "<u-link href=\"$1\">$2</u-link>",
+    "description": "Link 超链接"
+  },
+  "u-section": {
+    "prefix": "u-section",
+    "body": "<u-section title=\"$1\" sub-title=\"$2\"></u-section>",
+    "description": "Section 查看更多"
+  },
+  "u-parse": {
+    "prefix": "u-parse",
+    "body": "<u-parse :html=\"$1\"></u-parse>",
+    "description": "Parse 富文本解析器"
+  },
+  "u-message-input": {
+    "prefix": "u-message-input",
+    "body": "<u-message-input mode=\"$1\"></u-message-input>",
+    "description": "MessageInput 验证码输入"
+  },
+  "u-loadmore": {
+    "prefix": "u-loadmore",
+    "body": "<u-loadmore :status=\"$1\" />",
+    "description": "loadMore 加载更多"
+  },
+  "u-read-more": {
+    "prefix": "u-read-more",
+    "body": "<u-read-more>$1</u-read-more>",
+    "description": "ReadMore 展开阅读更多"
+  },
+  "u-lazy-load": {
+    "prefix": "u-lazy-load",
+    "body": "<u-lazy-load></u-lazy-load>",
+    "description": "LazyLoad 懒加载"
+  },
+  "u-gap": {
+    "prefix": "u-gap",
+    "body": "<u-gap height=\"$1\" bg-color=\"$2\"></u-gap>",
+    "description": "Gap 间隔槽"
+  },
+  "u-avatar": {
+    "prefix": "u-avatar",
+    "body": "<u-avatar :src=\"$1\"></u-avatar>",
+    "description": "Avatar 头像"
+  },
+  "u-loading": {
+    "prefix": "u-loading",
+    "body": "<u-loading mode=\"$1\"></u-loading>",
+    "description": "Loading 加载动画"
+  }
+}

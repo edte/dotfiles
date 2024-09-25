@@ -1,0 +1,1295 @@
+{
+  "Basic: Layout el-row": {
+    "prefix": "elrow",
+    "body": [
+      "<el-row :gutter=\"${1:20}\">",
+      "\t<el-col :span=\"${2:12}\" :offset=\"${3:0}\">${4}</el-col>",
+      "\t<el-col :span=\"${5:12}\" :offset=\"${6:0}\">${7}</el-col>",
+      "</el-row>",
+      "${8}"
+    ],
+    "description": "Element UI <el-row> with <el-col>"
+  },
+
+  "Basic: Layout el-col": {
+    "prefix": "elcol",
+    "body": ["<el-col :span=\"${1}\" :offset=\"${2:0}\">${3}</el-col>", "${4}"],
+    "description": "Element UI <el-col>"
+  },
+
+  "Basic: Layout hidden class": {
+    "prefix": "elhc",
+    "body": [
+      "${1|hidden-xs-only,hidden-sm-only,hidden-sm-and-down,hidden-sm-and-up,hidden-md-only,hidden-md-and-down,hidden-md-and-up,hidden-lg-only,hidden-lg-and-down,hidden-lg-and-up,hidden-xl-only|}"
+    ],
+    "description": "Element UI hidden class"
+  },
+
+  "Basic: Container el-container": {
+    "prefix": "elcon",
+    "body": [
+      "<el-container :direction=\"${1:vertical}\">",
+      "\t<el-header height=\"$2\">",
+      "\t\t${3:<!-- Header content -->}",
+      "\t</el-header>",
+      "\t<el-container :direction=\"${4:horizontal}\">",
+      "\t\t<el-aside width=\"${5:200px}\">",
+      "\t\t\t${6:<!-- Aside content -->}",
+      "\t\t</el-aside>",
+      "\t\t<el-container :direction=\"${7:vertical}\">",
+      "\t\t\t<el-main height=\"$8\">",
+      "\t\t\t\t${9:<!-- Main content -->}",
+      "\t\t\t</el-main>",
+      "\t\t\t<el-footer height=\"$10\">",
+      "\t\t\t\t${11:<!-- Footer content -->}",
+      "\t\t\t</el-footer>",
+      "\t\t</el-container>",
+      "\t</el-container>",
+      "</el-container>",
+      "${12}"
+    ],
+    "description": "Element UI <el-container>"
+  },
+
+  "Basic: Container el-header": {
+    "prefix": "elhe",
+    "body": [
+      "<el-header height=\"$1\">",
+      "\t${2:<!-- Header content -->}",
+      "</el-header>",
+      "${3}"
+    ],
+    "description": "Element UI <el-header>"
+  },
+
+  "Basic: Container el-aside": {
+    "prefix": "elas",
+    "body": [
+      "<el-aside width=\"${1:200px}\">",
+      "\t${2:<!-- Aside content -->}",
+      "</el-aside>",
+      "${3}"
+    ],
+    "description": "Element UI <el-aside>"
+  },
+
+  "Basic: Container el-main": {
+    "prefix": "elma",
+    "body": [
+      "<el-main height=\"${1}\">",
+      "\t${2:<!-- Main content -->}",
+      "</el-main>",
+      "${3}"
+    ],
+    "description": "Element UI <el-main>"
+  },
+
+  "Basic: Container el-footer": {
+    "prefix": "elfo",
+    "body": [
+      "<el-footer height=\"${1}\">",
+      "\t${2:<!-- Footer content -->}",
+      "</el-footer>",
+      "${3}"
+    ],
+    "description": "Element UI <el-footer>"
+  },
+
+  "Basic: Color blue": {
+    "prefix": "elcb",
+    "body": ["#409EFF"],
+    "description": "Element UI Color Blue"
+  },
+
+  "Basic: Color danger": {
+    "prefix": "elcd",
+    "body": ["#F56C6C"],
+    "description": "Element UI Color Danger"
+  },
+
+  "Basic: Color info": {
+    "prefix": "elci",
+    "body": ["#909399"],
+    "description": "Element UI Color Info"
+  },
+
+  "Basic: Color success": {
+    "prefix": "elcs",
+    "body": ["#67C23A"],
+    "description": "Element UI Color Success"
+  },
+
+  "Basic: Color waring": {
+    "prefix": "elcw",
+    "body": ["#E6A23C"],
+    "description": "Element UI Color Waring"
+  },
+
+  "Basic: Color primary text": {
+    "prefix": "elcpt",
+    "body": ["#303133"],
+    "description": "Element UI Color Primary Text"
+  },
+
+  "Basic: Color regular text": {
+    "prefix": "elcrt",
+    "body": ["#606266"],
+    "description": "Element UI Color Regular Text"
+  },
+
+  "Basic: Color secondary text": {
+    "prefix": "elcst",
+    "body": ["#909399"],
+    "description": "Element UI Color Secondary Text"
+  },
+
+  "Basic: Color placeholder text": {
+    "prefix": "elcht",
+    "body": ["#C0C4CC"],
+    "description": "Element UI Color Placeholder Text"
+  },
+
+  "Basic: Color Base Border": {
+    "prefix": "elcbb",
+    "body": ["#DCDFE6"],
+    "description": "Element UI Color Base Border"
+  },
+
+  "Basic: Color Light Border": {
+    "prefix": "elclb",
+    "body": ["#E4E7ED"],
+    "description": "Element UI Color Light Border"
+  },
+
+  "Basic: Color Lighter Border": {
+    "prefix": "elclrb",
+    "body": ["#EBEEF5"],
+    "description": "Element UI Color Lighter Border"
+  },
+
+  "Basic: Color Extra Light Border": {
+    "prefix": "elelb",
+    "body": ["#DCDFE6"],
+    "description": "Element UI Color Extra Light Border"
+  },
+
+  "Basic: Typography": {
+    "prefix": "eltypo",
+    "body": [
+      "font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"微软雅黑\",Arial,sans-serif;"
+    ],
+    "description": "Element UI Font-family"
+  },
+
+  "Basic: Border Basic Shadow": {
+    "prefix": "elbbs",
+    "body": [
+      "box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);"
+    ],
+    "description": "Element UI Border Basic Shadow"
+  },
+
+  "Basic: Border Light Shadow": {
+    "prefix": "elbls",
+    "body": ["box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);"],
+    "description": "Element UI Border Light Shadow"
+  },
+
+  "Basic: Button": {
+    "prefix": "elb",
+    "body": [
+      "<el-button type=\"${1|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$3\">${4}</el-button>",
+      "${5}"
+    ],
+    "description": "Element UI <el-button>"
+  },
+
+  "Basic: Button Group": {
+    "prefix": "elbg",
+    "body": [
+      "<el-button-group>",
+      "\t<el-button type=\"${1|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$3\">${4}</el-button>",
+      "\t<el-button type=\"${5|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$6\">${7}</el-button>",
+      "</el-button-group>",
+      "${8}"
+    ],
+    "description": "Element UI <el-button-group>"
+  },
+
+  "Basic: Link": {
+    "prefix": "ell",
+    "body": [
+      "<el-link type=\"${1|primary,success,warning,danger,info|}\" :underline=\"${2:false}\" href=\"${3}\" target=\"${4:_blank}\">${5}</el-link>",
+      "${6}"
+    ],
+    "description": "Element UI <el-button>"
+  },
+
+  "Form: Radio": {
+    "prefix": "elr",
+    "body": [
+      "<el-radio v-model=\"${1}\" label=\"${2}\" @change=\"${3}\">${4}</el-radio>",
+      "${5}"
+    ],
+    "description": "Element UI <el-radio>"
+  },
+
+  "Form: Radio Group": {
+    "prefix": "elrg",
+    "body": [
+      "<el-radio-group v-model=\"$1\" @change=\"$2\">",
+      "\t<el-radio v-for=\"${3:item} in ${4:items}\" :key=\"${3:item}.${5:key}\" :label=\"${3:item}.${6:label}\">",
+      "\t\t{{${3:item}.${7:title}}}",
+      "\t</el-radio>",
+      "</el-radio-group>",
+      "${8}"
+    ],
+    "description": "Element UI <el-radio-group> with <el-radio>"
+  },
+
+  "Form: Radio Button Group": {
+    "prefix": "elrbg",
+    "body": [
+      "<el-radio-group v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" @change=\"$3\">",
+      "\t<el-radio-button v-for=\"${4:item} in ${5:items}\" :key=\"${4:item}.${6:key}\" :label=\"${4:item}.${7:label}\">",
+      "\t\t{{${4:item}.${8:title}}}",
+      "\t</el-radio-button>",
+      "</el-radio-group>",
+      "${9}"
+    ],
+    "description": "Element UI <el-radio-group> with <el-radio-button>"
+  },
+
+  "Form: Radio Button": {
+    "prefix": "elrb",
+    "body": [
+      "<el-radio-button v-model=\"${1}\" label=\"${2}\">${3}</el-radio-button>",
+      "${4}"
+    ],
+    "description": "Element UI <el-radio>"
+  },
+
+  "Form: Checkbox": {
+    "prefix": "elc",
+    "body": [
+      "<el-checkbox v-model=\"${1}\" label=\"${2}\" :indeterminate=\"${3:false}\" @change=\"${4}\">{{$5}}</el-checkbox>",
+      "${6}"
+    ],
+    "description": "Element UI <el-checkbox>"
+  },
+
+  "Form: Checkbox Group": {
+    "prefix": "elcg",
+    "body": [
+      "<el-checkbox-group v-model=\"$1\" @change=\"${2}\">",
+      "\t<el-checkbox v-for=\"${3:item} in ${4:items}\" :key=\"${3:item}.${5:key}\" :label=\"${3:item}.${6:label}\">",
+      "\t\t{{${3:item}.${7:label}}}",
+      "\t</el-checkbox>",
+      "</el-checkbox-group>",
+      "${8}"
+    ],
+    "description": "Element UI <el-checkbox-group> with <el-checkbox>"
+  },
+
+  "Form: Checkbox Button Group": {
+    "prefix": "elcbg",
+    "body": [
+      "<el-checkbox-group v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\"  @change=\"${3}\">",
+      "\t<el-checkbox-button v-for=\"${4:item} in ${5:items}\" :key=\"${4:item}.${6:key}\" :label=\"${4:item}.${7:label}\">",
+      "\t\t{{${4:item}.${8:label}}}",
+      "\t</el-checkbox-button>",
+      "</el-checkbox-group>",
+      "${9}"
+    ],
+    "description": "Element UI <el-checkbox-group> with <el-checkbox-button>"
+  },
+
+  "Form: Checkbox Button": {
+    "prefix": "elcbt",
+    "body": [
+      "<el-checkbox-button v-model=\"${1}\" label=\"${2}\" :indeterminate=\"${3:false}\" @change=\"${4}\">{{$5}}</el-checkbox-button>",
+      "${6}"
+    ],
+    "description": "Element UI <el-checkbox-button>"
+  },
+
+  "Form: Input": {
+    "prefix": "eli",
+    "body": [
+      "<el-input v-model=\"$1\" placeholder=\"$2\" size=\"${3|normal,medium,small,mini|}\" clearable @change=\"$4\">$5</el-input>",
+      "${6}"
+    ],
+    "description": "Element UI <el-input>"
+  },
+
+  "Form: Textarea": {
+    "prefix": "elit",
+    "body": [
+      "<el-input type=\"${1|text,textarea|}\" :rows=\"${2:2}\" v-model=\"$3\" placeholder=\"$4\" ",
+      "\t:maxlength=\"${5:-1}\" :show-word-limit=\"${6|false,true|}\" :autosize=\"{ minRows: ${7:2}, maxRows: ${8:4} }\">",
+      "</el-input>",
+      "${9}"
+    ],
+    "description": "Element UI <el-input type=\"text,textarea\">"
+  },
+
+  "Form: Autocomplete": {
+    "prefix": "ela",
+    "body": [
+      "<el-autocomplete v-model=\"$1\" value-key=\"$2\" placeholder=\"${3}\" clearable",
+      "\t:debounce=\"$4\" :fetch-suggestions=\"${5}\"  @select=\"$6\">$7</el-autocomplete>",
+      "${8}"
+    ],
+    "description": "Element UI <el-autocomplete>"
+  },
+
+  "Form: Input Slot": {
+    "prefix": "elis",
+    "body": [
+      "<template slot=\"${1|prefix,suffix,prepend,append|}\">$2</template>",
+      "${3}"
+    ],
+    "description": "Element UI <template slot=''>"
+  },
+
+  "Form: InputNumber": {
+    "prefix": "elin",
+    "body": [
+      "<el-input-number v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" label=\"$3\"",
+      "\t:min=\"${4:1}\" :max=\"${5:10}\" :step=\"${6:1}\" :controls=\"${7|true,false|}\" controls-position=\"${8|both,right|}\" @change=\"$9\">",
+      "</el-input-number>",
+      "${10}"
+    ],
+    "description": "Element UI <el-input-number>"
+  },
+
+  "Form: Select": {
+    "prefix": "elsel",
+    "body": [
+      "<el-select v-model=\"$1\" value-key=\"$2\" placeholder=\"$3\" clearable filterable @change=\"$4\">",
+      "\t<el-option v-for=\"${5:item} in ${6:options}\"",
+      "\t\t:key=\"${5:item}.${7:value}\"",
+      "\t\t:label=\"${5:item}.${8:label}\"",
+      "\t\t:value=\"${5:item}.${9:value}\">",
+      "\t</el-option>",
+      "</el-select>",
+      "${10}"
+    ],
+    "description": "Element UI <el-select>"
+  },
+
+  "Form: Select Remote Search": {
+    "prefix": "elselr",
+    "body": [
+      "<el-select v-model=\"$1\" value-key=\"$2\" placeholder=\"$3\" clearable filterable",
+      "\tremote reserve-keyword :remote-method=\"$4\" :loading=\"$5\" @change=\"$6\">",
+      "\t<el-option v-for=\"${7:item} in ${8:options}\"",
+      "\t\t:key=\"${7:item}.${9:value}\"",
+      "\t\t:label=\"${7:item}.${10:label}\"",
+      "\t\t:value=\"${7:item}.${11:value}\">",
+      "\t</el-option>",
+      "</el-select>",
+      "${12}"
+    ],
+    "description": "Element UI <el-select>"
+  },
+
+  "Form: Select Option": {
+    "prefix": "elop",
+    "body": [
+      "<el-option :key=\"$1\" :label=\"$2\" :value=\"$3\"></el-option>",
+      "${3}"
+    ],
+    "description": "Element UI <el-option>"
+  },
+
+  "Form: Select Option Group": {
+    "prefix": "elopg",
+    "body": [
+      "<el-option-group v-for=\"${1:group} in ${2:options}\"",
+      "\t:key=\"${1:group}.${3:value}\"",
+      "\t:label=\"${1:group}.${4:label}\">",
+      "\t<el-option v-for=\"${5:item} in ${1:group}.${6:options}\"",
+      "\t\t:key=\"${5:item}.${7:value}\"",
+      "\t\t:label=\"${5:item}.${8:label}\"",
+      "\t\t:value=\"${5:item}.${9:value}\">",
+      "\t</el-option>",
+      "<el-option-group>",
+      "${10}"
+    ],
+    "description": "Element UI <el-option-group>"
+  },
+
+  "Form: Cascader": {
+    "prefix": "elca",
+    "body": [
+      "<el-cascader :options=\"${1:options}\" v-model=\"${2}\" clearable filterable :show-all-levels=\"${3|false,true|}\"",
+      "\t:props=\"{ expandTrigger: ${4|'hover','click'|}, multiple: ${5|true,false|}, checkStrictly: ${6|true,false|} }\" @change=\"${7}\">",
+      "</el-cascader>",
+      "${8}"
+    ],
+    "description": "Element UI <el-cascader>"
+  },
+
+  "Form: Cascader Panel": {
+    "prefix": "elcap",
+    "body": [
+      "<el-cascader :options=\"${1:options}\" v-model=\"${2}\" @change=\"${3}\"",
+      "\t:props=\"{ expandTrigger: ${4|'hover','click'|}, multiple: ${5|true,false|}, checkStrictly: ${6|true,false|} }\">",
+      "</el-cascader>",
+      "${7}"
+    ],
+    "description": "Element UI <el-cascader-panel>"
+  },
+
+  "Form: Switch": {
+    "prefix": "elsw",
+    "body": [
+      "<el-switch v-model=\"$1\" :active-value=\"${2:true}\" :inactive-value=\"${3:false}\" @change=\"$4\">",
+      "</el-switch>",
+      "${5}"
+    ],
+    "description": "Element UI <el-switch>"
+  },
+
+  "Form: Slider": {
+    "prefix": "elsl",
+    "body": [
+      "<el-slider v-model=\"$1\" :min=\"$2\" :max=\"$3\" :step=\"$4\" vertical=\"${5:false}\" @change=\"$6\">",
+      "</el-slider>",
+      "${7}"
+    ],
+    "description": "Element UI <el-slider>"
+  },
+
+  "Form: Time Select": {
+    "prefix": "elts",
+    "body": [
+      "<el-time-select v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$3\"",
+      "\t:picker-options=\"{",
+      "\t\tstart: '${4}',",
+      "\t\tstep: '${5:00:30}',",
+      "\t\tend: '${6}',",
+      "\t}\"",
+      "\tchange=\"${7}\">",
+      "</el-time-select>",
+      "${8}"
+    ],
+    "description": "Element UI <el-time-select>"
+  },
+
+  "Form: Time Select Range": {
+    "prefix": "eltsr",
+    "body": [
+      "<el-time-select v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$3\"",
+      "\t:picker-options=\"{",
+      "\t\tstart: '${4}',",
+      "\t\tstep: '${5:00:30}',",
+      "\t\tend: '${6}',",
+      "\t}\">",
+      "</el-time-select>",
+      "<el-time-select v-model=\"$7\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$8\"",
+      "\t:picker-options=\"{",
+      "\t\tstart: '${4}',",
+      "\t\tstep: '${5:00:30}',",
+      "\t\tend: '${6}',",
+      "\t\tminTime: $1",
+      "\t}\">",
+      "</el-time-select>",
+      "${9}"
+    ],
+    "description": "Element UI <el-time-select> range"
+  },
+
+  "Form: TimePicker": {
+    "prefix": "eltp",
+    "body": [
+      "<el-time-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" arrow-control",
+      "\t:picker-options=\"{",
+      "\t\tselectableRange: '${3:18:30:00} - ${4:20:30:00}'",
+      "\t}\"",
+      "\tplaceholder=\"${5:任意时间点}\">",
+      "</el-time-picker>",
+      "${6}"
+    ],
+    "description": "Element UI <el-time-picker>"
+  },
+
+  "Form: TimePicker Range": {
+    "prefix": "eltpr",
+    "body": [
+      "<el-time-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" arrow-control",
+      "\tis-range range-separator=\"${3:-}\" start-placeholder=\"$4\" end-placeholder=\"$5\"",
+      "\t:picker-options=\"{",
+      "\t\tselectableRange: '${6:18:30:00} - ${7:20:30:00}'",
+      "\t}\">",
+      "</el-time-picker>",
+      "${8}"
+    ],
+    "description": "Element UI <el-time-picker is-range>"
+  },
+
+  "Form: DatePicker": {
+    "prefix": "eldp",
+    "body": [
+      "<el-date-picker v-model=\"$1\" type=\"${2|year,month,date,dates,week|}\" size=\"${3|normal,medium,small,mini|}\" placeholder=\"${4:选择日期时间}\">",
+      "</el-date-picker>",
+      "${5}"
+    ],
+    "description": "Element UI <el-date-picker>"
+  },
+
+  "Form: DatePicker Range": {
+    "prefix": "eldpr",
+    "body": [
+      "<el-date-picker v-model=\"$1\" type=\"${2|daterange,monthrange|}\" size=\"${3|normal,medium,small,mini|}\"",
+      "\trange-separator=\"${4:-}\" start-placeholder=\"$5\" end-placeholder=\"$6\">",
+      "</el-date-picker>",
+      "${7}"
+    ],
+    "description": "Element UI <el-date-picker>"
+  },
+
+  "Form: DateTimePicker": {
+    "prefix": "eldtp",
+    "body": [
+      "<el-date-picker v-model=\"$1\" type=\"datetime\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"${3:选择日期时间}\">",
+      "</el-date-picker>",
+      "${4}"
+    ],
+    "description": "Element UI <el-date-picker type=\"datetime\">"
+  },
+
+  "Form: DateTimePicker Range": {
+    "prefix": "eldtpr",
+    "body": [
+      "<el-date-picker v-model=\"$1\" type=\"datetimerange\" size=\"${2|normal,medium,small,mini|}\"",
+      "\trange-separator=\"${3:-}\" start-placeholder=\"$4\" end-placeholder=\"$5\">",
+      "</el-date-picker>",
+      "${6}"
+    ],
+    "description": "Element UI <el-date-picker type=\"datetime\">"
+  },
+
+  "Form: Upload": {
+    "prefix": "elu",
+    "body": [
+      "<el-upload",
+      "\taction=\"$1\"",
+      "\tref=\"${2:upload}\"",
+      "\t:on-remove=\"$3\"",
+      "\t:auto-upload=\"false\"",
+      "\tmultiple",
+      "\t:limit=\"${4:5}\"",
+      "\t:on-exceed=\"$5\"",
+      "\t:file-list=\"$6\">",
+      "\t<el-button slot=\"trigger\" size=\"small\" type=\"primary\">${7:select file}</el-button>",
+      "\t<el-button style=\"margin-left: 10px;\" size=\"small\" type=\"success\" @click=\"$8\">${9:upload to server}</el-button>",
+      "\t<div slot=\"tip\" class=\"el-upload__tip\">${10:jpg/png files with a size less than 500kb}</div>",
+      "</el-upload>",
+      "${11}"
+    ],
+    "description": "Element UI <el-upload>"
+  },
+
+  "Form: Rate": {
+    "prefix": "elra",
+    "body": [
+      "<el-rate v-model=\"$1\" :allow-half=\"${2|false,true|}\" @change=\"$3\"></el-rate>",
+      "${4}"
+    ],
+    "description": "Element UI <el-rate>"
+  },
+
+  "Form: ColorPicker": {
+    "prefix": "elcp",
+    "body": [
+      "<el-color-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" :show-alpha=\"${3|true,false|}\" ></el-color-picker>",
+      "${4}"
+    ],
+    "description": "Element UI <el-color-picker>"
+  },
+
+  "Form: Transfer": {
+    "prefix": "eltr",
+    "body": [
+      "<el-transfer v-model=\"$1\" :data=\"$2\" target-order=\"${3|original,push,unshift|}\" filterable @change=\"$4\"",
+      "\t:format=\"{noChecked: '\\${total}',hasChecked: '\\${checked}/\\${total}'}\">",
+      "</el-transfer>",
+      "${5}"
+    ],
+    "description": "Element UI <el-transfer>"
+  },
+
+  "Form: Form": {
+    "prefix": "elf",
+    "body": [
+      "<el-form :model=\"${1:form}\" ref=\"${2:form}\" :rules=\"${3:rules}\" label-width=\"80px\" :inline=\"${4|false,true|}\" size=\"${5|normal,medium,small,mini|}\">",
+      "\t<el-form-item label=\"$6\">",
+      "\t\t<el-input v-model=\"${1:form}.${7}\"></el-input>",
+      "\t</el-form-item>",
+      "\t<el-form-item>",
+      "\t\t<el-button type=\"primary\" @click=\"onSubmit\">${8:立即创建}</el-button>",
+      "\t\t<el-button>${9:取消}</el-button>",
+      "\t</el-form-item>",
+      "</el-form>",
+      "${10}"
+    ],
+    "description": "Element UI <el-form>"
+  },
+
+  "Form: Form Item": {
+    "prefix": "elfi",
+    "body": [
+      "<el-form-item label=\"$1\" size=\"${2|normal,medium,small,mini|}\">",
+      "\t$3",
+      "</el-form-item>",
+      "${4}"
+    ],
+    "description": "Element UI <el-form-item>"
+  },
+
+  "Data: Table": {
+    "prefix": "elt",
+    "body": [
+      "<el-table :data=\"$1\" border stripe>",
+      "\t<el-table-column v-for=\"${2:col} in ${3:columns}\"",
+      "\t\t:prop=\"${2:col}.${4:id}\"",
+      "\t\t:key=\"${2:col}.${4:id}\"",
+      "\t\t:label=\"${2:col}.${5:label}\"",
+      "\t\t:width=\"${2:col}.${6:width}\">",
+      "\t</el-table-column>",
+      "</el-table>",
+      "${7}"
+    ],
+    "description": "Element UI <el-table>"
+  },
+
+  "Data: Table Column": {
+    "prefix": "eltc",
+    "body": [
+      "<el-table-column",
+      "\t:prop=\"${1:col}.${2:id}\"",
+      "\t:label=\"${1:col}.${3:label}\"",
+      "\t:width=\"${1:col}.${4:width}\">",
+      "</el-table-column>",
+      "${5}"
+    ],
+    "description": "Element UI <el-table-column>"
+  },
+
+  "Data: Tag": {
+    "prefix": "elta",
+    "body": [
+      "<el-tag type=\"${1|danger,info,success,warning|}\" size=\"${2|normal,medium,small,mini|}\"  effect=\"${3|dark,plain|}\" closable @close=\"${4}\">$5</el-tag>",
+      "${6}"
+    ],
+    "description": "Element UI <el-tag>"
+  },
+
+  "Data: Progress": {
+    "prefix": "elpr",
+    "body": [
+      "<el-progress type=\"${1|line,circle,dashboard|}\" :percentage=\"$2\" status=\"${3|success,exception,warning|}\" :stroke-width=\"${4:6}\"></el-progress>",
+      "${5}"
+    ],
+    "description": "Element UI <el-progress>"
+  },
+
+  "Data: Tree": {
+    "prefix": "eltree",
+    "body": [
+      "<el-tree ref=\"${1:tree}\" :data=\"$2\" node-key=\"$3\" :props=\"$4\" empty-text=\"$5\" show-checkbox=\"${6|false,true|}\" highlight-current=\"${7|true,false|}\" @node-click=\"$8\">$9</el-tree>",
+      "${10}"
+    ],
+    "description": "Element UI <el-tree>"
+  },
+
+  "Data: Pagination": {
+    "prefix": "elp",
+    "body": [
+      "<el-pagination",
+      "\t@size-change=\"${1:sizeChange}\"",
+      "\t@current-change=\"${2:currentChange}\"",
+      "\t:current-page.sync=\"${3:currentPage}\"",
+      "\t:page-sizes=\"${4:[20, 40, 80, 100]}\"",
+      "\t:page-size=\"${5:pageSize}\"",
+      "\tlayout=\"total, sizes, prev, pager, next, jumper\"",
+      "\t:total=\"${6:totalNum}\" background>",
+      "\t:pager-count=\"${7:7}\">",
+      "</el-pagination>",
+      "${8}"
+    ],
+    "description": "Element UI <el-pagination>"
+  },
+
+  "Data: Badge": {
+    "prefix": "elba",
+    "body": [
+      "<el-badge :value=\"${1}\" :max=\"${2:99}\" :is-dot=\"${3|false,true|}\" :hidden=\"${4|false,true|}\" type=\"${5|primary,success,warning,danger,info|}\">",
+      "\t<el-button size=\"small\">$6</el-button>",
+      "</el-badge>",
+      "${7}"
+    ],
+    "description": "Element UI <el-badge>"
+  },
+
+  "Data: Avatar": {
+    "prefix": "elav",
+    "body": [
+      "<el-avatar icon=\"el-icon-user-solid\" size=\"${1|large,medium,small|}\" shape=\"${2|circle,square|}\" :src=\"${3}\" fit=\"${4|fill,contain,cover,none,scale-down|}\"></el-avatar>",
+      "${5}"
+    ],
+    "description": "Element UI <el-avatar>"
+  },
+
+  "Notice: Alert": {
+    "prefix": "elal",
+    "body": [
+      "<el-alert :title=\"$1\" type=\"${2|info,success,warning,error|}\" effect=\"${3|light,dark|}\" show-icon closable></el-alert>",
+      "${4}"
+    ],
+    "description": "Element UI <el-alert>"
+  },
+
+  "Notice: Loading": {
+    "prefix": "elloads",
+    "body": [
+      "element-loading-text=\"${1:拼命加载中}\"",
+      "element-loading-spinner=\"${2:el-icon-loading}\"",
+      "element-loading-background=\"${3:rgba(0, 0, 0, 0.8)}\"",
+      "${4}"
+    ],
+    "description": "Element UI loading options"
+  },
+
+  "Notice: Message": {
+    "prefix": "elme",
+    "body": [
+      "this.\\$message({",
+      "\tmessage: '$1',",
+      "\ttype: '${2|info,success,warning,error|}',",
+      "\tshowClose: ${3:true},",
+      "\tduration: ${4:3000},",
+      "});",
+      "${5}"
+    ],
+    "description": "Element UI $message"
+  },
+
+  "Notice: Messagebox": {
+    "prefix": "elmebox",
+    "body": [
+      "this.\\$msgbox({",
+      "\ttitle: '$1',",
+      "\tmessage: '${2}',",
+      "\tshowCancelButton: true,",
+      "\tconfirmButtonText: '${3:OK}',",
+      "\tcancelButtonText: '${4:Cancel}',",
+      "\tcenter: ${5:false},",
+      "\tbeforeClose: (action, instance, done) => {",
+      "\t\t${6}",
+      "\t}",
+      "}).then(action => {",
+      "\t${7}",
+      "}).catch(() => {",
+      "\t${8}",
+      "});",
+      "${9}"
+    ],
+    "description": "Element UI $msgbox"
+  },
+
+  "Notice: Messagebox Alert": {
+    "prefix": "elmeal",
+    "body": [
+      "this.\\$alert('${1:content}', '${2:title}', {",
+      "\tconfirmButtonText: '${3:OK}',",
+      "\tcallback: action => {",
+      "\t\t${4}",
+      "\t}",
+      "})",
+      "${5}"
+    ],
+    "description": "Element UI $alert"
+  },
+
+  "Notice: Messagebox Confirm": {
+    "prefix": "elmecon",
+    "body": [
+      "this.\\$confirm('${1:content}', '${2:title}', {",
+      "\tconfirmButtonText: '${3:OK}',",
+      "\tcancelButtonText: '${4:Cancel}',",
+      "\ttype: '${5|success,info,warning,erro|}',",
+      "}).then(action => {",
+      "\t${6}",
+      "}).catch(() => {",
+      "\t${7}",
+      "});",
+      "${8}"
+    ],
+    "description": "Element UI $confirm"
+  },
+
+  "Notice: Messagebox Prompt": {
+    "prefix": "elmepro",
+    "body": [
+      "this.\\$prompt('${1:content}', '${2:title}', {",
+      "\tconfirmButtonText: '${3:OK}',",
+      "\tcancelButtonText: '${4:Cancel}',",
+      "\tinputPattern: / ${5} /,",
+      "\tinputErrorMessage: '${6}',",
+      "}).then(({ value }) => {",
+      "\t${7}",
+      "}).catch(() => {",
+      "\t${8}",
+      "});",
+      "${9}"
+    ],
+    "description": "Element UI $prompt"
+  },
+
+  "Notice: Notification": {
+    "prefix": "elno",
+    "body": [
+      "this.\\$notify({",
+      "\ttitle: '${1:title}',",
+      "\tmessage: '${2:message}',",
+      "\ttype: '${3|info,success,warning,error|}',",
+      "\tduration: '${4|4500, 0|}',",
+      "\tposition: '${5|top-right,top-left,bottom-right,bottom-left|}',",
+      "\tshowClose: '${6:true}',",
+      "});",
+      "${7}"
+    ],
+    "description": "Element UI $notify"
+  },
+
+  "Notice: Notification with type": {
+    "prefix": "elnot",
+    "body": [
+      "this.\\$notify.${1|info,success,warning,error|}({",
+      "\ttitle: '${2:title}',",
+      "\tmessage: '${3:message}',",
+      "\tduration: '${4|4500, 0|}',",
+      "\tposition: '${5|top-right,top-left,bottom-right,bottom-left|}',",
+      "\tshowClose: '${6:true}',",
+      "});",
+      "${7}"
+    ],
+    "description": "Element UI $notify.type"
+  },
+
+  "Navigation: NavMenu Menu": {
+    "prefix": "elmen",
+    "body": [
+      "<el-menu mode=\"${1|horizontal,vertical|}\" default-active=\"$2\" @select=\"$3\">",
+      "\t<el-submenu v-for=\"(${4:submenus}, ${5:index}) in ${6:menus}\"",
+      "\t\t:index=\"${5:index} + 1\"",
+      "\t\t:key=\"${4:submenus}.${7:key}\">",
+      "\t\t<template slot=\"title\">{{${4:submenus}.${8:title}}}</template>",
+      "\t\t<el-menu-item v-for=\"(${9:item}, ${10:subIndex}) in ${4:submenus}.${11:menus}\"",
+      "\t\t\t:index=\"(${5:index} + 1) + '-' + (${10:subIndex} + 1)\"",
+      "\t\t\t:key=\"${9:item}.${12:key}\">",
+      "\t\t\t\t{{${9:item}.${13:title}}}",
+      "\t\t</el-menu-item>",
+      "\t</el-submenu>",
+      "</el-menu>",
+      "${14}"
+    ],
+    "description": "Element UI <el-menu> with <el-submenu> and <el-menu-item>"
+  },
+
+  "Navigation: NavMenu subMenu": {
+    "prefix": "elsubmen",
+    "body": [
+      "<el-submenu :index=\"$1\">",
+      "\t<template slot=\"title\">$2</template>",
+      "\t<el-menu-item v-for=\"(${3:item}, ${4:subIndex}) in $5\"",
+      "\t\t:index=\"${4:subIndex} + 1\"",
+      "\t\t:key=\"${3:item}.${6:key}\">",
+      "\t\t\t{{${3:item}.${7:title}}}",
+      "\t</el-menu-item>",
+      "</el-submenu>",
+      "${8}"
+    ],
+    "description": "Element UI <el-submenu> with <el-menu-item>"
+  },
+
+  "Navigation: NavMenu Menu Item": {
+    "prefix": "elmeni",
+    "body": ["<el-menu-item index=\"$1\" key=\"$2\">$3</el-menu-item>", "${4}"],
+    "description": "Element UI <el-menu-item>"
+  },
+
+  "Navigation: Tabs": {
+    "prefix": "eltabs",
+    "body": [
+      "<el-tabs v-model=\"$1\" type=\"${2|card,border-card,normal|}\" tab-position=\"${3|top,left,right,bottom|}\" @tab-click=\"$4\">",
+      "\t<el-tab-pane v-for=\"${5:item} in ${6:panes}\"",
+      "\t\t:key=\"${5:item}.${7:key}\"",
+      "\t\t:label=\"${5:item}.${8:label}\"",
+      "\t\t:name=\"${5:item}.${7:key}\">",
+      "\t\t$9",
+      "\t</el-tab-pane>",
+      "</el-tabs>",
+      "${10}"
+    ],
+    "description": "Element UI <el-tabs> with <el-tab-pane>"
+  },
+
+  "Navigation: Tabs tab pane": {
+    "prefix": "eltabp",
+    "body": [
+      "<el-tab-pane :label=\"$1\" :name=\"$2\">",
+      "\t$3",
+      "</el-tab-pane>",
+      "${4}"
+    ],
+    "description": "Element UI <el-tab-pane>"
+  },
+
+  "Navigation: Breadcrumb": {
+    "prefix": "elbr",
+    "body": [
+      "<el-breadcrumb separator-class=\"${1:el-icon-arrow-right}\">",
+      "\t<el-breadcrumb-item :to=\"{ path: '$2', name: '$3' }\">$4</el-breadcrumb-item>",
+      "\t<el-breadcrumb-item :to=\"{ path: '$5', name: '$6' }\">$7</el-breadcrumb-item>",
+      "</el-breadcrumb>",
+      "${8}"
+    ],
+    "description": "Element UI <el-breadcrumb>"
+  },
+
+  "Navigation: Breadcrumb Item": {
+    "prefix": "elbri",
+    "body": [
+      "<el-breadcrumb-item :to=\"{ path: '$1', name: '$2' }\">$3</el-breadcrumb-item>",
+      "${4}"
+    ],
+    "description": "Element UI <el-breadcrumb-item>"
+  },
+
+  "Navigation: PageHeader": {
+    "prefix": "elpa",
+    "body": [
+      "<el-page-header @back=\"$1\" content=\"$2\"></el-page-header>",
+      "${3}"
+    ],
+    "description": "Element UI <el-page-header>"
+  },
+
+  "Navigation: Dropdown": {
+    "prefix": "eldr",
+    "body": [
+      "<el-dropdown trigger=\"${1:click}\" size=\"${2|default,medium,small,mini|}\" split-button type=\"${3|primary,success,warning,danger,info,text|}\" @command=\"$4\">",
+      "\t${5:title}",
+      "\t<el-dropdown-menu slot=\"dropdown\">",
+      "\t\t<el-dropdown-item v-for=\"${6:item} in ${7:items}\"",
+      "\t\t\t:key=\"${6:item}.${8:key}\" :command=\"${6:item}.${9:command}\">",
+      "\t\t\t{{${6:item}.${10:title}}}",
+      "\t\t</el-dropdown-item>",
+      "\t</el-dropdown-menu>",
+      "</el-dropdown>",
+      "${11}"
+    ],
+    "description": "Element UI <el-dropdown> with <el-dropdown-item>"
+  },
+
+  "Navigation: Dropdown Item": {
+    "prefix": "eldri",
+    "body": ["<el-dropdown-item :command=\"$1\">$2</el-dropdown-item>", "${3}"],
+    "description": "Element UI <el-dropdown-item>"
+  },
+
+  "Navigation: Steps": {
+    "prefix": "elsts",
+    "body": [
+      "<el-steps :active=\"$1\" direction=\"${2|horizontal,vertical|}\" process-status=\"${3|wait,process,finish,error,success|}\" finish-status=\"${4|wait,process,finish,error,success|}\">",
+      "\t<el-step v-for=\"${5:item} in ${6:items}\"",
+      "\t\t:key=\"${5:item}.${7:key}\"",
+      "\t\t:title=\"${5:item}.${8:title}\"",
+      "\t\t:description=\"${5:item}.${9:description}\"",
+      "\t\t:icon=\"${5:item}.${10:icon}\">",
+      "\t</el-step>",
+      "</el-steps>",
+      "${11}"
+    ],
+    "description": "Element UI <el-steps> with <el-step>"
+  },
+
+  "Navigation: Steps Step": {
+    "prefix": "elst",
+    "body": [
+      "<el-step :title=\"$1\" :description=\"$2\" :icon=\"$3\"></el-step>",
+      "${4}"
+    ],
+    "description": "Element UI <el-step>"
+  },
+
+  "Others: Dialog": {
+    "prefix": "eldi",
+    "body": [
+      "<el-dialog",
+      "\ttitle=\"$1\"",
+      "\t:visible.sync=\"$2\"",
+      "\twidth=\"${3:30%}\"",
+      "\t@close=\"$4\">",
+      "\t<span>$5</span>",
+      "\t<span slot=\"footer\">",
+      "\t\t<el-button @click=\"$2 = false\">Cancel</el-button>",
+      "\t\t<el-button type=\"primary\" @click=\"$6\">OK</el-button>",
+      "\t</span>",
+      "</el-dialog>",
+      "${7}"
+    ],
+    "description": "Element UI <el-dialog>"
+  },
+
+  "Others: Tooltip": {
+    "prefix": "elto",
+    "body": [
+      "<el-tooltip content=\"$1\" placement=\"${2|top,top-start,top-end,bottom,bottom-start,bottom-end,left,left-start,left-end,right,right-start,right-end|}\" effect=\"${3|dark,light|}\">",
+      "\t${4:<!-- content to trigger tooltip here -->}",
+      "</el-tooltip>",
+      "${5}"
+    ],
+    "description": "Element UI <el-tooltip>"
+  },
+
+  "Others: Popover": {
+    "prefix": "elpo",
+    "body": [
+      "<el-popover",
+      "\t:ref=\"$1\"",
+      "\tplacement=\"${2|top,top-start,top-end,bottom,bottom-start,bottom-end,left,left-start,left-end,right,right-start,right-end|}\"",
+      "\ttitle=\"$3\"",
+      "\twidth=\"$4\"",
+      "\ttrigger=\"${5|click,focus,hover,manual|}\"",
+      "\tcontent=\"$6\">",
+      "\t${7: <!-- <el-button slot=\"reference\">content</el-button> -->}",
+      "</el-popover>",
+      "${8}"
+    ],
+    "description": "Element UI <el-popover>"
+  },
+
+  "Others: Popconfirm": {
+    "prefix": "elpoco",
+    "body": [
+      "<el-popconfirm",
+      "\ttitle=\"$1\"",
+      "\tconfirmButtonText=\"$2\"",
+      "\tcancelButtonText=\"$3\"",
+      "\tconfirmButtonType=\"${4|primary,text,info,success,warning,danger|}\"",
+      "\tcancelButtonType=\"${5|text,primary,info,success,warning,danger|}\"",
+      "\ticon=\"${6:el-icon-question}\"",
+      "\ticonColor=\"${7:#f90}\"",
+      "\thideIcon=\"${8|false,true|}\">",
+      "\t<el-button slot=\"reference\">$9</el-button>",
+      "</el-popconfirm>",
+      "${10}"
+    ],
+    "description": "Element UI <el-popconfirm>"
+  },
+
+  "Others: Card": {
+    "prefix": "elcard",
+    "body": [
+      "<el-card shadow=\"${1|always,hover,never|}\" :body-style=\"${2:{ padding: '20px' }}\">",
+      "\t<div slot=\"header\">",
+      "\t\t<span>${3:<!-- card title -->}</span>",
+      "\t</div>",
+      "\t${4:<!-- card body -->}",
+      "</el-card>",
+      "${5}"
+    ],
+    "description": "Element UI <el-card>"
+  },
+
+  "Others: Carousel": {
+    "prefix": "elcaro",
+    "body": [
+      "<el-carousel height=\"${1:150px}\" type=\"${2|default,card|}\" direction=\"${3|horizontal,vertical|}\"",
+      "\t:initial-index=\"${4:0}\" :autoplay=\"${5|true, false|}\" :interval=\"${6:3000}\" :loop=\"${7|true,false|}\"",
+      "\ttrigger=\"${8|hover,click|}\" indicator-position=\"${9|outside,inside,none|}\" arrow=\"${10|hover,always,never|}\">",
+      "\t<el-carousel-item v-for=\"${11:item} in ${12:items}\" :key=\"${11:item}.${13:key}\" :label=\"${14}\">",
+      "\t\t${15:<!-- content -->}",
+      "\t</el-carousel-item>",
+      "</el-carousel>",
+      "${16}"
+    ],
+    "description": "Element UI <el-carousel> with <el-carousel-item>"
+  },
+
+  "Others: Carousel Item": {
+    "prefix": "elcaroi",
+    "body": [
+      "<el-carousel-item :label=\"${1}\">",
+      "\t${2:<!-- content -->}",
+      "</el-carousel-item>",
+      "${3}"
+    ],
+    "description": "Element UI <el-carousel-item>"
+  },
+
+  "Others: Collapse": {
+    "prefix": "elcolla",
+    "body": [
+      "<el-collapse v-model=\"${1:activeNames}\" :accordion=\"${2:false}\" @change=\"$3\">",
+      "\t<el-collapse-item v-for=\"${4:item} in ${5:items}\"",
+      "\t\t:key=\"${4:item}.${6:id}\"",
+      "\t\t:title=\"${4:item}.${7:title}\"",
+      "\t\t:name=\"${4:item}.${6:id}\">",
+      "\t\t${8:<!-- content -->}",
+      "\t</el-collapse-item>",
+      "</el-collapse>",
+      "${9}"
+    ],
+    "description": "Element UI <el-collapse> with <el-collapse-item>"
+  },
+
+  "Others: Collapse Item": {
+    "prefix": "elcollai",
+    "body": [
+      "<el-collapse-item :title=\"$1\" :name=\"$2\">",
+      "\t${3:<!-- content -->}",
+      "</el-collapse-item>",
+      "${4}"
+    ],
+    "description": "Element UI <el-collapse-item>"
+  },
+
+  "Others: Collapse Timeline": {
+    "prefix": "elti",
+    "body": [
+      "<el-timeline :reverse=\"$1\">",
+      "\t<el-timeline-item v-for=\"${2:item} in ${3:items}\"",
+      "\t\t:key=\"${2:item}.${4:id}\"",
+      "\t\t:timestamp=\"${2:item}.${5:timestamp}\"",
+      "\t\tplacement=\"${6|top,bottom|}\"",
+      "\t\ttype=\"${7|primary,success,warning,danger,info|}\"",
+      "\t\tsize=\"${8|normal,large|}\">",
+      "\t\t${9:<!-- content -->}",
+      "\t</el-timeline-item>",
+      "</el-timeline>",
+      "${10}"
+    ],
+    "description": "Element UI <el-timeline> with <el-timeline-item>"
+  },
+
+  "Others: Collapse Timeline Item": {
+    "prefix": "eltii",
+    "body": [
+      "<el-timeline-item",
+      "\ttimestamp=\"${1}\"",
+      "\tplacement=\"${2|top,bottom|}\"",
+      "\ttype=\"${3|primary,success,warning,danger,info|}\"",
+      "\tsize=\"${4|normal,large|}\">",
+      "\t${5:<!-- content -->}",
+      "</el-timeline-item>",
+      "${6}"
+    ],
+    "description": "Element UI <el-timeline-item>"
+  },
+
+  "Others: Divider": {
+    "prefix": "eld",
+    "body": [
+      "<el-divider direction=\"${1|horizontal,vertical|}\" content-position=\"${2|left,right,center|}\">$3</el-divider>",
+      "${4}"
+    ],
+    "description": "Element UI <el-divider>"
+  },
+
+  "Others: Calendar": {
+    "prefix": "elcal",
+    "body": [
+      "<el-calendar v-model=\"${1}\" :first-day-of-week=\"${2:1}\"></el-calendar>",
+      "${3}"
+    ],
+    "description": "Element UI <el-calendar>"
+  },
+
+  "Others: Image": {
+    "prefix": "elim",
+    "body": [
+      "<el-image :src=\"${1}\" fit=\"${2|fill,contain,cover,none,scale-down|}\" :lazy=\"${3|true,false|}\"></el-image>",
+      "${4}"
+    ],
+    "description": "Element UI <el-image>"
+  },
+
+  "Others: Backtop": {
+    "prefix": "elback",
+    "body": [
+      "<el-backtop :target=\"${1}\" :right=\"${2:40}\" :bottom=\"${3:40}\">$4</el-backtop>",
+      "${5}"
+    ],
+    "description": "Element UI <el-backtop>"
+  },
+
+  "Others: InfiniteScroll": {
+    "prefix": "elinfi",
+    "body": [
+      "v-infinite-scroll=\"${1}\"",
+      ":infinite-scroll-delay=\"${2}\"",
+      ":infinite-scroll-distance=\"${3}\"",
+      ":infinite-scroll-disabled=\"${4|false,true|}\"",
+      ":infinite-scroll-immediate=\"${5|true,false|}\""
+    ],
+    "description": "Element UI v-infinite-scroll"
+  },
+
+  "Others: Drawer": {
+    "prefix": "eldra",
+    "body": [
+      "<el-drawer title=\"${1}\" :visible.sync=\"${2}\" direction=\"${3|rtl,ltr,ttb,btt|}\" size=\"${4:30%}\"",
+      "\t:before-close=\"${5}\" :destroy-on-close=\"${6|true,false|}\" :show-close=\"${7|true,false|}\" :wrapperClosable=\"${8|true,false|}\">",
+      "</el-drawer>",
+      "${9}"
+    ],
+    "description": "Element UI <el-drawer>"
+  },
+  "Element Dialog Button": {
+    "prefix": "eldb",
+    "body": [
+      "<template>",
+      "  <span>",
+      "    <el-button type=\"primary\" size=\"small\" icon=\"el-icon-plus\" @click=\"open\">$0</el-button>",
+      "    <el-dialog title=\"$1\" :visible.sync=\"visible\" width=\"600px\" @close=\"close\">",
+      "      <div>$2</div>",
+      "      <span slot=\"footer\"></span>",
+      "        <el-button @click=\"visible = false\">取消</el-button>",
+      "        <el-button type=\"primary\" @click=\"submit\">确定</el-button>",
+      "      </span>",
+      "    </el-dialog>",
+      "  </span>",
+      "</template>",
+      "",
+      "<script>",
+      "  export default {",
+      "    data() {",
+      "      return {",
+      "        visible: false,",
+      "      };",
+      "    },",
+      "    methods: {",
+      "      open() {",
+      "        this.visible = true;",
+      "      },",
+      "      close() {",
+      "        this.visible = false;",
+      "      },",
+      "      submit() {",
+      "        this.$emit('submit');",
+      "      },",
+      "    },",
+      "  };",
+      "</script>",
+      "",
+      "<style lang=\"scss\" scoped></style>"
+    ],
+    "description": "Element UI 对话框按扭"
+  }
+}

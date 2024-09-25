@@ -1,0 +1,12 @@
+{
+  "clog": {
+    "prefix": "clog",
+    "body": "console.log('$0 => ', $0)",
+    "description": "控制台输出"
+  },
+  "uflexbox": {
+    "prefix": "uflexbox",
+    "body": ["<view class=\"$1\" style=\"display: flex;\">", "\t$2", "</view>"],
+    "description": "flex容器"
+  }
+}

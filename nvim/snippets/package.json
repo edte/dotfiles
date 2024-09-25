@@ -1,0 +1,111 @@
+{
+  "name": "nvim-snippets",
+  "author": "authorname",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "vue",
+        "path": "./vue/element-ui.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/common.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/vue-vscode.json"
+      },
+      {
+        "language": "lua",
+        "path": "./lua/common.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./nest/nest-snippets-vscode.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./nest/typeorm.base.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./js-ts/common.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./js-ts/common.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uniapp-vue-html.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uniapp-javascript.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./vue/uniapp-javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./vue/uniapp-javascript.json"
+      },
+      {
+        "language": "css",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "less",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "scss",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "sass",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "stylus",
+        "path": "./vue/uniapp-css.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uview-js.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uview-html.json"
+      },
+      {
+        "language": "vue",
+        "path": "./vue/uview-html-js.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./react/common.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./react/common.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./react/common-ts.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./react/common-ts.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "pr": {
+    "prefix": "print",
+    "body": "print($0)",
+    "description": "控制台输出"
+  }
+}
