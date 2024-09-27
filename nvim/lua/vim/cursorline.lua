@@ -3,6 +3,11 @@
 local MAX_LEN = 64
 
 local function matchadd()
+    if vim.bo.filetype == "" then
+        return
+    end
+
+
     local column = vim.api.nvim_win_get_cursor(0)[2]
     local line = vim.api.nvim_get_current_line()
     local left = vim.fn.matchstr(line:sub(1, column + 1), [[\k*$]])

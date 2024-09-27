@@ -70,16 +70,7 @@ M.list = {
             keymap("n", "mD", "<cmd>lua require'bookmarks.list'.delete_on_virt()<cr>")
         end,
         config = function()
-            require("bookmarks").setup({
-                storage_dir = "",        -- Default path: vim.fn.stdpath("data").."/bookmarks,  if not the default directory, should be absolute path",
-                mappings_enabled = true, -- If the value is false, only valid for global keymaps: toggle、add、delete_on_virt、show_desc
-                keymap = {
-                    toggle = " mt",      -- Toggle bookmarks(global keymap)
-                    close = "<esc>",     -- close bookmarks (buf keymap)
-                },
-                fix_enable = true,
-                fzflua = false,
-            })
+            require("bookmarks").setup({})
         end,
     },
 
