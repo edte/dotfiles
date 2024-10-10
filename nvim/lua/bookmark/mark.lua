@@ -85,25 +85,6 @@ function Mark:register_mark(mark, line, col, bufnr)
     self.buffers[bufnr].lowest_available_mark = mark
 end
 
-function Mark:place_mark_cursor()
-    local err, mark = pcall(function()
-        return string.char(vim.fn.getchar())
-    end)
-    if not err then
-        return
-    end
-
-    if Mark.is_valid_mark(mark) then
-        local bufnr = a.nvim_get_current_buf()
-
-        local pos = a.nvim_win_get_cursor(0)
-        Mark:register_mark(mark, pos[1], pos[2], bufnr)
-        vim.cmd("normal! m" .. mark)
-    end
-
-    vim.cmd("normal! m" .. mark)
-end
-
 function Mark:delete_mark(mark, clear)
     if clear == nil then
         clear = true
@@ -243,8 +224,6 @@ function Mark.is_lower(char)
 end
 
 function Mark.setup()
-    -- 设置快捷键
-    -- keymap("n", "m", Mark.place_mark_cursor)
     keymap("n", "md", Mark.delete_line_marks)
 
     local augroup = GroupId("Marks_autocmds", { clear = true })

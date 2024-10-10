@@ -7,7 +7,7 @@ local function matchadd()
         return
     end
 
-
+    -- 获取光标所在列和行内容
     local column = vim.api.nvim_win_get_cursor(0)[2]
     local line = vim.api.nvim_get_current_line()
     local left = vim.fn.matchstr(line:sub(1, column + 1), [[\k*$]])
@@ -29,8 +29,14 @@ local function matchadd()
         return
     end
 
-    -- TODO: 在help文档中会报错，待优化
-    vim.w.cursorword_id = vim.fn.matchadd("CursorWord", [[\<]] .. cursorword .. [[\>]], -1)
+    -- 尝试添加高亮并捕获可能的错误
+    local success, err = pcall(function()
+        vim.w.cursorword_id = vim.fn.matchadd("CursorWord", [[\<]] .. cursorword .. [[\>]], -1)
+    end)
+
+    if not success then
+        print("Error adding match: " .. err)
+    end
 end
 
 vim.api.nvim_create_autocmd("VimEnter", {

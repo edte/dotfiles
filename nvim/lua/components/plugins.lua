@@ -17,15 +17,15 @@ M.list = {
                     "*", -- Highlight all files, but customize some others.
                     cmp_docs = { always_update = true },
                 },
-                RGB = true, -- #RGB hex codes
-                RRGGBB = true, -- #RRGGBB hex codes
-                names = true, -- "Name" codes like Blue or blue
+                RGB = true,      -- #RGB hex codes
+                RRGGBB = true,   -- #RRGGBB hex codes
+                names = true,    -- "Name" codes like Blue or blue
                 RRGGBBAA = true, -- #RRGGBBAA hex codes
                 AARRGGBB = true, -- 0xAARRGGBB hex codes
-                rgb_fn = true, -- CSS rgb() and rgba() functions
-                hsl_fn = true, -- CSS hsl() and hsla() functions
-                css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                rgb_fn = true,   -- CSS rgb() and rgba() functions
+                hsl_fn = true,   -- CSS hsl() and hsla() functions
+                css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
             })
         end,
     },
@@ -117,17 +117,6 @@ M.list = {
         end,
     },
 
-    -- 使用 curl 运行请求，使用 jq 格式化，并根据您自己的工作流程保存命令
-    -- 这些命令将打开 curl.nvim 选项卡。在左侧缓冲区中，您可以粘贴或写入 curl 命令，然后按 Enter 键，命令将执行，并且输出将在最右侧的缓冲区中显示和格式化。
-    -- 如果您愿意，您可以选择右侧缓冲区中的文本，并使用 jq 对其进行过滤，即 ggVG! jq '{query goes here}'
-    {
-        "oysandvik94/curl.nvim",
-        cmd = { "CurlOpen" },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = true,
-    },
 
     -- 跟踪在 Neovim 中编码所花费的时间
     -- {

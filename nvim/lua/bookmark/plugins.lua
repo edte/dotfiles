@@ -18,8 +18,6 @@ M.list = {
         },
     },
 
-
-
     -- mark，显示和标记删除
     -- TODO: 集成默认大写mark
     {
@@ -58,19 +56,8 @@ M.list = {
     -- ~/.local/share/nvim/bookmarks/
     {
         "edte/bookmarks.nvim",
-        branch = "main",
-        dependencies = {
-            "nvim-web-devicons",
-        },
-        init = function()
-            keymap("n", "mm", function()
-                require 'bookmarks'.add_bookmarks(false)
-            end)
-            keymap("n", "mo", "<cmd>lua require'bookmarks'.list_bookmarks_fzflua()<cr>")
-            keymap("n", "mD", "<cmd>lua require'bookmarks.list'.delete_on_virt()<cr>")
-        end,
         config = function()
-            require("bookmarks").setup({})
+            require("bookmarks").setup()
         end,
     },
 
