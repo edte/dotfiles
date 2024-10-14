@@ -136,6 +136,9 @@ end
 
 -- 交换 : ;
 
+cmd("noremap ; :")
+cmd("noremap : ;")
+
 cmd("nnoremap ; :")
 cmd("nnoremap : ;")
 
