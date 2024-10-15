@@ -1,10 +1,12 @@
 -- --==========================================luvar_vim keybinding settings===============================================================
 -- 取消lunar的一些默认快捷键
 
-vim.keymap.del("", "grr", {})
-vim.keymap.del("", "gra", {})
-vim.keymap.del("", "grn", {})
-vim.keymap.del("", "gcc", {})
+if vim.fn.has("nvim-0.10") == 1 then
+    vim.keymap.del("", "grr", {})
+    vim.keymap.del("", "gra", {})
+    vim.keymap.del("", "grn", {})
+    vim.keymap.del("", "gcc", {})
+end
 
 -- vim.cmd("nmap <tab> %")
 

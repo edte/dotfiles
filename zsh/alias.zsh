@@ -60,8 +60,6 @@ alias task='/Users/edte/asynctasks.vim/bin/asynctask -f'
 alias q='exit'
 alias quit='exit'
 
-alias clangd=/Applications/CLion.app/Contents/bin/clang/mac/clangd
-
 # 常用的配置文件
 alias gsh="git show --date=format-local:'%Y-%m-%d %H:%M:%S'"
 alias gshow="git show --date=format-local:'%Y-%m-%d %H:%M:%S'"
