@@ -48,13 +48,13 @@ M.list = {
         event = { "InsertEnter *.lua" },
     },
 
-    -- TabNine ai 补全
-    {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
-        event = { "InsertEnter" },
-        -- ft = { "lua", "go", "cpp" },
-    },
+    -- -- TabNine ai 补全
+    -- {
+    --     "tzachar/cmp-tabnine",
+    --     build = "./install.sh",
+    --     event = { "InsertEnter" },
+    --     -- ft = { "lua", "go", "cpp" },
+    -- },
 
     {
         "yioneko/nvim-cmp",
