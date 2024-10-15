@@ -82,14 +82,14 @@ M.list = {
     {
         "echasnovski/mini.splitjoin",
         init = function()
-            keymap("n", "K", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
+            keymap("n", "P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
         end,
-        cmd = { "K" },
+        cmd = { "P" },
         version = false,
         config = function()
             require("mini.splitjoin").setup({
                 mappings = {
-                    toggle = "K",
+                    toggle = "P",
                 },
             })
         end,
