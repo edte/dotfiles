@@ -96,27 +96,6 @@ M.list = {
     -- 	opts = {},
     -- },
 
-    -- Neovim 插件帮助您建立良好的命令工作流程并戒掉坏习惯
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        config = function()
-            require("hardtime").setup({
-                disable_mouse = false,
-                restricted_keys = {
-                    ["j"] = {},
-                    ["k"] = {},
-                },
-                disabled_keys = {
-                    ["<Up>"] = {},
-                    ["<Down>"] = {},
-                    ["<Left>"] = {},
-                    ["<Right>"] = {},
-                },
-            })
-        end,
-    },
-
 
     -- 跟踪在 Neovim 中编码所花费的时间
     -- {
