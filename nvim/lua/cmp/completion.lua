@@ -125,23 +125,31 @@ function M.cmpConfig()
                 if entry == nil then
                     entry = cmp.core.view:get_first_entry()
                 end
-                cmp.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = true,
-                })
-            end, { "i", "s" }),
-            ["<CR>"] = cmp.mapping(function(fallback)
-                local entry = cmp.get_selected_entry()
-                if entry == nil then
-                    entry = cmp.core.view:get_first_entry()
-                end
-                if entry ~= nil then
+                if entry and entry.source.name == "nvim_lsp" and entry.source.source.client.name == "rime_ls" then
                     cmp.confirm({
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
                     })
                 else
                     fallback()
+                end
+            end, { "i", "s" }),
+            ["<CR>"] = cmp.mapping(function(fallback)
+                local entry = cmp.get_selected_entry()
+                if entry == nil then
+                    entry = cmp.core.view:get_first_entry()
+                end
+                if entry and entry.source.name == "nvim_lsp" and entry.source.source.client.name == "rime_ls" then
+                    cmp.abort()
+                else
+                    if entry ~= nil then
+                        cmp.confirm({
+                            behavior = cmp.ConfirmBehavior.Replace,
+                            select = true,
+                        })
+                    else
+                        fallback()
+                    end
                 end
             end, { "i", "s" }),
             ["<C-Space>"] = cmp.mapping.complete(),
