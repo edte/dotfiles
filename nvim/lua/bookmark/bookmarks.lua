@@ -511,38 +511,6 @@ function M.load(item, is_persistent)
     M.data.bookmarks_groupby_filename[item.filename][#M.data.bookmarks_groupby_filename[item.filename] + 1] = id
 end
 
--- 读取书签到内存
-function M.load_bookmarks()
-    if M.data.data_filename == nil then
-        return
-    end
-
-    local file = io.open(M.data.data_filename, "r")
-    if not file then
-        error("Could not open file: " .. M.data.data_filename)
-    end
-
-    local content = file:read("*all")
-    file:close()
-
-    M.data.bookmarks = {}
-
-    for table_str in content:gmatch("{(.-)}") do
-        local bookmark = {}
-        for key, value in table_str:gmatch('(%w+)%s*=%s*"?(.-)"?,?%s*\n') do
-            if tonumber(value) then
-                value = tonumber(value)
-            elseif value == "true" then
-                value = true
-            elseif value == "false" then
-                value = false
-            end
-            bookmark[key] = value
-        end
-        table.insert(M.data.bookmarks, bookmark)
-    end
-end
-
 -- 从磁盘文件恢复书签
 function M.load_bookmarks()
     M.storage_dir = vim.fn.stdpath("data") .. "/bookmarks"
