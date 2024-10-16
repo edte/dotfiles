@@ -135,6 +135,7 @@ function M.handle_add(line, buf1, buf2, buf, rows)
             M.data.bookmarks[id].updated_at = now
         end
     else -- new
+        -- TODO: 这里看用extmark优化
         M.data.bookmarks[id] = {
             filename = filename,
             line = line,
@@ -252,6 +253,7 @@ function M.get_base_dir()
         end
     end
 
+    -- FIX: 这里有时候会为nil
     local cwd = vim.uv.cwd()
     local git_root = find_git_root(cwd)
     if git_root then
