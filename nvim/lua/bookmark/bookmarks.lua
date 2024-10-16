@@ -305,6 +305,63 @@ function M.get_buf_bookmark_lines(buf)
 end
 
 function M.add_bookmark()
+    function M.handle_add(line, buf1, buf2, buf, rows)
+        -- Get buf's filename.
+        local filename = api.nvim_buf_get_name(buf)
+        if filename == nil or filename == "" then
+            return
+        end
+
+        local input_line = vim.fn.line(".")
+
+        -- Get bookmark's description.
+        local description = api.nvim_buf_get_lines(buf1, input_line - 1, input_line, false)[1] or ""
+        -- print(description)
+
+        -- Close description input box.
+        if description == "" then
+            M.close_add_win(buf1, buf2)
+            M.set_marks(buf, M.get_buf_bookmark_lines(0))
+            vim.cmd("stopinsert")
+            return
+        end
+
+        -- Save bookmark with description.
+        -- Save bookmark as lua code.
+        -- rows is the file's number..
+
+        local id = string.format("%s:%s", filename, line)
+        local now = os.time()
+
+        if M.data.bookmarks[id] ~= nil then --update description
+            if description ~= nil then
+                M.data.bookmarks[id].description = description
+                M.data.bookmarks[id].updated_at = now
+            end
+        else -- new
+            -- TODO: 这里看用extmark优化
+            M.data.bookmarks[id] = {
+                filename = filename,
+                line = line,
+                rows = rows, -- for fix
+                description = description or "",
+                updated_at = now,
+                is_new = true,
+            }
+
+            if M.data.bookmarks_groupby_filename[filename] == nil then
+                M.data.bookmarks_groupby_filename[filename] = { id }
+            else
+                M.data.bookmarks_groupby_filename[filename][#M.data.bookmarks_groupby_filename[filename] + 1] = id
+            end
+        end
+
+        -- Close description input box.
+        M.close_add_win(buf1, buf2)
+        M.set_marks(buf, M.get_buf_bookmark_lines(0))
+        vim.cmd("stopinsert")
+    end
+
     local line = vim.fn.line('.')
     local buf = api.nvim_get_current_buf()
     local rows = vim.fn.line("$")
@@ -324,63 +381,6 @@ function M.add_bookmark()
         function() M.handle_add(line, bufs_pairs.pairs.buf, bufs_pairs.border_pairs.buf, buf, rows) end,
         { desc = "bookmarks confirm bookmarks", silent = true, noremap = true, buffer = bufs_pairs.pairs.buf }
     )
-end
-
-function M.handle_add(line, buf1, buf2, buf, rows)
-    -- Get buf's filename.
-    local filename = api.nvim_buf_get_name(buf)
-    if filename == nil or filename == "" then
-        return
-    end
-
-    local input_line = vim.fn.line(".")
-
-    -- Get bookmark's description.
-    local description = api.nvim_buf_get_lines(buf1, input_line - 1, input_line, false)[1] or ""
-    -- print(description)
-
-    -- Close description input box.
-    if description == "" then
-        M.close_add_win(buf1, buf2)
-        M.set_marks(buf, M.get_buf_bookmark_lines(0))
-        vim.cmd("stopinsert")
-        return
-    end
-
-    -- Save bookmark with description.
-    -- Save bookmark as lua code.
-    -- rows is the file's number..
-
-    local id = string.format("%s:%s", filename, line)
-    local now = os.time()
-
-    if M.data.bookmarks[id] ~= nil then --update description
-        if description ~= nil then
-            M.data.bookmarks[id].description = description
-            M.data.bookmarks[id].updated_at = now
-        end
-    else -- new
-        -- TODO: 这里看用extmark优化
-        M.data.bookmarks[id] = {
-            filename = filename,
-            line = line,
-            rows = rows, -- for fix
-            description = description or "",
-            updated_at = now,
-            is_new = true,
-        }
-
-        if M.data.bookmarks_groupby_filename[filename] == nil then
-            M.data.bookmarks_groupby_filename[filename] = { id }
-        else
-            M.data.bookmarks_groupby_filename[filename][#M.data.bookmarks_groupby_filename[filename] + 1] = id
-        end
-    end
-
-    -- Close description input box.
-    M.close_add_win(buf1, buf2)
-    M.set_marks(buf, M.get_buf_bookmark_lines(0))
-    vim.cmd("stopinsert")
 end
 
 -- Delete bookmark.
@@ -493,22 +493,6 @@ function M.save_bookmarks()
     local local_fd = assert(io.open(M.data.data_filename, "w"))
     local_fd:write(local_str)
     local_fd:close()
-end
-
--- 这个不能删，dotfile的时候要用
--- Dofile
-function M.load(item, is_persistent)
-    -- Print(item)
-    local id = string.format("%s:%s", item.filename, item.line)
-    M.data.bookmarks[id] = item
-    if is_persistent ~= nil and is_persistent == true then
-        return
-    end
-
-    if M.data.bookmarks_groupby_filename[item.filename] == nil then
-        M.data.bookmarks_groupby_filename[item.filename] = {}
-    end
-    M.data.bookmarks_groupby_filename[item.filename][#M.data.bookmarks_groupby_filename[item.filename] + 1] = id
 end
 
 -- 从磁盘文件恢复书签
