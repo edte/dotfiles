@@ -339,7 +339,6 @@ function M.add_bookmark()
                 M.data.bookmarks[id].updated_at = now
             end
         else -- new
-            -- TODO: 这里看用extmark优化
             M.data.bookmarks[id] = {
                 filename = filename,
                 line = line,
@@ -457,6 +456,8 @@ end
 
 -- 写入书签到磁盘文件，下次加载时使用
 function M.save_bookmarks()
+    -- Print(M.marks)
+
     local local_str = ""
     for id, bookmark in pairs(M.data.bookmarks) do
         local tpl = [[
