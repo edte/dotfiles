@@ -87,10 +87,16 @@ M.list = {
 }
 
 
-vim.keymap.set("n", "md", function()
-    require("bookmark.mark").delete_line_marks()
-    require("bookmark.bookmarks").delete()
-end, { desc = "esc", noremap = true, buffer = true })
+vim.keymap.set(
+    "n",
+    "md",
+    function()
+        local a
+        require("bookmark.mark").delete_line_marks(a)
+        require("bookmark.bookmarks").delete_bookmark()
+    end,
+    { desc = "esc", silent = true }
+)
 
 
 return M

@@ -224,7 +224,6 @@ function Mark.is_lower(char)
 end
 
 function Mark.setup()
-
     local augroup = GroupId("Marks_autocmds", { clear = true })
 
     -- 当一个缓冲区被打开时，刷新与该缓冲区相关的标记数据
