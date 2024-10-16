@@ -51,6 +51,8 @@ Command = vim.api.nvim_create_user_command
 
 cmd = vim.cmd
 
+api = vim.api
+
 Autocmd = vim.api.nvim_create_autocmd
 GroupId = vim.api.nvim_create_augroup
 
@@ -133,4 +135,14 @@ function Print(tbl, level, filteDefault)
         end
     end
     print(indent_str .. "}")
+end
+
+--  字符串扩展方法 split_b，用于将字符串按照指定的分隔符 sep 进行分割，并返回一个包含切割结果的表
+function string:split_b(sep)
+    local cuts = {}
+    for v in string.gmatch(self, "[^'" .. sep .. "']+") do
+        table.insert(cuts, v)
+    end
+
+    return cuts
 end

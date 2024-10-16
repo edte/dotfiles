@@ -224,7 +224,6 @@ function Mark.is_lower(char)
 end
 
 function Mark.setup()
-    keymap("n", "md", Mark.delete_line_marks)
 
     local augroup = GroupId("Marks_autocmds", { clear = true })
 

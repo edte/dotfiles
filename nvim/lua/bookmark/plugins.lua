@@ -55,9 +55,9 @@ M.list = {
     -- /Users/edte/.local/share/lvim
     -- ~/.local/share/nvim/bookmarks/
     {
-        "edte/bookmarks.nvim",
+        dir = "bookmark.bookmarks",
         config = function()
-            require("bookmarks").setup()
+            require("bookmark.bookmarks").setup()
         end,
     },
 
@@ -84,8 +84,13 @@ M.list = {
     --     end,
     -- },
 
-
 }
+
+
+vim.keymap.set("n", "md", function()
+    require("bookmark.mark").delete_line_marks()
+    require("bookmark.bookmarks").delete()
+end, { desc = "esc", noremap = true, buffer = true })
 
 
 return M
