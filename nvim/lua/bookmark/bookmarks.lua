@@ -1,18 +1,14 @@
 local M = {
     storage_dir = "", -- default vim.fn.stdpath("data").."/bookmarks",
-    ns_id = api.nvim_create_namespace("bookmarks_marks"),
-    marks = {},
-    virt_text = "", -- Show virt text at the end of bookmarked lines, if it is empty, use the description of bookmarks instead.
 
     data = {
+        marks = {},
         bookmarks = {},                  -- filename description fre id line updated_at line_md5
         bookmarks_groupby_filename = {}, -- group bookmarks by filename
         pwd = nil,
         data_filename = nil,
         loaded_data = false,
-        data_dir = nil,
-        autocmd = 0,   -- cursormoved autocmd id
-        filename = "", -- current bookmarks filename
+        ns_id = {},
     },
 
     window = {
@@ -247,15 +243,14 @@ end
 -- Add virtural text for bookmarks.
 function M.set_marks(buf, marks)
     local file_name = vim.api.nvim_buf_get_name(buf)
-    local text = M.virt_text
-    if M.marks[file_name] == nil then
-        M.marks[file_name] = {}
+    if M.data.marks[file_name] == nil then
+        M.data.marks[file_name] = {}
     end
 
     -- 这段代码的作用是遍历 M.marks[file_name] 表中的所有扩展标记 ID，并使用 nvim_buf_del_extmark 函数删除这些扩展标记。让我们逐步解析这段代码：
     -- clear old ext
-    for _, id in ipairs(M.marks[file_name]) do
-        api.nvim_buf_del_extmark(buf, M.ns_id, id)
+    for _, id in ipairs(M.data.marks[file_name]) do
+        api.nvim_buf_del_extmark(buf, M.data.ns_id, id)
     end
 
     vim.fn.sign_unplace("BookmarkSign", { buffer = buf })
@@ -269,26 +264,20 @@ function M.set_marks(buf, marks)
             goto continue
         end
 
-        -- 设置虚拟文本内容，如果 M.virt_text 为空则使用书签描述。
-        local virt_text = text
-        if virt_text == "" then
-            virt_text = mark.description
-        end
-
         -- 使用 api.nvim_buf_set_extmark 设置扩展标记，位置在行末（virt_text_pos = "eol"），并且使用指定的高亮组。
-        local ext_id = api.nvim_buf_set_extmark(buf, M.ns_id, mark.line - 1, -1, {
-            virt_text = { { virt_text, "bookmarks_virt_text_hl" } },
+        local ext_id = api.nvim_buf_set_extmark(buf, M.data.ns_id, mark.line - 1, -1, {
+            virt_text = { { mark.description, "bookmarks_virt_text_hl" } },
             virt_text_pos = "eol",
             hl_group = "bookmarks_virt_text_hl",
             hl_mode = "combine"
         })
 
-        -- #M.marks[file_name] 返回 M.marks[file_name] 表的当前长度（即其中元素的数量）
-        -- M.marks[file_name][#M.marks[file_name] + 1]：
-        -- 这表示在 M.marks[file_name] 表的末尾添加一个新元素。
-        -- 因为表的长度是 #M.marks[file_name]，所以新元素的位置是 #M.marks[file_name] + 1。
+        -- #M.data.marks[file_name] 返回 M.data.marks[file_name] 表的当前长度（即其中元素的数量）
+        -- M.data.marks[file_name][#M.data.marks[file_name] + 1]：
+        -- 这表示在 M.data.marks[file_name] 表的末尾添加一个新元素。
+        -- 因为表的长度是 #M.data.marks[file_name]，所以新元素的位置是 #M.data.marks[file_name] + 1。
         -- 记录扩展标记的 ID。
-        M.marks[file_name][#M.marks[file_name] + 1] = ext_id
+        M.data.marks[file_name][#M.data.marks[file_name] + 1] = ext_id
 
         -- 使用 vim.fn.sign_place 在书签行位置放置标记。
         vim.fn.sign_place(0, "BookmarkSign", "BookmarkSign", buf, {
@@ -483,7 +472,7 @@ end
 -- 写入书签到磁盘文件，下次加载时使用
 function M.save_bookmarks()
     -- print("Saving bookmarks...")
-    -- Print(M.marks)
+    -- Print(M.data.marks)
 
     local local_str = ""
     for id, bookmark in pairs(M.data.bookmarks) do
@@ -494,7 +483,7 @@ function M.save_bookmarks()
 ]]
 
         -- Print(bookmark)
-        local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.ns_id, bookmark.extmark_id, {})
+        local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
 
         -- 检查 extmark 是否有效
         if not extmark_pos or #extmark_pos == 0 then
@@ -529,13 +518,17 @@ function M.save_bookmarks()
     end
 
     -- Print(M.data.bookmarks)
-    print(M.data.data_filename)
+    -- print(M.data.data_filename)
 
     if M.data.data_filename == nil then -- lazy load,
         return
     end
 
     if local_str == "" then
+        print(M.data.data_filename)
+        if vim.loop.fs_stat(M.data.data_filename) then
+            os.remove(M.data.data_filename)
+        end
         return
     end
 
@@ -576,7 +569,6 @@ function M.load_bookmarks()
     M.data.data_filename = data_filename
     M.data.pwd = currentPath
     M.data.loaded_data = true -- mark
-    M.data.data_dir = M.storage_dir
 
     local file = io.open(data_filename, "r")
     if not file then
@@ -614,6 +606,8 @@ function M.load_bookmarks()
 end
 
 function M.setup()
+    M.data.ns_id = api.nvim_create_namespace("bookmarks_marks")
+
     vim.cmd("hi link bookmarks_virt_text_hl Comment")
     vim.fn.sign_define("BookmarkSign", { text = "󰃃" })
 
