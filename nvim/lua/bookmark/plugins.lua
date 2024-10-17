@@ -44,7 +44,10 @@ M.list = {
             end
             for i = 0, 25 do
                 if i ~= 3 and i ~= 12 and i ~= 14 then
-                    vim.keymap.set("n", "'" .. low(i), "'" .. upp(i))
+                    vim.keymap.set("n", "'" .. low(i), function()
+                        vim.cmd("'" .. upp(i))
+                        vim.api.nvim_feedkeys("zz", "n", false)
+                    end)
                 end
             end
         end

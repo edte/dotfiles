@@ -462,6 +462,7 @@ function M.jump_bookmark()
                     if entry == bookmark.description then
                         vim.api.nvim_command("edit " .. bookmark.filename)
                         vim.api.nvim_win_set_cursor(0, { bookmark.line, 0 })
+                        vim.api.nvim_feedkeys("zz", "n", false)
                     end
                 end
             end,

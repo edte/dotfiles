@@ -47,6 +47,9 @@ vim.keymap.set("n", "<esc>", function()
     end
 end, { desc = "esc", noremap = true, buffer = true })
 
+vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
+
 -- 大小写转换
 -- map("n", "<esc>", "~", opt)
 
@@ -73,13 +76,31 @@ end, { expr = true })
 
 keymap("n", "<bs>", "<C-^>")
 keymap("", "gI", "<cmd>Glance implementations<cr>")
-keymap("", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+-- keymap("", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+
+vim.keymap.set('n', 'gd', function()
+    vim.lsp.buf.definition()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
 keymap("", "gD", "<cmd>FzfLua lsp_declarations<cr>")
 keymap("", "gr", "<cmd>Glance references<cr>")
 keymap("n", "gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
-keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
-keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
+
+vim.keymap.set('n', '<c-p>', function()
+    vim.diagnostic.goto_prev()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n', '<c-n>', function()
+    vim.diagnostic.goto_next()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
+-- keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
+-- keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
 
 -- gqn/gqj 自带的格式化
 -- gm 跳屏幕中央
