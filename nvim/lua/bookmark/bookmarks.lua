@@ -529,8 +529,13 @@ function M.save_bookmarks()
     end
 
     -- Print(M.data.bookmarks)
+    print(M.data.data_filename)
 
     if M.data.data_filename == nil then -- lazy load,
+        return
+    end
+
+    if local_str == "" then
         return
     end
 
@@ -544,6 +549,10 @@ end
 function M.load_bookmarks()
     -- print("load bookmarks")
     M.storage_dir = vim.fn.stdpath("data") .. "/bookmarks"
+
+    if not vim.loop.fs_stat(M.storage_dir) then
+        assert(os.execute("mkdir " .. M.storage_dir))
+    end
 
     -- 当前项目目录
     local currentPath = string.gsub(get_root_dir(), "/", "_")
@@ -559,15 +568,15 @@ function M.load_bookmarks()
         return
     end
 
-    if not vim.loop.fs_stat(M.storage_dir) then
-        assert(os.execute("mkdir " .. M.storage_dir))
-    end
 
     -- 基础目录+当前项目目录
     -- local bookmarks
     local data_filename = string.format("%s%s%s", M.storage_dir, "/", currentPath):gsub("%c", "")
     -- print(data_filename)
-
+    M.data.data_filename = data_filename
+    M.data.pwd = currentPath
+    M.data.loaded_data = true -- mark
+    M.data.data_dir = M.storage_dir
 
     local file = io.open(data_filename, "r")
     if not file then
@@ -602,11 +611,6 @@ function M.load_bookmarks()
     end
 
     -- Print(M.data.bookmarks_groupby_filename)
-
-    M.data.pwd = currentPath
-    M.data.loaded_data = true -- mark
-    M.data.data_dir = M.storage_dir
-    M.data.data_filename = data_filename
 end
 
 function M.setup()
