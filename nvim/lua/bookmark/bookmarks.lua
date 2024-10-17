@@ -571,7 +571,7 @@ function M.load_bookmarks()
 
     local file = io.open(data_filename, "r")
     if not file then
-        error("Could not open file: " .. data_filename)
+        return
     end
 
     local content = file:read("*all")
