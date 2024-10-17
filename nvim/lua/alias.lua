@@ -175,3 +175,9 @@ function get_root_dir()
         return cwd
     end
 end
+
+function generate_unique_id()
+    local time = os.time()
+    local random = math.random(100000, 999999)
+    return tostring(time) .. tostring(random)
+end

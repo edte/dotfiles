@@ -39,13 +39,13 @@ local function matchadd()
     end
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
+Autocmd("VimEnter", {
     callback = function()
         vim.api.nvim_set_hl(0, "CursorWord", { underline = true })
         matchadd()
     end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+Autocmd({ "CursorMoved", "CursorMovedI" }, {
     callback = matchadd,
 })

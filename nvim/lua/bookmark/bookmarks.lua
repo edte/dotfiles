@@ -252,6 +252,7 @@ function M.set_marks(buf, marks)
         M.marks[file_name] = {}
     end
 
+    -- 这段代码的作用是遍历 M.marks[file_name] 表中的所有扩展标记 ID，并使用 nvim_buf_del_extmark 函数删除这些扩展标记。让我们逐步解析这段代码：
     -- clear old ext
     for _, id in ipairs(M.marks[file_name]) do
         api.nvim_buf_del_extmark(buf, M.ns_id, id)
@@ -261,29 +262,50 @@ function M.set_marks(buf, marks)
 
     -- set new old ext
     for _, mark in ipairs(marks) do
+        -- Print(mark)
+
+        -- 如果书签行号超过文件总行数，跳过该书签。
         if mark.line > vim.fn.line("$") then
             goto continue
         end
 
+        -- 设置虚拟文本内容，如果 M.virt_text 为空则使用书签描述。
         local virt_text = text
         if virt_text == "" then
             virt_text = mark.description
         end
+
+        -- 使用 api.nvim_buf_set_extmark 设置扩展标记，位置在行末（virt_text_pos = "eol"），并且使用指定的高亮组。
         local ext_id = api.nvim_buf_set_extmark(buf, M.ns_id, mark.line - 1, -1, {
             virt_text = { { virt_text, "bookmarks_virt_text_hl" } },
             virt_text_pos = "eol",
             hl_group = "bookmarks_virt_text_hl",
             hl_mode = "combine"
         })
+
+        -- #M.marks[file_name] 返回 M.marks[file_name] 表的当前长度（即其中元素的数量）
+        -- M.marks[file_name][#M.marks[file_name] + 1]：
+        -- 这表示在 M.marks[file_name] 表的末尾添加一个新元素。
+        -- 因为表的长度是 #M.marks[file_name]，所以新元素的位置是 #M.marks[file_name] + 1。
+        -- 记录扩展标记的 ID。
         M.marks[file_name][#M.marks[file_name] + 1] = ext_id
 
+        -- 使用 vim.fn.sign_place 在书签行位置放置标记。
         vim.fn.sign_place(0, "BookmarkSign", "BookmarkSign", buf, {
             lnum = mark.line,
         })
+
+        -- print(mark.id)
+        -- Print(M.data.bookmarks[mark.id])
+        M.data.bookmarks[mark.id].extmark_id = ext_id
+        M.data.bookmarks[mark.id].buf_id = buf
+        -- Print(M.data.bookmarks[mark.id])
+
         ::continue::
     end
 end
 
+-- 这个函数用于获取指定缓冲区中的所有书签行信息。
 function M.get_buf_bookmark_lines(buf)
     local filename = api.nvim_buf_get_name(buf)
     local lines = {}
@@ -301,10 +323,13 @@ function M.get_buf_bookmark_lines(buf)
         end
     end
 
+    -- Print(lines)
+
     return lines
 end
 
 function M.add_bookmark()
+    -- print("add_bookmark")
     function M.handle_add(line, buf1, buf2, buf, rows)
         -- Get buf's filename.
         local filename = api.nvim_buf_get_name(buf)
@@ -330,7 +355,7 @@ function M.add_bookmark()
         -- Save bookmark as lua code.
         -- rows is the file's number..
 
-        local id = string.format("%s:%s", filename, line)
+        local id = generate_unique_id()
         local now = os.time()
 
         if M.data.bookmarks[id] ~= nil then --update description
@@ -340,6 +365,7 @@ function M.add_bookmark()
             end
         else -- new
             M.data.bookmarks[id] = {
+                id = id,
                 filename = filename,
                 line = line,
                 rows = rows, -- for fix
@@ -456,6 +482,7 @@ end
 
 -- 写入书签到磁盘文件，下次加载时使用
 function M.save_bookmarks()
+    -- print("Saving bookmarks...")
     -- Print(M.marks)
 
     local local_str = ""
@@ -466,10 +493,25 @@ function M.save_bookmarks()
 }
 ]]
 
+        -- Print(bookmark)
+        local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.ns_id, bookmark.extmark_id, {})
+
+        -- 检查 extmark 是否有效
+        if not extmark_pos or #extmark_pos == 0 then
+            print("Bookmark '" .. id .. "' is no longer valid.")
+            goto continue
+        end
+
+        M.data.bookmarks[id].line = extmark_pos[1] + 1
+        M.data.bookmarks[id].rows = extmark_pos[2]
+
+        -- print(id, vim.inspect(M.data.bookmarks[id]))
+
+        ::continue::
 
         local sub = "    "
         for k, v in pairs(bookmark) do
-            if k ~= "is_new" then
+            if k ~= "is_new" and k ~= "extmark_id" and k ~= "buf_id" then
                 if sub ~= "" then
                     sub = string.format("%s\n%s", sub, string.rep(" ", 4))
                 end
@@ -486,6 +528,8 @@ function M.save_bookmarks()
         local_str = string.format("%s%s", local_str, subs)
     end
 
+    -- Print(M.data.bookmarks)
+
     if M.data.data_filename == nil then -- lazy load,
         return
     end
@@ -498,6 +542,7 @@ end
 
 -- 从磁盘文件恢复书签
 function M.load_bookmarks()
+    -- print("load bookmarks")
     M.storage_dir = vim.fn.stdpath("data") .. "/bookmarks"
 
     -- 当前项目目录
@@ -547,13 +592,13 @@ function M.load_bookmarks()
             item[key] = value
         end
 
-        local id = string.format("% s:% s", item.filename, item.line)
-        M.data.bookmarks[id] = item
+        M.data.bookmarks[item.id] = item
 
         if M.data.bookmarks_groupby_filename[item.filename] == nil then
             M.data.bookmarks_groupby_filename[item.filename] = {}
         end
-        M.data.bookmarks_groupby_filename[item.filename][#M.data.bookmarks_groupby_filename[item.filename] + 1] = id
+        M.data.bookmarks_groupby_filename[item.filename][#M.data.bookmarks_groupby_filename[item.filename] + 1] = item
+            .id
     end
 
     -- Print(M.data.bookmarks_groupby_filename)
@@ -578,18 +623,23 @@ function M.setup()
     vim.keymap.set("n", "mm", function() M.add_bookmark() end,
         { desc = "bookmarks add", silent = true })
 
-    api.nvim_create_autocmd({ "VimLeave" }, {
+    local group_id = GroupId("bookmark_group", { clear = true })
+
+    Autocmd({ "VimLeave", "BufWrite" }, {
+        group = group_id,
         callback = M.save_bookmarks
     })
 
-    api.nvim_create_autocmd({ "BufWritePost" }, {
+    Autocmd({ "BufWritePost" }, {
+        group = group_id,
         callback = function()
             local buf = api.nvim_get_current_buf()
             M.set_marks(buf, M.get_buf_bookmark_lines(buf))
         end
     })
 
-    api.nvim_create_autocmd({ "BufWinEnter" }, {
+    Autocmd({ "BufWinEnter" }, {
+        group = group_id,
         callback = function()
             local buf = api.nvim_get_current_buf()
             M.set_marks(buf, M.get_buf_bookmark_lines(buf))
