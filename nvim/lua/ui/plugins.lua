@@ -12,8 +12,8 @@ M.list = {
         end,
 
         dependencies = {
-            { "nvim-treesitter/nvim-treesitter"},
-        }, 
+            { "nvim-treesitter/nvim-treesitter" },
+        },
     },
 
     --    {
@@ -183,7 +183,7 @@ M.list = {
             })
         end,
         init = function()
-            vim.api.nvim_create_autocmd("FileType", {
+            Autocmd("FileType", {
                 pattern = {
                     "alpha",
                     "dashboard",

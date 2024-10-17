@@ -326,7 +326,7 @@ function M.cmpConfig()
         c = { user_config_path .. "dict/c.dict" },
     }
 
-    vim.api.nvim_create_autocmd("FileType", {
+    Autocmd("FileType", {
         pattern = "*",
         callback = function(ev)
             dict = try_require("cmp_dictionary")

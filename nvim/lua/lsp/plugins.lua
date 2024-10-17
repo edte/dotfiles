@@ -319,6 +319,7 @@ M.list = {
         config = function()
             require("qpilot").setup()
         end,
+        cmd = { "QPCHAT", "QPCHATAS", "QPCODE" },
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
