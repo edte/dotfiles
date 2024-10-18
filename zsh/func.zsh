@@ -34,8 +34,6 @@ function update() {
     zinit self-update
     zinit update --parallel
     brew update
-    lvim +LvimUpdate +q
-    lvim +LvimSyncCorePlugins +q
 }
 
 function tpushbuild() {

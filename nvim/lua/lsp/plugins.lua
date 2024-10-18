@@ -141,18 +141,6 @@ M.list = {
         end,
     },
 
-    {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
-            },
-        },
-    },
-
     -- 在分割窗口或弹出窗口中运行测试并提供实时反馈
     -- 这个插件太慢了，暂时不用
     {

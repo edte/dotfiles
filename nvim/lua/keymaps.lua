@@ -28,7 +28,7 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 keymap("", "<C-s>", "<cmd>w<cr>")
 
 -- 删除整行
-keymap("", "D", "Vd")
+-- keymap("", "D", "Vd")
 
 keymap("n", "c", '"_c')
 
@@ -181,3 +181,7 @@ cmd("silent!")
 keymap("n", "gw", "<cmd>FzfLua grep_cword<CR>")
 keymap("n", "gW", "<cmd>FzfLua grep_cWORD<CR>")
 -- keymap("n", "gr", "<cmd>FzfLua resume<CR>")
+
+
+vim.keymap.set('n', 'C', '"_C', { noremap = true })
+vim.keymap.set('n', 'D', '"_D', { noremap = true })

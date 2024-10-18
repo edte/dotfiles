@@ -72,15 +72,8 @@ alias vzsh='nvim ~/dotfiles/zsh'
 alias vr="nvim README.md"
 alias vm='nvim main.go'
 alias vi='nvim init.lua'
-alias vp='nvim /Users/edte/.config/lvim/lua/plugins.lua'
 alias vtask="nim /Users/edte/.config/asynctask/tasks.ini"
 alias vtmux='nvim ~/dotfiles/tmux'
-alias zlunar='cd ~/.local/share/lunarvim/lvim/lua/lvim '
-alias zlvim='cd ~/.local/share/lunarvim/lvim/lua/lvim '
-alias vlunar='nvim ~/.local/share/lunarvim/lvim/lua/lvim '
-alias vlvim='nvim ~/.local/share/lunarvim/lvim/lua/lvim '
-alias vvim='nvim ~/.config/lvim/config.lua'
-alias zvim='cd ~/.config/lvim/'
 alias zkitty='cd /Users/edte/.config/kitty'
 alias vkitty='nvim /Users/edte/.config/kitty/kitty.conf'
 alias zconf='cd /Users/edte/config'
@@ -114,9 +107,5 @@ alias cmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] 
 alias cmdtop="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 alias topcmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 alias gittop="history | awk '{ if (\$2 == \"git\") { CMD[\$2 \" \" \$3]++; } else { CMD[\$2]++; } count++; } END { for (a in CMD) print CMD[a] \" \" CMD[a]/count*100 \"% \" a; }' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl | head -n20"
-
-alias lvimconfig="lvim --headless +'lua require(\"lvim.utils\").generate_settings()' +qa && sort -o lv-settings.lua{,}"
-
-alias lsplog="tf /Users/edte/.local/state/lvim/lsp.log"
 
 alias epc=" ~/Downloads/epc"
