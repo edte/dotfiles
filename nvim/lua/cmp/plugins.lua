@@ -57,8 +57,11 @@ M.list = {
     },
 
     {
-        "yioneko/nvim-cmp",
-        branch = "perf",
+        -- 高性能fork
+        -- "yioneko/nvim-cmp",
+        -- branch = "perf",
+
+        "hrsh7th/nvim-cmp",
         config = function()
             require("cmp.completion").cmpConfig()
         end,

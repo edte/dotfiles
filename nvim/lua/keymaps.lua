@@ -33,8 +33,8 @@ keymap("", "<C-s>", "<cmd>w<cr>")
 keymap("n", "c", '"_c')
 
 -- -- 设置 jj、jk 为 ESC,避免频繁按 esc
--- map("i", "jj", "<esc>", opt)
-keymap("i", "jk", "<esc>")
+keymap('i', 'jk', '<Esc><right>')
+
 
 -- 按 esc 消除上一次的高亮
 keymap("n", "<esc>", "<cmd>noh<cr>")
