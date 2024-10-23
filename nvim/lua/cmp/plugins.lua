@@ -2,6 +2,20 @@ local M = {}
 
 M.list = {
 
+    -- cmp 补全基础插件
+    {
+        -- 高性能fork
+        -- "yioneko/nvim-cmp",
+        -- branch = "perf",
+
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("cmp.completion").cmpConfig()
+        end,
+        event = { "InsertEnter" },
+    },
+
+    -- 下面是一堆cmp补全源
     {
         "cmp-nvim-lsp",
         event = { "InsertEnter" },
@@ -48,26 +62,7 @@ M.list = {
         event = { "InsertEnter *.lua" },
     },
 
-    -- TabNine ai 补全
-    {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
-        event = { "InsertEnter" },
-        -- ft = { "lua", "go", "cpp" },
-    },
-
-    {
-        -- 高性能fork
-        -- "yioneko/nvim-cmp",
-        -- branch = "perf",
-
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require("cmp.completion").cmpConfig()
-        end,
-        event = { "InsertEnter" },
-    },
-
+    -- 自定义代码片段
     {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
@@ -75,21 +70,12 @@ M.list = {
             "friendly-snippets",
         },
     },
-    { "rafamadriz/friendly-snippets", lazy = true },
+
+    -- nvim lua API 的完整签名帮助、文档和补全
     {
         "folke/neodev.nvim",
         lazy = true,
         event = { "InsertEnter" },
-    },
-
-    -- 语言字典补全
-    {
-        "skywind3000/vim-dict",
-        event = { "InsertEnter" },
-    },
-
-    {
-        "edte/copilot",
     },
 
     -- Neovim Lua 插件自动管理字符对。 “mini.nvim” 库的一部分。
@@ -101,6 +87,28 @@ M.list = {
             require("mini.pairs").setup()
         end,
     },
+
+    -- TabNine ai 补全
+    {
+        "tzachar/cmp-tabnine",
+        build = "./install.sh",
+        event = { "InsertEnter" },
+        -- ft = { "lua", "go", "cpp" },
+    },
+
+    -- ai代码补全
+    {
+        "edte/copilot",
+    },
+
+    -- Codeium ai补全
+    {
+        "Exafunction/codeium.nvim",
+        config = function()
+            require("codeium").setup({})
+        end
+    },
+
 }
 
 return M

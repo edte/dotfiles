@@ -172,6 +172,11 @@ function M.cmpConfig()
             },
 
             {
+                name = "codeium",
+                priority = 8,
+            },
+
+            {
                 name = "nvim_lsp_signature_help",
                 priority = 8,
             },
@@ -313,7 +318,7 @@ function M.cmpConfig()
         min_percent = 0,
     })
 
-    -- git clone https://github.com/skywind3000/vim-dict lvim/
+    -- git clone https://github.com/skywind3000/vim-dict nvim/
     local dict = {
         ["*"] = { "/usr/share/dict/words" },
         go = { user_config_path .. "dict/go.dict" },
