@@ -75,6 +75,12 @@ local default_options = {
 
     -- 这表示 Vim 将等待 100 毫秒来完成一个终端键代码。如果在这个时间内没有完成，Vim 将会认为没有更多的键代码输入。
     ttimeoutlen = 0, -- 设置 Vim 等待终端键代码完成的时间
+
+
+    -- n-v-c-sm:block：在普通模式（n）、可视模式（v）、选择模式（sm）下，光标样式为块状（block）。
+    -- i-ci-ve:ver25：在命令行模式（c）、插入模式（i）、命令行插入模式（ci）和可视模式（ve）下，光标样式为垂直线，线宽为 25% 的字符宽度。
+    -- r-cr-o:hor20：在替换模式（r）、命令行替换模式（cr）和操作待决模式（o）下，光标样式为水平线，线宽为 20% 的字符高度。
+    guicursor = "n-v-sm:block,c-i-ci-ve:ver25,r-cr-o:hor20",
 }
 
 for k, v in pairs(default_options) do
