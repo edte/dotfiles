@@ -104,6 +104,7 @@ M.list = {
     -- Codeium ai补全
     {
         "Exafunction/codeium.nvim",
+        event = { "InsertEnter" },
         config = function()
             require("codeium").setup({})
         end
