@@ -69,13 +69,14 @@ M.list = {
     },
 
     -- lua MiniDiff.toggle_overlay()
-    -- {
-    -- 	"echasnovski/mini.diff",
-    -- 	version = false,
-    -- 	config = function()
-    -- 		require("mini.diff").setup()
-    -- 	end,
-    -- },
+    {
+        "echasnovski/mini.diff",
+        version = false,
+        config = function()
+            require("mini.diff").setup()
+            cmd("command! Diff lua MiniDiff.toggle_overlay()")
+        end,
+    },
 }
 
 return M

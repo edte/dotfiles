@@ -202,6 +202,11 @@ M.lspConfig = function()
     for _, lsp in ipairs(lspTable) do
         configSetup(lsp.filetypes, lsp.name, lsp)
     end
+
+
+    --  -- lsp debug
+    -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
+    -- vim.lsp.log.set_format_func(vim.inspect)
 end
 
 M.on_attach = function(client, buf)
