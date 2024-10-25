@@ -528,7 +528,7 @@ function M.save_bookmarks()
     end
 
     if local_str == "" then
-        print(M.data.data_filename)
+        -- print(M.data.data_filename)
         if vim.loop.fs_stat(M.data.data_filename) then
             os.remove(M.data.data_filename)
         end
