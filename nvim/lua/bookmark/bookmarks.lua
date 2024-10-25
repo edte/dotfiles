@@ -483,19 +483,21 @@ function M.save_bookmarks()
 }
 ]]
 
-        -- Print(bookmark)
-        local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
+        if bookmark["extmark_id"] ~= nil then
+            local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
 
-        -- 检查 extmark 是否有效
-        if not extmark_pos or #extmark_pos == 0 then
-            print("Bookmark '" .. id .. "' is no longer valid.")
-            goto continue
+            -- 检查 extmark 是否有效
+            if not extmark_pos or #extmark_pos == 0 then
+                print("Bookmark '" .. id .. "' is no longer valid.")
+                goto continue
+            end
+
+            M.data.bookmarks[id].line = extmark_pos[1] + 1
+            M.data.bookmarks[id].rows = extmark_pos[2]
+
+            -- print(id, vim.inspect(M.data.bookmarks[id]))
         end
 
-        M.data.bookmarks[id].line = extmark_pos[1] + 1
-        M.data.bookmarks[id].rows = extmark_pos[2]
-
-        -- print(id, vim.inspect(M.data.bookmarks[id]))
 
         ::continue::
 
