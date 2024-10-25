@@ -1,3 +1,27 @@
+local ls = require("luasnip")
+local func = ls.function_node
+local postfix = require("luasnip.extras.postfix").postfix
+local snip = ls.snippet
+local text = ls.text_node
+local insert = ls.insert_node
+local func = ls.function_node
+local choice = ls.choice_node
+local dynamic = ls.dynamic_node
+local events = require("luasnip.util.events")
+local snip_node = ls.snippet_node
+local lsp_format = vim.lsp.buf.format
+local session = require("luasnip.session")
+
+local env = session.config.snip_env
+local s = env["s"]
+local t = env["t"]
+local i = env["i"]
+local parse = env["parse"]
+
+
+
+
+
 -- https://vi.stackexchange.com/questions/4493/what-is-the-order-of-winenter-bufenter-bufread-syntax-filetype-events
 
 -- 这段自动命令可以防止你在一个注释行中换行后，新行会继续注释的情况

@@ -10,7 +10,7 @@ M.list = {
 
         "hrsh7th/nvim-cmp",
         config = function()
-            require("cmp.completion").cmpConfig()
+            require("cmp.cmp").cmpConfig()
         end,
         event = { "InsertEnter" },
     },
@@ -66,12 +66,12 @@ M.list = {
     {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+            require("luasnip.loaders.from_lua").load({ paths = user_config_path .. "/lua/cmp/snippets" })
+        end,
         dependencies = {
             "friendly-snippets",
-            config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-                require("luasnip.loaders.from_lua").load({ paths = "./lua/snippets" })
-            end,
         },
     },
 

@@ -321,14 +321,14 @@ function M.cmpConfig()
     -- git clone https://github.com/skywind3000/vim-dict nvim/
     local dict = {
         ["*"] = { "/usr/share/dict/words" },
-        go = { user_config_path .. "dict/go.dict" },
-        sh = { user_config_path .. "dict/sh.dict" },
-        lua = { user_config_path .. "dict/lua.dict" },
-        html = { user_config_path .. "dict/html.dict" },
-        css = { user_config_path .. "dict/css.dict" },
-        cpp = { user_config_path .. "dict/cpp.dict" },
-        cmake = { user_config_path .. "dict/cmake.dict" },
-        c = { user_config_path .. "dict/c.dict" },
+        go = { user_config_path .. "/lua/cmp/dict/go.dict" },
+        sh = { user_config_path .. "/lua/cmp/dict/sh.dict" },
+        lua = { user_config_path .. "/lua/cmp/dict/lua.dict" },
+        html = { user_config_path .. "/lua/cmp/dict/html.dict" },
+        css = { user_config_path .. "/lua/cmp/dict/css.dict" },
+        cpp = { user_config_path .. "/lua/cmp/dict/cpp.dict" },
+        cmake = { user_config_path .. "/lua/cmp/dict/cmake.dict" },
+        c = { user_config_path .. "/lua/cmp/dict/c.dict" },
     }
 
     Autocmd("FileType", {
