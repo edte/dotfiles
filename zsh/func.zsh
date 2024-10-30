@@ -91,3 +91,8 @@ function zle-keymap-select zle-line-init zle-line-finish
     viins | main) print -n '\033[5 q' ;; # line cursor
     esac
 }
+
+function github_config {
+    git config user.name edte
+    git config user.email zzzzip6@gmail.com
+}
