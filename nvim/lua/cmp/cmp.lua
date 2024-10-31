@@ -175,7 +175,10 @@ function M.cmpConfig()
                 name = "codeium",
                 priority = 8,
             },
-
+            {
+                name = "luasnip",
+                priority = 7,
+            },
             {
                 name = "nvim_lsp_signature_help",
                 priority = 8,
@@ -183,10 +186,6 @@ function M.cmpConfig()
             {
                 name = "nvim_lsp",
                 priority = 8,
-            },
-            {
-                name = "luasnip",
-                priority = 7,
             },
             {
                 name = "buffer",

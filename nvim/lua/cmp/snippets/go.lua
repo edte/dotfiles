@@ -35,8 +35,6 @@ local M = {
         end, {}),
     }),
 
-
-
     -- len
     postfix(".len", {
         func(function(_, snip)
@@ -81,13 +79,6 @@ local M = {
     }),
 
     -- Generates the code to parse int from string.
-    postfix(".parseint", {
-        func(function(_, snip)
-            return "value, err := strconv.ParseInt(" .. snip.snippet.env.POSTFIX_MATCH .. ", 10, 64)"
-        end, {}),
-    }),
-
-    -- Generates the code to parse int from string.
     postfix(".stoi", {
         func(function(_, snip)
             return "value, err := strconv.ParseInt(" .. snip.snippet.env.POSTFIX_MATCH .. ", 10, 64)"
@@ -101,34 +92,9 @@ local M = {
         end, {}),
     }),
 
-    -- Generates the code to parse float from string.
-    postfix(".parsefloat", {
-        func(function(_, snip)
-            return "value, err := strconv.ParseFloat(" .. snip.snippet.env.POSTFIX_MATCH .. ", 10, 64)"
-        end, {}),
-    }),
-
-    postfix(".imag", {
-        func(function(_, snip)
-            return "imga(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
     postfix(".panic", {
         func(function(_, snip)
             return "panic(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
-    postfix(".complex", {
-        func(function(_, snip)
-            return "complex(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
-    postfix(".real", {
-        func(function(_, snip)
-            return "real(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
         end, {}),
     }),
 
@@ -138,16 +104,13 @@ local M = {
         end, {}),
     }),
 
-    postfix(".copy", {
-        func(function(_, snip)
-            return "copy(" .. snip.snippet.env.POSTFIX_MATCH .. ", )"
-        end, {}),
-    }),
-
     postfix(".make", {
         func(function(_, snip)
-            return "make(" .. snip.snippet.env.POSTFIX_MATCH .. ", )"
+            return "make(" .. snip.snippet.env.POSTFIX_MATCH .. ", "
         end, {}),
+
+        insert(1),
+        text({ ")" }),
     }),
 
     postfix(".close", {
@@ -156,11 +119,6 @@ local M = {
         end, {}),
     }),
 
-    postfix(".cap", {
-        func(function(_, snip)
-            return "cap(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
 
     postfix(".println", {
         func(function(_, snip)
@@ -174,17 +132,6 @@ local M = {
         end, {}),
     }),
 
-    postfix(".is", {
-        func(function(_, snip)
-            return "errors.Is(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
-    postfix(".as", {
-        func(function(_, snip)
-            return "errors.As(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
 
     -- Turns the E expression into if E {}.
     postfix(".if", {
@@ -234,27 +181,6 @@ local M = {
         text({ "}" }),
     }),
 
-    -- Wraps the expression with the sort.Float64s() function.
-    postfix(".sort", {
-        func(function(_, snip)
-            return "sort.Float64s(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
-    -- Wraps the expression with the sort.Ints() function.
-    postfix(".sort", {
-        func(function(_, snip)
-            return "sort.Ints(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
-    -- Wraps the expression with the sort.Strings() function.
-    postfix(".sort", {
-        func(function(_, snip)
-            return "sort.Strings(" .. snip.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
-
     -- Wraps the expression with the sort.Slice() function.
     postfix(".sort", {
         func(function(_, snip)
@@ -271,6 +197,9 @@ local M = {
             return "if " .. snip.snippet.env.POSTFIX_MATCH .. " != nil {"
         end, {}),
         text({ "", "" }),
+        text({ "    " }),
+        insert(1),
+        text({ "", "" }),
         text({ "}" }),
     }),
 
@@ -278,6 +207,9 @@ local M = {
         func(function(_, snip)
             return "if " .. snip.snippet.env.POSTFIX_MATCH .. " == nil {"
         end, {}),
+        text({ "", "" }),
+        text({ "    " }),
+        insert(1),
         text({ "", "" }),
         text({ "}" }),
     }),
@@ -288,62 +220,11 @@ local M = {
         text("\t"),
         text({ "return err", "" }),
         text("}"),
+        text({ "", "" }),
         insert(0),
     }),
 
 
-    ------------------------------------------------
-    ----     Type  Keyword
-    ------------------------------------------------
-    snip({
-        trig = "typ",
-        docstring =
-        "////Press to <C-s> trigger \ntype Name struct{\n\tField\tType\n}\n\n////or type Name interface{\n\tMethod\n}",
-        dscr = "创建一个结构体/接口",
-    }, {
-        choice(1, {
-            snip_node(nil, {
-                func(function(args, snip, _)
-                    return "// " .. args[1][1] .. " represent " .. string.lower(args[1][1])
-                end, { 1 }, nil),
-                text({ "", "" }),
-                text({ "type " }),
-                insert(1, "Name"),
-                text({ " struct {", "" }), -- type Name interface{
-                text("\t"),
-                insert(2, "Field"),
-                text("\t"),
-                insert(3, "Type"),
-                text({ "", "}" }),
-                insert(0),
-            }),
-            snip_node(nil, {
-                func(function(args, snip, _)
-                    return "// " .. args[1][1] .. " represent " .. string.lower(args[1][1])
-                end, { 1 }, nil),
-                text({ "", "" }),
-                text({ "type " }),
-                insert(1, "Name"),
-                text({ " interface {", "" }), -- type Name interface{
-                text("\t"),
-                insert(2, "Method"),
-                text({ "", "}" }),
-                insert(0),
-            }),
-        }),
-    }, {
-        callbacks = {
-            [0] = {
-                [events.enter] = function(node, _event_args)
-                    lsp_format({
-                        filter = function(client)
-                            return client.name == "null-ls"
-                        end,
-                    })
-                end,
-            },
-        },
-    }),
 
     -- type Name struct {}
     snip({

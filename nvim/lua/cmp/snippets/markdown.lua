@@ -19,7 +19,7 @@ ls.add_snippets('markdown', {
 
     ls.s( -- Codeblock {{{
         {
-            trig = 'codeblock',
+            trig = 'block',
             name = 'Make code block',
             dscr = 'Select text, press <C-s>, type codeblock.',
         },
