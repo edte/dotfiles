@@ -4,8 +4,8 @@ M.list = {
     {
         "lewis6991/gitsigns.nvim",
         opts = {},
-        event = "User FileOpened",
-        cmd = "Gitsigns",
+        -- event = "User FileOpened",
+        -- cmd = "Gitsigns",
         config = function()
             require("gitsigns").setup({
                 signcolumn = false,
