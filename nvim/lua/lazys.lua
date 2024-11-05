@@ -52,4 +52,8 @@ require("lazy").setup({
     install = { colorscheme = { "tokyonight" } },
     --自动检查插件更新
     -- checker = { enabled = true },
+}, {
+    rocks = {
+        hererocks = true, -- recommended if you do not have global installation of Lua 5.1.
+    },
 })
