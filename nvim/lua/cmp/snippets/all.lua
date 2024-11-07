@@ -44,32 +44,34 @@ local M = {
             return "'" .. parent.snippet.env.POSTFIX_MATCH .. "'"
         end, {}),
     }),
-    postfix(".wrap()", {
-        func(function(_, parent)
-            return "(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
-        end, {}),
-    }),
     postfix(".par", {
         func(function(_, parent)
             return "(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
         end, {}),
     }),
-    postfix(".wrap[]", {
-        func(function(_, parent)
-            return "[" .. parent.snippet.env.POSTFIX_MATCH .. "]"
-        end, {}),
-    }),
 
-    postfix(".wrap{}", {
-        func(function(_, parent)
-            return "{" .. parent.snippet.env.POSTFIX_MATCH .. "}"
-        end, {}),
-    }),
-    postfix(".wrap<>", {
-        func(function(_, parent)
-            return "<" .. parent.snippet.env.POSTFIX_MATCH .. ">"
-        end, {}),
-    }),
+
+    -- postfix(".wrap(", {
+    --     func(function(_, parent)
+    --         return "(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
+    --     end, {}),
+    -- }),
+    -- postfix(".wrap[", {
+    --     func(function(_, parent)
+    --         return "[" .. parent.snippet.env.POSTFIX_MATCH .. "]"
+    --     end, {}),
+    -- }),
+
+    -- postfix(".wrap{", {
+    --     func(function(_, parent)
+    --         return "{" .. parent.snippet.env.POSTFIX_MATCH .. "}"
+    --     end, {}),
+    -- }),
+    -- postfix(".wrap<", {
+    --     func(function(_, parent)
+    --         return "<" .. parent.snippet.env.POSTFIX_MATCH .. ">"
+    --     end, {}),
+    -- }),
     postfix(".end", {
         func(function(_, parent)
             return parent.snippet.env.POSTFIX_MATCH

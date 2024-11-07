@@ -113,6 +113,7 @@ M.list = {
 
     {
         "3rd/image.nvim",
+        ft = "markdown", -- If you decide to lazy-load anyway
         opts = {}
     },
 }
