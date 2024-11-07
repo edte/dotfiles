@@ -111,9 +111,9 @@ M.list = {
     -- 	end,
     -- },
 
-    -- {
-    --     "3rd/image.nvim",
-    --     opts = {}
-    -- },
+    {
+        "3rd/image.nvim",
+        opts = {}
+    },
 }
 return M
