@@ -44,4 +44,4 @@ source $HOME/dotfiles/zsh/alias.zsh
 source $HOME/dotfiles/zsh/func.zsh
 source $HOME/dotfiles/zsh/keymap.zsh
 source $HOME/dotfiles/zsh/eval.zsh
-source $HOME/dotfiles/zsh/private.zsh
+source $HOME/dotfiles/zsh/private/config.zsh
