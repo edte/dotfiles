@@ -117,6 +117,19 @@ M.list = {
         lazy = true,
     },
 
+    {
+        'echasnovski/mini.align',
+        version = false,
+        config = function()
+            require('mini.align').setup({
+                mappings = {
+                    start = 'aa',
+                },
+            }
+            )
+        end
+    },
+
 }
 
 return M
