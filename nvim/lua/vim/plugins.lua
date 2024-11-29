@@ -189,29 +189,32 @@ M.list = {
         end,
     },
 
-    -- 轻松添加/更改/删除周围的分隔符对。用Lua ❤️ 编写。
-    --add:    ys{motion}{char},
-    --delete: ds{char},
-    --change: cs{target}{replacement},
-
-    --     Old text                    Command         New text
-    -- --------------------------------------------------------------------------------
-    --     surr*ound_words             ysiw)           (surround_words)
-    --     *make strings               ys$"            "make strings"
-    --     [delete ar*ound me!]        ds]             delete around me!
-    --     remove <b>HTML t*ags</b>    dst             remove HTML tags
-    --     'change quot*es'            cs'"            "change quotes"
-    --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
-    --     delete(functi*on calls)     dsf             function calls
+    -- 添加、删除、替换、查找、突出显示周围（如一对括号、引号等）。
+    -- 使用sa添加周围环境（在视觉模式或运动模式下）。
+    -- 用sd删除周围的内容。
+    -- 将周围替换为sr 。
+    -- 使用sf或sF查找周围环境（向右或向左移动光标）。
+    -- 用sh突出显示周围。
+    -- 使用sn更改相邻线的数量（请参阅 |MiniSurround-algorithm|）。
     {
-        "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        keys = { "ys", "ds", "cs" },
+        'echasnovski/mini.surround',
+        version = false,
+        keys = { "sa", "sd", "sr", "sh" },
         config = function()
-            try_require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
+            require('mini.surround').setup({
+                mappings = {
+                    add = 'sa',          -- Add surrounding in Normal and Visual modes
+                    delete = 'sd',       -- Delete surrounding
+                    replace = 'sr',      -- Replace surrounding
+                    highlight = 'sh',    -- Highlight surrounding
+                    find = '',           -- Find surrounding (to the right)
+                    find_left = '',      -- Find surrounding (to the left)
+                    update_n_lines = '', -- Update `n_lines`
+                    suffix_last = '',    -- Suffix to search with "prev" method
+                    suffix_next = '',    -- Suffix to search with "next" method
+                },
             })
-        end,
+        end
     },
 
     -- vim undo tree
@@ -242,22 +245,17 @@ M.list = {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-        keys = { "s", "sx", "sxc" },
+        keys = { "s", "sx" },
         config = function()
             require("substitute").setup()
 
-            -- s<motion>，将动作提供的文本对象替换为默认寄存器
-            keymap("n", "s", "<cmd>lua require('substitute').operator()<cr>")
-            keymap("n", "ss", "<cmd>lua require('substitute').line()<cr>")
-            -- keymap("n", "S", "<cmd>lua require('substitute').eol()<cr>")
-
+            -- 交换
             -- sx{motion}，按两次即可交换，支持 .
-            -- sxc 取消
             keymap("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>")
-            keymap("n", "sxx", "<cmd>lua require('substitute.exchange').line()<cr>")
-            keymap("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>")
 
-            keymap("x", "X", "<cmd>lua require('substitute.exchange').visual()<cr>")
+            -- 替换
+            -- s{motion} 先按s，然后按文本对象就直接替换为默认寄存器里的内容
+            keymap("n", "s", "<cmd>lua require('substitute').operator()<cr>")
             keymap("x", "s", "<cmd>lua require('substitute').visual()<cr>")
         end,
     },

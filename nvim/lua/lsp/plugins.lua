@@ -38,23 +38,23 @@ M.list = {
 
     -- lsp_lines 是一个简单的 neovim 插件，它使用真实代码行之上的虚拟行来呈现诊断。
     --https://git.sr.ht/~whynothugo/lsp_lines.nvim
-    {
-        -- url 备份
-        -- url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        url = "https://github.com/edte/lsp_lines.nvim",
-        config = function()
-            vim.diagnostic.config({
-                virtual_text = false,
-                update_in_insert = true,
-                virtual_lines = {
-                    -- only_current_line = true,
-                    highlight_whole_line = false,
-                },
-            })
-            require("lsp_lines").setup()
-            vim.keymap.set("n", "g?", vim.diagnostic.open_float, { silent = true })
-        end,
-    },
+    -- {
+    --     -- url 备份
+    --     -- url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    --     url = "https://github.com/edte/lsp_lines.nvim",
+    --     config = function()
+    --         vim.diagnostic.config({
+    --             virtual_text = false,
+    --             update_in_insert = true,
+    --             virtual_lines = {
+    --                 -- only_current_line = true,
+    --                 highlight_whole_line = false,
+    --             },
+    --         })
+    --         require("lsp_lines").setup()
+    --         vim.keymap.set("n", "g?", vim.diagnostic.open_float, { silent = true })
+    --     end,
+    -- },
 
     -- Clanalphagd 针对 neovim 的 LSP 客户端的不合规范的功能。使用 https://sr.ht/~p00f/clangd_extensions.nvim 代替
     {
@@ -302,17 +302,27 @@ M.list = {
     --     end,
     -- },
 
+    -- {
+    --     "edte/qpilot",
+    --     config = function()
+    --         require("qpilot").setup()
+    --     end,
+    --     cmd = { "QPCHAT", "QPCHATAS", "QPCODE" },
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     }
+    -- },
+
     {
-        "edte/qpilot",
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "LspAttach", -- Or `LspAttach`
+        priority = 1000,     -- needs to be loaded in first
         config = function()
-            require("qpilot").setup()
-        end,
-        cmd = { "QPCHAT", "QPCHATAS", "QPCODE" },
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
+            require('tiny-inline-diagnostic').setup()
+            vim.diagnostic.config({ virtual_text = false })
+        end
     }
 }
 

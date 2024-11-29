@@ -56,4 +56,17 @@ require("lazy").setup({
     rocks = {
         hererocks = true, -- recommended if you do not have global installation of Lua 5.1.
     },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "matchparen",
+                "gzip",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "zipPlugin",
+                "tutor",
+            },
+        },
+    },
 })

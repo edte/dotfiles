@@ -122,8 +122,8 @@ keymap("n", "s", "") -- 取消 s 默认功能
 -- 恢复
 -- set noscrollbind
 
-keymap("n", "sv", "<cmd>vsp<CR>")                 -- 水平分屏
-keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
+keymap("n", "sv", "<cmd>vsp<CR>") -- 水平分屏
+-- keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
 
 keymap("n", "sc", "<C-w>c")                       -- 关闭当前屏幕
 keymap("n", "so", "<C-w>o")                       -- 关闭其它屏幕
