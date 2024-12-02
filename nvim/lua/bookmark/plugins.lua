@@ -6,6 +6,7 @@ M.list = {
     -- 保存目录 /Users/edte/.cache/lvim/arrow
     {
         "otavioschwanck/arrow.nvim",
+        branch = "master",
         keys = { "`" },
         opts = {
             show_icons = true,

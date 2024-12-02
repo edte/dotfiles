@@ -317,13 +317,17 @@ M.list = {
     --     end,
     -- },
 
+    -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         -- event = "LspAttach", -- Or `LspAttach`
         priority = 3000, -- needs to be loaded in first
+        branch = "main",
         config = function()
             -- Default configuration
             require("tiny-inline-diagnostic").setup({
+                preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
+
                 options = {
                     -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
                     -- You can increase it if you have performance issues.
@@ -331,7 +335,7 @@ M.list = {
                     throttle = 0,
 
                     -- The minimum length of the message, otherwise it will be on a new line.
-                    softwrap = 50,
+                    softwrap = 30,
 
                     -- If multiple diagnostics are under the cursor, display all of them.
                     multiple_diag_under_cursor = true,

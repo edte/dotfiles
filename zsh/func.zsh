@@ -33,8 +33,8 @@ function update() {
     bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
     zinit self-update
     zinit update --parallel
-    brew upgrade neovim
     brew update
+    brew upgrade
 }
 
 function tpushbuild() {

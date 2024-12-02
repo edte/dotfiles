@@ -17,15 +17,15 @@ M.list = {
 
     -- 下面是一堆cmp补全源
     {
-        "cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp",
         event = { "InsertEnter" },
     },
     {
-        "cmp_luasnip",
+        "saadparwaiz1/cmp_luasnip",
         event = { "InsertEnter" },
     },
     {
-        url = "https://codeberg.org/FelipeLema/cmp-async-path",
+        "edte/cmp-async-path",
         event = { "InsertEnter" },
     },
     {
@@ -71,7 +71,7 @@ M.list = {
             require("luasnip.loaders.from_lua").load({ paths = user_config_path .. "/lua/cmp/snippets" })
         end,
         dependencies = {
-            "friendly-snippets",
+            "rafamadriz/friendly-snippets",
         },
     },
 
