@@ -345,9 +345,14 @@ M.list = {
                     -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
                     enable_on_insert = true,
 
-                    -- Format the diagnostic message.
                     format = function(diagnostic)
-                        return diagnostic.message
+                        local message = diagnostic.message
+                        -- if string.len(message) <= 80 then
+                        --     return message
+                        -- end
+                        message = string.gsub(message, "%(", "\n(")
+                        message = string.gsub(message, "%)", ")\n")
+                        return message
                     end,
 
                 },
