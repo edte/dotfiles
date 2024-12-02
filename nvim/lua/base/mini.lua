@@ -14,21 +14,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {
-        "ibhagwan/fzf-lua",
-        cmd = "FzfLua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("fzf-lua").setup({
-                "telescope",
-                fzf_opts = { ["--cycle"] = "" },
-                winopts = {
-                    fullscreen = true,
-                },
-            })
-        end,
-    },
-
-
-
 })
