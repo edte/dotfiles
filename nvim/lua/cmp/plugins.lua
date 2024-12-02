@@ -114,6 +114,10 @@ M.list = {
     --     end
     -- },
 
+
+    {
+        "tpope/vim-endwise",
+    },
 }
 
 return M
