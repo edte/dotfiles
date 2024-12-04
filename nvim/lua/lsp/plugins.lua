@@ -349,28 +349,31 @@ M.list = {
                     -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
                     enable_on_insert = true,
 
-                    format = function(diagnostic)
-                        local message = diagnostic.message
-                        -- if string.len(message) <= 80 then
-                        --     return message
-                        -- end
-                        message = string.gsub(message, "%(", "\n(")
-                        message = string.gsub(message, "%)", ")\n")
-                        return message
-                    end,
+                    -- format = function(diagnostic)
+                    --     local message = diagnostic.message
+                    --     -- if string.len(message) <= 80 then
+                    --     --     return message
+                    --     -- end
+                    --     message = string.gsub(message, "%(", "\n(")
+                    --     message = string.gsub(message, "%)", ")\n")
+                    --     return message
+                    -- end,
 
                 },
             })
-            vim.diagnostic.config({
-                virtual_text = false,
-                update_in_insert = true,
-                virtual_lines = {
-                    -- only_current_line = true,
-                    highlight_whole_line = false,
-                },
-            })
         end
-    }
+    },
+
+    -- https://freshman.tech/vim-quickfix-and-location-list/
+    {
+        'stevearc/quicker.nvim',
+        event = "FileType qf",
+        opts = {},
+        config = function()
+            require("quicker").setup()
+        end
+    },
+
 }
 
 return M

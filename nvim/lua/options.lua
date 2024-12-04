@@ -114,3 +114,12 @@ vim.opt.spelllang:append("cjk")                -- disable spellchecking for asia
 vim.opt.shortmess:append("c")                  -- don't show redundant messages from ins-completion-menu
 vim.opt.shortmess:append("I")                  -- don't show the default intro message
 vim.opt.whichwrap:append("<,>,[,],h,l")
+
+vim.diagnostic.config({
+    virtual_text = false,
+    update_in_insert = true,
+    virtual_lines = {
+        -- only_current_line = true,
+        highlight_whole_line = false,
+    },
+})

@@ -42,15 +42,15 @@ M.list = {
     -- [ x — 移至下一个冲突
     {
         "akinsho/git-conflict.nvim",
-        cmd = {
-            "GitConflictChooseOurs",
-            "GitConflictChooseTheirs",
-            "GitConflictChooseBoth",
-            "GitConflictChooseNone",
-            "GitConflictNextConflict",
-            "GitConflictPrevConflict",
-            "GitConflictListQf",
-        },
+        -- cmd = {
+        --     "GitConflictChooseOurs",
+        --     "GitConflictChooseTheirs",
+        --     "GitConflictChooseBoth",
+        --     "GitConflictChooseNone",
+        --     "GitConflictNextConflict",
+        --     "GitConflictPrevConflict",
+        --     "GitConflictListQf",
+        -- },
         version = "*",
         config = true,
     },

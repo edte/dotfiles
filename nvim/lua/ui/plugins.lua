@@ -60,7 +60,7 @@ M.list = {
     },
 
 
-    -- 不是天空中的 UFO，而是 Neovim 中的超级折叠。 za
+    -- -- 不是天空中的 UFO，而是 Neovim 中的超级折叠。 za
     -- {
     --     "kevinhwang91/nvim-ufo",
     --     dependencies = "kevinhwang91/promise-async",
