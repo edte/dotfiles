@@ -127,5 +127,13 @@ M.list = {
             cmd("let g:suda#noninteractive = 1")
         end
     },
+
+    -- 最精美的 Neovim 色彩工具
+    { "nvzone/volt", lazy = true },
+    {
+        "nvzone/minty",
+        cmd = { "Shades", "Huefy" },
+    }
+
 }
 return M
