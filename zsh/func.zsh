@@ -97,3 +97,11 @@ function github_config {
     git config user.name edte
     git config user.email zzzzip6@gmail.com
 }
+
+function gs() {
+    if git status &>/dev/null; then
+        git status -s
+    else
+        ls
+    fi
+}

@@ -33,13 +33,12 @@ alias vupdate="vim /Users/edte/config/update.sh"
 
 #git
 alias gc="git clone"
-alias gs="git status -s"
+# alias gs="git status -s"
 alias gst="git status"
 alias ga="git add"
 alias gco="git checkout"
 alias gb="git branch"
 alias gcm="git commit -m"
-alias gg="git repo = "!start $(git remote get-url origin | sed -E \"s|git@([^:]+):|https://\\1/|; s|\\.git$||\")""
 alias gd="git diff"
 
 #tmux
