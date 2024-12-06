@@ -185,3 +185,11 @@ keymap("n", "gW", "<cmd>FzfLua grep_cWORD<CR>")
 
 vim.keymap.set('n', 'C', '"_C', { noremap = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
+
+vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
+
+vim.keymap.set("n", "<C-c>", "ciw")
+vim.keymap.set("n", "cr", "ciw")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
