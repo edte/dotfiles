@@ -2,6 +2,7 @@ local M = {}
 
 M.list = {
     {
+        name = "cursorline",
         dir = "vim.cursorline",
         config = function()
             require("vim.cursorline")

@@ -224,6 +224,31 @@ function Mark.is_lower(char)
 end
 
 function Mark.setup()
+    -- 默认将小写mark变成大写，小写谁用啊
+    -- Use lowercase for global marks and uppercase for local marks.
+    local low = function(i)
+        return string.char(97 + i)
+    end
+    local upp = function(i)
+        return string.char(65 + i)
+    end
+
+    -- 所有vim自带的mark都默认为大写
+    for i = 0, 25 do
+        if i ~= 3 and i ~= 12 and i ~= 14 then
+            -- print(i, low(i))
+            vim.keymap.set("n", "m" .. low(i), "m" .. upp(i))
+        end
+    end
+    for i = 0, 25 do
+        if i ~= 3 and i ~= 12 and i ~= 14 then
+            vim.keymap.set("n", "'" .. low(i), function()
+                vim.cmd("'" .. upp(i))
+                vim.api.nvim_feedkeys("zz", "n", false)
+            end)
+        end
+    end
+
     local augroup = GroupId("Marks_autocmds", { clear = true })
 
     -- 当一个缓冲区被打开时，刷新与该缓冲区相关的标记数据

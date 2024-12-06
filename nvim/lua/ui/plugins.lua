@@ -31,8 +31,8 @@ M.list = {
 
     -- 上方的tab栏
     {
+        name = "tabline",
         dir = "ui.tabline",
-        version = false,
         config = function()
             require("ui.tabline").setup()
         end,
@@ -41,6 +41,7 @@ M.list = {
 
     -- 下方的状态栏
     {
+        name = "statusline",
         dir = "ui.statusline",
         config = function()
             require("ui.statusline")
@@ -273,9 +274,8 @@ M.list = {
         },
     },
 
-
-
     {
+        name = "tmux",
         dir = "ui.tmux",
         config = function()
             require("ui.tmux")
