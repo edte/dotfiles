@@ -33,6 +33,7 @@ M.list = {
     {
         name = "tabline",
         dir = "ui.tabline",
+        virtual = true,
         config = function()
             require("ui.tabline").setup()
         end,
@@ -43,6 +44,7 @@ M.list = {
     {
         name = "statusline",
         dir = "ui.statusline",
+        virtual = true,
         config = function()
             require("ui.statusline")
         end,
@@ -277,6 +279,7 @@ M.list = {
     {
         name = "tmux",
         dir = "ui.tmux",
+        virtual = true,
         config = function()
             require("ui.tmux")
         end

@@ -4,6 +4,7 @@ M.list = {
     {
         name = "cursorline",
         dir = "vim.cursorline",
+        virtual = true,
         config = function()
             require("vim.cursorline")
         end

@@ -24,6 +24,7 @@ M.list = {
     {
         name = "mark",
         dir = "bookmark.mark",
+        virtual = true,
         config = function()
             require("bookmark.mark").setup()
         end,
@@ -36,6 +37,7 @@ M.list = {
     {
         name = "bookmarks",
         dir = "bookmark.bookmarks",
+        virtual = true,
         config = function()
             require("bookmark.bookmarks").setup()
         end,

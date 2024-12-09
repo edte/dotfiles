@@ -13,6 +13,7 @@ M.list = {
     {
         name = "cwd",
         dir = "base.cwd",
+        virtual = true,
         config = function()
             require("base.cwd").setup()
         end,
