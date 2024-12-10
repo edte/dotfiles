@@ -90,11 +90,102 @@ M.list = {
         end,
     },
 
+    -- {
+    --     'Wansmer/symbol-usage.nvim',
+    --     event = 'LspAttach', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+    --     config = function()
+    --         -- require('symbol-usage').setup({
+    --         --     vt_position = 'end_of_line',
+    --         -- })
+    --         local function h(name) return vim.api.nvim_get_hl(0, { name = name }) end
+    --
+    --         -- hl-groups can have any name
+    --         vim.api.nvim_set_hl(0, 'SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
+    --         vim.api.nvim_set_hl(0, 'SymbolUsageContent', { bg = h('CursorLine').bg, fg = h('Comment').fg, italic = true })
+    --         vim.api.nvim_set_hl(0, 'SymbolUsageRef', { fg = h('Function').fg, bg = h('CursorLine').bg, italic = true })
+    --         vim.api.nvim_set_hl(0, 'SymbolUsageDef', { fg = h('Type').fg, bg = h('CursorLine').bg, italic = true })
+    --         vim.api.nvim_set_hl(0, 'SymbolUsageImpl', { fg = h('@keyword').fg, bg = h('CursorLine').bg, italic = true })
+    --
+    --         local function text_format(symbol)
+    --             local res = {}
+    --
+    --             local round_start = { '', 'SymbolUsageRounding' }
+    --             local round_end = { '', 'SymbolUsageRounding' }
+    --
+    --             -- Indicator that shows if there are any other symbols in the same line
+    --             local stacked_functions_content = symbol.stacked_count > 0
+    --                 and ("+%s"):format(symbol.stacked_count)
+    --                 or ''
+    --
+    --             if symbol.references then
+    --                 local usage = symbol.references <= 1 and 'usage' or 'usages'
+    --                 local num = symbol.references == 0 and 'no' or symbol.references
+    --                 table.insert(res, round_start)
+    --                 table.insert(res, { '󰌹 ', 'SymbolUsageRef' })
+    --                 table.insert(res, { ('%s %s'):format(num, usage), 'SymbolUsageContent' })
+    --                 table.insert(res, round_end)
+    --             end
+    --
+    --             if symbol.definition then
+    --                 if #res > 0 then
+    --                     table.insert(res, { ' ', 'NonText' })
+    --                 end
+    --                 table.insert(res, round_start)
+    --                 table.insert(res, { '󰳽 ', 'SymbolUsageDef' })
+    --                 table.insert(res, { symbol.definition .. ' defs', 'SymbolUsageContent' })
+    --                 table.insert(res, round_end)
+    --             end
+    --
+    --             if symbol.implementation then
+    --                 if #res > 0 then
+    --                     table.insert(res, { ' ', 'NonText' })
+    --                 end
+    --                 table.insert(res, round_start)
+    --                 table.insert(res, { '󰡱 ', 'SymbolUsageImpl' })
+    --                 table.insert(res, { symbol.implementation .. ' impls', 'SymbolUsageContent' })
+    --                 table.insert(res, round_end)
+    --             end
+    --
+    --             if stacked_functions_content ~= '' then
+    --                 if #res > 0 then
+    --                     table.insert(res, { ' ', 'NonText' })
+    --                 end
+    --                 table.insert(res, round_start)
+    --                 table.insert(res, { ' ', 'SymbolUsageImpl' })
+    --                 table.insert(res, { stacked_functions_content, 'SymbolUsageContent' })
+    --                 table.insert(res, round_end)
+    --             end
+    --
+    --             return res
+    --         end
+    --
+    --         require('symbol-usage').setup({
+    --             text_format = text_format,
+    --             vt_position = 'end_of_line',
+    --         })
+    --     end
+    -- },
+
     -- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
     {
         "edte/lsp_lens.nvim",
         ft = { "lua", "go", "cpp" },
         config = function()
+            local function h(name) return vim.api.nvim_get_hl(0, { name = name }) end
+
+            vim.api.nvim_set_hl(0, 'SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
+            vim.api.nvim_set_hl(0, 'SymbolUsageContent', { bg = h('CursorLine').bg, fg = h('Comment').fg, italic = true })
+            vim.api.nvim_set_hl(0, 'SymbolUsageRef', { fg = h('Function').fg, bg = h('CursorLine').bg, italic = true })
+            vim.api.nvim_set_hl(0, 'SymbolUsageDef', { fg = h('Type').fg, bg = h('CursorLine').bg, italic = true })
+            vim.api.nvim_set_hl(0, 'SymbolUsageImpl', { fg = h('@keyword').fg, bg = h('CursorLine').bg, italic = true })
+
+            -- local usage = symbol.references <= 1 and 'usage' or 'usages'
+            -- table.insert(res, round_start)
+            -- table.insert(res, { '󰌹 ', 'SymbolUsageRef' })
+            -- table.insert(res, { ('%s %s'):format(count, usage), 'SymbolUsageContent' })
+            -- table.insert(res, round_end)
+
+
             local SymbolKind = vim.lsp.protocol.SymbolKind
             Setup("lsp-lens", {
                 target_symbol_kinds = {
@@ -103,17 +194,30 @@ M.list = {
                     SymbolKind.Interface,
                     SymbolKind.Class,
                     SymbolKind.Struct, -- This is what you need
+                    SymbolKind.Variable,
+                    SymbolKind.Constant,
+                    SymbolKind.Constructor,
+                    SymbolKind.Namespace,
+                    SymbolKind.File,
+                    SymbolKind.Enum,
                 },
                 indent_by_lsp = false,
                 sections = {
                     definition = function(count)
-                        return "Definitions: " .. count
+                        -- return "Definitions: " .. count
+                        return ""
                     end,
                     references = function(count)
-                        return "References: " .. count
+                        if count == 1 then
+                            return '󰌹 ' .. count .. " usage"
+                        end
+                        return '󰌹 ' .. count .. " usages"
                     end,
                     implements = function(count)
-                        return "Implements: " .. count
+                        if count == 1 then
+                            return '󰡱 ' .. count .. " impl"
+                        end
+                        return '󰡱 ' .. count .. " impls"
                     end,
                     git_authors = function(latest_author, count)
                         return " " .. latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
@@ -152,29 +256,7 @@ M.list = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
         },
-        keys = {
-            -- {
-            --   "tl",
-            --   function()
-            --     require("quicktest").run_line()
-            --   end,
-            --   desc = "[T]est Run [L]line",
-            -- },
-            -- {
-            --   "tt",
-            --   function()
-            --     require("quicktest").toggle_win("split")
-            --   end,
-            --   desc = "[T]est [T]oggle Window",
-            -- },
-            -- {
-            --   "tc",
-            --   function()
-            --     require("quicktest").cancel_current_run()
-            --   end,
-            --   desc = "[T]est [C]ancel Current Run",
-            -- },
-        },
+        keys = {},
     },
 
     -- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。
@@ -186,80 +268,39 @@ M.list = {
         cmd = "Glance",
     },
 
-    -- 类似coplit，但是有点冲突，都是预览，tab接受，先注释掉不用
-    -- Supermaven 的官方 Neovim 插件
-    -- {
-    -- 	"supermaven-inc/supermaven-nvim",
-    -- 	config = function()
-    -- 		require("supermaven-nvim").setup({})
-    -- 	end,
-    -- },
 
-    -- 像使用 Cursor AI IDE 一样使用 Neovim！
-    -- 但是没key，所以先注释掉不用
-    -- {
-    --   "yetone/avante.nvim",
-    --   event = "VeryLazy",
-    --   build = "make",
-    --   opts = {
-    --     -- add any opts here
-    --   },
-    --   dependencies = {
-    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    --     "stevearc/dressing.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --     "MunifTanjim/nui.nvim",
-    --     --- The below is optional, make sure to setup it properly if you have lazy=true
-    --     {
-    --       "MeanderingProgrammer/render-markdown.nvim",
-    --       opts = {
-    --         file_types = { "markdown", "Avante" },
-    --       },
-    --       ft = { "markdown", "Avante" },
-    --     },
-    --   },
-    -- },
-
-    ---------------------------------------------------golang 相关插件--------------------------------
-
-    -- 显示接口实现了哪些
-    {
-        "maxandron/goplements.nvim",
-        ft = "go",
-        opts = {
-            -- The prefixes prepended to the type names
-            prefix = {
-                interface = "implemented by: ",
-                struct = "implements: ",
-            },
-            -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
-            display_package = false,
-            -- The namespace to use for the extmarks (no real reason to change this except for testing)
-            namespace_name = "goplements",
-            -- The highlight group to use (if you want to change the default colors)
-            -- The default links to DiagnosticHint
-            highlight = "Goplements",
-        },
-    },
 
     -- go 插件
     {
         "ray-x/go.nvim",
-        config = function()
-            local r = try_require("lsp.go")
-            if r ~= nil then
-                r.goConfig()
-            end
-        end,
-        event = { "CmdlineEnter" },
-    },
-
-    -- Neovim 插件可在您键入时自动添加或删除 Go 函数返回括号
-    {
-        "Jay-Madden/auto-fix-return.nvim",
         ft = "go",
         config = function()
-            require("auto-fix-return").setup({})
+            local go = try_require("go")
+            if go == nil then
+                return
+            end
+            go.setup()
+
+            Command("GoAddTagEmpty", function()
+                vim.api.nvim_command(":GoAddTag json -add-options json=")
+            end, { nargs = "*" })
+
+            require("lsp.go-return").setup({})
+
+            require("lsp.go-impl").setup({
+                -- The prefixes prepended to the type names
+                prefix = {
+                    interface = "implemented by: ",
+                    struct = "implements: ",
+                },
+                -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
+                display_package = false,
+                -- The namespace to use for the extmarks (no real reason to change this except for testing)
+                namespace_name = "goplements",
+                -- The highlight group to use (if you want to change the default colors)
+                -- The default links to DiagnosticHint
+                highlight = "Goplements",
+            })
         end,
     },
 
@@ -269,54 +310,6 @@ M.list = {
         keys = { "]r", "[r" }, -- Uncomment to lazy load
         opts = {},
     },
-
-    -- -- 适用于 Visual Studio Code、Neovim 和其他 LSP 客户端的源代码拼写检查器
-    -- {
-    -- 	"tekumara/typos-lsp",
-    -- },
-
-    -- -- Neovim 中的 AI 聊天机器人无需 API 密钥
-    -- {
-    --     "RayenMnif/tgpt.nvim",
-    --     cmd = { "Chat", "RateMyCode" },
-    --     config = function()
-    --         require("tgpt").setup()
-    --     end,
-    -- },
-
-    -- {
-    --     "edte/qpilot",
-    --     config = function()
-    --         require("qpilot").setup()
-    --     end,
-    --     cmd = { "QPCHAT", "QPCHATAS", "QPCODE" },
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-telescope/telescope.nvim"
-    --     }
-    -- },
-
-
-    -- lsp_lines 是一个简单的 neovim 插件，它使用真实代码行之上的虚拟行来呈现诊断。
-    --https://git.sr.ht/~whynothugo/lsp_lines.nvim
-    -- {
-    --     -- url 备份
-    --     -- url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    --     url = "https://github.com/edte/lsp_lines.nvim",
-    --     config = function()
-    --         vim.diagnostic.config({
-    --             virtual_text = false,
-    --             update_in_insert = true,
-    --             virtual_lines = {
-    --                 -- only_current_line = true,
-    --                 highlight_whole_line = false,
-    --             },
-    --         })
-    --         require("lsp_lines").setup()
-    --         vim.keymap.set("n", "g?", vim.diagnostic.open_float, { silent = true })
-    --     end,
-    -- },
 
     -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
     {
@@ -359,16 +352,6 @@ M.list = {
 
                     -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
                     enable_on_insert = true,
-
-                    -- format = function(diagnostic)
-                    --     local message = diagnostic.message
-                    --     -- if string.len(message) <= 80 then
-                    --     --     return message
-                    --     -- end
-                    --     message = string.gsub(message, "%(", "\n(")
-                    --     message = string.gsub(message, "%)", ")\n")
-                    --     return message
-                    -- end,
 
                 },
             })
