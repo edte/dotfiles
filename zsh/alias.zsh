@@ -40,6 +40,8 @@ alias gco="git checkout"
 alias gb="git branch"
 alias gcm="git commit -m"
 alias gd="git diff"
+alias gpl="git pull"
+alias gps="git push"
 
 #tmux
 alias t=tmux
