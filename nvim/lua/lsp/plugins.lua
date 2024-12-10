@@ -171,21 +171,6 @@ M.list = {
         "edte/lsp_lens.nvim",
         ft = { "lua", "go", "cpp" },
         config = function()
-            local function h(name) return vim.api.nvim_get_hl(0, { name = name }) end
-
-            vim.api.nvim_set_hl(0, 'SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
-            vim.api.nvim_set_hl(0, 'SymbolUsageContent', { bg = h('CursorLine').bg, fg = h('Comment').fg, italic = true })
-            vim.api.nvim_set_hl(0, 'SymbolUsageRef', { fg = h('Function').fg, bg = h('CursorLine').bg, italic = true })
-            vim.api.nvim_set_hl(0, 'SymbolUsageDef', { fg = h('Type').fg, bg = h('CursorLine').bg, italic = true })
-            vim.api.nvim_set_hl(0, 'SymbolUsageImpl', { fg = h('@keyword').fg, bg = h('CursorLine').bg, italic = true })
-
-            -- local usage = symbol.references <= 1 and 'usage' or 'usages'
-            -- table.insert(res, round_start)
-            -- table.insert(res, { '󰌹 ', 'SymbolUsageRef' })
-            -- table.insert(res, { ('%s %s'):format(count, usage), 'SymbolUsageContent' })
-            -- table.insert(res, round_end)
-
-
             local SymbolKind = vim.lsp.protocol.SymbolKind
             Setup("lsp-lens", {
                 target_symbol_kinds = {
