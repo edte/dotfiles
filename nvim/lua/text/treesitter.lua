@@ -20,7 +20,7 @@ M.config = function()
 
         -- 启用增量选择,
         incremental_selection = {
-            enable = true,
+            enable = false,
             keymaps = {
                 init_selection = "<CR>",
                 scope_incremental = "<TAB>",

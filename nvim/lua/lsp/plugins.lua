@@ -324,6 +324,16 @@ M.list = {
         -- event = "LspAttach", -- Or `LspAttach`
         priority = 3000, -- needs to be loaded in first
         branch = "main",
+        init = function()
+            vim.diagnostic.config({
+                virtual_text = false,
+                update_in_insert = true,
+                virtual_lines = {
+                    -- only_current_line = true,
+                    highlight_whole_line = false,
+                },
+            })
+        end,
         config = function()
             -- Default configuration
             require("tiny-inline-diagnostic").setup({
