@@ -266,7 +266,7 @@ function M.set_marks(buf, marks)
 
         -- 使用 api.nvim_buf_set_extmark 设置扩展标记，位置在行末（virt_text_pos = "eol"），并且使用指定的高亮组。
         local ext_id = api.nvim_buf_set_extmark(buf, M.data.ns_id, mark.line - 1, -1, {
-            virt_text = { { mark.description, "bookmarks_virt_text_hl" } },
+            virt_text = { { '💡 ' .. mark.description, "bookmarks_virt_text_hl" } },
             virt_text_pos = "eol",
             hl_group = "bookmarks_virt_text_hl",
             hl_mode = "combine"

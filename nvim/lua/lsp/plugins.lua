@@ -118,23 +118,25 @@ M.list = {
                     end,
                     references = function(count)
                         if count == 1 then
-                            return '󰌹 ' .. count .. " usage"
+                            return count .. " usage"
                         end
-                        return '󰌹 ' .. count .. " usages"
+                        return count .. " usages"
                     end,
                     implements = function(count)
-                        if count == 1 then
-                            return '󰡱 ' .. count .. " impl"
-                        end
-                        return '󰡱 ' .. count .. " impls"
+                        return ""
+                        -- if count == 1 then
+                        --     return '󰡱 ' .. count .. " impl"
+                        -- end
+                        -- return '󰡱 ' .. count .. " impls"
                     end,
                     git_authors = function(latest_author, count)
-                        return " " .. latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
+                        return latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
                     end,
                 },
             })
         end,
     },
+
 
     -- 在分割窗口或弹出窗口中运行测试并提供实时反馈
     -- 这个插件太慢了，暂时不用
@@ -197,11 +199,6 @@ M.list = {
             require("lsp.go-return").setup({})
 
             require("lsp.go-impl").setup({
-                -- The prefixes prepended to the type names
-                prefix = {
-                    interface = "implemented by: ",
-                    struct = "implements: ",
-                },
                 -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
                 display_package = false,
                 -- The namespace to use for the extmarks (no real reason to change this except for testing)
@@ -268,14 +265,14 @@ M.list = {
     },
 
     -- https://freshman.tech/vim-quickfix-and-location-list/
-    {
-        'stevearc/quicker.nvim',
-        event = "FileType qf",
-        opts = {},
-        config = function()
-            require("quicker").setup()
-        end
-    },
+    -- {
+    --     'stevearc/quicker.nvim',
+    --     event = "FileType qf",
+    --     opts = {},
+    --     config = function()
+    --         require("quicker").setup()
+    --     end
+    -- },
 
 }
 

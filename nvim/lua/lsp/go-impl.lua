@@ -13,8 +13,8 @@ M._namespace = 0
 ---@field highlight string The highlight group to use
 M.config = {
     prefix = {
-        interface = "implemented by: ",
-        struct = "implements: ",
+        interface = "⚡ ",
+        struct = "⚡ ",
     },
     display_package = false,
     namespace_name = "goplements",
