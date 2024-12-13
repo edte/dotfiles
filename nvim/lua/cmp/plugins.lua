@@ -74,7 +74,7 @@ M.list = {
         "yioneko/nvim-cmp",
         branch = "perf",
         config = function()
-            require("cmp.completion").cmpConfig()
+            require("cmp.cmp").cmpConfig()
         end,
         event = { "InsertEnter" },
     },
@@ -110,12 +110,12 @@ M.list = {
     },
 
     -- TabNine ai 补全
-    {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
-        event = { "InsertEnter" },
-        -- ft = { "lua", "go", "cpp" },
-    },
+    -- {
+    --     "tzachar/cmp-tabnine",
+    --     build = "./install.sh",
+    --     event = { "InsertEnter" },
+    --     -- ft = { "lua", "go", "cpp" },
+    -- },
 
     -- ai代码补全
     {
