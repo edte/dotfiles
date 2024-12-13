@@ -175,8 +175,8 @@ function M.globtopattern(g)
     --   which cites POSIX 1003.2-1992, section B.6.
 
     local p = "^" -- pattern being built
-    local i = 0 -- index in g
-    local c    -- char at index i in g.
+    local i = 0   -- index in g
+    local c       -- char at index i in g.
 
     -- unescape glob char
     local function unescape()
@@ -342,21 +342,18 @@ function M.set_pwd(dir, method)
     return false
 end
 
-local function setup()
-    local root, method = M.get_project_root()
-    M.set_pwd(root, method)
+function M.setup()
+    M.set_pwd(M.get_project_root())
+
+    Autocmd("BufEnter", {
+        group = GroupId("nvim_rooter", { clear = true }),
+        nested = true,
+        callback = function()
+            -- 将当前工作目录更改为正在编辑的文件的目录
+            -- vim.cmd("cd %:p:h")
+            M.set_pwd(M.get_project_root())
+        end,
+    })
 end
 
-local group_id = GroupId("nvim_rooter", { clear = true })
-
-Autocmd("BufEnter", {
-    group = group_id,
-    nested = true,
-    callback = function()
-        -- 将当前工作目录更改为正在编辑的文件的目录
-        -- vim.cmd("cd %:p:h")
-        setup()
-    end,
-})
-
-setup()
+return M

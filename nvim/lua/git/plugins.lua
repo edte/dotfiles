@@ -4,8 +4,8 @@ M.list = {
     {
         "lewis6991/gitsigns.nvim",
         opts = {},
-        event = "User FileOpened",
-        cmd = "Gitsigns",
+        -- event = "User FileOpened",
+        -- cmd = "Gitsigns",
         config = function()
             require("gitsigns").setup({
                 signcolumn = false,
@@ -42,15 +42,15 @@ M.list = {
     -- [ x — 移至下一个冲突
     {
         "akinsho/git-conflict.nvim",
-        cmd = {
-            "GitConflictChooseOurs",
-            "GitConflictChooseTheirs",
-            "GitConflictChooseBoth",
-            "GitConflictChooseNone",
-            "GitConflictNextConflict",
-            "GitConflictPrevConflict",
-            "GitConflictListQf",
-        },
+        -- cmd = {
+        --     "GitConflictChooseOurs",
+        --     "GitConflictChooseTheirs",
+        --     "GitConflictChooseBoth",
+        --     "GitConflictChooseNone",
+        --     "GitConflictNextConflict",
+        --     "GitConflictPrevConflict",
+        --     "GitConflictListQf",
+        -- },
         version = "*",
         config = true,
     },
@@ -69,13 +69,14 @@ M.list = {
     },
 
     -- lua MiniDiff.toggle_overlay()
-    -- {
-    -- 	"echasnovski/mini.diff",
-    -- 	version = false,
-    -- 	config = function()
-    -- 		require("mini.diff").setup()
-    -- 	end,
-    -- },
+    {
+        "echasnovski/mini.diff",
+        version = false,
+        config = function()
+            require("mini.diff").setup()
+            cmd("command! Diff lua MiniDiff.toggle_overlay()")
+        end,
+    },
 }
 
 return M

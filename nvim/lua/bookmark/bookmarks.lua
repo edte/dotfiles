@@ -266,7 +266,7 @@ function M.set_marks(buf, marks)
 
         -- 使用 api.nvim_buf_set_extmark 设置扩展标记，位置在行末（virt_text_pos = "eol"），并且使用指定的高亮组。
         local ext_id = api.nvim_buf_set_extmark(buf, M.data.ns_id, mark.line - 1, -1, {
-            virt_text = { { mark.description, "bookmarks_virt_text_hl" } },
+            virt_text = { { '💡 ' .. mark.description, "bookmarks_virt_text_hl" } },
             virt_text_pos = "eol",
             hl_group = "bookmarks_virt_text_hl",
             hl_mode = "combine"
@@ -462,6 +462,7 @@ function M.jump_bookmark()
                     if entry == bookmark.description then
                         vim.api.nvim_command("edit " .. bookmark.filename)
                         vim.api.nvim_win_set_cursor(0, { bookmark.line, 0 })
+                        vim.api.nvim_feedkeys("zz", "n", false)
                     end
                 end
             end,
@@ -482,19 +483,21 @@ function M.save_bookmarks()
 }
 ]]
 
-        -- Print(bookmark)
-        local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
+        if bookmark["extmark_id"] ~= nil then
+            local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
 
-        -- 检查 extmark 是否有效
-        if not extmark_pos or #extmark_pos == 0 then
-            print("Bookmark '" .. id .. "' is no longer valid.")
-            goto continue
+            -- 检查 extmark 是否有效
+            if not extmark_pos or #extmark_pos == 0 then
+                print("Bookmark '" .. id .. "' is no longer valid.")
+                goto continue
+            end
+
+            M.data.bookmarks[id].line = extmark_pos[1] + 1
+            M.data.bookmarks[id].rows = extmark_pos[2]
+
+            -- print(id, vim.inspect(M.data.bookmarks[id]))
         end
 
-        M.data.bookmarks[id].line = extmark_pos[1] + 1
-        M.data.bookmarks[id].rows = extmark_pos[2]
-
-        -- print(id, vim.inspect(M.data.bookmarks[id]))
 
         ::continue::
 
@@ -525,7 +528,7 @@ function M.save_bookmarks()
     end
 
     if local_str == "" then
-        print(M.data.data_filename)
+        -- print(M.data.data_filename)
         if vim.loop.fs_stat(M.data.data_filename) then
             os.remove(M.data.data_filename)
         end

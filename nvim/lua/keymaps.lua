@@ -28,13 +28,13 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 keymap("", "<C-s>", "<cmd>w<cr>")
 
 -- 删除整行
-keymap("", "D", "Vd")
+-- keymap("", "D", "Vd")
 
 keymap("n", "c", '"_c')
 
 -- -- 设置 jj、jk 为 ESC,避免频繁按 esc
--- map("i", "jj", "<esc>", opt)
-keymap("i", "jk", "<esc>")
+keymap('i', 'jk', '<Esc><right>')
+
 
 -- 按 esc 消除上一次的高亮
 keymap("n", "<esc>", "<cmd>noh<cr>")
@@ -46,6 +46,9 @@ vim.keymap.set("n", "<esc>", function()
         return
     end
 end, { desc = "esc", noremap = true, buffer = true })
+
+vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
 
 -- 大小写转换
 -- map("n", "<esc>", "~", opt)
@@ -73,13 +76,31 @@ end, { expr = true })
 
 keymap("n", "<bs>", "<C-^>")
 keymap("", "gI", "<cmd>Glance implementations<cr>")
-keymap("", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+-- keymap("", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+
+vim.keymap.set('n', 'gd', function()
+    vim.lsp.buf.definition()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
 keymap("", "gD", "<cmd>FzfLua lsp_declarations<cr>")
 keymap("", "gr", "<cmd>Glance references<cr>")
 keymap("n", "gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
-keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
-keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
+
+vim.keymap.set('n', '<c-p>', function()
+    vim.diagnostic.goto_prev()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n', '<c-n>', function()
+    vim.diagnostic.goto_next()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { noremap = true, silent = true })
+
+-- keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
+-- keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
 
 -- gqn/gqj 自带的格式化
 -- gm 跳屏幕中央
@@ -101,8 +122,8 @@ keymap("n", "s", "") -- 取消 s 默认功能
 -- 恢复
 -- set noscrollbind
 
-keymap("n", "sv", "<cmd>vsp<CR>")                 -- 水平分屏
-keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
+keymap("n", "sv", "<cmd>vsp<CR>") -- 水平分屏
+-- keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
 
 keymap("n", "sc", "<C-w>c")                       -- 关闭当前屏幕
 keymap("n", "so", "<C-w>o")                       -- 关闭其它屏幕
@@ -160,3 +181,15 @@ cmd("silent!")
 keymap("n", "gw", "<cmd>FzfLua grep_cword<CR>")
 keymap("n", "gW", "<cmd>FzfLua grep_cWORD<CR>")
 -- keymap("n", "gr", "<cmd>FzfLua resume<CR>")
+
+
+vim.keymap.set('n', 'C', '"_C', { noremap = true })
+vim.keymap.set('n', 'D', '"_D', { noremap = true })
+
+vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
+
+vim.keymap.set("n", "<C-c>", "ciw")
+vim.keymap.set("n", "cr", "ciw")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

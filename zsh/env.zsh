@@ -36,12 +36,6 @@ export LIBRIME_INCLUDE_DIR=/usr/local/include
 
 export BOOST_ROOT="$(pwd)/deps/boost-1.84.0"
 
-export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/Users/edte/.local/share/lunarvim"}"
-export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/Users/edte/.config/lvim"}"
-export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/Users/edte/.cache/lvim"}"
-
-export LUNARVIM_BASE_DIR="${LUNARVIM_BASE_DIR:-"/Users/edte/.local/share/lunarvim/lvim"}"
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#586e75'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#2cfc03'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=#fc0303'
@@ -54,3 +48,7 @@ export YSU_MESSAGE_FORMAT="%alias_type %command: %alias"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export ESCDELAY=0
+
+export PATH=~/.local/bin/:$PATH
+
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"

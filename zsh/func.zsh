@@ -34,8 +34,7 @@ function update() {
     zinit self-update
     zinit update --parallel
     brew update
-    lvim +LvimUpdate +q
-    lvim +LvimSyncCorePlugins +q
+    brew upgrade
 }
 
 function tpushbuild() {
@@ -92,4 +91,17 @@ function zle-keymap-select zle-line-init zle-line-finish
     vicmd) print -n '\033[1 q' ;;        # block cursor
     viins | main) print -n '\033[5 q' ;; # line cursor
     esac
+}
+
+function github_config {
+    git config user.name edte
+    git config user.email zzzzip6@gmail.com
+}
+
+function gs() {
+    if git status &>/dev/null; then
+        git status -s
+    else
+        ls
+    fi
 }

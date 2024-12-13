@@ -162,27 +162,6 @@ wk.add({
 		remap = false,
 	},
 	{
-		"<leader>lj",
-		"<cmd>lua vim.diagnostic.goto_next()<cr>",
-		desc = "Next Diagnostic",
-		nowait = true,
-		remap = false,
-	},
-	{
-		"<leader>lk",
-		"<cmd>lua vim.diagnostic.goto_prev()<cr>",
-		desc = "Prev Diagnostic",
-		nowait = true,
-		remap = false,
-	},
-	{
-		"<leader>ll",
-		"<cmd>lua vim.lsp.codelens.run()<cr>",
-		desc = "CodeLens Action",
-		nowait = true,
-		remap = false,
-	},
-	{
 		"<leader>lq",
 		"<cmd>lua vim.diagnostic.setloclist()<cr>",
 		desc = "Quickfix",

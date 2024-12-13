@@ -2,16 +2,30 @@ local M = {}
 
 M.list = {
 
+    -- cmp 补全基础插件
     {
-        "cmp-nvim-lsp",
+        -- 高性能fork
+        -- "yioneko/nvim-cmp",
+        -- branch = "perf",
+
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("cmp.cmp").cmpConfig()
+        end,
+        event = { "InsertEnter" },
+    },
+
+    -- 下面是一堆cmp补全源
+    {
+        "hrsh7th/cmp-nvim-lsp",
         event = { "InsertEnter" },
     },
     {
-        "cmp_luasnip",
+        "saadparwaiz1/cmp_luasnip",
         event = { "InsertEnter" },
     },
     {
-        url = "https://codeberg.org/FelipeLema/cmp-async-path",
+        "edte/cmp-async-path",
         event = { "InsertEnter" },
     },
     {
@@ -65,28 +79,24 @@ M.list = {
         event = { "InsertEnter" },
     },
 
+    -- 自定义代码片段
     {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+            require("luasnip.loaders.from_lua").load({ paths = user_config_path .. "/lua/cmp/snippets" })
+        end,
         dependencies = {
-            "friendly-snippets",
+            "rafamadriz/friendly-snippets",
         },
     },
-    { "rafamadriz/friendly-snippets", lazy = true },
+
+    -- nvim lua API 的完整签名帮助、文档和补全
     {
         "folke/neodev.nvim",
         lazy = true,
         event = { "InsertEnter" },
-    },
-
-    -- 语言字典补全
-    {
-        "skywind3000/vim-dict",
-        event = { "InsertEnter" },
-    },
-
-    {
-        "edte/copilot",
     },
 
     -- Neovim Lua 插件自动管理字符对。 “mini.nvim” 库的一部分。
@@ -97,6 +107,33 @@ M.list = {
         config = function()
             require("mini.pairs").setup()
         end,
+    },
+
+    -- TabNine ai 补全
+    {
+        "tzachar/cmp-tabnine",
+        build = "./install.sh",
+        event = { "InsertEnter" },
+        -- ft = { "lua", "go", "cpp" },
+    },
+
+    -- ai代码补全
+    {
+        "edte/copilot",
+    },
+
+    -- Codeium ai补全
+    -- {
+    --     "Exafunction/codeium.nvim",
+    --     event = { "InsertEnter" },
+    --     config = function()
+    --         require("codeium").setup({})
+    --     end
+    -- },
+
+
+    {
+        "tpope/vim-endwise",
     },
 }
 

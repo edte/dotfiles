@@ -6,6 +6,7 @@ M.list = {
     -- 保存目录 /Users/edte/.cache/lvim/arrow
     {
         "otavioschwanck/arrow.nvim",
+        branch = "master",
         keys = { "`" },
         opts = {
             show_icons = true,
@@ -21,33 +22,12 @@ M.list = {
     -- mark，显示和标记删除
     -- TODO: 集成默认大写mark
     {
+        name = "mark",
         dir = "bookmark.mark",
+        virtual = true,
         config = function()
             require("bookmark.mark").setup()
         end,
-        init = function()
-            -- 默认将小写mark变成大写，小写谁用啊
-            -- Use lowercase for global marks and uppercase for local marks.
-            local low = function(i)
-                return string.char(97 + i)
-            end
-            local upp = function(i)
-                return string.char(65 + i)
-            end
-
-            -- 所有vim自带的mark都默认为大写
-            for i = 0, 25 do
-                if i ~= 3 and i ~= 12 and i ~= 14 then
-                    -- print(i, low(i))
-                    vim.keymap.set("n", "m" .. low(i), "m" .. upp(i))
-                end
-            end
-            for i = 0, 25 do
-                if i ~= 3 and i ~= 12 and i ~= 14 then
-                    vim.keymap.set("n", "'" .. low(i), "'" .. upp(i))
-                end
-            end
-        end
     },
 
     -- 命名书签
@@ -55,7 +35,9 @@ M.list = {
     -- /Users/edte/.local/share/lvim
     -- ~/.local/share/nvim/bookmarks/
     {
+        name = "bookmarks",
         dir = "bookmark.bookmarks",
+        virtual = true,
         config = function()
             require("bookmark.bookmarks").setup()
         end,

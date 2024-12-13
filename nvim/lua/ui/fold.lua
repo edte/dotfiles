@@ -104,6 +104,22 @@ M.init = function()
     -- eob		'~'		empty lines at the end of a buffer
     -- lastline	'@'		'display' contains lastline/truncate
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
+    vim.o.foldmethod = 'expr'
+    -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+    vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
+    vim.o.foldlevelstart = 99
+
+    vim.cmd([[set viewoptions-=curdir]])
+
+    -- remember folds
+    vim.cmd([[
+            augroup remember_folds
+            autocmd!
+            autocmd BufWinLeave *.* mkview
+            autocmd BufWinEnter *.* silent! loadview
+            augroup END
+            ]])
 end
 
 -- 延迟加载
@@ -143,17 +159,6 @@ M.config = function(_, opts)
     require("ufo").setup(opts)
     vim.keymap.set("n", "zr", require("ufo").openAllFolds)
     vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-
-    vim.cmd([[set viewoptions-=curdir]])
-
-    -- remember folds
-    vim.cmd([[
-	       augroup remember_folds
-	       autocmd!
-	       autocmd BufWinLeave *.* mkview
-	       autocmd BufWinEnter *.* silent! loadview
-	       augroup END
-	       ]])
 end
 
 return M

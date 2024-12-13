@@ -181,6 +181,15 @@ local lspTable = {
 }
 
 M.lspConfig = function()
+    vim.diagnostic.config({
+        virtual_text = false,
+        update_in_insert = true,
+        virtual_lines = {
+            -- only_current_line = true,
+            highlight_whole_line = false,
+        },
+    })
+
     -- 自动安装 lsp
     local lspconfig = try_require("lspconfig")
     if lspconfig == nil then
@@ -202,6 +211,11 @@ M.lspConfig = function()
     for _, lsp in ipairs(lspTable) do
         configSetup(lsp.filetypes, lsp.name, lsp)
     end
+
+
+    --  -- lsp debug
+    -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
+    -- vim.lsp.log.set_format_func(vim.inspect)
 end
 
 M.on_attach = function(client, buf)

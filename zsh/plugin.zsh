@@ -60,8 +60,9 @@ zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 # zinit snippet OMZ::plugins/tmux
 
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/
-# git 插件，一些git的alias
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+# 一些git的alias
+# zinit snippet OMZ::plugins/git/git.plugin.zsh
+# 基础git依赖，不能删
 zinit snippet OMZ::lib/git.zsh
 
 zinit ice wait atload'_history_substring_search_config' \

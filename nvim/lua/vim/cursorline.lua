@@ -10,8 +10,9 @@ local function matchadd()
     -- 获取光标所在列和行内容
     local column = vim.api.nvim_win_get_cursor(0)[2]
     local line = vim.api.nvim_get_current_line()
-    local left = vim.fn.matchstr(line:sub(1, column + 1), [[\k*$]])
-    local right = vim.fn.matchstr(line:sub(column + 1), [[^\k*]]):sub(2)
+    local left = vim.fn.matchstr(line:sub(1, math.min(column + 1, #line)), [[\k*$]])
+    local right = vim.fn.matchstr(line:sub(math.min(column + 1, #line)), [[^\k*]]):sub(2)
+
     local cursorword = left .. right
 
     if cursorword == vim.w.cursorword then

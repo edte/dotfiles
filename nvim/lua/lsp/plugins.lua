@@ -3,6 +3,7 @@ local M = {}
 M.list = {
     {
         "neovim/nvim-lspconfig",
+        commit = "a89de2e",
         config = function()
             local m = try_require("lsp.lsp")
             if m ~= nil then
@@ -36,25 +37,6 @@ M.list = {
         },
     },
 
-    -- lsp_lines 是一个简单的 neovim 插件，它使用真实代码行之上的虚拟行来呈现诊断。
-    --https://git.sr.ht/~whynothugo/lsp_lines.nvim
-    {
-        -- url 备份
-        -- url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        url = "https://github.com/edte/lsp_lines.nvim",
-        config = function()
-            vim.diagnostic.config({
-                virtual_text = false,
-                update_in_insert = true,
-                virtual_lines = {
-                    -- only_current_line = true,
-                    highlight_whole_line = false,
-                },
-            })
-            require("lsp_lines").setup()
-            vim.keymap.set("n", "g?", vim.diagnostic.open_float, { silent = true })
-        end,
-    },
 
     -- Clanalphagd 针对 neovim 的 LSP 客户端的不合规范的功能。使用 https://sr.ht/~p00f/clangd_extensions.nvim 代替
     {
@@ -121,37 +103,40 @@ M.list = {
                     SymbolKind.Interface,
                     SymbolKind.Class,
                     SymbolKind.Struct, -- This is what you need
+                    SymbolKind.Variable,
+                    SymbolKind.Constant,
+                    SymbolKind.Constructor,
+                    SymbolKind.Namespace,
+                    SymbolKind.File,
+                    SymbolKind.Enum,
                 },
                 indent_by_lsp = false,
                 sections = {
                     definition = function(count)
-                        return "Definitions: " .. count
+                        -- return "Definitions: " .. count
+                        return ""
                     end,
                     references = function(count)
-                        return "References: " .. count
+                        if count == 1 then
+                            return count .. " usage"
+                        end
+                        return count .. " usages"
                     end,
                     implements = function(count)
-                        return "Implements: " .. count
+                        return ""
+                        -- if count == 1 then
+                        --     return '󰡱 ' .. count .. " impl"
+                        -- end
+                        -- return '󰡱 ' .. count .. " impls"
                     end,
                     git_authors = function(latest_author, count)
-                        return " " .. latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
+                        return latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
                     end,
                 },
             })
         end,
     },
 
-    {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
-            },
-        },
-    },
 
     -- 在分割窗口或弹出窗口中运行测试并提供实时反馈
     -- 这个插件太慢了，暂时不用
@@ -182,29 +167,7 @@ M.list = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
         },
-        keys = {
-            -- {
-            --   "tl",
-            --   function()
-            --     require("quicktest").run_line()
-            --   end,
-            --   desc = "[T]est Run [L]line",
-            -- },
-            -- {
-            --   "tt",
-            --   function()
-            --     require("quicktest").toggle_win("split")
-            --   end,
-            --   desc = "[T]est [T]oggle Window",
-            -- },
-            -- {
-            --   "tc",
-            --   function()
-            --     require("quicktest").cancel_current_run()
-            --   end,
-            --   desc = "[T]est [C]ancel Current Run",
-            -- },
-        },
+        keys = {},
     },
 
     -- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。
@@ -216,80 +179,34 @@ M.list = {
         cmd = "Glance",
     },
 
-    -- 类似coplit，但是有点冲突，都是预览，tab接受，先注释掉不用
-    -- Supermaven 的官方 Neovim 插件
-    -- {
-    -- 	"supermaven-inc/supermaven-nvim",
-    -- 	config = function()
-    -- 		require("supermaven-nvim").setup({})
-    -- 	end,
-    -- },
 
-    -- 像使用 Cursor AI IDE 一样使用 Neovim！
-    -- 但是没key，所以先注释掉不用
-    -- {
-    --   "yetone/avante.nvim",
-    --   event = "VeryLazy",
-    --   build = "make",
-    --   opts = {
-    --     -- add any opts here
-    --   },
-    --   dependencies = {
-    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    --     "stevearc/dressing.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --     "MunifTanjim/nui.nvim",
-    --     --- The below is optional, make sure to setup it properly if you have lazy=true
-    --     {
-    --       "MeanderingProgrammer/render-markdown.nvim",
-    --       opts = {
-    --         file_types = { "markdown", "Avante" },
-    --       },
-    --       ft = { "markdown", "Avante" },
-    --     },
-    --   },
-    -- },
-
-    ---------------------------------------------------golang 相关插件--------------------------------
-
-    -- 显示接口实现了哪些
-    {
-        "maxandron/goplements.nvim",
-        ft = "go",
-        opts = {
-            -- The prefixes prepended to the type names
-            prefix = {
-                interface = "implemented by: ",
-                struct = "implements: ",
-            },
-            -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
-            display_package = false,
-            -- The namespace to use for the extmarks (no real reason to change this except for testing)
-            namespace_name = "goplements",
-            -- The highlight group to use (if you want to change the default colors)
-            -- The default links to DiagnosticHint
-            highlight = "Goplements",
-        },
-    },
 
     -- go 插件
     {
         "ray-x/go.nvim",
-        config = function()
-            local r = try_require("lsp.go")
-            if r ~= nil then
-                r.goConfig()
-            end
-        end,
-        event = { "CmdlineEnter" },
-    },
-
-    -- Neovim 插件可在您键入时自动添加或删除 Go 函数返回括号
-    {
-        "Jay-Madden/auto-fix-return.nvim",
         ft = "go",
         config = function()
-            require("auto-fix-return").setup({})
+            local go = try_require("go")
+            if go == nil then
+                return
+            end
+            go.setup()
+
+            Command("GoAddTagEmpty", function()
+                vim.api.nvim_command(":GoAddTag json -add-options json=")
+            end, { nargs = "*" })
+
+            require("lsp.go-return").setup({})
+
+            require("lsp.go-impl").setup({
+                -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
+                display_package = false,
+                -- The namespace to use for the extmarks (no real reason to change this except for testing)
+                namespace_name = "goplements",
+                -- The highlight group to use (if you want to change the default colors)
+                -- The default links to DiagnosticHint
+                highlight = "Goplements",
+            })
         end,
     },
 
@@ -300,32 +217,63 @@ M.list = {
         opts = {},
     },
 
-    -- -- 适用于 Visual Studio Code、Neovim 和其他 LSP 客户端的源代码拼写检查器
-    -- {
-    -- 	"tekumara/typos-lsp",
-    -- },
-
-    -- -- Neovim 中的 AI 聊天机器人无需 API 密钥
-    -- {
-    --     "RayenMnif/tgpt.nvim",
-    --     cmd = { "Chat", "RateMyCode" },
-    --     config = function()
-    --         require("tgpt").setup()
-    --     end,
-    -- },
-
+    -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
     {
-        "edte/qpilot",
-        config = function()
-            require("qpilot").setup()
+        "rachartier/tiny-inline-diagnostic.nvim",
+        -- event = "LspAttach", -- Or `LspAttach`
+        priority = 3000, -- needs to be loaded in first
+        branch = "main",
+        init = function()
+            vim.diagnostic.config({
+                virtual_text = false,
+                update_in_insert = true,
+                virtual_lines = {
+                    -- only_current_line = true,
+                    highlight_whole_line = false,
+                },
+            })
         end,
-        cmd = { "QPCHAT", "QPCHATAS", "QPCODE" },
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    }
+        config = function()
+            -- Default configuration
+            require("tiny-inline-diagnostic").setup({
+                preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
+
+                options = {
+                    -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
+                    -- You can increase it if you have performance issues.
+                    -- Or set it to 0 to have better visuals.
+                    throttle = 0,
+
+                    -- The minimum length of the message, otherwise it will be on a new line.
+                    softwrap = 30,
+
+                    -- If multiple diagnostics are under the cursor, display all of them.
+                    multiple_diag_under_cursor = true,
+
+                    -- Enable diagnostic message on all lines.
+                    multilines = true,
+
+                    -- Show all diagnostics on the cursor line.
+                    show_all_diags_on_cursorline = true,
+
+                    -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
+                    enable_on_insert = true,
+
+                },
+            })
+        end
+    },
+
+    -- https://freshman.tech/vim-quickfix-and-location-list/
+    -- {
+    --     'stevearc/quicker.nvim',
+    --     event = "FileType qf",
+    --     opts = {},
+    --     config = function()
+    --         require("quicker").setup()
+    --     end
+    -- },
+
 }
 
 return M

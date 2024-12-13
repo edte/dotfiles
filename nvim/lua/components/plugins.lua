@@ -110,6 +110,30 @@ M.list = {
     -- 		})
     -- 	end,
     -- },
-}
 
+    -- {
+    --     "3rd/image.nvim",
+    --     ft = "markdown", -- If you decide to lazy-load anyway
+    --     opts = {}
+    -- },
+
+    -- 一些文件用了x权限，忘记用sudo打开但是又编辑过文件了，用这个插件可以保存，或者直接打开新的文件
+    -- 比如 /etc/hosts 文件
+    {
+        "lambdalisue/vim-suda",
+        cmd = { "SudaRead", "SudaWrite" },
+        config = function()
+            cmd("let g:suda_smart_edit = 1")
+            cmd("let g:suda#noninteractive = 1")
+        end
+    },
+
+    -- 最精美的 Neovim 色彩工具
+    { "nvzone/volt", lazy = true },
+    {
+        "nvzone/minty",
+        cmd = { "Shades", "Huefy" },
+    }
+
+}
 return M
