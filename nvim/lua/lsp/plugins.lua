@@ -92,51 +92,14 @@ M.list = {
 
     -- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
     {
-        "edte/lsp_lens.nvim",
+        name = "codeLens",
+        dir = "lsp.codelens",
+        virtual = true,
         ft = { "lua", "go", "cpp" },
         config = function()
-            local SymbolKind = vim.lsp.protocol.SymbolKind
-            Setup("lsp-lens", {
-                target_symbol_kinds = {
-                    SymbolKind.Function,
-                    SymbolKind.Method,
-                    SymbolKind.Interface,
-                    SymbolKind.Class,
-                    SymbolKind.Struct, -- This is what you need
-                    SymbolKind.Variable,
-                    SymbolKind.Constant,
-                    SymbolKind.Constructor,
-                    SymbolKind.Namespace,
-                    SymbolKind.File,
-                    SymbolKind.Enum,
-                },
-                indent_by_lsp = false,
-                sections = {
-                    definition = function(count)
-                        -- return "Definitions: " .. count
-                        return ""
-                    end,
-                    references = function(count)
-                        if count == 1 then
-                            return count .. " usage"
-                        end
-                        return count .. " usages"
-                    end,
-                    implements = function(count)
-                        return ""
-                        -- if count == 1 then
-                        --     return '󰡱 ' .. count .. " impl"
-                        -- end
-                        -- return '󰡱 ' .. count .. " impls"
-                    end,
-                    git_authors = function(latest_author, count)
-                        return latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
-                    end,
-                },
-            })
+            require("lsp.codelens").setup()
         end,
     },
-
 
     -- 在分割窗口或弹出窗口中运行测试并提供实时反馈
     -- 这个插件太慢了，暂时不用
