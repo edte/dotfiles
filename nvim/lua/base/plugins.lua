@@ -7,7 +7,6 @@ M.list = {
     -- https://lazy.folke.io/spec
     {
         "folke/lazy.nvim",
-        tag = "v11.14.1",
     },
     -- 管理cwd
     {
