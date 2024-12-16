@@ -12,6 +12,80 @@ M.list = {
         end,
     },
 
+    -- go 插件
+    {
+        "ray-x/go.nvim",
+        ft = "go",
+        config = function()
+            require("go").setup({
+                diagnostic = false,
+            })
+
+            Command("GoAddTagEmpty", function()
+                vim.api.nvim_command(":GoAddTag json -add-options json=")
+            end, { nargs = "*" })
+
+            require("lsp.go-return").setup({})
+
+            require("lsp.go-impl").setup({
+                -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
+                display_package = false,
+                -- The namespace to use for the extmarks (no real reason to change this except for testing)
+                namespace_name = "goplements",
+                -- The highlight group to use (if you want to change the default colors)
+                -- The default links to DiagnosticHint
+                highlight = "Goplements",
+            })
+        end,
+    },
+
+    -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        -- event = "LspAttach", -- Or `LspAttach`
+        priority = 3000, -- needs to be loaded in first
+        branch = "main",
+        init = function()
+            vim.diagnostic.config({
+                virtual_text = false,
+                update_in_insert = true,
+                virtual_lines = {
+                    -- only_current_line = true,
+                    highlight_whole_line = false,
+                },
+            })
+        end,
+        config = function()
+            -- Default configuration
+            require("tiny-inline-diagnostic").setup({
+                preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
+
+                options = {
+                    -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
+                    -- You can increase it if you have performance issues.
+                    -- Or set it to 0 to have better visuals.
+                    throttle = 0,
+
+                    -- The minimum length of the message, otherwise it will be on a new line.
+                    softwrap = 30,
+
+                    -- If multiple diagnostics are under the cursor, display all of them.
+                    multiple_diag_under_cursor = true,
+
+                    -- Enable diagnostic message on all lines.
+                    multilines = true,
+
+                    -- Show all diagnostics on the cursor line.
+                    show_all_diags_on_cursorline = true,
+
+                    -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
+                    enable_on_insert = true,
+
+                },
+            })
+        end
+    },
+
     -- 适用于 Neovim 的轻量级但功能强大的格式化程序插件
     {
         "stevearc/conform.nvim",
@@ -142,100 +216,6 @@ M.list = {
         cmd = "Glance",
     },
 
-
-
-    -- go 插件
-    {
-        "ray-x/go.nvim",
-        ft = "go",
-        config = function()
-            local go = try_require("go")
-            if go == nil then
-                return
-            end
-            go.setup()
-
-            Command("GoAddTagEmpty", function()
-                vim.api.nvim_command(":GoAddTag json -add-options json=")
-            end, { nargs = "*" })
-
-            require("lsp.go-return").setup({})
-
-            require("lsp.go-impl").setup({
-                -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
-                display_package = false,
-                -- The namespace to use for the extmarks (no real reason to change this except for testing)
-                namespace_name = "goplements",
-                -- The highlight group to use (if you want to change the default colors)
-                -- The default links to DiagnosticHint
-                highlight = "Goplements",
-            })
-        end,
-    },
-
-    -- 使用 ] r/[r 跳转到光标下项目的下一个 / 上一个 LSP 参考
-    {
-        "mawkler/refjump.nvim",
-        keys = { "]r", "[r" }, -- Uncomment to lazy load
-        opts = {},
-    },
-
-    -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
-    {
-        "rachartier/tiny-inline-diagnostic.nvim",
-        -- event = "LspAttach", -- Or `LspAttach`
-        priority = 3000, -- needs to be loaded in first
-        branch = "main",
-        init = function()
-            vim.diagnostic.config({
-                virtual_text = false,
-                update_in_insert = true,
-                virtual_lines = {
-                    -- only_current_line = true,
-                    highlight_whole_line = false,
-                },
-            })
-        end,
-        config = function()
-            -- Default configuration
-            require("tiny-inline-diagnostic").setup({
-                preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
-
-                options = {
-                    -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
-                    -- You can increase it if you have performance issues.
-                    -- Or set it to 0 to have better visuals.
-                    throttle = 0,
-
-                    -- The minimum length of the message, otherwise it will be on a new line.
-                    softwrap = 30,
-
-                    -- If multiple diagnostics are under the cursor, display all of them.
-                    multiple_diag_under_cursor = true,
-
-                    -- Enable diagnostic message on all lines.
-                    multilines = true,
-
-                    -- Show all diagnostics on the cursor line.
-                    show_all_diags_on_cursorline = true,
-
-                    -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
-                    enable_on_insert = true,
-
-                },
-            })
-        end
-    },
-
-    -- https://freshman.tech/vim-quickfix-and-location-list/
-    -- {
-    --     'stevearc/quicker.nvim',
-    --     event = "FileType qf",
-    --     opts = {},
-    --     config = function()
-    --         require("quicker").setup()
-    --     end
-    -- },
 
 }
 
