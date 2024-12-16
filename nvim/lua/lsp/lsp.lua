@@ -29,6 +29,10 @@ local lspTable = {
         filetypes = { "lua" },
         on_attach = M.on_attach,
         on_init = function(client)
+            if client.workspace_folders == nil then
+                return
+            end
+
             local path = client.workspace_folders[1].name
             if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
                 return
@@ -181,15 +185,6 @@ local lspTable = {
 }
 
 M.lspConfig = function()
-    vim.diagnostic.config({
-        virtual_text = false,
-        update_in_insert = true,
-        virtual_lines = {
-            -- only_current_line = true,
-            highlight_whole_line = false,
-        },
-    })
-
     -- 自动安装 lsp
     local lspconfig = try_require("lspconfig")
     if lspconfig == nil then
