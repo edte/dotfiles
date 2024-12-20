@@ -268,7 +268,6 @@ M.list = {
             require("ui.whichkey")
         end,
         dependencies = {
-            { "echasnovski/mini.icons", version = false },
             {
                 "numToStr/Comment.nvim",
                 event = "User FileOpened",

@@ -7,56 +7,12 @@ local field_arrangement = {
     atom_colored = { "kind", "abbr", "menu" },
 }
 
-local lspkind = {
-    Namespace = "󰌗",
-    Text = "󰉿",
-    Method = "󰆧",
-    Function = "󰆧",
-    Constructor = "",
-    Field = "󰜢",
-    Variable = "󰀫",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "󰑭",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈚",
-    Reference = "󰈇",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "󰙅",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰊄",
-    Table = "",
-    Object = "󰅩",
-    Tag = "",
-    Array = "[]",
-    Boolean = "",
-    Number = "",
-    Null = "󰟢",
-    Supermaven = "",
-    String = "󰉿",
-    Calendar = "",
-    Watch = "󰥔",
-    Package = "",
-    Copilot = "",
-    Codeium = "",
-    TabNine = "",
-}
-
 local formatting_style = {
     -- default fields order i.e completion word + item.kind + item.kind icons
     fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
 
     format = function(_, item)
-        local icon = (true and lspkind[item.kind]) or ""
+        local icon = (true and icons.lspkind[item.kind]) or ""
 
         if cmp_style == "atom" or cmp_style == "atom_colored" then
             icon = " " .. icon .. " "
