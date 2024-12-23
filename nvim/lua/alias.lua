@@ -1,4 +1,8 @@
--- 各种常用函数的别名
+------------------------------------------------- var --------------------------------------------------
+_G.user_config_path = vim.call("stdpath", "config")
+_G.user_config_init = vim.call("stdpath", "config") .. "/init.lua"
+_G.json = require "json"
+
 
 -- 使用 pcall 和 require 尝试加载包
 function try_require(package_name)
@@ -33,18 +37,13 @@ function Setup(package_name, options)
     package.setup(options)
 end
 
-local opt = {
-    noremap = true,
-    silent = true,
-}
-
 function keymap(mode, lhs, rhs)
     if type(rhs) == "string" then
-        vim.api.nvim_set_keymap(mode, lhs, rhs, opt)
+        vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, })
         return
     end
 
-    vim.keymap.set(mode, lhs, rhs, opt)
+    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, })
 end
 
 Command = vim.api.nvim_create_user_command
@@ -58,8 +57,6 @@ GroupId = vim.api.nvim_create_augroup
 
 Del_cmd = vim.api.nvim_del_user_command
 
-user_config_path = vim.call("stdpath", "config")
-user_config_init = vim.call("stdpath", "config") .. "/init.lua"
 
 icon = require("icons")
 
@@ -207,4 +204,7 @@ function tprint(tbl, indent)
     return toprint
 end
 
-json = require "json"
+function file_exists(name)
+    local f = io.open(name, "r")
+    return f ~= nil and io.close(f)
+end

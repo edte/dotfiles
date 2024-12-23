@@ -316,6 +316,8 @@ M.list = {
         "tpope/vim-rsi",
         event = { "InsertEnter", "CmdlineEnter" },
     },
+
+
 }
 
 return M

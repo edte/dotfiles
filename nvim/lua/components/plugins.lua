@@ -133,7 +133,41 @@ M.list = {
     {
         "nvzone/minty",
         cmd = { "Shades", "Huefy" },
-    }
+    },
+
+
+    {
+        name = "sessions",
+        dir = "components.sessions",
+        virtual = true,
+        config = function()
+            try_require("components.session").setup()
+
+            vim.api.nvim_create_autocmd("VimEnter", {
+                callback = function()
+                    if vim.fn.argc(-1) == 0 then
+                        local a, _ = vim.fn.getcwd():gsub('/', '_')
+                        -- local b = MiniSessions.config.directory .. a
+                        --
+                        -- if file_exists(b) then
+                        --     return
+                        -- end
+
+                        MiniSessions.read(a)
+                    end
+                end,
+                nested = true,
+            })
+            vim.api.nvim_create_autocmd("VimLeavePre", {
+                callback = function()
+                    a, _ = vim.fn.getcwd():gsub('/', '_')
+                    MiniSessions.write(a)
+                end,
+            })
+        end
+    },
+
+
 
 }
 return M

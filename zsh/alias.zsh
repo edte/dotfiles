@@ -62,7 +62,7 @@ alias p="proxychains"
 alias gcc="gcc-5"
 alias proc="ps aux| grep "
 alias task='/Users/edte/asynctasks.vim/bin/asynctask -f'
-alias q='exit'
+# alias q='exit'
 alias quit='exit'
 
 # 常用的配置文件
