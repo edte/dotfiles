@@ -7,15 +7,15 @@ local M = {
 local command_id = 0
 
 M.setup_user_commands = function()
-    vim.api.nvim_create_user_command("AutoFixReturn", function()
+    Api.nvim_create_user_command("AutoFixReturn", function()
         M.wrap_golang_return()
     end, {})
 
-    vim.api.nvim_create_user_command("AutoFixReturnEnable", function()
+    Api.nvim_create_user_command("AutoFixReturnEnable", function()
         M.enable_autocmds()
     end, {})
 
-    vim.api.nvim_create_user_command("AutoFixReturnDisable", function()
+    Api.nvim_create_user_command("AutoFixReturnDisable", function()
         M.disable_autocomds()
     end, {})
 end
@@ -26,7 +26,7 @@ M.enable_autocmds = function()
         return
     end
 
-    command_id = vim.api.nvim_create_autocmd(
+    command_id = Api.nvim_create_autocmd(
         { "TextChangedI", "TextChanged" },
         { callback = M.wrap_golang_return }
     )
@@ -38,7 +38,7 @@ M.disable_autocomds = function()
         return
     end
 
-    vim.api.nvim_del_autocmd(command_id)
+    Api.nvim_del_autocmd(command_id)
     command_id = 0
 end
 
@@ -90,7 +90,7 @@ M.wrap_golang_return = function()
   ]]
 
     local query = vim.treesitter.query.parse("go", query_str)
-    local cursor_row, cursor_col = unpack(vim.api.nvim_win_get_cursor(0))
+    local cursor_row, cursor_col = unpack(Api.nvim_win_get_cursor(0))
 
     -- We make sure to call the entire parse again to make sure we have the most up to date tree
     -- NOTE: without this the bugs are a bit nasty
@@ -126,7 +126,7 @@ M.wrap_golang_return = function()
         ::continue::
     end
 
-    local line = vim.api.nvim_buf_get_text(
+    local line = Api.nvim_buf_get_text(
         0,
         final_start_row,
         final_start_col,
@@ -196,7 +196,7 @@ M.wrap_golang_return = function()
         return
     end
 
-    vim.api.nvim_buf_set_text(
+    Api.nvim_buf_set_text(
         0,
         final_start_row,
         final_start_col,
@@ -205,7 +205,7 @@ M.wrap_golang_return = function()
         { new_line }
     )
 
-    vim.api.nvim_win_set_cursor(0, { final_end_row + 1, final_cursor_col })
+    Api.nvim_win_set_cursor(0, { final_end_row + 1, final_cursor_col })
 end
 
 M.setup = function(config)

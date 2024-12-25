@@ -24,7 +24,7 @@ end
 -- LSP clients attached to buffer
 
 local function get_lsp()
-    local current_buf = vim.api.nvim_get_current_buf()
+    local current_buf = Api.nvim_get_current_buf()
 
     local clients = vim.lsp.get_clients({ bufnr = current_buf })
     if next(clients) == nil then
@@ -76,8 +76,8 @@ Autocmd({ "WinEnter", "BufEnter", "FileType" }, {
 })
 
 -- cmdheight =0 之后，进入insert模式,statusline会消失,所以需要手动重绘
-vim.cmd([[
-autocmd ModeChanged * lua vim.schedule(function() vim.cmd('redraw') end)
+Cmd([[
+autocmd ModeChanged * lua vim.schedule(function() Cmd('redraw') end)
 ]])
 
 Autocmd("LspProgress", {
@@ -100,10 +100,10 @@ Autocmd("LspProgress", {
         if lsp_progress.kind == "end" then
             lsp_progress.title = nil
             vim.defer_fn(function()
-                vim.cmd.redrawstatus()
+                Cmd.redrawstatus()
             end, 500)
         else
-            vim.cmd.redrawstatus()
+            Cmd.redrawstatus()
         end
 
         StatusLine.lsp_clients = "%#StatusLineLSP#" .. get_lsp()
@@ -120,11 +120,11 @@ StatusLine = {
 }
 
 -- 定义高亮组
-vim.api.nvim_set_hl(0, "StatusLineProject", { fg = "#D3869B", bg = "#1E1E2E", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineFilename", { fg = "#83A598", bg = "#1E1E2E", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineGitBranch", { fg = "#8EC07C", bg = "#1E1E2E", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
+Api.nvim_set_hl(0, "StatusLineProject", { fg = "#D3869B", bg = "#1E1E2E", bold = true })
+Api.nvim_set_hl(0, "StatusLineFilename", { fg = "#83A598", bg = "#1E1E2E", bold = true })
+Api.nvim_set_hl(0, "StatusLineGitBranch", { fg = "#8EC07C", bg = "#1E1E2E", bold = true })
+Api.nvim_set_hl(0, "StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
+Api.nvim_set_hl(0, "StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
 
 StatusLine.active = function()
     local statusline = {

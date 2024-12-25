@@ -4,7 +4,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
     local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
     if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
+        Api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
             { out,                            "WarningMsg" },
             { "\nPress any key to exit..." },
@@ -33,7 +33,7 @@ local plugins_list = {}
 
 -- 遍历每个模块
 for _, module_name in ipairs(modules) do
-    local module = try_require(module_name)
+    local module = Require(module_name)
     if module == nil then
         return
     end
@@ -111,7 +111,7 @@ require("lazy").setup({
         -- Directory where you store your local plugin projects. If a function is used,
         -- the plugin directory (e.g. `~/projects/plugin-name`) must be returned.
         ---@type string | fun(plugin: LazyPlugin): string
-        path = user_config_path .. "/lua",
+        path = NEOVIM_CONFIG_PATH .. "/lua",
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
         patterns = {},    -- For example {"folke"}
         fallback = false, -- Fallback to git when local plugin doesn't exist

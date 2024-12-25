@@ -192,11 +192,11 @@ MiniSessions.read = function(session_name, opts)
     H.possibly_execute(opts.hooks.pre, data)
 
     -- Wipeout all buffers
-    vim.cmd('silent! %bwipeout!')
+    Cmd('silent! %bwipeout!')
 
     -- Read session file
     local session_path = data.path
-    vim.cmd(('silent! source %s'):format(vim.fn.fnameescape(session_path)))
+    Cmd(('silent! source %s'):format(vim.fn.fnameescape(session_path)))
     vim.v.this_session = session_path
 
     -- Possibly notify
@@ -250,7 +250,7 @@ MiniSessions.write = function(session_name, opts)
 
     -- Make session file
     local command = string.format('mksession%s %s', opts.force and '!' or '', vim.fn.fnameescape(session_path))
-    vim.cmd(command)
+    Cmd(command)
     data.modify_time = vim.fn.getftime(session_path)
 
     -- Update detected sessions
@@ -444,14 +444,14 @@ H.apply_config = function(config)
 end
 
 H.create_autocommands = function(config)
-    local gr = vim.api.nvim_create_augroup('MiniSessions', {})
+    local gr = Api.nvim_create_augroup('MiniSessions', {})
 
     if config.autoread then
         local autoread = function()
             if not H.is_something_shown() then MiniSessions.read() end
         end
         local opts = { group = gr, nested = true, once = true, callback = autoread, desc = 'Autoread latest session' }
-        vim.api.nvim_create_autocmd('VimEnter', opts)
+        Api.nvim_create_autocmd('VimEnter', opts)
     end
 
     if config.autowrite then
@@ -459,7 +459,7 @@ H.create_autocommands = function(config)
             if H.get_this_session() ~= '' then MiniSessions.write(nil, { force = true }) end
         end
         local opts = { group = gr, callback = autowrite, desc = 'Autowrite current session' }
-        vim.api.nvim_create_autocmd('VimLeavePre', opts)
+        Api.nvim_create_autocmd('VimLeavePre', opts)
     end
 end
 
@@ -535,13 +535,13 @@ H.validate_detected = function(session_name)
     local is_detected = vim.tbl_contains(vim.tbl_keys(MiniSessions.detected), session_name)
     if is_detected then return true end
 
-    H.error(('%s is not a name for detected session.'):format(vim.inspect(session_name)))
+    -- H.error(('%s is not a name for detected session.'):format(vim.inspect(session_name)))
 end
 
 H.get_unsaved_listed_buffers = function()
     return vim.tbl_filter(
         function(buf_id) return vim.bo[buf_id].modified and vim.bo[buf_id].buflisted end,
-        vim.api.nvim_list_bufs()
+        Api.nvim_list_bufs()
     )
 end
 
@@ -578,8 +578,8 @@ H.echo = function(msg, is_important)
     end
 
     -- Echo. Force redraw to ensure that it is effective (`:h echo-redraw`)
-    vim.cmd([[echo '' | redraw]])
-    vim.api.nvim_echo(chunks, is_important, {})
+    Cmd([[echo '' | redraw]])
+    Api.nvim_echo(chunks, is_important, {})
 end
 
 H.message = function(msg) H.echo(msg, true) end
@@ -614,7 +614,7 @@ H.is_something_shown = function()
     --   means unlisted buffers (like from `nvim-tree`) don't affect decision.
     local listed_buffers = vim.tbl_filter(
         function(buf_id) return vim.fn.buflisted(buf_id) == 1 end,
-        vim.api.nvim_list_bufs()
+        Api.nvim_list_bufs()
     )
     if #listed_buffers > 1 then return true end
 
@@ -626,9 +626,9 @@ H.is_something_shown = function()
     -- doesn't work if some automated changed was made to buffer while leaving it
     -- empty (returns 2 instead of -1). This was also the reason of not being
     -- able to test with child Neovim process from 'tests/helpers'.
-    local n_lines = vim.api.nvim_buf_line_count(0)
+    local n_lines = Api.nvim_buf_line_count(0)
     if n_lines > 1 then return true end
-    local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, true)[1]
+    local first_line = Api.nvim_buf_get_lines(0, 0, 1, true)[1]
     if string.len(first_line) > 0 then return true end
 
     return false

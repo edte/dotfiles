@@ -323,11 +323,11 @@ function M.set_pwd(dir, method)
         if vim.uv.cwd() ~= dir then
             local scope_chdir = M.scope_chdir
             if scope_chdir == "global" then
-                vim.api.nvim_set_current_dir(dir)
+                Api.nvim_set_current_dir(dir)
             elseif scope_chdir == "tab" then
-                vim.cmd("tcd " .. dir)
+                Cmd("tcd " .. dir)
             elseif scope_chdir == "win" then
-                vim.cmd("lcd " .. dir)
+                Cmd("lcd " .. dir)
             else
                 return
             end
@@ -350,7 +350,7 @@ function M.setup()
         nested = true,
         callback = function()
             -- 将当前工作目录更改为正在编辑的文件的目录
-            -- vim.cmd("cd %:p:h")
+            -- cmd("cd %:p:h")
             M.set_pwd(M.get_project_root())
         end,
     })

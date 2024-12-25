@@ -54,7 +54,7 @@ local lspTable = {
                         -- "${3rd}/busted/library",
                     },
                     -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                    -- library = vim.api.nvim_get_runtime_file("", true)
+                    -- library = api.nvim_get_runtime_file("", true)
                 },
             })
         end,
@@ -186,7 +186,7 @@ local lspTable = {
 
 M.lspConfig = function()
     -- 自动安装 lsp
-    local lspconfig = try_require("lspconfig")
+    local lspconfig = Require("lspconfig")
     if lspconfig == nil then
         return
     end

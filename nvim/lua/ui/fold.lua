@@ -110,10 +110,10 @@ M.init = function()
     vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
     vim.o.foldlevelstart = 99
 
-    vim.cmd([[set viewoptions-=curdir]])
+    Cmd([[set viewoptions-=curdir]])
 
     -- remember folds
-    vim.cmd([[
+    Cmd([[
             augroup remember_folds
             autocmd!
             autocmd BufWinLeave *.* mkview
@@ -126,7 +126,7 @@ end
 M.config = function(_, opts)
     local handler = function(virtText, lnum, endLnum, width, truncate)
         local newVirtText = {}
-        local totalLines = vim.api.nvim_buf_line_count(0)
+        local totalLines = Api.nvim_buf_line_count(0)
         local foldedLines = endLnum - lnum
         local suffix = (" 󰁂 %d "):format(endLnum - lnum)
         local sufWidth = vim.fn.strdisplaywidth(suffix)
@@ -150,7 +150,7 @@ M.config = function(_, opts)
             end
             curWidth = curWidth + chunkWidth
         end
-        local rAlignAppndx = math.max(math.min(vim.api.nvim_win_get_width(0), width - 1) - curWidth - sufWidth, 0)
+        local rAlignAppndx = math.max(math.min(Api.nvim_win_get_width(0), width - 1) - curWidth - sufWidth, 0)
         suffix = (" "):rep(rAlignAppndx) .. suffix
         table.insert(newVirtText, { suffix, "MoreMsg" })
         return newVirtText

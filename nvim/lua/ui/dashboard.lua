@@ -34,13 +34,13 @@ M.config = function()
         dashboard.button("t", "     Find Texts", "<cmd>FzfLua live_grep_native<CR>"),
         dashboard.button("p", "     Plugins Status", "<cmd>Lazy<CR>"),
         -- TODO: 这里现在是nwtree的进入，改成直接进入
-        dashboard.button("c", "     Configuration", "<cmd>edit " .. user_config_path .. "/init.lua" .. "<CR>"),
-        dashboard.button("q", "     Quit", "<CMD>quit<CR>" .. user_config_path .. "<CR>"),
+        dashboard.button("c", "     Configuration", "<cmd>edit " .. NEOVIM_CONFIG_PATH .. "/init.lua" .. "<CR>"),
+        dashboard.button("q", "     Quit", "<CMD>quit<CR>" .. NEOVIM_CONFIG_PATH .. "<CR>"),
     }
 
     alpha.setup(dashboard.opts)
 
-    vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
+    Cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
 end
 
 return M

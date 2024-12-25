@@ -14,11 +14,11 @@ MiniTabline.setup = function()
     -- Create default highlighting
     H.create_default_hl()
 
-    keymap("n", "gn", "<cmd>bn<CR>")
-    keymap("n", "gp", "<cmd>bp<CR>")
+    Keymap("n", "gn", "<cmd>bn<CR>")
+    Keymap("n", "gp", "<cmd>bp<CR>")
 
     -- Function to make tabs clickable
-    vim.api.nvim_exec(
+    Api.nvim_exec(
         [[function! MiniTablineSwitchBuffer(buf_id, clicks, button, mod)
         execute 'buffer' a:buf_id
       endfunction]],
@@ -74,7 +74,7 @@ MiniTabline.default_format = function(buf_id, label)
     if H.get_icon == nil then
         return string.format("   %s   ", label)
     end
-    return string.format("   %s %s   ", H.get_icon(vim.api.nvim_buf_get_name(buf_id)), label)
+    return string.format("   %s %s   ", H.get_icon(Api.nvim_buf_get_name(buf_id)), label)
 end
 
 -- Helper data ================================================================
@@ -131,19 +131,19 @@ H.apply_config = function(config)
 end
 
 H.create_autocommands = function()
-    local gr = vim.api.nvim_create_augroup("MiniTabline", {})
-    vim.api.nvim_create_autocmd("ColorScheme", { group = gr, callback = H.create_default_hl, desc = "Ensure colors" })
+    local gr = Api.nvim_create_augroup("MiniTabline", {})
+    Api.nvim_create_autocmd("ColorScheme", { group = gr, callback = H.create_default_hl, desc = "Ensure colors" })
 end
 
 --stylua: ignore
 H.create_default_hl = function()
     local set_default_hl = function(name, data)
         data.default = true
-        vim.api.nvim_set_hl(0, name, data)
+        Api.nvim_set_hl(0, name, data)
     end
 
 
-    cmd([[
+    Cmd([[
     hi TabLine guibg=#1f2335 guifg=#3b4261
     hi TabLineFill guibg=#1d202f
     hi TabLineSel guibg=#7aa2f7 guifg=#1d202f
@@ -198,7 +198,7 @@ end
 -- List tabs
 H.list_tabs = function()
     local tabs = {}
-    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
+    for _, buf_id in ipairs(Api.nvim_list_bufs()) do
         if H.is_buffer_in_minitabline(buf_id) then
             local tab = { buf_id = buf_id }
             tab["hl"] = H.construct_highlight(buf_id)
@@ -219,7 +219,7 @@ end
 -- Tab's highlight group
 H.construct_highlight = function(buf_id)
     local hl_type
-    if buf_id == vim.api.nvim_get_current_buf() then
+    if buf_id == Api.nvim_get_current_buf() then
         hl_type = "Current"
     elseif vim.fn.bufwinnr(buf_id) > 0 then
         hl_type = "Visible"
@@ -246,7 +246,7 @@ end
 H.construct_label_data = function(buf_id)
     local label, label_extender
 
-    local bufpath = vim.api.nvim_buf_get_name(buf_id)
+    local bufpath = Api.nvim_buf_get_name(buf_id)
     if bufpath ~= "" then
         -- Process path buffer
         label = vim.fn.fnamemodify(bufpath, ":t")
@@ -265,7 +265,7 @@ end
 H.make_path_extender = function(buf_id)
     -- Add parent to current label (if possible)
     return function(label)
-        local full_path = vim.api.nvim_buf_get_name(buf_id)
+        local full_path = Api.nvim_buf_get_name(buf_id)
         -- Using `vim.pesc` prevents effect of problematic characters (like '.')
         local pattern = string.format("[^%s]+%s%s$", vim.pesc(H.path_sep), vim.pesc(H.path_sep), vim.pesc(label))
         return string.match(full_path, pattern) or label
@@ -384,7 +384,7 @@ H.fit_width = function()
     local tot_width = 0
     for _, tab in pairs(H.tabs) do
         -- Use `nvim_strwidth()` and not `:len()` to respect multibyte characters
-        tab.label_width = vim.api.nvim_strwidth(tab.label)
+        tab.label_width = Api.nvim_strwidth(tab.label)
         tab.chars_on_left = tot_width
 
         tot_width = tot_width + tab.label_width
@@ -402,7 +402,7 @@ H.fit_width = function()
 end
 
 H.update_center_buf_id = function()
-    local cur_buf = vim.api.nvim_get_current_buf()
+    local cur_buf = Api.nvim_get_current_buf()
     if H.is_buffer_in_minitabline(cur_buf) then
         H.center_buf_id = cur_buf
     end
@@ -415,7 +415,7 @@ H.compute_display_interval = function(center_offset, tabline_width)
     -- 1) right - left + 1 = math.min(tot_width, tabline_width)
     -- 2) 1 <= left <= tabline_width; 1 <= right <= tabline_width
 
-    local tot_width = vim.o.columns - vim.api.nvim_strwidth(H.tabpage_section)
+    local tot_width = vim.o.columns - Api.nvim_strwidth(H.tabpage_section)
 
     -- Usage of `math.floor` is crucial to avoid non-integer values which might
     -- affect total width of output tabline string.

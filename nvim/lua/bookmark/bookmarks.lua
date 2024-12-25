@@ -83,11 +83,11 @@ function M.fill_border_data(buf, width, height, title)
         .. M.window.border_chars.BOTTOM_RIGHT
     )
 
-    api.nvim_buf_set_lines(buf, 0, -1, false, border_lines)
+    Api.nvim_buf_set_lines(buf, 0, -1, false, border_lines)
 end
 
 local function create_win(row, col, width, height, relative, focusable, zindex)
-    local buf = api.nvim_create_buf(false, true)
+    local buf = Api.nvim_create_buf(false, true)
     local options = {
         style = "minimal",
         relative = relative,
@@ -98,7 +98,7 @@ local function create_win(row, col, width, height, relative, focusable, zindex)
         focusable = focusable,
         zindex = zindex,
     }
-    local win = api.nvim_open_win(buf, false, options)
+    local win = Api.nvim_open_win(buf, false, options)
 
     return {
         buf = buf,
@@ -146,7 +146,7 @@ function M.create_border(opts)
     )
 
     opts.border_highlight = opts.border_highlight or "Normal"
-    api.nvim_buf_set_option(border_win_buf_pair.buf, "bufhidden", "hide")
+    Api.nvim_buf_set_option(border_win_buf_pair.buf, "bufhidden", "hide")
     local border_buf = border_win_buf_pair.buf
     M.fill_border_data(
         border_buf,
@@ -155,7 +155,7 @@ function M.create_border(opts)
         opts.title
     )
 
-    api.nvim_win_set_option(
+    Api.nvim_win_set_option(
         border_win_buf_pair.win,
         "winhighlight",
         "Normal:" .. opts.border_highlight
@@ -191,7 +191,7 @@ local focus_manager = (function()
         end
 
         current_type = next_type
-        api.nvim_set_current_win(next_win)
+        Api.nvim_set_current_win(next_win)
     end
 
     return {
@@ -207,8 +207,8 @@ end)()
 
 
 function M.open_add_win(title)
-    local ew = api.nvim_get_option("columns")
-    local eh = api.nvim_get_option("lines")
+    local ew = Api.nvim_get_option("columns")
+    local eh = Api.nvim_get_option("lines")
     local width, height = 100, 1
     local options = {
         width = width,
@@ -222,10 +222,10 @@ function M.open_add_win(title)
 
     local pairs = M.create_win(options)
     local border_pairs = M.create_border(options)
-    api.nvim_set_current_win(pairs.win)
-    api.nvim_win_set_option(pairs.win, 'winhighlight', 'Normal:normal')
-    api.nvim_buf_set_option(pairs.buf, 'filetype', 'bookmarks_input')
-    vim.cmd("startinsert")
+    Api.nvim_set_current_win(pairs.win)
+    Api.nvim_win_set_option(pairs.win, 'winhighlight', 'Normal:normal')
+    Api.nvim_buf_set_option(pairs.buf, 'filetype', 'bookmarks_input')
+    Cmd("startinsert")
 
     return {
         pairs = pairs,
@@ -234,15 +234,15 @@ function M.open_add_win(title)
 end
 
 function M.close_add_win(buf1, buf2)
-    vim.cmd(string.format("bwipeout! %d", buf1))
-    vim.cmd(string.format("bwipeout! %d", buf2))
+    Cmd(string.format("bwipeout! %d", buf1))
+    Cmd(string.format("bwipeout! %d", buf2))
 end
 
 ------------------------------------bookmark ------------------------------------------
 
 -- Add virtural text for bookmarks.
 function M.set_marks(buf, marks)
-    local file_name = vim.api.nvim_buf_get_name(buf)
+    local file_name = Api.nvim_buf_get_name(buf)
     if M.data.marks[file_name] == nil then
         M.data.marks[file_name] = {}
     end
@@ -250,7 +250,7 @@ function M.set_marks(buf, marks)
     -- 这段代码的作用是遍历 M.marks[file_name] 表中的所有扩展标记 ID，并使用 nvim_buf_del_extmark 函数删除这些扩展标记。让我们逐步解析这段代码：
     -- clear old ext
     for _, id in ipairs(M.data.marks[file_name]) do
-        api.nvim_buf_del_extmark(buf, M.data.ns_id, id)
+        Api.nvim_buf_del_extmark(buf, M.data.ns_id, id)
     end
 
     vim.fn.sign_unplace("BookmarkSign", { buffer = buf })
@@ -265,7 +265,7 @@ function M.set_marks(buf, marks)
         end
 
         -- 使用 api.nvim_buf_set_extmark 设置扩展标记，位置在行末（virt_text_pos = "eol"），并且使用指定的高亮组。
-        local ext_id = api.nvim_buf_set_extmark(buf, M.data.ns_id, mark.line - 1, -1, {
+        local ext_id = Api.nvim_buf_set_extmark(buf, M.data.ns_id, mark.line - 1, -1, {
             virt_text = { { '💡 ' .. mark.description, "bookmarks_virt_text_hl" } },
             virt_text_pos = "eol",
             hl_group = "bookmarks_virt_text_hl",
@@ -296,7 +296,7 @@ end
 
 -- 这个函数用于获取指定缓冲区中的所有书签行信息。
 function M.get_buf_bookmark_lines(buf)
-    local filename = api.nvim_buf_get_name(buf)
+    local filename = Api.nvim_buf_get_name(buf)
     local lines = {}
     local group = M.data.bookmarks_groupby_filename[filename]
 
@@ -321,7 +321,7 @@ function M.add_bookmark()
     -- print("add_bookmark")
     function M.handle_add(line, buf1, buf2, buf, rows)
         -- Get buf's filename.
-        local filename = api.nvim_buf_get_name(buf)
+        local filename = Api.nvim_buf_get_name(buf)
         if filename == nil or filename == "" then
             return
         end
@@ -329,14 +329,14 @@ function M.add_bookmark()
         local input_line = vim.fn.line(".")
 
         -- Get bookmark's description.
-        local description = api.nvim_buf_get_lines(buf1, input_line - 1, input_line, false)[1] or ""
+        local description = Api.nvim_buf_get_lines(buf1, input_line - 1, input_line, false)[1] or ""
         -- print(description)
 
         -- Close description input box.
         if description == "" then
             M.close_add_win(buf1, buf2)
             M.set_marks(buf, M.get_buf_bookmark_lines(0))
-            vim.cmd("stopinsert")
+            Cmd("stopinsert")
             return
         end
 
@@ -373,11 +373,11 @@ function M.add_bookmark()
         -- Close description input box.
         M.close_add_win(buf1, buf2)
         M.set_marks(buf, M.get_buf_bookmark_lines(0))
-        vim.cmd("stopinsert")
+        Cmd("stopinsert")
     end
 
     local line = vim.fn.line('.')
-    local buf = api.nvim_get_current_buf()
+    local buf = Api.nvim_get_current_buf()
     local rows = vim.fn.line("$")
 
     --  Open the bookmark description input box.
@@ -400,8 +400,8 @@ end
 -- Delete bookmark.
 function M.delete_bookmark()
     local line = vim.fn.line(".")
-    local file_name = api.nvim_buf_get_name(0)
-    local buf = api.nvim_get_current_buf()
+    local file_name = Api.nvim_buf_get_name(0)
+    local buf = Api.nvim_get_current_buf()
     for k, v in pairs(M.data.bookmarks) do
         if v.line == line and file_name == v.filename then
             M.data.bookmarks[k] = nil
@@ -460,9 +460,9 @@ function M.jump_bookmark()
 
                 for _, bookmark in pairs(bookmarks) do
                     if entry == bookmark.description then
-                        vim.api.nvim_command("edit " .. bookmark.filename)
-                        vim.api.nvim_win_set_cursor(0, { bookmark.line, 0 })
-                        vim.api.nvim_feedkeys("zz", "n", false)
+                        Api.nvim_command("edit " .. bookmark.filename)
+                        Api.nvim_win_set_cursor(0, { bookmark.line, 0 })
+                        Api.nvim_feedkeys("zz", "n", false)
                     end
                 end
             end,
@@ -484,7 +484,7 @@ function M.save_bookmarks()
 ]]
 
         if bookmark["extmark_id"] ~= nil then
-            local extmark_pos = vim.api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
+            local extmark_pos = Api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
 
             -- 检查 extmark 是否有效
             if not extmark_pos or #extmark_pos == 0 then
@@ -609,12 +609,12 @@ function M.load_bookmarks()
 end
 
 function M.setup()
-    M.data.ns_id = api.nvim_create_namespace("bookmarks_marks")
+    M.data.ns_id = Api.nvim_create_namespace("bookmarks_marks")
 
-    vim.cmd("hi link bookmarks_virt_text_hl Comment")
+    Cmd("hi link bookmarks_virt_text_hl Comment")
     vim.fn.sign_define("BookmarkSign", { text = "󰃃" })
 
-    vim.cmd(string.format("highlight hl_bookmarks_csl %s", M.window.hl.cursorline))
+    Cmd(string.format("highlight hl_bookmarks_csl %s", M.window.hl.cursorline))
     focus_manager.register("bookmarks")
 
     vim.keymap.set("n", "mo", function() M.jump_bookmark() end,
@@ -634,7 +634,7 @@ function M.setup()
     Autocmd({ "BufWritePost" }, {
         group = group_id,
         callback = function()
-            local buf = api.nvim_get_current_buf()
+            local buf = Api.nvim_get_current_buf()
             M.set_marks(buf, M.get_buf_bookmark_lines(buf))
         end
     })
@@ -642,7 +642,7 @@ function M.setup()
     Autocmd({ "BufWinEnter" }, {
         group = group_id,
         callback = function()
-            local buf = api.nvim_get_current_buf()
+            local buf = Api.nvim_get_current_buf()
             M.set_marks(buf, M.get_buf_bookmark_lines(buf))
         end
     })

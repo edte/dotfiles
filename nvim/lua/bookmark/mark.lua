@@ -1,4 +1,4 @@
-local a = vim.api
+local a = Api
 
 local Mark = {
     -- 基本结构：self.buffers是一个以bufnr索引的表数组，其中每个表有以下键：
@@ -115,7 +115,7 @@ function Mark:delete_mark(mark, clear)
     buffer.placed_marks[mark] = nil
 
     if clear then
-        vim.cmd("delmark " .. mark)
+        Cmd("delmark " .. mark)
     end
 
 
@@ -243,8 +243,8 @@ function Mark.setup()
     for i = 0, 25 do
         if i ~= 3 and i ~= 12 and i ~= 14 then
             vim.keymap.set("n", "'" .. low(i), function()
-                vim.cmd("'" .. upp(i))
-                vim.api.nvim_feedkeys("zz", "n", false)
+                Cmd("'" .. upp(i))
+                Api.nvim_feedkeys("zz", "n", false)
             end)
         end
     end

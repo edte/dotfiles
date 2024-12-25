@@ -1,11 +1,16 @@
 ------------------------------------------------- var --------------------------------------------------
-_G.user_config_path = vim.call("stdpath", "config")
-_G.user_config_init = vim.call("stdpath", "config") .. "/init.lua"
+_G.NEOVIM_CONFIG_PATH = vim.call("stdpath", "config")
 _G.json = require "json"
-
+_G.Api = vim.api
+_G.Command = vim.api.nvim_create_user_command
+_G.Cmd = vim.cmd
+_G.Autocmd = vim.api.nvim_create_autocmd
+_G.GroupId = vim.api.nvim_create_augroup
+_G.Del_cmd = vim.api.nvim_del_user_command
+_G.icon = require("icons")
 
 -- 使用 pcall 和 require 尝试加载包
-function try_require(package_name)
+function Require(package_name)
     local status, plugin = pcall(require, package_name)
     if not status then
         -- 如果加载失败，打印错误信息
@@ -37,56 +42,21 @@ function Setup(package_name, options)
     package.setup(options)
 end
 
-function keymap(mode, lhs, rhs)
+function Keymap(mode, lhs, rhs)
     if type(rhs) == "string" then
-        vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, })
+        Api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, })
         return
     end
 
     vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, })
 end
 
-Command = vim.api.nvim_create_user_command
-
-cmd = vim.cmd
-
-api = vim.api
-
-Autocmd = vim.api.nvim_create_autocmd
-GroupId = vim.api.nvim_create_augroup
-
-Del_cmd = vim.api.nvim_del_user_command
-
-
-icon = require("icons")
-
-function isModuleAvailable(name)
-    if package.loaded[name] then
-        return true
-    else
-        for _, searcher in ipairs(package.searchers or package.loaders) do
-            local loader = searcher(name)
-            if type(loader) == "function" then
-                package.preload[name] = loader
-                return true
-            end
-        end
-        return false
-    end
-end
-
 function ToggleMiniFiles()
     local mf = require("mini.files")
     if not mf.close() then
-        mf.open(vim.api.nvim_buf_get_name(0))
+        mf.open(Api.nvim_buf_get_name(0))
         mf.reveal_cwd()
     end
-end
-
-get_listed_bufs = function()
-    return vim.tbl_filter(function(bufnr)
-        return vim.api.nvim_buf_get_option(bufnr, "buflisted")
-    end, vim.api.nvim_list_bufs())
 end
 
 ---

@@ -7,7 +7,7 @@ M.list = {
         priority = 1000,
         opts = {},
         config = function()
-            vim.cmd([[colorscheme tokyonight]])
+            Cmd([[colorscheme tokyonight]])
         end,
 
         dependencies = {
@@ -18,14 +18,14 @@ M.list = {
     -- {
     --     "catppuccin/nvim",
     --     config = function()
-    --         vim.cmd([[colorscheme catppuccin]])
+    --         cmd([[colorscheme catppuccin]])
     --     end,
     -- },
 
     -- {
     --     "rebelot/kanagawa.nvim",
     --     config = function()
-    --         vim.cmd([[colorscheme kanagawa]])
+    --         cmd([[colorscheme kanagawa]])
     --     end,
     -- },
 
@@ -122,7 +122,7 @@ M.list = {
         "gelguy/wilder.nvim",
         event = "CmdlineEnter", -- 懒加载：首次进入cmdline时载入
         config = function()
-            try_require("ui.wilder").config()
+            Require("ui.wilder").config()
         end,
     },
 
@@ -150,12 +150,12 @@ M.list = {
             {
                 "<space>e",
                 function()
-                    local mf = try_require("mini.files")
+                    local mf = Require("mini.files")
                     if mf == nil then
                         return
                     end
                     if not mf.close() then
-                        mf.open(vim.api.nvim_buf_get_name(0))
+                        mf.open(Api.nvim_buf_get_name(0))
                         mf.reveal_cwd()
                     end
                 end,
@@ -227,13 +227,13 @@ M.list = {
         config = function()
             local rainbow_delimiters = require("rainbow-delimiters")
 
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-            vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-            vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-            vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-            vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+            Api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+            Api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+            Api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+            Api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+            Api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+            Api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+            Api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 
             require("rainbow-delimiters.setup").setup({
                 strategy = {

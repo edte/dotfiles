@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
     vim.g.skip_ts_context_commentstring_module = true
 
-    local config = try_require("nvim-treesitter.configs")
+    local config = Require("nvim-treesitter.configs")
     if config == nil then
         return
     end
@@ -104,7 +104,7 @@ M.config = function()
         },
     })
 
-    local context = try_require("treesitter-context")
+    local context = Require("treesitter-context")
     if context == nil then
         return
     end
@@ -132,15 +132,15 @@ M.config = function()
 
     -- 对于内部选择，将选择光标下的主节点。对于外部选择，选择下一个节点。
 
-    local unit = try_require("treesitter-unit")
+    local unit = Require("treesitter-unit")
     if unit == nil then
         return
     end
 
-    vim.api.nvim_set_keymap("x", "iu", '<cmd>lua require"treesitter-unit".select()<CR>', { noremap = true })
-    vim.api.nvim_set_keymap("x", "au", '<cmd>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
-    vim.api.nvim_set_keymap("o", "iu", '<cmd><c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
-    vim.api.nvim_set_keymap("o", "au", '<cmd><c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
+    Api.nvim_set_keymap("x", "iu", '<cmd>lua require"treesitter-unit".select()<CR>', { noremap = true })
+    Api.nvim_set_keymap("x", "au", '<cmd>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
+    Api.nvim_set_keymap("o", "iu", '<cmd><c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
+    Api.nvim_set_keymap("o", "au", '<cmd><c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 end
 
 return M

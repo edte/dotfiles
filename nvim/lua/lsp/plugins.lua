@@ -5,7 +5,7 @@ M.list = {
         "neovim/nvim-lspconfig",
         commit = "a89de2e",
         config = function()
-            local m = try_require("lsp.lsp")
+            local m = Require("lsp.lsp")
             if m ~= nil then
                 m.lspConfig()
             end
@@ -22,7 +22,7 @@ M.list = {
             })
 
             Command("GoAddTagEmpty", function()
-                vim.api.nvim_command(":GoAddTag json -add-options json=")
+                Api.nvim_command(":GoAddTag json -add-options json=")
             end, { nargs = "*" })
 
             require("lsp.go-return").setup({})
@@ -117,7 +117,7 @@ M.list = {
         "p00f/clangd_extensions.nvim",
         ft = { "cpp", "h" },
         config = function()
-            local clangd = try_require("clangd_extensions")
+            local clangd = Require("clangd_extensions")
             if clangd == nil then
                 return
             end

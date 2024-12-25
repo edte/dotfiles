@@ -1,17 +1,18 @@
-# ----------------- alias ------------------------------------------------------------------------------------------------------------
+# -----------sages----- alias ------------------------------------------------------------------------------------------------------------
 #file
 alias c=clear
 alias cl=clear
 alias l=lsd
 alias ls=lsd
-alias ll='ls --total-size -l --date "+%F %T"'
+alias ll='ls --totl-size -l --date "+%F %T"'
 alias lt='ls -lt  --date "+%F %T"'
 alias la="ls -la"
 alias lh='ls -lh  --date "+%F %T"'
 alias s="exec zsh"
 alias sl="ls"
 alias rf="rm -rf"
-alias rg="rg -i"
+# alias rg="rg -i"
+# alias rgg="rg"
 alias grep="rg -i"
 alias tf='tail -f '
 alias cloc='scc'

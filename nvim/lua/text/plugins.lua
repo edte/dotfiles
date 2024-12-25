@@ -16,7 +16,7 @@ M.list = {
         },
         event = "User FileOpened",
         config = function()
-            local r = try_require("text.treesitter")
+            local r = Require("text.treesitter")
             if r ~= nil then
                 r.config()
             end
@@ -52,7 +52,7 @@ M.list = {
         "windwp/nvim-ts-autotag",
         ft = { "html", "vue" },
         config = function()
-            try_require("nvim-ts-autotag").setup()
+            Require("nvim-ts-autotag").setup()
         end,
     },
 
@@ -74,7 +74,7 @@ M.list = {
         keys = "gc",
         config = function()
             require("neogen").setup({})
-            keymap("n", "gc", "<cmd>lua require('neogen').generate()<CR>")
+            Keymap("n", "gc", "<cmd>lua require('neogen').generate()<CR>")
         end,
     },
 
@@ -82,7 +82,7 @@ M.list = {
     {
         "echasnovski/mini.splitjoin",
         init = function()
-            keymap("n", "P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
+            Keymap("n", "P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
         end,
         cmd = { "P" },
         version = false,

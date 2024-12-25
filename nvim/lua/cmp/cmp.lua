@@ -41,7 +41,7 @@ local function border(hl_name)
 end
 
 function M.cmpConfig()
-    local cmp, compare = try_require("cmp"), try_require("cmp.config.compare")
+    local cmp, compare = Require("cmp"), Require("cmp.config.compare")
     if cmp == nil then
         return
     end
@@ -239,7 +239,7 @@ function M.cmpConfig()
                 compare.recently_used,
                 compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
                 -- try_require("copilot_cmp.comparators").prioritize,
-                try_require("cmp_tabnine.compare"),
+                Require("cmp_tabnine.compare"),
                 compare.offset,
                 compare.order,
                 -- compare.scopes, -- what?
@@ -253,7 +253,7 @@ function M.cmpConfig()
     })
 
     -- tabnine 设置，一个ai补全的
-    local tabnine = try_require("cmp_tabnine.config")
+    local tabnine = Require("cmp_tabnine.config")
     if tabnine == nil then
         return
     end
@@ -276,20 +276,20 @@ function M.cmpConfig()
     -- git clone https://github.com/skywind3000/vim-dict nvim/
     local dict = {
         ["*"] = { "/usr/share/dict/words" },
-        go = { user_config_path .. "/lua/cmp/dict/go.dict" },
-        sh = { user_config_path .. "/lua/cmp/dict/sh.dict" },
-        lua = { user_config_path .. "/lua/cmp/dict/lua.dict" },
-        html = { user_config_path .. "/lua/cmp/dict/html.dict" },
-        css = { user_config_path .. "/lua/cmp/dict/css.dict" },
-        cpp = { user_config_path .. "/lua/cmp/dict/cpp.dict" },
-        cmake = { user_config_path .. "/lua/cmp/dict/cmake.dict" },
-        c = { user_config_path .. "/lua/cmp/dict/c.dict" },
+        go = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/go.dict" },
+        sh = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/sh.dict" },
+        lua = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/lua.dict" },
+        html = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/html.dict" },
+        css = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/css.dict" },
+        cpp = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/cpp.dict" },
+        cmake = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/cmake.dict" },
+        c = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/c.dict" },
     }
 
     Autocmd("FileType", {
         pattern = "*",
         callback = function(ev)
-            dict = try_require("cmp_dictionary")
+            dict = Require("cmp_dictionary")
             if dict == nil then
                 return
             end

@@ -7,7 +7,7 @@ M.list = {
         "NvChad/nvim-colorizer.lua",
         event = "VeryLazy",
         config = function()
-            local r = try_require("colorizer")
+            local r = Require("colorizer")
             if r == nil then
                 return
             end
@@ -123,8 +123,8 @@ M.list = {
         "lambdalisue/vim-suda",
         cmd = { "SudaRead", "SudaWrite" },
         config = function()
-            cmd("let g:suda_smart_edit = 1")
-            cmd("let g:suda#noninteractive = 1")
+            Cmd("let g:suda_smart_edit = 1")
+            Cmd("let g:suda#noninteractive = 1")
         end
     },
 
@@ -141,9 +141,9 @@ M.list = {
         dir = "components.sessions",
         virtual = true,
         config = function()
-            try_require("components.session").setup()
+            Require("components.session").setup()
 
-            vim.api.nvim_create_autocmd("VimEnter", {
+            Api.nvim_create_autocmd("VimEnter", {
                 callback = function()
                     if vim.fn.argc(-1) == 0 then
                         local a, _ = vim.fn.getcwd():gsub('/', '_')
@@ -158,7 +158,7 @@ M.list = {
                 end,
                 nested = true,
             })
-            vim.api.nvim_create_autocmd("VimLeavePre", {
+            Api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
                     a, _ = vim.fn.getcwd():gsub('/', '_')
                     MiniSessions.write(a)

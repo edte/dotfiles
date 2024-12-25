@@ -22,10 +22,10 @@ M.config = function()
     end
 
     -- 创建高亮组
-    vim.api.nvim_set_hl(0, "HG_TODO_LIST_WARN", { bold = true, bg = "#ffc777", fg = "#222436" })
-    vim.api.nvim_set_hl(0, "HG_TODO_LIST_FIX", { bold = true, bg = "#c53b53", fg = "#c8d3f5" })
-    vim.api.nvim_set_hl(0, "HG_TODO_LIST_NOTE", { bold = true, bg = "#4fd6be", fg = "#222436" })
-    vim.api.nvim_set_hl(0, "HG_TODO_LIST_TODO", { bold = true, bg = "#0db9d7", fg = "#222436" })
+    Api.nvim_set_hl(0, "HG_TODO_LIST_WARN", { bold = true, bg = "#ffc777", fg = "#222436" })
+    Api.nvim_set_hl(0, "HG_TODO_LIST_FIX", { bold = true, bg = "#c53b53", fg = "#c8d3f5" })
+    Api.nvim_set_hl(0, "HG_TODO_LIST_NOTE", { bold = true, bg = "#4fd6be", fg = "#222436" })
+    Api.nvim_set_hl(0, "HG_TODO_LIST_TODO", { bold = true, bg = "#0db9d7", fg = "#222436" })
 
     Command("TODO", function()
         require("fzf-lua").grep({ search = "TODO:", no_esc = true })

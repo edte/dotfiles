@@ -55,7 +55,7 @@ end
 --- @param bufnr integer The buffer number to parse
 --- @return goplements.Typedef[]
 M.find_types_patterns = function(bufnr)
-    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    local lines = Api.nvim_buf_get_lines(bufnr, 0, -1, false)
     local nodes = {} --- @type goplements.Typedef[]
     local interface_pattern = "^(type%s+)%w+%s+interface%s*{%s*$"
     local struct_pattern = "^(type%s+)%w+%s+struct%s*{%s*$"
@@ -89,7 +89,7 @@ end
 --- @param namespace integer The namespace to clear
 --- @param bufnr? integer The buffer number to clear the extmarks from, defaults to the current buffer
 local function clear(namespace, bufnr)
-    vim.api.nvim_buf_clear_namespace(bufnr or 0, namespace, 0, -1)
+    Api.nvim_buf_clear_namespace(bufnr or 0, namespace, 0, -1)
 end
 
 --- Given the lines from a Go file - searches for the package name
@@ -124,8 +124,8 @@ M.implementation_callback = function(fcache, result, publish_names)
             local data = {}
 
             local buf = vim.uri_to_bufnr(uri)
-            if vim.api.nvim_buf_is_loaded(buf) then
-                data = vim.api.nvim_buf_get_lines(buf, 0, impl_line + 1, false)
+            if Api.nvim_buf_is_loaded(buf) then
+                data = Api.nvim_buf_get_lines(buf, 0, impl_line + 1, false)
             else
                 local file = vim.uri_to_fname(uri)
                 data = fcache[file]
@@ -189,13 +189,13 @@ M.set_virt_text = function(namespace, bufnr, line, prefix, names)
         }
 
         -- insurance that we don't create multiple extmarks on the same line
-        local marks = vim.api.nvim_buf_get_extmarks(bufnr, namespace, { line, 0 }, { line, -1 }, {})
+        local marks = Api.nvim_buf_get_extmarks(bufnr, namespace, { line, 0 }, { line, -1 }, {})
         if #marks > 0 then
             opts.id = marks[1][1]
         end
 
         -- print(line)
-        vim.api.nvim_buf_set_extmark(bufnr, namespace, line, 0, opts)
+        Api.nvim_buf_set_extmark(bufnr, namespace, line, 0, opts)
     end
 end
 
@@ -234,7 +234,7 @@ end
 --- @param namespace integer
 function M:register_autocmds(namespace)
     -- Run when the text is changed in normal mode, user leaves insert mode, or when the LSP client attaches
-    vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "LspAttach" }, {
+    Api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "LspAttach" }, {
         pattern = { "*.go" },
         callback = function(args)
             M:annotate_structs_interfaces(namespace, args.buf)
@@ -250,7 +250,7 @@ end
 M.enable = function()
     M._enabled = true
 
-    local bufnr = vim.api.nvim_get_current_buf()
+    local bufnr = Api.nvim_get_current_buf()
 
     M:annotate_structs_interfaces(M._namespace, bufnr)
 end
@@ -264,13 +264,13 @@ M.toggle = function()
 end
 
 function M:register_user_commands()
-    vim.api.nvim_create_user_command("GoplementsEnable", M.enable, { desc = "Enable Goplements" })
-    vim.api.nvim_create_user_command("GoplementsDisable", M.disable, { desc = "Disable Goplements" })
-    vim.api.nvim_create_user_command("GoplementsToggle", M.toggle, { desc = "Toggle Goplements" })
+    Api.nvim_create_user_command("GoplementsEnable", M.enable, { desc = "Enable Goplements" })
+    Api.nvim_create_user_command("GoplementsDisable", M.disable, { desc = "Disable Goplements" })
+    Api.nvim_create_user_command("GoplementsToggle", M.toggle, { desc = "Toggle Goplements" })
 end
 
 function M:set_colors()
-    vim.api.nvim_set_hl(0, "Goplements", { default = true, link = "DiagnosticHint" })
+    Api.nvim_set_hl(0, "Goplements", { default = true, link = "DiagnosticHint" })
 end
 
 function M.setup(opts)
@@ -278,7 +278,7 @@ function M.setup(opts)
     M:set_colors()
     M:register_user_commands()
 
-    M._namespace = vim.api.nvim_create_namespace(M.config.namespace_name)
+    M._namespace = Api.nvim_create_namespace(M.config.namespace_name)
     M:register_autocmds(M._namespace)
 end
 

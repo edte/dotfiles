@@ -17,7 +17,7 @@ Autocmd({ "BufEnter" }, {
 })
 
 -- 打开二进制文件
-cmd([[
+Cmd([[
 	" vim -b : edit binary using xxd-format!
 	augroup Binary
 	  autocmd!

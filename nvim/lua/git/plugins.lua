@@ -18,7 +18,7 @@ M.list = {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
         config = function()
-            local r = try_require("git.git")
+            local r = Require("git.git")
             if r ~= nil then
                 r.diffConfig()
             end
@@ -74,7 +74,7 @@ M.list = {
         version = false,
         config = function()
             require("mini.diff").setup()
-            cmd("command! Diff lua MiniDiff.toggle_overlay()")
+            Cmd("command! Diff lua MiniDiff.toggle_overlay()")
         end,
     },
 }

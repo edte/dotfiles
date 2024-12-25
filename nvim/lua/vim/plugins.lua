@@ -38,7 +38,7 @@ M.list = {
         dependencies = { "nvim-lua/plenary.nvim" },
         -- you can specify also another config if you want
         config = function()
-            try_require("gx").setup({
+            Require("gx").setup({
                 open_browser_app = "open",              -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
                 open_browser_args = { "--background" }, -- specify any arguments, such as --background for macOS' "open".
                 handlers = {
@@ -62,12 +62,12 @@ M.list = {
     -- 	"rainbowhxch/accelerated-jk.nvim",
     -- 	keys = { "j", "k" },
     -- 	config = function()
-    -- 		vim.api.nvim_set_keymap("n", "j", "<Cmd>lua require'accelerated-jk'.move_to('j')<cr>", {})
-    -- 		vim.api.nvim_set_keymap("n", "k", "<Cmd>lua require'accelerated-jk'.move_to('k')<cr>", {})
-    -- 		vim.api.nvim_set_keymap("n", "h", "<Cmd>lua require'accelerated-jk'.move_to('h')<cr>", {})
-    -- 		vim.api.nvim_set_keymap("n", "l", "<Cmd>lua require'accelerated-jk'.move_to('l')<cr>", {})
-    -- 		vim.api.nvim_set_keymap("n", "e", "<Cmd>lua require'accelerated-jk'.move_to('e')<cr>", {})
-    -- 		vim.api.nvim_set_keymap("n", "b", "<Cmd>lua require'accelerated-jk'.move_to('b')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "j", "<Cmd>lua require'accelerated-jk'.move_to('j')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "k", "<Cmd>lua require'accelerated-jk'.move_to('k')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "h", "<Cmd>lua require'accelerated-jk'.move_to('h')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "l", "<Cmd>lua require'accelerated-jk'.move_to('l')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "e", "<Cmd>lua require'accelerated-jk'.move_to('e')<cr>", {})
+    -- 		api.nvim_set_keymap("n", "b", "<Cmd>lua require'accelerated-jk'.move_to('b')<cr>", {})
     -- 	end,
     -- },
 
@@ -79,7 +79,7 @@ M.list = {
         config = function()
             Setup("grug-far", {})
             -- require("grug-far").setup({})
-            cmd("command! -nargs=* Replace GrugFar")
+            Cmd("command! -nargs=* Replace GrugFar")
         end,
     },
 
@@ -89,9 +89,9 @@ M.list = {
         keys = { "w" },
         -- lazy = true,
         config = function()
-            keymap("", "w", "<cmd>lua require('spider').motion('w')<CR>")
-            keymap("", "e", "<cmd>lua require('spider').motion('e')<CR>")
-            keymap("", "b", "<cmd>lua require('spider').motion('b')<CR>")
+            Keymap("", "w", "<cmd>lua require('spider').motion('w')<CR>")
+            Keymap("", "e", "<cmd>lua require('spider').motion('e')<CR>")
+            Keymap("", "b", "<cmd>lua require('spider').motion('b')<CR>")
         end,
     },
 
@@ -105,7 +105,7 @@ M.list = {
             vim.g.clever_f_smart_case = 1
             vim.g.clever_f_fix_key_direction = 1
             vim.g.clever_f_show_prompt = 1
-            -- vim.api.nvim_del_keymap("n", "t")
+            -- api.nvim_del_keymap("n", "t")
         end,
     },
 
@@ -138,7 +138,7 @@ M.list = {
                 add_column = false,
                 default_register = "*",
             })
-            cmd("command! Path lua NvimFileLocation.copy_file_location('absolute', false, false)<cr>")
+            Cmd("command! Path lua NvimFileLocation.copy_file_location('absolute', false, false)<cr>")
         end,
     },
 
@@ -175,7 +175,7 @@ M.list = {
         keys = { "<C-a>", "<C-x>" },
         opts = {},
         config = function()
-            local r = try_require("vim.dial")
+            local r = Require("vim.dial")
             if r ~= nil then
                 r.dialConfig()
             end
@@ -265,7 +265,7 @@ M.list = {
     -- "andymass/vim-matchup",
     -- keys = "%",
     -- config = function()
-    -- vim.api.nvim_set_hl(0, "OffScreenPopup", { fg = "#fe8019", bg = "#3c3836", italic = true })
+    -- api.nvim_set_hl(0, "OffScreenPopup", { fg = "#fe8019", bg = "#3c3836", italic = true })
     -- vim.g.matchup_matchparen_offscreen = {
     -- method = "popup",
     -- highlight = "OffScreenPopup",
@@ -287,12 +287,12 @@ M.list = {
 
             -- 交换
             -- sx{motion}，按两次即可交换，支持 .
-            keymap("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>")
+            Keymap("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>")
 
             -- 替换
             -- s{motion} 先按s，然后按文本对象就直接替换为默认寄存器里的内容
-            keymap("n", "s", "<cmd>lua require('substitute').operator()<cr>")
-            keymap("x", "s", "<cmd>lua require('substitute').visual()<cr>")
+            Keymap("n", "s", "<cmd>lua require('substitute').operator()<cr>")
+            Keymap("x", "s", "<cmd>lua require('substitute').visual()<cr>")
         end,
     },
 
