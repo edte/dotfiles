@@ -1,3 +1,13 @@
 build
-# *.userdb
+*.userdb
 trash
+english.userdb
+zrm2000.userdb
+extended.userdb
+installation.yaml
+user.yaml
+sync
+/rime.wiki/
+/test/
+/*.userdb/
+.DS_Store
