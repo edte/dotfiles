@@ -11,3 +11,4 @@ sync
 /test/
 /*.userdb/
 .DS_Store
+user.yaml
