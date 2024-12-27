@@ -20,9 +20,8 @@
 
 
 default.yaml 设置输入法、如何切换输入法、翻页等
-double_pinyin_flypy.custom.yaml 双拼方案，
-squirrel.yaml 鼠须管 (Mac 版本) 设置哪些软件默认英文输入，输入法皮肤等
-weasel.yaml 小狼毫 (Win 版本) 设置哪些软件默认英文输入，输入法皮肤等
+squirrel.custom.yaml 鼠须管 (Mac 版本) 设置哪些软件默认英文输入，输入法皮肤等
+weasel.custom.yaml 小狼毫 (Win 版本) 设置哪些软件默认英文输入，输入法皮肤等
 custom_phrase.txt 设置快捷输入，修改完成后要重新部署才能生效
 
 

@@ -1,4 +1,5 @@
 # 发行版设定
+# weasel.custom.yaml 小狼毫 (Win 版本) 设置哪些软件默认英文输入，输入法皮肤等
 
 customization:
   distribution_code_name: Weasel

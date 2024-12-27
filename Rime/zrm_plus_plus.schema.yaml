@@ -77,8 +77,8 @@ custom_phrase:
   dictionary: ""
   user_dict: custom_phrase
   db_class: stabledb
-  enable_completion: false
-  enable_sentence: false
+  enable_completion: true
+  enable_sentence: true
   initial_quality: 1
 
 english:
@@ -89,7 +89,7 @@ english:
 
 zrm2000:
   dictionary: zrm2000
-  enable_sentence: false
+  enable_sentence: true
   max_phrase_length: 8
 
 # emoji 支持

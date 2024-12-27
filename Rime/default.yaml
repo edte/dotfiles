@@ -1,4 +1,5 @@
 # 全局配置
+# default.yaml 设置输入法、如何切换输入法、翻页等
 
 # Rime default settings
 # encoding: utf-8

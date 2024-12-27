@@ -1,5 +1,7 @@
 # 自定义短语
 # 虽然文本码表编辑较为方便，但不适合导入大量条目
+# custom_phrase.txt 设置快捷输入，修改完成后要重新部署才能生效
+
 
 # 各字段用 tab 分隔
 # 顺序为：文字 编码 权重（可省略）
@@ -92,4 +94,4 @@ YouTube	youtube
 ZeroTier	zerotier
 又双叒叕	yyy
 又双叒叕	yzyzyz
-星画 xyhw
+星画	xyhw	9

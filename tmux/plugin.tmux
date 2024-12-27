@@ -10,5 +10,4 @@ set -g @plugin 'edte/tmux-fzf'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
-
 run -b '~/.tmux/plugins/tpm/tpm'

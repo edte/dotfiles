@@ -1,5 +1,6 @@
 # ~/Library/Rime/squirrel.custom.yaml
 # 外观设置
+# squirrel.custom.yaml 鼠须管 (Mac 版本) 设置哪些软件默认英文输入，输入法皮肤等
 
 patch:
   style:
