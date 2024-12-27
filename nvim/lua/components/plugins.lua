@@ -111,11 +111,11 @@ M.list = {
     -- 	end,
     -- },
 
-    {
-        "3rd/image.nvim",
-        ft = "markdown", -- If you decide to lazy-load anyway
-        opts = {}
-    },
+    -- {
+    --     "3rd/image.nvim",
+    --     ft = "markdown", -- If you decide to lazy-load anyway
+    --     opts = {}
+    -- },
 
     -- 一些文件用了x权限，忘记用sudo打开但是又编辑过文件了，用这个插件可以保存，或者直接打开新的文件
     -- 比如 /etc/hosts 文件

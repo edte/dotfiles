@@ -11,3 +11,5 @@ source $HOME/dotfiles/zsh/init.zsh
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
