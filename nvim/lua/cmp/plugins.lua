@@ -197,12 +197,14 @@ M.list = {
         event = { "InsertEnter *.lua" },
     },
 
-    -- TabNine ai 补全
+
     {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
+        "yioneko/nvim-cmp",
+        branch = "perf",
+        config = function()
+            require("cmp.cmp").cmpConfig()
+        end,
         event = { "InsertEnter" },
-        -- ft = { "lua", "go", "cpp" },
     },
 
     -- 自定义代码片段

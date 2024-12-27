@@ -52,3 +52,8 @@ export ESCDELAY=0
 export PATH=~/.local/bin/:$PATH
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(fzf --zsh)
+

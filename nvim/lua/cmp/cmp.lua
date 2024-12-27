@@ -239,7 +239,6 @@ function M.cmpConfig()
                 compare.recently_used,
                 compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
                 -- try_require("copilot_cmp.comparators").prioritize,
-                Require("cmp_tabnine.compare"),
                 compare.offset,
                 compare.order,
                 -- compare.scopes, -- what?
@@ -252,26 +251,6 @@ function M.cmpConfig()
         },
     })
 
-    -- tabnine 设置，一个ai补全的
-    local tabnine = Require("cmp_tabnine.config")
-    if tabnine == nil then
-        return
-    end
-
-    tabnine:setup({
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-        ignored_file_types = {
-            -- default is not to ignore
-            -- uncomment to ignore in lua:
-            -- lua = true
-        },
-        show_prediction_strength = false,
-        min_percent = 0,
-    })
 
     -- git clone https://github.com/skywind3000/vim-dict nvim/
     local dict = {

@@ -5,9 +5,19 @@ set-environment -g PATH "/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin"
 #http://louiszhai.github.io/2017/09/30/tmux/#%E7%81%B5%E6%B4%BB%E7%9A%84%E9%85%8D%E7%BD%AE%E6%80%A7
 
 # tell Tmux that outside terminal supports true color
-set-option -ga terminal-overrides ',xterm-kitty:cnorm=\E[?12h\E[?25h'
-set -g default-terminal "tmux-256color"
+# set-option -ga terminal-overrides ',xterm-kitty:cnorm=\E[?12h\E[?25h'
+# set -g default-terminal "tmux-256color"
 # set-option -g default-terminal "tmux-256color"
+
+# set -g default-terminal "screen-256color"
+
+
+
+# set -g default-terminal "xterm-256color"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
+
+
+
 setw -q -g utf8 on
 setw -g mode-keys vi
 set -sg escape-time 5
@@ -58,7 +68,7 @@ setw -g window-status-current-format '#[fg=color222,bg=colour238] #W #[fg=colour
 
 set -g status-right '#[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] %m-%d 周%a %H:%M #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]'
 
-set -g default-command "reattach-to-user-namespace -l $SHELL"
+# set -g default-command "reattach-to-user-namespace -l $SHELL"
 
 set -g base-index 1      # 设置窗口的起始下标为1
 set -g pane-base-index 1 # 设置面板的起始下标为1
@@ -67,7 +77,7 @@ setw -g allow-rename off
 
 set -g history-limit 200
 # set-option -g mouse on # 等同于以上4个指令的效果
-setw -g mouse on
+# setw -g mouse on
 set-option -g prefix2 ^ # 设置一个不常用的`键作为指令前缀，按键更快些
 
 # https://github.com/3rd/image.nvim
