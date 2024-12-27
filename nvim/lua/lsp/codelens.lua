@@ -68,10 +68,10 @@ M.config = vim.deepcopy(defaults)
 function M:merge_table(tbl1, tbl2)
     local ret = {}
     for _, item in pairs(tbl1 or {}) do
-        table.insert(ret, item)
+        ret[#ret + 1] = item
     end
     for _, item in pairs(tbl2 or {}) do
-        table.insert(ret, item)
+        ret[#ret + 1] = item
     end
     return ret
 end
@@ -93,7 +93,7 @@ end
 ---@param method integer
 function M:set_buf_requesting(bufnr, method)
     if method == 0 then
-        table.insert(M.buffer_requesting, bufnr)
+        M.buffer_requesting[#M.buffer_requesting + 1] = bufnr
     else
         table.remove(M.buffer_requesting, M:is_buf_requesting(bufnr))
     end
@@ -142,13 +142,13 @@ function M.get_functions(result)
     for _, v in pairs(result or {}) do
         if vim.tbl_contains(M.config.target_symbol_kinds, v.kind) then
             if v.range and v.range.start then
-                table.insert(ret, {
+                ret[#ret + 1] = {
                     name = v.name,
                     rangeStart = v.range.start,
                     rangeEnd = v.range["end"],
                     selectionRangeStart = v.selectionRange.start,
                     selectionRangeEnd = v.selectionRange["end"],
-                })
+                }
             end
         end
 
@@ -203,10 +203,10 @@ function M.create_string(counting)
         append_with(counting.reference, cfg.sections.references)
 
         if text ~= "" then
-            table.insert(opts, { '', 'SymbolUsageRounding' })
-            table.insert(opts, { '󰌹 ', 'SymbolUsageRef' })
-            table.insert(opts, { cfg.decorator(text), "SymbolUsageContent" })
-            table.insert(opts, { '', 'SymbolUsageRounding' })
+            opts[#opts + 1] = { '', 'SymbolUsageRounding' }
+            opts[#opts + 1] = { '󰌹 ', 'SymbolUsageRef' }
+            opts[#opts + 1] = { cfg.decorator(text), "SymbolUsageContent" }
+            opts[#opts + 1] = { '', 'SymbolUsageRounding' }
             has = true
         end
     end
@@ -229,16 +229,16 @@ function M.create_string(counting)
         end
 
         if has then
-            table.insert(opts, { ' ', 'SymbolUsageRounding' })
+            opts[#opts + 1] = { ' ', 'SymbolUsageRounding' }
         end
 
         -- print(has, formatted)
 
         if formatted ~= nil then
-            table.insert(opts, { '', 'SymbolUsageRounding' })
-            table.insert(opts, { ' ', 'SymbolUsageImpl' })
-            table.insert(opts, { cfg.decorator(formatted), "SymbolUsageContent" })
-            table.insert(opts, { '', 'SymbolUsageRounding' })
+            opts[#opts + 1] = { '', 'SymbolUsageRounding' }
+            opts[#opts + 1] = { ' ', 'SymbolUsageImpl' }
+            opts[#opts + 1] = { cfg.decorator(formatted), "SymbolUsageContent" }
+            opts[#opts + 1] = { '', 'SymbolUsageRounding' }
         end
     end
 
@@ -301,7 +301,7 @@ function M.display_lines(bufnr, query_results)
             M.normalize_rangeStart_character(bufnr, query.rangeStart)
 
             local vline = { { string.rep(" ", query.rangeStart.character) .. display_str, "LspLens" } }
-            table.insert(virt_lines, vline)
+            virt_lines[#virt_lines + 1] = vline
 
             local function h(name) return api.nvim_get_hl(0, { name = name }) end
             api.nvim_set_hl(0, 'SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
@@ -348,7 +348,7 @@ function M.get_recent_editor(start_row, end_row, callback)
     }, function(_, _)
         local authors_arr = {}
         for author_name, _ in pairs(authors) do
-            table.insert(authors_arr, author_name)
+            authors_arr[#authors_arr + 1] = author_name
         end
         callback(most_recent_editor, authors_arr)
     end)
@@ -385,7 +385,7 @@ function M.do_request(symbols)
     local finished = {}
 
     for idx, function_info in pairs(functions or {}) do
-        table.insert(finished, { false, false, false, false })
+        finished[#finished + 1] = { false, false, false, false }
 
         local params = function_info.query_params
         local counting = {}

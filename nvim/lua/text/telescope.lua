@@ -17,10 +17,10 @@ M.config = function()
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
 
     -- I want to search in hidden/dot files.
-    table.insert(vimgrep_arguments, "--hidden")
+    vimgrep_arguments[#vimgrep_arguments + 1] = "--hidden"
     -- I don't want to search in the `.git` directory.
-    table.insert(vimgrep_arguments, "--glob")
-    table.insert(vimgrep_arguments, "!**/.git/*")
+    vimgrep_arguments[#vimgrep_arguments + 1] = "--glob"
+    vimgrep_arguments[#vimgrep_arguments + 1] = "!**/.git/*"
 
     telescope.setup({
         theme = "center",

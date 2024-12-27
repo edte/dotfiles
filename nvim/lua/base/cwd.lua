@@ -88,7 +88,7 @@ function M.find_pattern_root()
                 return
             end
 
-            table.insert(curr_dir_cache, file)
+            curr_dir_cache[#curr_dir_cache + 1] = file
         end
     end
 

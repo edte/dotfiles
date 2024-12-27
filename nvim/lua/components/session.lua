@@ -349,7 +349,7 @@ MiniSessions.select = function(action, opts)
     -- Ensure consistent order of items
     local detected = {}
     for _, session in pairs(MiniSessions.detected) do
-        table.insert(detected, session)
+        detected[#detected + 1] = session
     end
     local sort_fun = function(a, b)
         -- Put local session first, others - increasing alphabetically
@@ -572,7 +572,7 @@ H.echo = function(msg, is_important)
     local chunks, tot_width = {}, 0
     for _, ch in ipairs(msg) do
         local new_ch = { vim.fn.strcharpart(ch[1], 0, max_width - tot_width), ch[2] }
-        table.insert(chunks, new_ch)
+        chunks[#chunks + 1] = new_ch
         tot_width = tot_width + vim.fn.strdisplaywidth(new_ch[1])
         if tot_width >= max_width then break end
     end

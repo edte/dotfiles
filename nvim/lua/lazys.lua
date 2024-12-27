@@ -39,7 +39,7 @@ for _, module_name in ipairs(modules) do
     end
     -- 遍历模块中的每个插件
     for _, plugin in ipairs(module.list) do
-        table.insert(plugins_list, plugin)
+        plugins_list[#plugins_list + 1] = plugin
     end
 end
 

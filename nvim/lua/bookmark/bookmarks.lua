@@ -74,14 +74,12 @@ function M.fill_border_data(buf, width, height, title)
         .. string.rep(" ", width)
         .. M.window.border_chars.MID_VERTICAL
     for _ = 1, height do
-        table.insert(border_lines, middle_line)
+        border_lines[#border_lines + 1] = middle_line
     end
-    table.insert(
-        border_lines,
-        M.window.border_chars.BOTTOM_LEFT
-        .. string.rep(M.window.border_chars.MID_HORIZONTAL, width)
-        .. M.window.border_chars.BOTTOM_RIGHT
-    )
+
+    border_lines[#border_lines + 1] = M.window.border_chars.BOTTOM_LEFT ..
+        string.rep(M.window.border_chars.MID_HORIZONTAL, width) .. M.window.border_chars.BOTTOM_RIGHT
+
 
     Api.nvim_buf_set_lines(buf, 0, -1, false, border_lines)
 end
@@ -200,7 +198,10 @@ local focus_manager = (function()
         set = function(type, win) wins[type] = win end,
         register = function(type)
             local exist = vim.tbl_contains(win_types, type)
-            if not exist then table.insert(win_types, type) end
+            if not exist
+            then
+                win_types[#win_types + 1] = type
+            end
         end,
     }
 end)()
@@ -416,7 +417,7 @@ function M.jump_bookmark()
 
     local list = {}
     for _, bookmark in pairs(bookmarks) do
-        table.insert(list, bookmark.description)
+        list[#list + 1] = bookmark.description
     end
 
 

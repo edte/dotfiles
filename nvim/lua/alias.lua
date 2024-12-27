@@ -108,7 +108,7 @@ end
 function string:split_b(sep)
     local cuts = {}
     for v in string.gmatch(self, "[^'" .. sep .. "']+") do
-        table.insert(cuts, v)
+        cuts[#cuts + 1] = v
     end
 
     return cuts

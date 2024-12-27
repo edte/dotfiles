@@ -1,4 +1,4 @@
-icons = {
+local icons = {
     kind = {
         Array = "",
         Boolean = "",

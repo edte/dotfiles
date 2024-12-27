@@ -196,7 +196,7 @@ Cmd("silent!")
 
 Keymap("n", "gw", "<cmd>FzfLua grep_cword<CR>")
 Keymap("n", "gW", "<cmd>FzfLua grep_cWORD<CR>")
--- keymap("n", "gr", "<cmd>FzfLua resume<CR>")
+Keymap("n", "<c-r>", "<cmd>FzfLua resume<CR>")
 
 
 vim.keymap.set('n', 'C', '"_C', { noremap = true })

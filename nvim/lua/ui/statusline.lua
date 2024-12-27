@@ -33,7 +33,7 @@ local function get_lsp()
 
     local c = {}
     for _, client in pairs(clients) do
-        table.insert(c, client.name)
+        c[#c + 1] = client.name
     end
     return "[" .. table.concat(c, ",") .. "]"
 end

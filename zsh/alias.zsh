@@ -2,6 +2,13 @@
 #file
 alias c=clear
 alias cl=clear
+alias clr=clear
+alias clea=clear
+alias cleawr=clear
+alias cleasr=clear
+alias cle=clear
+alias clewa=clear
+alias clera=clear
 alias l=lsd
 alias ls=lsd
 alias ll="ls -l"

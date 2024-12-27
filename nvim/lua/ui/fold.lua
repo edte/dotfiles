@@ -136,11 +136,11 @@ M.config = function(_, opts)
             local chunkText = chunk[1]
             local chunkWidth = vim.fn.strdisplaywidth(chunkText)
             if targetWidth > curWidth + chunkWidth then
-                table.insert(newVirtText, chunk)
+                newVirtText[#newVirtText + 1] = chunk
             else
                 chunkText = truncate(chunkText, targetWidth - curWidth)
                 local hlGroup = chunk[2]
-                table.insert(newVirtText, { chunkText, hlGroup })
+                newVirtText[#newVirtText + 1] = { chunkText, hlGroup }
                 chunkWidth = vim.fn.strdisplaywidth(chunkText)
                 -- str width returned from truncate() may less than 2nd argument, need padding
                 if curWidth + chunkWidth < targetWidth then
@@ -152,7 +152,7 @@ M.config = function(_, opts)
         end
         local rAlignAppndx = math.max(math.min(Api.nvim_win_get_width(0), width - 1) - curWidth - sufWidth, 0)
         suffix = (" "):rep(rAlignAppndx) .. suffix
-        table.insert(newVirtText, { suffix, "MoreMsg" })
+        newVirtText[#newVirtText + 1] = { suffix, "MoreMsg" }
         return newVirtText
     end
     opts["fold_virt_text_handler"] = handler

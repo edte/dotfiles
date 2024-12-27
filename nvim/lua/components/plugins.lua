@@ -160,7 +160,7 @@ M.list = {
             })
             Api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
-                    a, _ = vim.fn.getcwd():gsub('/', '_')
+                    local a, _ = vim.fn.getcwd():gsub('/', '_')
                     MiniSessions.write(a)
                 end,
             })

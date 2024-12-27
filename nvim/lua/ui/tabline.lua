@@ -205,7 +205,7 @@ H.list_tabs = function()
             tab["tabfunc"] = H.construct_tabfunc(buf_id)
             tab["label"], tab["label_extender"] = H.construct_label_data(buf_id)
 
-            table.insert(tabs, tab)
+            tabs[#tabs + 1] = tab
         end
     end
 
@@ -365,7 +365,7 @@ H.get_nonunique_tab_ids = function()
         if label_tab_ids[label] == nil then
             label_tab_ids[label] = { i }
         else
-            table.insert(label_tab_ids[label], i)
+            (label_tab_ids[label])[#(label_tab_ids[label]) + 1] = i
         end
     end
 
@@ -446,7 +446,7 @@ H.truncate_tabs_display = function(display_interval)
             -- Take desired amount of characters starting from `n_trunc_left`
             tab.label = vim.fn.strcharpart(tab.label, n_trunc_left, tab.label_width - n_trunc_right)
 
-            table.insert(tabs, tab)
+            tabs[#tabs + 1] = tab
         end
     end
 
@@ -458,8 +458,7 @@ H.concat_tabs = function()
     -- NOTE: it is assumed that all padding is incorporated into labels
     local t = {}
     for _, tab in ipairs(H.tabs) do
-        -- Escape '%' in labels
-        table.insert(t, ("%s%s%s"):format(tab.hl, tab.tabfunc, tab.label:gsub("%%", "%%%%")))
+        t[#t + 1] = ("%s%s%s"):format(tab.hl, tab.tabfunc, tab.label:gsub("%%", "%%%%"))
     end
 
     -- Usage of `%X` makes filled space to the right 'non-clickable'

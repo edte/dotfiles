@@ -45,7 +45,7 @@ M.find_types_ts = function(parser)
     for id, node in query:iter_captures(root, 0) do
         local type = query.captures[id]
         local line, character = node:range()
-        table.insert(nodes, { line = line, character = character, type = type })
+        nodes[#nodes + 1] = { line = line, character = character, type = type }
     end
 
     return nodes
@@ -63,11 +63,11 @@ M.find_types_patterns = function(bufnr)
     for i, line in ipairs(lines) do
         local type_prefix = string.match(line, interface_pattern)
         if type_prefix then
-            table.insert(nodes, { line = i - 1, character = string.len(type_prefix), type = "interface" })
+            nodes[#nodes + 1] = { line = i - 1, character = string.len(type_prefix), type = "interface" }
         else
             type_prefix = string.match(line, struct_pattern)
             if type_prefix then
-                table.insert(nodes, { line = i - 1, character = string.len(type_prefix), type = "struct" })
+                nodes[#nodes + 1] = { line = i - 1, character = string.len(type_prefix), type = "struct" }
             end
         end
     end
@@ -145,7 +145,7 @@ M.implementation_callback = function(fcache, result, publish_names)
             local impl_text = data[impl_line + 1]
             local name = package_name .. impl_text:sub(impl_start + 1, impl_end)
 
-            table.insert(names, name)
+            names[#names + 1] = name
         end
     end
     publish_names(names)

@@ -53,7 +53,7 @@ function Mark:register_mark(mark, line, col, bufnr)
     end
 
     if buffer.marks_by_line[line] then
-        table.insert(buffer.marks_by_line[line], mark)
+        (buffer.marks_by_line[line])[#(buffer.marks_by_line[line]) + 1] = mark
     else
         buffer.marks_by_line[line] = { mark }
     end
