@@ -145,7 +145,7 @@ M.list = {
 
         "hrsh7th/nvim-cmp",
         config = function()
-            require("cmp.cmp").cmpConfig()
+            require("cmp.cmp").setup()
         end,
         event = { "InsertEnter" },
     },
@@ -197,15 +197,6 @@ M.list = {
         event = { "InsertEnter *.lua" },
     },
 
-
-    {
-        "yioneko/nvim-cmp",
-        branch = "perf",
-        config = function()
-            require("cmp.cmp").cmpConfig()
-        end,
-        event = { "InsertEnter" },
-    },
 
     -- 自定义代码片段
     {

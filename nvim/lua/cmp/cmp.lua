@@ -40,7 +40,7 @@ local function border(hl_name)
     }
 end
 
-function M.cmpConfig()
+function M.setup()
     local cmp, compare = Require("cmp"), Require("cmp.config.compare")
     if cmp == nil then
         return
