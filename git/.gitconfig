@@ -3,9 +3,10 @@
 
 [core]
     pager = delta
+    difftool = true
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta 
 
 [delta]
     navigate = true    # use n and N to move between diff sections
@@ -18,9 +19,29 @@
 
 [diff]
     colorMoved = default
+
+; [diff]
+    ; external = difft
+    ; tool = difftastic
+
 [log]
 	date = iso-strict-local
 [credential]
 	helper = store
 [submodule]
 	recurse = true
+
+[difftool]
+    # Run the difftool immediately, don't ask 'are you sure' each time.
+    prompt = false
+
+
+[alias]
+    # `git log` with patches shown with difftastic.
+    dl = -c diff.external=difft log -p --ext-diff
+
+    # Show the most recent commit with difftastic.
+    ds = -c diff.external=difft show --ext-diff
+
+    # `git diff` with difftastic.
+    dft = -c diff.external=difft diff
