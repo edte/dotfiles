@@ -51,3 +51,15 @@ Autocmd('BufReadPost', {
     pattern = '*',
     command = 'silent! normal! g`"zv'
 })
+
+
+-- Append backup files with timestamp
+Autocmd("BufWritePre", {
+    desc = 'Append backup files with timestamp',
+    group = GroupId('timestamp_backupext', { clear = true }),
+    pattern = '*',
+    callback = function()
+        local extension = '-' .. GetPath() .. vim.fn.strftime("%Y-%m-%d-%H%M%S")
+        vim.o.backupext = extension
+    end,
+})

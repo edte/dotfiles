@@ -96,7 +96,7 @@ MiniSessions.config = {
 
     -- Directory where global sessions are stored (use `''` to disable)
     --minidoc_replace_start directory = --<"session" subdir of user data directory from |stdpath()|>,
-    directory = vim.fn.stdpath('data') .. '/session',
+    directory = NEOVIM_SESSION_DATA,
     --minidoc_replace_end
 
     -- File for local session (use `''` to disable)

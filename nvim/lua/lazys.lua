@@ -44,7 +44,7 @@ for _, module_name in ipairs(modules) do
 end
 
 require("lazy").setup({
-    root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
+    root = NEOVIM_LAZY_DATA, -- directory where plugins will be installed
     defaults = {
         -- Set this to `true` to have all your plugins lazy-loaded by default.
         -- Only do this if you know what you are doing, as it can lead to unexpected behavior.

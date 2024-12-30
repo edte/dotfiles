@@ -136,6 +136,9 @@ M.list = {
     },
 
 
+    -- 自动保存会话
+    -- 保存目录是：（不知道哪里配置的）
+    -- /Users/edte/.local/state/nvim/view
     {
         name = "sessions",
         dir = "components.sessions",
@@ -146,22 +149,20 @@ M.list = {
             Api.nvim_create_autocmd("VimEnter", {
                 callback = function()
                     if vim.fn.argc(-1) == 0 then
-                        local a, _ = vim.fn.getcwd():gsub('/', '_')
                         -- local b = MiniSessions.config.directory .. a
                         --
                         -- if file_exists(b) then
                         --     return
                         -- end
 
-                        MiniSessions.read(a)
+                        MiniSessions.read(GetPath())
                     end
                 end,
                 nested = true,
             })
             Api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
-                    local a, _ = vim.fn.getcwd():gsub('/', '_')
-                    MiniSessions.write(a)
+                    MiniSessions.write(GetPath())
                 end,
             })
         end

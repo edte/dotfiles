@@ -1,7 +1,14 @@
 -- utils alias
 
 ------------------------------------------------- var --------------------------------------------------
-_G.NEOVIM_CONFIG_PATH = vim.call("stdpath", "config")
+_G.NEOVIM_CONFIG_PATH = vim.fn.stdpath('config')
+_G.NEOVIM_SESSION_DATA = vim.fn.stdpath('data') .. '/session'
+_G.NEOVIM_BOOKMARKS_DATA = vim.fn.stdpath("data") .. "/bookmarks"
+_G.NEOVIM_LAZY_DATA = vim.fn.stdpath("data") .. "/lazy"
+_G.NEOVIM_UNDO_DATA = vim.fn.stdpath("state") .. "/undo"
+_G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"
+_G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"
+
 _G.json = require "utils.json"
 _G.Api = vim.api
 _G.Command = vim.api.nvim_create_user_command
@@ -180,4 +187,9 @@ end
 function file_exists(name)
     local f = io.open(name, "r")
     return f ~= nil and io.close(f)
+end
+
+function GetPath()
+    local dir, _ = vim.fn.getcwd():gsub('/', '_')
+    return dir
 end

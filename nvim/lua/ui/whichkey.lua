@@ -309,4 +309,12 @@ wk.add({
         nowait = true,
         remap = false,
     },
+    {
+        "<leader>u",
+        "<cmd>UndotreeToggle<CR>",
+        desc = "undo",
+        nowait = true,
+        remap = false,
+    },
+
 })

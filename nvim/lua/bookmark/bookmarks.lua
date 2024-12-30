@@ -1,5 +1,5 @@
 local M = {
-    storage_dir = "", -- default vim.fn.stdpath("data").."/bookmarks",
+    storage_dir = "",
 
     data = {
         marks = {},
@@ -545,7 +545,7 @@ end
 -- 从磁盘文件恢复书签
 function M.load_bookmarks()
     -- print("load bookmarks")
-    M.storage_dir = vim.fn.stdpath("data") .. "/bookmarks"
+    M.storage_dir = NEOVIM_BOOKMARKS_DATA
 
     if not vim.loop.fs_stat(M.storage_dir) then
         assert(os.execute("mkdir " .. M.storage_dir))
