@@ -23,6 +23,46 @@ M.dialConfig = function()
                 word = false,
                 cyclic = true,
             }),
+            augend.constant.new({
+                elements = { "yes", "no" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "Yes", "No" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "YES", "NO" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "open", "close" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "light", "dark" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "width", "height" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "first", "last" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "top", "right", "bottom", "left", "center" },
+                word = false,
+                cyclic = true,
+            }),
 
             augend.integer.alias.decimal,
             augend.integer.alias.decimal_int,
