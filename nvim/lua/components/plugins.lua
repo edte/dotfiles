@@ -48,7 +48,7 @@ M.list = {
     -- 	opts = {},
     -- 	ft = { "go" },
     -- 	config = function()
-    -- 		local r = try_require("components.cron")
+    -- 		local r = Require("components.cron")
     -- 		if r ~= nil then
     -- 			r.cronConfig()
     -- 		end

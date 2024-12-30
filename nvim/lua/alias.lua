@@ -1,13 +1,16 @@
+-- utils alias
+
 ------------------------------------------------- var --------------------------------------------------
 _G.NEOVIM_CONFIG_PATH = vim.call("stdpath", "config")
-_G.json = require "json"
+_G.json = require "utils.json"
 _G.Api = vim.api
 _G.Command = vim.api.nvim_create_user_command
 _G.Cmd = vim.cmd
 _G.Autocmd = vim.api.nvim_create_autocmd
 _G.GroupId = vim.api.nvim_create_augroup
 _G.Del_cmd = vim.api.nvim_del_user_command
-_G.icon = require("icons")
+_G.icon = require("utils.icons")
+_G.icons = require("utils.icons")
 
 -- 使用 pcall 和 require 尝试加载包
 function Require(package_name)

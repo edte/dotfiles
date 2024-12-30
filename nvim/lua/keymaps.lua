@@ -1,6 +1,6 @@
--- --==========================================luvar_vim keybinding settings===============================================================
--- 取消lunar的一些默认快捷键
+-- --========================================== keybinding settings===============================================================
 
+-- fuck default keymaps
 if vim.fn.has("nvim-0.11") == 1 then
     vim.keymap.del("", "grr", {})
     vim.keymap.del("", "gra", {})
@@ -38,7 +38,6 @@ Keymap('i', 'jk', '<Esc><right>')
 
 -- 按 esc 消除上一次的高亮
 Keymap("n", "<esc>", "<cmd>noh<cr>")
-
 
 vim.keymap.set("n", "<esc>", function()
     local function isModuleAvailable(name)

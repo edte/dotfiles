@@ -246,6 +246,14 @@ M.list = {
     {
         "tpope/vim-endwise",
     },
+
+    {
+        "tzachar/cmp-tabnine",
+        build = "./install.sh",
+        event = { "InsertEnter" },
+        -- ft = { "lua", "go", "cpp" },
+    },
+
 }
 
 return M

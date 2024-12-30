@@ -213,7 +213,7 @@ function M.cmpConfig()
                 -- cmp.config.compare.offset, -- 偏移量较小的条目将排名较高
                 -- cmp.config.compare.exact,  -- 具有精确== true的条目将排名更高
                 -- cmp.config.compare.score,  -- 得分越高的作品排名越高
-                -- try_require "cmp-under-comparator".under,
+                -- Require "cmp-under-comparator".under,
                 -- cmp.config.compare.kind,  -- “kind”序数值较小的整体将排名较高
                 -- cmp.config.compare.sort_text, -- 条目将按照 sortText 的字典顺序进行排名
                 -- cmp.config.compare.length,  --条目，与较短的标签的长度将位居高
@@ -222,11 +222,11 @@ function M.cmpConfig()
                 -- cmp.locality       --地点:项目与更高的地方(即，言语更接近于光标)将排名较高
                 -- compare.scopes  -- 在更近的作用域中定义的条目排名会更高（例如，优先选择局部变量，而不是全局变量
 
-                -- -- try_require("cmp.config.compare").sort_text, -- 这个放第一个, 其他的随意
+                -- -- Require("cmp.config.compare").sort_text, -- 这个放第一个, 其他的随意
                 -- compare.exact,         -- 精准匹配
                 -- compare.recently_used, -- 最近用过的靠前
                 -- compare.kind,
-                -- try_require("clangd_extensions.cmp_scores"),
+                -- Require("clangd_extensions.cmp_scores"),
                 -- compare.score, -- 得分高靠前
                 -- compare.order,
                 -- compare.offset,
@@ -234,11 +234,12 @@ function M.cmpConfig()
                 -- compare.sort_test,
 
                 -- compare.score_offset, -- not good at all
-                -- try_require('cmp_ai.compare'),
+                -- Require('cmp_ai.compare'),
                 compare.locality,
                 compare.recently_used,
                 compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-                -- try_require("copilot_cmp.comparators").prioritize,
+                -- Require("copilot_cmp.comparators").prioritize,
+                Require("cmp_tabnine.compare"),
                 compare.offset,
                 compare.order,
                 -- compare.scopes, -- what?
@@ -251,6 +252,26 @@ function M.cmpConfig()
         },
     })
 
+
+    -- tabnine 设置，一个ai补全的
+    local tabnine = Require("cmp_tabnine.config")
+    if tabnine == nil then
+        return
+    end
+    tabnine:setup({
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+        run_on_every_keystroke = true,
+        snippet_placeholder = "..",
+        ignored_file_types = {
+            -- default is not to ignore
+            -- uncomment to ignore in lua:
+            -- lua = true
+        },
+        show_prediction_strength = false,
+        min_percent = 0,
+    })
 
     -- git clone https://github.com/skywind3000/vim-dict nvim/
     local dict = {

@@ -1,5 +1,4 @@
 local statusline_augroup = GroupId("native_statusline", { clear = true })
-local icons = require("icons")
 
 local function getProjectName()
     if vim.env.TMUX ~= nil then
