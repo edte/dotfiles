@@ -115,7 +115,7 @@ MiniSessions.config = {
     },
 
     -- Whether to print session path after action
-    verbose = { read = false, write = true, delete = true },
+    verbose = { read = false, write = false, delete = false },
 }
 --minidoc_afterlines_end
 
