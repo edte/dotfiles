@@ -67,9 +67,9 @@ Autocmd("BufWritePre", {
         vim.o.backupext = '-' .. timestamp
         vim.o.backupdir = backup_dir
 
-        -- Limit the number of backups to 5
+        -- Limit the number of backups to 2
         -- Configurable limit for the number of backups
-        local max_backups = vim.g.max_backups or 5
+        local max_backups = vim.g.max_backups or 2
 
         local backups = vim.fn.globpath(backup_dir, filename .. '-*')
         local backup_list = vim.split(backups, '\n')
