@@ -261,17 +261,17 @@ M.list = {
     },
 
     -- vim match-up：更好的导航和突出显示匹配单词现代 matchit 和 matchparen。支持 vim 和 neovim + tree-sitter。
-    -- {
-    -- "andymass/vim-matchup",
-    -- keys = "%",
-    -- config = function()
-    -- api.nvim_set_hl(0, "OffScreenPopup", { fg = "#fe8019", bg = "#3c3836", italic = true })
-    -- vim.g.matchup_matchparen_offscreen = {
-    -- method = "popup",
-    -- highlight = "OffScreenPopup",
-    -- }
-    -- end,
-    -- },
+    {
+        "andymass/vim-matchup",
+        -- keys = "%",
+        config = function()
+            Api.nvim_set_hl(0, "OffScreenPopup", { fg = "#fe8019", bg = "#3c3836", italic = true })
+            vim.g.matchup_matchparen_offscreen = {
+                method = "popup",
+                highlight = "OffScreenPopup",
+            }
+        end,
+    },
 
     -- Neovim 插件引入了新的操作员动作来快速替换和交换文本。
     {
@@ -315,6 +315,13 @@ M.list = {
     {
         "tpope/vim-rsi",
         event = { "InsertEnter", "CmdlineEnter" },
+    },
+
+    -- 改进了 Neovim 快速修复的 UI 和工作流程
+    {
+        'stevearc/quicker.nvim',
+        event = "FileType qf",
+        opts = {},
     },
 
 

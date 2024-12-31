@@ -19,6 +19,37 @@ _G.Del_cmd = vim.api.nvim_del_user_command
 _G.icon = require("utils.icons")
 _G.icons = require("utils.icons")
 
+_G.project_files = function()
+    local ret = vim.fn.system("git rev-parse --show-toplevel 2> /dev/null")
+    if ret == "" then
+        require("fzf-lua").files()
+    else
+        require("fzf-lua").git_files()
+    end
+end
+
+_G.compare_to_clipboard = function()
+    local ftype = Api.nvim_eval("&filetype")
+    Cmd(string.format(
+        [[
+  execute "normal! \"xy"
+  vsplit
+  enew
+  normal! P
+  setlocal buftype=nowrite
+  set filetype=%s
+  diffthis
+  execute "normal! \<C-w>\<C-w>"
+  enew
+  set filetype=%s
+  normal! "xP
+  diffthis
+  ]],
+        ftype,
+        ftype
+    ))
+end
+
 -- 使用 pcall 和 require 尝试加载包
 function Require(package_name)
     local status, plugin = pcall(require, package_name)

@@ -69,7 +69,7 @@ M.list = {
         keys = "gc",
         config = function()
             require("neogen").setup({})
-            keymap("n", "gc", "<cmd>lua require('neogen').generate()<CR>")
+            Keymap("n", "gc", "<cmd>lua require('neogen').generate()<CR>")
         end,
     },
 
