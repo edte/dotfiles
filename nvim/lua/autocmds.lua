@@ -55,11 +55,29 @@ Autocmd('BufReadPost', {
 
 -- Append backup files with timestamp
 Autocmd("BufWritePre", {
-    desc = 'Append backup files with timestamp',
+    desc = 'Automatically backup files with timestamp and categorize by directory',
     group = GroupId('timestamp_backupext', { clear = true }),
     pattern = '*',
     callback = function()
-        local extension = '-' .. GetPath() .. vim.fn.strftime("%Y-%m-%d-%H%M%S")
-        vim.o.backupext = extension
+        local dir = vim.fn.expand('%:p:h')
+        local filename = vim.fn.expand('%:t')
+        local timestamp = vim.fn.strftime("%Y-%m-%d-%H%M%S")
+        local backup_dir = NEOVIM_BACKUP_DATA .. dir
+        vim.fn.mkdir(backup_dir, 'p')
+        vim.o.backupext = '-' .. timestamp
+        vim.o.backupdir = backup_dir
+
+        -- Limit the number of backups to 5
+        -- Configurable limit for the number of backups
+        local max_backups = vim.g.max_backups or 5
+
+        local backups = vim.fn.globpath(backup_dir, filename .. '-*')
+        local backup_list = vim.split(backups, '\n')
+        if #backup_list > max_backups then
+            table.sort(backup_list)
+            for i = 1, #backup_list - max_backups do
+                vim.fn.delete(backup_list[i])
+            end
+        end
     end,
 })
