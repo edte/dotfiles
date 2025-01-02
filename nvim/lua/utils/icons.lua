@@ -199,6 +199,9 @@ local icons = {
         Copilot = "",
         Codeium = "",
         TabNine = "",
+        Ripgrep = "",
+        Dictionary = "󰉋",
+        dictionary = "󰉋",
     }
 }
 

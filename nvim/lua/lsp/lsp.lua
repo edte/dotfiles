@@ -6,11 +6,13 @@ local lspTable = {
     {
         name = "jsonls",
         filetypes = { "json" },
+        capabilities = M.capabilities,
     },
 
     {
         name = "autotools_ls",
         filetypes = { "config", "automake", "make" },
+        capabilities = M.capabilities,
     },
 
     {
@@ -18,16 +20,19 @@ local lspTable = {
         name = "bashls",
         filetypes = { "sh", "zsh", "tmux" },
         cmd = { "bash-language-server", "start" },
+        capabilities = M.capabilities,
     },
     {
         name = "marksman",
         filetypes = { "md" },
+        capabilities = M.capabilities,
     },
 
     {
         name = "lua_ls",
         filetypes = { "lua" },
         on_attach = M.on_attach,
+        capabilities = M.capabilities,
         on_init = function(client)
             if client.workspace_folders == nil then
                 return
@@ -81,6 +86,7 @@ local lspTable = {
     {
         name = "gopls",
         filetypes = { "go", "gomod", "gosum", "gotmpl" },
+        capabilities = M.capabilities,
         root_dir = function(fname)
             local gopath = os.getenv("GOPATH")
             if gopath == nil then
@@ -121,6 +127,7 @@ local lspTable = {
     -- ColumnLimit: 120
     {
         name = "clangd",
+        capabilities = M.capabilities,
         cmd = {
             "clangd",
             unpack({
@@ -217,6 +224,10 @@ M.on_attach = function(client, buf)
     if vim.fn.has("nvim-0.10") == 1 and client.supports_method("textDocument/inlayHint", { bufnr = buf }) then
         vim.lsp.inlay_hint.enable(true, { bufnr = buf })
     end
+end
+
+M.capabilities = function()
+    return require('blink.cmp').get_lsp_capabilities()
 end
 
 

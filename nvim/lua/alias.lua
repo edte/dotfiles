@@ -69,13 +69,13 @@ function Setup(package_name, options)
 
     if not success then
         -- 如果加载失败，打印错误信息
-        print("Error loading package " .. package_name .. ": " .. package)
+        vim.notify("Error loading package " .. package_name .. ": " .. package, vim.log.levels.ERROR)
         return
     end
 
     -- 检查包是否具有 'setup' 函数
     if type(package.setup) ~= "function" then
-        print("Error: package " .. package_name .. " does not have a 'setup' function")
+        vim.notify("Error: package " .. package_name .. " does not have a 'setup' function", vim.log.levels.ERROR)
         return
     end
 

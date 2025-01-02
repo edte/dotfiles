@@ -1,45 +1,5 @@
 local M = {}
 
-local cmp_style = "default"
-
-local field_arrangement = {
-    atom = { "kind", "abbr", "menu" },
-    atom_colored = { "kind", "abbr", "menu" },
-}
-
-local formatting_style = {
-    -- default fields order i.e completion word + item.kind + item.kind icons
-    fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
-
-    format = function(_, item)
-        local icon = (true and icon.lspkind[item.kind]) or ""
-
-        if cmp_style == "atom" or cmp_style == "atom_colored" then
-            icon = " " .. icon .. " "
-            item.menu = true and "   (" .. item.kind .. ")" or ""
-            item.kind = icon
-        else
-            icon = true and (" " .. icon .. " ") or icon
-            item.kind = string.format("%s %s", icon, true and item.kind or "")
-        end
-
-        return item
-    end,
-}
-
-local function border(hl_name)
-    return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
-    }
-end
-
 function M.setup()
     local cmp, compare = Require("cmp"), Require("cmp.config.compare")
     if cmp == nil then
@@ -52,22 +12,29 @@ function M.setup()
     -- cmp 源
     cmp.setup({
         window = {
-            completion = {
-                side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
-                -- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
-                winhighlight = "Normal:CmpPmenu,FloatBorder:Pmenu,Search:None",
-                scrollbar = true,
-                -- col_offset = -3,
-                -- side_padding = 0,
-            },
-            documentation = {
-                border = border("CmpDocBorder"),
-                winhighlight = "Normal:CmpDoc",
-            },
+            documentation = cmp.config.window.bordered(),
+            completion = cmp.config.window.bordered({
+                winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+            }),
         },
-        formatting = formatting_style,
+        formatting = {
+            -- default fields order i.e completion word + item.kind + item.kind icons
+            fields = { "abbr", "kind", "menu" },
+
+            format = function(_, item)
+                local icon = (true and icon.lspkind[item.kind]) or ""
+
+                icon = true and (" " .. icon .. " ") or icon
+                item.kind = string.format("%s %s", icon, true and item.kind or "")
+
+                return item
+            end,
+        },
+
         preselect = cmp.PreselectMode.Item,
-        completion = { completeopt = "menu,menuone,select" },
+        completion = { completeopt = "menu,menuone,noinsert" },
+
+
 
         snippet = {
             expand = function(args)
@@ -123,25 +90,20 @@ function M.setup()
 
         sources = {
             {
-                name = "cmp_tabnine",
-                priority = 8,
+                name = "nvim_lsp_signature_help",
+                priority = 10,
             },
-
             {
-                name = "codeium",
+                name = "cmp_tabnine",
+                priority = 9,
+            },
+            {
+                name = "nvim_lsp",
                 priority = 8,
             },
             {
                 name = "luasnip",
                 priority = 7,
-            },
-            {
-                name = "nvim_lsp_signature_help",
-                priority = 8,
-            },
-            {
-                name = "nvim_lsp",
-                priority = 8,
             },
             {
                 name = "buffer",
@@ -150,18 +112,18 @@ function M.setup()
             {
                 name = "dictionary",
                 priority = 6,
-                keyword_length = 6,
-                keyword_pattern = [[\w\+]],
+                keyword_length = 2,
+                -- keyword_pattern = [[\w\+]],
             },
 
             {
-                priority = 6,
                 name = "treesitter",
+                priority = 6,
             },
 
             {
-                priority = 6,
                 name = "go_pkgs",
+                priority = 6,
             },
 
             {
@@ -184,15 +146,6 @@ function M.setup()
                 name = "async_path",
                 priority = 4,
             },
-            {
-                name = "emoji",
-                priority = 4,
-            },
-            {
-                name = "calc",
-                priority = 4,
-            },
-
             {
                 name = "rg",
                 keyword_length = 5,
@@ -250,55 +203,6 @@ function M.setup()
                 -- require("cmp-under-comparator").under,
             },
         },
-    })
-
-
-    -- tabnine 设置，一个ai补全的
-    local tabnine = Require("cmp_tabnine.config")
-    if tabnine == nil then
-        return
-    end
-    tabnine:setup({
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-        ignored_file_types = {
-            -- default is not to ignore
-            -- uncomment to ignore in lua:
-            -- lua = true
-        },
-        show_prediction_strength = false,
-        min_percent = 0,
-    })
-
-    -- git clone https://github.com/skywind3000/vim-dict nvim/
-    local dict = {
-        ["*"] = { "/usr/share/dict/words" },
-        go = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/go.dict" },
-        sh = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/sh.dict" },
-        lua = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/lua.dict" },
-        html = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/html.dict" },
-        css = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/css.dict" },
-        cpp = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/cpp.dict" },
-        cmake = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/cmake.dict" },
-        c = { NEOVIM_CONFIG_PATH .. "/lua/cmp/dict/c.dict" },
-    }
-
-    Autocmd("FileType", {
-        pattern = "*",
-        callback = function(ev)
-            dict = Require("cmp_dictionary")
-            if dict == nil then
-                return
-            end
-            dict.setup({
-                paths = dict[ev.match] or dict["*"],
-                exact_length = 4,
-                first_case_insensitive = true,
-            })
-        end,
     })
 end
 
