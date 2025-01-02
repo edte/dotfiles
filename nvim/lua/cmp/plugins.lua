@@ -180,9 +180,15 @@ M.list = {
             return vim.fn.executable("rg") == 1
         end,
     },
+
     {
-        "Snikimonkd/cmp-go-pkgs",
+        name = "cmp-go-pkgs",
+        dir = "cmp.cmp-go-pkgs",
+        virtual = true,
         event = { "InsertEnter *.go" },
+        config = function()
+            require("cmp.cmp_go_pkgs").new()
+        end
     },
 
     -- 单词补全
