@@ -18,10 +18,25 @@ function M.setup()
             }),
         },
         formatting = {
-            -- default fields order i.e completion word + item.kind + item.kind icons
             fields = { "abbr", "kind", "menu" },
 
-            format = function(_, item)
+            format = function(entry, item)
+                if entry.source.name == "dictionary" then
+                    item.kind = "Dictionary"
+                    -- item.kind_hl_group = "CmpItemKind"
+                end
+                if entry.source.name == "nvim_lsp_signature_help" then
+                    item.kind = "Signature"
+                    item.kind_hl_group = "LspKindTypeParameter"
+                end
+
+                -- if entry.source.name == "go_pkgs" then
+                --     Print(entry.source.name)
+                -- end
+
+                -- Print(entry.source.name)
+                -- Print(item.kind_hl_group)
+
                 local icon = (true and icon.lspkind[item.kind]) or ""
 
                 icon = true and (" " .. icon .. " ") or icon
@@ -33,8 +48,6 @@ function M.setup()
 
         preselect = cmp.PreselectMode.Item,
         completion = { completeopt = "menu,menuone,noinsert" },
-
-
 
         snippet = {
             expand = function(args)
@@ -113,6 +126,7 @@ function M.setup()
                 name = "dictionary",
                 priority = 6,
                 keyword_length = 2,
+                max_item_count = 5,
                 -- keyword_pattern = [[\w\+]],
             },
 
@@ -123,7 +137,7 @@ function M.setup()
 
             {
                 name = "go_pkgs",
-                priority = 6,
+                priority = 7,
             },
 
             {

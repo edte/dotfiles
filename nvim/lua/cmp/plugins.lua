@@ -4,10 +4,6 @@ M.list = {
 
     -- cmp 补全基础插件
     {
-        -- 高性能fork
-        -- "yioneko/nvim-cmp",
-        -- branch = "perf",
-
         "hrsh7th/nvim-cmp",
         config = function()
             require("cmp.cmp").setup()
@@ -48,13 +44,9 @@ M.list = {
             },
 
             {
-                name = "cmp-go-pkgs",
-                dir = "cmp.cmp-go-pkgs",
-                virtual = true,
+                "Snikimonkd/cmp-go-pkgs",
+                -- event = { "LspAttach" },
                 event = { "InsertEnter *.go" },
-                config = function()
-                    require("cmp.cmp_go_pkgs").new()
-                end
             },
 
             -- 单词补全

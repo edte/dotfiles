@@ -201,7 +201,7 @@ local icons = {
         TabNine = "",
         Ripgrep = "",
         Dictionary = "󰉋",
-        dictionary = "󰉋",
+        Signature = "",
     }
 }
 
