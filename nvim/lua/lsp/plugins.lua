@@ -10,6 +10,12 @@ M.list = {
                 m.lspConfig()
             end
         end,
+        denpendencies = {
+            {
+                "hrsh7th/cmp-nvim-lsp",
+                event = { "InsertEnter" },
+            },
+        },
     },
 
     -- go 插件

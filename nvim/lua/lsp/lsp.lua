@@ -215,9 +215,9 @@ M.lspConfig = function()
     end
 
 
-    --  -- lsp debug
+    -- lsp debug
     -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
-    -- vim.lsp.log.set_format_func(vim.inspect)
+    vim.lsp.log.set_format_func(vim.inspect)
 end
 
 M.on_attach = function(client, buf)
@@ -227,7 +227,8 @@ M.on_attach = function(client, buf)
 end
 
 M.capabilities = function()
-    return require('blink.cmp').get_lsp_capabilities()
+    return require('cmp_nvim_lsp').default_capabilities()
+    -- return require('blink.cmp').get_lsp_capabilities()
 end
 
 

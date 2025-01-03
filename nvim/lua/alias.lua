@@ -9,6 +9,7 @@ _G.NEOVIM_UNDO_DATA = vim.fn.stdpath("state") .. "/undo"
 _G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"
 _G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"
 
+_G.log = require("utils.log")
 _G.json = require "utils.json"
 _G.Api = vim.api
 _G.Command = vim.api.nvim_create_user_command
@@ -223,4 +224,38 @@ end
 function GetPath()
     local dir, _ = vim.fn.getcwd():gsub('/', '_')
     return dir
+end
+
+_G.get_function_arguments = function()
+    -- Create the params for the LSP request
+    local params = vim.lsp.util.make_position_params()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    -- Debugging information
+    print("Cursor position: row =", row, "col =", col)
+    print("Initial params: ", vim.inspect(params))
+    -- Adjust the position if the cursor is at the beginning of the line
+    if col == 0 then
+        params.position.character = 1
+    end
+    -- Debugging information
+    print("Adjusted params: ", vim.inspect(params))
+    -- -- Ensure the LSP client is attached
+    local clients = vim.lsp.get_clients()
+    if next(clients) == nil then
+        print("No LSP client attached")
+        return
+    else
+        print("LSP client attached")
+    end
+    -- -- Check if the client supports signatureHelp
+    local client = clients[1]
+    if not client.server_capabilities.signatureHelpProvider then
+        print("LSP server does not support signatureHelp")
+        return
+    else
+        print("LSP server supports signatureHelp")
+    end
+    -- Send the LSP request
+    local result = vim.lsp.buf_request_sync(0, "textDocument/signatureHelp", params, 10000)
+    print("Result: ", vim.inspect(result))
 end

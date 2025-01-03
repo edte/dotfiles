@@ -5,8 +5,8 @@ M.list = {
     -- cmp 补全基础插件
     {
         "hrsh7th/nvim-cmp",
-        config = function()
-            require("cmp.cmp").setup()
+        config = function(_, opts)
+            require("cmp.cmp").setup(opts)
         end,
         dependencies = {
             -- 下面是一堆cmp补全源
@@ -47,6 +47,10 @@ M.list = {
                 "Snikimonkd/cmp-go-pkgs",
                 -- event = { "LspAttach" },
                 event = { "InsertEnter *.go" },
+            },
+
+            {
+                "onsails/lspkind.nvim",
             },
 
             -- 单词补全
@@ -213,18 +217,18 @@ M.list = {
     --             "ray-x/cmp-treesitter",
     --             event = { "InsertEnter" },
     --         },
-    -- -- 自定义代码片段
-    -- {
-    --     "L3MON4D3/LuaSnip",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("luasnip.loaders.from_vscode").lazy_load()
-    --         require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
-    --     end,
-    --     dependencies = {
-    --         "rafamadriz/friendly-snippets",
-    --     },
-    -- },
+    --         -- 自定义代码片段
+    --         {
+    --             "L3MON4D3/LuaSnip",
+    --             event = "InsertEnter",
+    --             config = function()
+    --                 require("luasnip.loaders.from_vscode").lazy_load()
+    --                 require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
+    --             end,
+    --             dependencies = {
+    --                 "rafamadriz/friendly-snippets",
+    --             },
+    --         },
     --
     --         {
     --             "folke/lazydev.nvim",
@@ -271,7 +275,7 @@ M.list = {
     --         },
     --
     --         sources = {
-    --             default = { 'lsp', 'path', 'snippets', 'luasnip', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "treesitter", "nvim_lsp_signature_help" },
+    --             default = { 'lsp', 'path', 'snippets', 'luasnip', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "nvim_lsp_signature_help" },
     --             cmdline = {},
     --             providers = {
     --                 lsp = {
