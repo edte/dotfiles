@@ -1,90 +1,5 @@
 local M = {}
 
-
----The kind of a completion entry.
-local function getLspKind(a)
-    if a == 1 then
-        return "Text"
-    elseif a == 2 then
-        return "Method"
-    elseif a == 3 then
-        return "Function"
-    elseif a == 4 then
-        return "Constructor"
-    elseif a == 5 then
-        return "Field"
-    elseif a == 6 then
-        return "Variable"
-    elseif a == 7 then
-        return "Class"
-    elseif a == 8 then
-        return "Interface"
-    elseif a == 9 then
-        return "Module"
-    elseif a == 10 then
-        return "Property"
-    elseif a == 11 then
-        return "Unit"
-    elseif a == 12 then
-        return "Value"
-    elseif a == 13 then
-        return "Enum"
-    elseif a == 14 then
-        return "Keyword"
-    elseif a == 15 then
-        return "Snippet"
-    elseif a == 16 then
-        return "Color"
-    elseif a == 17 then
-        return "File"
-    elseif a == 18 then
-        return "Reference"
-    elseif a == 19 then
-        return "Folder"
-    elseif a == 20 then
-        return "EnumMember"
-    elseif a == 21 then
-        return "Constant"
-    elseif a == 22 then
-        return "Struct"
-    elseif a == 23 then
-        return "Event"
-    elseif a == 24 then
-        return "Operator"
-    elseif a == 25 then
-        return "TypeParameter"
-    end
-
-
-    ---| 1 # Text
-    ---| 2 # Method
-    ---| 3 # Function
-    ---| 4 # Constructor
-    ---| 5 # Field
-    ---| 6 # Variable
-    ---| 7 # Class
-    ---| 8 # Interface
-    ---| 9 # Module
-    ---| 10 # Property
-    ---| 11 # Unit
-    ---| 12 # Value
-    ---| 13 # Enum
-    ---| 14 # Keyword
-    ---| 15 # Snippet
-    ---| 16 # Color
-    ---| 17 # File
-    ---| 18 # Reference
-    ---| 19 # Folder
-    ---| 20 # EnumMember
-    ---| 21 # Constant
-    ---| 22 # Struct
-    ---| 23 # Event
-    ---| 24 # Operator
-    ---| 25 # TypeParameter
-end
-
-
-
 local expand = true
 
 local put_down_snippet = function(entry1, entry2)
@@ -103,7 +18,6 @@ local put_down_snippet = function(entry1, entry2)
     end
     return nil
 end
-
 
 local function trim_detail(detail)
     if detail then
@@ -325,15 +239,31 @@ local function lua_fmt(entry, vim_item)
     return kind
 end
 
-local function go_fmt(entry, vim_item)
-    local kind = require("lspkind").cmp_format({
-        mode = "symbol_text",
-    })(entry, vim_item)
+local function go_fmt(entry, kind)
+    -- 要比主题插件后加载，不然会被覆盖
+    Cmd('highlight CmpItemKindFunction guifg=#CB6460')
+    Cmd('highlight CmpItemKindInterface guifg=#659462')
+    Cmd('highlight CmpItemKindConstant guifg=#BD805C')
+    Cmd('highlight CmpItemKindVariable guifg=#BD805C')
+    Cmd('highlight CmpItemKindStruct guifg=#6089EF')
+    Cmd('highlight CmpItemKindClass guifg=#6089EF')
+    Cmd('highlight CmpItemKindMethod guifg=#A25553')
+    Cmd('highlight CmpItemKindField guifg=#BD805C')
+
+    -- go 中非struct的type都是class，直接把这两都弄成一个icon
+    if kind.kind == "Struct" or kind.kind == "Class" then
+        kind.kind = icon.go["Type"] or ""
+    elseif entry.source.name == "nvim_lsp_signature_help" and kind.kind == "Text" then -- 参数提醒
+        kind.kind = icon.go["TypeParameter"] or ""
+    elseif entry.source.name == "treesitter" and kind.kind == "Property" then          -- treesitter提醒
+        kind.kind = icon.go["Treesitter"] or ""
+    else
+        kind.kind = icon.go[kind.kind] or ""
+    end
+
     local strings = vim.split(kind.kind, "%s", { trimempty = true })
     local item_kind = entry:get_kind() --- @type lsp.CompletionItemKind | number
     local completion_item = entry:get_completion_item()
-
-    -- get_function_arguments()
 
     local detail = completion_item.detail
     if item_kind == 5 then -- Field
@@ -427,7 +357,6 @@ local function go_fmt(entry, vim_item)
             end
         end
 
-
         -- log.error(kind.word)
     elseif item_kind == 9 then -- Module
         if detail then
@@ -451,8 +380,14 @@ local function go_fmt(entry, vim_item)
     else
         kind.concat = kind.abbr
     end
+
     kind.kind = " " .. (strings[1] or "") .. " "
     kind.menu = ""
+
+
+    -- log.error(entry.source.name, kind)
+
+
     return kind
 end
 
@@ -489,7 +424,7 @@ function M.setup(opts)
             fields = { "kind", "abbr" },
 
             format = function(entry, cmp_item)
-                log.error(cmp_item)
+                -- log.error(cmp_item)
 
                 local function commom_format(e, item)
                     local kind = require("lspkind").cmp_format({
@@ -514,33 +449,6 @@ function M.setup(opts)
                 end
             end,
 
-
-            -- format = function(entry, item)
-            --     if entry.source.name == "dictionary" then
-            --         item.kind = "Dictionary"
-            --         -- item.kind_hl_group = "CmpItemKind"
-            --     end
-            --     if entry.source.name == "nvim_lsp_signature_help" then
-            --         item.kind = "Signature"
-            --         item.kind_hl_group = "LspKindTypeParameter"
-            --     end
-            --
-            --     -- if entry.source.name == "go_pkgs" then
-            --     --     Print(entry.source.name)
-            --     -- end
-            --
-            --     -- Print(entry.source.name)
-            --     -- Print(item.kind_hl_group)
-            --
-            --     local icon = (true and icon.lspkind[item.kind]) or ""
-            --
-            --     icon = true and (" " .. icon .. " ") or icon
-            --     item.kind = string.format("%s %s", icon, true and item.kind or "")
-            --
-            --     return item
-            -- end,
-
-
         },
 
         preselect = cmp.PreselectMode.Item,
@@ -556,7 +464,7 @@ function M.setup(opts)
         view = {
             entries = { name = "custom", selection_order = "near_cursor" },
             docs = {
-                -- auto_open = false,
+                auto_open = false,
             },
         },
 
@@ -604,29 +512,29 @@ function M.setup(opts)
             end),
             ["<C-Space>"] = cmp.mapping.complete(),
             ["<C-e>"] = cmp.mapping.close(),
-            ["<down>"] = function(fallback)
-                if cmp.visible() then
-                    if cmp.core.view.custom_entries_view:is_direction_top_down() then
-                        -- cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                        cmp.select_next_item()
-                    else
-                        cmp.select_prev_item()
-                    end
-                else
-                    fallback()
-                end
-            end,
-            ["<up>"] = function(fallback)
-                if cmp.visible() then
-                    if cmp.core.view.custom_entries_view:is_direction_top_down() then
-                        cmp.select_prev_item()
-                    else
-                        cmp.select_next_item()
-                    end
-                else
-                    fallback()
-                end
-            end,
+            -- ["<down>"] = function(fallback)
+            --     if cmp.visible() then
+            --         if cmp.core.view.custom_entries_view:is_direction_top_down() then
+            --             -- cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            --             cmp.select_next_item()
+            --         else
+            --             cmp.select_prev_item()
+            --         end
+            --     else
+            --         fallback()
+            --     end
+            -- end,
+            -- ["<up>"] = function(fallback)
+            --     if cmp.visible() then
+            --         if cmp.core.view.custom_entries_view:is_direction_top_down() then
+            --             cmp.select_prev_item()
+            --         else
+            --             cmp.select_next_item()
+            --         end
+            --     else
+            --         fallback()
+            --     end
+            -- end,
 
         }),
 

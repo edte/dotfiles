@@ -18,14 +18,14 @@ M.list = {
     -- {
     --     "catppuccin/nvim",
     --     config = function()
-    --         cmd([[colorscheme catppuccin]])
+    --         Cmd([[colorscheme catppuccin]])
     --     end,
     -- },
 
     -- {
     --     "rebelot/kanagawa.nvim",
     --     config = function()
-    --         cmd([[colorscheme kanagawa]])
+    --         Cmd([[colorscheme kanagawa]])
     --     end,
     -- },
 
