@@ -4,7 +4,11 @@ M.list = {
 
     -- cmp 补全基础插件
     {
-        "hrsh7th/nvim-cmp",
+        -- "hrsh7th/nvim-cmp",
+
+        "xzbdmw/nvim-cmp",
+        commit = "a08882abe1f900c0c7f516725d74c7d84faeaa79",
+
         config = function(_, opts)
             require("cmp.cmp").setup(opts)
         end,

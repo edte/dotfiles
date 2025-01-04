@@ -396,7 +396,7 @@ local function go_fmt(entry, vim_item)
         -- 有小数点
         if last then
             if detail then
-                log.error("1", kind.abbr, detail)
+                -- log.error("1", kind.abbr, detail)
                 detail = detail:sub(5, #detail)
                 kind.abbr = string.sub(kind.abbr, 1, -2)
                 kind.abbr = kind.abbr .. detail
@@ -418,7 +418,7 @@ local function go_fmt(entry, vim_item)
                 kind.concat = "func " .. kind.abbr .. "{}"
                 kind.offset = 5
 
-                log.error("3", kind)
+                -- log.error("3", kind)
             else
                 log.error("4", kind.abbr, detail)
                 -- kind.concat = "func " .. kind.abbr .. "(){}"
@@ -427,11 +427,8 @@ local function go_fmt(entry, vim_item)
             end
         end
 
-        kind.abbr = kind.word ..
-            "()" ..
-            "################################################################################################################"
 
-        log.error(kind.word)
+        -- log.error(kind.word)
     elseif item_kind == 9 then -- Module
         if detail then
             kind.offset = 6 - #kind.abbr
@@ -456,9 +453,6 @@ local function go_fmt(entry, vim_item)
     end
     kind.kind = " " .. (strings[1] or "") .. " "
     kind.menu = ""
-    if string.len(kind.abbr) > 50 then
-        kind.abbr = kind.abbr:sub(1, 50)
-    end
     return kind
 end
 
