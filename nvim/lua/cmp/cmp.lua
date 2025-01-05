@@ -1,6 +1,49 @@
 local M = {}
 
 local expand = true
+local maxItemWidth = 90
+
+local function parseFunctionSignature(signature)
+    -- 匹配参数和返回值的模式
+    local paramPattern = "^%((.-)%)"
+    local returnPattern = "%)(%s*%b())$"
+    local mixedPattern = "^%((.-)%)%s*(.*)$"
+
+    local params, returns
+
+    -- 尝试匹配参数和返回值都在括号内的情况
+    local paramMatch = signature:match(paramPattern)
+    local returnMatch = signature:match(returnPattern)
+
+    if paramMatch then
+        params = "(" .. paramMatch .. ")"
+    end
+
+    if returnMatch then
+        returns = returnMatch
+    end
+
+    -- 如果没有匹配到返回值，尝试匹配参数在括号内，返回值在括号外的情况
+    if not returns then
+        local mixedParam, mixedReturn = signature:match(mixedPattern)
+        if mixedParam then
+            params = "(" .. mixedParam .. ")"
+        end
+        if mixedReturn then
+            returns = mixedReturn
+        end
+    end
+
+    if params == nil then
+        params = "()"
+    end
+
+    if returns == nil then
+        returns = ""
+    end
+
+    return params, returns
+end
 
 local put_down_snippet = function(entry1, entry2)
     local types = require("cmp.types")
@@ -261,26 +304,48 @@ local function go_fmt(entry, kind)
         kind.kind = icon.go[kind.kind] or ""
     end
 
+    if string.ends(kind.abbr, "~") then
+        kind.abbr = string.sub(kind.abbr, 1, -2)
+    end
+
+
     local strings = vim.split(kind.kind, "%s", { trimempty = true })
     local item_kind = entry:get_kind() --- @type lsp.CompletionItemKind | number
     local completion_item = entry:get_completion_item()
 
+    -- concat 和 offset 都是nvim cmp魔改之后用于高亮的，原理还不太懂
+
     local detail = completion_item.detail
     if item_kind == 5 then -- Field
+        -- log.error(entry.source.name, kind, detail, entry)
+
         if detail then
             local last = findLast(kind.abbr, "%.")
             if last then
+                -- log.error("1", kind.abbr, detail)
                 local catstr = kind.abbr:sub(last + 1, #kind.abbr)
                 local space_hole = string.rep(" ", last)
                 kind.concat = "type T struct{" .. space_hole .. catstr .. " " .. detail .. "}"
                 kind.offset = 14
                 kind.abbr = kind.abbr .. " " .. detail
             else
+                -- 有detail信息，并且没小数点
                 kind.concat = "type T struct{" .. kind.abbr .. " " .. detail .. "}"
                 kind.offset = 14
-                kind.abbr = kind.abbr .. " " .. detail
+                -- kind.abbr = kind.abbr .. " " .. detail
+
+
+                local size = utf8len(kind.abbr) + utf8len(detail)
+                local bank = maxItemWidth - size
+
+                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+                --  string.format("%s  %s", )
+
+                -- log.error("2", detail, kind)
             end
         else
+            log.error("3", kind.abbr, detail)
             kind.concat = "type T struct{" .. kind.abbr .. " " .. "}"
             kind.offset = 14
             kind.abbr = kind.abbr .. " " .. detail
@@ -296,32 +361,63 @@ local function go_fmt(entry, kind)
                 local space_hole = string.rep(" ", last)
                 kind.concat = "var " .. space_hole .. catstr .. " " .. detail
                 kind.offset = 4
-                kind.abbr = kind.abbr .. " " .. detail
+                -- kind.abbr = kind.abbr .. " " .. detail
+
+                local size = utf8len(kind.abbr) + utf8len(detail)
+                local bank = maxItemWidth - size
+                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+                -- log.error(kind, detail)
             else
                 if detail then
+                    -- log.error(kind, detail)
                     kind.concat = "var " .. kind.abbr .. " " .. detail
-                    kind.abbr = kind.abbr .. " " .. detail
+                    -- kind.abbr = kind.abbr .. " " .. detail
+
+                    local size = utf8len(kind.abbr) + utf8len(detail)
+                    local bank = maxItemWidth - size
+                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
                     kind.offset = 4
                 end
             end
         end
     elseif item_kind == 22 then -- Struct
         local last = findLast(kind.abbr, "%.")
+
         if last then
+            -- log.error("1", kind.abbr, detail)
+
+            detail = " struct{}"
+
             local catstr = kind.abbr:sub(last + 1, #kind.abbr)
             local space_hole = string.rep(" ", last)
-            kind.concat = "type " .. space_hole .. catstr .. " struct{}"
+            kind.concat = "type " .. space_hole .. catstr .. detail
             kind.offset = 5
-            kind.abbr = kind.abbr .. " struct{}"
+
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+
+            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+            -- kind.abbr = kind.abbr .. detail
         else
+            -- log.error("2", kind.abbr, detail)
+
+            detail = "struct{}"
+
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+
+            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+            -- kind.abbr = kind.abbr .. " struct{}"
+
             kind.concat = "type " .. kind.abbr .. " struct{}"
-            kind.abbr = kind.abbr .. " struct{}"
             kind.offset = 5
         end
     elseif item_kind == 3 or item_kind == 2 then -- Function/Method
         local last = findLast(kind.abbr, "%.")
-
-        -- log.error(kind, detail)
 
         -- 有小数点
         if last then
@@ -329,40 +425,71 @@ local function go_fmt(entry, kind)
                 -- log.error("1", kind.abbr, detail)
                 detail = detail:sub(5, #detail)
                 kind.abbr = string.sub(kind.abbr, 1, -2)
-                kind.abbr = kind.abbr .. detail
-                -- local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-                -- local space_hole = string.rep(" ", last)
-                -- kind.concat = "func " .. space_hole .. catstr .. "{}"
-                -- kind.offset = 5
+                -- kind.abbr = kind.abbr .. detail
+
+                local size = utf8len(kind.abbr) + utf8len(detail)
+                local bank = maxItemWidth - size
+
+                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+
+                local catstr = kind.abbr:sub(last + 1, #kind.abbr)
+                local space_hole = string.rep(" ", last)
+                kind.concat = "func " .. space_hole .. catstr .. "{}"
+                kind.offset = 5
             else
                 log.error("2", kind.abbr, detail)
-                -- kind.concat = "func " .. kind.abbr .. "(){}"
-                -- kind.offset = 5
+                kind.concat = "func " .. kind.abbr .. "(){}"
+                kind.offset = 5
             end
         else -- 无小数点
-            -- 有deatil信息，这里应该都是导包的名字
+            -- 有deatil信息，这里应该都是导包的名字，或者函数的返回值
             if detail then
                 detail = detail:sub(5, #detail)
+                -- 去除~符号
                 kind.abbr = string.sub(kind.abbr, 1, -2)
-                kind.abbr = kind.abbr .. detail
                 kind.concat = "func " .. kind.abbr .. "{}"
                 kind.offset = 5
 
-                -- log.error("3", kind)
+                local size = utf8len(kind.abbr) + utf8len(detail)
+                local bank = maxItemWidth - size
+                if bank < 0 then
+                    bank = 0
+                end
+
+                if detail == "()" then
+                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. detail, "")
+                else
+                    local b, e = string.find(detail, "from")
+                    if b == 3 and e == 6 then
+                        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+                        -- log.error("%s%" .. bank .. "s", kind, detail)
+                    else
+                        local params, returns = parseFunctionSignature(detail)
+                        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. params, "") .. returns
+                    end
+                end
             else
                 log.error("4", kind.abbr, detail)
-                -- kind.concat = "func " .. kind.abbr .. "(){}"
+                kind.concat = "func " .. kind.abbr .. "(){}"
                 kind.abbr = kind.abbr
-                -- kind.offset = 5
+                kind.offset = 5
             end
         end
 
         -- log.error(kind.word)
     elseif item_kind == 9 then -- Module
         if detail then
+            kind.abbr = string.sub(kind.abbr, 1, -2)
+
             kind.offset = 6 - #kind.abbr
-            kind.abbr = kind.abbr .. " " .. detail
             kind.concat = "import " .. detail
+
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+
+            -- kind.abbr = kind.abbr .. " " .. detail
+            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
         end
     elseif item_kind == 8 then -- Interface
         local last = findLast(kind.abbr, "%.")
@@ -374,11 +501,26 @@ local function go_fmt(entry, kind)
             kind.abbr = kind.abbr .. " interface{}"
         else
             kind.concat = "type " .. kind.abbr .. " interface{}"
-            kind.abbr = kind.abbr .. " interface{}"
+            -- kind.abbr = kind.abbr .. " interface{}"
+
+            detail = "interface{}"
+
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+
+            -- kind.abbr = kind.abbr .. " " .. detail
+
             kind.offset = 5
         end
     else
         kind.concat = kind.abbr
+
+        if string.ends(kind.abbr, "~") then
+            kind.abbr = string.sub(kind.abbr, 1, -2)
+        end
+
+        -- log.error(entry.source.name, kind, detail)
     end
 
     kind.kind = " " .. (strings[1] or "") .. " "
@@ -462,7 +604,6 @@ function M.setup(opts)
             }),
         },
         view = {
-            entries = { name = "custom", selection_order = "near_cursor" },
             docs = {
                 auto_open = false,
             },
@@ -513,16 +654,16 @@ function M.setup(opts)
             ["<C-Space>"] = cmp.mapping.complete(),
             ["<C-e>"] = cmp.mapping.close(),
             -- ["<down>"] = function(fallback)
-            --     if cmp.visible() then
-            --         if cmp.core.view.custom_entries_view:is_direction_top_down() then
-            --             -- cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            --             cmp.select_next_item()
-            --         else
-            --             cmp.select_prev_item()
-            --         end
+            -- if cmp.visible() then
+            --     if cmp.core.view.custom_entries_view:is_direction_top_down() then
+            --         -- cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            --         cmp.select_next_item()
             --     else
-            --         fallback()
+            --         cmp.select_prev_item()
             --     end
+            -- else
+            --     fallback()
+            -- end
             -- end,
             -- ["<up>"] = function(fallback)
             --     if cmp.visible() then

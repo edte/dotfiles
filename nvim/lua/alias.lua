@@ -146,6 +146,47 @@ function Print(tbl, level, filteDefault)
     print(indent_str .. "}")
 end
 
+function Json(tbl, level, filteDefault)
+    local s = ""
+
+    if type(tbl) ~= "table" then
+        s = s .. json.encode(tbl)
+        return
+    end
+
+    if tbl == nil then
+        return
+    end
+
+    local msg = ""
+    filteDefault = filteDefault or true --默认过滤关键字（DeleteMe, _class_type）
+    level = level or 1
+    local indent_str = ""
+    for i = 1, level do
+        indent_str = indent_str .. "  "
+    end
+
+    s = s .. indent_str .. "{"
+    for k, v in pairs(tbl) do
+        if filteDefault then
+            if k ~= "_class_type" and k ~= "DeleteMe" then
+                local item_str = string.format("%s%s = %s", indent_str .. " ", tostring(k), tostring(v))
+                s = s .. item_str
+                if type(v) == "table" then
+                    Json(v, level + 1)
+                end
+            end
+        else
+            local item_str = string.format("%s%s = %s", indent_str .. " ", tostring(k), tostring(v))
+            s = s .. item_str
+            if type(v) == "table" then
+                Json(v, level + 1)
+            end
+        end
+    end
+    s = s .. indent_str .. "}"
+end
+
 --  字符串扩展方法 split_b，用于将字符串按照指定的分隔符 sep 进行分割，并返回一个包含切割结果的表
 function string:split_b(sep)
     local cuts = {}
@@ -258,4 +299,34 @@ _G.get_function_arguments = function()
     -- Send the LSP request
     local result = vim.lsp.buf_request_sync(0, "textDocument/signatureHelp", params, 10000)
     print("Result: ", vim.inspect(result))
+end
+
+function utf8len(input)
+    local len  = string.len(input)                   --这里获取到的长度为字节数，如示例长度为：21，而我们肉眼看到的长度应该是15（包含空格）
+    local left = len                                 --将字节长度赋值给将要使用的变量，作为判断退出while循环的字节长度
+    local cnt  = 0                                   --将要返回的字符长度
+    local arr  = { 0, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc } --用来判断是否满足字节长度的列表
+    while left ~= 0 do                               --遍历每一个字符
+        --获取字节的ASCII值，这里的 “-” 代表反向对应的索引，-left：input反着第left
+        --假设字符串字符input长度是：21，left的值是：21，那string.byte(input, -left)就是第一个字节的ASCII值
+        local tmp = string.byte(input, -left) --看上面两行
+        local i   = #arr                      --获取判断列表的长度，同时作为字节长度
+        while arr[i] do                       --循环判定列表
+            if tmp >= arr[i] then             --判定当前 “字符” 的 头“字节” ACSII值符合的范围
+                left = left - i               --字符串字节长度 -i，也就是 减去字节长度
+                break                         --结束判断
+            end
+            i = i - 1                         --每次判断失败都说明不符合当前字节长度
+        end
+        cnt = cnt + 1                         --“字符” 长度+1
+    end
+    return cnt                                --返回 “字符” 长度
+end
+
+function string.starts(String, Start)
+    return string.sub(String, 1, string.len(Start)) == Start
+end
+
+function string.ends(String, End)
+    return End == '' or string.sub(String, -string.len(End)) == End
 end
