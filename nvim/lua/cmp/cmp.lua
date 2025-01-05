@@ -304,9 +304,9 @@ local function go_fmt(entry, kind)
         kind.kind = icon.go[kind.kind] or ""
     end
 
-    if string.ends(kind.abbr, "~") then
-        kind.abbr = string.sub(kind.abbr, 1, -2)
-    end
+    -- if string.ends(kind.abbr, "~") then
+    --     kind.abbr = string.sub(kind.abbr, 1, -2)
+    -- end
 
 
     local strings = vim.split(kind.kind, "%s", { trimempty = true })

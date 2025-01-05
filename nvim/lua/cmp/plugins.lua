@@ -393,8 +393,34 @@ M.list = {
     --                 draw = {
     --                     treesitter = { 'lsp' },
     --                     columns = {
-    --                         { "label",     "label_description" },
-    --                         { "kind_icon", gap = 2,            "kind" }
+    --                         { "kind_icon" },
+    --                         { "label" },
+    --                         -- { "label_description" }
+    --                     },
+    --
+    --                     components = {
+    --                         label = {
+    --                             width = { fill = true, max = 80 },
+    --                             text = function(ctx)
+    --                                 -- if ctx.source_name == "LSP" then
+    --                                 --     log.error(ctx.item.detail)
+    --                                 -- end
+    --                                 if ctx.item.detail ~= nil then
+    --                                     return ctx.label .. ctx.item.detail
+    --                                 end
+    --                                 return ctx.label
+    --                             end,
+    --                         },
+    --                         label_description = {
+    --                             width = { max = 50 },
+    --                             text = function(ctx)
+    --                                 -- if ctx.source_name == "LSP" then
+    --                                 --     log.error(ctx.item)
+    --                                 -- end
+    --                                 return ctx.item.detail
+    --                             end,
+    --                         },
+    --
     --                     },
     --                 },
     --                 auto_show = function(ctx)
