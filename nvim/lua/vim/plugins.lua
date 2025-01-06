@@ -317,18 +317,19 @@ M.list = {
         event = { "InsertEnter", "CmdlineEnter" },
     },
 
-    -- 改进了 Neovim 快速修复的 UI 和工作流程
+    -- Neovim 中更好的快速修复窗口，抛光旧的快速修复窗口。
     {
-        'stevearc/quicker.nvim',
-        event = "FileType qf",
-        opts = {},
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf',
+        dependencies = {
+            'junegunn/fzf',
+            run = function()
+                vim.fn['fzf#install']()
+            end
+        },
     },
-    {
-        "ziontee113/icon-picker.nvim",
-        config = function()
-            require("icon-picker").setup({ disable_legacy_commands = true })
-        end
-    }
+
+
 
 
 }

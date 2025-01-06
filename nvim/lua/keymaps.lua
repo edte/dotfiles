@@ -30,7 +30,7 @@ Keymap("", "<C-s>", "<cmd>w<cr>")
 -- 删除整行
 -- keymap("", "D", "Vd")
 
-Keymap("n", "c", '"_c')
+-- Keymap("n", "c", '"_c')
 
 -- -- 设置 jj、jk 为 ESC,避免频繁按 esc
 Keymap('i', 'jk', '<Esc><right>')
@@ -91,12 +91,15 @@ end, { expr = true })
 
 Keymap("n", "<bs>", "<C-^>")
 Keymap("", "gI", "<cmd>Glance implementations<cr>")
--- keymap("", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
 vim.keymap.set('n', 'gd', function()
+    if vim.o.tagfunc ~= '' or #vim.fn.tagfiles() > 0 then
+        return '<C-]>zz'
+    end
     vim.lsp.buf.definition()
     Api.nvim_feedkeys("zz", "n", false)
-end, { noremap = true, silent = true })
+    return 'gd'
+end, { expr = true })
 
 Keymap("", "gD", "<cmd>FzfLua lsp_declarations<cr>")
 Keymap("", "gr", "<cmd>Glance references<cr>")
