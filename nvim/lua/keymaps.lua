@@ -10,36 +10,36 @@ end
 
 -- cmd("nmap <tab> %")
 
-Keymap("n", "}", "}w")
-Keymap("n", "}", "}j")
+nmap("}", "}w")
+nmap("}", "}j")
 Cmd("nnoremap <expr><silent> { (col('.')==1 && len(getline(line('.')-1))==0? '2{j' : '{j')")
 
 -- 上下滚动浏览
-Keymap("", "<C-j>", "5j")
-Keymap("", "<C-k>", "5k")
+nmap("<C-j>", "5j")
+nmap("<C-k>", "5k")
 
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "scroll up and center" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "scroll down and center" })
+nmap("<C-u>", "<C-u>zz")
+nmap("<C-d>", "<C-d>zz")
 
-vim.keymap.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
+nmap("n", "nzzzv")
+nmap("N", "Nzzzv")
 
 -- 保存文件
-Keymap("", "<C-s>", "<cmd>w<cr>")
+nmap("<C-s>", "<cmd>w<cr>")
 
 -- 删除整行
 -- keymap("", "D", "Vd")
 
--- Keymap("n", "c", '"_c')
+-- nmap( "c", '"_c')
 
 -- -- 设置 jj、jk 为 ESC,避免频繁按 esc
-Keymap('i', 'jk', '<Esc><right>')
+imap('jk', '<Esc><right>')
 
 
 -- 按 esc 消除上一次的高亮
-Keymap("n", "<esc>", "<cmd>noh<cr>")
+nmap("<esc>", "<cmd>noh<cr>")
 
-vim.keymap.set("n", "<esc>", function()
+nmap("<esc>", function()
     local function isModuleAvailable(name)
         if package.loaded[name] then
             return true
@@ -60,10 +60,10 @@ vim.keymap.set("n", "<esc>", function()
         Cmd(":call clever_f#reset()")
         return
     end
-end, { desc = "esc", noremap = true, buffer = true })
+end)
 
-Api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
-Api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
+nmap('<C-i>', '<C-i>zz')
+nmap('<C-o>', '<C-o>zz')
 
 -- 大小写转换
 -- map("n", "<esc>", "~", opt)
@@ -71,54 +71,49 @@ Api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
 -- what?
 -- map("n", "<cmd>lua vim.lsp.buf.hover()<cr>", opt)
 
-Keymap("n", "yp", 'vi"p')
-Keymap("n", "vp", 'vi"p')
+nmap("yp", 'vi"p')
+nmap("vp", 'vi"p')
 
 ----------------------------------------------------------------
 -- 取消撤销
-Keymap("n", "U", "<c-r>")
+nmap("U", "<c-r>")
 
 -- error 管理
-Keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
-Keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
+nmap("<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
+nmap("<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
 
 -- 重命名
 -- keymap("n", "R", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
-vim.keymap.set("n", "R", function()
+nmap("R", function()
     return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })
+end)
 
-Keymap("n", "<bs>", "<C-^>")
-Keymap("", "gI", "<cmd>Glance implementations<cr>")
+nmap("<bs>", "<C-^>")
 
-vim.keymap.set('n', 'gd', function()
-    if vim.o.tagfunc ~= '' or #vim.fn.tagfiles() > 0 then
-        return '<C-]>zz'
-    end
-    vim.lsp.buf.definition()
-    Api.nvim_feedkeys("zz", "n", false)
-    return 'gd'
-end, { expr = true })
+nmap("gI", "<cmd>Glance implementations<cr>")
 
-Keymap("", "gD", "<cmd>FzfLua lsp_declarations<cr>")
-Keymap("", "gr", "<cmd>Glance references<cr>")
-Keymap("n", "gh", "<CMD>ClangdSwitchSourceHeader<CR>")
+nmap("gd", "<C-]>zz")
 
+nmap("gD", "<cmd>FzfLua lsp_declarations<cr>")
+nmap("gr", "<cmd>Glance references<cr>")
 
-vim.keymap.set('n', '<c-p>', function()
-    vim.diagnostic.goto_prev()
-    Api.nvim_feedkeys("zz", "n", false)
-end, { noremap = true, silent = true })
+nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
-
-vim.keymap.set('n', '<c-n>', function()
+nmap('<c-n>', function()
     vim.diagnostic.goto_next()
+    -- vim.diagnostic.jump({ count = 1, float = true })
     Api.nvim_feedkeys("zz", "n", false)
-end, { noremap = true, silent = true })
+end)
 
--- keymap("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
--- keymap("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
+
+nmap('<c-p>', function()
+    vim.diagnostic.goto_prev()
+    -- vim.diagnostic.jump({ count = -1, float = true })
+    Api.nvim_feedkeys("zz", "n", false)
+end)
+
+
 
 -- gqn/gqj 自带的格式化
 -- gm 跳屏幕中央
@@ -132,7 +127,7 @@ end, { noremap = true, silent = true })
 ------------------------------------------------------------------
 --                          分屏
 ------------------------------------------------------------------
-Keymap("n", "s", "") -- 取消 s 默认功能
+nmap("s", "") -- 取消 s 默认功能
 -- map("n", "S", "", opt)                          -- 取消 s 默认功能
 
 -- 分屏状态下，一起滚动，用于简单的diff
@@ -140,28 +135,26 @@ Keymap("n", "s", "") -- 取消 s 默认功能
 -- 恢复
 -- set noscrollbind
 
-Keymap("n", "sv", "<cmd>vsp<CR>") -- 水平分屏
+nmap("sv", "<cmd>vsp<CR>") -- 水平分屏
 -- keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
 
-Keymap("n", "sc", "<C-w>c")                       -- 关闭当前屏幕
-Keymap("n", "so", "<C-w>o")                       -- 关闭其它屏幕
+nmap("sc", "<C-w>c")                       -- 关闭当前屏幕
+nmap("so", "<C-w>o")                       -- 关闭其它屏幕
 
-Keymap("n", "s,", "<cmd>vertical resize +20<CR>") -- 向右移动屏幕
-Keymap("n", "s.", "<cmd>vertical resize -20<CR>") -- 向左移动屏幕
+nmap("s,", "<cmd>vertical resize +20<CR>") -- 向右移动屏幕
+nmap("s.", "<cmd>vertical resize -20<CR>") -- 向左移动屏幕
 
-Keymap("n", "sm", "<C-w>|")                       -- 全屏
-Keymap("n", "sn", "<C-w>=")                       -- 恢复全屏
+nmap("sm", "<C-w>|")                       -- 全屏
+nmap("sn", "<C-w>=")                       -- 恢复全屏
 
-Keymap("n", "<a-,>", "<C-w>h")                    -- 移动到左分屏
-Keymap("n", "<a-.>", "<C-w>l")                    -- 移动到右分屏
+nmap("<a-,>", "<C-w>h")                    -- 移动到左分屏
+nmap("<a-.>", "<C-w>l")                    -- 移动到右分屏
 
 -- 窗口切换
-Keymap("n", "<left>", "<c-w>h")
-Keymap("n", "<right>", "<c-w>l")
-Keymap("n", "<up>", "<c-w>k")
-Keymap("n", "<down>", "<c-w>j")
-Keymap("", "<c-h>", "<c-w>h")
-Keymap("", "<c-l>", "<c-w>l")
+nmap("<left>", "<c-w>h")
+nmap("<right>", "<c-w>l")
+nmap("<up>", "<c-w>k")
+nmap("<down>", "<c-w>j")
 
 -- kitty 终端区分 c-i 和 tab
 if vim.env.TERM == "xterm-kitty" then
@@ -196,18 +189,16 @@ Cmd("silent!")
 -- cmd("nnoremap # *")
 -- cmd("nnoremap * #")
 
-Keymap("n", "gw", "<cmd>FzfLua grep_cword<CR>")
-Keymap("n", "gW", "<cmd>FzfLua grep_cWORD<CR>")
-Keymap("n", "<c-r>", "<cmd>FzfLua resume<CR>")
+nmap("gw", "<cmd>FzfLua grep_cword<CR>")
+nmap("gW", "<cmd>FzfLua grep_cWORD<CR>")
+nmap("<c-r>", "<cmd>FzfLua resume<CR>")
 
 
-vim.keymap.set('n', 'C', '"_C', { noremap = true })
-vim.keymap.set('n', 'D', '"_D', { noremap = true })
+nmap('C', '"_C')
+nmap('D', '"_D')
+nmap('yc', 'yy<cmd>normal gcc<CR>p')
+nmap("<C-c>", "ciw")
+nmap("cr", "ciw")
 
-vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
-
-vim.keymap.set("n", "<C-c>", "ciw")
-vim.keymap.set("n", "cr", "ciw")
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vmap("J", ":m '>+1<CR>gv=gv")
+vmap("K", ":m '<-2<CR>gv=gv")

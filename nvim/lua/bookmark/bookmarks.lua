@@ -40,6 +40,41 @@ local M = {
 
 ------------------------------ window ------------------------------------
 
+local function generate_unique_id()
+    local time = os.time()
+    local random = math.random(100000, 999999)
+    return tostring(time) .. tostring(random)
+end
+
+-- 递归查找 .git 目录
+local function get_root_dir()
+    -- 递归查找 .git 目录
+    local function find_git_root(path)
+        local git_path = path .. "/.git"
+        local stat = vim.uv.fs_stat(git_path)
+        if stat and stat.type == "directory" then
+            return path
+        else
+            local parent_path = vim.fn.fnamemodify(path, ":h")
+            if parent_path == path then
+                return nil
+            end
+            return find_git_root(parent_path)
+        end
+    end
+
+    -- FIX: 这里有时候会为nil
+    local cwd = vim.uv.cwd()
+    local git_root = find_git_root(cwd)
+    if git_root then
+        -- print(git_root)
+        return git_root
+    else
+        -- print(cwd)
+        return cwd
+    end
+end
+
 function M.createTopLine(str, width)
     local len
     if str == nil then

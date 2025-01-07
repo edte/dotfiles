@@ -69,7 +69,7 @@ M.list = {
         keys = "gc",
         config = function()
             require("neogen").setup({})
-            Keymap("n", "gc", "<cmd>lua require('neogen').generate()<CR>")
+            nmap("gc", "<cmd>lua require('neogen').generate()<CR>")
         end,
     },
 
@@ -77,7 +77,7 @@ M.list = {
     {
         "echasnovski/mini.splitjoin",
         init = function()
-            Keymap("n", "P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
+            nmap("P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
         end,
         cmd = { "P" },
         version = false,

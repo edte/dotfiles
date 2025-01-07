@@ -14,8 +14,8 @@ MiniTabline.setup = function()
     -- Create default highlighting
     H.create_default_hl()
 
-    Keymap("n", "gn", "<cmd>bn<CR>")
-    Keymap("n", "gp", "<cmd>bp<CR>")
+    nmap("gn", "<cmd>bn<CR>")
+    nmap("gp", "<cmd>bp<CR>")
 
     -- Function to make tabs clickable
     Api.nvim_exec(

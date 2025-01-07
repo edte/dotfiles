@@ -89,9 +89,9 @@ M.list = {
         keys = { "w" },
         -- lazy = true,
         config = function()
-            Keymap("", "w", "<cmd>lua require('spider').motion('w')<CR>")
-            Keymap("", "e", "<cmd>lua require('spider').motion('e')<CR>")
-            Keymap("", "b", "<cmd>lua require('spider').motion('b')<CR>")
+            nmap("w", "<cmd>lua require('spider').motion('w')<CR>")
+            nmap("e", "<cmd>lua require('spider').motion('e')<CR>")
+            nmap("b", "<cmd>lua require('spider').motion('b')<CR>")
         end,
     },
 
@@ -287,12 +287,12 @@ M.list = {
 
             -- 交换
             -- sx{motion}，按两次即可交换，支持 .
-            Keymap("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>")
+            nmap("sx", "<cmd>lua require('substitute.exchange').operator()<cr>")
 
             -- 替换
             -- s{motion} 先按s，然后按文本对象就直接替换为默认寄存器里的内容
-            Keymap("n", "s", "<cmd>lua require('substitute').operator()<cr>")
-            Keymap("x", "s", "<cmd>lua require('substitute').visual()<cr>")
+            nmap("s", "<cmd>lua require('substitute').operator()<cr>")
+            xmap("s", "<cmd>lua require('substitute').visual()<cr>")
         end,
     },
 

@@ -146,15 +146,14 @@ M.list = {
         config = function()
             Require("components.session").setup()
 
+            local function GetPath()
+                local dir, _ = vim.fn.getcwd():gsub('/', '_')
+                return dir
+            end
+
             Api.nvim_create_autocmd("VimEnter", {
                 callback = function()
                     if vim.fn.argc(-1) == 0 then
-                        -- local b = MiniSessions.config.directory .. a
-                        --
-                        -- if file_exists(b) then
-                        --     return
-                        -- end
-
                         MiniSessions.read(GetPath())
                     end
                 end,

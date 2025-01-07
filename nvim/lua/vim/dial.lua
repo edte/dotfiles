@@ -144,12 +144,14 @@ M.dialConfig = function()
         },
     })
 
-    Keymap("", "<C-a>", "<Plug>(dial-increment)")
-    Keymap("", "<C-x>", "<Plug>(dial-decrement)")
-    Keymap("n", "<C-a>", "<Plug>(dial-increment)")
-    Keymap("n", "<C-x>", "<Plug>(dial-decrement)")
-    Keymap("v", "<C-a>", "<Plug>(dial-increment)")
-    Keymap("v", "<C-x>", "<Plug>(dial-decrement)")
+    nmap("<C-a>", "<Plug>(dial-increment)")
+    nmap("<C-x>", "<Plug>(dial-decrement)")
+    imap("<C-a>", "<Plug>(dial-increment)")
+    imap("<C-x>", "<Plug>(dial-decrement)")
+    xmap("<C-a>", "<Plug>(dial-increment)")
+    xmap("<C-x>", "<Plug>(dial-decrement)")
+    vmap("<C-a>", "<Plug>(dial-increment)")
+    vmap("<C-x>", "<Plug>(dial-decrement)")
 end
 
 return M

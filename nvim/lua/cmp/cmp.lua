@@ -258,10 +258,29 @@ local function rust_fmt(entry, vim_item)
     return kind
 end
 
-local function lua_fmt(entry, vim_item)
-    local kind = require("lspkind").cmp_format({
-        mode = "symbol_text",
-    })(entry, vim_item)
+local function lua_fmt(entry, kind)
+    -- 要比主题插件后加载，不然会被覆盖
+    Cmd('highlight CmpItemKindFunction guifg=#CB6460')
+    Cmd('highlight CmpItemKindInterface guifg=#659462')
+    Cmd('highlight CmpItemKindConstant guifg=#BD805C')
+    Cmd('highlight CmpItemKindVariable guifg=#BD805C')
+    Cmd('highlight CmpItemKindStruct guifg=#6089EF')
+    Cmd('highlight CmpItemKindClass guifg=#6089EF')
+    Cmd('highlight CmpItemKindMethod guifg=#A25553')
+    Cmd('highlight CmpItemKindField guifg=#BD805C')
+
+    -- go 中非struct的type都是class，直接把这两都弄成一个icon
+    if kind.kind == "Struct" or kind.kind == "Class" then
+        kind.kind = icon.go["Type"] or ""
+    elseif entry.source.name == "nvim_lsp_signature_help" and kind.kind == "Text" then -- 参数提醒
+        kind.kind = icon.go["TypeParameter"] or ""
+    elseif entry.source.name == "treesitter" and kind.kind == "Property" then          -- treesitter提醒
+        kind.kind = icon.go["Treesitter"] or ""
+    else
+        kind.kind = icon.go[kind.kind] or ""
+    end
+
+
     local strings = vim.split(kind.kind, "%s", { trimempty = true })
     local item_kind = entry:get_kind() --- @type lsp.CompletionItemKind | number
     if item_kind == 5 then             -- Field
