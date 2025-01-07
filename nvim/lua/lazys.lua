@@ -1,3 +1,7 @@
+-- Neovim 的现代插件管理器
+-- https://github.com/folke/lazy.nvim
+-- https://lazy.folke.io/spec
+
 -- lazy.nvim 插件管理器安装
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -18,7 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 -- 组装插件列表
 
 local modules = {
-    "base.plugins",
     "ui.plugins",
     "bookmark.plugins",
     "vim.plugins",
@@ -42,6 +45,7 @@ for _, module_name in ipairs(modules) do
         plugins_list[#plugins_list + 1] = plugin
     end
 end
+
 
 require("lazy").setup({
     root = NEOVIM_LAZY_DATA, -- directory where plugins will be installed
