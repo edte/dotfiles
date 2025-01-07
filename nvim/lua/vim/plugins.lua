@@ -119,13 +119,6 @@ M.list = {
         keys = "ga",
     },
 
-    -- 一个实用插件，可扩展 Lua 文件中的“gf”功能。
-    -- gf 打开文件
-    {
-        "sam4llis/nvim-lua-gf",
-        keys = "gf",
-    },
-
     -- neovim 插件将文件路径和光标所在行复制到剪贴板
     {
         "diegoulloao/nvim-file-location",

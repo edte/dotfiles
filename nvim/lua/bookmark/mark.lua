@@ -244,7 +244,7 @@ function Mark.setup()
         if i ~= 3 and i ~= 12 and i ~= 14 then
             vim.keymap.set("n", "'" .. low(i), function()
                 Cmd("'" .. upp(i))
-                Api.nvim_feedkeys("zz", "n", false)
+                zz()
             end)
         end
     end

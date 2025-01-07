@@ -20,6 +20,10 @@ _G.Del_cmd = vim.api.nvim_del_user_command
 _G.icon = require("utils.icons")
 _G.icons = require("utils.icons")
 
+_G.zz = function()
+    Api.nvim_feedkeys("zz", "n", false)
+end
+
 _G.project_files = function()
     local ret = vim.fn.system("git rev-parse --show-toplevel 2> /dev/null")
     if ret == "" then

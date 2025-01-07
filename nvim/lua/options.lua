@@ -113,10 +113,20 @@ vim.opt.wildignore:append({
     ".hg",
     ".orig",
 })
-vim.opt.suffixesadd:append({ ".java", ".rs" }) -- search for suffexes using gf
-vim.opt.spelllang:append("cjk")                -- disable spellchecking for asian characters (VIM algorithm does not support it)
-vim.opt.shortmess:append("c")                  -- don't show redundant messages from ins-completion-menu
-vim.opt.shortmess:append("I")                  -- don't show the default intro message
+
+vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
+vim.opt.includeexpr = "substitute(v:fname,'\\.','/','g')"
+
+
+for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+    Cmd("set path+=" .. path .. '/lua')
+end
+
+
+vim.opt.suffixesadd:append({ ".lua", ".java", ".rs", ".go" }) -- search for suffexes using gf
+vim.opt.spelllang:append("cjk")                               -- disable spellchecking for asian characters (VIM algorithm does not support it)
+vim.opt.shortmess:append("c")                                 -- don't show redundant messages from ins-completion-menu
+vim.opt.shortmess:append("I")                                 -- don't show the default intro message
 vim.opt.whichwrap:append("<,>,[,],h,l")
 
 vim.diagnostic.config({
@@ -125,5 +135,8 @@ vim.diagnostic.config({
     virtual_lines = {
         -- only_current_line = true,
         highlight_whole_line = false,
+    },
+    jump = {
+        float = true
     },
 })

@@ -78,9 +78,6 @@ nmap("vp", 'vi"p')
 -- 取消撤销
 nmap("U", "<c-r>")
 
--- error 管理
-nmap("<c-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>") -- pre error
-nmap("<c-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>") -- next error
 
 -- 重命名
 -- keymap("n", "R", "<cmd>lua vim.lsp.buf.rename()<CR>")
@@ -102,18 +99,16 @@ nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
 nmap('<c-n>', function()
     vim.diagnostic.goto_next()
-    -- vim.diagnostic.jump({ count = 1, float = true })
-    Api.nvim_feedkeys("zz", "n", false)
+    -- vim.diagnostic.jump({ count = -1, float = true })
+    zz()
 end)
 
 
 nmap('<c-p>', function()
     vim.diagnostic.goto_prev()
-    -- vim.diagnostic.jump({ count = -1, float = true })
-    Api.nvim_feedkeys("zz", "n", false)
+    -- vim.diagnostic.jump({ count = 1, float = true })
+    zz()
 end)
-
-
 
 -- gqn/gqj 自带的格式化
 -- gm 跳屏幕中央
