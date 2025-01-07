@@ -119,7 +119,7 @@ M.list = {
 
     -- wilder.nvim 插件，用于命令行补全，和 noice.nvim 冲突
     {
-        "gelguy/wilder.nvim",
+        "edte/wilder.nvim",
         event = "CmdlineEnter", -- 懒加载：首次进入cmdline时载入
         config = function()
             Require("ui.wilder").config()

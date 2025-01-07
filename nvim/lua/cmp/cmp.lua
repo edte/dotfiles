@@ -548,6 +548,14 @@ local function go_fmt(entry, kind)
 
     -- log.error(entry.source.name, kind)
 
+    local highlights_info = require("colorful-menu").cmp_highlights(entry)
+
+    -- if highlight_info==nil, which means missing ts parser, let's fallback to use default `vim_item.abbr`.
+    -- What this plugin offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+    if highlights_info ~= nil then
+        kind.abbr_hl_group = highlights_info.highlights
+        kind.abbr = highlights_info.text
+    end
 
     return kind
 end
