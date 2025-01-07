@@ -2,16 +2,8 @@
 
 local M = {}
 
-M.diffConfig = function()
-    local diff = Require("diffview")
-    if diff == nil then
-        return
-    end
-    local actions = Require("diffview.actions")
-    if actions == nil then
-        return
-    end
-    diff.setup({
+M.setup = function()
+    Setup("diffview", {
         view = {
             -- Configure the layout and behavior of different types of views.
             -- Available layouts:

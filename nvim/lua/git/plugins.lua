@@ -7,7 +7,7 @@ M.list = {
         -- event = "User FileOpened",
         -- cmd = "Gitsigns",
         config = function()
-            require("gitsigns").setup({
+            Setup("gitsigns", {
                 signcolumn = false,
             })
         end,
@@ -18,10 +18,7 @@ M.list = {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
         config = function()
-            local r = Require("git.git")
-            if r ~= nil then
-                r.diffConfig()
-            end
+            Setup("git.git", {})
         end,
     },
 
@@ -62,9 +59,7 @@ M.list = {
         main = "mini.git",
         cmd = { "Git" },
         config = function()
-            require("mini.git").setup()
-
-            -- local rhs = "<Cmd>lua require('mini.git').show_at_cursor()<CR>"
+            Setup("mini.git")
         end,
     },
 
@@ -73,7 +68,7 @@ M.list = {
         "echasnovski/mini.diff",
         version = false,
         config = function()
-            require("mini.diff").setup()
+            Setup("mini.diff")
             Cmd("command! Diff lua MiniDiff.toggle_overlay()")
         end,
     },

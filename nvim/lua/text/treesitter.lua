@@ -104,11 +104,7 @@ M.config = function()
         },
     })
 
-    local context = Require("treesitter-context")
-    if context == nil then
-        return
-    end
-    context.setup({
+    Setup("treesitter-context", {
         enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
         max_lines = 2,           -- How many lines the window should span. Values <= 0 mean no limit.
         min_window_height = 1,   -- Minimum editor window height to enable context. Values <= 0 mean no limit.
@@ -122,6 +118,7 @@ M.config = function()
         zindex = 1,      -- The Z-index of the context window
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
     })
+
 
     -- 跳转到上下文（向上）
     vim.keymap.set("n", "[c", function()

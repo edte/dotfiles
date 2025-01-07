@@ -60,7 +60,8 @@ function Require(package_name)
     local status, plugin = pcall(require, package_name)
     if not status then
         -- 如果加载失败，打印错误信息
-        print("require " .. plugin)
+        print("Error loading package " .. package_name .. ": " .. package)
+        log.error("Error loading package " .. package_name .. ": " .. package)
         return nil
     else
         -- 如果加载成功，返回包
@@ -74,14 +75,20 @@ function Setup(package_name, options)
 
     if not success then
         -- 如果加载失败，打印错误信息
-        vim.notify("Error loading package " .. package_name .. ": " .. package, vim.log.levels.ERROR)
+        log.error("Error loading package " .. package_name .. ": " .. package)
+        print("Error loading package " .. package_name .. ": " .. package)
         return
     end
 
     -- 检查包是否具有 'setup' 函数
     if type(package.setup) ~= "function" then
-        vim.notify("Error: package " .. package_name .. " does not have a 'setup' function", vim.log.levels.ERROR)
+        log.error("Error: package " .. package_name .. " does not have a 'setup' function")
+        print("Error: package " .. package_name .. " does not have a 'setup' function")
         return
+    end
+
+    if options ~= nil then
+        options = {}
     end
 
     -- 调用包的 'setup' 函数进行设置
