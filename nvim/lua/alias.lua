@@ -60,8 +60,8 @@ function Require(package_name)
     local status, plugin = pcall(require, package_name)
     if not status then
         -- 如果加载失败，打印错误信息
-        print("Error loading package " .. package_name .. ": " .. package)
-        log.error("Error loading package " .. package_name .. ": " .. package)
+        print("Error loading package " .. package_name .. ": " .. package_name)
+        log.error("Error loading package " .. package_name .. ": " .. package_name)
         return nil
     else
         -- 如果加载成功，返回包

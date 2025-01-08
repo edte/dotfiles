@@ -30,6 +30,18 @@ function M.setup()
             fields = { "kind", "abbr" },
 
             format = function(entry, kind)
+                -- log.error(entry.source.name, kind)
+
+                -- cmp icon highlight
+                vim.cmd('highlight CmpItemKindFunction guifg=#CB6460')
+                vim.cmd('highlight CmpItemKindInterface guifg=#659462')
+                vim.cmd('highlight CmpItemKindConstant guifg=#BD805C')
+                vim.cmd('highlight CmpItemKindVariable guifg=#BD805C')
+                vim.cmd('highlight CmpItemKindStruct guifg=#6089EF')
+                vim.cmd('highlight CmpItemKindClass guifg=#6089EF')
+                vim.cmd('highlight CmpItemKindMethod guifg=#A25553')
+                vim.cmd('highlight CmpItemKindField guifg=#BD805C')
+
                 local highlights_info = require("colorful-menu").cmp_highlights(entry)
 
                 if highlights_info ~= nil then

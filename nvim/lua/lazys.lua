@@ -36,7 +36,7 @@ local plugins_list = {}
 
 -- 遍历每个模块
 for _, module_name in ipairs(modules) do
-    local module = Require(module_name)
+    local module = require(module_name)
     if module == nil then
         return
     end

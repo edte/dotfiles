@@ -24,6 +24,11 @@ M.dialConfig = function()
                 cyclic = true,
             }),
             augend.constant.new({
+                elements = { "debug", "error" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
                 elements = { "==", "!=", "~=" },
                 word = false,
                 cyclic = true,
