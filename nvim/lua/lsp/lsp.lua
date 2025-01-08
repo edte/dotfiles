@@ -191,7 +191,7 @@ local lspTable = {
     },
 }
 
-M.lspConfig = function()
+M.setup = function()
     -- 自动安装 lsp
     local lspconfig = Require("lspconfig")
     if lspconfig == nil then

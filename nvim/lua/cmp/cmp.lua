@@ -336,164 +336,63 @@ local function go_fmt(entry, kind)
 
     local detail = completion_item.detail
     if item_kind == 5 then -- Field
-        -- log.error(entry.source.name, kind, detail, entry)
-
         if detail then
             local last = findLast(kind.abbr, "%.")
             if last then
-                -- log.error("1", kind.abbr, detail)
-                local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-                local space_hole = string.rep(" ", last)
-                kind.concat = "type T struct{" .. space_hole .. catstr .. " " .. detail .. "}"
-                kind.offset = 14
                 kind.abbr = kind.abbr .. " " .. detail
             else
-                -- 有detail信息，并且没小数点
-                kind.concat = "type T struct{" .. kind.abbr .. " " .. detail .. "}"
-                kind.offset = 14
-                -- kind.abbr = kind.abbr .. " " .. detail
-
-
                 local size = utf8len(kind.abbr) + utf8len(detail)
                 local bank = maxItemWidth - size
 
                 kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-                --  string.format("%s  %s", )
-
-                -- log.error("2", detail, kind)
             end
         else
             log.error("3", kind.abbr, detail)
-            kind.concat = "type T struct{" .. kind.abbr .. " " .. "}"
-            kind.offset = 14
             kind.abbr = kind.abbr .. " " .. detail
         end
-    elseif item_kind == 1 then -- Text
-        kind.concat = '"' .. kind.abbr .. '"'
-        kind.offset = 1
-    elseif item_kind == 6 or item_kind == 21 then -- Variable
-        local last = findLast(kind.abbr, "%.")
+    elseif item_kind == 1 then                    -- Text
+    elseif item_kind == 6 or item_kind == 21 then -- Variable or Constant
+        -- log.error(kind, entry)
+
         if detail then
-            if last then
-                local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-                local space_hole = string.rep(" ", last)
-                kind.concat = "var " .. space_hole .. catstr .. " " .. detail
-                kind.offset = 4
-                -- kind.abbr = kind.abbr .. " " .. detail
-
-                local size = utf8len(kind.abbr) + utf8len(detail)
-                local bank = maxItemWidth - size
-                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-                -- log.error(kind, detail)
-            else
-                if detail then
-                    -- log.error(kind, detail)
-                    kind.concat = "var " .. kind.abbr .. " " .. detail
-                    -- kind.abbr = kind.abbr .. " " .. detail
-
-                    local size = utf8len(kind.abbr) + utf8len(detail)
-                    local bank = maxItemWidth - size
-                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-                    kind.offset = 4
-                end
-            end
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
         end
     elseif item_kind == 22 then -- Struct
-        local last = findLast(kind.abbr, "%.")
+        detail = " struct{}"
 
-        if last then
-            -- log.error("1", kind.abbr, detail)
-
-            detail = " struct{}"
-
-            local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-            local space_hole = string.rep(" ", last)
-            kind.concat = "type " .. space_hole .. catstr .. detail
-            kind.offset = 5
-
-            local size = utf8len(kind.abbr) + utf8len(detail)
-            local bank = maxItemWidth - size
-
-            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-            -- kind.abbr = kind.abbr .. detail
-        else
-            -- log.error("2", kind.abbr, detail)
-
-            detail = "struct{}"
-
-            local size = utf8len(kind.abbr) + utf8len(detail)
-            local bank = maxItemWidth - size
-
-            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-            -- kind.abbr = kind.abbr .. " struct{}"
-
-            kind.concat = "type " .. kind.abbr .. " struct{}"
-            kind.offset = 5
-        end
+        local size = utf8len(kind.abbr) + utf8len(detail)
+        local bank = maxItemWidth - size
+        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
     elseif item_kind == 3 or item_kind == 2 then -- Function/Method
-        local last = findLast(kind.abbr, "%.")
+        -- 有deatil信息，这里应该都是导包的名字，或者函数的返回值
+        if detail then
+            detail = detail:sub(5, #detail)
+            -- 去除~符号
+            kind.abbr = string.sub(kind.abbr, 1, -2)
 
-        -- 有小数点
-        if last then
-            if detail then
-                -- log.error("1", kind.abbr, detail)
-                detail = detail:sub(5, #detail)
-                kind.abbr = string.sub(kind.abbr, 1, -2)
-                -- kind.abbr = kind.abbr .. detail
-
-                local size = utf8len(kind.abbr) + utf8len(detail)
-                local bank = maxItemWidth - size
-
-                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-
-                local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-                local space_hole = string.rep(" ", last)
-                kind.concat = "func " .. space_hole .. catstr .. "{}"
-                kind.offset = 5
-            else
-                log.error("2", kind.abbr, detail)
-                kind.concat = "func " .. kind.abbr .. "(){}"
-                kind.offset = 5
+            local size = utf8len(kind.abbr) + utf8len(detail)
+            local bank = maxItemWidth - size
+            if bank < 0 then
+                bank = 0
             end
-        else -- 无小数点
-            -- 有deatil信息，这里应该都是导包的名字，或者函数的返回值
-            if detail then
-                detail = detail:sub(5, #detail)
-                -- 去除~符号
-                kind.abbr = string.sub(kind.abbr, 1, -2)
-                kind.concat = "func " .. kind.abbr .. "{}"
-                kind.offset = 5
 
-                local size = utf8len(kind.abbr) + utf8len(detail)
-                local bank = maxItemWidth - size
-                if bank < 0 then
-                    bank = 0
-                end
-
-                if detail == "()" then
-                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. detail, "")
+            if detail == "()" then
+                kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. detail, "")
+            else
+                local b, e = string.find(detail, "from")
+                if b == 3 and e == 6 then
+                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
+                    -- log.error("%s%" .. bank .. "s", kind, detail)
                 else
-                    local b, e = string.find(detail, "from")
-                    if b == 3 and e == 6 then
-                        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-                        -- log.error("%s%" .. bank .. "s", kind, detail)
-                    else
-                        local params, returns = parseFunctionSignature(detail)
-                        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. params, "") .. returns
-                    end
+                    local params, returns = parseFunctionSignature(detail)
+                    kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr .. params, "") .. returns
                 end
-            else
-                log.error("4", kind.abbr, detail)
-                kind.concat = "func " .. kind.abbr .. "(){}"
-                kind.abbr = kind.abbr
-                kind.offset = 5
             end
+        else
+            log.error("4", kind.abbr, detail)
+            kind.abbr = kind.abbr
         end
 
         -- log.error(kind.word)
@@ -501,8 +400,6 @@ local function go_fmt(entry, kind)
         if detail then
             kind.abbr = string.sub(kind.abbr, 1, -2)
 
-            kind.offset = 6 - #kind.abbr
-            kind.concat = "import " .. detail
 
             local size = utf8len(kind.abbr) + utf8len(detail)
             local bank = maxItemWidth - size
@@ -511,30 +408,12 @@ local function go_fmt(entry, kind)
             kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
         end
     elseif item_kind == 8 then -- Interface
-        local last = findLast(kind.abbr, "%.")
-        if last then
-            local catstr = kind.abbr:sub(last + 1, #kind.abbr)
-            local space_hole = string.rep(" ", last)
-            kind.concat = "type " .. space_hole .. catstr .. " interface{}"
-            kind.offset = 5
-            kind.abbr = kind.abbr .. " interface{}"
-        else
-            kind.concat = "type " .. kind.abbr .. " interface{}"
-            -- kind.abbr = kind.abbr .. " interface{}"
+        detail = "interface{}"
 
-            detail = "interface{}"
-
-            local size = utf8len(kind.abbr) + utf8len(detail)
-            local bank = maxItemWidth - size
-            kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
-
-            -- kind.abbr = kind.abbr .. " " .. detail
-
-            kind.offset = 5
-        end
+        local size = utf8len(kind.abbr) + utf8len(detail)
+        local bank = maxItemWidth - size
+        kind.abbr = string.format("%s%" .. bank .. "s", kind.abbr, "") .. detail
     else
-        kind.concat = kind.abbr
-
         if string.ends(kind.abbr, "~") then
             kind.abbr = string.sub(kind.abbr, 1, -2)
         end
@@ -546,7 +425,6 @@ local function go_fmt(entry, kind)
     kind.menu = ""
 
 
-    -- log.error(entry.source.name, kind)
 
     local highlights_info = require("colorful-menu").cmp_highlights(entry)
 

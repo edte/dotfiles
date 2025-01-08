@@ -3,12 +3,10 @@ local M = {}
 M.list = {
     {
         "neovim/nvim-lspconfig",
-        commit = "a89de2e",
+        -- commit = "a89de2e",
         config = function()
-            local m = Require("lsp.lsp")
-            if m ~= nil then
-                m.lspConfig()
-            end
+            Setup("lsp.lsp")
+            vim.g.health = { style = 'float' }
         end,
         denpendencies = {
             {

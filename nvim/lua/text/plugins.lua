@@ -47,7 +47,7 @@ M.list = {
         "windwp/nvim-ts-autotag",
         ft = { "html", "vue" },
         config = function()
-            Require("nvim-ts-autotag").setup()
+            Setup("nvim-ts-autotag")
         end,
     },
 

@@ -179,6 +179,7 @@ M.list = {
                         -- When true, label for field and variable will format like "foo: Foo"
                         -- instead of go's original syntax "foo Foo".
                         add_colon_before_type = false,
+                        alignment = true,
                     },
                     -- for lsp_config or typescript-tools
                     ts_ls = {
@@ -212,7 +213,7 @@ M.list = {
                 -- If provided, the plugin truncates the final displayed text to
                 -- this width (measured in display cells). Any highlights that extend
                 -- beyond the truncation point are ignored. Default 60.
-                max_width = 60,
+                max_width = 70,
             })
         end,
     },
