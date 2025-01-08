@@ -43,11 +43,20 @@ M.list = {
                 end,
             },
 
+            -- go 导包
             {
-                "Snikimonkd/cmp-go-pkgs",
-                -- event = { "LspAttach" },
-                -- event = { "InsertEnter *.go" },
+                name = "cmp-go-pkgs",
+                dir = "cmp.cmp_go_pkgs",
+                virtual = true,
                 ft = "go",
+
+                config = function()
+                    require("cmp.cmp_go_pkgs").new()
+                    require("cmp").register_source("go_pkgs", require("cmp.cmp_go_pkgs"))
+                    vim.api.nvim_create_user_command("CurNode", function(c)
+                        require("cmp_go_pkgs.source").kek(c)
+                    end, {})
+                end
             },
 
             -- 单词补全

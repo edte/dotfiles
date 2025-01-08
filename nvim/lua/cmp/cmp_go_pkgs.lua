@@ -7,12 +7,6 @@ local list_pkgs_command = "gopls.list_known_packages"
 source.new = function()
     local self = setmetatable({}, { __index = source })
 
-    require("cmp").register_source("go_pkgs", require("cmp.cmp_go_pkgs"))
-
-    vim.api.nvim_create_user_command("CurNode", function(c)
-        require("cmp_go_pkgs.source").kek(c)
-    end, {})
-
     return self
 end
 
@@ -23,26 +17,33 @@ local init_items = function(a)
     local arguments = { { URI = uri } }
 
     if client == nil then
+        log.error("client is nil")
         return
     end
 
-    client.request("workspace/executeCommand", {
+    local method = "workspace/executeCommand"
+
+    local params = {
         command = list_pkgs_command,
         arguments = arguments,
-    }, function(arg1, arg2, _)
-        if arg2 == nil and arg1 ~= nil then
-            vim.notify(("LSP error: %s"):format(vim.inspect(arg1)), vim.log.levels.DEBUG)
+    }
+
+    local handler = function(result, context, _)
+        if context == nil and result ~= nil then
+            log.error("LSP error", result)
             return
         end
 
-        if arg1 == nil and arg2 == nil then
-            vim.notify("both arg1 and arg2 are nil", vim.log.levels.DEBUG)
+        if result == nil and context == nil then
+            log.error("both arg1 and arg2 are nil")
             return
         end
 
         local tmp = {}
 
-        for _, v in ipairs(arg2.Packages) do
+        -- log.error(result, context)
+
+        for _, v in ipairs(context.Packages) do
             table.insert(tmp, {
                 label = string.format('"%s"', v),
                 kind = 9,
@@ -51,10 +52,18 @@ local init_items = function(a)
         end
 
         items[bufnr] = tmp
-    end, bufnr)
+
+        -- log.error(items)
+    end
+
+    local ok, id = client:request(method, params, handler, bufnr)
+
+    -- log.error(ok, id, a, items)
 end
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
+    group = vim.api.nvim_create_augroup("go_pkg_cmp", { clear = true }),
+
     pattern = { "*.go" },
     callback = init_items,
 })
@@ -80,7 +89,7 @@ end
 source.complete = function(self, _, callback)
     local ok = self._check_if_inside_imports()
     if ok == false then
-        vim.notify("not inside imports", vim.log.levels.DEBUG)
+        log.error("not inside imports")
         callback()
         return
     end
