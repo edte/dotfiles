@@ -82,9 +82,7 @@ nmap("U", "<c-r>")
 -- 重命名
 -- keymap("n", "R", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
-nmap("R", function()
-    return ":IncRename " .. vim.fn.expand("<cword>")
-end)
+nmap("R", ":IncRename ")
 
 nmap("<bs>", "<C-^>")
 

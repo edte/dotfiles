@@ -162,7 +162,7 @@ M.list = {
     -- 基于 Neovim 的命令预览功能的增量 LSP 重命名。
     {
         "smjonas/inc-rename.nvim",
-        cmd = "IncRename",
+        -- cmd = "IncRename",
         config = function()
             require("inc_rename").setup({})
         end,

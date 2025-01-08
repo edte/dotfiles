@@ -46,7 +46,8 @@ M.list = {
             {
                 "Snikimonkd/cmp-go-pkgs",
                 -- event = { "LspAttach" },
-                event = { "InsertEnter *.go" },
+                -- event = { "InsertEnter *.go" },
+                ft = "go",
             },
 
             -- 单词补全
