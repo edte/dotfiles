@@ -67,10 +67,8 @@ local function get_root_dir()
     local cwd = vim.uv.cwd()
     local git_root = find_git_root(cwd)
     if git_root then
-        -- print(git_root)
         return git_root
     else
-        -- print(cwd)
         return cwd
     end
 end
@@ -293,7 +291,6 @@ function M.set_marks(buf, marks)
 
     -- set new old ext
     for _, mark in ipairs(marks) do
-        -- Print(mark)
 
         -- 如果书签行号超过文件总行数，跳过该书签。
         if mark.line > vim.fn.line("$") then
@@ -320,11 +317,8 @@ function M.set_marks(buf, marks)
             lnum = mark.line,
         })
 
-        -- print(mark.id)
-        -- Print(M.data.bookmarks[mark.id])
         M.data.bookmarks[mark.id].extmark_id = ext_id
         M.data.bookmarks[mark.id].buf_id = buf
-        -- Print(M.data.bookmarks[mark.id])
 
         ::continue::
     end
@@ -348,13 +342,11 @@ function M.get_buf_bookmark_lines(buf)
         end
     end
 
-    -- Print(lines)
 
     return lines
 end
 
 function M.add_bookmark()
-    -- print("add_bookmark")
     function M.handle_add(line, buf1, buf2, buf, rows)
         -- Get buf's filename.
         local filename = Api.nvim_buf_get_name(buf)
@@ -366,7 +358,6 @@ function M.add_bookmark()
 
         -- Get bookmark's description.
         local description = Api.nvim_buf_get_lines(buf1, input_line - 1, input_line, false)[1] or ""
-        -- print(description)
 
         -- Close description input box.
         if description == "" then
@@ -508,8 +499,6 @@ end
 
 -- 写入书签到磁盘文件，下次加载时使用
 function M.save_bookmarks()
-    -- print("Saving bookmarks...")
-    -- Print(M.data.marks)
 
     local local_str = ""
     for id, bookmark in pairs(M.data.bookmarks) do
@@ -524,14 +513,13 @@ function M.save_bookmarks()
 
             -- 检查 extmark 是否有效
             if not extmark_pos or #extmark_pos == 0 then
-                print("Bookmark '" .. id .. "' is no longer valid.")
+                log.debug("Bookmark '" .. id .. "' is no longer valid.")
                 goto continue
             end
 
             M.data.bookmarks[id].line = extmark_pos[1] + 1
             M.data.bookmarks[id].rows = extmark_pos[2]
 
-            -- print(id, vim.inspect(M.data.bookmarks[id]))
         end
 
 
@@ -556,15 +544,12 @@ function M.save_bookmarks()
         local_str = string.format("%s%s", local_str, subs)
     end
 
-    -- Print(M.data.bookmarks)
-    -- print(M.data.data_filename)
 
     if M.data.data_filename == nil then -- lazy load,
         return
     end
 
     if local_str == "" then
-        -- print(M.data.data_filename)
         if vim.loop.fs_stat(M.data.data_filename) then
             os.remove(M.data.data_filename)
         end
@@ -579,7 +564,6 @@ end
 
 -- 从磁盘文件恢复书签
 function M.load_bookmarks()
-    -- print("load bookmarks")
     M.storage_dir = NEOVIM_BOOKMARKS_DATA
 
     if not vim.loop.fs_stat(M.storage_dir) then
@@ -594,7 +578,6 @@ function M.load_bookmarks()
         M.data.loaded_data = false
     end
 
-    -- print(currentPath)
 
     if M.data.loaded_data == true then
         return
@@ -604,7 +587,6 @@ function M.load_bookmarks()
     -- 基础目录+当前项目目录
     -- local bookmarks
     local data_filename = string.format("%s%s%s", M.storage_dir, "/", currentPath):gsub("%c", "")
-    -- print(data_filename)
     M.data.data_filename = data_filename
     M.data.pwd = currentPath
     M.data.loaded_data = true -- mark
@@ -617,7 +599,6 @@ function M.load_bookmarks()
     local content = file:read("*all")
     file:close()
 
-    -- print(content)
 
     for table_str in content:gmatch("{(.-)}") do
         local item = {}
@@ -641,7 +622,6 @@ function M.load_bookmarks()
             .id
     end
 
-    -- Print(M.data.bookmarks_groupby_filename)
 end
 
 function M.setup()

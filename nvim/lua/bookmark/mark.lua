@@ -236,7 +236,6 @@ function Mark.setup()
     -- 所有vim自带的mark都默认为大写
     for i = 0, 25 do
         if i ~= 3 and i ~= 12 and i ~= 14 then
-            -- print(i, low(i))
             vim.keymap.set("n", "m" .. low(i), "m" .. upp(i))
         end
     end

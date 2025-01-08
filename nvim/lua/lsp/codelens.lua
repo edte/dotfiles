@@ -181,7 +181,6 @@ function M.create_string(counting)
     local text = ""
     local opts = {}
 
-    -- Print(counting.git_authors)
 
     -- TODO: refactor
     local function append_with(count, fn)
@@ -225,14 +224,12 @@ function M.create_string(counting)
         if not (cfg.sections.git_authors == nil or (cfg.hide_zero_counts and counting.git_authors.count == 0)) then
             formatted = cfg.sections.git_authors(counting.git_authors.latest_author, counting.git_authors.count)
             text = text == "" and formatted or text .. cfg.separator .. formatted
-            -- print(formatted)
         end
 
         if has then
             opts[#opts + 1] = { ' ', 'SymbolUsageRounding' }
         end
 
-        -- print(has, formatted)
 
         if formatted ~= nil then
             opts[#opts + 1] = { '', 'SymbolUsageRounding' }
@@ -293,8 +290,6 @@ function M.display_lines(bufnr, query_results)
     M.delete_existing_lines(bufnr, ns_id)
     for _, query in pairs(query_results or {}) do
         local virt_lines = {}
-        -- Print(query.counting)
-        -- print("\n")
         local display_str, opts = M.create_string(query.counting)
 
         if not (display_str == "") then
@@ -313,11 +308,6 @@ function M.display_lines(bufnr, query_results)
             -- 定义一个高亮组，设置背景颜色为主题背景色，字体颜色为灰色
             Cmd('highlight MyHighlightGroup guifg=grey guibg=NONE')
 
-            -- print(vim.inspect(opts))
-            -- print("\n")
-            -- Print(opts)
-
-            -- print(bufnr, ns_id, query.rangeStart.line)
 
             if query.rangeStart.line < api.nvim_buf_line_count(bufnr) then
                 api.nvim_buf_set_extmark(bufnr, ns_id, query.rangeStart.line, 0, {
@@ -500,7 +490,6 @@ function M.procedure()
     if M.lsp_support_method(bufnr, method) then
         local params = { textDocument = lsp.util.make_text_document_params() }
         lsp.buf_request_all(bufnr, method, params, function(document_symbols)
-            -- vim.pretty_print(lsp.buf_request_sync(0, "textDocument/codeLens", document_symbols, 1000))
             local symbols = {}
             symbols["bufnr"] = bufnr
             symbols["document_symbols"] = document_symbols

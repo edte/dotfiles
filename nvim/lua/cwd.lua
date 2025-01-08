@@ -37,7 +37,6 @@ function M.find_lsp_root()
     -- step2: 如果有配置文件类型取啥lsp，就从对应里的取
     for _, client in pairs(clients) do
         if client.name == M.file2lsp[buf_ft] then
-            print(client.config.root_dir, client.name)
             return client.config.root_dir, client.name
         end
     end
@@ -47,7 +46,6 @@ function M.find_lsp_root()
         local filetypes = client.config.filetypes
         if filetypes and vim.tbl_contains(filetypes, buf_ft) then
             if not vim.tbl_contains(M.ignore_lsp, client.name) then
-                -- print(client.config.root_dir, client.name)
                 return client.config.root_dir, client.name
             end
         end

@@ -194,7 +194,6 @@ M.set_virt_text = function(namespace, bufnr, line, prefix, names)
             opts.id = marks[1][1]
         end
 
-        -- print(line)
         Api.nvim_buf_set_extmark(bufnr, namespace, line, 0, opts)
     end
 end

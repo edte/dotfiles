@@ -6,17 +6,14 @@ local function getProjectName()
     end
 
     if vim.fn.system([[git rev-parse --show-toplevel 2> /dev/null]]) == "" then
-        -- print("pwd")
         return vim.fn.system("basename $(pwd)"):gsub("%c", "")
     end
 
     local res = vim.fn.system([[git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p']]):gsub("%c", "")
     if res ~= "" then
-        -- print("git remote")
         return res
     end
 
-    -- print("git local")
     return vim.fn.system([[ TOP=$(git rev-parse --show-toplevel); echo ${TOP##*/} ]]):gsub("%c", "")
 end
 

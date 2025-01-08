@@ -36,7 +36,7 @@ local function matchadd()
     end)
 
     if not success then
-        print("Error adding match: " .. err)
+        log.error("Error adding match: " .. err)
     end
 end
 

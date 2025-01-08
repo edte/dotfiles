@@ -166,7 +166,7 @@ M.list = {
     },
 
     {
-        "xzbdmw/colorful-menu.nvim",
+        "edte/colorful-menu.nvim",
         config = function()
             -- You don't need to set these options.
             require("colorful-menu").setup({

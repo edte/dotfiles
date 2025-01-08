@@ -8,7 +8,6 @@ M.config = function()
             local file_contents = vim.fn.readfile(Api.nvim_buf_get_name(bufnr))
             local file_length = #file_contents
             local filetype = vim.filetype.match({ buf = bufnr })
-            -- print(file_length)
             -- 2000 行开启大文件检测
             if file_length > 2500 then
                 return true
