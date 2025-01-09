@@ -137,17 +137,10 @@ end
 
 --stylua: ignore
 H.create_default_hl = function()
-    local set_default_hl = function(name, data)
-        data.default = true
-        Api.nvim_set_hl(0, name, data)
-    end
-
-
     Cmd([[
     hi TabLine guibg=#1f2335 guifg=#3b4261
     hi TabLineFill guibg=#1d202f
     hi TabLineSel guibg=#7aa2f7 guifg=#1d202f
-
     hi MiniTablineCurrent guibg=#3b4261 guifg=#c0caf5
     hi MiniTablineFill guibg=#1d202f
     hi MiniTablineHidden guibg=#1f2335 guifg=#737aa2
@@ -156,22 +149,16 @@ H.create_default_hl = function()
     hi MiniTablineModifiedVisible guibg=#1f2335 guifg=#e0af68
     hi MiniTablineTabpagesection guibg=#3b4261 guifg=NONE
     hi MiniTablineVisible guibg=#1f2335 guifg=#c0caf5
-
     ]])
 
-
-
-    set_default_hl('MiniTablineCurrent', { link = 'TabLineSel' })
-    set_default_hl('MiniTablineVisible', { link = 'TabLineSel' })
-    set_default_hl('MiniTablineHidden', { link = 'TabLine' })
-
-    set_default_hl('MiniTablineModifiedCurrent', { link = 'StatusLine' })
-    set_default_hl('MiniTablineModifiedVisible', { link = 'StatusLine' })
-    set_default_hl('MiniTablineModifiedHidden', { link = 'StatusLineNC' })
-
-    set_default_hl('MiniTablineTabpagesection', { link = 'Search' })
-
-    set_default_hl('MiniTablineFill', { link = 'Normal' })
+    link_highlight('MiniTablineCurrent', 'TabLineSel')
+    link_highlight('MiniTablineVisible', 'TabLineSel')
+    link_highlight('MiniTablineHidden', 'TabLine')
+    link_highlight('MiniTablineModifiedCurrent', 'StatusLine')
+    link_highlight('MiniTablineModifiedVisible', 'StatusLine')
+    link_highlight('MiniTablineModifiedHidden', 'StatusLineNC')
+    link_highlight('MiniTablineTabpagesection', 'Search')
+    link_highlight('MiniTablineFill', 'Normal')
 end
 
 H.is_disabled = function()

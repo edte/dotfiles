@@ -24,6 +24,33 @@ _G.zz = function()
     Api.nvim_feedkeys("zz", "n", false)
 end
 
+_G.link_highlight = function(name, link)
+    Api.nvim_set_hl(0, name, {
+        link = link,
+        default = true,
+    })
+end
+
+--- @param name string Highlight group name, e.g. "ErrorMsg"
+_G.highlight = function(name, fg, bg)
+    if type(fg) == "table" then
+        Api.nvim_set_hl(0, name, fg)
+        return
+    end
+
+    local t = {}
+
+    if fg then
+        t["fg"] = fg
+    end
+
+    if bg then
+        t["bg"] = bg
+    end
+
+    Api.nvim_set_hl(0, name, t)
+end
+
 _G.project_files = function()
     local ret = vim.fn.system("git rev-parse --show-toplevel 2> /dev/null")
     if ret == "" then
@@ -95,30 +122,38 @@ function Setup(package_name, options)
     package.setup(options)
 end
 
-_G.nmap = function(lhs, rhs)
-    Keymap("n", lhs, rhs)
+_G.nmap = function(lhs, rhs, opts)
+    Keymap("n", lhs, rhs, opts)
 end
 
-_G.vmap = function(lhs, rhs)
-    Keymap("v", lhs, rhs)
+_G.cmap = function(lhs, rhs, opts)
+    Keymap("c", lhs, rhs, opts)
 end
 
-_G.imap = function(lhs, rhs)
-    Keymap("i", lhs, rhs)
+_G.vmap = function(lhs, rhs, opts)
+    Keymap("v", lhs, rhs, opts)
 end
 
-_G.xmap = function(lhs, rhs)
-    Keymap("x", lhs, rhs)
+_G.imap = function(lhs, rhs, opts)
+    Keymap("i", lhs, rhs, opts)
 end
 
-_G.Keymap = function(mode, lhs, rhs)
+_G.xmap = function(lhs, rhs, opts)
+    Keymap("x", lhs, rhs, opts)
+end
+
+_G.Keymap = function(mode, lhs, rhs, opts)
+    if opts == nil then
+        opts = { noremap = true, silent = true }
+    end
+
     if type(rhs) == "string" then
-        Api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, })
+        Api.nvim_set_keymap(mode, lhs, rhs, opts)
         return
     end
 
     if type(rhs) == "function" then
-        vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, })
+        vim.keymap.set(mode, lhs, rhs, opts)
         return
     end
 
@@ -172,47 +207,6 @@ function Print(tbl, level, filteDefault)
     print(indent_str .. "}")
 end
 
-function Json(tbl, level, filteDefault)
-    local s = ""
-
-    if type(tbl) ~= "table" then
-        s = s .. json.encode(tbl)
-        return
-    end
-
-    if tbl == nil then
-        return
-    end
-
-    local msg = ""
-    filteDefault = filteDefault or true --默认过滤关键字（DeleteMe, _class_type）
-    level = level or 1
-    local indent_str = ""
-    for i = 1, level do
-        indent_str = indent_str .. "  "
-    end
-
-    s = s .. indent_str .. "{"
-    for k, v in pairs(tbl) do
-        if filteDefault then
-            if k ~= "_class_type" and k ~= "DeleteMe" then
-                local item_str = string.format("%s%s = %s", indent_str .. " ", tostring(k), tostring(v))
-                s = s .. item_str
-                if type(v) == "table" then
-                    Json(v, level + 1)
-                end
-            end
-        else
-            local item_str = string.format("%s%s = %s", indent_str .. " ", tostring(k), tostring(v))
-            s = s .. item_str
-            if type(v) == "table" then
-                Json(v, level + 1)
-            end
-        end
-    end
-    s = s .. indent_str .. "}"
-end
-
 --  字符串扩展方法 split_b，用于将字符串按照指定的分隔符 sep 进行分割，并返回一个包含切割结果的表
 function string:split_b(sep)
     local cuts = {}
@@ -221,31 +215,6 @@ function string:split_b(sep)
     end
 
     return cuts
-end
-
-function tprint(tbl, indent)
-    if not indent then indent = 0 end
-    local toprint = string.rep(" ", indent) .. "{\r\n"
-    indent = indent + 2
-    for k, v in pairs(tbl) do
-        toprint = toprint .. string.rep(" ", indent)
-        if (type(k) == "number") then
-            toprint = toprint .. "[" .. k .. "] = "
-        elseif (type(k) == "string") then
-            toprint = toprint .. k .. "= "
-        end
-        if (type(v) == "number") then
-            toprint = toprint .. v .. ",\r\n"
-        elseif (type(v) == "string") then
-            toprint = toprint .. "\"" .. v .. "\",\r\n"
-        elseif (type(v) == "table") then
-            toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
-        else
-            toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-        end
-    end
-    toprint = toprint .. string.rep(" ", indent - 2) .. "}"
-    return toprint
 end
 
 _G.utf8len = function(input)

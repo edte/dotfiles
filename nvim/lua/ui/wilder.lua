@@ -1,6 +1,6 @@
 local M = {}
 
-M.config = function()
+M.setup = function()
     local wilder = Require("wilder")
     if wilder == nil then
         return
@@ -51,30 +51,18 @@ M.config = function()
             pumblend = 0,
         }))
     )
+
+
     -- 设置快捷键
-    Api.nvim_set_keymap(
-        "c",
-        "<tab>",
-        [[wilder#in_context() ? wilder#next() : '<tab>']],
-        { noremap = true, expr = true }
-    )
-    Api.nvim_set_keymap(
-        "c",
-        "<Down>",
-        [[wilder#in_context() ? wilder#next() : '<down>']],
-        { noremap = true, expr = true }
-    )
-    Api.nvim_set_keymap(
-        "c",
-        "<up>",
-        [[wilder#in_context() ? wilder#previous() : '<up>']],
-        { noremap = true, expr = true }
-    )
-    Api.nvim_set_keymap("c", "0", "0", {}) -- 不清楚原因导致0无法使用 强制覆盖
+    cmap("<tab>", [[wilder#in_context() ? wilder#next() : '<tab>']], { noremap = true, expr = true })
+    cmap("<Down>", [[wilder#in_context() ? wilder#next() : '<down>']], { noremap = true, expr = true })
+    cmap("<up>", [[wilder#in_context() ? wilder#previous() : '<up>']], { noremap = true, expr = true })
+
+    cmap("0", "0", {}) -- 不清楚原因导致0无法使用 强制覆盖
 
     -- 设置高亮
-    Api.nvim_set_hl(0, "WilderAccent", { fg = "#FF4500" })
-    Api.nvim_set_hl(0, "WilderSelectedAccent", { fg = "#FF4500", bg = "#4e4e4e" })
+    highlight("WilderAccent", "#FF4500")
+    highlight("WilderSelectedAccent", "#FF4500", "#4e4e4e")
 
     Cmd("call wilder#set_option('noselect', 0)")
 end

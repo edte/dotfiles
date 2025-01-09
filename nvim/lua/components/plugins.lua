@@ -38,7 +38,7 @@ M.list = {
         "echasnovski/mini.hipatterns",
         version = false,
         config = function()
-            require("components.todo").config()
+            require("components.todo").setup()
         end,
     },
 

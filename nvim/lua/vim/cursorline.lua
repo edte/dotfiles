@@ -42,7 +42,7 @@ end
 
 Autocmd("VimEnter", {
     callback = function()
-        Api.nvim_set_hl(0, "CursorWord", { underline = true })
+        highlight("CursorWord", { underline = true })
         matchadd()
     end,
 })

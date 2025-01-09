@@ -116,11 +116,11 @@ StatusLine = {
 }
 
 -- 定义高亮组
-Api.nvim_set_hl(0, "StatusLineProject", { fg = "#D3869B", bg = "#1E1E2E", bold = true })
-Api.nvim_set_hl(0, "StatusLineFilename", { fg = "#83A598", bg = "#1E1E2E", bold = true })
-Api.nvim_set_hl(0, "StatusLineGitBranch", { fg = "#8EC07C", bg = "#1E1E2E", bold = true })
-Api.nvim_set_hl(0, "StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
-Api.nvim_set_hl(0, "StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
+highlight("StatusLineProject", { fg = "#D3869B", bg = "#1E1E2E", bold = true })
+highlight("StatusLineFilename", { fg = "#83A598", bg = "#1E1E2E", bold = true })
+highlight("StatusLineGitBranch", { fg = "#8EC07C", bg = "#1E1E2E", bold = true })
+highlight("StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
+highlight("StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
 
 StatusLine.active = function()
     local statusline = {

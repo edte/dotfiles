@@ -122,7 +122,7 @@ M.list = {
         "edte/wilder.nvim",
         event = "CmdlineEnter", -- 懒加载：首次进入cmdline时载入
         config = function()
-            Require("ui.wilder").config()
+            Setup("ui.wilder")
         end,
     },
 
@@ -227,13 +227,13 @@ M.list = {
         config = function()
             local rainbow_delimiters = require("rainbow-delimiters")
 
-            Api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-            Api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-            Api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-            Api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-            Api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-            Api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-            Api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+            highlight("RainbowRed", "#E06C75")
+            highlight("RainbowYellow", "#E5C07B")
+            highlight("RainbowBlue", "#61AFEF")
+            highlight("RainbowOrange", "#D19A66")
+            highlight("RainbowGreen", "#98C379")
+            highlight("RainbowViolet", "#C678DD")
+            highlight("RainbowCyan", "#56B6C2")
 
             require("rainbow-delimiters.setup").setup({
                 strategy = {

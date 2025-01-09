@@ -8,13 +8,12 @@ local M = {
 }
 
 local lsp = vim.lsp
-local api = Api
 local SymbolKind = vim.lsp.protocol.SymbolKind
 
 local defaults = {
     enable = true,
     include_declaration = false, -- Reference include declaration
-    hide_zero_counts = true,     -- Hide lsp sections which have no content
+    hide_zero_counts = false,    -- Hide lsp sections which have no content
     sections = {
         definition = function(count)
             return ""
@@ -29,6 +28,10 @@ local defaults = {
             return ""
         end,
         git_authors = function(latest_author, count)
+            if latest_author == nil then
+                return ""
+            end
+
             return latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
         end,
     },
@@ -108,13 +111,6 @@ function M:write_table(tbl)
         file:close()
     end
 end
-
-local function default_hl()
-    return {
-        LspLens = { link = "LspCodeLens", default = true },
-    }
-end
-
 
 local lsplens = {}
 
@@ -244,22 +240,28 @@ function M.create_string(counting)
 end
 
 function M.delete_existing_lines(bufnr, ns_id)
-    local existing_marks = api.nvim_buf_get_extmarks(bufnr, ns_id, 0, -1, {})
+    local existing_marks = Api.nvim_buf_get_extmarks(bufnr, ns_id, 0, -1, {})
     for _, v in pairs(existing_marks) do
-        api.nvim_buf_del_extmark(bufnr, ns_id, v[1])
+        Api.nvim_buf_del_extmark(bufnr, ns_id, v[1])
     end
 end
 
 function M.normalize_rangeStart_character(bufnr, query)
     local cfg = M.config
-    local lines = api.nvim_buf_get_lines(bufnr, query.line, query.line + 1, true)
+
+    local total_lines = vim.api.nvim_buf_line_count(bufnr) -- Get the total number of lines in the buffer
+    if query.line < 0 or query.line >= total_lines then
+        return                                             -- Exit if the line is out of bounds
+    end
+
+    local lines = Api.nvim_buf_get_lines(bufnr, query.line, query.line + 1, true)
     if #lines == 0 then
         return
     end
     local line = lines[1]
 
     if not cfg.indent_by_lsp then
-        local tabstop = api.nvim_buf_get_option(bufnr, "tabstop")
+        local tabstop = Api.nvim_buf_get_option(bufnr, "tabstop")
         local normalized_text = string.gsub(line, "\t", string.rep(" ", tabstop))
         local _, space_count = string.find(normalized_text, "^%s*")
         query.character = space_count
@@ -286,7 +288,7 @@ function M.display_lines(bufnr, query_results)
     if vim.fn.bufexists(bufnr) == 0 then
         return
     end
-    local ns_id = api.nvim_create_namespace("lsp-lens")
+    local ns_id = Api.nvim_create_namespace("lsp-lens")
     M.delete_existing_lines(bufnr, ns_id)
     for _, query in pairs(query_results or {}) do
         local virt_lines = {}
@@ -298,19 +300,22 @@ function M.display_lines(bufnr, query_results)
             local vline = { { string.rep(" ", query.rangeStart.character) .. display_str, "LspLens" } }
             virt_lines[#virt_lines + 1] = vline
 
-            local function h(name) return api.nvim_get_hl(0, { name = name }) end
-            api.nvim_set_hl(0, 'SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
-            api.nvim_set_hl(0, 'SymbolUsageContent', { bg = h('CursorLine').bg, fg = h('Comment').fg, italic = true })
-            api.nvim_set_hl(0, 'SymbolUsageRef', { fg = h('Function').fg, bg = h('CursorLine').bg, italic = true })
-            api.nvim_set_hl(0, 'SymbolUsageDef', { fg = h('Type').fg, bg = h('CursorLine').bg, italic = true })
-            api.nvim_set_hl(0, 'SymbolUsageImpl', { fg = h('@keyword').fg, bg = h('CursorLine').bg, italic = true })
+            local function h(name)
+                return Api.nvim_get_hl(0, { name = name })
+            end
+
+            highlight('SymbolUsageRounding', { fg = h('CursorLine').bg, italic = true })
+            highlight('SymbolUsageContent', { bg = h('CursorLine').bg, fg = h('Comment').fg, italic = true })
+            highlight('SymbolUsageRef', { fg = h('Function').fg, bg = h('CursorLine').bg, italic = true })
+            highlight('SymbolUsageDef', { fg = h('Type').fg, bg = h('CursorLine').bg, italic = true })
+            highlight('SymbolUsageImpl', { fg = h('@keyword').fg, bg = h('CursorLine').bg, italic = true })
 
             -- 定义一个高亮组，设置背景颜色为主题背景色，字体颜色为灰色
             Cmd('highlight MyHighlightGroup guifg=grey guibg=NONE')
 
 
-            if query.rangeStart.line < api.nvim_buf_line_count(bufnr) then
-                api.nvim_buf_set_extmark(bufnr, ns_id, query.rangeStart.line, 0, {
+            if query.rangeStart.line < Api.nvim_buf_line_count(bufnr) then
+                Api.nvim_buf_set_extmark(bufnr, ns_id, query.rangeStart.line, 0, {
                     -- virt_lines = virt_lines,
                     virt_text = opts,
 
@@ -461,7 +466,7 @@ end
 
 function M.lsp_lens_off()
     M.config.enable = false
-    M.delete_existing_lines(0, api.nvim_create_namespace("lsp-lens"))
+    M.delete_existing_lines(0, Api.nvim_create_namespace("lsp-lens"))
 end
 
 function M.lsp_lens_toggle()
@@ -478,10 +483,10 @@ function M.procedure()
         return
     end
 
-    local bufnr = api.nvim_get_current_buf()
+    local bufnr = Api.nvim_get_current_buf()
 
     for _, val in pairs(M.config.ignore_filetype) do
-        if (val == api.nvim_buf_get_option(bufnr, "filetype")) then
+        if (val == Api.nvim_buf_get_option(bufnr, "filetype")) then
             return
         end
     end
@@ -509,16 +514,14 @@ function M.setup(opts)
     end
     M.config = vim.tbl_deep_extend("force", defaults, opts)
 
-    for group, hl in pairs(default_hl()) do
-        api.nvim_set_hl(0, group, hl)
-    end
+    link_highlight("LspLens", "LspCodeLens")
 
-    api.nvim_create_user_command("LspLensOn", M.lsp_lens_on, {})
-    api.nvim_create_user_command("LspLensOff", M.lsp_lens_off, {})
-    api.nvim_create_user_command("LspLensToggle", M.lsp_lens_toggle, {})
+    Api.nvim_create_user_command("LspLensOn", M.lsp_lens_on, {})
+    Api.nvim_create_user_command("LspLensOff", M.lsp_lens_off, {})
+    Api.nvim_create_user_command("LspLensToggle", M.lsp_lens_toggle, {})
 
-    api.nvim_create_autocmd({ "LspAttach", "TextChanged", "BufEnter" }, {
-        group = api.nvim_create_augroup("lsp_lens", { clear = true }),
+    Api.nvim_create_autocmd({ "LspAttach", "TextChanged", "BufEnter" }, {
+        group = Api.nvim_create_augroup("lsp_lens", { clear = true }),
         callback = M.procedure,
     })
 end

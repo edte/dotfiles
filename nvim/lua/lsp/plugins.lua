@@ -3,10 +3,10 @@ local M = {}
 M.list = {
     {
         "neovim/nvim-lspconfig",
-        -- commit = "a89de2e",
+        commit = "a89de2e",
         config = function()
             Setup("lsp.lsp")
-            vim.g.health = { style = 'float' }
+            -- vim.g.health = { style = 'float' }
         end,
         denpendencies = {
             {
@@ -177,38 +177,6 @@ M.list = {
         config = function()
             require("lsp.codelens").setup()
         end,
-    },
-
-    -- 在分割窗口或弹出窗口中运行测试并提供实时反馈
-    -- 这个插件太慢了，暂时不用
-    {
-        "quolpr/quicktest.nvim",
-        -- ft = "go",
-        lazy = true,
-        config = function()
-            local qt = require("quicktest")
-            qt.setup({
-                -- Choose your adapter, here all supported adapters are listed
-                adapters = {
-                    require("quicktest.adapters.golang")({
-                        additional_args = function(bufnr)
-                            return { "-race", "-count=1" }
-                        end,
-                    }),
-                    require("quicktest.adapters.vitest")({}),
-                    require("quicktest.adapters.elixir"),
-                    require("quicktest.adapters.criterion"),
-                    require("quicktest.adapters.dart"),
-                },
-                default_win_mode = "split",
-                use_baleia = false,
-            })
-        end,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-        keys = {},
     },
 
     -- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。

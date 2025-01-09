@@ -269,7 +269,7 @@ function M:register_user_commands()
 end
 
 function M:set_colors()
-    Api.nvim_set_hl(0, "Goplements", { default = true, link = "DiagnosticHint" })
+    link_highlight("Goplements", "DiagnosticHint")
 end
 
 function M.setup(opts)
