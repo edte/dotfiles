@@ -174,7 +174,7 @@ M.list = {
             require("colorful-menu").setup({
                 ls = {
                     gopls = {
-                        alignment = true,
+                        alignment = false,
                     },
                 },
                 fallback_highlight = "@variable",
