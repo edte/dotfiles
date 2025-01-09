@@ -167,7 +167,37 @@ M.list = {
         end
     },
 
+    -- 用于 CSV 文件编辑的 Neovim 插件。
+    {
+        'hat0uma/csvview.nvim',
+        ft = "csv",
+        config = function()
+            require('csvview').setup({
+                view = {
+                    display_mode = "border",
+                },
+            })
 
+            Autocmd({ "FileType" }, {
+                pattern = "csv",
+                callback = function()
+                    Cmd("CsvViewEnable")
+                end,
+            })
+        end
+    },
+
+    -- cp 选择颜色
+    {
+        "edte/colortils.nvim",
+        keys = { "cp" },
+        config = function()
+            nmap("cp", "<cmd>Colortils<CR>")
+            require("colortils").setup()
+            highlight("ColortilsCurrentLine", "#A10000")
+        end,
+    },
 
 }
+
 return M

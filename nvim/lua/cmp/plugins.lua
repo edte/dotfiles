@@ -202,6 +202,28 @@ M.list = {
         "tpope/vim-endwise",
     },
 
+    -- Neovim 插件可快速插入日志语句并捕获日志输出
+    -- glj	    :      在光标下方插入一条日志语句
+    -- glk	    :      在光标上方插入一条日志语句
+    -- glo	    :      在光标下方插入一条纯文本日志语句
+    -- gl<S-o>	:      在光标上方插入一条纯文本日志语句
+    -- gla      :      将日志目标添加到批处理中
+    -- glb	    :      插入批处理日志语句
+    {
+        "Goose97/timber.nvim",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("timber").setup({
+                log_templates = {
+                    default = {
+                        lua = [[log.debug("%log_target", %log_target)]],
+                    },
+                },
+            })
+        end
+    },
+
     -- cmp 替代品，暂时还是有些问题，一些cmp生态不咋支持，而且没搞懂怎么设置provider的kind
     -- {
     --     'saghen/blink.cmp',

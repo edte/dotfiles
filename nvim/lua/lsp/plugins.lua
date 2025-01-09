@@ -188,6 +188,19 @@ M.list = {
         cmd = "Glance",
     },
 
+    -- 基于 Martin Fowler 的 Refactoring 书籍的 Refactoring 库
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        lazy = false,
+        config = function()
+            require("refactoring").setup()
+        end,
+    },
+
 
 }
 
