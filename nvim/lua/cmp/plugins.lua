@@ -282,13 +282,21 @@ M.list = {
                 event = { "InsertEnter" },
             },
 
+            -- {
+            --     name = "blink-go-pkgs",
+            --     dir = "cmp.blink-go-pkgs",
+            --     virtual = true,
+            --     ft = "go",
+            --     config = function()
+            --         require("cmp.blink-go-pkgs")
+            --     end
+            -- },
+
             {
-                name = "blink-go-pkgs",
-                dir = "cmp.blink-go-pkgs",
-                virtual = true,
+                "edte/blink-go-import.nvim",
                 ft = "go",
                 config = function()
-                    require("cmp.blink-go-pkgs")
+                    require("blink-go-import").setup()
                 end
             },
 
@@ -322,12 +330,12 @@ M.list = {
                 },
 
                 sources = {
-                    default = { 'lsp', 'path', 'snippets', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "nvim_lsp_signature_help", "go_pkgs" },
+                    default = { 'lsp', 'path', 'snippets', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "nvim_lsp_signature_help", "go_import" },
                     cmdline = {},
                     providers = {
-                        go_pkgs = {
-                            module = 'cmp.blink-go-pkgs',
-                            name = 'Pkgs',
+                        go_import = {
+                            name = 'Module',
+                            module = 'blink-go-import',
                         },
 
                         lsp = {
