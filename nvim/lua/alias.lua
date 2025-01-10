@@ -114,8 +114,14 @@ function Setup(package_name, options)
         return
     end
 
-    if options ~= nil then
+    if options == nil then
         options = {}
+    else
+        if type(options) ~= "table" then
+            log.error("invalid table type: ", package_name, options)
+            print("invalid table type: ", package_name, options)
+            return
+        end
     end
 
     -- 调用包的 'setup' 函数进行设置
