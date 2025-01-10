@@ -31,7 +31,7 @@ M.list = {
 
             require("lsp.go-return").setup({})
 
-            require("lsp.go-impl").setup({
+            require("lsp.go-show").setup({
                 -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
                 display_package = false,
                 -- The namespace to use for the extmarks (no real reason to change this except for testing)
@@ -42,6 +42,20 @@ M.list = {
             })
         end,
     },
+
+    -- GoImplOpen
+    {
+        "fang2hou/go-impl.nvim",
+        -- ft = "go",
+        cmd = "GoImplOpen",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "ibhagwan/fzf-lua",
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {},
+    },
+
 
     -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
     {
