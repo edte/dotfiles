@@ -322,10 +322,10 @@ M.list = {
                 },
 
                 sources = {
-                    default = { 'lsp', 'path', 'snippets', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "nvim_lsp_signature_help", "blink_go_pkgs" },
+                    default = { 'lsp', 'path', 'snippets', 'buffer', 'Tabnine', 'lazydev', "ripgrep", "nvim_lua", "nvim_lsp_signature_help", "go_pkgs" },
                     cmdline = {},
                     providers = {
-                        blink_go_pkgs = {
+                        go_pkgs = {
                             module = 'cmp.blink-go-pkgs',
                             name = 'Pkgs',
                         },
