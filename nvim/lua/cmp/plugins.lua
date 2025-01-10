@@ -167,19 +167,12 @@ M.list = {
         event = { "InsertEnter" },
     },
 
+    -- 彩色补全
     {
-        "edte/colorful-menu.nvim",
+        "xzbdmw/colorful-menu.nvim",
         version = "*",
         config = function()
-            require("colorful-menu").setup({
-                ls = {
-                    gopls = {
-                        alignment = false,
-                    },
-                },
-                fallback_highlight = "@variable",
-                max_width = 60,
-            })
+            require("colorful-menu").setup({})
         end,
     },
 

@@ -160,13 +160,23 @@ M.list = {
     },
 
     -- 基于 Neovim 的命令预览功能的增量 LSP 重命名。
+    -- {
+    --     "smjonas/inc-rename.nvim",
+    --     -- cmd = "IncRename",
+    --     config = function()
+    --         require("inc_rename").setup({})
+    --     end,
+    -- },
+
     {
-        "smjonas/inc-rename.nvim",
-        -- cmd = "IncRename",
+        "saecki/live-rename.nvim",
         config = function()
-            require("inc_rename").setup({})
-        end,
+            local live_rename = require("live-rename")
+            vim.keymap.set("n", "R", live_rename.map({ text = "", insert = true }), { desc = "LSP rename" })
+        end
+
     },
+
 
     -- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
     {
@@ -199,6 +209,13 @@ M.list = {
         config = function()
             require("refactoring").setup()
         end,
+    },
+    {
+        "mhanberg/output-panel.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("output_panel").setup()
+        end
     },
 
 
