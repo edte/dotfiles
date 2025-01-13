@@ -55,7 +55,7 @@ function M:get_completions(context, callback)
 
     local ok = check_if_inside_imports()
     if ok == false then
-        log.error("not inside imports")
+        -- log.error("not inside imports")
         callback()
         return
     end

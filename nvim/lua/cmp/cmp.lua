@@ -28,9 +28,9 @@ function M.setup()
         formatting = {
             -- kind：图标样式
             fields = { "kind", "abbr" },
-
+            expandable_indicator = false,
             format = function(entry, kind)
-                -- log.error(entry.source.name, kind)
+                log.error(entry.source.name, kind)
 
                 -- cmp icon highlight
                 vim.cmd('highlight CmpItemKindFunction guifg=#CB6460')
@@ -88,8 +88,9 @@ function M.setup()
             throttle = 0,
             fetching_timeout = 5,
             confirm_resolve_timeout = 80,
-            -- async_budget = 1,
-            max_view_entries = 20,
+            async_budget = 1,
+            max_view_entries = 80,
+            filtering_context_budget = 1000,
         },
 
         snippet = {
@@ -166,10 +167,12 @@ function M.setup()
             {
                 name = "nvim_lsp_signature_help",
                 priority = 10,
+                max_item_count = 1,
             },
             {
                 name = "cmp_tabnine",
                 priority = 9,
+                max_item_count = 4,
             },
             {
                 name = "nvim_lsp",
@@ -178,22 +181,25 @@ function M.setup()
             {
                 name = "luasnip",
                 priority = 7,
+                max_item_count = 4,
             },
             {
                 name = "buffer",
                 priority = 7,
+                max_item_count = 4,
             },
             {
                 name = "dictionary",
                 priority = 6,
                 keyword_length = 2,
-                max_item_count = 5,
+                max_item_count = 4,
                 -- keyword_pattern = [[\w\+]],
             },
 
             {
                 name = "treesitter",
                 priority = 6,
+                max_item_count = 4,
             },
 
             {
@@ -223,12 +229,11 @@ function M.setup()
             },
             {
                 name = "rg",
-                keyword_length = 5,
-                max_item_count = 5,
+                max_item_count = 6,
                 option = {
-                    additional_arguments = "--smart-case --hidden",
+                    additional_arguments = { "--smart-case", "--max-depth", "4" },
                 },
-                priority = 4,
+                priority = 7,
                 group_index = 3,
             },
         },
@@ -262,9 +267,8 @@ function M.setup()
                 -- compare.sort_test,
 
                 cmp.config.compare.exact, -- 具有精确== true的条目将排名更高
-                put_down_snippet,
                 compare.locality,
-                compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+                compare.score,            -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
                 compare.recently_used,
                 Require("cmp_tabnine.compare"),
                 compare.offset,

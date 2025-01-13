@@ -89,7 +89,7 @@ end
 source.complete = function(self, _, callback)
     local ok = self._check_if_inside_imports()
     if ok == false then
-        log.error("not inside imports")
+        -- log.error("not inside imports")
         callback()
         return
     end
