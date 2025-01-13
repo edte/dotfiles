@@ -3,7 +3,7 @@ local M = {}
 local expand = true
 
 function M.setup()
-    local cmp, compare = Require("cmp"), Require("cmp.config.compare")
+    local cmp, compare = require("cmp"), require("cmp.config.compare")
     if cmp == nil then
         return
     end
