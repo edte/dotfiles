@@ -35,7 +35,7 @@ M.list = {
                 event = { "InsertEnter" },
             },
             {
-                "lukas-reineke/cmp-rg",
+                "edte/cmp-rg",
                 event = { "InsertEnter" },
                 lazy = true,
                 enabled = function()
