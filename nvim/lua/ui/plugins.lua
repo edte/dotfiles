@@ -146,21 +146,7 @@ M.list = {
                 width_nofocus = 100,
             },
         },
-        keys = {
-            {
-                "<space>e",
-                function()
-                    local mf = Require("mini.files")
-                    if mf == nil then
-                        return
-                    end
-                    if not mf.close() then
-                        mf.open(Api.nvim_buf_get_name(0))
-                        mf.reveal_cwd()
-                    end
-                end,
-            },
-        },
+        keys = {},
         config = function()
             -- nvim-tree
             -- vim.g.loaded_netrw = 1
@@ -169,6 +155,8 @@ M.list = {
 
             vim.g.loaded_netrw = false       -- or 1
             vim.g.loaded_netrwPlugin = false -- or 1
+
+            Setup("mini.files")
         end,
     },
 

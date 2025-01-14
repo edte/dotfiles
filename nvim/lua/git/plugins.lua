@@ -16,7 +16,7 @@ M.list = {
     -- 单选项卡界面可轻松循环浏览任何 git rev 的所有修改文件的差异。
     {
         "sindrets/diffview.nvim",
-        cmd = { "DiffviewOpen" },
+        -- cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         config = function()
             Setup("git.git", {})
         end,
@@ -72,6 +72,18 @@ M.list = {
             Cmd("command! Diff lua MiniDiff.toggle_overlay()")
         end,
     },
+
+    {
+        "FabijanZulj/blame.nvim",
+        lazy = false,
+        config = function()
+            require('blame').setup {}
+        end,
+        opts = {
+            blame_options = { '-w' },
+        },
+    },
+
 }
 
 return M

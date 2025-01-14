@@ -333,6 +333,7 @@ M.list = {
             -- your configuration
         },
     },
+
     {
         "wurli/visimatch.nvim",
         opts = {

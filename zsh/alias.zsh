@@ -32,6 +32,7 @@ alias find=fd
 alias ps=procs
 alias bench=hyperfine
 alias cp="cp -v"
+alias tree="eza --tree --icons"
 
 alias ch=cheat
 alias list=cheat

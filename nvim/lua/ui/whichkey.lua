@@ -1,14 +1,14 @@
 --------------------------------------------------------------which key ------------------------------------------------------------------------
-
 local wk = require("which-key")
 
 wk.add({
     mode = { "v" },
-    { "<leader>/",  "<Plug>(comment_toggle_linewise_visual)", desc = "comment", },
-    { "<leader>l",  group = "LSP",                            desc = "lsp", },
-    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", },
-    { "<leader>t",  ":'<,'>Translate ZH<cr>",                 desc = "Translate", },
-    { "<leader>d",  ":lua compare_to_clipboard()<cr>",        desc = "Diff", },
+    { "<leader>/",  "<Plug>(comment_toggle_linewise_visual)",          desc = "comment", },
+    { "<leader>l",  group = "LSP",                                     desc = "lsp", },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "Code Action", },
+    { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "Translate", },
+    { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "Diff copy", },
+    { "<leader>D",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Diff git history", },
 })
 
 wk.add({
@@ -19,12 +19,18 @@ wk.add({
     { "<leader>c",  "<cmd>bd<CR>",                                              desc = "close Buffer", },
     { "<leader>e",  "<cmd>lua ToggleMiniFiles()<CR>",                           desc = "Explorer", },
     { "<leader>f",  "<cmd>lua project_files()<CR>",                             desc = "files", },
+
     { "<leader>g",  group = "git",                                              desc = "git" },
     { "<leader>gb", "<cmd>FzfLua git_branches<cr>",                             desc = "branch", },
-    { "<leader>gc", "<cmd>FzfLua git_commits<cr>",                              desc = "commit", },
-    { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>",                          desc = "diff", },
-    { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>",             desc = "blame", },
+    { "<leader>gg", "<Cmd>.DiffviewFileHistory --follow<CR>",                   desc = "branch", },
+    { "<leader>gp", "<cmd>DiffviewFileHistory<cr>",                             desc = "project history", },
+    { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>",                  desc = "file history", },
     { "<leader>gs", "<cmd>FzfLua git_status<cr>",                               desc = "status", },
+    { "<leader>gD", "<cmd>Gitsigns diffthis HEAD<cr>",                          desc = "diff head", },
+    { "<leader>gd", "<cmd>DiffviewOpen<cr>",                                    desc = "diff origin" },
+    { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>",             desc = "blame line", },
+    { "<leader>gL", "<cmd>BlameToggle<cr>",                                     desc = "blame file", },
+
     { "<leader>l",  group = "lsp",                                              desc = "lsp" },
     { "<leader>lI", "<cmd>Mason<cr>",                                           desc = "Mason Info", },
     { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",                   desc = "Code Action", },

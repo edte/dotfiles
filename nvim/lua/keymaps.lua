@@ -84,7 +84,7 @@ nmap("U", "<c-r>")
 
 -- nmap("R", ":IncRename ")
 
-nmap("<bs>", "<C-^>")
+-- nmap("<bs>", "<C-^>")
 
 nmap("gI", "<cmd>Glance implementations<cr>")
 
