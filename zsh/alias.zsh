@@ -31,6 +31,7 @@ alias df=duf
 alias find=fd
 alias ps=procs
 alias bench=hyperfine
+alias cp="cp -v"
 
 alias ch=cheat
 alias list=cheat
