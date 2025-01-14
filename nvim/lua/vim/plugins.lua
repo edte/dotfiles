@@ -325,6 +325,22 @@ M.list = {
     --     end,
     -- },
 
+    -- y 复制高亮
+    {
+        "rachartier/tiny-glimmer.nvim",
+        event = "TextYankPost",
+        opts = {
+            -- your configuration
+        },
+    },
+    {
+        "wurli/visimatch.nvim",
+        opts = {
+            chars_lower_limit = 3,
+        }
+    },
+
+
 }
 
 return M
