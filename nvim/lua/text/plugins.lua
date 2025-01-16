@@ -61,18 +61,6 @@ M.list = {
     -- 	event = { "FileReadPre", "BufReadPre", "User FileOpened" },
     -- },
 
-
-    -- 更好的注释生成器。支持多种语言和注释约定。
-    {
-        "danymat/neogen",
-        after = "nvim-treesitter",
-        keys = "gc",
-        config = function()
-            require("neogen").setup({})
-            nmap("gc", "<cmd>lua require('neogen').generate()<CR>")
-        end,
-    },
-
     -- Neovim Lua 插件用于拆分和连接参数。 “mini.nvim” 库的一部分。
     {
         "echasnovski/mini.splitjoin",

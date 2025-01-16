@@ -5,7 +5,7 @@ if vim.fn.has("nvim-0.11") == 1 then
     vim.keymap.del("", "grr", {})
     vim.keymap.del("", "gra", {})
     vim.keymap.del("", "grn", {})
-    vim.keymap.del("", "gcc", {})
+    -- vim.keymap.del("", "gcc", {})
 end
 
 -- cmd("nmap <tab> %")
