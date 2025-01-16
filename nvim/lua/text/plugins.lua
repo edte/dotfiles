@@ -112,6 +112,16 @@ M.list = {
             )
         end
     },
+
+
+    -- 使用 Treesitter 突出显示参数的定义和用法
+    {
+        'm-demare/hlargs.nvim',
+        config = function()
+            require('hlargs').setup()
+        end
+    },
+
 }
 
 return M

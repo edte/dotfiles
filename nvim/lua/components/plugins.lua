@@ -200,6 +200,15 @@ M.list = {
         end,
     },
 
+    -- 📸 功能丰富的快照插件，可以为 Neovim 制作漂亮的代码快照
+    {
+        "mistricky/codesnap.nvim",
+        build = "make",
+        keys = {
+            { "<leader>c", "<cmd>CodeSnap<cr>", mode = "x", desc = "snapshot" },
+        },
+    },
+
 }
 
 return M
