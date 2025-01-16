@@ -376,6 +376,14 @@ M.list = {
         end
     },
 
+    -- numb.nvim 是一个 Neovim 插件，可以以非侵入性的方式查看缓冲区的行。
+    {
+        'nacro90/numb.nvim',
+        event = { "CmdlineEnter" },
+        config = function()
+            require('numb').setup()
+        end,
+    },
 
 }
 
