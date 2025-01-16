@@ -360,6 +360,23 @@ M.list = {
         name = "registers",
     },
 
+    -- nvim-hlslens 帮助您更好地浏览匹配的信息，在匹配的实例之间无缝跳转。
+    {
+        'kevinhwang91/nvim-hlslens',
+        keys = { "n", "N", "*", "#", "g*", "g#", "/", "?" },
+        config = function()
+            require('hlslens').setup()
+
+            nmap('n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]])
+            nmap('N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]])
+            nmap('*', [[*<Cmd>lua require('hlslens').start()<CR>]])
+            nmap('#', [[#<Cmd>lua require('hlslens').start()<CR>]])
+            nmap('g*', [[g*<Cmd>lua require('hlslens').start()<CR>]])
+            nmap('g#', [[g#<Cmd>lua require('hlslens').start()<CR>]])
+        end
+    },
+
+
 }
 
 return M
