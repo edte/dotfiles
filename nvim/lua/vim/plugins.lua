@@ -325,21 +325,22 @@ M.list = {
     --     end,
     -- },
 
-    -- y 复制高亮
+
+    -- Neovim 插件，用于预览寄存器的内容
+    -- 调用:Registers
+    -- 按 " 在正常或可视模式下
+    -- 按 Ctrl R 在插入模式下
     {
-        "rachartier/tiny-glimmer.nvim",
-        event = "TextYankPost",
-        opts = {
-            -- your configuration
+        "tversteeg/registers.nvim",
+        cmd = "Registers",
+        config = true,
+        keys = {
+            { "\"",    mode = { "n", "v" } },
+            { "<C-R>", mode = "i" }
         },
+        name = "registers",
     },
 
-    {
-        "wurli/visimatch.nvim",
-        opts = {
-            chars_lower_limit = 3,
-        }
-    },
 
 
 }

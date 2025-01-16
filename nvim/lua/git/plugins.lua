@@ -73,14 +73,26 @@ M.list = {
         end,
     },
 
+    -- Neovim 逃亡风格 git Blame 插件
     {
         "FabijanZulj/blame.nvim",
-        lazy = false,
+        lazy = true,
+        cmd = { "BlameToggle" },
         config = function()
-            require('blame').setup {}
+            require('blame').setup()
         end,
         opts = {
             blame_options = { '-w' },
+        },
+    },
+
+    -- Neovim的 lua 插件，用于为 git 主机网站生成可共享文件永久链接（带有行范围）
+    {
+        "linrongbin16/gitlinker.nvim",
+        cmd = "GitLink",
+        opts = {},
+        keys = {
+            { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
         },
     },
 

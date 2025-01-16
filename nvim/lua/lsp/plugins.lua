@@ -215,11 +215,12 @@ M.list = {
     -- 基于 Martin Fowler 的 Refactoring 书籍的 Refactoring 库
     {
         "ThePrimeagen/refactoring.nvim",
+        cmd = { "Refactor" },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        lazy = false,
+        lazy = true,
         config = function()
             require("refactoring").setup()
         end,

@@ -170,6 +170,7 @@ M.list = {
     -- 彩色补全
     {
         "xzbdmw/colorful-menu.nvim",
+        event = { "InsertEnter" },
         version = "*",
         config = function()
             require("colorful-menu").setup({})
@@ -205,7 +206,8 @@ M.list = {
     {
         "Goose97/timber.nvim",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
+        -- event = "VeryLazy",
+        keys = "gl",
         config = function()
             require("timber").setup({
                 log_templates = {
@@ -299,10 +301,9 @@ M.list = {
     --                 require("blink-go-import").setup()
     --             end
     --         },
-    --
     --     },
     --
-    --     opts = function()
+    --     config = function()
     --         require("blink.cmp").setup({
     --             keymap = {
     --                 preset = 'default',
@@ -522,7 +523,7 @@ M.list = {
     --             },
     --             signature = { enabled = false, window = { border = 'single' } },
     --         })
-    --     end
+    --     end,
     -- },
 
 }

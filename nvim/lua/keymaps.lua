@@ -184,7 +184,7 @@ Cmd("silent!")
 
 nmap("gw", "<cmd>FzfLua grep_cword<CR>")
 nmap("gW", "<cmd>FzfLua grep_cWORD<CR>")
-nmap("<c-r>", "<cmd>FzfLua resume<CR>")
+-- nmap("<c-r>", "<cmd>FzfLua resume<CR>")
 
 
 nmap('C', '"_C')

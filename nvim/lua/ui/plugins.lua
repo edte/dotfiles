@@ -271,6 +271,25 @@ M.list = {
             require("ui.tmux")
         end
     },
+
+    -- y 复制高亮
+    {
+        "rachartier/tiny-glimmer.nvim",
+        event = "TextYankPost",
+        opts = {
+            -- your configuration
+        },
+    },
+
+    -- 一个微型 Neovim 插件，用于在视觉模式下突出显示与当前选择匹配的文本
+    {
+        "wurli/visimatch.nvim",
+        opts = {
+            chars_lower_limit = 3,
+        }
+    },
+
+
 }
 
 return M
