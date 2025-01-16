@@ -77,7 +77,7 @@ M.list = {
     {
         "echasnovski/mini.splitjoin",
         init = function()
-            nmap("P", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
+            nmap("t", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
         end,
         cmd = { "P" },
         version = false,

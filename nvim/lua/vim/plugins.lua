@@ -10,6 +10,28 @@ M.list = {
         end
     },
 
+    -- yanky.nvim的目标是改进 Neovim 的 yank 和 put 功能。
+    {
+        "gbprod/yanky.nvim",
+        dependencies = {
+            { "kkharji/sqlite.lua" }
+        },
+        opts = {
+            ring = { storage = "sqlite" },
+            highlight = {
+                on_put = true,
+                on_yank = true,
+                timer = 100,
+            },
+
+        },
+        keys = {
+            { "y", "<Plug>(YankyYank)",      mode = { "n", "x" }, desc = "Yank text" },
+            { "p", "<Plug>(YankyPutAfter)",  mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+            { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+        },
+    },
+
     -- 增强 Neovim 中宏的使用。
     {
         "chrisgrieser/nvim-recorder",
@@ -105,7 +127,8 @@ M.list = {
             vim.g.clever_f_smart_case = 1
             vim.g.clever_f_fix_key_direction = 1
             vim.g.clever_f_show_prompt = 1
-            -- api.nvim_del_keymap("n", "t")
+            Api.nvim_del_keymap("n", "t")
+            Api.nvim_del_keymap("n", "T")
         end,
     },
 
@@ -270,7 +293,9 @@ M.list = {
         },
         keys = { "s", "sx" },
         config = function()
-            require("substitute").setup()
+            require("substitute").setup({
+                on_substitute = require("yanky.integration").substitute(),
+            })
 
             -- 交换
             -- sx{motion}，按两次即可交换，支持 .
@@ -291,12 +316,6 @@ M.list = {
             require("mini.trailspace").setup()
         end,
     },
-
-    -- 一个非常简单的插件，使 hlsearch 更加有用。
-    -- {
-    --     "romainl/vim-cool",
-    --     keys = "/",
-    -- },
 
     -- 在插入模式和命令行模式下提供emacs键位，比如c-a行首，c-e行尾，normal模式无效
     {
@@ -340,8 +359,6 @@ M.list = {
         },
         name = "registers",
     },
-
-
 
 }
 

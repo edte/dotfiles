@@ -29,6 +29,10 @@ M.list = {
                 "hrsh7th/cmp-nvim-lsp-signature-help",
                 event = { "InsertEnter" },
             },
+
+            {
+                "chrisgrieser/cmp_yanky",
+            },
             -- -- 上下文语法补全
             {
                 "ray-x/cmp-treesitter",

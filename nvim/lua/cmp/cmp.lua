@@ -227,6 +227,15 @@ function M.setup()
                 name = "async_path",
                 priority = 4,
             },
+
+            {
+                name = "cmp_yanky",
+                priority = 4,
+                option = {
+                    onlyCurrentFiletype = true
+                }
+            },
+
             {
                 name = "rg",
                 max_item_count = 6,
