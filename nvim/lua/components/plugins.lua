@@ -146,7 +146,7 @@ M.list = {
         dir = "components.sessions",
         virtual = true,
         config = function()
-            Require("components.session").setup()
+            require("components.session").setup()
 
             local function GetPath()
                 local dir, _ = vim.fn.getcwd():gsub('/', '_')
