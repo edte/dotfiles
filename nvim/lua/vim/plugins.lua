@@ -415,6 +415,19 @@ M.list = {
                 })
         end
     },
+
+    -- 通过动作、文本对象或视觉模式轻松更改单词大小写。
+    -- camelCase 、 PascalCase 、 snake_case 、 kebab-case
+    -- crs （snake_case）、 MixedCase (crm )、camelCase ( crc )、UPPER_CASE (cru )、 dash-case (cr- ) 、  dot.case ( cr. )
+    -- gu 小写
+    -- gU 大写
+    -- ~ 转换为小写
+    {
+        "tpope/vim-abolish",
+        config = function()
+        end
+    },
+
 }
 
 return M
