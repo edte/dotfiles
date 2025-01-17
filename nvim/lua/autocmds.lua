@@ -45,12 +45,17 @@ Cmd([[
 
 
 -- 在打开文件时跳转到上次编辑的位置
-Autocmd('BufReadPost', {
-    desc = 'Open file at the last position it was edited earlier',
-    group = GroupId('open-file-at-last-position', { clear = true }),
-    pattern = '*',
-    command = 'silent! normal! g`"zv'
+Autocmd("BufReadPost", {
+    callback = function(args)
+        local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+        local line_count = vim.api.nvim_buf_line_count(args.buf)
+        if mark[1] > 0 and mark[1] <= line_count then
+            vim.cmd('normal! g`"zz')
+        end
+    end,
 })
+
+
 
 
 -- Append backup files with timestamp
@@ -79,5 +84,113 @@ Autocmd("BufWritePre", {
                 vim.fn.delete(backup_list[i])
             end
         end
+    end,
+})
+
+
+-- Dim inactive windows
+vim.cmd("highlight default DimInactiveWindows guifg=#666666")
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+    group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
+    callback = function()
+        if vim.bo.filetype == "minifiles" then
+            return
+        end
+
+        local highlights = {}
+        for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
+            table.insert(highlights, hl .. ":DimInactiveWindows")
+        end
+        vim.wo.winhighlight = table.concat(highlights, ",")
+    end,
+})
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+    group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
+    callback = function()
+        if vim.bo.filetype == "minifiles" then
+            return
+        end
+        vim.wo.winhighlight = ""
+    end,
+})
+
+-- Auto resize splits when the terminal's window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+    command = "wincmd =",
+})
+
+-- Close on "q"
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "help",
+        "startuptime",
+        "qf",
+        "lspinfo",
+        "man",
+        "checkhealth",
+        "neotest-output-panel",
+        "neotest-summary",
+        "lazy",
+    },
+    command = [[
+          nnoremap <buffer><silent> q :close<CR>
+          nnoremap <buffer><silent> <ESC> :close<CR>
+          set nobuflisted
+      ]],
+})
+
+
+
+-- Show cursorline only on active windows
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+    callback = function()
+        if vim.w.auto_cursorline then
+            vim.wo.cursorline = true
+            vim.w.auto_cursorline = false
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+    callback = function()
+        if vim.wo.cursorline then
+            vim.w.auto_cursorline = true
+            vim.wo.cursorline = false
+        end
+    end,
+})
+
+
+-- Set local settings for terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "term://*",
+    callback = function()
+        if vim.opt.buftype:get() == "terminal" then
+            local set = vim.opt_local
+            set.number = false         -- Don't show numbers
+            set.relativenumber = false -- Don't show relativenumbers
+            set.scrolloff = 0          -- Don't scroll when at the top or bottom of the terminal buffer
+            vim.opt.filetype = "terminal"
+
+            vim.cmd.startinsert() -- Start in insert mode
+        end
+    end,
+})
+
+-- Remove hl search when enter Insert
+Autocmd({ "InsertEnter", "CmdlineEnter" }, {
+    desc = "Remove hl search when enter Insert",
+    callback = vim.schedule_wrap(function()
+        vim.cmd.nohlsearch()
+    end),
+})
+
+-- Updates scrolloff on startup and when window is resized
+-- https://github.com/tonymajestro/smart-scrolloff.nvim/
+vim.api.nvim_create_autocmd({ "WinResized" }, {
+    group = vim.api.nvim_create_augroup("smart-scrolloff", { clear = true }),
+    callback = function()
+        local scrolloffPercentage = 0.2
+        vim.opt.scrolloff = math.floor(vim.o.lines * scrolloffPercentage)
     end,
 })

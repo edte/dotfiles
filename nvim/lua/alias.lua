@@ -256,7 +256,13 @@ end
 function ToggleMiniFiles()
     local mf = require("mini.files")
     if not mf.close() then
-        mf.open(Api.nvim_buf_get_name(0))
-        mf.reveal_cwd()
+        local n = Api.nvim_buf_get_name(0)
+        if n ~= "" then
+            mf.open(n)
+            mf.reveal_cwd()
+        else
+            mf.open()
+            mf.reveal_cwd()
+        end
     end
 end
