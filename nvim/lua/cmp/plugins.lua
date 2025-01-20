@@ -223,6 +223,7 @@ M.list = {
         end
     },
 
+
     -- cmp 替代品，暂时还是有些问题，一些cmp生态不咋支持，而且没搞懂怎么设置provider的kind
     -- {
     --     'saghen/blink.cmp',

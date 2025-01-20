@@ -209,6 +209,14 @@ M.list = {
         },
     },
 
+    -- Screencast your keys in Neovim
+    {
+        "NStefan002/screenkey.nvim",
+        cmd = "Screenkey",
+        lazy = false,
+        version = "*", -- or branch = "dev", to use the latest commit
+    },
+
 }
 
 return M
