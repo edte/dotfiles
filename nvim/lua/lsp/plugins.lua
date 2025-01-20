@@ -110,6 +110,13 @@ M.list = {
         event = { "BufWritePre" },
         cmd = { "ConformInfo" },
         opts = {
+            formatters = {
+                kulala = {
+                    command = "kulala-fmt",
+                    args = { "$FILENAME" },
+                    stdin = false,
+                },
+            },
             default_format_opts = {
                 lsp_format = "fallback",
             },
@@ -122,6 +129,7 @@ M.list = {
                 zsh = { "shfmt", lsp_format = "never" },
                 bash = { "shfmt", lsp_format = "never" },
                 toml = { "taplo", lsp_format = "never" },
+                http = { "kulala" },
             },
             format_on_save = {
                 timeout_ms = 200,

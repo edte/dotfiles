@@ -35,6 +35,13 @@ local lspTable = {
         filetypes = { "md" },
         capabilities = M.capabilities,
     },
+    {
+
+        name = "kulala_ls",
+        filetypes = { "http" },
+        cmd = { "kulala-ls", "--stdio" },
+        capabilities = M.capabilities,
+    },
 
     {
         name = "lua_ls",
@@ -235,7 +242,9 @@ M.on_attach = function(client, buf)
 end
 
 M.capabilities = function()
-    return require('cmp_nvim_lsp').default_capabilities()
+    return require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+    -- return require('cmp_nvim_lsp').default_capabilities()
     -- return require('blink.cmp').get_lsp_capabilities()
 end
 

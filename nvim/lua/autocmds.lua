@@ -88,31 +88,32 @@ Autocmd("BufWritePre", {
 })
 
 
+-- 有点问题，区分不了需要使用的分屏，比如diff的时候
 -- Dim inactive windows
-vim.cmd("highlight default DimInactiveWindows guifg=#666666")
-vim.api.nvim_create_autocmd({ "WinLeave" }, {
-    group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
-    callback = function()
-        if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
-            return
-        end
-
-        local highlights = {}
-        for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
-            table.insert(highlights, hl .. ":DimInactiveWindows")
-        end
-        vim.wo.winhighlight = table.concat(highlights, ",")
-    end,
-})
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-    group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
-    callback = function()
-        if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
-            return
-        end
-        vim.wo.winhighlight = ""
-    end,
-})
+-- vim.cmd("highlight default DimInactiveWindows guifg=#666666")
+-- vim.api.nvim_create_autocmd({ "WinLeave" }, {
+--     group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
+--     callback = function()
+--         if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
+--             return
+--         end
+--
+--         local highlights = {}
+--         for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
+--             table.insert(highlights, hl .. ":DimInactiveWindows")
+--         end
+--         vim.wo.winhighlight = table.concat(highlights, ",")
+--     end,
+-- })
+-- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+--     group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
+--     callback = function()
+--         if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
+--             return
+--         end
+--         vim.wo.winhighlight = ""
+--     end,
+-- })
 
 -- Auto resize splits when the terminal's window is resized
 vim.api.nvim_create_autocmd("VimResized", {
