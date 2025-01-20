@@ -428,6 +428,12 @@ M.list = {
         end
     },
 
+    -- 通过在 x 分钟不活动后自动关闭缓冲区，将缓冲区送入提前退休状态。
+    {
+        "chrisgrieser/nvim-early-retirement",
+        config = true,
+        event = "VeryLazy",
+    },
 
 
 }

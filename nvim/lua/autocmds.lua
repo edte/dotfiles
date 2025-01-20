@@ -93,7 +93,7 @@ vim.cmd("highlight default DimInactiveWindows guifg=#666666")
 vim.api.nvim_create_autocmd({ "WinLeave" }, {
     group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
     callback = function()
-        if vim.bo.filetype == "minifiles" then
+        if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
             return
         end
 
@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
     callback = function()
-        if vim.bo.filetype == "minifiles" then
+        if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
             return
         end
         vim.wo.winhighlight = ""
