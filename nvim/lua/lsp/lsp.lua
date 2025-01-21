@@ -14,7 +14,6 @@ local lspTable = {
                 validate = { enable = true },
             },
         },
-
     },
 
     {
@@ -37,12 +36,11 @@ local lspTable = {
     },
     -- TODO: 这里没成功
     {
-
         name = "kulala_ls",
         filetypes = { "http" },
         cmd = { "kulala-ls", "--stdio" },
         capabilities = M.capabilities,
-        root_dir =  vim.fn.getcwd(),
+        root_dir = vim.fn.getcwd(),
     },
 
     {

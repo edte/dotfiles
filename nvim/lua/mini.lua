@@ -15,17 +15,30 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "gbprod/yanky.nvim",
+        "neovim/nvim-lspconfig",
         dependencies = {
-            { "kkharji/sqlite.lua" }
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "mistweaverco/kulala-ls",
         },
-        opts = {
-            ring = { storage = "sqlite" },
-        },
-        keys = {
-            { "y", "<Plug>(YankyYank)",      mode = { "n", "x" }, desc = "Yank text" },
-            { "p", "<Plug>(YankyPutAfter)",  mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-            { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-        },
+        config = function()
+            local nvim_lsp = require("lspconfig")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local servers = {
+                "kulala_ls",
+                "gopls",
+            }
+            for _, lsp in ipairs(servers) do
+                if nvim_lsp[lsp] ~= nil then
+                    if nvim_lsp[lsp].setup ~= nil then
+                        nvim_lsp[lsp].setup({
+                            capabilities = capabilities,
+                        })
+                    else
+                        vim.notify("LSP server " .. lsp .. " does not have a setup function", vim.log.levels.ERROR)
+                    end
+                end
+            end
+        end,
     }
 })
