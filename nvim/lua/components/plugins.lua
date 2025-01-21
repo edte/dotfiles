@@ -170,24 +170,46 @@ M.list = {
     },
 
     -- 用于 CSV 文件编辑的 Neovim 插件。
-    {
-        'hat0uma/csvview.nvim',
-        ft = "csv",
-        config = function()
-            require('csvview').setup({
-                view = {
-                    display_mode = "border",
-                },
-            })
+    -- {
+    --     'hat0uma/csvview.nvim',
+    --     ft = {"csv", "tsv"},
+    --     config = function()
+    --         require('csvview').setup({
+    --             view = {
+    --                 display_mode = "border",
+    --             },
+    --             delimiter = {
+    --                 default = ",",
+    --                 ft = {
+    --                     tsv = "\t",
+    --                 },
+    --             },
+    --         })
+    --
+    --         Autocmd({ "FileType" }, {
+    --             pattern = "csv",
+    --             callback = function()
+    --                 Cmd("CsvViewEnable")
+    --             end,
+    --         })
+    --         Autocmd({ "FileType" }, {
+    --             pattern = "tsv",
+    --             callback = function()
+    --                 -- Cmd("vim.opt_local.expandtab = true")
+    --                 Cmd(":%s/	/,/g")
+    --                 Cmd("set ft=csv")
+    --                 Cmd("CsvViewEnable")
+    --             end,
+    --         })
+    --     end
+    -- },
 
-            Autocmd({ "FileType" }, {
-                pattern = "csv",
-                callback = function()
-                    Cmd("CsvViewEnable")
-                end,
-            })
-        end
-    },
+
+
+    -- {
+    --     "chrisbra/csv.vim",
+    -- },
+    --
 
     -- cp 选择颜色
     {
@@ -237,7 +259,22 @@ M.list = {
 
     {
         'mistweaverco/kulala.nvim',
-        opts = {},
+        opts = {
+            default_winbar_panes = { "script_output", "body", "headers", "headers_body" },
+
+            contenttypes = {
+                ["application/csv"] = {
+                    ft = "csv",
+                },
+                ["text/csv"] = {
+                    ft = "csv",
+                },
+                ["text/tsv"] = {
+                    ft = "tsv",
+                },
+            },
+
+        },
     },
 
 
