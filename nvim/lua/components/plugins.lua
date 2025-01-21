@@ -340,14 +340,14 @@ M.list = {
                         -- return body:gsub("\t", ",")
                         return body
                     end,
+                    pathresolver = function(body, path)
+                        -- print(body)
+                        return body
+                    end,
                 },
             },
-
         },
     },
-
-
-
 }
 
 return M
