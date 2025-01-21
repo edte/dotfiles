@@ -30,7 +30,7 @@ function M.setup()
             fields = { "kind", "abbr" },
             expandable_indicator = false,
             format = function(entry, kind)
-                -- log.error(entry.source.name, kind)
+                log.error(entry.source.name, kind)
 
                 -- cmp icon highlight
                 vim.cmd('highlight CmpItemKindFunction guifg=#CB6460')

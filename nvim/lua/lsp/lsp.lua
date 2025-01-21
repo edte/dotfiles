@@ -42,6 +42,7 @@ local lspTable = {
         filetypes = { "http" },
         cmd = { "kulala-ls", "--stdio" },
         capabilities = M.capabilities,
+        root_dir =  vim.fn.getcwd(),
     },
 
     {
