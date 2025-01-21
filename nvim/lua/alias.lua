@@ -266,5 +266,3 @@ function ToggleMiniFiles()
         end
     end
 end
-
-

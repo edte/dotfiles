@@ -5,10 +5,13 @@ local function render_csv_as_table()
     local headers = {}
     local data = {}
 
-    -- Get the current buffer's file path
-    local file_path = vim.api.nvim_buf_get_name(0)
+    -- Get the current buffer number
+    local bufnr = vim.api.nvim_get_current_buf()
 
-    for line in io.lines(file_path) do
+    -- Get the lines from the current buffer
+    local buffer_lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+    for _, line in ipairs(buffer_lines) do
         table.insert(lines, vim.split(line, ","))
     end
 
@@ -22,9 +25,6 @@ local function render_csv_as_table()
             table.insert(data, row)
         end
     end
-
-    -- Use the current buffer number
-    local bufnr = vim.api.nvim_get_current_buf()
 
     -- Clear the current buffer
     vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})

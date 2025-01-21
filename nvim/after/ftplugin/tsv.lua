@@ -26,7 +26,6 @@ function render_tsv_as_table()
         return
     end
 
-
     if #lines > 0 then
         headers = vim.split(lines[1], "\t")
         for i = 2, #lines do
