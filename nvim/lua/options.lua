@@ -140,3 +140,6 @@ vim.diagnostic.config({
         float = true
     },
 })
+
+
+vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')

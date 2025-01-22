@@ -43,6 +43,17 @@ local lspTable = {
         root_dir = vim.fn.getcwd(),
     },
 
+    -- {
+    --     name="rust_analyzer",
+    --     settings = {
+    --         ['rust-analyzer'] = {
+    --             diagnostics = {
+    --                 enable = false;
+    --             }
+    --         }
+    --     }
+    -- },
+
     {
         name = "lua_ls",
         filetypes = { "lua" },

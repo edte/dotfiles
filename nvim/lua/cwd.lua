@@ -17,7 +17,7 @@ local M = {
     file2lsp = {
         go = "gopls",
     },
-    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "makefile" },
+    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "makefile" ,"Cargo.toml",".gitignore"},
     -- What scope to change the directory, valid options are
     -- * global (default)
     -- * tab

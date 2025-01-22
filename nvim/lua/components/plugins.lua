@@ -163,6 +163,8 @@ M.list = {
             })
             Api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
+                    Cmd("argdelete *")
+
                     MiniSessions.write(GetPath())
                 end,
             })

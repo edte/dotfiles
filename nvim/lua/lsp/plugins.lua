@@ -130,6 +130,7 @@ M.list = {
                 bash = { "shfmt", lsp_format = "never" },
                 toml = { "taplo", lsp_format = "never" },
                 http = { "kulala" },
+                rust = { "rustfmt" },
             },
             format_on_save = {
                 timeout_ms = 200,
@@ -246,6 +247,11 @@ M.list = {
         "b0o/schemastore.nvim",
     },
 
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^5', -- Recommended
+        lazy = false, -- This plugin is already lazy
+    },
 
 }
 
