@@ -58,7 +58,7 @@ local lspTable = {
         filetypes = { "lua" },
         capabilities = M.capabilities,
         on_init = function(client)
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(true)
 
             if client.workspace_folders == nil then
                 return
@@ -120,7 +120,7 @@ local lspTable = {
         filetypes = { "go", "gomod", "gosum", "gotmpl" },
         capabilities = M.capabilities,
         on_init = function(client)
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(true)
         end,
         root_dir = function(fname)
             local gopath = os.getenv("GOPATH")
@@ -164,7 +164,7 @@ local lspTable = {
         name = "clangd",
         capabilities = M.capabilities,
         on_init = function(client)
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(true)
         end,
 
         cmd = {
