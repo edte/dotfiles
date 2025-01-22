@@ -373,7 +373,10 @@ M.list = {
 
         config = function()
             require("sniprun").setup({
-                -- your options
+                display = {
+                    "VirtualText", --# display results as virtual text
+                    "Terminal",    --# display ok results as virtual text (multiline is shortened)
+                },
             })
         end,
     },

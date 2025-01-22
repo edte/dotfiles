@@ -9,6 +9,7 @@ wk.add({
     { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "Translate", },
     { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "Diff copy", },
     { "<leader>D",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Diff git history", },
+    { "<leader>r",  ":'<,'>SnipRun<CR>",                               desc = "run code", },
 })
 
 wk.add({
@@ -45,7 +46,7 @@ wk.add({
     { "<leader>p",  "<cmd>Lazy<cr>",                                            desc = "plugins", },
     { "<leader>q",  "<cmd>confirm q<CR>",                                       desc = "quit", },
     -- { "<leader>r",  "<cmd>FzfLua oldfiles<CR>",                                 desc = "recents", },
-    { "<leader>r",  "<cmd>SnipRun<CR>",                                 desc = "run code", },
+    { "<leader>r",  "<cmd>SnipRun<CR>",                                         desc = "run code", },
 
     { "<leader>s",  group = "search",                                           desc = "search" },
     { "<leader>sh", "<cmd>FzfLua highlights<cr>",                               desc = "highlight", },
