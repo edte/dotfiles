@@ -348,6 +348,15 @@ M.list = {
             },
         },
     },
+
+    -- 轻松将图像嵌入到任何标记语言中，例如 LaTeX、Markdown 或 Typst
+    {
+        "HakonHarnes/img-clip.nvim",
+        cmd = "PasteImage",
+        opts = {
+        },
+    },
+
 }
 
 return M
