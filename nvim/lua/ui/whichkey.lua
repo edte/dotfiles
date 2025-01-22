@@ -44,7 +44,8 @@ wk.add({
     { "<leader>lw", "<cmd>FzfLua diagnostics_workspace<cr>",                    desc = "Diagnostics", },
     { "<leader>p",  "<cmd>Lazy<cr>",                                            desc = "plugins", },
     { "<leader>q",  "<cmd>confirm q<CR>",                                       desc = "quit", },
-    { "<leader>r",  "<cmd>FzfLua oldfiles<CR>",                                 desc = "recents", },
+    -- { "<leader>r",  "<cmd>FzfLua oldfiles<CR>",                                 desc = "recents", },
+    { "<leader>r",  "<cmd>SnipRun<CR>",                                 desc = "run code", },
 
     { "<leader>s",  group = "search",                                           desc = "search" },
     { "<leader>sh", "<cmd>FzfLua highlights<cr>",                               desc = "highlight", },
