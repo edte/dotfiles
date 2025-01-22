@@ -23,7 +23,6 @@ local lspTable = {
     },
 
     {
-
         name = "bashls",
         filetypes = { "sh", "zsh", "tmux" },
         cmd = { "bash-language-server", "start" },
@@ -57,9 +56,10 @@ local lspTable = {
     {
         name = "lua_ls",
         filetypes = { "lua" },
-        on_attach = M.on_attach,
         capabilities = M.capabilities,
         on_init = function(client)
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+
             if client.workspace_folders == nil then
                 return
             end
@@ -97,6 +97,12 @@ local lspTable = {
                 },
                 hint = {
                     enable = true, -- necessary
+                    arrayIndex = "Enable",
+                    await = true,
+                    paramName = "All",
+                    paramType = true,
+                    semicolon = "All",
+                    setType = true,
                 },
             },
         },
@@ -113,6 +119,9 @@ local lspTable = {
         name = "gopls",
         filetypes = { "go", "gomod", "gosum", "gotmpl" },
         capabilities = M.capabilities,
+        on_init = function(client)
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end,
         root_dir = function(fname)
             local gopath = os.getenv("GOPATH")
             if gopath == nil then
@@ -154,6 +163,10 @@ local lspTable = {
     {
         name = "clangd",
         capabilities = M.capabilities,
+        on_init = function(client)
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end,
+
         cmd = {
             "clangd",
             unpack({
@@ -207,7 +220,6 @@ local lspTable = {
                 "--function-arg-placeholders=true",
             }),
         },
-        on_attach = M.on_attach,
         filetypes = { "h", "c", "cpp" },
         init_options = {
             clangdFileStatus = true,
@@ -244,12 +256,6 @@ M.setup = function()
     -- lsp debug
     -- vim.lsp.set_log_level(vim.log.levels.DEBUG)
     vim.lsp.log.set_format_func(vim.inspect)
-end
-
-M.on_attach = function(client, buf)
-    if vim.fn.has("nvim-0.10") == 1 and client.supports_method("textDocument/inlayHint", { bufnr = buf }) then
-        vim.lsp.inlay_hint.enable(true, { bufnr = buf })
-    end
 end
 
 M.capabilities = function()
