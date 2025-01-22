@@ -101,7 +101,7 @@ local lspTable = {
                     await = true,
                     paramName = "All",
                     paramType = true,
-                    semicolon = "All",
+                    -- semicolon = "All",
                     setType = true,
                 },
             },
