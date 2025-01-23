@@ -31,6 +31,14 @@ M.list = {
                 Api.nvim_command(":GoAddTag json -add-options json=")
             end, { nargs = "*" })
 
+            Autocmd("BufWritePre", {
+                group = GroupId("go_auto_import", { clear = true }),
+                nested = true,
+                callback = function()
+                    Cmd("GoImports")
+                end,
+            })
+
             require("lsp.go-return").setup({})
 
             require("lsp.go-show").setup({
