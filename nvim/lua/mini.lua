@@ -13,12 +13,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ 
+require("lazy").setup({
     {
-        "NStefan002/visual-surround.nvim",
+        "lewis6991/gitsigns.nvim",
+        opts = {},
+        -- event = "User FileOpened",
+        -- cmd = "Gitsigns",
         config = function()
-            require("visual-surround").setup({})
+            require("gitsigns").setup({
+                signcolumn = false,
+                diff_opts = {
+                    vertical = true,
+                },
+            })
         end,
     },
-
 })

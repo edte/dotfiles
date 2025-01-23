@@ -5,10 +5,10 @@ wk.add({
     mode = { "v" },
     { "<leader>/",  "<Plug>(comment_toggle_linewise_visual)",          desc = "comment", },
     { "<leader>l",  group = "LSP",                                     desc = "lsp", },
-    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "Code Action", },
-    { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "Translate", },
-    { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "Diff copy", },
-    { "<leader>D",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Diff git history", },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "code Action", },
+    { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "translate", },
+    { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "diff copy", },
+    { "<leader>g",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "git history", },
     { "<leader>r",  ":'<,'>SnipRun<CR>",                               desc = "run code", },
 })
 
@@ -23,12 +23,11 @@ wk.add({
 
     { "<leader>g",  group = "git",                                              desc = "git" },
     { "<leader>gb", "<cmd>FzfLua git_branches<cr>",                             desc = "branch", },
-    { "<leader>gg", "<Cmd>.DiffviewFileHistory --follow<CR>",                   desc = "branch", },
     { "<leader>gp", "<cmd>DiffviewFileHistory<cr>",                             desc = "project history", },
     { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>",                  desc = "file history", },
     { "<leader>gs", "<cmd>FzfLua git_status<cr>",                               desc = "status", },
-    { "<leader>gD", "<cmd>Gitsigns diffthis HEAD<cr>",                          desc = "diff head", },
-    { "<leader>gd", "<cmd>DiffviewOpen<cr>",                                    desc = "diff origin" },
+    { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>",                          desc = "diff head", },
+    -- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
     { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>",             desc = "blame line", },
     { "<leader>gL", "<cmd>BlameToggle<cr>",                                     desc = "blame file", },
 
