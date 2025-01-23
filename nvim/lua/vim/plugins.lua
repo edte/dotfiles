@@ -434,6 +434,12 @@ M.list = {
         config = true,
         event = "VeryLazy",
     },
+    {
+        "NStefan002/visual-surround.nvim",
+        config = function()
+            require("visual-surround").setup({})
+        end,
+    },
 
 
 }

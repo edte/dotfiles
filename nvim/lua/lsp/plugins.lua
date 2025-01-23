@@ -3,6 +3,8 @@ local M = {}
 M.list = {
     {
         "neovim/nvim-lspconfig",
+        -- 这里如果换成最新的master分支，会导致打开新文件的时候，整个lsp不 attatch 了，不知道为啥，而且lsplog也很难用，所以还是用这个commit
+        -- 不过这个commit不能用kulala-ls，注释掉
         commit = "a89de2e",
         config = function()
             Setup("lsp.lsp")
@@ -234,13 +236,14 @@ M.list = {
             require("refactoring").setup()
         end,
     },
-    {
-        "mhanberg/output-panel.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("output_panel").setup()
-        end
-    },
+    -- lsp 服务器日志
+    -- {
+    --     "mhanberg/output-panel.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("output_panel").setup()
+    --     end
+    -- },
 
     -- 一个 Neovim 插件，提供与jsonls和yamlls一起使用的SchemaStore目录。
     {
@@ -250,7 +253,7 @@ M.list = {
     {
         'mrcjkb/rustaceanvim',
         version = '^5', -- Recommended
-        lazy = false, -- This plugin is already lazy
+        lazy = false,   -- This plugin is already lazy
     },
 
 }

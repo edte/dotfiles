@@ -34,13 +34,14 @@ local lspTable = {
         capabilities = M.capabilities,
     },
     -- TODO: 这里没成功
-    {
-        name = "kulala_ls",
-        filetypes = { "http" },
-        cmd = { "kulala-ls", "--stdio" },
-        capabilities = M.capabilities,
-        root_dir = vim.fn.getcwd(),
-    },
+    -- 需要lspconfig最新master
+    -- {
+    --     name = "kulala_ls",
+    --     filetypes = { "http" },
+    --     cmd = { "kulala-ls", "--stdio" },
+    --     capabilities = M.capabilities,
+    --     root_dir = vim.fn.getcwd(),
+    -- },
 
     -- {
     --     name="rust_analyzer",
