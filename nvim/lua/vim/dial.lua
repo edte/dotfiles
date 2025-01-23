@@ -49,6 +49,11 @@ M.dialConfig = function()
                 cyclic = true,
             }),
             augend.constant.new({
+                elements = { "upper", "lower" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
                 elements = { "yes", "no" },
                 word = false,
                 cyclic = true,

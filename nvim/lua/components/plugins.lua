@@ -377,6 +377,11 @@ M.list = {
                     "VirtualText", --# display results as virtual text
                     "Terminal",    --# display ok results as virtual text (multiline is shortened)
                 },
+                display_options = {
+                    terminal_position = "horizontal", --# or "horizontal", to open as horizontal split instead of vertical split
+                    terminal_height = 5,              --# change the terminal display option height (if horizontal)
+                }
+
             })
         end,
     },

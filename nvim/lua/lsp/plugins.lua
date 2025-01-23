@@ -233,7 +233,7 @@ M.list = {
         },
         lazy = true,
         config = function()
-            require("refactoring").setup()
+            require("refactoring").setup({})
         end,
     },
     -- lsp 服务器日志

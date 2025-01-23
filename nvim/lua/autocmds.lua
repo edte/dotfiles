@@ -56,8 +56,6 @@ Autocmd("BufReadPost", {
 })
 
 
-
-
 -- Append backup files with timestamp
 Autocmd("BufWritePre", {
     desc = 'Automatically backup files with timestamp and categorize by directory',
@@ -114,11 +112,6 @@ Autocmd("BufWritePre", {
 --         vim.wo.winhighlight = ""
 --     end,
 -- })
-
--- Auto resize splits when the terminal's window is resized
-vim.api.nvim_create_autocmd("VimResized", {
-    command = "wincmd =",
-})
 
 -- Close on "q"
 vim.api.nvim_create_autocmd("FileType", {
