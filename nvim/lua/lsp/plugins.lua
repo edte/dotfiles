@@ -201,6 +201,7 @@ M.list = {
     --     end,
     -- },
 
+    -- 用于实时预览 lsp 重命名的 neovim 插件
     {
         "saecki/live-rename.nvim",
         config = function()
@@ -261,7 +262,7 @@ M.list = {
     {
         'mrcjkb/rustaceanvim',
         version = '^5', -- Recommended
-        lazy = false,   -- This plugin is already lazy
+        ft = { 'rust' },
     },
 
 

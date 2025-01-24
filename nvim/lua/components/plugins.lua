@@ -64,7 +64,6 @@ M.list = {
     -- markdown预览
     {
         "OXY2DEV/markview.nvim",
-        -- lazy = false, -- Recommended
         ft = "markdown", -- If you decide to lazy-load anyway
 
         branch = "dev",
@@ -239,13 +238,13 @@ M.list = {
     {
         "NStefan002/screenkey.nvim",
         cmd = "Screenkey",
-        lazy = false,
         version = "*", -- or branch = "dev", to use the latest commit
     },
 
     -- neovim 交互式数据库客户端
     {
         "kndndrj/nvim-dbee",
+        ft = "sql",
         dependencies = {
             {
                 "MunifTanjim/nui.nvim",
@@ -328,6 +327,7 @@ M.list = {
     -- http 请求
     {
         'mistweaverco/kulala.nvim',
+        ft = "http",
         opts = {
             display_mode = "float",
             default_winbar_panes = { "body", "headers", "headers_body" },
