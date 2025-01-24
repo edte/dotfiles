@@ -264,6 +264,15 @@ M.list = {
         lazy = false,   -- This plugin is already lazy
     },
 
+
+    {
+        name = "hover",
+        dir = "lsp.lsp_hover",
+        virtual = true,
+        config = function()
+            require("lsp.lsp_hover").setup();
+        end,
+    },
 }
 
 return M
