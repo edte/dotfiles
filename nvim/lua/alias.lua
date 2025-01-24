@@ -4,6 +4,7 @@
 _G.NEOVIM_CONFIG_PATH = vim.fn.stdpath('config')
 _G.NEOVIM_SESSION_DATA = vim.fn.stdpath('data') .. '/session'
 _G.NEOVIM_BOOKMARKS_DATA = vim.fn.stdpath("data") .. "/bookmarks"
+_G.NEOVIM_MESSAGE_DATA = vim.fn.stdpath('state') .. "/message.log"
 _G.NEOVIM_LAZY_DATA = vim.fn.stdpath("data") .. "/lazy"
 _G.NEOVIM_UNDO_DATA = vim.fn.stdpath("state") .. "/undo"
 _G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"

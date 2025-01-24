@@ -9,7 +9,7 @@ wk.add({
     { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "translate", },
     { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "diff copy", },
     { "<leader>g",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "git history", },
-    { "<leader>r",  ":'<,'>SnipRun<CR>",                               desc = "run code", },
+    { "<enter>",    ":'<,'>SnipRun<CR>",                               desc = "run code", },
 })
 
 wk.add({

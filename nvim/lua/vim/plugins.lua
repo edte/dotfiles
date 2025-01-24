@@ -434,6 +434,8 @@ M.list = {
         config = true,
         event = "VeryLazy",
     },
+
+    -- 简单到选择，'('，完成。
     {
         "NStefan002/visual-surround.nvim",
         config = function()

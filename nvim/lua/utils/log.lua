@@ -170,8 +170,12 @@ function M.should_log(level)
     return level >= current_log_level
 end
 
-vim.api.nvim_create_user_command('MessageLog', function()
-    vim.cmd(string.format('tabnew %s', logfilename))
+vim.api.nvim_create_user_command('Message', function()
+    vim.cmd(string.format('e %s', logfilename))
+end, { nargs = "*" })
+
+vim.api.nvim_create_user_command('M', function()
+    vim.cmd(string.format('e %s', logfilename))
 end, { nargs = "*" })
 
 return M

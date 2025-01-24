@@ -188,3 +188,18 @@ vim.api.nvim_create_autocmd({ "WinResized" }, {
         vim.opt.scrolloff = math.floor(vim.o.lines * scrolloffPercentage)
     end,
 })
+
+-- Redir message
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = vim.api.nvim_create_augroup("redir-message-begin", { clear = true }),
+    callback = function()
+        Cmd("redir >> " .. NEOVIM_MESSAGE_DATA)
+    end,
+})
+
+vim.api.nvim_create_autocmd("VimLeave", {
+    group = vim.api.nvim_create_augroup("redir-message-end", { clear = true }),
+    callback = function()
+        Cmd("redir END")
+    end,
+})
