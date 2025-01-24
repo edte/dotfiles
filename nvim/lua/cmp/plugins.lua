@@ -1,21 +1,64 @@
 local M = {}
 
 M.list = {
+
+    -- go 导包
+    {
+        name = "cmp-go-pkgs",
+        dir = "cmp.cmp_go_pkgs",
+        virtual = true,
+        ft = "go",
+        -- event = { "InsertEnter *.go" },
+
+        config = function()
+            require("cmp.cmp_go_pkgs").new()
+            require("cmp").register_source("go_pkgs", require("cmp.cmp_go_pkgs"))
+            vim.api.nvim_create_user_command("CurNode", function(c)
+                require("cmp_go_pkgs.source").kek(c)
+            end, {})
+        end
+    },
+
+
+    -- Neovim 更快的 LuaLS 设置
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+
+    -- nvim lua  源
+    {
+        "hrsh7th/cmp-nvim-lua",
+        ft = "lua",
+    },
+
+
     -- cmp 补全基础插件
     {
         "hrsh7th/nvim-cmp",
+        event = { "InsertEnter" },
         config = function()
             require("cmp.cmp").setup()
         end,
         dependencies = {
             -- 下面是一堆cmp补全源
+            -- 只能所有文件都用的源才放这里，单独的源放外面，避免多余的加载
             {
                 "hrsh7th/cmp-buffer",
+                event = { "InsertEnter" },
             },
             {
                 "hrsh7th/cmp-nvim-lsp",
                 event = { "InsertEnter" },
             },
+
             {
                 "saadparwaiz1/cmp_luasnip",
                 event = { "InsertEnter" },
@@ -32,6 +75,7 @@ M.list = {
 
             {
                 "chrisgrieser/cmp_yanky",
+                event = { "InsertEnter" },
             },
             -- -- 上下文语法补全
             {
@@ -45,22 +89,6 @@ M.list = {
                 enabled = function()
                     return vim.fn.executable("rg") == 1
                 end,
-            },
-
-            -- go 导包
-            {
-                name = "cmp-go-pkgs",
-                dir = "cmp.cmp_go_pkgs",
-                virtual = true,
-                ft = "go",
-
-                config = function()
-                    require("cmp.cmp_go_pkgs").new()
-                    require("cmp").register_source("go_pkgs", require("cmp.cmp_go_pkgs"))
-                    vim.api.nvim_create_user_command("CurNode", function(c)
-                        require("cmp_go_pkgs.source").kek(c)
-                    end, {})
-                end
             },
 
             -- 单词补全
@@ -107,12 +135,6 @@ M.list = {
                 end
             },
 
-            -- nvim lua  源
-            {
-                "hrsh7th/cmp-nvim-lua",
-                event = { "InsertEnter *.lua" },
-            },
-
             {
                 "tzachar/cmp-tabnine",
                 build = "./install.sh",
@@ -141,17 +163,6 @@ M.list = {
                 end
             },
 
-            {
-                "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
-                opts = {
-                    library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
-                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                    },
-                },
-            },
 
             -- 自定义代码片段
             {
@@ -165,11 +176,10 @@ M.list = {
                     -- "rafamadriz/friendly-snippets",
                 },
             },
-
-
         },
-        event = { "InsertEnter" },
     },
+
+
 
     -- 彩色补全
     {
