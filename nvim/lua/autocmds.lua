@@ -190,7 +190,7 @@ vim.api.nvim_create_autocmd({ "WinResized" }, {
 })
 
 -- Redir message
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter", "CmdlineEnter" }, {
     group = vim.api.nvim_create_augroup("redir-message-begin", { clear = true }),
     callback = function()
         Cmd("redir >> " .. NEOVIM_MESSAGE_DATA)

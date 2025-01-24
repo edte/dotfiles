@@ -438,6 +438,7 @@ M.list = {
     -- 简单到选择，'('，完成。
     {
         "NStefan002/visual-surround.nvim",
+        event = "ModeChanged *:v", -- 进入可视模式
         config = function()
             require("visual-surround").setup({})
         end,
