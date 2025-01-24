@@ -59,6 +59,7 @@ wk.add({
     { "<leader>su", "<cmd>UndotreeToggle<CR>",                                  desc = "undo", },
 
     { "<leader>t",  "<cmd>FzfLua live_grep_native<CR>",                         desc = "text", },
+    { "<leader>m",  "<cmd>M<CR>",                                               desc = "message", },
 
 
 })
