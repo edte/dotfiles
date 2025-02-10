@@ -175,6 +175,11 @@ function M.setup()
             {
                 name = "nvim_lsp",
                 priority = 8,
+                option = {
+                    markdown_oxide = {
+                        keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+                    }
+                }
             },
             {
                 name = "luasnip",

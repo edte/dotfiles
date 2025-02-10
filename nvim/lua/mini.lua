@@ -15,17 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "lewis6991/gitsigns.nvim",
-        opts = {},
-        -- event = "User FileOpened",
-        -- cmd = "Gitsigns",
+        "Toprun123/PicVim",
         config = function()
-            require("gitsigns").setup({
-                signcolumn = false,
-                diff_opts = {
-                    vertical = true,
-                },
-            })
+            require 'picvim'.setup()
         end,
     },
 })

@@ -55,6 +55,58 @@ local lspTable = {
     -- },
 
     {
+        name = "markdown_oxide",
+        filetypes = { "markdown" },
+        capabilities = vim.tbl_deep_extend(
+            'force',
+            require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            {
+                workspace = {
+                    didChangeWatchedFiles = {
+                        dynamicRegistration = true,
+                    },
+                },
+            }
+        ),
+        on_attach = function(client, bufnr)
+            local function check_codelens_support()
+                local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+                for _, c in ipairs(clients) do
+                    if c.server_capabilities.codeLensProvider then
+                        return true
+                    end
+                end
+                return false
+            end
+
+            vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave', 'CursorHold', 'LspAttach', 'BufEnter' }, {
+                buffer = bufnr,
+                callback = function()
+                    if check_codelens_support() then
+                        vim.lsp.codelens.refresh({ bufnr = 0 })
+                    end
+                end
+            })
+            -- trigger codelens refresh
+            vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
+
+
+            -- setup Markdown Oxide daily note commands
+            if client.name == "markdown_oxide" then
+                vim.api.nvim_create_user_command(
+                    "Daily",
+                    function(args)
+                        local input = args.args
+
+                        vim.lsp.buf.execute_command({ command = "jump", arguments = { input } })
+                    end,
+                    { desc = 'Open daily note', nargs = "*" }
+                )
+            end
+        end
+    },
+
+    {
         name = "lua_ls",
         filetypes = { "lua" },
         capabilities = M.capabilities,
