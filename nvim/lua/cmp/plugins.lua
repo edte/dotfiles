@@ -69,7 +69,7 @@ M.list = {
                 event = { "InsertEnter" },
             },
             {
-                "hrsh7th/cmp-nvim-lsp-signature-help",
+                "edte/cmp-nvim-lsp-signature-help",
                 event = { "InsertEnter" },
             },
 
