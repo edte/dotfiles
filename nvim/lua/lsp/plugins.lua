@@ -31,7 +31,7 @@ M.list = {
                 Api.nvim_command(":GoAddTag json -add-options json=")
             end, { nargs = "*" })
 
-            Autocmd("BufWritePre", {
+            Autocmd("BufWritePost", {
                 group = GroupId("go_auto_import", { clear = true }),
                 nested = true,
                 callback = function()

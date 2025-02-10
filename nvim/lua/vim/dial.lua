@@ -29,6 +29,21 @@ M.dialConfig = function()
                 cyclic = true,
             }),
             augend.constant.new({
+                elements = { "Req", "Rsp" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "req", "rsp" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
+                elements = { "request", "response" },
+                word = false,
+                cyclic = true,
+            }),
+            augend.constant.new({
                 elements = { "enable", "disable" },
                 word = false,
                 cyclic = true,
