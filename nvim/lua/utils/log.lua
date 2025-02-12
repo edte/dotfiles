@@ -174,6 +174,11 @@ vim.api.nvim_create_user_command('Message', function()
     vim.cmd(string.format('e %s', logfilename))
 end, { nargs = "*" })
 
+vim.api.nvim_create_user_command('Log', function()
+    vim.cmd(string.format('e %s', logfilename))
+end, { nargs = "*" })
+
+
 vim.api.nvim_create_user_command('M', function()
     vim.cmd(string.format('e %s', logfilename))
 end, { nargs = "*" })

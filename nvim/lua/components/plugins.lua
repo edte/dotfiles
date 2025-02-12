@@ -427,6 +427,15 @@ M.list = {
         },
     },
 
+    -- gt 格式化时间戳
+    {
+        name = "timestamp",
+        dir = "components.timestamp",
+        virtual = true,
+        config = function()
+            require("components.timestamp")
+        end,
+    },
 
 }
 
