@@ -2,13 +2,13 @@ local function format_timestamp(timestamp)
     local formatted_time
     -- 判断时间戳是秒还是毫秒
     if string.len(timestamp) == 10 then
-        formatted_time = os.date("%Y-%m-%d %H:%M:%S", timestamp) -- 10位时间戳，直接格式化
+        formatted_time = os.date("%Y-%m-%d %H:%M:%S", timestamp)                                       -- 10位时间戳，直接格式化
     elseif string.len(timestamp) == 13 then
-        local seconds = math.floor(timestamp / 1000) -- 获取秒部分
-        local milliseconds = timestamp % 1000 -- 获取毫秒部分
+        local seconds = math.floor(timestamp / 1000)                                                   -- 获取秒部分
+        local milliseconds = timestamp % 1000                                                          -- 获取毫秒部分
         formatted_time = os.date("%Y-%m-%d %H:%M:%S", seconds) .. string.format(".%03d", milliseconds) -- 格式化并附加毫秒
     else
-        return nil -- 如果不是10位或13位，返回nil
+        return nil                                                                                     -- 如果不是10位或13位，返回nil
     end
     return formatted_time
 end
@@ -26,7 +26,7 @@ local function get_token()
 
     -- 新增判断：如果当前光标下的字符不是数字，直接返回
     local current_char = string.sub(trim_line, c_col + 1, c_col + 1)
-    log.error(current_char)
+    -- log.error(current_char)
     if tonumber(current_char) == nil then
         return current_char
     end
@@ -66,7 +66,7 @@ end
 
 local function show_timestamp()
     local token = get_token()
-    log.error(token)
+    -- log.error(token)
     if token and token ~= '' then
         local timestamp = tonumber(token) -- 确保时间戳是数字
         -- 新增判断：如果 token 位数不是 10 或 13，直接返回
