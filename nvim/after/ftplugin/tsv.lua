@@ -1,3 +1,11 @@
+vim.api.nvim_buf_set_keymap(
+    0,
+    "n",
+    "t",
+    ":q<cr>",
+    { noremap = true, silent = true, desc = "Jump to the next request" }
+)
+
 local NuiTable = require("nui.table")
 
 function render_tsv_as_table()

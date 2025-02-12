@@ -18,6 +18,11 @@ M.list = {
         },
     },
 
+    -- 一个 Neovim 插件，提供与jsonls和yamlls一起使用的SchemaStore目录。
+    {
+        "b0o/schemastore.nvim",
+    },
+
     -- go 插件
     {
         "ray-x/go.nvim",
@@ -254,10 +259,6 @@ M.list = {
     --     end
     -- },
 
-    -- 一个 Neovim 插件，提供与jsonls和yamlls一起使用的SchemaStore目录。
-    {
-        "b0o/schemastore.nvim",
-    },
 
     {
         'mrcjkb/rustaceanvim',

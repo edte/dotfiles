@@ -26,6 +26,6 @@ vim.api.nvim_buf_set_keymap(
     0,
     "n",
     "t",
-    "<cmd>lua require('kulala').show_body()<cr>",
+    "<cmd>lua require('kulala.ui').show_body()<cr>",
     { noremap = true, silent = true, desc = "Jump to the next request" }
 )
