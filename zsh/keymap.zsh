@@ -1,5 +1,6 @@
 # ----------------- keymap ------------------------------------------------------------------------------------------------------------
 bindkey "jj" clear-screen
+bindkey "jk" clear-screen
 # bindkey -M viins jk vi-cmd-mode
 bindkey ',' autosuggest-accept
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select

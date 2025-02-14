@@ -15,9 +15,18 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "Toprun123/PicVim",
-        config = function()
-            require 'picvim'.setup()
-        end,
-    },
+        "rachartier/tiny-glimmer.nvim",
+        event = "VeryLazy",
+        opts = {
+            overwrite = {
+                undo = {
+                    enabled = true,
+                },
+                redo = {
+                    enabled = true,
+                }
+
+            },
+        },
+    }
 })
