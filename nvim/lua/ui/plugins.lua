@@ -95,27 +95,27 @@ M.list = {
 
     --
     -- 符号树状视图,按 S
-    {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = { -- Example mapping to toggle outline
-            { "S", "<cmd>Outline<CR>", desc = "Toggle outline" },
-        },
-        opts = {
-            outline_window = {
-                auto_close = true,
-                auto_jump = true,
-                show_numbers = false,
-                width = 35,
-                wrap = true,
-            },
-            outline_items = {
-                show_symbol_lineno = true,
-                show_symbol_details = false,
-            },
-        },
-    },
+    -- {
+    --     "hedyhli/outline.nvim",
+    --     lazy = true,
+    --     cmd = { "Outline", "OutlineOpen" },
+    --     keys = { -- Example mapping to toggle outline
+    --         { "S", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    --     },
+    --     opts = {
+    --         outline_window = {
+    --             auto_close = true,
+    --             auto_jump = true,
+    --             show_numbers = false,
+    --             width = 35,
+    --             wrap = true,
+    --         },
+    --         outline_items = {
+    --             show_symbol_lineno = true,
+    --             show_symbol_details = false,
+    --         },
+    --     },
+    -- },
 
     -- wilder.nvim 插件，用于命令行补全，和 noice.nvim 冲突
     {
