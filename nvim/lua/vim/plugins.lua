@@ -11,26 +11,26 @@ M.list = {
     },
 
     -- yanky.nvim的目标是改进 Neovim 的 yank 和 put 功能。
-    {
-        "gbprod/yanky.nvim",
-        dependencies = {
-            { "kkharji/sqlite.lua" }
-        },
-        opts = {
-            ring = { storage = "sqlite" },
-            highlight = {
-                on_put = true,
-                on_yank = true,
-                timer = 100,
-            },
-
-        },
-        keys = {
-            { "y", "<Plug>(YankyYank)",      mode = { "n", "x" }, desc = "Yank text" },
-            { "p", "<Plug>(YankyPutAfter)",  mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-            { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-        },
-    },
+    -- {
+    --     "gbprod/yanky.nvim",
+    --     dependencies = {
+    --         { "kkharji/sqlite.lua" }
+    --     },
+    --     opts = {
+    --         ring = { storage = "sqlite" },
+    --         highlight = {
+    --             on_put = true,
+    --             on_yank = true,
+    --             timer = 100,
+    --         },
+    --
+    --     },
+    --     keys = {
+    --         { "y", "<Plug>(YankyYank)",      mode = { "n", "x" }, desc = "Yank text" },
+    --         { "p", "<Plug>(YankyPutAfter)",  mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+    --         { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+    --     },
+    -- },
 
     -- 增强 Neovim 中宏的使用。
     {
@@ -294,7 +294,7 @@ M.list = {
         keys = { "s", "sx" },
         config = function()
             require("substitute").setup({
-                on_substitute = require("yanky.integration").substitute(),
+                --     on_substitute = require("yanky.integration").substitute(),
             })
 
             -- 交换

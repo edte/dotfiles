@@ -175,7 +175,7 @@ Cmd("inoremap : ;")
 Cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
 -- cmd("nnoremap <Enter> %")
 
--- Cmd("xnoremap p P")
+Cmd("xnoremap p P")
 
 Cmd("silent!")
 

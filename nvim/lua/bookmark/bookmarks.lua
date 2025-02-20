@@ -291,7 +291,6 @@ function M.set_marks(buf, marks)
 
     -- set new old ext
     for _, mark in ipairs(marks) do
-
         -- 如果书签行号超过文件总行数，跳过该书签。
         if mark.line > vim.fn.line("$") then
             goto continue
@@ -499,7 +498,6 @@ end
 
 -- 写入书签到磁盘文件，下次加载时使用
 function M.save_bookmarks()
-
     local local_str = ""
     for id, bookmark in pairs(M.data.bookmarks) do
         local tpl = [[
@@ -509,7 +507,14 @@ function M.save_bookmarks()
 ]]
 
         if bookmark["extmark_id"] ~= nil then
-            local extmark_pos = Api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
+            local extmark_pos
+
+            -- 先检查缓冲区是否有效
+            if Api.nvim_buf_is_valid(bookmark.buf_id) then
+                extmark_pos = Api.nvim_buf_get_extmark_by_id(bookmark.buf_id, M.data.ns_id, bookmark.extmark_id, {})
+            else
+                log.error("Bookmark '" .. id .. "' is no longer valid.")
+            end
 
             -- 检查 extmark 是否有效
             if not extmark_pos or #extmark_pos == 0 then
@@ -519,7 +524,6 @@ function M.save_bookmarks()
 
             M.data.bookmarks[id].line = extmark_pos[1] + 1
             M.data.bookmarks[id].rows = extmark_pos[2]
-
         end
 
 
@@ -621,7 +625,6 @@ function M.load_bookmarks()
         M.data.bookmarks_groupby_filename[item.filename][#M.data.bookmarks_groupby_filename[item.filename] + 1] = item
             .id
     end
-
 end
 
 function M.setup()

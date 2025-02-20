@@ -231,13 +231,13 @@ function M.setup()
                 priority = 4,
             },
 
-            {
-                name = "cmp_yanky",
-                priority = 4,
-                option = {
-                    onlyCurrentFiletype = true
-                }
-            },
+            -- {
+            --     name = "cmp_yanky",
+            --     priority = 4,
+            --     option = {
+            --         onlyCurrentFiletype = true
+            --     }
+            -- },
 
             {
                 name = "rg",
