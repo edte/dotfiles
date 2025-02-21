@@ -443,6 +443,11 @@ M.list = {
             require("visual-surround").setup({})
         end,
     },
+    -- -- Neovim的简单模式查看器，并支持LUA模式和正则表达式。
+    -- {
+    --     "OXY2DEV/patterns.nvim",
+    -- },
+
 
 }
 
