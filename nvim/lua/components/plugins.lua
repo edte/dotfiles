@@ -334,10 +334,12 @@ M.list = {
     -- http 请求
     {
         'mistweaverco/kulala.nvim',
+        tag = "v4.10.0",
         ft = "http",
         opts = {
+            default_view = "body",
             display_mode = "float",
-            default_winbar_panes = { "body", "headers", "headers_body" },
+            winbar = false,
             contenttypes = {
                 ["application/csv"] = {
                     ft = "csv",
@@ -348,11 +350,9 @@ M.list = {
                 ["text/tsv"] = {
                     ft = "tsv",
                     formatter = function(body)
-                        -- return body:gsub("\t", ",")
                         return body
                     end,
                     pathresolver = function(body, path)
-                        -- print(body)
                         return body
                     end,
                 },
