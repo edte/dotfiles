@@ -197,7 +197,7 @@ local lspTable = {
                 gofumpt = true,
                 -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
                 hints = {
-                    -- rangeVariableTypes = true, -- 范围变量类型
+                    rangeVariableTypes = true,     -- 范围变量类型
                     constantValues = true,         -- 常数值
                     assignVariableTypes = true,    -- 分配变量类型
                     compositeLiteralFields = true, -- 复合文字字段
