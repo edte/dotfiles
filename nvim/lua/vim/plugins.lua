@@ -448,7 +448,6 @@ M.list = {
     --     "OXY2DEV/patterns.nvim",
     -- },
 
-
 }
 
 return M

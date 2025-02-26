@@ -3,13 +3,22 @@ local wk = require("which-key")
 
 wk.add({
     mode = { "v" },
-    { "<leader>/",  "<Plug>(comment_toggle_linewise_visual)",          desc = "comment", },
-    { "<leader>l",  group = "LSP",                                     desc = "lsp", },
-    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "code Action", },
-    { "<leader>t",  ":'<,'>Translate ZH<cr>",                          desc = "translate", },
-    { "<leader>d",  ":lua compare_to_clipboard()<cr>",                 desc = "diff copy", },
-    { "<leader>g",  "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "git history", },
-    { "<enter>",    ":'<,'>SnipRun<CR>",                               desc = "run code", },
+    { "<leader>/",   "<Plug>(comment_toggle_linewise_visual)",          desc = "comment", },
+    { "<leader>l",   group = "LSP",                                     desc = "lsp", },
+    { "<leader>la",  "<cmd>lua vim.lsp.buf.code_action()<cr>",          desc = "code Action", },
+    { "<leader>t",   ":'<,'>Translate ZH<cr>",                          desc = "translate", },
+    { "<leader>d",   ":lua compare_to_clipboard()<cr>",                 desc = "diff copy", },
+    { "<leader>g",   "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "git history", },
+    { "<enter>",     ":'<,'>SnipRun<CR>",                               desc = "run code", },
+
+    { "<leader>r",   group = "Refactor",                                desc = "Refactor", },
+    { "<leader>re",  ":Refactor extract<cr>",                           desc = "extract" },
+    { "<leader>rf",  ":Refactor extract_to_file<cr>",                   desc = "extract_to_file" },
+    { "<leader>rv",  ":Refactor extract_var<cr>",                       desc = "extract_var" },
+    { "<leader>rI",  ":Refactor inline_func<cr>",                       desc = "inline_func" },
+    { "<leader>rb",  ":Refactor extract_block<cr>",                     desc = "extract_block" },
+    { "<leader>rbf", ":Refactor extract_block_to_file<cr>",             desc = "extract_block_to_file" },
+
 })
 
 wk.add({
