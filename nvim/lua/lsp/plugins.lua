@@ -207,14 +207,13 @@ M.list = {
     -- },
 
     -- 用于实时预览 lsp 重命名的 neovim 插件
-    {
-        "saecki/live-rename.nvim",
-        config = function()
-            local live_rename = require("live-rename")
-            vim.keymap.set("n", "R", live_rename.map({ text = "", insert = true }), { desc = "LSP rename" })
-        end
-
-    },
+    -- {
+    --     "saecki/live-rename.nvim",
+    --     config = function()
+    --         local live_rename = require("live-rename")
+    --         vim.keymap.set("n", "R", live_rename.map({ text = "", insert = true }), { desc = "LSP rename" })
+    --     end
+    -- },
 
 
     -- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
@@ -325,6 +324,7 @@ M.list = {
             })
         end,
     },
+
 
 
 }

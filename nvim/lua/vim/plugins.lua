@@ -448,6 +448,17 @@ M.list = {
     --     "OXY2DEV/patterns.nvim",
     -- },
 
+    -- 在插入模式下来回跳转
+    {
+        "AgusDOLARD/backout.nvim",
+        opts = {},
+        keys = {
+            -- Define your keybinds
+            { "<c-k>", "<cmd>lua require('backout').back()<cr>", mode = { "i", "c" } },
+            { "<c-j>", "<cmd>lua require('backout').out()<cr>",  mode = { "i", "c" } },
+        },
+    },
+
 }
 
 return M

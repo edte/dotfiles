@@ -54,11 +54,11 @@ M.config = function()
                 set_jumps = true,
 
                 goto_next_start = {
-                    ["]m"] = "@function.outer",
+                    -- ["]m"] = "@function.outer",
                     ["]]"] = { query = "@class.outer", desc = "Next class start" },
                 },
                 goto_next_end = {
-                    ["]M"] = "@function.outer",
+                    ["]m"] = "@function.outer",
                     ["]["] = "@class.outer",
                 },
                 goto_previous_start = {
@@ -66,7 +66,7 @@ M.config = function()
                     ["[["] = "@class.outer",
                 },
                 goto_previous_end = {
-                    ["[M"] = "@function.outer",
+                    -- ["[M"] = "@function.outer",
                     ["[]"] = "@class.outer",
                 },
             },
