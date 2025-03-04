@@ -10,6 +10,15 @@ M.list = {
             Setup("lsp.lsp")
             -- vim.g.health = { style = 'float' }
         end,
+
+        diagnostics = {
+            virtual_text = false,
+            virtual_lines = {
+                only_current_line = true,
+                highlight_whole_line = false,
+            },
+        },
+
         denpendencies = {
             {
                 "hrsh7th/cmp-nvim-lsp",
@@ -43,6 +52,8 @@ M.list = {
                     Cmd("GoImports")
                 end,
             })
+
+
 
             require("lsp.go-return").setup({})
 

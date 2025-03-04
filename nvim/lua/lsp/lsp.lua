@@ -174,7 +174,18 @@ local lspTable = {
         capabilities = M.capabilities,
         on_init = function(client)
             vim.lsp.inlay_hint.enable(true)
+            -- vim.diagnostic.disable()
+            vim.diagnostic.hide()
         end,
+        on_attach = function(client, bufnr)
+            -- this would disable semanticTokensProvider for all clients
+            -- client.server_capabilities.semanticTokensProvider = nil
+
+            -- print("test")
+            -- vim.diagnostic.disable()
+            vim.diagnostic.hide()
+        end,
+
         root_dir = function(fname)
             local gopath = os.getenv("GOPATH")
             if gopath == nil then

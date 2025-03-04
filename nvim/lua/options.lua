@@ -132,14 +132,12 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.diagnostic.config({
     virtual_text = false,
     update_in_insert = true,
-    virtual_lines = {
-        -- only_current_line = true,
-        highlight_whole_line = false,
-    },
+    virtual_lines = false,
     jump = {
         float = true
     },
 })
+
 
 
 vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
