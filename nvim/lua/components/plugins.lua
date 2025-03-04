@@ -438,31 +438,31 @@ M.list = {
     },
 
     -- 像使用 Cursor AI IDE 一样使用 Neovim！
-    {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        lazy = false,
-        version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-        opts = {
-            provider = "deepseek",
-            vendors = {
-                deepseek = {
-                    __inherited_from = "openai",
-                    api_key_name = "DEEPSEEK_API_KEY",
-                    endpoint = "https://api.lkeap.cloud.tencent.com/v1",
-                    model = "deepseek-r1",
-                },
-            },
-        },
-        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-        build = "make",
-        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-        dependencies = {
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-    },
+    -- {
+    --     "yetone/avante.nvim",
+    --     event = "VeryLazy",
+    --     lazy = false,
+    --     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    --     opts = {
+    --         provider = "deepseek",
+    --         vendors = {
+    --             deepseek = {
+    --                 __inherited_from = "openai",
+    --                 api_key_name = "DEEPSEEK_API_KEY",
+    --                 endpoint = "https://api.lkeap.cloud.tencent.com/v1",
+    --                 model = "deepseek-r1",
+    --             },
+    --         },
+    --     },
+    --     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    --     build = "make",
+    --     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    --     dependencies = {
+    --         "stevearc/dressing.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    -- },
 
 
 
