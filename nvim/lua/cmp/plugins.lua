@@ -90,6 +90,15 @@ M.list = {
                     return vim.fn.executable("rg") == 1
                 end,
             },
+            {
+                "ray-x/cmp-shellcmds-history",
+                config = function()
+                    require 'cmp_shellcmds_history'.setup {
+                        default_interval = 1200000, -- read/refresh history every 20 minutes
+                        max_items = 10000,          -- maximum number of items to read from history
+                    }
+                end
+            },
 
             -- 单词补全
             {

@@ -143,3 +143,4 @@ vim.diagnostic.config({
 vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
 
 vim.o.diffopt = 'internal,filler,vertical,closeoff'
+-- vim.o.winborder = "rounded"

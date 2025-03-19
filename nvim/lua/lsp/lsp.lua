@@ -175,7 +175,7 @@ local lspTable = {
         on_init = function(client)
             vim.lsp.inlay_hint.enable(true)
             -- vim.diagnostic.disable()
-            vim.diagnostic.hide()
+            -- vim.diagnostic.hide()
         end,
         on_attach = function(client, bufnr)
             -- this would disable semanticTokensProvider for all clients
@@ -183,7 +183,7 @@ local lspTable = {
 
             -- print("test")
             -- vim.diagnostic.disable()
-            vim.diagnostic.hide()
+            -- vim.diagnostic.hide()
         end,
 
         root_dir = function(fname)

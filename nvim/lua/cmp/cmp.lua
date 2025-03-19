@@ -23,6 +23,8 @@ function M.setup()
         },
     })
 
+    -- cmp.setup.cmdline(':', { { name = 'shellcmds_history' } })
+
     -- cmp 源
     cmp.setup({
         formatting = {
@@ -238,6 +240,17 @@ function M.setup()
             --         onlyCurrentFiletype = true
             --     }
             -- },
+
+            {
+                name = "shellcmds_history",
+                priority = 4,
+                option = {
+                    kind_text = ' ',
+                    -- skip commands too simple
+                    minium_cmd_length = 3,
+                    ignore_cmds = { 'ls', 'll', 'dir', 'cd', 'pwd', 'echo', 'cat' },
+                }
+            },
 
             {
                 name = "rg",
