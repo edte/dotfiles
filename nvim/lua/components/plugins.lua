@@ -340,12 +340,27 @@ M.list = {
             default_view = "body",
             display_mode = "float",
             winbar = false,
+            ui = {
+                show_request_summary = false
+            },
             contenttypes = {
                 ["application/csv"] = {
                     ft = "csv",
+                    formatter = function(body)
+                        return body
+                    end,
+                    pathresolver = function(body, path)
+                        return body
+                    end,
                 },
                 ["text/csv"] = {
                     ft = "csv",
+                    formatter = function(body)
+                        return body
+                    end,
+                    pathresolver = function(body, path)
+                        return body
+                    end,
                 },
                 ["text/tsv"] = {
                     ft = "tsv",
