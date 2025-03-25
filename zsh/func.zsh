@@ -13,10 +13,7 @@ function gitbranch() {
 }
 
 function backup() {
-    cd ~/dotfiles/
-    git add .
-    git commit -m "update"
-    git push origin master
+    cd ~/dotfiles/ && git add . && git commit -m "update" && git push origin master
 }
 
 function update() {
