@@ -1,6 +1,6 @@
 -- 最大高亮单词长度
 local MAX_LEN = 64
-local ns = vim.api.nvim_create_namespace('cursorword') -- 使用命名空间管理高亮
+local window_matches = {} -- 记录每个窗口的匹配ID
 
 -- 高亮当前光标下的单词（支持打开的所有window）
 local function matchadd()
@@ -24,31 +24,30 @@ local function matchadd()
     vim.g.cursorword_global = cursorword
 
     -- step4: 清理所有窗口旧高亮
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1) -- 清除命名空间高亮
-        vim.fn.clearmatches(win)                         -- 清除窗口匹配项
+    -- 只清除我们创建的matchadd匹配
+    for win, match_id in pairs(window_matches) do
+        if vim.api.nvim_win_is_valid(win) then
+            pcall(vim.fn.matchdelete, match_id, win)
+        end
     end
+    window_matches = {} -- 重置记录表
+
 
     -- step5: 如果单词为空，或者单词过长，或者包含非ASCII字符，则不需要更新
     if cursorword == "" or #cursorword > MAX_LEN or cursorword:find("[\192-\255]+") ~= nil then
         return
     end
 
-    local pattern = [[\<]] .. cursorword .. [[\>]]
-
     -- 为所有窗口的对应缓冲区添加高亮
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local buf = vim.api.nvim_win_get_buf(win)
 
 
-        if vim.bo[buf].filetype ~= "" then
-            -- 添加两种高亮（命名空间+matchadd双保险）
-            vim.api.nvim_buf_add_highlight(
-                buf, ns, "CursorWord",
-                0, 0, -1
-            )
-            vim.fn.matchadd("CursorWord", pattern, -1, -1, { window = win })
+        if vim.bo[buf].filetype ~= "" or vim.bo[buf].buftype ~= "" then
+            -- 添加窗口匹配并记录ID
+            local match_id = vim.fn.matchadd("CursorWord", [[\<]] .. cursorword .. [[\>]], -1, -1, { window = win })
+
+            window_matches[win] = match_id
         end
     end
 end
@@ -57,12 +56,25 @@ end
 vim.api.nvim_set_hl(0, "CursorWord", { underline = true })
 
 -- 自动命令
-vim.api.nvim_create_autocmd(
-    { "CursorMoved", "CursorMovedI" },
-    { callback = matchadd }
+Autocmd(
+    { "CursorMoved", "CursorMovedI", "VimEnter" },
+    {
+        group = GroupId("cursorword", { clear = true }),
+        callback = matchadd
+    }
 )
 
-vim.api.nvim_create_autocmd(
-    "VimEnter",
-    { callback = matchadd }
+-- 分屏的时候也支持下
+Autocmd(
+    { "WinNew" },
+    {
+        group = GroupId("cursorword-wn", { clear = true }),
+        callback = function(args)
+            local win = vim.fn.win_getid()
+
+            local match_id = vim.fn.matchadd("CursorWord", [[\<]] .. vim.g.cursorword_global .. [[\>]], -1, -1,
+                { window = win })
+            window_matches[win] = match_id
+        end
+    }
 )

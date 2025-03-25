@@ -97,6 +97,7 @@ alias zconf='cd /Users/edte/config'
 alias zconfig='cd /Users/edte/config'
 alias vtest='/Users/edte/go/src/test'
 alias zzsh="cd /Users/edte/.config/zsh"
+alias tailf="tail -f"
 
 alias cs='cd $(git rev-parse --show-toplevel)'
 # alias pip=pipx
