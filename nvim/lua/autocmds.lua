@@ -189,17 +189,19 @@ vim.api.nvim_create_autocmd({ "WinResized" }, {
     end,
 })
 
+-- 退出的时候也会写message到日志文件
+-- 调试用
 -- Redir message
-vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter", "CmdlineEnter" }, {
-    group = vim.api.nvim_create_augroup("redir-message-begin", { clear = true }),
-    callback = function()
-        Cmd("redir >> " .. NEOVIM_MESSAGE_DATA)
-    end,
-})
-
-vim.api.nvim_create_autocmd("VimLeave", {
-    group = vim.api.nvim_create_augroup("redir-message-end", { clear = true }),
-    callback = function()
-        Cmd("redir END")
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter", "CmdlineEnter" }, {
+--     group = vim.api.nvim_create_augroup("redir-message-begin", { clear = true }),
+--     callback = function()
+--         Cmd("redir >> " .. NEOVIM_MESSAGE_DATA)
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--     group = vim.api.nvim_create_augroup("redir-message-end", { clear = true }),
+--     callback = function()
+--         Cmd("redir END")
+--     end,
+-- })

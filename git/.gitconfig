@@ -4,6 +4,7 @@
 [core]
     pager = delta
     difftool = true
+	hooksPath = /Users/edte/.git_hooks
 
 [interactive]
     diffFilter = delta 
@@ -47,3 +48,6 @@
     dft = -c diff.external=difft diff
 [init]
 	defaultBranch = master
+[push]
+	default = current
+	autoSetupRemote = true

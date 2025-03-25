@@ -7,7 +7,7 @@ local function matchadd()
         return
     end
 
-    -- 获取光标所在列和行内容
+    -- step1: 获取当前光标位置的单词
     local column = Api.nvim_win_get_cursor(0)[2]
     local line = Api.nvim_get_current_line()
     local left = vim.fn.matchstr(line:sub(1, math.min(column + 1, #line)), [[\k*$]])
@@ -15,17 +15,20 @@ local function matchadd()
 
     local cursorword = left .. right
 
+    -- step2: 如果单词没有变化，则不需要更新
     if cursorword == vim.w.cursorword then
         return
     end
 
     vim.w.cursorword = cursorword
 
+    -- step3: 如果高亮已经存在，则删除
     if vim.w.cursorword_id then
         vim.fn.matchdelete(vim.w.cursorword_id)
         vim.w.cursorword_id = nil
     end
 
+    -- step4: 如果单词为空，或者单词过长，或者包含非ASCII字符，则不需要更新
     if cursorword == "" or #cursorword > MAX_LEN or cursorword:find("[\192-\255]+") ~= nil then
         return
     end
@@ -40,7 +43,7 @@ local function matchadd()
     end
 end
 
-Autocmd("VimEnter", {
+Autocmd({ "VimEnter" }, {
     callback = function()
         highlight("CursorWord", { underline = true })
         matchadd()
