@@ -437,7 +437,7 @@ M.list = {
         event = "VeryLazy",
     },
 
-    -- 简单到选择，'('，完成。
+    -- 快速添加括号或者引号，v模式选中再按就行，比surroud的sd好用很多，比较常用
     {
         "NStefan002/visual-surround.nvim",
         event = "ModeChanged *:v", -- 进入可视模式
@@ -459,6 +459,11 @@ M.list = {
             { "<c-k>", "<cmd>lua require('backout').back()<cr>", mode = { "i", "c" } },
             { "<c-j>", "<cmd>lua require('backout').out()<cr>",  mode = { "i", "c" } },
         },
+    },
+    -- 行内支持 % 跳转引号
+    -- 跨行不支持
+    {
+        "airblade/vim-matchquote",
     },
 
 }
