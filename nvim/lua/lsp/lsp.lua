@@ -323,10 +323,10 @@ M.setup = function()
 end
 
 M.capabilities = function()
-    -- return require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    return require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- return require('cmp_nvim_lsp').default_capabilities()
-    return require('blink.cmp').get_lsp_capabilities()
+    -- return require('blink.cmp').get_lsp_capabilities()
 end
 
 
