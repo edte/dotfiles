@@ -1,31 +1,31 @@
 local M = {}
 
 M.list = {
-    {
-        "neovim/nvim-lspconfig",
-        -- 这里如果换成最新的master分支，会导致打开新文件的时候，整个lsp不 attatch 了，不知道为啥，而且lsplog也很难用，所以还是用这个commit
-        -- 不过这个commit不能用kulala-ls，注释掉
-        commit = "a89de2e",
-        config = function()
-            Setup("lsp.lsp")
-            -- vim.g.health = { style = 'float' }
-        end,
-
-        diagnostics = {
-            virtual_text = false,
-            virtual_lines = {
-                only_current_line = true,
-                highlight_whole_line = false,
-            },
-        },
-
-        denpendencies = {
-            {
-                "hrsh7th/cmp-nvim-lsp",
-                event = { "InsertEnter" },
-            },
-        },
-    },
+    -- {
+    --     "neovim/nvim-lspconfig",
+    --     -- 这里如果换成最新的master分支，会导致打开新文件的时候，整个lsp不 attatch 了，不知道为啥，而且lsplog也很难用，所以还是用这个commit
+    --     -- 不过这个commit不能用kulala-ls，注释掉
+    --     commit = "a89de2e",
+    --     config = function()
+    --         Setup("lsp.lsp")
+    --         -- vim.g.health = { style = 'float' }
+    --     end,
+    --
+    --     diagnostics = {
+    --         virtual_text = false,
+    --         virtual_lines = {
+    --             only_current_line = true,
+    --             highlight_whole_line = false,
+    --         },
+    --     },
+    --
+    --     denpendencies = {
+    --         {
+    --             "hrsh7th/cmp-nvim-lsp",
+    --             event = { "InsertEnter" },
+    --         },
+    --     },
+    -- },
 
     -- 一个 Neovim 插件，提供与jsonls和yamlls一起使用的SchemaStore目录。
     {

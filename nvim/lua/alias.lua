@@ -11,7 +11,7 @@ _G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"
 _G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"
 
 _G.log = require("utils.log")
-_G.json = require "utils.json"
+-- _G.json = require "utils.json"
 _G.Api = vim.api
 _G.Command = vim.api.nvim_create_user_command
 _G.Cmd = vim.cmd
