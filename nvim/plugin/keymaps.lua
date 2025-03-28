@@ -1,5 +1,3 @@
--- --========================================== keybinding settings===============================================================
-
 -- fuck default keymaps
 if vim.fn.has("nvim-0.11") == 1 then
     vim.keymap.del("", "grr", {})
@@ -195,3 +193,11 @@ nmap("cr", "ciw")
 
 vmap("J", ":m '>+1<CR>gv=gv")
 vmap("K", ":m '<-2<CR>gv=gv")
+
+
+Cmd("command! Pwd !ls %:p")
+Cmd("command! Cwd lua print(vim.uv.cwd())")
+
+Api.nvim_create_user_command('LiteralSearch', function(opts)
+    Cmd('normal! /\\V' .. vim.fn.escape(opts.args, '\\'))
+end, { nargs = 1 })

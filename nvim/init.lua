@@ -4,10 +4,6 @@ local requires = {
 
     -- 常用配置
     "alias",
-    "autocmds",
-    "commands",
-    "keymaps",
-    "cwd",
     "lazys",
 }
 

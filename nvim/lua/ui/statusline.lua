@@ -24,7 +24,7 @@ local function get_lsp()
 
     local clients = vim.lsp.get_clients({ bufnr = current_buf })
     if next(clients) == nil then
-        return "null"
+        return "[null]"
     end
 
     local c = {}
