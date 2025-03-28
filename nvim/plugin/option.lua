@@ -1,35 +1,3 @@
--- =================================================vim option settings=======================================================
-vim.g.have_nerd_font = true
-vim.g.maplocalleader = "\\"
-vim.g.netrw_banner = 0
-
--- 日志等级
--- vim.lsp.set_log_level("trace")
-
--- 不可见字符的显示，这里只把空格显示为一个点
--- vim.o.list = false
--- vim.o.listchars = "space:·"
-
--- vim.opt.list = true
--- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- -- 恢复上次会话
--- vim.opt.sessionoptions = 'buffers,curdir,tabpages,winsize'
-
-vim.filetype.add({
-    extension = {
-        tex = "tex",
-        zir = "zir",
-        cr = "crystal",
-    },
-    pattern = {
-        ["[jt]sconfig.*.json"] = "jsonc",
-    },
-})
-
 local default_options = {
     clipboard = "unnamedplus",          -- allows neovim to access the system clipboard
     cmdheight = 0,                      -- more space in the neovim command line for displaying messages
@@ -79,17 +47,50 @@ local default_options = {
     guicursor = "n-v-sm:block,c-i-ci-ve:ver25,r-cr-o:hor20",
 
     -- backup
-    undodir = NEOVIM_UNDO_DATA,     -- set an undo directory
-    undofile = true,                -- enable persistent undo
-    backup = true,                  -- creates a backup file
-    backupdir = NEOVIM_BACKUP_DATA, -- neovim backup directory
-    swapfile = true,                -- creates a swapfile
-    directory = NEOVIM_SWAP_DATA,   -- neovim swap dir
+    undodir = vim.fn.stdpath("state") .. "/undo",     -- set an undo directory
+    undofile = true,                                  -- enable persistent undo
+    backup = true,                                    -- creates a backup file
+    backupdir = vim.fn.stdpath("state") .. "/backup", -- neovim backup directory
+    swapfile = true,                                  -- creates a swapfile
+    directory = vim.fn.stdpath("state") .. "/swap",   -- neovim swap dir
+    wildmode = "list:longest,list:full"               -- for : stuff
+
 }
 
 for k, v in pairs(default_options) do
     vim.opt[k] = v
 end
+
+vim.diagnostic.config({
+    virtual_text = false,
+    update_in_insert = false,
+    virtual_lines = false,
+    jump = {
+        float = true
+    },
+})
+
+
+vim.g.have_nerd_font = true
+vim.g.maplocalleader = "\\"
+vim.g.netrw_banner = 0
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- -- 恢复上次会话
+-- vim.opt.sessionoptions = 'buffers,curdir,tabpages,winsize'
+
+vim.filetype.add({
+    extension = {
+        tex = "tex",
+        zir = "zir",
+        cr = "crystal",
+    },
+    pattern = {
+        ["[jt]sconfig.*.json"] = "jsonc",
+    },
+})
+
 
 vim.opt.wildmode = "list:longest,list:full"           -- for : stuff
 vim.opt.wildignore:append({ ".javac", "node_modules", "*.pyc" })
@@ -128,19 +129,6 @@ vim.opt.spelllang:append("cjk")                               -- disable spellch
 vim.opt.shortmess:append("c")                                 -- don't show redundant messages from ins-completion-menu
 vim.opt.shortmess:append("I")                                 -- don't show the default intro message
 vim.opt.whichwrap:append("<,>,[,],h,l")
-
-vim.diagnostic.config({
-    virtual_text = false,
-    update_in_insert = true,
-    virtual_lines = false,
-    jump = {
-        float = true
-    },
-})
-
-
-
 vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
-
 vim.o.diffopt = 'internal,filler,vertical,closeoff'
 -- vim.o.winborder = "rounded"

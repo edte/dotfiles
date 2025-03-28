@@ -24,14 +24,15 @@ local function get_lsp()
 
     local clients = vim.lsp.get_clients({ bufnr = current_buf })
     if next(clients) == nil then
-        return ""
+        return "null"
     end
 
     local c = {}
     for _, client in pairs(clients) do
         c[#c + 1] = client.name
     end
-    return "[" .. table.concat(c, ",") .. "]"
+    local rsp = "[" .. table.concat(c, ",") .. "]"
+    return rsp
 end
 
 local function get_file()
@@ -123,6 +124,8 @@ highlight("StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
 highlight("StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
 
 StatusLine.active = function()
+    StatusLine.lsp_clients = "%#StatusLineLSP#" .. get_lsp()
+
     local statusline = {
         StatusLine.project_name or "",
         icons.ui.DividerRight,

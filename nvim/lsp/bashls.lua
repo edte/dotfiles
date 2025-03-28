@@ -1,5 +1,6 @@
 -- bash没诊断，需要看咋弄
-return {
+
+local M = {
     name = "bashls",
     cmd = { "bash-language-server", "start" },
     filetypes = { "sh", "zsh", "bash", "tmux" },
@@ -13,3 +14,5 @@ return {
         }
     },
 }
+
+return M

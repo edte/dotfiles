@@ -4,7 +4,6 @@ local requires = {
 
     -- 常用配置
     "alias",
-    "options",
     "autocmds",
     "commands",
     "keymaps",
@@ -15,6 +14,3 @@ local requires = {
 for _, r in ipairs(requires) do
     require(r)
 end
-
-
-vim.lsp.enable({ "gopls", "lua_ls", "clangd", "bashls", "jsonls" })
