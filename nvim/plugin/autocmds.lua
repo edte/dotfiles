@@ -8,16 +8,16 @@
 -- })
 
 -- 这段自动命令可以防止你在一个注释行中换行后，新行会继续注释的情况
-Autocmd({ "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = "*",
     callback = function()
         vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
     end,
-    group = GroupId("comment_", { clear = true }),
+    group = vim.api.nvim_create_augroup("comment_", { clear = true }),
 })
 
 -- 打开二进制文件
-Cmd([[
+vim.cmd([[
 	" vim -b : edit binary using xxd-format!
 	augroup Binary
 	  autocmd!
@@ -45,7 +45,7 @@ Cmd([[
 
 
 -- 在打开文件时跳转到上次编辑的位置
-Autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function(args)
         local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
         local line_count = vim.api.nvim_buf_line_count(args.buf)
@@ -57,9 +57,9 @@ Autocmd("BufReadPost", {
 
 
 -- Append backup files with timestamp
-Autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
     desc = 'Automatically backup files with timestamp and categorize by directory',
-    group = GroupId('timestamp_backupext', { clear = true }),
+    group = vim.api.nvim_create_augroup('timestamp_backupext', { clear = true }),
     pattern = '*',
     callback = function()
         local dir = vim.fn.expand('%:p:h')
@@ -172,7 +172,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Remove hl search when enter Insert
-Autocmd({ "InsertEnter", "CmdlineEnter" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
     desc = "Remove hl search when enter Insert",
     callback = vim.schedule_wrap(function()
         vim.cmd.nohlsearch()

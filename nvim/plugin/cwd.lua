@@ -17,7 +17,7 @@ local M = {
     file2lsp = {
         go = "gopls",
     },
-    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "makefile" ,"Cargo.toml",".gitignore"},
+    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "makefile", "Cargo.toml", ".gitignore" },
     -- What scope to change the directory, valid options are
     -- * global (default)
     -- * tab
@@ -343,8 +343,8 @@ end
 function M.setup()
     M.set_pwd(M.get_project_root())
 
-    Autocmd("BufEnter", {
-        group = GroupId("nvim_rooter", { clear = true }),
+    vim.api.nvim_create_autocmd("BufEnter", {
+        group = vim.api.nvim_create_augroup("nvim_rooter", { clear = true }),
         nested = true,
         callback = function()
             -- 将当前工作目录更改为正在编辑的文件的目录
