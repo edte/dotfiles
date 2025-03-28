@@ -29,3 +29,4 @@ vim.api.nvim_buf_set_keymap(
     "<cmd>lua require('kulala.ui').show_body()<cr>",
     { noremap = true, silent = true, desc = "Jump to the next request" }
 )
+

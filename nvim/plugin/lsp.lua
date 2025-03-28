@@ -5,6 +5,7 @@ local M = {
     gopls = { "go" },
     clangd = { "cpp", "c" },
     jsonls = { "json" },
+    vimls = { "vim" },
     -- bashls = { "zsh", "sh", "bash" }, -- -- bashls不能这样，不知道为啥
 }
 
