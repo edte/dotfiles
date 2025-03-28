@@ -1,6 +1,5 @@
-print("fuck")
-
-return {
+-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+return{
     name = "gopls",
     cmd = { 'gopls' },
     filetypes = { "go", "gomod", "gosum", "gotmpl", 'gowork' },
@@ -29,4 +28,3 @@ return {
         },
     },
 }
-
