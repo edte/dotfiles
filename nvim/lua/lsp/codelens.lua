@@ -516,9 +516,9 @@ function M.setup(opts)
 
     link_highlight("LspLens", "LspCodeLens")
 
-    Api.nvim_create_user_command("LspLensOn", M.lsp_lens_on, {})
-    Api.nvim_create_user_command("LspLensOff", M.lsp_lens_off, {})
-    Api.nvim_create_user_command("LspLensToggle", M.lsp_lens_toggle, {})
+    -- Api.nvim_create_user_command("LspLensOn", M.lsp_lens_on, {})
+    -- Api.nvim_create_user_command("LspLensOff", M.lsp_lens_off, {})
+    -- Api.nvim_create_user_command("LspLensToggle", M.lsp_lens_toggle, {})
 
     Api.nvim_create_autocmd({ "LspAttach", "TextChanged", "BufEnter" }, {
         group = Api.nvim_create_augroup("lsp_lens", { clear = true }),
