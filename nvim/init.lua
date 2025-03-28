@@ -17,4 +17,4 @@ for _, r in ipairs(requires) do
 end
 
 
-vim.lsp.enable({ "gopls" })
+vim.lsp.enable({ "gopls", "lua_ls", "clangd", "bashls", "jsonls" })

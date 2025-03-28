@@ -5,7 +5,7 @@ return{
     filetypes = { "go", "gomod", "gosum", "gotmpl", 'gowork' },
     root_markers = { '.git', 'Makefile' },
     on_attach = function(client, buf)
-        vim.lsp.inlay_hint.enable(true, {bufnr=bufnr})
+        vim.lsp.inlay_hint.enable(true, {bufnr=buf})
     end,
     single_file_support = true,
     settings = {
