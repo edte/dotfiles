@@ -13,9 +13,9 @@ nmap("}", "}j")
 Cmd("nnoremap <expr><silent> { (col('.')==1 && len(getline(line('.')-1))==0? '2{j' : '{j')")
 
 -- 上下滚动浏览
-nmap("<C-j>", "5j")
-nmap("<C-k>", "5k")
-
+-- nmap("<C-j>", "5j")
+-- nmap("<C-k>", "5k")
+--
 nmap("<C-u>", "<C-u>zz")
 nmap("<C-d>", "<C-d>zz")
 
