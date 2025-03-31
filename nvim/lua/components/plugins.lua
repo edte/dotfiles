@@ -148,11 +148,12 @@ M.list = {
     -- 保存目录是：（不知道哪里配置的）
     -- /Users/edte/.local/state/nvim/view
     {
-        name = "sessions",
-        dir = "components.sessions",
-        virtual = true,
+        "echasnovski/mini.sessions",
         config = function()
-            require("components.session").setup()
+            require("mini.sessions").setup({
+                autoread = false,
+                autowrite = false,
+            })
 
             local function GetPath()
                 local dir, _ = vim.fn.getcwd():gsub('/', '_')
