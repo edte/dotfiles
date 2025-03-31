@@ -31,11 +31,26 @@ M.list = {
 
     -- 上方的tab栏
     {
-        name = "tabline",
-        dir = "ui.tabline",
-        virtual = true,
+        "echasnovski/mini.tabline",
         config = function()
-            require("ui.tabline").setup()
+            nmap("gn", "<cmd>bn<CR>")
+            nmap("gp", "<cmd>bp<CR>")
+
+            local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
+            if not has_devicons then return end
+            local get_icon = function(name)
+                return (devicons.get_icon(vim.fn.fnamemodify(name, ':t'), nil, { default = true }))
+            end
+
+            require("mini.tabline").setup({
+                format = function(buf_id, label)
+                    if get_icon == nil then
+                        return string.format('  %s  ', label)
+                    end
+                    return string.format('  %s %s  ', get_icon(vim.api.nvim_buf_get_name(buf_id)), label)
+                end
+
+            })
         end,
     },
 
@@ -298,15 +313,6 @@ M.list = {
             },
 
         },
-    },
-
-    {
-        name = "tmux",
-        dir = "ui.tmux",
-        virtual = true,
-        config = function()
-            require("ui.tmux")
-        end
     },
 
     -- 一个微型 Neovim 插件，用于在视觉模式下突出显示与当前选择匹配的文本

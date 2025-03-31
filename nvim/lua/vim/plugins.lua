@@ -1,15 +1,6 @@
 local M = {}
 
 M.list = {
-    {
-        name = "cursorline",
-        dir = "vim.cursorline",
-        virtual = true,
-        config = function()
-            require("vim.cursorline")
-        end
-    },
-
     -- yanky.nvim的目标是改进 Neovim 的 yank 和 put 功能。
     -- {
     --     "gbprod/yanky.nvim",
