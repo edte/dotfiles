@@ -62,16 +62,6 @@ M.list = {
         },
     },
 
-
-    -- -- 不是天空中的 UFO，而是 Neovim 中的超级折叠。 za
-    -- {
-    --     "kevinhwang91/nvim-ufo",
-    --     dependencies = "kevinhwang91/promise-async",
-    --     opts = require("ui.fold").Opts,
-    --     init = require("ui.fold").init,
-    --     config = require("ui.fold").config,
-    -- },
-
     -- 左边的状态列
     {
         "luukvbaal/statuscol.nvim",
@@ -88,8 +78,6 @@ M.list = {
                     { text = { builtin.foldfunc } },
                 },
             })
-
-            require("ui.fold").init()
         end,
     },
 

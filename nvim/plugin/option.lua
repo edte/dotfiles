@@ -4,8 +4,6 @@ local default_options = {
     completeopt = { "menuone", "noselect" },
     conceallevel = 0,                   -- so that `` is visible in markdown files
     fileencoding = "utf-8",             -- the encoding written to a file
-    foldmethod = "manual",              -- folding, set to "expr" for treesitter based folding
-    foldexpr = "",                      -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
     hidden = true,                      -- required to keep multiple buffers and open multiple buffers
     hlsearch = true,                    -- highlight all matches on previous search pattern
     ignorecase = true,                  -- ignore case in search patterns
@@ -53,7 +51,19 @@ local default_options = {
     backupdir = vim.fn.stdpath("state") .. "/backup", -- neovim backup directory
     swapfile = true,                                  -- creates a swapfile
     directory = vim.fn.stdpath("state") .. "/swap",   -- neovim swap dir
-    wildmode = "list:longest,list:full"               -- for : stuff
+    wildmode = "list:longest,list:full",              -- for : stuff
+
+
+    -- 折叠相关
+    foldcolumn = "1",
+    fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
+    foldmethod = 'expr',
+    foldlevelstart = 99,
+    foldenable = true,
+    foldlevel = 99,
+    -- 默认treessiter折叠，如果lsp支持换成lsp
+    foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+    foldtext = "",
 
 }
 
@@ -120,9 +130,8 @@ vim.opt.includeexpr = "substitute(v:fname,'\\.','/','g')"
 
 
 for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-    Cmd("set path+=" .. path .. '/lua')
+    vim.cmd("set path+=" .. path .. '/lua')
 end
-
 
 vim.opt.suffixesadd:append({ ".lua", ".java", ".rs", ".go" }) -- search for suffexes using gf
 vim.opt.spelllang:append("cjk")                               -- disable spellchecking for asian characters (VIM algorithm does not support it)
@@ -132,3 +141,15 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
 vim.o.diffopt = 'internal,filler,vertical,closeoff'
 -- vim.o.winborder = "rounded"
+
+
+-- 如果lsp支持，则换成lsp折叠
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client:supports_method('textDocument/foldingRange') then
+            local win = vim.api.nvim_get_current_win()
+            vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
+    end,
+})
