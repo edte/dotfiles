@@ -30,26 +30,71 @@ M.list = {
     -- },
 
     -- 上方的tab栏
+    -- 这个不支持git/lsp 告警啥的，也不支持icon的高亮，所以还是用buffeline吧
+    -- {
+    --     "echasnovski/mini.tabline",
+    --     config = function()
+    --         nmap("gn", "<cmd>bn<CR>")
+    --         nmap("gp", "<cmd>bp<CR>")
+    --
+    --         local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
+    --         if not has_devicons then return end
+    --         local get_icon = function(name)
+    --             return (devicons.get_icon(vim.fn.fnamemodify(name, ':t'), nil, { default = true }))
+    --         end
+    --
+    --         require("mini.tabline").setup({
+    --             format = function(buf_id, label)
+    --                 if get_icon == nil then
+    --                     return string.format('  %s  ', label)
+    --                 end
+    --                 return string.format('  %s %s  ', get_icon(vim.api.nvim_buf_get_name(buf_id)), label)
+    --             end
+    --         })
+    --     end,
+    -- },
+
     {
-        "echasnovski/mini.tabline",
-        config = function()
-            nmap("gn", "<cmd>bn<CR>")
-            nmap("gp", "<cmd>bp<CR>")
-
-            local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
-            if not has_devicons then return end
-            local get_icon = function(name)
-                return (devicons.get_icon(vim.fn.fnamemodify(name, ':t'), nil, { default = true }))
-            end
-
-            require("mini.tabline").setup({
-                format = function(buf_id, label)
-                    if get_icon == nil then
-                        return string.format('  %s  ', label)
+        "akinsho/bufferline.nvim",
+        event = "VeryLazy",
+        keys = {
+            { "gn", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+            { "gp", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+        },
+        opts = {
+            options = {
+                diagnostics = "nvim_lsp",
+                -- always_show_bufferline = true,
+                diagnostics_indicator = function(_, _, diag)
+                    if diag.error or diag.warning then
+                        local ret = (diag.error or "")
+                            .. (diag.warning or "")
+                        return vim.trim(ret)
                     end
-                    return string.format('  %s %s  ', get_icon(vim.api.nvim_buf_get_name(buf_id)), label)
-                end
-
+                    return ""
+                end,
+                offsets = {
+                    {
+                        filetype = "neo-tree",
+                        text = "Neo-tree",
+                        highlight = "Directory",
+                        text_align = "left",
+                    },
+                    {
+                        filetype = "snacks_layout_box",
+                    },
+                },
+            },
+        },
+        config = function(_, opts)
+            require("bufferline").setup(opts)
+            -- Fix bufferline when restoring a session
+            vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+                callback = function()
+                    vim.schedule(function()
+                        pcall(nvim_bufferline)
+                    end)
+                end,
             })
         end,
     },
@@ -193,6 +238,7 @@ M.list = {
                     local top = scope.border.top
                     local bottom = scope.border.bottom
                     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+                    _ = col
                     local move = ""
                     if row == bottom then
                         move = "k"
@@ -200,8 +246,8 @@ M.list = {
                         move = "j"
                     end
                     local ns = vim.api.nvim_create_namespace("border")
-                    vim.api.nvim_buf_add_highlight(0, ns, "Substitute", top - 1, 0, -1)
-                    vim.api.nvim_buf_add_highlight(0, ns, "Substitute", bottom - 1, 0, -1)
+                    vim.hl.range(0, ns, "Substitute", { top - 1, 0 }, { top - 1, -1 })
+                    vim.hl.range(0, ns, "Substitute", { bottom - 1, 0 }, { bottom - 1, -1 })
                     vim.defer_fn(function()
                         vim.api.nvim_buf_set_text(0, top - 1, 0, top - 1, -1, {})
                         vim.api.nvim_buf_set_text(0, bottom - 1, 0, bottom - 1, -1, {})

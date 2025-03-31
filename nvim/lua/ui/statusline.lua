@@ -97,10 +97,10 @@ Autocmd("LspProgress", {
         if lsp_progress.kind == "end" then
             lsp_progress.title = nil
             vim.defer_fn(function()
-                Cmd.redrawstatus()
+                vim.cmd.redrawstatus()
             end, 500)
         else
-            Cmd.redrawstatus()
+            vim.cmd.redrawstatus()
         end
 
         StatusLine.lsp_clients = "%#StatusLineLSP#" .. get_lsp()
