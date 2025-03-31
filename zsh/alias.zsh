@@ -66,6 +66,7 @@ alias vim=nvim
 #make
 alias m="make -j5"
 alias mc="make clean"
+alias mi="make mini"
 
 #proxy
 alias p="proxychains"

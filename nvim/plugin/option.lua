@@ -87,9 +87,6 @@ vim.g.netrw_banner = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- -- 恢复上次会话
--- vim.opt.sessionoptions = 'buffers,curdir,tabpages,winsize'
-
 vim.filetype.add({
     extension = {
         tex = "tex",

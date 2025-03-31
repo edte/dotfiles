@@ -1,4 +1,14 @@
 -- 最小配置
+vim.opt.foldcolumn = "1"
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt.foldmethod = 'expr'
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
+vim.opt.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.opt.foldtext = ""
+
+vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -27,7 +37,7 @@ require("lazy").setup({
                 return dir
             end
 
-            Api.nvim_create_autocmd("VimEnter", {
+            vim.api.nvim_create_autocmd("VimEnter", {
                 callback = function()
                     if vim.fn.argc(-1) == 0 then
                         MiniSessions.read(GetPath())
@@ -35,7 +45,7 @@ require("lazy").setup({
                 end,
                 nested = true,
             })
-            Api.nvim_create_autocmd("VimLeavePre", {
+            vim.api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
                     if vim.fn.argc(-1) > 0 then
                         Cmd("argdelete *")
@@ -45,5 +55,5 @@ require("lazy").setup({
                 end,
             })
         end
-    },
+    }
 })
