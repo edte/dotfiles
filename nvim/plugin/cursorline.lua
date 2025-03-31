@@ -2,6 +2,16 @@
 local MAX_LEN = 64
 local window_matches = {} -- 记录每个窗口的匹配ID
 
+
+function has_non_ascii(s)
+    for c in s:gmatch(".") do
+        if string.byte(c) > 127 then
+            return true
+        end
+    end
+    return false
+end
+
 -- 高亮当前光标下的单词（支持打开的所有window）
 local function matchadd()
     if vim.bo.filetype == "" then
@@ -34,8 +44,17 @@ local function matchadd()
 
 
     -- step5: 如果单词为空，或者单词过长，或者包含非ASCII字符，则不需要更新
-    if cursorword == "" or #cursorword > MAX_LEN or cursorword:find("[\192-\255]+") ~= nil then
+    if cursorword == "" or #cursorword > MAX_LEN then
         return
+    end
+
+    if has_non_ascii(cursorword) then
+        return
+    end
+
+    -- 检查 cursorword 是否为有效的正则表达式
+    if cursorword == "~" then
+        return -- 如果是无效字符，直接返回
     end
 
     -- 为所有窗口的对应缓冲区添加高亮
@@ -45,9 +64,11 @@ local function matchadd()
 
         if vim.bo[buf].filetype ~= "" or vim.bo[buf].buftype ~= "" then
             -- 添加窗口匹配并记录ID
-            local match_id = vim.fn.matchadd("CursorWord", [[\<]] .. cursorword .. [[\>]], -1, -1, { window = win })
-
-            window_matches[win] = match_id
+            if cursorword and cursorword ~= "" then -- 确保 cursorword 有效
+                print(cursorword)
+                local match_id = vim.fn.matchadd("CursorWord", cursorword, -1, -1, { window = win })
+                window_matches[win] = match_id
+            end
         end
     end
 end
