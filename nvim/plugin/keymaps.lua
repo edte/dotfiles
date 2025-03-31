@@ -1,16 +1,16 @@
 -- fuck default keymaps
-if vim.fn.has("nvim-0.11") == 1 then
-    vim.keymap.del("", "grr", {})
-    vim.keymap.del("", "gra", {})
-    vim.keymap.del("", "grn", {})
-    -- vim.keymap.del("", "gcc", {})
-end
+-- if vim.fn.has("nvim-0.11") == 1 then
+--     vim.keymap.del("", "grr", {})
+--     vim.keymap.del("", "gra", {})
+--     vim.keymap.del("", "grn", {})
+--     -- vim.keymap.del("", "gcc", {})
+-- end
 
 -- cmd("nmap <tab> %")
 
 nmap("}", "}w")
 nmap("}", "}j")
-Cmd("nnoremap <expr><silent> { (col('.')==1 && len(getline(line('.')-1))==0? '2{j' : '{j')")
+vim.cmd("nnoremap <expr><silent> { (col('.')==1 && len(getline(line('.')-1))==0? '2{j' : '{j')")
 
 -- 上下滚动浏览
 -- nmap("<C-j>", "5j")
@@ -89,7 +89,7 @@ nmap("gI", "<cmd>Glance implementations<cr>")
 nmap("gd", "<C-]>zz")
 
 nmap("gD", "<cmd>FzfLua lsp_declarations<cr>")
-nmap("gr", "<cmd>Glance references<cr>")
+nmap("grr", "<cmd>Glance references<cr>")
 
 nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
