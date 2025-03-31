@@ -65,8 +65,7 @@ local function matchadd()
         if vim.bo[buf].filetype ~= "" or vim.bo[buf].buftype ~= "" then
             -- 添加窗口匹配并记录ID
             if cursorword and cursorword ~= "" then -- 确保 cursorword 有效
-                print(cursorword)
-                local match_id = vim.fn.matchadd("CursorWord", cursorword, -1, -1, { window = win })
+                local match_id = vim.fn.matchadd("CursorWord", [[\<]] .. cursorword .. [[\>]], -1, -1, { window = win })
                 window_matches[win] = match_id
             end
         end
