@@ -58,8 +58,8 @@ M.list = {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
         keys = {
-            { "gn", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-            { "gp", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+            { "gp", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+            { "gn", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
         },
         opts = {
             options = {
