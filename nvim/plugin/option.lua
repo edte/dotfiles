@@ -135,7 +135,12 @@ vim.opt.spelllang:append("cjk")                               -- disable spellch
 vim.opt.shortmess:append("c")                                 -- don't show redundant messages from ins-completion-menu
 vim.opt.shortmess:append("I")                                 -- don't show the default intro message
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.o.sessionoptions = vim.o.sessionoptions:gsub('args', '')
+
+-- FIX: 这里folds恢复会失败（lsp/treessiter的，如果是manul手动折叠的正常，不知道为啥）
+vim.cmd([[
+    set sessionoptions=blank,buffers,curdir,help,tabpages,winsize,terminal
+]])
+
 vim.o.diffopt = 'internal,filler,vertical,closeoff'
 -- vim.o.winborder = "rounded"
 
