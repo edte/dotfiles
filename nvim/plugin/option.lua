@@ -156,13 +156,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.g.loaded_zip = 0
-vim.g.loaded_zipPlugin = 1
-vim.g.zip_unzipcmd = "unzip"
-vim.g.zip_zipcmd = "zip"
-vim.cmd([[
- let g:zipPlugin_ext= '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,
-\ *.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,
-\ *.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.xlam,*.xlsx,*.xlsm,
-\ *.xlsb,*.xltx,*.xltm,*.xlam,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx,*.epub'
-]])
+-- vim.g.loaded_zip = 0
+-- vim.g.loaded_zipPlugin = 1
+-- vim.g.zip_unzipcmd = "unzip"
+-- vim.g.zip_zipcmd = "zip"
+-- vim.cmd([[
+--  let g:zipPlugin_ext= '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,
+-- \ *.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,
+-- \ *.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.xlam,*.xlsx,*.xlsm,
+-- \ *.xlsb,*.xltx,*.xltm,*.xlam,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx,*.epub'
+-- ]])

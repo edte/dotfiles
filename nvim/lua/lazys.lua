@@ -246,14 +246,14 @@ require("lazy").setup({
             paths = {},        -- add any custom paths here that you want to includes in the rtp
             ---@type string[] list any plugins you want to disable here
             disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
+                --     "gzip",
+                --     "matchit",
+                --     "matchparen",
                 "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
+                --     "tarPlugin",
+                --     "tohtml",
+                --     "tutor",
+                --     "zipPlugin",
             },
         },
     },

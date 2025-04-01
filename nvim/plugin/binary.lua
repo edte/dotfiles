@@ -32,7 +32,7 @@ end
 
 -- 这些文件用xxd打开
 local xxd_files = {
-    "bin", "dmg", "exe", "a", "so", "o", ""
+    "bin", "dmg", "exe", "a", "so", "o", "", "p12", "p8"
 }
 
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
