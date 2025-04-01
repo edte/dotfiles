@@ -45,6 +45,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
             return
         end
 
+        local name = vim.fn.expand('%:n')
+        if name == "Makefile" then
+            return
+        end
+
         local exetension = vim.fn.expand("%:e")
         for _, filetype in ipairs(xxd_files) do
             if filetype == exetension then
