@@ -268,7 +268,7 @@ M.list = {
                         local bufnr = vim.api.nvim_get_current_buf()
 
                         -- Get the filetype of the current buffer
-                        local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+                        local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
 
                         -- Check if the filetype is tsv
                         if filetype ~= "tsv" then
@@ -443,16 +443,6 @@ M.list = {
         },
     },
 
-    -- gt 格式化时间戳
-    {
-        name = "timestamp",
-        dir = "components.timestamp",
-        virtual = true,
-        config = function()
-            require("components.timestamp")
-        end,
-    },
-
     -- 像使用 Cursor AI IDE 一样使用 Neovim！
     -- {
     --     "yetone/avante.nvim",
@@ -479,6 +469,47 @@ M.list = {
     --         "MunifTanjim/nui.nvim",
     --     },
     -- },
+
+
+
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            animate      = { enabled = true },
+            scroll       = { enabled = false },
+            bigfile      = { enabled = true },
+            buffdelete   = { enabled = true },
+            dashboard    = { enabled = false },
+            explorer     = { enabled = false },
+            git          = { enabled = false },
+            gitbrowser   = { enabled = false },
+            health       = { enabled = true },
+            indent       = { enabled = false },
+            input        = { enabled = false },
+            picker       = { enabled = false },
+            notifier     = { enabled = false },
+            quickfile    = { enabled = true },
+            scope        = { enabled = false },
+            statuscolumn = { enabled = false },
+            words        = { enabled = false },
+            rename       = { enabled = true },
+            terminal     = { enabled = false },
+        },
+        config = function()
+            print = function(...)
+                Snacks.debug.inspect(...)
+            end
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "MiniFilesActionRename",
+                callback = function(event)
+                    Snacks.rename.on_rename_file(event.data.from, event.data.to)
+                end,
+            })
+        end
+    },
 
 
 
