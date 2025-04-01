@@ -92,6 +92,10 @@ Autocmd(
         callback = function(args)
             local win = vim.fn.win_getid()
 
+            if vim.g.cursorword_global == nil then
+                return
+            end
+
             local match_id = vim.fn.matchadd("CursorWord", [[\<]] .. vim.g.cursorword_global .. [[\>]], -1, -1,
                 { window = win })
             window_matches[win] = match_id

@@ -16,33 +16,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     group = vim.api.nvim_create_augroup("comment_", { clear = true }),
 })
 
--- 打开二进制文件
-vim.cmd([[
-	" vim -b : edit binary using xxd-format!
-	augroup Binary
-	  autocmd!
-	  autocmd BufReadPre  *.bin set binary
-	  autocmd BufReadPost *.bin
-	    \ if &binary
-	    \ |   execute "silent %!xxd -c 32"
-	    \ |   set filetype=xxd
-	    \ |   redraw
-	    \ | endif
-	  autocmd BufWritePre *.bin
-	    \ if &binary
-	    \ |   let s:view = winsaveview()
-	    \ |   execute "silent %!xxd -r -c 32"
-	    \ | endif
-	  autocmd BufWritePost *.bin
-	    \ if &binary
-	    \ |   execute "silent %!xxd -c 32"
-	    \ |   set nomodified
-	    \ |   call winrestview(s:view)
-	    \ |   redraw
-	    \ | endif
-	augroup END
-]])
-
 
 -- 在打开文件时跳转到上次编辑的位置
 vim.api.nvim_create_autocmd("BufReadPost", {
