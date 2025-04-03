@@ -153,10 +153,11 @@ M.list = {
             require("mini.sessions").setup({
                 autoread = false,
                 autowrite = false,
+                verbose = { read = false, write = false, delete = false },
             })
 
             local function GetPath()
-                local dir, _ = vim.fn.getcwd():gsub('/', '_')
+                local dir, _ = vim.fn.getcwd():gsub('/', '_'):gsub('%.', '-')
                 return dir
             end
 

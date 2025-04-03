@@ -208,15 +208,15 @@ M.list = {
         end,
     },
 
-    -- alpha 是 Neovim 的快速且完全可编程的欢迎程序。
-    {
-        "goolord/alpha-nvim",
-        event = "VimEnter",
-        requires = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("ui.dashboard").config()
-        end,
-    },
+    -- -- alpha 是 Neovim 的快速且完全可编程的欢迎程序。
+    -- {
+    --     "goolord/alpha-nvim",
+    --     event = "VimEnter",
+    --     requires = { "kyazdani42/nvim-web-devicons" },
+    --     config = function()
+    --         require("ui.dashboard").config()
+    --     end,
+    -- },
 
     -- Neovim Lua 插件可在缩进范围内可视化和操作。 “mini.nvim”库的一部分。
     {
