@@ -1,30 +1,30 @@
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
-return{
-    name = "gopls",
-    cmd = { 'gopls' },
-    filetypes = { "go", "gomod", "gosum", "gotmpl", 'gowork' },
-    root_markers = { '.git', 'Makefile' },
-    on_attach = function(client, buf)
-        vim.lsp.inlay_hint.enable(true, {bufnr=buf})
-    end,
-    single_file_support = true,
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-            -- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
-            hints = {
-                rangeVariableTypes = true,     -- 范围变量类型
-                constantValues = true,         -- 常数值
-                assignVariableTypes = true,    -- 分配变量类型
-                compositeLiteralFields = true, -- 复合文字字段
-                compositeLiteralTypes = true,  -- 复合文字类型
-                parameterNames = true,         -- 参数名称
-                functionTypeParameters = true, -- 函数类型参数
-            },
-        },
-    },
+return {
+	name = "gopls",
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gosum", "gotmpl", "gowork" },
+	root_markers = { ".git", "Makefile" },
+	on_attach = function(client, buf)
+		vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+	end,
+	single_file_support = true,
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+			-- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
+			hints = {
+				rangeVariableTypes = true, -- 范围变量类型
+				constantValues = true, -- 常数值
+				assignVariableTypes = true, -- 分配变量类型
+				compositeLiteralFields = true, -- 复合文字字段
+				compositeLiteralTypes = true, -- 复合文字类型
+				parameterNames = true, -- 参数名称
+				functionTypeParameters = true, -- 函数类型参数
+			},
+		},
+	},
 }

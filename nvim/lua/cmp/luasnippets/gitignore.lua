@@ -27,13 +27,14 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 
 return {
-    s(
-        {
-            trig = "go",
-            priority = 30000,
-            dscr = "go git ignore",
-        },
-        fmta([[
+	s(
+		{
+			trig = "go",
+			priority = 30000,
+			dscr = "go git ignore",
+		},
+		fmta(
+			[[
 # Miscellaneous
 *.log
 logs/*
@@ -62,7 +63,9 @@ perf.data*
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-]]
-        , {}, {})
-    ),
+]],
+			{},
+			{}
+		)
+	),
 }
