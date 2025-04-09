@@ -3,7 +3,6 @@ local wk = require("which-key")
 
 wk.add({
 	mode = { "v" },
-	{ "<leader>/", "<Plug>(comment_toggle_linewise_visual)", desc = "comment" },
 	{ "<leader>l", group = "LSP", desc = "lsp" },
 	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "code Action" },
 	{ "<leader>t", ":'<,'>Translate ZH<cr>", desc = "translate" },
@@ -21,9 +20,6 @@ wk.add({
 })
 
 wk.add({
-	mode = { "n" },
-
-	{ "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "comment" },
 	{ "<leader>C", "<cmd>%bd|e#|bd#<CR>", desc = "Close Other Buffer" },
 	{ "<leader>c", "<cmd>bd<CR>", desc = "close Buffer" },
 	{ "<leader>e", "<cmd>lua ToggleMiniFiles()<CR>", desc = "Explorer" },

@@ -130,8 +130,8 @@ M.list = {
 		"lambdalisue/vim-suda",
 		cmd = { "SudaRead", "SudaWrite" },
 		config = function()
-			Cmd("let g:suda_smart_edit = 1")
-			Cmd("let g:suda#noninteractive = 1")
+			cmd("let g:suda_smart_edit = 1")
+			cmd("let g:suda#noninteractive = 1")
 		end,
 	},
 
@@ -159,6 +159,7 @@ M.list = {
 				return dir
 			end
 
+			-- FIX: 这里如果打开了一个没有打开过的session，会报错，看能不能提前判断一下
 			Api.nvim_create_autocmd("VimEnter", {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
@@ -170,7 +171,7 @@ M.list = {
 			Api.nvim_create_autocmd("VimLeavePre", {
 				callback = function()
 					if vim.fn.argc(-1) > 0 then
-						Cmd("argdelete *")
+						cmd("argdelete *")
 					end
 
 					MiniSessions.write(GetPath())
@@ -178,46 +179,6 @@ M.list = {
 			})
 		end,
 	},
-
-	-- 用于 CSV 文件编辑的 Neovim 插件。
-	-- {
-	--     'hat0uma/csvview.nvim',
-	--     ft = {"csv", "tsv"},
-	--     config = function()
-	--         require('csvview').setup({
-	--             view = {
-	--                 display_mode = "border",
-	--             },
-	--             delimiter = {
-	--                 default = ",",
-	--                 ft = {
-	--                     tsv = "\t",
-	--                 },
-	--             },
-	--         })
-	--
-	--         Autocmd({ "FileType" }, {
-	--             pattern = "csv",
-	--             callback = function()
-	--                 Cmd("CsvViewEnable")
-	--             end,
-	--         })
-	--         Autocmd({ "FileType" }, {
-	--             pattern = "tsv",
-	--             callback = function()
-	--                 -- Cmd("vim.opt_local.expandtab = true")
-	--                 Cmd(":%s/	/,/g")
-	--                 Cmd("set ft=csv")
-	--                 Cmd("CsvViewEnable")
-	--             end,
-	--         })
-	--     end
-	-- },
-
-	-- {
-	--     "chrisbra/csv.vim",
-	-- },
-	--
 
 	-- cp 选择颜色
 	{

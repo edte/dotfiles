@@ -13,7 +13,7 @@ _G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"
 _G.log = require("utils.log")
 _G.Api = vim.api
 _G.Command = vim.api.nvim_create_user_command
-_G.Cmd = vim.cmd
+_G.cmd = vim.cmd
 _G.Autocmd = vim.api.nvim_create_autocmd
 _G.GroupId = vim.api.nvim_create_augroup
 _G.Del_cmd = vim.api.nvim_del_user_command
@@ -62,7 +62,7 @@ end
 
 _G.compare_to_clipboard = function()
 	local ftype = Api.nvim_eval("&filetype")
-	Cmd(string.format(
+	cmd(string.format(
 		[[
   execute "normal! \"xy"
   vsplit

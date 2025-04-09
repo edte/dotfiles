@@ -68,7 +68,7 @@ M.list = {
 		version = false,
 		config = function()
 			Setup("mini.diff")
-			Cmd("command! Diff lua MiniDiff.toggle_overlay()")
+			cmd("command! Diff lua MiniDiff.toggle_overlay()")
 		end,
 	},
 

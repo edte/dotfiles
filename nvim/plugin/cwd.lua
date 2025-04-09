@@ -334,15 +334,15 @@ function M.set_pwd(dir, method)
 			if scope_chdir == "global" then
 				Api.nvim_set_current_dir(dir)
 			elseif scope_chdir == "tab" then
-				Cmd("tcd " .. dir)
+				cmd("tcd " .. dir)
 			elseif scope_chdir == "win" then
-				Cmd("lcd " .. dir)
+				cmd("lcd " .. dir)
 			else
 				return
 			end
 
 			if M.silent_chdir == false then
-				vim.notify("Set CWD to " .. dir .. " using " .. method)
+				log.error("Set CWD to " .. dir .. " using " .. method)
 			end
 		end
 		return true
@@ -351,20 +351,14 @@ function M.set_pwd(dir, method)
 	return false
 end
 
-function M.setup()
-	M.set_pwd(M.get_project_root())
+M.set_pwd(M.get_project_root())
 
-	vim.api.nvim_create_autocmd("BufEnter", {
-		group = vim.api.nvim_create_augroup("nvim_rooter", { clear = true }),
-		nested = true,
-		callback = function()
-			-- 将当前工作目录更改为正在编辑的文件的目录
-			-- cmd("cd %:p:h")
-			M.set_pwd(M.get_project_root())
-		end,
-	})
-end
-
-M.setup()
-
-return M
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("nvim_rooter", { clear = true }),
+	nested = true,
+	callback = function()
+		-- 将当前工作目录更改为正在编辑的文件的目录
+		-- cmd("cd %:p:h")
+		M.set_pwd(M.get_project_root())
+	end,
+})

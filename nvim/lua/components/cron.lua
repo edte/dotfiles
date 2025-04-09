@@ -12,7 +12,7 @@ M.cronConfig = function()
 		end,
 	})
 
-	Cmd([[
+	cmd([[
 augroup input_method
   autocmd!
   autocmd InsertEnter * :CronExplainedEnable
@@ -20,7 +20,7 @@ augroup input_method
 augroup END
 ]])
 
-	Cmd("CronExplainedEnable")
+	cmd("CronExplainedEnable")
 end
 
 return M

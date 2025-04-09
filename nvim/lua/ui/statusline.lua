@@ -73,8 +73,8 @@ Autocmd({ "WinEnter", "BufEnter", "FileType" }, {
 })
 
 -- cmdheight =0 之后，进入insert模式,statusline会消失,所以需要手动重绘
-Cmd([[
-autocmd ModeChanged * lua vim.schedule(function() Cmd('redraw') end)
+cmd([[
+autocmd ModeChanged * lua vim.schedule(function() cmd('redraw') end)
 ]])
 
 Autocmd("LspProgress", {

@@ -112,7 +112,7 @@ function Mark:delete_mark(mark, clear)
 	buffer.placed_marks[mark] = nil
 
 	if clear then
-		Cmd("delmark " .. mark)
+		cmd("delmark " .. mark)
 	end
 
 	-- only adjust lowest_available_mark if it is lowercase
@@ -238,7 +238,7 @@ function Mark.setup()
 	for i = 0, 25 do
 		if i ~= 3 and i ~= 12 and i ~= 14 then
 			vim.keymap.set("n", "'" .. low(i), function()
-				Cmd("'" .. upp(i))
+				cmd("'" .. upp(i))
 				zz()
 			end)
 		end

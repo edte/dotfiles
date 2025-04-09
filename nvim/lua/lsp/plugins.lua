@@ -23,7 +23,7 @@ M.list = {
 				group = GroupId("go_auto_import", { clear = true }),
 				nested = true,
 				callback = function()
-					Cmd("GoImports")
+					cmd("GoImports")
 				end,
 			})
 

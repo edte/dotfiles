@@ -308,7 +308,7 @@ function M.display_lines(bufnr, query_results)
 			highlight("SymbolUsageImpl", { fg = h("@keyword").fg, bg = h("CursorLine").bg, italic = true })
 
 			-- 定义一个高亮组，设置背景颜色为主题背景色，字体颜色为灰色
-			Cmd("highlight MyHighlightGroup guifg=grey guibg=NONE")
+			cmd("highlight MyHighlightGroup guifg=grey guibg=NONE")
 
 			if query.rangeStart.line < Api.nvim_buf_line_count(bufnr) then
 				Api.nvim_buf_set_extmark(bufnr, ns_id, query.rangeStart.line, 0, {

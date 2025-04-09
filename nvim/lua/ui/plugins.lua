@@ -7,7 +7,7 @@ M.list = {
 		priority = 1000,
 		opts = {},
 		config = function()
-			Cmd([[colorscheme tokyonight]])
+			cmd([[colorscheme tokyonight]])
 		end,
 
 		dependencies = {
@@ -18,14 +18,14 @@ M.list = {
 	-- {
 	--     "catppuccin/nvim",
 	--     config = function()
-	--         Cmd([[colorscheme catppuccin]])
+	--         cmd([[colorscheme catppuccin]])
 	--     end,
 	-- },
 
 	-- {
 	--     "rebelot/kanagawa.nvim",
 	--     config = function()
-	--         Cmd([[colorscheme kanagawa]])
+	--         cmd([[colorscheme kanagawa]])
 	--     end,
 	-- },
 
@@ -331,19 +331,6 @@ M.list = {
 			require("ui.whichkey")
 		end,
 		dependencies = {
-			-- Neovim 智能且强大的评论插件。支持 Treesitter、点重复、左右/上下运动、挂钩等
-			-- gcc 行注释
-			-- gbc 块注释
-			-- gcO: Add comment on the line above
-			-- gco: Add comment on the line below
-			-- gcA: Add comment at the end of line
-			-- gc+ 文本对象，直接 (), {} 等等
-			{
-				"numToStr/Comment.nvim",
-				event = "User FileOpened",
-				opts = {},
-			},
-
 			-- 更好的注释生成器。支持多种语言和注释约定。
 			-- gcn 在内部快速生成注释
 			{

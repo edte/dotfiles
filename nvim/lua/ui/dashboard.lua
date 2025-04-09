@@ -40,7 +40,7 @@ M.config = function()
 
 	alpha.setup(dashboard.opts)
 
-	Cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
+	cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
 end
 
 return M

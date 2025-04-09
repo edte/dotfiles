@@ -69,21 +69,6 @@ M.list = {
 		end,
 	},
 
-	-- 长按j k 加速
-	-- 卡顿
-	-- {
-	-- 	"rainbowhxch/accelerated-jk.nvim",
-	-- 	keys = { "j", "k" },
-	-- 	config = function()
-	-- 		api.nvim_set_keymap("n", "j", "<Cmd>lua require'accelerated-jk'.move_to('j')<cr>", {})
-	-- 		api.nvim_set_keymap("n", "k", "<Cmd>lua require'accelerated-jk'.move_to('k')<cr>", {})
-	-- 		api.nvim_set_keymap("n", "h", "<Cmd>lua require'accelerated-jk'.move_to('h')<cr>", {})
-	-- 		api.nvim_set_keymap("n", "l", "<Cmd>lua require'accelerated-jk'.move_to('l')<cr>", {})
-	-- 		api.nvim_set_keymap("n", "e", "<Cmd>lua require'accelerated-jk'.move_to('e')<cr>", {})
-	-- 		api.nvim_set_keymap("n", "b", "<Cmd>lua require'accelerated-jk'.move_to('b')<cr>", {})
-	-- 	end,
-	-- },
-
 	-- 项目维度的替换插件
 	-- normal 下按 \+r 生效
 	{
@@ -92,7 +77,7 @@ M.list = {
 		config = function()
 			Setup("grug-far", {})
 			-- require("grug-far").setup({})
-			Cmd("command! -nargs=* Replace GrugFar")
+			cmd("command! -nargs=* Replace GrugFar")
 		end,
 	},
 
@@ -145,7 +130,7 @@ M.list = {
 				add_column = false,
 				default_register = "*",
 			})
-			Cmd("command! Path lua NvimFileLocation.copy_file_location('absolute', false, false)<cr>")
+			cmd("command! Path lua NvimFileLocation.copy_file_location('absolute', false, false)<cr>")
 		end,
 	},
 

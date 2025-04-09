@@ -259,7 +259,7 @@ function M.open_add_win(title)
     Api.nvim_set_current_win(pairs.win)
     Api.nvim_win_set_option(pairs.win, 'winhighlight', 'Normal:normal')
     Api.nvim_buf_set_option(pairs.buf, 'filetype', 'bookmarks_input')
-    Cmd("startinsert")
+    cmd("startinsert")
 
     return {
         pairs = pairs,
@@ -268,8 +268,8 @@ function M.open_add_win(title)
 end
 
 function M.close_add_win(buf1, buf2)
-    Cmd(string.format("bwipeout! %d", buf1))
-    Cmd(string.format("bwipeout! %d", buf2))
+    cmd(string.format("bwipeout! %d", buf1))
+    cmd(string.format("bwipeout! %d", buf2))
 end
 
 ------------------------------------bookmark ------------------------------------------
@@ -362,7 +362,7 @@ function M.add_bookmark()
         if description == "" then
             M.close_add_win(buf1, buf2)
             M.set_marks(buf, M.get_buf_bookmark_lines(0))
-            Cmd("stopinsert")
+            cmd("stopinsert")
             return
         end
 
@@ -399,7 +399,7 @@ function M.add_bookmark()
         -- Close description input box.
         M.close_add_win(buf1, buf2)
         M.set_marks(buf, M.get_buf_bookmark_lines(0))
-        Cmd("stopinsert")
+        cmd("stopinsert")
     end
 
     local line = vim.fn.line('.')
@@ -630,10 +630,10 @@ end
 function M.setup()
     M.data.ns_id = Api.nvim_create_namespace("bookmarks_marks")
 
-    Cmd("hi link bookmarks_virt_text_hl Comment")
+    cmd("hi link bookmarks_virt_text_hl Comment")
     vim.fn.sign_define("BookmarkSign", { text = "󰃃" })
 
-    Cmd(string.format("highlight hl_bookmarks_csl %s", M.window.hl.cursorline))
+    cmd(string.format("highlight hl_bookmarks_csl %s", M.window.hl.cursorline))
     focus_manager.register("bookmarks")
 
     vim.keymap.set("n", "mo", function() M.jump_bookmark() end,

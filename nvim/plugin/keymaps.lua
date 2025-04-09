@@ -52,9 +52,9 @@ nmap("<esc>", function()
 		end
 	end
 
-	Cmd(":nohlsearch")
+	cmd(":nohlsearch")
 	if isModuleAvailable("clever-f") then
-		Cmd(":call clever_f#reset()")
+		cmd(":call clever_f#reset()")
 		return
 	end
 end)
@@ -146,33 +146,33 @@ nmap("<down>", "<c-w>j")
 
 -- kitty 终端区分 c-i 和 tab
 if vim.env.TERM == "xterm-kitty" then
-	Cmd([[autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[>1u") | endif]])
-	Cmd([[autocmd UILeave * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[<1u") | endif]])
-	Cmd("nnoremap <c-i> <c-i>")
-	Cmd("nnoremap <ESC>[105;5u <C-I>")
-	Cmd("nnoremap <Tab>        %")
-	Cmd("noremap  <ESC>[88;5u  :!echo B<CR>")
-	Cmd("noremap  <ESC>[49;5u  :!echo C<CR>")
-	Cmd("noremap  <ESC>[1;5P   :!echo D<CR>")
+	cmd([[autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[>1u") | endif]])
+	cmd([[autocmd UILeave * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[<1u") | endif]])
+	cmd("nnoremap <c-i> <c-i>")
+	cmd("nnoremap <ESC>[105;5u <C-I>")
+	cmd("nnoremap <Tab>        %")
+	cmd("noremap  <ESC>[88;5u  :!echo B<CR>")
+	cmd("noremap  <ESC>[49;5u  :!echo C<CR>")
+	cmd("noremap  <ESC>[1;5P   :!echo D<CR>")
 end
 
 -- 交换 : ;
 
-Cmd("noremap ; :")
-Cmd("noremap : ;")
+cmd("noremap ; :")
+cmd("noremap : ;")
 
-Cmd("nnoremap ; :")
-Cmd("nnoremap : ;")
+cmd("nnoremap ; :")
+cmd("nnoremap : ;")
 
-Cmd("inoremap ; :")
-Cmd("inoremap : ;")
+cmd("inoremap ; :")
+cmd("inoremap : ;")
 
-Cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
+cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
 -- cmd("nnoremap <Enter> %")
 
-Cmd("xnoremap p P")
+cmd("xnoremap p P")
 
-Cmd("silent!")
+cmd("silent!")
 
 -- cmd("nnoremap # *")
 -- cmd("nnoremap * #")
@@ -190,9 +190,12 @@ nmap("cr", "ciw")
 vmap("J", ":m '>+1<CR>gv=gv")
 vmap("K", ":m '<-2<CR>gv=gv")
 
-Cmd("command! Pwd !ls %:p")
-Cmd("command! Cwd lua print(vim.uv.cwd())")
+cmd("command! Pwd !ls %:p")
+cmd("command! Cwd lua print(vim.uv.cwd())")
 
 Api.nvim_create_user_command("LiteralSearch", function(opts)
-	Cmd("normal! /\\V" .. vim.fn.escape(opts.args, "\\"))
+	cmd("normal! /\\V" .. vim.fn.escape(opts.args, "\\"))
 end, { nargs = 1 })
+
+vim.cmd([[nmap <space>/ gcc]])
+vim.cmd([[vmap <space>/ gc]])

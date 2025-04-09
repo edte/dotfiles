@@ -63,7 +63,7 @@ M.setup = function()
 	highlight("WilderAccent", "#FF4500")
 	highlight("WilderSelectedAccent", "#FF4500", "#4e4e4e")
 
-	Cmd("call wilder#set_option('noselect', 0)")
+	cmd("call wilder#set_option('noselect', 0)")
 end
 
 return M
