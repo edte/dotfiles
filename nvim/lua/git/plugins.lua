@@ -3,14 +3,25 @@ local M = {}
 M.list = {
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {},
-		-- event = "User FileOpened",
-		-- cmd = "Gitsigns",
-		config = function()
-			Setup("gitsigns", {
-				signcolumn = false,
-			})
-		end,
+		lazy = true,
+		opts = {
+			signcolumn = false,
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+			signs_staged = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+			},
+		},
 	},
 
 	-- 单选项卡界面可轻松循环浏览任何 git rev 的所有修改文件的差异。

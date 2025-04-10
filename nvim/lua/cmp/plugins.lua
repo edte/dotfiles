@@ -22,12 +22,14 @@ M.list = {
 	-- Neovim 更快的 LuaLS 设置
 	{
 		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
+		ft = "lua",
+		cmd = "LazyDev",
 		opts = {
 			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "LazyVim", words = { "LazyVim" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
 			},
 		},
 	},
@@ -331,18 +333,6 @@ M.list = {
 	--             -- dependencies = {
 	--             --     "rafamadriz/friendly-snippets",
 	--             -- },
-	--         },
-	--
-	--         {
-	--             "folke/lazydev.nvim",
-	--             ft = "lua", -- only load on lua files
-	--             opts = {
-	--                 library = {
-	--                     -- See the configuration section for more details
-	--                     -- Load luvit types when the `vim.uv` word is found
-	--                     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-	--                 },
-	--             },
 	--         },
 	--         {
 	--             "edte/cmp-nvim-lsp-signature-help",

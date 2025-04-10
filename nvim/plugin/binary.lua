@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		end
 
 		local name = vim.fn.expand("%:n")
-		if name == "Makefile" or name == ".gitignore" then
+		if name == "Makefile" or name == ".gitignore" or name == "makefile" then
 			return
 		end
 

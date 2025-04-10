@@ -4,12 +4,10 @@ M.list = {
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
-		priority = 1000,
-		opts = {},
+		opts = { style = "moon" },
 		config = function()
 			cmd([[colorscheme tokyonight]])
 		end,
-
 		dependencies = {
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
@@ -327,6 +325,7 @@ M.list = {
 	-- Whichkey
 	{
 		"folke/which-key.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("ui.whichkey")
 		end,

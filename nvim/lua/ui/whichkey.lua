@@ -56,7 +56,6 @@ wk.add({
 	{ "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "autocmds" },
 	{ "<leader>sf", "<cmd>FzfLua files<cr>", desc = "file" },
 	{ "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "keymaps" },
-	{ "<leader>sr", "<cmd>FzfLua resume<cr>", desc = "resume" },
 	{ "<leader>st", "<cmd>FzfLua live_grep<cr>", desc = "text" },
 	{ "<leader>sp", '<cmd>lua require("fzf-lua-lazy").search()<cr>', desc = "plugins" },
 	{ "<leader>sc", "<cmd>edit" .. NEOVIM_CONFIG_PATH .. "/init.lua" .. "<CR>", desc = "config" },
