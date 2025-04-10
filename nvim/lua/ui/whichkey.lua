@@ -22,7 +22,7 @@ wk.add({
 wk.add({
 	{ "<leader>C", "<cmd>%bd|e#|bd#<CR>", desc = "Close Other Buffer" },
 	{ "<leader>c", "<cmd>bd<CR>", desc = "close Buffer" },
-	{ "<leader>e", "<cmd>lua ToggleMiniFiles()<CR>", desc = "Explorer" },
+	-- { "<leader>e", "<cmd>lua ToggleMiniFiles()<CR>", desc = "Explorer" },
 	{ "<leader>f", "<cmd>lua project_files()<CR>", desc = "files" },
 
 	{ "<leader>g", group = "git", desc = "git" },

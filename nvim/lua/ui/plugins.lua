@@ -176,21 +176,21 @@ M.list = {
 		version = false,
 		opts = {
 			options = {
-				use_as_default_explorer = false,
+				use_as_default_explorer = true,
 			},
-			-- Customization of explorer windows
 			windows = {
-				-- Maximum number of windows to show side by side
-				max_number = math.huge,
-				-- Whether to show preview of file/directory under cursor
-				preview = false,
-				-- Width of focused window
-				width_focus = 200,
-				-- Width of non-focused window
-				width_nofocus = 100,
+				preview = true,
+				width_focus = 30,
+				width_preview = 30,
 			},
 		},
-		keys = {},
+		keys = {
+			{
+				"<space>e",
+				"<cmd>lua ToggleMiniFiles()<CR>",
+				desc = "explorer",
+			},
+		},
 		config = function()
 			-- nvim-tree
 			-- vim.g.loaded_netrw = 1
@@ -203,16 +203,6 @@ M.list = {
 			Setup("mini.files")
 		end,
 	},
-
-	-- -- alpha 是 Neovim 的快速且完全可编程的欢迎程序。
-	-- {
-	--     "goolord/alpha-nvim",
-	--     event = "VimEnter",
-	--     requires = { "kyazdani42/nvim-web-devicons" },
-	--     config = function()
-	--         require("ui.dashboard").config()
-	--     end,
-	-- },
 
 	-- Neovim Lua 插件可在缩进范围内可视化和操作。 “mini.nvim”库的一部分。
 	{
