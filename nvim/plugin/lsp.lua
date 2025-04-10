@@ -35,3 +35,23 @@ vim.api.nvim_create_user_command("LspInfo", function()
 end, {
 	desc = "Displays attached, active, and configured language servers",
 })
+
+-- workaround for gopls not supporting semanticTokensProvider
+-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+	group = vim.api.nvim_create_augroup("go_semanticTokens", { clear = true }),
+
+	pattern = { "*.go" },
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+		if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
+			local semantic = client.config.capabilities.textDocument.semanticTokens
+			client.server_capabilities.semanticTokensProvider = {
+				full = true,
+				legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
+				range = true,
+			}
+		end
+	end,
+})

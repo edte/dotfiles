@@ -207,6 +207,7 @@ M.list = {
 	-- Neovim Lua 插件可在缩进范围内可视化和操作。 “mini.nvim”库的一部分。
 	{
 		"echasnovski/mini.indentscope",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		version = false, -- wait till new 0.7.0 release to put it back on semver
 		config = function()
 			require("mini.indentscope").setup({
@@ -267,6 +268,7 @@ M.list = {
 			})
 			require("mini.indentscope").setup({
 				symbol = "│",
+				options = { try_as_border = true },
 			})
 		end,
 	},

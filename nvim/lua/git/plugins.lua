@@ -3,7 +3,7 @@ local M = {}
 M.list = {
 	{
 		"lewis6991/gitsigns.nvim",
-		-- lazy = true,
+		lazy = false,
 		opts = {
 			signcolumn = false,
 			signs = {

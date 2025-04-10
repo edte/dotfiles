@@ -11,9 +11,16 @@ return {
 	settings = {
 		gopls = {
 			analyses = {
+				nilness = true,
 				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
 			},
+			usePlaceholders = true,
+			completeUnimported = true,
 			staticcheck = true,
+			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+			semanticTokens = true,
 			gofumpt = true,
 			-- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
 			hints = {
@@ -24,6 +31,16 @@ return {
 				compositeLiteralTypes = true, -- 复合文字类型
 				parameterNames = true, -- 参数名称
 				functionTypeParameters = true, -- 函数类型参数
+			},
+			codelenses = {
+				gc_details = false,
+				generate = true,
+				regenerate_cgo = true,
+				run_govulncheck = true,
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
 			},
 		},
 	},

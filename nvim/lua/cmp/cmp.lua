@@ -292,7 +292,6 @@ function M.setup()
 				-- compare.exact,         -- 精准匹配
 				-- compare.recently_used, -- 最近用过的靠前
 				-- compare.kind,
-				-- Require("clangd_extensions.cmp_scores"),
 				-- compare.score, -- 得分高靠前
 				-- compare.order,
 				-- compare.offset,
@@ -312,6 +311,7 @@ function M.setup()
 				-- compare.kind,
 				-- compare.length, -- useless
 				-- require("cmp-under-comparator").under,
+				Require("clangd_extensions.cmp_scores"),
 			},
 		},
 	})

@@ -32,7 +32,7 @@ wk.add({
 	{ "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "status" },
 	-- { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
 	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
-	{ "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "blame line" },
+	{ "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "blame line" },
 	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
 
 	{ "<leader>l", group = "lsp", desc = "lsp" },
@@ -48,7 +48,7 @@ wk.add({
 	{ "<leader>lw", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "Diagnostics" },
 	{ "<leader>p", "<cmd>Lazy<cr>", desc = "plugins" },
 	{ "<leader>q", "<cmd>confirm q<CR>", desc = "quit" },
-	-- { "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recents" },
+	{ "<leader>r", "<cmd>FzfLua oldfiles<CR>", desc = "recents" },
 	-- { "<leader>r",  "<cmd>SnipRun<CR>",                                         desc = "run code", },
 
 	{ "<leader>s", group = "search", desc = "search" },
