@@ -451,9 +451,9 @@ M.list = {
 			terminal = { enabled = false },
 		},
 		config = function()
-			print = function(...)
-				Snacks.debug.inspect(...)
-			end
+			-- print = function(...)
+			-- 	Snacks.debug.inspect(...)
+			-- end
 
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "MiniFilesActionRename",

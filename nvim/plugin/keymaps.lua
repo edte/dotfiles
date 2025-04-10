@@ -197,5 +197,5 @@ Api.nvim_create_user_command("LiteralSearch", function(opts)
 	cmd("normal! /\\V" .. vim.fn.escape(opts.args, "\\"))
 end, { nargs = 1 })
 
-vim.cmd([[nmap <space>/ gcc]])
-vim.cmd([[vmap <space>/ gc]])
+nmap("<space>/", "gcc", { noremap = false, silent = true, desc = "comment" })
+vmap("<space>/", "gc", { noremap = false, silent = true, desc = "comment" })
