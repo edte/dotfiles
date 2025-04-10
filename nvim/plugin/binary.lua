@@ -71,6 +71,10 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			return
 		end
 
+		if vim.bo.filetype == "qf" then
+			return
+		end
+
 		local exetension = vim.fn.expand("%:e")
 		for _, filetype in ipairs(xxd_files) do
 			if filetype == exetension then

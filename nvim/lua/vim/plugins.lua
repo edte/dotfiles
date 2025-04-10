@@ -37,6 +37,7 @@ M.list = {
 	{
 		"tpope/vim-repeat",
 		keys = { "." },
+		event = "VeryLazy",
 	},
 
 	-- gx 打开 URL
@@ -105,19 +106,19 @@ M.list = {
 	},
 
 	-- Vim 的扩展 f、F、t 和 T 键映射。
-	{
-		"rhysd/clever-f.vim",
-		keys = { "f" },
-		config = function()
-			vim.g.clever_f_across_no_line = 1
-			vim.g.clever_f_mark_direct = 1
-			vim.g.clever_f_smart_case = 1
-			vim.g.clever_f_fix_key_direction = 1
-			vim.g.clever_f_show_prompt = 1
-			Api.nvim_del_keymap("n", "t")
-			Api.nvim_del_keymap("n", "T")
-		end,
-	},
+	-- {
+	-- 	"rhysd/clever-f.vim",
+	-- 	keys = { "f" },
+	-- 	config = function()
+	-- 		vim.g.clever_f_across_no_line = 1
+	-- 		vim.g.clever_f_mark_direct = 1
+	-- 		vim.g.clever_f_smart_case = 1
+	-- 		vim.g.clever_f_fix_key_direction = 1
+	-- 		vim.g.clever_f_show_prompt = 1
+	-- 		Api.nvim_del_keymap("n", "t")
+	-- 		Api.nvim_del_keymap("n", "T")
+	-- 	end,
+	-- },
 
 	-- 在 Vim 中，在字符上按 ga 显示其十进制、八进制和十六进制表示形式。 Characterize.vim 通过以下补充对其进行了现代化改造：
 	-- Unicode 字符名称： U+00A9 COPYRIGHT SYMBOL

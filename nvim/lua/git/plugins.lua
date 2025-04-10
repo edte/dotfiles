@@ -73,14 +73,29 @@ M.list = {
 		end,
 	},
 
-	-- lua MiniDiff.toggle_overlay()
+	-- diff 本文件改动
 	{
 		"echasnovski/mini.diff",
-		version = false,
-		config = function()
-			Setup("mini.diff")
-			cmd("command! Diff lua MiniDiff.toggle_overlay()")
-		end,
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>gd",
+				function()
+					require("mini.diff").toggle_overlay(0)
+				end,
+				desc = "diff",
+			},
+		},
+		opts = {
+			view = {
+				style = "sign",
+				signs = {
+					add = "▎",
+					change = "▎",
+					delete = "",
+				},
+			},
+		},
 	},
 
 	-- Neovim 逃亡风格 git Blame 插件

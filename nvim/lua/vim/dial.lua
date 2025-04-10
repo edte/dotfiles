@@ -18,6 +18,47 @@ M.dialConfig = function()
 				word = false,
 				cyclic = true,
 			}),
+
+			augend.constant.new({
+				elements = {
+					"first",
+					"second",
+					"third",
+					"fourth",
+					"fifth",
+					"sixth",
+					"seventh",
+					"eighth",
+					"ninth",
+					"tenth",
+				},
+				word = false,
+				cyclic = true,
+			}),
+
+			augend.constant.new({
+				elements = {
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday",
+					"Sunday",
+				},
+				word = false,
+				cyclic = true,
+			}),
+
+			augend.constant.new({
+				elements = {
+					"True",
+					"False",
+				},
+				word = false,
+				cyclic = true,
+			}),
+
 			augend.constant.new({
 				elements = { "Debug", "Error" },
 				word = false,

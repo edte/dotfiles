@@ -80,7 +80,7 @@ M.list = {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		after = "nvim-treesitter",
-		event = "BufRead",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 	},
 
 	-- -- 使用treesitter自动关闭并自动重命名html标签

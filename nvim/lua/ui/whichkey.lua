@@ -30,7 +30,7 @@ wk.add({
 	{ "<leader>gp", "<cmd>DiffviewFileHistory<cr>", desc = "project history" },
 	{ "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "file history" },
 	{ "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "status" },
-	{ "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
+	-- { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
 	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
 	{ "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "blame line" },
 	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },

@@ -193,9 +193,30 @@ vmap("K", ":m '<-2<CR>gv=gv")
 cmd("command! Pwd !ls %:p")
 cmd("command! Cwd lua print(vim.uv.cwd())")
 
-Api.nvim_create_user_command("LiteralSearch", function(opts)
+vim.api.nvim_create_user_command("LiteralSearch", function(opts)
 	cmd("normal! /\\V" .. vim.fn.escape(opts.args, "\\"))
 end, { nargs = 1 })
 
 nmap("<space>/", "gcc", { noremap = false, silent = true, desc = "comment" })
 vmap("<space>/", "gc", { noremap = false, silent = true, desc = "comment" })
+
+nmap("go", ":lua vim.lsp.buf.document_symbol()<cr>")
+
+-- FIX: 过滤函数和结构体，但是没成功
+-- nmap("go", function()
+-- 	vim.lsp.buf.document_symbol({
+-- 		on_list = function(options)
+-- 			local res = {}
+--
+-- 			for _, symbol in ipairs(options.items) do
+-- 				if symbol.kind == "Function" or symbol.kind == "Struct" then
+-- 					table.insert(res, symbol)
+-- 				end
+-- 			end
+--
+-- 			options.items = res
+--
+-- 			vim.fn.setqflist({}, " ", options)
+-- 		end,
+-- 	})
+-- end)
