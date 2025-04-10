@@ -230,14 +230,6 @@ M.list = {
 			require("refactoring").setup({})
 		end,
 	},
-	-- lsp 服务器日志
-	-- {
-	--     "mhanberg/output-panel.nvim",
-	--     event = "VeryLazy",
-	--     config = function()
-	--         require("output_panel").setup()
-	--     end
-	-- },
 
 	{
 		"mrcjkb/rustaceanvim",

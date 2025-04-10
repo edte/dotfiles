@@ -300,3 +300,23 @@ end
 function get_plugin(name)
 	return require("lazy.core.config").spec.plugins[name]
 end
+
+function has_plugin(plugin)
+	return get_plugin(plugin) ~= nil
+end
+
+function on_load(name, fn)
+	if is_loaded(name) then
+		fn(name)
+	else
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "LazyLoad",
+			callback = function(event)
+				if event.data == name then
+					fn(name)
+					return true
+				end
+			end,
+		})
+	end
+end
