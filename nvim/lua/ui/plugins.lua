@@ -360,6 +360,9 @@ M.list = {
 			require("log-highlight").setup({})
 		end,
 	},
+
+	-- ui components
+	{ "MunifTanjim/nui.nvim", lazy = true },
 }
 
 return M

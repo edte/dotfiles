@@ -62,6 +62,11 @@ function M.setup()
 					end
 				end
 
+				-- Hide percentage in the menu
+				if entry.source.name == "cmp_tabnine" then
+					kind.menu = ""
+				end
+
 				return kind
 			end,
 		},
@@ -173,6 +178,11 @@ function M.setup()
 				max_item_count = 4,
 			},
 			{
+				name = "codeium",
+				priority = 9,
+				max_item_count = 4,
+			},
+			{
 				name = "nvim_lsp",
 				priority = 8,
 				option = {
@@ -231,13 +241,13 @@ function M.setup()
 				priority = 4,
 			},
 
-			-- {
-			--     name = "cmp_yanky",
-			--     priority = 4,
-			--     option = {
-			--         onlyCurrentFiletype = true
-			--     }
-			-- },
+			{
+				name = "cmp_yanky",
+				priority = 4,
+				option = {
+					onlyCurrentFiletype = true,
+				},
+			},
 
 			{
 				name = "shellcmds_history",

@@ -463,6 +463,9 @@ M.list = {
 			})
 		end,
 	},
+
+	-- library used by other plugins
+	{ "nvim-lua/plenary.nvim", lazy = true },
 }
 
 return M

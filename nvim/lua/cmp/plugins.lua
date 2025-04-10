@@ -58,6 +58,30 @@ M.list = {
 				"hrsh7th/cmp-nvim-lsp",
 				event = { "InsertEnter" },
 			},
+			{
+				"Exafunction/windsurf.nvim",
+				cmd = "Codeium",
+				event = "InsertEnter",
+				build = ":Codeium Auth",
+				opts = {
+					enable_cmp_source = vim.g.ai_cmp,
+					virtual_text = {
+						enabled = not vim.g.ai_cmp,
+						key_bindings = {
+							accept = true, -- handled by nvim-cmp / blink.cmp
+							-- next = "<M-]>",
+							-- prev = "<M-[>",
+						},
+					},
+				},
+				dependencies = {
+					"nvim-lua/plenary.nvim",
+					"hrsh7th/nvim-cmp",
+				},
+				config = function()
+					require("codeium").setup({})
+				end,
+			},
 
 			{
 				"saadparwaiz1/cmp_luasnip",
@@ -157,7 +181,7 @@ M.list = {
 					end
 					tabnine:setup({
 						max_lines = 1000,
-						max_num_results = 20,
+						max_num_results = 4,
 						sort = true,
 						run_on_every_keystroke = true,
 						snippet_placeholder = "..",
@@ -175,11 +199,16 @@ M.list = {
 			-- 自定义代码片段
 			{
 				"L3MON4D3/LuaSnip",
+				lazy = true,
 				event = "InsertEnter",
 				config = function()
 					-- require("luasnip.loaders.from_vscode").lazy_load()
 					require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
 				end,
+				opts = {
+					history = true,
+					delete_check_events = "TextChanged",
+				},
 				dependencies = {
 					-- "rafamadriz/friendly-snippets",
 				},
