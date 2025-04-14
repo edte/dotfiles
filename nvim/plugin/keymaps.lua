@@ -86,7 +86,6 @@ nmap("gI", "<cmd>Glance implementations<cr>")
 
 nmap("gd", "<C-]>zz")
 
-nmap("gD", "<cmd>FzfLua lsp_declarations<cr>")
 nmap("grr", "<cmd>Glance references<cr>")
 
 nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
@@ -177,9 +176,7 @@ cmd("silent!")
 -- cmd("nnoremap # *")
 -- cmd("nnoremap * #")
 
-nmap("gw", "<cmd>FzfLua grep_cword<CR>")
-nmap("gW", "<cmd>FzfLua grep_cWORD<CR>")
--- nmap("<c-r>", "<cmd>FzfLua resume<CR>")
+nmap("gw", "<cmd>lua Snacks.picker.grep_word()<CR>")
 
 nmap("C", '"_C')
 nmap("D", '"_D')

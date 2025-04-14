@@ -46,13 +46,8 @@ M.list = {
 	-- GoImplOpen
 	{
 		"fang2hou/go-impl.nvim",
-		-- ft = "go",
+		ft = "go",
 		cmd = "GoImplOpen",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"ibhagwan/fzf-lua",
-			"nvim-lua/plenary.nvim",
-		},
 		opts = {},
 	},
 

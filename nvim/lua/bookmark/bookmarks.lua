@@ -438,61 +438,30 @@ function M.delete_bookmark()
 end
 
 function M.jump_bookmark()
-    local bookmarks = M.data.bookmarks
-
-    local list = {}
-    for _, bookmark in pairs(bookmarks) do
-        list[#list + 1] = bookmark.description
+    local items = {}
+    for i, item in pairs(M.data.bookmarks) do
+        table.insert(items, {
+            idx = i,
+            text = item.description,
+            file = item.filename,
+            line = item.line,
+        })
     end
 
-
-    local fzf = require("fzf-lua")
-    fzf.fzf_exec(list, {
-        prompt = "Bookmarks> ",
-        previewer = function()
-            local previewer = require("fzf-lua.previewer.builtin")
-            local path = require("fzf-lua.path")
-
-            -- https://github.com/ibhagwan/fzf-lua/wiki/Advanced#neovim-builtin-preview
-            -- Can this be any simpler? Do I need a custom previewer?
-            local MyPreviewer = previewer.buffer_or_file:extend()
-
-            function MyPreviewer:new(o, op, fzf_win)
-                MyPreviewer.super.new(self, o, op, fzf_win)
-                setmetatable(self, MyPreviewer)
-                return self
-            end
-
-            function MyPreviewer:parse_entry(entry_str)
-                if entry_str == "" then
-                    return {}
-                end
-                for _, bookmark in pairs(bookmarks) do
-                    if entry_str == bookmark.description then
-                        local entry = path.entry_to_file(bookmark.filename .. ":" .. bookmark.line, self.opts)
-                        return entry or {}
-                    end
-                end
-            end
-
-            return MyPreviewer
+    local Snacks = require("snacks")
+    Snacks.picker({
+        items = items,
+        format = function(item)
+            local ret = {}
+            ret[#ret + 1] = { item.text  }
+            return ret
         end,
-        actions = {
-            ["default"] = function(selected)
-                local entry = selected[1]
-                if not entry then
-                    return
-                end
-
-                for _, bookmark in pairs(bookmarks) do
-                    if entry == bookmark.description then
-                        Api.nvim_command("edit " .. bookmark.filename)
-                        Api.nvim_win_set_cursor(0, { bookmark.line, 0 })
-                        zz()
-                    end
-                end
-            end,
-        },
+        confirm = function(picker, item)
+            picker:close()
+            vim.api.nvim_command("edit " .. item.file)
+            vim.api.nvim_win_set_cursor(0, { item.line, 0 })
+            zz()
+        end,
     })
 end
 
@@ -502,7 +471,7 @@ function M.save_bookmarks()
     for id, bookmark in pairs(M.data.bookmarks) do
         local tpl = [[
 {
-	_
+    _
 }
 ]]
 
