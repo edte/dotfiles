@@ -441,7 +441,26 @@ M.list = {
 			health = { enabled = true },
 			indent = { enabled = false },
 			input = { enabled = false },
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				win = {
+					input = {
+						keys = {
+							["<Esc>"] = { "close", mode = { "n", "i" } },
+						},
+					},
+					list = {
+						keys = {
+							["<Esc>"] = { "close", mode = { "n", "i" } },
+						},
+					},
+					preview = {
+						keys = {
+							["<Esc>"] = { "close", mode = { "n", "i" } },
+						},
+					},
+				},
+			},
 			notifier = { enabled = false },
 			quickfile = { enabled = true },
 			scope = { enabled = false },
@@ -450,18 +469,6 @@ M.list = {
 			rename = { enabled = true },
 			terminal = { enabled = false },
 		},
-		config = function()
-			-- print = function(...)
-			-- 	Snacks.debug.inspect(...)
-			-- end
-
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "MiniFilesActionRename",
-				callback = function(event)
-					Snacks.rename.on_rename_file(event.data.from, event.data.to)
-				end,
-			})
-		end,
 	},
 
 	-- library used by other plugins
