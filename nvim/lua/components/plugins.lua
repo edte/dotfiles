@@ -429,6 +429,9 @@ M.list = {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
+		init = function()
+			highlight("SnacksPickerMatch", { italic = true, bold = true, bg = "#ffc777", fg = "#222436" })
+		end,
 		opts = {
 			animate = { enabled = true },
 			scroll = { enabled = false },
@@ -437,12 +440,30 @@ M.list = {
 			dashboard = { enabled = false },
 			explorer = { enabled = false },
 			git = { enabled = false },
+			layout = { enable = true },
 			gitbrowser = { enabled = false },
 			health = { enabled = true },
 			indent = { enabled = false },
 			input = { enabled = false },
 			picker = {
 				enabled = true,
+				-- layout = {
+				-- 	preview = false,
+				-- 	layout = {
+				-- 		backdrop = false,
+				-- 		width = 0.5,
+				-- 		min_width = 80,
+				-- 		height = 0.4,
+				-- 		min_height = 3,
+				-- 		box = "vertical",
+				-- 		border = "rounded",
+				-- 		title = "{title}",
+				-- 		title_pos = "center",
+				-- 		{ win = "input", height = 1, border = "bottom" },
+				-- 		{ win = "list", border = "none" },
+				-- 		{ win = "preview", title = "{preview}", height = 0.4, border = "top" },
+				-- 	},
+				-- },
 				win = {
 					input = {
 						keys = {

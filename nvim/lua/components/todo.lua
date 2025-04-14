@@ -27,22 +27,6 @@ M.setup = function()
 	highlight("HG_TODO_LIST_NOTE", { italic = true, bold = true, bg = "#4fd6be", fg = "#222436" })
 	highlight("HG_TODO_LIST_TODO", { italic = true, bold = true, bg = "#0db9d7", fg = "#222436" })
 
-	Command("TODO", function()
-		require("fzf-lua").grep({ search = "TODO:", no_esc = true })
-	end, { nargs = "*" })
-
-	Command("WARN", function()
-		require("fzf-lua").grep({ search = "TODO:", no_esc = true })
-	end, { nargs = "*" })
-
-	Command("FIX", function()
-		require("fzf-lua").grep({ search = "FIX:", no_esc = true })
-	end, { nargs = "*" })
-
-	Command("NOTE", function()
-		require("fzf-lua").grep({ search = "NOTE:", no_esc = true })
-	end, { nargs = "*" })
-
 	local hipatterns = require("mini.hipatterns")
 	hipatterns.setup({
 		highlighters = {

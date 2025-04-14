@@ -13,20 +13,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	{
-		"folke/snacks.nvim",
-		opts = {
-			picker = {
-				enabled = true,
-				win = {
-					input = {
-						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
-						},
-					},
-				},
-			},
-		},
-	},
-})
+require("lazy").setup({})

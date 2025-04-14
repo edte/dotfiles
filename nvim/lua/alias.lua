@@ -54,9 +54,9 @@ end
 _G.project_files = function()
 	local ret = vim.fn.system("git rev-parse --show-toplevel 2> /dev/null")
 	if ret == "" then
-		require("fzf-lua").files()
+		Snacks.picker.files()
 	else
-		require("fzf-lua").git_files()
+		Snacks.picker.git_files()
 	end
 end
 

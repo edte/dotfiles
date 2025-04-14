@@ -70,7 +70,6 @@ M.config = function()
 			-- additional_vim_regex_highlighting = false,
 			language_tree = true,
 			is_supported = function()
-				-- Since `ibhagwan/fzf-lua` returns `bufnr/path` like `117/lua/plugins/colors.lua`.
 				local cur_path = (vim.fn.expand("%"):gsub("^%d+/", ""))
 				if
 					cur_path:match("term://")
