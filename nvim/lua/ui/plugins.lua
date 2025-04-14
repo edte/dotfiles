@@ -355,6 +355,84 @@ M.list = {
 
 	-- ui components
 	{ "MunifTanjim/nui.nvim", lazy = true },
+
+	-- 高度实验性的插件完全取代了消息，CMDline和PopupMenu的UI。
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	keys = {
+	-- 		{ "<space>n", "<cmd>message<cr>", desc = "message" },
+	-- 	},
+	-- 	opts = {
+	-- 		views = {
+	-- 			split = { enter = true },
+	-- 			mini = { win_options = { winblend = 100 } },
+	-- 		},
+	-- 		presets = {
+	-- 			long_message_to_split = true,
+	-- 			lsp_doc_border = true,
+	-- 		},
+	-- 		routes = {
+	-- 			{ filter = { find = "E162" }, view = "mini" },
+	-- 			{ filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
+	-- 			{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
+	-- 			{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
+	-- 			{ filter = { event = "emsg", find = "E23" }, skip = true },
+	-- 			{ filter = { event = "emsg", find = "E20" }, skip = true },
+	-- 			{ filter = { find = "No signature help" }, skip = true },
+	-- 			{ filter = { find = "E37" }, skip = true },
+	-- 		},
+	-- 		cmdline = {
+	-- 			enabled = true,
+	-- 			view = "cmdline",
+	-- 			format = {
+	-- 				cmdline = { pattern = "^:", icon = "" },
+	-- 				search_down = false,
+	-- 				search_up = false,
+	-- 				filter = false,
+	-- 				lua = false,
+	-- 				input = false,
+	-- 				help = false,
+	-- 			},
+	-- 		},
+	-- 		messages = {
+	-- 			enabled = false,
+	-- 			view_search = false,
+	-- 		},
+	-- 		popupmenu = {
+	-- 			enabled = false,
+	-- 		},
+	-- 		notify = {
+	-- 			enabled = false,
+	-- 			view = "notify",
+	-- 		},
+	-- 		lsp = {
+	-- 			progress = {
+	-- 				enabled = false,
+	-- 			},
+	-- 			override = {
+	-- 				["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+	-- 				["vim.lsp.util.stylize_markdown"] = false,
+	-- 				["cmp.entry.get_documentation"] = false,
+	-- 			},
+	-- 			hover = {
+	-- 				enabled = false,
+	-- 			},
+	-- 			signature = {
+	-- 				enabled = false,
+	-- 			},
+	-- 			message = {
+	-- 				enabled = false,
+	-- 			},
+	-- 			health = {
+	-- 				checker = true,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- },
 }
 
 return M

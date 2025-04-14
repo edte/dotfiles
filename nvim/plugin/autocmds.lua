@@ -172,3 +172,14 @@ vim.api.nvim_create_autocmd({ "WinResized" }, {
 --         cmd("redir END")
 --     end,
 -- })
+
+-- vim.api.nvim_create_autocmd("CmdwinEnter", {
+-- 	group = vim.api.nvim_create_augroup("cmdwin_syntax", {}),
+-- 	callback = function()
+-- 		print("fuck")
+-- 		local is_loadable, _ = pcall(vim.treesitter.language.add, "vim")
+-- 		if is_loadable then
+-- 			vim.cmd("set syntax=vim")
+-- 		end
+-- 	end,
+-- })

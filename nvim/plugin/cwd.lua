@@ -16,6 +16,8 @@ local M = {
 		"README.md",
 		".gitignore",
 		"main.go",
+		"init.lua",
+		"stylua.toml",
 		"compile_commands.json",
 		"main.cpp",
 		"_darcs",
