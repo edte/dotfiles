@@ -357,82 +357,120 @@ M.list = {
 	{ "MunifTanjim/nui.nvim", lazy = true },
 
 	-- 高度实验性的插件完全取代了消息，CMDline和PopupMenu的UI。
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	event = "VeryLazy",
-	-- 	keys = {
-	-- 		{ "<space>n", "<cmd>message<cr>", desc = "message" },
-	-- 	},
-	-- 	opts = {
-	-- 		views = {
-	-- 			split = { enter = true },
-	-- 			mini = { win_options = { winblend = 100 } },
-	-- 		},
-	-- 		presets = {
-	-- 			long_message_to_split = true,
-	-- 			lsp_doc_border = true,
-	-- 		},
-	-- 		routes = {
-	-- 			{ filter = { find = "E162" }, view = "mini" },
-	-- 			{ filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
-	-- 			{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
-	-- 			{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
-	-- 			{ filter = { event = "emsg", find = "E23" }, skip = true },
-	-- 			{ filter = { event = "emsg", find = "E20" }, skip = true },
-	-- 			{ filter = { find = "No signature help" }, skip = true },
-	-- 			{ filter = { find = "E37" }, skip = true },
-	-- 		},
-	-- 		cmdline = {
-	-- 			enabled = true,
-	-- 			view = "cmdline",
-	-- 			format = {
-	-- 				cmdline = { pattern = "^:", icon = "" },
-	-- 				search_down = false,
-	-- 				search_up = false,
-	-- 				filter = false,
-	-- 				lua = false,
-	-- 				input = false,
-	-- 				help = false,
-	-- 			},
-	-- 		},
-	-- 		messages = {
-	-- 			enabled = false,
-	-- 			view_search = false,
-	-- 		},
-	-- 		popupmenu = {
-	-- 			enabled = false,
-	-- 		},
-	-- 		notify = {
-	-- 			enabled = false,
-	-- 			view = "notify",
-	-- 		},
-	-- 		lsp = {
-	-- 			progress = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			override = {
-	-- 				["vim.lsp.util.convert_input_to_markdown_lines"] = false,
-	-- 				["vim.lsp.util.stylize_markdown"] = false,
-	-- 				["cmp.entry.get_documentation"] = false,
-	-- 			},
-	-- 			hover = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			signature = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			message = {
-	-- 				enabled = false,
-	-- 			},
-	-- 			health = {
-	-- 				checker = true,
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 	},
-	-- },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		keys = {
+			{ "<space>n", "<cmd>message<cr>", desc = "message" },
+		},
+		opts = {
+			views = {
+				split = {
+					backend = "split",
+					enter = false,
+					relative = "editor",
+					position = "bottom",
+					size = "40%",
+					close = {
+						keys = { "q", "<enter>", "<space>", "<esc>" },
+					},
+					win_options = {
+						winhighlight = { Normal = "NoiceSplit", FloatBorder = "NoiceSplitBorder" },
+						wrap = true,
+					},
+				},
+				mini = {
+					align = "message-left",
+					timeout = 3000,
+					position = {
+						col = 0,
+					},
+				},
+				confirm = {
+					backend = "popup",
+					relative = "editor",
+					focusable = false,
+					align = "center",
+					enter = false,
+					zindex = 210,
+					format = { "{confirm}" },
+					position = {
+						row = "100%",
+						col = "0%",
+					},
+					size = "auto",
+				},
+			},
+			presets = {
+				long_message_to_split = true,
+				lsp_doc_border = true,
+			},
+			routes = {
+				{ filter = { find = "E162" }, view = "mini" },
+				{ filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
+				{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
+				{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
+				{ filter = { event = "emsg", find = "E23" }, skip = true },
+				{ filter = { event = "emsg", find = "E20" }, skip = true },
+				{ filter = { find = "No signature help" }, skip = true },
+				{ filter = { find = "E37" }, skip = true },
+			},
+			cmdline = {
+				enabled = true,
+				view = "cmdline",
+				format = {
+					cmdline = { pattern = "^:", icon = "" },
+					search_down = false,
+					search_up = false,
+					filter = false,
+					lua = false,
+					input = false,
+					help = false,
+				},
+			},
+			messages = {
+				enabled = true,
+				view_search = false,
+				view = "mini", -- default view for messages
+				view_error = "mini", -- view for errors
+				view_warn = "mini", -- view for warnings
+				view_history = "messages", -- view for :messages
+			},
+			popupmenu = {
+				enabled = false,
+			},
+			notify = {
+				enabled = false,
+				view = "notify",
+			},
+			health = { checker = false },
+			lsp = {
+				progress = {
+					enabled = false,
+				},
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+					["vim.lsp.util.stylize_markdown"] = false,
+					["cmp.entry.get_documentation"] = false,
+				},
+				hover = {
+					enabled = false,
+				},
+				signature = {
+					enabled = false,
+				},
+				message = {
+					enabled = false,
+				},
+				health = {
+					checker = true,
+				},
+			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+	},
 }
 
 return M

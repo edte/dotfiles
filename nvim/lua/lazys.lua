@@ -167,39 +167,6 @@ require("lazy").setup({
 		-- If you want to use a specific browser, you can define it here
 		browser = nil, ---@type string?
 		throttle = 1000 / 30, -- how frequently should the ui process render events
-		custom_keys = {
-			-- You can define custom key maps here. If present, the description will
-			-- be shown in the help menu.
-			-- To disable one of the defaults, set it to false.
-
-			["<localleader>l"] = {
-				function(plugin)
-					require("lazy.util").float_term({ "lazygit", "log" }, {
-						cwd = plugin.dir,
-					})
-				end,
-				desc = "Open lazygit log",
-			},
-
-			["<localleader>i"] = {
-				function(plugin)
-					Util.notify(vim.inspect(plugin), {
-						title = "Inspect " .. plugin.name,
-						lang = "lua",
-					})
-				end,
-				desc = "Inspect Plugin",
-			},
-
-			["<localleader>t"] = {
-				function(plugin)
-					require("lazy.util").float_term(nil, {
-						cwd = plugin.dir,
-					})
-				end,
-				desc = "Open terminal in plugin dir",
-			},
-		},
 	},
 	-- Output options for headless mode
 	headless = {
