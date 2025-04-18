@@ -124,6 +124,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
+
 	pattern = "term://*",
 	callback = function()
 		if vim.opt.buftype:get() == "terminal" then
@@ -131,6 +132,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 			set.number = false -- Don't show numbers
 			set.relativenumber = false -- Don't show relativenumbers
 			set.scrolloff = 0 -- Don't scroll when at the top or bottom of the terminal buffer
+
 			vim.opt.filetype = "terminal"
 
 			vim.cmd.startinsert() -- Start in insert mode

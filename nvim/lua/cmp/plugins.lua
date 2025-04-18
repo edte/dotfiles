@@ -20,19 +20,19 @@ M.list = {
 	},
 
 	-- Neovim 更快的 LuaLS 设置
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		cmd = "LazyDev",
-		opts = {
-			library = {
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				{ path = "LazyVim", words = { "LazyVim" } },
-				{ path = "snacks.nvim", words = { "Snacks" } },
-				{ path = "lazy.nvim", words = { "LazyVim" } },
-			},
-		},
-	},
+	-- {
+	-- 	"folke/lazydev.nvim",
+	-- 	ft = "lua",
+	-- 	cmd = "LazyDev",
+	-- 	opts = {
+	-- 		library = {
+	-- 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+	-- 			{ path = "LazyVim", words = { "LazyVim" } },
+	-- 			{ path = "snacks.nvim", words = { "Snacks" } },
+	-- 			{ path = "lazy.nvim", words = { "LazyVim" } },
+	-- 		},
+	-- 	},
+	-- },
 
 	-- nvim lua  源
 	{
@@ -58,30 +58,30 @@ M.list = {
 				"hrsh7th/cmp-nvim-lsp",
 				event = { "InsertEnter" },
 			},
-			{
-				"Exafunction/windsurf.nvim",
-				cmd = "Codeium",
-				event = "InsertEnter",
-				build = ":Codeium Auth",
-				opts = {
-					enable_cmp_source = vim.g.ai_cmp,
-					virtual_text = {
-						enabled = not vim.g.ai_cmp,
-						key_bindings = {
-							accept = true, -- handled by nvim-cmp / blink.cmp
-							-- next = "<M-]>",
-							-- prev = "<M-[>",
-						},
-					},
-				},
-				dependencies = {
-					"nvim-lua/plenary.nvim",
-					"hrsh7th/nvim-cmp",
-				},
-				config = function()
-					require("codeium").setup({})
-				end,
-			},
+			-- {
+			-- 	"Exafunction/windsurf.nvim",
+			-- 	cmd = "Codeium",
+			-- 	event = "InsertEnter",
+			-- 	build = ":Codeium Auth",
+			-- 	opts = {
+			-- 		enable_cmp_source = vim.g.ai_cmp,
+			-- 		virtual_text = {
+			-- 			enabled = not vim.g.ai_cmp,
+			-- 			key_bindings = {
+			-- 				accept = true, -- handled by nvim-cmp / blink.cmp
+			-- 				-- next = "<M-]>",
+			-- 				-- prev = "<M-[>",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- 	dependencies = {
+			-- 		"nvim-lua/plenary.nvim",
+			-- 		"hrsh7th/nvim-cmp",
+			-- 	},
+			-- 	config = function()
+			-- 		require("codeium").setup({})
+			-- 	end,
+			-- },
 
 			{
 				"saadparwaiz1/cmp_luasnip",

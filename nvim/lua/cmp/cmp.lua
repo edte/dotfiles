@@ -177,11 +177,11 @@ function M.setup()
 				priority = 9,
 				max_item_count = 4,
 			},
-			{
-				name = "codeium",
-				priority = 9,
-				max_item_count = 4,
-			},
+			-- {
+			-- 	name = "codeium",
+			-- 	priority = 9,
+			-- 	max_item_count = 4,
+			-- },
 			{
 				name = "nvim_lsp",
 				priority = 8,

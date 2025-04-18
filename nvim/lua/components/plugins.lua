@@ -432,38 +432,77 @@ M.list = {
 		init = function()
 			highlight("SnacksPickerMatch", { italic = true, bold = true, bg = "#ffc777", fg = "#222436" })
 		end,
+		keys = {
+			{
+				"<leader>ps",
+				function()
+					Snacks.profiler.scratch()
+				end,
+				desc = "Profiler Scratch Bufer",
+			},
+			{
+				"<leader>pp",
+				function()
+					Snacks.toggle.profiler()
+				end,
+				desc = "profiler",
+			},
+			-- do 删除范围上下两行
+			{
+				"o",
+				mode = "o",
+				desc = "delete scope",
+				function()
+					local operator = vim.v.operator
+					if operator == "d" then
+						local res
+						require("snacks").scope.get(function(scope)
+							res = scope
+						end)
+						local top = res.from
+						local bottom = res.to
+						local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+						_ = col
+						local move = ""
+						if row == bottom then
+							move = "k"
+						elseif row == top then
+							move = "j"
+						end
+						local ns = vim.api.nvim_create_namespace("border")
+						vim.hl.range(0, ns, "Substitute", { top - 1, 0 }, { top - 1, -1 })
+						vim.hl.range(0, ns, "Substitute", { bottom - 1, 0 }, { bottom - 1, -1 })
+						vim.defer_fn(function()
+							vim.api.nvim_buf_set_text(0, top - 1, 0, top - 1, -1, {})
+							vim.api.nvim_buf_set_text(0, bottom - 1, 0, bottom - 1, -1, {})
+							vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+						end, 150)
+						return "<esc>" .. move
+					else
+						return "o"
+					end
+				end,
+			},
+		},
 		opts = {
 			animate = { enabled = true },
-			scroll = { enabled = false },
 			bigfile = { enabled = true },
 			buffdelete = { enabled = true },
 			dashboard = { enabled = false },
+			debug = { enabled = false },
+			dim = { enabled = false },
 			explorer = { enabled = false },
 			git = { enabled = false },
-			layout = { enable = true },
 			gitbrowser = { enabled = false },
-			health = { enabled = true },
-			indent = { enabled = false },
-			input = { enabled = false },
+			image = { enabled = true },
+			indent = { enabled = true },
+			input = { enabled = true },
+			layout = { enable = true },
+			lazygit = { enabled = false },
+			notifier = { enabled = true },
+			notify = { enabled = true },
 			picker = {
 				enabled = true,
-				-- layout = {
-				-- 	preview = false,
-				-- 	layout = {
-				-- 		backdrop = false,
-				-- 		width = 0.5,
-				-- 		min_width = 80,
-				-- 		height = 0.4,
-				-- 		min_height = 3,
-				-- 		box = "vertical",
-				-- 		border = "rounded",
-				-- 		title = "{title}",
-				-- 		title_pos = "center",
-				-- 		{ win = "input", height = 1, border = "bottom" },
-				-- 		{ win = "list", border = "none" },
-				-- 		{ win = "preview", title = "{preview}", height = 0.4, border = "top" },
-				-- 	},
-				-- },
 				win = {
 					input = {
 						keys = {
@@ -482,9 +521,16 @@ M.list = {
 					},
 				},
 			},
-			notifier = { enabled = false },
+			profiler = { enabled = false },
+			styles = {
+				input = {
+					relative = "cursor",
+				},
+			},
+			scroll = { enabled = true },
+			health = { enabled = true },
 			quickfile = { enabled = true },
-			scope = { enabled = false },
+			scope = { enabled = true },
 			statuscolumn = { enabled = false },
 			words = { enabled = false },
 			rename = { enabled = true },
