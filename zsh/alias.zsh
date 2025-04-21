@@ -92,6 +92,7 @@ alias vzsh='nvim ~/dotfiles/zsh'
 alias vr="nvim README.md"
 alias vm='nvim main.go'
 alias vi='nvim init.lua'
+alias vp="PROF=1 nvim"
 alias vtask="nim /Users/edte/.config/asynctask/tasks.ini"
 alias vtmux='nvim ~/dotfiles/tmux'
 alias zkitty='cd /Users/edte/.config/kitty'

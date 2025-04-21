@@ -84,7 +84,7 @@ nmap("U", "<c-r>")
 
 nmap("gI", "<cmd>Glance implementations<cr>")
 
--- nmap("gd", "<C-]>zz")
+nmap("gd", "<C-]>zz")
 
 nmap("grr", "<cmd>Glance references<cr>")
 
@@ -92,13 +92,13 @@ nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
 nmap("<c-n>", function()
 	vim.diagnostic.goto_next()
-	-- vim.diagnostic.jump({ count = -1, float = true })
+	-- vim.diagnostic.jump({ count = 1, float = true })
 	zz()
 end)
 
 nmap("<c-p>", function()
 	vim.diagnostic.goto_prev()
-	-- vim.diagnostic.jump({ count = 1, float = true })
+	-- vim.diagnostic.jump({ count = -1, float = true })
 	zz()
 end)
 
