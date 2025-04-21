@@ -84,7 +84,7 @@ nmap("U", "<c-r>")
 
 nmap("gI", "<cmd>Glance implementations<cr>")
 
-nmap("gd", "<C-]>zz")
+-- nmap("gd", "<C-]>zz")
 
 nmap("grr", "<cmd>Glance references<cr>")
 

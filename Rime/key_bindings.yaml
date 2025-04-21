@@ -13,7 +13,7 @@ emacs_editing:
     - { when: composing, accept: Control+k, send: Shift+Delete }
     - { when: composing, accept: Control+h, send: BackSpace }
     - { when: composing, accept: Control+g, send: Escape }
-    - { when: composing, accept: Control+bracketleft, send: Escape }
+    # - { when: composing, accept: Control+bracketleft, send: Escape }
     - { when: composing, accept: Control+y, send: Page_Up }
     - { when: composing, accept: Alt+v, send: Page_Up }
     - { when: composing, accept: Control+v, send: Page_Down }
@@ -41,26 +41,26 @@ paging_with_brackets:
 
 numbered_mode_switch:
   __append:
-    - { when: always, accept: Control+Shift+1, select: .next }
-    - { when: always, accept: Control+Shift+2, toggle: ascii_mode }
-    - { when: always, accept: Control+Shift+3, toggle: full_shape }
-    - { when: always, accept: Control+Shift+4, toggle: simplification }
-    - { when: always, accept: Control+Shift+5, toggle: extended_charset }
-    - { when: always, accept: Control+Shift+exclam, select: .next }
-    - { when: always, accept: Control+Shift+at, toggle: ascii_mode }
-    - { when: always, accept: Control+Shift+numbersign, toggle: full_shape }
-    - { when: always, accept: Control+Shift+dollar, toggle: simplification }
-    - { when: always, accept: Control+Shift+percent, toggle: extended_charset }
+    # - { when: always, accept: Control+Shift+1, select: .next }
+    # - { when: always, accept: Control+Shift+2, toggle: ascii_mode }
+    # - { when: always, accept: Control+Shift+3, toggle: full_shape }
+    # - { when: always, accept: Control+Shift+4, toggle: simplification }
+    # - { when: always, accept: Control+Shift+5, toggle: extended_charset }
+    # - { when: always, accept: Control+Shift+exclam, select: .next }
+    # - { when: always, accept: Control+Shift+at, toggle: ascii_mode }
+    # - { when: always, accept: Control+Shift+numbersign, toggle: full_shape }
+    # - { when: always, accept: Control+Shift+dollar, toggle: simplification }
+    # - { when: always, accept: Control+Shift+percent, toggle: extended_charset }
 
 windows_compatible_mode_switch:
   __append:
-    - { when: always, accept: Shift+space, toggle: full_shape }
-    - { when: always, accept: Control+period, toggle: ascii_punct }
+    # - { when: always, accept: Shift+space, toggle: full_shape }
+    # - { when: always, accept: Control+period, toggle: ascii_punct }
 
 optimized_mode_switch:
   __append:
-    - { when: always, accept: Control+Shift+space, select: .next }
-    - { when: always, accept: Shift+space, toggle: ascii_mode }
+    # - { when: always, accept: Control+Shift+space, select: .next }
+    # - { when: always, accept: Shift+space, toggle: ascii_mode }
     # - { when: always, accept: Control+comma, toggle: full_shape }
     # - { when: always, accept: Control+period, toggle: ascii_punct }
     # - { when: always, accept: Control+slash, toggle: simplification }

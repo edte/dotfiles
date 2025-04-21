@@ -118,26 +118,6 @@ M.list = {
 		},
 	},
 
-	-- 左边的状态列
-	{
-		"luukvbaal/statuscol.nvim",
-		config = function()
-			local builtin = require("statuscol.builtin")
-			require("statuscol").setup({
-				-- relculright = true,
-				segments = {
-					-- marks
-					{ sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = false } },
-					-- 行号
-					{ text = { builtin.lnumfunc } },
-					-- 折叠
-					{ text = { builtin.foldfunc } },
-				},
-			})
-		end,
-	},
-
-	--
 	-- 符号树状视图,按 S
 	-- {
 	--     "hedyhli/outline.nvim",

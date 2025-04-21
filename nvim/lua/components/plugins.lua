@@ -434,18 +434,11 @@ M.list = {
 		end,
 		keys = {
 			{
-				"<leader>ps",
+				"<space>.",
 				function()
-					Snacks.profiler.scratch()
+					Snacks.scratch()
 				end,
-				desc = "Profiler Scratch Bufer",
-			},
-			{
-				"<leader>pp",
-				function()
-					Snacks.toggle.profiler()
-				end,
-				desc = "profiler",
+				desc = "scratch",
 			},
 			-- do 删除范围上下两行
 			{
@@ -482,6 +475,24 @@ M.list = {
 						return "o"
 					end
 				end,
+			},
+
+			{
+				"<M-n>",
+				mode = { "n", "i" },
+				function()
+					Snacks.terminal.toggle("zsh")
+				end,
+				desc = "Toggle floating terminal",
+			},
+			{
+				"<m-n>",
+				mode = { "t" },
+				function()
+					Snacks.terminal.toggle("zsh")
+				end,
+				ft = "snacks_terminal",
+				desc = "Toggle terminal",
 			},
 		},
 		opts = {
@@ -521,21 +532,48 @@ M.list = {
 					},
 				},
 			},
-			profiler = { enabled = false },
+			profiler = { enabled = true },
+			quickfile = { enabled = true },
+			rename = { enabled = true },
+			scope = { enabled = true },
+			scratch = { enabled = true },
+			scroll = { enabled = true },
+			statuscolumn = {
+				enabled = true,
+				left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+				right = { "fold" }, -- priority of signs on the right (high to low)
+				folds = {
+					open = true, -- show open fold icons
+					git_hl = false, -- use Git Signs hl for fold icons
+				},
+				git = {
+					-- patterns to match Git signs
+					patterns = { "MiniDiffSign" },
+				},
+				refresh = 50, -- refresh at most every 50ms
+			},
 			styles = {
 				input = {
 					relative = "cursor",
 				},
 			},
-			scroll = { enabled = true },
+			terminal = {
+				enabled = true,
+			},
+			toggle = { enabled = false },
 			health = { enabled = true },
-			quickfile = { enabled = true },
-			scope = { enabled = true },
-			statuscolumn = { enabled = false },
-			words = { enabled = false },
-			rename = { enabled = true },
-			terminal = { enabled = false },
+			words = { enabled = true },
 		},
+		config = function(_, opts)
+			require("snacks").setup(opts)
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "MiniFilesActionRename",
+				callback = function(event)
+					Snacks.rename.on_rename_file(event.data.from, event.data.to)
+				end,
+			})
+		end,
 	},
 
 	-- library used by other plugins

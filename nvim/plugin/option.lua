@@ -48,7 +48,7 @@ local default_options = {
 	undofile = true, -- enable persistent undo
 	backup = true, -- creates a backup file
 	backupdir = vim.fn.stdpath("state") .. "/backup", -- neovim backup directory
-	swapfile = true, -- creates a swapfile
+	swapfile = false, -- creates a swapfile
 	directory = vim.fn.stdpath("state") .. "/swap", -- neovim swap dir
 	wildmode = "list:longest,list:full", -- for : stuff
 
@@ -159,3 +159,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- \ *.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.xlam,*.xlsx,*.xlsm,
 -- \ *.xlsb,*.xltx,*.xltm,*.xlam,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx,*.epub'
 -- ]])
+
+-- https://www.reddit.com/r/neovim/comments/1k24zgk/weak_git_diff_in_neovim/
+if vim.fn.has("patch-9.1.1243") == 1 then
+	vim.opt.diffopt:append("inline:word")
+end
