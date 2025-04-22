@@ -71,7 +71,7 @@ source.get_completions = function(self, params, callback)
 		isRetrigger = not not self.signature_help,
 		activeSignatureHelp = self.signature_help,
 	}
-	client.request("textDocument/signatureHelp", request, function(_, signature_help)
+	client:request("textDocument/signatureHelp", request, function(_, signature_help)
 		self.signature_help = signature_help
 
 		log.error(signature_help)

@@ -160,7 +160,7 @@ M.list = {
 			end
 
 			-- FIX: 这里如果打开了一个没有打开过的session，会报错，看能不能提前判断一下
-			Api.nvim_create_autocmd("VimEnter", {
+			vim.api.nvim_create_autocmd("VimEnter", {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
 						MiniSessions.read(GetPath())
@@ -168,7 +168,7 @@ M.list = {
 				end,
 				nested = true,
 			})
-			Api.nvim_create_autocmd("VimLeavePre", {
+			vim.api.nvim_create_autocmd("VimLeavePre", {
 				callback = function()
 					if vim.fn.argc(-1) > 0 then
 						cmd("argdelete *")
@@ -481,7 +481,7 @@ M.list = {
 				"<M-n>",
 				mode = { "n", "i" },
 				function()
-					Snacks.terminal.toggle("zsh")
+					Snacks.terminal.toggle("fish")
 				end,
 				desc = "Toggle floating terminal",
 			},
@@ -489,7 +489,7 @@ M.list = {
 				"<m-n>",
 				mode = { "t" },
 				function()
-					Snacks.terminal.toggle("zsh")
+					Snacks.terminal.toggle("fish")
 				end,
 				ft = "snacks_terminal",
 				desc = "Toggle terminal",

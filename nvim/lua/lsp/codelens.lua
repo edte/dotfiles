@@ -165,7 +165,7 @@ end
 
 function M.lsp_support_method(buf, method)
 	for _, client in pairs(lsp.get_clients({ bufnr = buf })) do
-		if client.supports_method(method) then
+		if client:supports_method(method) then
 			return true
 		end
 	end

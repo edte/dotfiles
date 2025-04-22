@@ -158,7 +158,7 @@ end
 --- @param character integer The character position of the struct/interface name
 --- @param publish_names fun(names: string[])
 M.get_implementation_names = function(fcache, client, line, character, publish_names)
-	client.request("textDocument/implementation", {
+	client:request("textDocument/implementation", {
 		textDocument = vim.lsp.util.make_text_document_params(),
 		position = {
 			line = line,

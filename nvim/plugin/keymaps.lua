@@ -217,3 +217,5 @@ nmap("go", ":lua vim.lsp.buf.document_symbol()<cr>")
 -- 		end,
 -- 	})
 -- end)
+
+vim.keymap.set("x", "/", "<Esc>/\\%V") --search within visual selection - this is magic

@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 -- 在打开文件时跳转到上次编辑的位置
 vim.api.nvim_create_autocmd("BufReadPost", {
+	group = vim.api.nvim_create_augroup("edit_cache", { clear = true }),
 	callback = function(args)
 		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
 		local line_count = vim.api.nvim_buf_line_count(args.buf)
