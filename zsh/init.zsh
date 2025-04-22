@@ -13,7 +13,7 @@ zmodload zsh/zprof
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 source ~/.bash_profile
 # source your own zsh file if exists
-[ -f ~/.config/.zsh.sh ] && source ~/.config/.zsh.sh
+# [ -f ~/.config/.zsh.sh ] && source ~/.config/.zsh.sh
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then

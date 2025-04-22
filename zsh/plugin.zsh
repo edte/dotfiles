@@ -70,9 +70,9 @@ zinit ice wait atload'_history_substring_search_config' \
 zinit load 'ericbn/zsh-history-substring-search'
 
 # Oh My Zsh 功能
-zinit snippet OMZ::lib/clipboard.zsh
-zinit snippet OMZ::lib/completion.zsh
-zinit snippet OMZ::lib/history.zsh
+# zinit snippet OMZ::lib/clipboard.zsh
+# zinit snippet OMZ::lib/completion.zsh
+# zinit snippet OMZ::lib/history.zsh
 # zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::plugins/svn
 zinit snippet OMZ::lib/async_prompt.zsh

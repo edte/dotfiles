@@ -75,6 +75,9 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == "LICENSE"
 			or name == ".gitattributes"
 			or name == ".editorconfig"
+			or name == ".bash_profile"
+			or name == ".zshrc"
+			or name == ".bashrc"
 		then
 			return
 		end

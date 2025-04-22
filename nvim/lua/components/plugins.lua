@@ -481,7 +481,7 @@ M.list = {
 				"<M-n>",
 				mode = { "n", "i" },
 				function()
-					Snacks.terminal.toggle("fish")
+					Snacks.terminal.toggle("zsh")
 				end,
 				desc = "Toggle floating terminal",
 			},
@@ -489,7 +489,7 @@ M.list = {
 				"<m-n>",
 				mode = { "t" },
 				function()
-					Snacks.terminal.toggle("fish")
+					Snacks.terminal.toggle("zsh")
 				end,
 				ft = "snacks_terminal",
 				desc = "Toggle terminal",
