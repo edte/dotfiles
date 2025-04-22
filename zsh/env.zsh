@@ -1,7 +1,7 @@
 # 开启 ZSH 自带的自动补全：
 setopt AUTO_PUSHD
 
-export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+# export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 
 export LANGUAGE=en_US
 export LANG=en_US.UTF-8
@@ -29,12 +29,12 @@ export PATH=/usr/local/bin:$PATH
 # #oh my zsh 内置了安全功能、避免 oh my zsh 插件使用不安全的目录和文件，但是这意味着插件在加载时需要通过一系列 security checker。通过禁用安全功能 （export ZSH_DISABLE_COMPFIX="true"）可以使 zsh 启动速度加快 0.06s。微不足道，但值得一试。
 export ZSH_DISABLE_COMPFIX="true"
 
-export DYLD_LIBRARY_PATH=/usr/local/lib
+# export DYLD_LIBRARY_PATH=/usr/local/lib
 
 export LIBRIME_LIB_DIR=/usr/local/lib
 export LIBRIME_INCLUDE_DIR=/usr/local/include
 
-export BOOST_ROOT="$(pwd)/deps/boost-1.84.0"
+# export BOOST_ROOT="$(pwd)/deps/boost-1.84.0"
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#586e75'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#2cfc03'
@@ -51,14 +51,14 @@ export ESCDELAY=0
 
 export PATH=~/.local/bin/:$PATH
 
-export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+# export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
-export PNPM_HOME="/Users/edte/Library/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="/Users/edte/Library/pnpm"
+# case ":$PATH:" in
+# *":$PNPM_HOME:"*) ;;
+# *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac

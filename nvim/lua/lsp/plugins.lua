@@ -46,7 +46,7 @@ M.list = {
 	-- GoImplOpen
 	{
 		"fang2hou/go-impl.nvim",
-		ft = "go",
+		-- ft = "go",
 		cmd = "GoImplOpen",
 		opts = {},
 	},

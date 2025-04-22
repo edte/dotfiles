@@ -40,16 +40,16 @@ export ZSH_FZF_HISTORY_SEARCH_END_OF_LINE=true
 zinit load atuinsh/atuin
 
 # 彩色man手册
-zinit ice lucid wait='1'
-zinit light ael-code/zsh-colored-man-pages
+# zinit ice lucid wait='1'
+# zinit light ael-code/zsh-colored-man-pages
 
 # 快速目录跳转
 zinit ice lucid wait='1'
 zinit light skywind3000/z.lua.git
 
 # 双击esc给上一个命令加sudo
-zinit ice lucid wait='1'
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+# zinit ice lucid wait='1'
+# zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 
 # x 解压
 # zinit snippet OMZ::plugins/extract
@@ -82,5 +82,5 @@ zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZT::ys
 
 # 提示 alias
-zinit ice lucid wait='2'
-zinit light MichaelAquilina/zsh-you-should-use
+# zinit ice lucid wait='2'
+# zinit light MichaelAquilina/zsh-you-should-use
