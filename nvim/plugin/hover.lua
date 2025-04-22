@@ -1,3 +1,7 @@
+if vim.env.Test then
+    return
+end
+
 --- Slightly *fancier* LSP hover handler.
 local lsp_hover = {}
 

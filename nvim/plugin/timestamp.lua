@@ -1,3 +1,7 @@
+if vim.env.Test then
+    return
+end
+
 local function format_timestamp(timestamp)
 	local formatted_time
 	-- 判断时间戳是秒还是毫秒

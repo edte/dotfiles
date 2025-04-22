@@ -1,3 +1,7 @@
+if vim.env.Test then
+    return
+end
+
 local default_options = {
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	cmdheight = 0, -- more space in the neovim command line for displaying messages

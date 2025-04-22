@@ -1,3 +1,8 @@
+if vim.env.Test then
+    return
+end
+
+
 -- fuck default keymaps
 -- if vim.fn.has("nvim-0.11") == 1 then
 --     vim.keymap.del("", "grr", {})

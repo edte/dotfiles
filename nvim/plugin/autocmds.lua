@@ -1,3 +1,8 @@
+if vim.env.Test then
+    return
+end
+
+
 -- https://vi.stackexchange.com/questions/4493/what-is-the-order-of-winenter-bufenter-bufread-syntax-filetype-events
 
 -- autocmd({ "VimLeave" }, {

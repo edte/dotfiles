@@ -1,3 +1,8 @@
+if vim.env.Test then
+    return
+end
+
+
 -- 最大高亮单词长度
 local MAX_LEN = 64
 local window_matches = {} -- 记录每个窗口的匹配ID

@@ -1,3 +1,7 @@
+if vim.env.Test then
+    return
+end
+
 -- 这些文件只用用mac的open打开
 local open_files = {
 	"pdf",
