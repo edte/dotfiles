@@ -8,12 +8,12 @@ export LANG=en_US.UTF-8
 
 export PATH=/home/edte/.local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
-export HTTP_PROXY=
-export HTTPS_PROXY=
-export NO_PROXY="localhost,127.0.0.1"
-export http_proxy=$HTTP_PROXY
-export https_proxy=$HTTPS_PROXY
-export no_proxy=$NO_PROXY
+# export HTTP_PROXY=
+# export HTTPS_PROXY=
+# export NO_PROXY="localhost,127.0.0.1"
+# export http_proxy=$HTTP_PROXY
+# export https_proxy=$HTTPS_PROXY
+# export no_proxy=$NO_PROXY
 
 export GOPATH=/Users/edte/go
 export GOBIN=/Users/edte/go/bin
@@ -31,8 +31,8 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # export DYLD_LIBRARY_PATH=/usr/local/lib
 
-export LIBRIME_LIB_DIR=/usr/local/lib
-export LIBRIME_INCLUDE_DIR=/usr/local/include
+# export LIBRIME_LIB_DIR=/usr/local/lib
+# export LIBRIME_INCLUDE_DIR=/usr/local/include
 
 # export BOOST_ROOT="$(pwd)/deps/boost-1.84.0"
 
@@ -41,11 +41,11 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#2cfc03'
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=#fc0303'
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
-export YSU_MESSAGE_POSITION="after"
-export YSU_MESSAGE_FORMAT="%alias_type %command: %alias"
+# export YSU_MESSAGE_POSITION="after"
+# export YSU_MESSAGE_FORMAT="%alias_type %command: %alias"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 export ESCDELAY=0
 

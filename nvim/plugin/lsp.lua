@@ -10,7 +10,6 @@ local M = {
 	clangd = { "cpp", "c" },
 	jsonls = { "json" },
 	vimls = { "vim" },
-	bashls = { "zsh", "sh", "bash" }, -- -- bashls不能这样，不知道为啥
 }
 
 for k, v in pairs(M) do
@@ -23,7 +22,8 @@ for k, v in pairs(M) do
 	})
 end
 
--- vim.lsp.enable({ "bashls" })
+-- FIX: 这行代码不能删，而且不能放到上面的autocmd上，不知道为啥。。不然就会导致启动的第一个文件不能attach lsp，其他的文件可以
+vim.lsp.enable({ "bashls" })
 
 vim.api.nvim_create_user_command("LspLog", function()
 	vim.cmd(string.format("e %s", vim.lsp.get_log_path()))

@@ -16,11 +16,11 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 1024
 # bindkey "^[[B" history-beginning-search-forward
 
 # what is this
-source /Users/edte/.config/broot/launcher/bash/br
+# source /Users/edte/.config/broot/launcher/bash/br
 
 # 可以输入time命令，查看shell启动时间
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/Users/edte/.cargo/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="/Users/edte/.cargo/bin:$PATH"
 
 zstyle ':autocomplete:*' frecent-dirs off
 

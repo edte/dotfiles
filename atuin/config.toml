@@ -49,7 +49,7 @@
 
 ## which filter mode to use
 ## possible values: global, host, session, directory
-# filter_mode = "global"
+filter_mode = "workspace"
 
 ## With workspace filtering enabled, Atuin will filter for commands executed
 ## in any directory within a git repository tree (default: false)
@@ -69,7 +69,7 @@ workspaces = true
 ## which style to use
 ## possible values: auto, full, compact
 # style = "auto"
-style = "compact"
+style = "full"
 
 
 ## the maximum number of lines the interface should take up
@@ -103,6 +103,9 @@ show_preview = true
 
 ## default history list format - can also be specified with the --format arg
 # history_format = "{directory} - {command}"
+# history_format = "history list"
+
+# atuin_history_list
 
 ## prevent commands matching any of these regexes from being written to history.
 ## Note that these regular expressions are unanchored, i.e. if they don't start
@@ -154,7 +157,7 @@ enter_accept = false
 ## keybinding is defined.  If this is set to "emacs", "vim-insert", or
 ## "vim-normal", the startup keymap mode in the Atuin search is forced to be
 ## the specified one.
-keymap_mode = "vim-normal"
+keymap_mode = "vim-insert"
 
 ## Cursor style in each keymap mode.  If specified, the cursor style is changed
 ## in entering the cursor shape.  Available values are "default" and
@@ -169,7 +172,7 @@ keymap_mode = "vim-normal"
 
 ## Set this to true and Atuin will minimize motion in the UI - timers will not update live, etc.
 ## Alternatively, set env NO_MOTION=true
-# prefers_reduced_motion = false
+prefers_reduced_motion = false
 
 [stats]
 ## Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl

@@ -65,6 +65,7 @@ zinit light skywind3000/z.lua.git
 # 基础git依赖，不能删
 zinit snippet OMZ::lib/git.zsh
 
+# 这个不能删，不然上下键就看不了历史了
 zinit ice wait atload'_history_substring_search_config' \
     ver'dont-overwrite-config'
 zinit load 'ericbn/zsh-history-substring-search'

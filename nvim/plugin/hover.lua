@@ -1,5 +1,5 @@
 if vim.env.Test then
-    return
+	return
 end
 
 --- Slightly *fancier* LSP hover handler.
@@ -349,7 +349,7 @@ lsp_hover.setup = function(config)
 						vim.lsp.buf_request(
 							0,
 							"textDocument/hover",
-							vim.lsp.util.make_position_params(),
+							vim.lsp.util.make_position_params(0, "utf-8"),
 							lsp_hover.hover
 						)
 					end,
