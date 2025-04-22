@@ -1,7 +1,6 @@
 if vim.env.Test then
-    return
+	return
 end
-
 
 -- fuck default keymaps
 -- if vim.fn.has("nvim-0.11") == 1 then
@@ -89,6 +88,7 @@ nmap("U", "<c-r>")
 
 nmap("gI", "<cmd>Glance implementations<cr>")
 
+nmap("<C-]>", "<C-]>zz")
 nmap("gd", "<C-]>zz")
 
 nmap("grr", "<cmd>Glance references<cr>")
