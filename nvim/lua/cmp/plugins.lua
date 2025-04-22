@@ -40,6 +40,24 @@ M.list = {
 		ft = "lua",
 	},
 
+	-- 自定义代码片段
+	{
+		"L3MON4D3/LuaSnip",
+		lazy = true,
+		event = "InsertEnter",
+		config = function()
+			-- require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
+		end,
+		opts = {
+			history = true,
+			delete_check_events = "TextChanged",
+		},
+		dependencies = {
+			-- "rafamadriz/friendly-snippets",
+		},
+	},
+
 	-- cmp 补全基础插件
 	{
 		"hrsh7th/nvim-cmp",
@@ -194,24 +212,6 @@ M.list = {
 						min_percent = 0,
 					})
 				end,
-			},
-
-			-- 自定义代码片段
-			{
-				"L3MON4D3/LuaSnip",
-				lazy = true,
-				event = "InsertEnter",
-				config = function()
-					-- require("luasnip.loaders.from_vscode").lazy_load()
-					require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
-				end,
-				opts = {
-					history = true,
-					delete_check_events = "TextChanged",
-				},
-				dependencies = {
-					-- "rafamadriz/friendly-snippets",
-				},
 			},
 		},
 	},

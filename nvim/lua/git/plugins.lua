@@ -48,20 +48,20 @@ M.list = {
 	-- c 0 — 不选择
 	-- ] x — 移至上一个冲突
 	-- [ x — 移至下一个冲突
-	{
-		"akinsho/git-conflict.nvim",
-		-- cmd = {
-		--     "GitConflictChooseOurs",
-		--     "GitConflictChooseTheirs",
-		--     "GitConflictChooseBoth",
-		--     "GitConflictChooseNone",
-		--     "GitConflictNextConflict",
-		--     "GitConflictPrevConflict",
-		--     "GitConflictListQf",
-		-- },
-		version = "*",
-		config = true,
-	},
+	-- {
+	-- 	"akinsho/git-conflict.nvim",
+	-- 	-- cmd = {
+	-- 	--     "GitConflictChooseOurs",
+	-- 	--     "GitConflictChooseTheirs",
+	-- 	--     "GitConflictChooseBoth",
+	-- 	--     "GitConflictChooseNone",
+	-- 	--     "GitConflictNextConflict",
+	-- 	--     "GitConflictPrevConflict",
+	-- 	--     "GitConflictListQf",
+	-- 	-- },
+	-- 	version = "*",
+	-- 	config = true,
+	-- },
 
 	{
 		"echasnovski/mini-git",

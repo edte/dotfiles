@@ -311,7 +311,7 @@ function M.setup()
 				-- compare.kind,
 				-- compare.length, -- useless
 				-- require("cmp-under-comparator").under,
-				Require("clangd_extensions.cmp_scores"),
+				-- Require("clangd_extensions.cmp_scores"),
 			},
 		},
 	})

@@ -120,17 +120,17 @@ M.list = {
 		end,
 	},
 
-	{
-		"echasnovski/mini.align",
-		version = false,
-		config = function()
-			require("mini.align").setup({
-				mappings = {
-					start = "aa",
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.align",
+	-- 	version = false,
+	-- 	config = function()
+	-- 		require("mini.align").setup({
+	-- 			mappings = {
+	-- 				start = "aa",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- 使用 Treesitter 突出显示参数的定义和用法
 	{

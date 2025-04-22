@@ -290,55 +290,6 @@ M.list = {
 		end,
 	},
 
-	-- 灵活而时尚的模糊拾音器，LSP符号导航器等。由Zed的启发，由内置Selecta提供支持。
-	{
-		"bassamsdata/namu.nvim",
-		config = function()
-			require("namu").setup({
-				-- Enable the modules you want
-				namu_symbols = {
-					enable = true,
-					options = {
-						AllowKinds = {
-							default = {
-								"Function",
-								"Method",
-								-- "Class",
-								-- "Module",
-								-- "Property",
-								-- "Variable",
-							},
-							go = {
-								"Function",
-								"Method",
-								-- "Struct",
-								-- "Field",
-								-- "Interface",
-								-- "Constant",
-								-- "Property",
-							},
-						},
-					}, -- here you can configure namu
-				},
-				-- Optional: Enable other modules if needed
-				colorscheme = {
-					enable = false,
-					options = {
-						-- NOTE: if you activate persist, then please remove any vim.cmd("colorscheme ...") in your config, no needed anymore
-						persist = true, -- very efficient mechanism to Remember selected colorscheme
-						write_shada = false, -- If you open multiple nvim instances, then probably you need to enable this
-					},
-				},
-				ui_select = { enable = false }, -- vim.ui.select() wrapper
-			})
-			-- === Suggested Keymaps: ===
-			vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
-				desc = "Jump to LSP symbol",
-				silent = true,
-			})
-		end,
-	},
-
 	-- Neovim 的异步 linter 插件对内置语言服务器协议支持进行了补充
 	{
 		"mfussenegger/nvim-lint",

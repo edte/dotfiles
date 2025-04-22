@@ -162,6 +162,7 @@ M.list = {
 	-- Neovim 动作速度极快！
 	{
 		"edte/hop.nvim",
+		keys = "f",
 		config = function()
 			require("hop").setup({
 				jump_on_sole_occurrence = true,
@@ -424,8 +425,12 @@ M.list = {
 	-- 向任意方向移动任意选择
 	{
 		"echasnovski/mini.move",
-		version = false,
-		event = "VeryLazy",
+		keys = {
+			{ "<M-h>" },
+			{ "<M-l>" },
+			{ "<M-j>" },
+			{ "<M-k>" },
+		},
 		opts = {},
 	},
 
