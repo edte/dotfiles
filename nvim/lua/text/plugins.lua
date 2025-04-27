@@ -1,26 +1,26 @@
 local M = {}
 
 M.list = {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        cmd = {
-            "TSInstall",
-            "TSUninstall",
-            "TSUpdate",
-            "TSUpdateSync",
-            "TSInstallInfo",
-            "TSInstallSync",
-            "TSInstallFromGrammar",
-            "TSBufToggle",
-        },
-        event = "User FileOpened",
-        config = function()
-            local r = Require("text.treesitter")
-            if r ~= nil then
-                r.config()
-            end
-        end,
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     cmd = {
+    --         "TSInstall",
+    --         "TSUninstall",
+    --         "TSUpdate",
+    --         "TSUpdateSync",
+    --         "TSInstallInfo",
+    --         "TSInstallSync",
+    --         "TSInstallFromGrammar",
+    --         "TSBufToggle",
+    --     },
+    --     event = "User FileOpened",
+    --     config = function()
+    --         local r = Require("text.treesitter")
+    --         if r ~= nil then
+    --             r.config()
+    --         end
+    --     end,
+    -- },
 
     -- 语法感知文本对象、选择、移动、交换和查看支持。
     {

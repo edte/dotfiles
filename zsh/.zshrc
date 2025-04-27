@@ -13,3 +13,4 @@ source $HOME/dotfiles/zsh/init.zsh
 eval "$(atuin init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$PATH:$HOME/.ft"
