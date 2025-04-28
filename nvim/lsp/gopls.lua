@@ -16,7 +16,8 @@ return {
 				unusedwrite = true,
 				useany = true,
 			},
-			usePlaceholders = true,
+			-- 这个参数打开后，补全的时候会把参数名字和类型一起补全
+			usePlaceholders = false,
 			completeUnimported = true,
 			staticcheck = true,
 			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
