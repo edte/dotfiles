@@ -1,5 +1,5 @@
 if vim.env.Test then
-    return
+	return
 end
 
 -- 自动切换cwd（项目维度），方便各种插件使用，比如bookmark，arrow，telescope等等，
@@ -17,7 +17,8 @@ local M = {
 		"Makefile",
 		"makefile",
 		".git",
-		"README.md",
+		"LICENSE",
+		-- "README.md",
 		".gitignore",
 		"main.go",
 		"init.lua",
@@ -68,14 +69,15 @@ function M.find_lsp_root()
 end
 
 function M.find_pattern_root()
-	local res
-	for _, pattern in ipairs(M.patterns) do
-		res = vim.fs.root(0, pattern)
-		-- print(pattern, res)
-		if res then
-			return res
-		end
-	end
+	return vim.fs.root(0, M.patterns)
+	-- local res
+	-- for _, pattern in ipairs(M.patterns) do
+	-- 	res = vim.fs.root(0, pattern)
+	-- 	-- print(pattern, res)
+	-- 	if res then
+	-- 		return res
+	-- 	end
+	-- end
 end
 
 function M.get_project_root()

@@ -1,5 +1,5 @@
 if vim.env.Test then
-    return
+	return
 end
 
 -- 这些文件只用用mac的open打开
@@ -82,6 +82,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == ".bash_profile"
 			or name == ".zshrc"
 			or name == ".bashrc"
+			or name == "tags"
 		then
 			return
 		end
