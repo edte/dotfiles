@@ -44,6 +44,8 @@ wk.add({
 	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
 	{ "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "blame line" },
 	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
+	{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+	{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
 
 	-- lsp
 	{ "<leader>l", group = "lsp", desc = "lsp" },

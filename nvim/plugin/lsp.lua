@@ -75,3 +75,17 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 -- 		})
 -- 	end,
 -- })
+
+-- https://www.reddit.com/r/neovim/comments/1k7arqq/lsp_document_color_support_available_on_master/
+vim.api.nvim_create_autocmd("LspAttach", {
+	pattern = { "*.html", "*.vue", "*.css" },
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client == nil then
+			return
+		end
+		if client:supports_method("textDocument/documentColor") then
+			vim.lsp.document_color.enable(true, args.buf)
+		end
+	end,
+})

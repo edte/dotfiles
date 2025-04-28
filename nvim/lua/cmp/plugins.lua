@@ -76,6 +76,12 @@ M.list = {
 				"hrsh7th/cmp-nvim-lsp",
 				event = { "InsertEnter" },
 			},
+
+			{
+				"samiulsami/cmp-go-deep",
+				event = { "InsertEnter" },
+			},
+
 			-- {
 			-- 	"Exafunction/windsurf.nvim",
 			-- 	cmd = "Codeium",

@@ -249,7 +249,7 @@ M.list = {
 
 	-- 一个微型 Neovim 插件，用于在视觉模式下突出显示与当前选择匹配的文本
 	{
-		"wurli/visimatch.nvim",
+		"prime-run/visimatch.nvim",
 		opts = {
 			chars_lower_limit = 3,
 		},
