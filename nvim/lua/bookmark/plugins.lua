@@ -30,12 +30,11 @@ M.list = {
 	-- /Users/edte/.local/share/lvim
 	-- ~/.local/share/nvim/bookmarks/
 	{
-		name = "bookmarks",
-		dir = "bookmark.bookmarks",
-		virtual = true,
-		config = function()
-			Setup("bookmark.bookmarks")
-		end,
+		"edte/bookmarks.nvim",
+		dependencies = {
+			"folke/snacks.nvim",
+		},
+		opts = {},
 	},
 
 	-- Neovim 的小型自动化会话管理器

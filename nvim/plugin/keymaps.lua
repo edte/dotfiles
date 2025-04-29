@@ -224,3 +224,8 @@ nmap("go", ":lua vim.lsp.buf.document_symbol()<cr>")
 -- end)
 
 vim.keymap.set("x", "/", "<Esc>/\\%V") --search within visual selection - this is magic
+
+vim.keymap.set("n", "md", function()
+	require("marks"):delete_line_marks()
+	require("bookmarks").delete_bookmark()
+end, { desc = "bookmarks delete", silent = true })
