@@ -194,13 +194,9 @@ M.list = {
 
 	-- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
 	{
-		name = "codeLens",
-		dir = "lsp.codelens",
-		virtual = true,
+		"edte/codelens.nvim",
 		ft = { "lua", "go", "cpp" },
-		config = function()
-			require("lsp.codelens").setup()
-		end,
+		opts = {},
 	},
 
 	-- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。
@@ -230,15 +226,6 @@ M.list = {
 		"mrcjkb/rustaceanvim",
 		version = "^5", -- Recommended
 		ft = { "rust" },
-	},
-
-	{
-		name = "hover",
-		dir = "lsp.lsp_hover",
-		virtual = true,
-		config = function()
-			require("lsp.lsp_hover").setup()
-		end,
 	},
 
 	-- Neovim 的异步 linter 插件对内置语言服务器协议支持进行了补充
