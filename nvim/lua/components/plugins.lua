@@ -589,18 +589,6 @@ M.list = {
 		"echasnovski/mini.nvim",
 		event = "VeryLazy",
 		version = false,
-		opts = {
-			diff = {
-				view = {
-					style = "sign",
-					signs = {
-						add = "▎",
-						change = "▎",
-						delete = "",
-					},
-				},
-			},
-		},
 		config = function()
 			-- mini.hipatterns
 			-- 高亮todo
@@ -662,7 +650,36 @@ M.list = {
 			-- 高亮行尾空格，方便格式化
 			require("mini.trailspace").setup()
 
-			require("mini.diff").setup()
+			-- require("mini.diff").setup()
+		end,
+	},
+
+	{
+		"echasnovski/mini.diff",
+		-- event = "VeryLazy",
+		lazy = true,
+		version = false,
+		opts = {
+			view = {
+				style = "sign",
+				signs = {
+					add = "▎",
+					change = "▎",
+					delete = "",
+				},
+			},
+		},
+		keys = {
+			{
+				"<space>gd",
+				function()
+					require("mini.diff").toggle_overlay(0)
+				end,
+				desc = "Toggle mini.diff overlay",
+			},
+		},
+		config = function()
+			require("mini.diff").setup({})
 		end,
 	},
 

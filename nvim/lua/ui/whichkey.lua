@@ -46,13 +46,6 @@ wk.add({
 	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
 	{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n" }, desc = "Yank git link" },
 	{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n" }, desc = "Open git link" },
-	{
-		"<leader>gd",
-		function()
-			require("mini.diff").toggle_overlay(0)
-		end,
-		desc = "diff",
-	},
 
 	-- lsp
 	{ "<leader>l", group = "lsp", desc = "lsp" },
