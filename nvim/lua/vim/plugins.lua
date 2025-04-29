@@ -336,15 +336,6 @@ M.list = {
 		end,
 	},
 
-	-- 高亮行尾空格，方便格式化
-	{
-		"echasnovski/mini.trailspace",
-		version = false,
-		config = function()
-			require("mini.trailspace").setup()
-		end,
-	},
-
 	-- 在插入模式和命令行模式下提供emacs键位，比如c-a行首，c-e行尾，normal模式无效
 	{
 		"tpope/vim-rsi",

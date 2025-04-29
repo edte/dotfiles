@@ -103,12 +103,12 @@ M.list = {
 		init = function()
 			nmap("t", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
 		end,
-		cmd = { "P" },
+		keys = "t",
 		version = false,
 		config = function()
 			require("mini.splitjoin").setup({
 				mappings = {
-					toggle = "P",
+					toggle = "t",
 				},
 			})
 		end,

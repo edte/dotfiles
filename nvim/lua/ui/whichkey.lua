@@ -44,8 +44,15 @@ wk.add({
 	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
 	{ "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "blame line" },
 	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
-	{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-	{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+	{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n" }, desc = "Yank git link" },
+	{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n" }, desc = "Open git link" },
+	{
+		"<leader>gd",
+		function()
+			require("mini.diff").toggle_overlay(0)
+		end,
+		desc = "diff",
+	},
 
 	-- lsp
 	{ "<leader>l", group = "lsp", desc = "lsp" },
