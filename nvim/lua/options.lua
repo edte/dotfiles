@@ -127,3 +127,5 @@ vim.diagnostic.config({
         highlight_whole_line = false,
     },
 })
+
+vim.g.clipboard = "xclip"
