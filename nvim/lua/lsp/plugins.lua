@@ -199,6 +199,12 @@ M.list = {
 		opts = {},
 	},
 
+	-- K 的语法高亮插件
+	{
+		"edte/lsp-hover.nvim",
+		opts = {},
+	},
+
 	-- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。
 	{
 		"dnlhc/glance.nvim",
