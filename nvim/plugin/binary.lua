@@ -83,6 +83,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == ".zshrc"
 			or name == ".bashrc"
 			or name == "tags"
+			or name == ".ignore"
 		then
 			return
 		end

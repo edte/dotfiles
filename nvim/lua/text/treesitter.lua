@@ -158,20 +158,6 @@ M.config = function()
 	vim.keymap.set("n", "[c", function()
 		require("treesitter-context").go_to_context(vim.v.count1)
 	end, { silent = true })
-
-	-- 一个微型 Neovim 插件，用于处理树木保护单位。一个单元被定义为一个包含其所有子节点的树节点。它允许您快速选择、拉取、删除或替换特定于语言的范围。
-
-	-- 对于内部选择，将选择光标下的主节点。对于外部选择，选择下一个节点。
-
-	local unit = Require("treesitter-unit")
-	if unit == nil then
-		return
-	end
-
-	Api.nvim_set_keymap("x", "iu", '<cmd>lua require"treesitter-unit".select()<CR>', { noremap = true })
-	Api.nvim_set_keymap("x", "au", '<cmd>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
-	Api.nvim_set_keymap("o", "iu", '<cmd><c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
-	Api.nvim_set_keymap("o", "au", '<cmd><c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 end
 
 return M

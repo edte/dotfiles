@@ -37,7 +37,7 @@ M.list = {
 	-- nvim lua  源
 	{
 		"hrsh7th/cmp-nvim-lua",
-		ft = "lua",
+		event = "InsertEnter *.lua",
 	},
 
 	-- 自定义代码片段

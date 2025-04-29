@@ -225,6 +225,18 @@ M.list = {
 		end,
 	},
 
+	-- 更好的注释生成器。支持多种语言和注释约定。
+	-- gcn 在内部快速生成注释
+	{
+		"danymat/neogen",
+		after = "nvim-treesitter",
+		keys = "gcn",
+		config = function()
+			require("neogen").setup({})
+			nmap("gcn", "<cmd>lua require('neogen').generate()<CR>")
+		end,
+	},
+
 	-- Whichkey
 	{
 		"folke/which-key.nvim",
@@ -232,24 +244,12 @@ M.list = {
 		config = function()
 			require("ui.whichkey")
 		end,
-		dependencies = {
-			-- 更好的注释生成器。支持多种语言和注释约定。
-			-- gcn 在内部快速生成注释
-			{
-				"danymat/neogen",
-				after = "nvim-treesitter",
-				keys = "gcn",
-				config = function()
-					require("neogen").setup({})
-					nmap("gcn", "<cmd>lua require('neogen').generate()<CR>")
-				end,
-			},
-		},
 	},
 
 	-- 一个微型 Neovim 插件，用于在视觉模式下突出显示与当前选择匹配的文本
 	{
 		"prime-run/visimatch.nvim",
+		event = "ModeChanged *:v", -- 进入可视模式
 		opts = {
 			chars_lower_limit = 3,
 		},

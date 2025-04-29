@@ -199,48 +199,6 @@ M.list = {
 		ft = { "jce" },
 	},
 
-	-- Neovim 插件添加了对使用内置 LSP 的文件操作的支持
-	{
-		"antosha417/nvim-lsp-file-operations",
-		ft = { "vue" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-tree.lua",
-		},
-		config = function()
-			require("lsp-file-operations").setup()
-
-			local lspconfig = require("lspconfig")
-			lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-				capabilities = vim.tbl_deep_extend(
-					"force",
-					vim.lsp.protocol.make_client_capabilities(),
-					--     -- returns configured operations if setup() was already called
-					--     -- or default operations if not
-					require("lsp-file-operations").default_capabilities()
-				),
-			})
-		end,
-	},
-
-	-- 基于 Neovim 的命令预览功能的增量 LSP 重命名。
-	-- {
-	--     "smjonas/inc-rename.nvim",
-	--     -- cmd = "IncRename",
-	--     config = function()
-	--         require("inc_rename").setup({})
-	--     end,
-	-- },
-
-	-- 用于实时预览 lsp 重命名的 neovim 插件
-	-- {
-	--     "saecki/live-rename.nvim",
-	--     config = function()
-	--         local live_rename = require("live-rename")
-	--         vim.keymap.set("n", "R", live_rename.map({ text = "", insert = true }), { desc = "LSP rename" })
-	--     end
-	-- },
-
 	-- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
 	{
 		name = "codeLens",

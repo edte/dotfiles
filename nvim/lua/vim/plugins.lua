@@ -311,16 +311,6 @@ M.list = {
 		cmd = "UndotreeToggle",
 	},
 
-	-- vim match-up：更好的导航和突出显示匹配单词现代 matchit 和 matchparen。支持 vim 和 neovim + tree-sitter。
-	{
-		"andymass/vim-matchup",
-		config = function()
-			vim.g.matchup_matchparen_deferred = 1
-			vim.g.matchup_matchparen_hi_surround_always = 1
-			vim.g.matchup_matchparen_offscreen = {}
-		end,
-	},
-
 	-- Neovim 插件引入了新的操作员动作来快速替换和交换文本。
 	{
 		"gbprod/substitute.nvim",
@@ -434,24 +424,6 @@ M.list = {
 		opts = {},
 	},
 
-	-- 通过动作、文本对象或视觉模式轻松更改单词大小写。
-	-- camelCase 、 PascalCase 、 snake_case 、 kebab-case
-	-- crs （snake_case）、 MixedCase (crm )、camelCase ( crc )、UPPER_CASE (cru )、 dash-case (cr- ) 、  dot.case ( cr. )
-	-- gu 小写
-	-- gU 大写
-	-- ~ 转换为小写
-	{
-		"tpope/vim-abolish",
-		config = function() end,
-	},
-
-	-- 通过在 x 分钟不活动后自动关闭缓冲区，将缓冲区送入提前退休状态。
-	{
-		"chrisgrieser/nvim-early-retirement",
-		config = true,
-		event = "VeryLazy",
-	},
-
 	-- 快速添加括号或者引号，v模式选中再按就行，比surroud的sd好用很多，比较常用
 	{
 		"NStefan002/visual-surround.nvim",
@@ -479,6 +451,7 @@ M.list = {
 	-- 跨行不支持
 	{
 		"airblade/vim-matchquote",
+		keys = "%",
 	},
 
 	-- 一个非常轻量级的插件（~ 120loc），可突出显示您在命令行中输入的范围。

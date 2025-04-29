@@ -69,12 +69,6 @@ M.list = {
 		end,
 	},
 
-	{
-		"David-Kunz/treesitter-unit",
-		event = { "User FileOpened" },
-		after = "nvim-treesitter",
-	},
-
 	-- 显示代码上下文,包含函数签名
 	-- 只能从下面固定多少个，而不是从上面固定，所以如果套太多层，函数名会显示不出来
 	{
@@ -139,30 +133,34 @@ M.list = {
 			require("hlargs").setup()
 		end,
 	},
-	-- {
-	-- 	"aaronik/treewalker.nvim",
-	--
-	-- 	-- The following options are the defaults.
-	-- 	-- Treewalker aims for sane defaults, so these are each individually optional,
-	-- 	-- and setup() does not need to be called, so the whole opts block is optional as well.
-	-- 	opts = {
-	-- 		-- Whether to briefly highlight the node after jumping to it
-	-- 		highlight = true,
-	--
-	-- 		-- How long should above highlight last (in ms)
-	-- 		highlight_duration = 250,
-	--
-	-- 		-- The color of the above highlight. Must be a valid vim highlight group.
-	-- 		-- (see :h highlight-group for options)
-	-- 		highlight_group = "CursorLine",
-	-- 	},
-	-- 	config = function()
-	-- 		vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
-	-- 		vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
-	-- 		-- vim.keymap.set({ 'n', 'v' }, '<C-h>', '<cmd>Treewalker Left<cr>', { silent = true })
-	-- 		-- vim.keymap.set({ 'n', 'v' }, '<C-l>', '<cmd>Treewalker Right<cr>', { silent = true })
-	-- 	end,
-	-- },
+	{
+		"aaronik/treewalker.nvim",
+
+		-- The following options are the defaults.
+		-- Treewalker aims for sane defaults, so these are each individually optional,
+		-- and setup() does not need to be called, so the whole opts block is optional as well.
+		opts = {
+			-- Whether to briefly highlight the node after jumping to it
+			highlight = true,
+
+			-- How long should above highlight last (in ms)
+			highlight_duration = 250,
+
+			-- The color of the above highlight. Must be a valid vim highlight group.
+			-- (see :h highlight-group for options)
+			highlight_group = "CursorLine",
+		},
+		keys = {
+			{ "<c-k>", "<cmd>Treewalker Up<cr>", mode = { "n", "v" }, desc = "up" },
+			{ "<c-j>", "<cmd>Treewalker Down<cr>", mode = { "n", "v" }, desc = "down" },
+		},
+		-- config = function()
+		-- 	vim.keymap.set({ "n", "v" }, "<C-k>", "<cmd>Treewalker Up<cr>", { silent = true })
+		-- 	vim.keymap.set({ "n", "v" }, "<C-j>", "<cmd>Treewalker Down<cr>", { silent = true })
+		-- 	-- vim.keymap.set({ 'n', 'v' }, '<C-h>', '<cmd>Treewalker Left<cr>', { silent = true })
+		-- 	-- vim.keymap.set({ 'n', 'v' }, '<C-l>', '<cmd>Treewalker Right<cr>', { silent = true })
+		-- end,
+	},
 }
 
 return M
