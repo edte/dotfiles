@@ -19,15 +19,10 @@ M.list = {
 		},
 	},
 
-	-- mark，显示和标记删除
-	-- TODO: 集成默认大写mark
+	-- mark 插件，在singn栏展示，同时直接用大写字母来快速跳转,md 删除本行
 	{
-		name = "mark",
-		dir = "bookmark.mark",
-		virtual = true,
-		config = function()
-			Setup("bookmark.mark")
-		end,
+		"edte/marks.nvim",
+		opts = {},
 	},
 
 	-- 命名书签
@@ -65,11 +60,5 @@ M.list = {
 	--     end,
 	-- },
 }
-
-vim.keymap.set("n", "md", function()
-	local a
-	require("bookmark.mark").delete_line_marks(a)
-	require("bookmark.bookmarks").delete_bookmark()
-end, { desc = "esc", silent = true })
 
 return M
