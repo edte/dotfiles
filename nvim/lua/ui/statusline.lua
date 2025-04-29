@@ -48,6 +48,9 @@ local function get_branch()
 	if res == "致命错误：不是 git 仓库（或者任何父目录）：.git" then
 		return ""
 	end
+	if res == "" then
+		res = vim.fn.system("git rev-parse HEAD"):gsub("%c", "")
+	end
 	return "  " .. res
 end
 

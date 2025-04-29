@@ -31,6 +31,7 @@ return {
 				checkThirdParty = false,
 				library = vim.api.nvim_get_runtime_file("", true),
 			},
+			-- FIX: 这里需要解决，如果添加了这个会同时补全参数，不加这个又不补全括号
 			completion = {
 				callSnippet = "Replace",
 			},

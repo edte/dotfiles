@@ -23,6 +23,7 @@ function M.setup()
 		},
 	})
 
+	local ls = require("luasnip")
 	-- cmp.setup.cmdline(':', { { name = 'shellcmds_history' } })
 
 	-- cmp 源
@@ -113,6 +114,21 @@ function M.setup()
 		},
 
 		mapping = cmp.mapping.preset.insert({
+			["<tab>"] = cmp.mapping(function(fallback)
+				if ls.locally_jumpable(1) then
+					ls.jump(1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
+			["<s-tab>"] = cmp.mapping(function(fallback)
+				if ls.locally_jumpable(-1) then
+					ls.jump(-1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
+
 			["<space>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.close()
@@ -123,38 +139,17 @@ function M.setup()
 			end),
 			["<CR>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.confirm({ select = true })
-					-- cmp.complete()
+					if ls.expandable() then
+						ls.expand()
+					else
+						cmp.confirm({
+							select = true,
+						})
+					end
 				else
 					fallback()
 				end
-				_G.has_moved_up = false
 			end),
-			["<C-Space>"] = cmp.mapping.complete(),
-			["<C-e>"] = cmp.mapping.close(),
-			-- ["<down>"] = function(fallback)
-			-- if cmp.visible() then
-			--     if cmp.core.view.custom_entries_view:is_direction_top_down() then
-			--         -- cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-			--         cmp.select_next_item()
-			--     else
-			--         cmp.select_prev_item()
-			--     end
-			-- else
-			--     fallback()
-			-- end
-			-- end,
-			-- ["<up>"] = function(fallback)
-			--     if cmp.visible() then
-			--         if cmp.core.view.custom_entries_view:is_direction_top_down() then
-			--             cmp.select_prev_item()
-			--         else
-			--             cmp.select_next_item()
-			--         end
-			--     else
-			--         fallback()
-			--     end
-			-- end,
 		}),
 
 		matching = {
