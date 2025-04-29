@@ -1,13 +1,6 @@
 local M = {}
 
 M.list = {
-	-- 一个 Neovim 插件，提供与jsonls和yamlls一起使用的SchemaStore目录。
-	{
-		"b0o/SchemaStore.nvim",
-		lazy = true,
-		version = false, -- last release is way too old
-	},
-
 	-- go 插件
 	{
 		"ray-x/go.nvim",

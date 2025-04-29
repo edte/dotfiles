@@ -187,95 +187,6 @@ M.list = {
 		end,
 	},
 
-	-- Neovim Lua 插件用于扩展和创建 `a`/`i` 文本对象。 “mini.nvim”库的一部分。
-	-- |Key|     Name      |   Example line   |   a    |   i    |   2a   |   2i   |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | ( |  Balanced ()  | (( *a (bb) ))    |        |        |        |        |
-	-- | [ |  Balanced []  | [[ *a [bb] ]]    | [2;12] | [4;10] | [1;13] | [2;12] |
-	-- | { |  Balanced {}  | {{ *a {bb} }}    |        |        |        |        |
-	-- | < |  Balanced <>  | << *a <bb> >>    |        |        |        |        |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | ) |  Balanced ()  | (( *a (bb) ))    |        |        |        |        |
-	-- | ] |  Balanced []  | [[ *a [bb] ]]    |        |        |        |        |
-	-- | } |  Balanced {}  | {{ *a {bb} }}    | [2;12] | [3;11] | [1;13] | [2;12] |
-	-- | > |  Balanced <>  | << *a <bb> >>    |        |        |        |        |
-	-- | b |  Alias for    | [( *a {bb} )]    |        |        |        |        |
-	-- |   |  ), ], or }   |                  |        |        |        |        |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | " |  Balanced "   | "*a" " bb "      |        |        |        |        |
-	-- | ' |  Balanced '   | '*a' ' bb '      |        |        |        |        |
-	-- | ` |  Balanced `   | `*a` ` bb `      | [1;4]  | [2;3]  | [6;11] | [7;10] |
-	-- | q |  Alias for    | '*a' " bb "      |        |        |        |        |
-	-- |   |  ", ', or `   |                  |        |        |        |        |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | ? |  User prompt  | e*e o e o o      | [3;5]  | [4;4]  | [7;9]  | [8;8]  |
-	-- |   |(typed e and o)|                  |        |        |        |        |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | t |      Tag      | <x><y>*a</y></x> | [4;12] | [7;8]  | [1;16] | [4;12] |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | f | Function call | f(a, g(*b, c) )  | [6;13] | [8;12] | [1;15] | [3;14] |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- | a |   Argument    | f(*a, g(b, c) )  | [3;5]  | [3;4]  | [5;14] | [7;13] |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	-- |   |    Default    |                  |        |        |        |        |
-	-- |   |   (digits,    | aa_*b__cc___     | [4;7]  | [4;5]  | [8;12] | [8;9]  |
-	-- |   | punctuation,  | (example for _)  |        |        |        |        |
-	-- |   | or whitespace)|                  |        |        |        |        |
-	-- |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-	{
-		"echasnovski/mini.ai",
-		event = "VeryLazy",
-		opts = function()
-			local ai = require("mini.ai")
-
-			local function ai_buffer(ai_type)
-				local start_line, end_line = 1, vim.fn.line("$")
-				if ai_type == "i" then
-					-- Skip first and last blank lines for `i` textobject
-					local first_nonblank, last_nonblank = vim.fn.nextnonblank(start_line), vim.fn.prevnonblank(end_line)
-					-- Do nothing for buffer with all blanks
-					if first_nonblank == 0 or last_nonblank == 0 then
-						return { from = { line = start_line, col = 1 } }
-					end
-					start_line, end_line = first_nonblank, last_nonblank
-				end
-
-				local to_col = math.max(vim.fn.getline(end_line):len(), 1)
-				return { from = { line = start_line, col = 1 }, to = { line = end_line, col = to_col } }
-			end
-
-			return {
-				n_lines = 500,
-				custom_textobjects = {
-					o = ai.gen_spec.treesitter({ -- code block
-						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-					}),
-					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-					d = { "%f[%d]%d+" }, -- digits
-					e = { -- Word with case
-						{
-							"%u[%l%d]+%f[^%l%d]",
-							"%f[%S][%l%d]+%f[^%l%d]",
-							"%f[%P][%l%d]+%f[^%l%d]",
-							"^[%l%d]+%f[^%l%d]",
-						},
-						"^().*()$",
-					},
-					g = ai_buffer, -- buffer
-					u = ai.gen_spec.function_call(), -- u for "Usage"
-					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
-				},
-			}
-		end,
-
-		config = function()
-			require("mini.ai").setup({})
-		end,
-	},
-
 	-- 添加、删除、替换、查找、突出显示周围（如一对括号、引号等）。
 	-- 使用sa添加周围环境（在视觉模式或运动模式下）。
 	-- 用sd删除周围的内容。
@@ -289,6 +200,8 @@ M.list = {
 		keys = { "sa", "sd", "sr", "sh" },
 		config = function()
 			require("mini.surround").setup({
+				-- Number of lines within which surrounding is searched
+				n_lines = 100,
 				mappings = {
 					add = "sa", -- Add surrounding in Normal and Visual modes
 					delete = "sd", -- Delete surrounding
