@@ -553,7 +553,7 @@ M.list = {
 			rename = { enabled = true },
 			scope = { enabled = true },
 			scratch = { enabled = true },
-			scroll = { enabled = true },
+			scroll = { enabled = false },
 			statuscolumn = {
 				enabled = true,
 				left = { "mark" }, -- priority of signs on the left (high to low)
