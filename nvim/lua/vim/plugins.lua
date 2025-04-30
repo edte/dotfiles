@@ -33,13 +33,6 @@ M.list = {
 		opts = {},
 	},
 
-	-- 使用“.”启用重复支持的插件映射
-	{
-		"tpope/vim-repeat",
-		keys = { "." },
-		event = "VeryLazy",
-	},
-
 	-- gx 打开 URL
 	{
 		"chrishrb/gx.nvim",
