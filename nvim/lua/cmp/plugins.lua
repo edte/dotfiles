@@ -4,19 +4,8 @@ M.list = {
 
 	-- go 导包
 	{
-		name = "cmp-go-pkgs",
-		dir = "cmp.cmp_go_pkgs",
-		virtual = true,
+		"edte/cmp-go-pkgs.nvim",
 		ft = "go",
-		-- event = { "InsertEnter *.go" },
-
-		config = function()
-			require("cmp.cmp_go_pkgs").new()
-			require("cmp").register_source("go_pkgs", require("cmp.cmp_go_pkgs"))
-			vim.api.nvim_create_user_command("CurNode", function(c)
-				require("cmp_go_pkgs.source").kek(c)
-			end, {})
-		end,
 	},
 
 	-- Neovim 更快的 LuaLS 设置
