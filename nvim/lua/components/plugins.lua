@@ -43,17 +43,33 @@ M.list = {
 	-- },
 
 	-- Neovim 中人类可读的内联 cron 表达式
-	-- {
-	-- 	"fabridamicelli/cronex.nvim",
-	-- 	opts = {},
-	-- 	ft = { "go" },
-	-- 	config = function()
-	-- 		local r = Require("components.cron")
-	-- 		if r ~= nil then
-	-- 			r.cronConfig()
-	-- 		end
-	-- 	end,
-	-- },
+	-- 	{
+	-- 		"fabridamicelli/cronex.nvim",
+	-- 		opts = {},
+	-- 		ft = { "go" },
+	-- 		config = function()
+	-- 			require("cronex").setup({
+	-- 				explainer = {
+	-- 					cmd = "hcron",
+	-- 					args = { "-24-hour", "-locale", "zh_CN" },
+	-- 				},
+	--
+	-- 				format = function(s)
+	-- 					return require("cronex.format").all_after_colon(s)
+	-- 				end,
+	-- 			})
+	--
+	-- 			cmd([[
+	-- augroup input_method
+	--   autocmd!
+	--   autocmd InsertEnter * :CronExplainedEnable
+	--   autocmd InsertLeave * :CronExplainedEnable
+	-- augroup END
+	-- ]])
+	--
+	-- 			cmd("CronExplainedEnable")
+	-- 		end,
+	-- 	},
 
 	-- 翻译插件
 	{
@@ -659,7 +675,44 @@ M.list = {
 		config = function()
 			-- mini.hipatterns
 			-- 高亮todo
-			require("components.todo").setup()
+			local make_pattern_in_comment = function(pattern)
+				return function(buf_id)
+					local cs = vim.bo[buf_id].commentstring
+					if cs == nil or cs == "" then
+						cs = "# %s"
+					end
+
+					-- Extract left and right part relative to '%s'
+					local left, right = cs:match("^(.*)%%s(.-)$")
+					left, right = vim.trim(left), vim.trim(right)
+					-- General ideas:
+					-- - Line is commented if it has structure
+					-- "whitespace - comment left - anything - comment right - whitespace"
+					-- - Highlight pattern only if it is to the right of left comment part
+					--   (possibly after some whitespace)
+					-- Example output for '/* %s */' commentstring: '^%s*/%*%s*()TODO().*%*/%s*'
+					return string.format("^%%s*%s%%s*()%s().*%s%%s*$", vim.pesc(left), pattern, vim.pesc(right))
+				end
+			end
+
+			-- 创建高亮组
+			highlight("HG_TODO_LIST_WARN", { italic = true, bold = true, bg = "#ffc777", fg = "#222436" })
+			highlight("HG_TODO_LIST_FIX", { italic = true, bold = true, bg = "#c53b53", fg = "#222436" })
+			highlight("HG_TODO_LIST_NOTE", { italic = true, bold = true, bg = "#4fd6be", fg = "#222436" })
+			highlight("HG_TODO_LIST_TODO", { italic = true, bold = true, bg = "#0db9d7", fg = "#222436" })
+
+			local hipatterns = require("mini.hipatterns")
+			hipatterns.setup({
+				highlighters = {
+					fix = { pattern = make_pattern_in_comment("FIX:"), group = "HG_TODO_LIST_FIX" },
+					warn = { pattern = make_pattern_in_comment("WARN:"), group = "HG_TODO_LIST_WARN" },
+					todo = { pattern = make_pattern_in_comment("TODO:"), group = "HG_TODO_LIST_TODO" },
+					note = { pattern = make_pattern_in_comment("NOTE:"), group = "HG_TODO_LIST_NOTE" },
+
+					-- Highlight hex color strings (`#rrggbb`) using that color
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
 
 			-- mini.pairs
 			-- 括号补全

@@ -10,7 +10,6 @@ M.config = function()
 
 	-- TSBufToggle highlight
 
-	-- TODO: 这里go不能自动高亮
 	config.setup({
 		ensure_installed = {
 			"bash",
