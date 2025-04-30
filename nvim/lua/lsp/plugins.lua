@@ -182,6 +182,7 @@ M.list = {
 	-- K 的语法高亮插件
 	{
 		"edte/lsp-hover.nvim",
+		-- keys = "K",
 		opts = {},
 	},
 

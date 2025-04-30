@@ -281,16 +281,16 @@ M.list = {
 				"niuiic/blink-cmp-rg.nvim",
 			},
 
-			{
-				"hrsh7th/cmp-nvim-lua",
-				event = { "InsertEnter *.lua" },
-			},
+			-- {
+			-- 	"hrsh7th/cmp-nvim-lua",
+			-- 	event = { "InsertEnter *.lua" },
+			-- },
 
 			-- 上下文语法补全
-			{
-				"ray-x/cmp-treesitter",
-				event = { "InsertEnter" },
-			},
+			-- {
+			-- 	"ray-x/cmp-treesitter",
+			-- 	event = { "InsertEnter" },
+			-- },
 			-- 自定义代码片段
 			{
 				"L3MON4D3/LuaSnip",
@@ -300,10 +300,10 @@ M.list = {
 					require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
 				end,
 			},
-			{
-				"edte/cmp-nvim-lsp-signature-help",
-				event = { "InsertEnter" },
-			},
+			-- {
+			-- 	"edte/cmp-nvim-lsp-signature-help",
+			-- 	event = { "InsertEnter" },
+			-- },
 		},
 
 		config = function()
@@ -340,7 +340,7 @@ M.list = {
 						"Tabnine",
 						-- "lazydev",
 						"ripgrep",
-						"nvim_lua",
+						-- "nvim_lua",
 						"go_import",
 						-- "signature",
 					},
