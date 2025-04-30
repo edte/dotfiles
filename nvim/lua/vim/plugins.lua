@@ -105,21 +105,6 @@ M.list = {
 		end,
 	},
 
-	-- Vim 的扩展 f、F、t 和 T 键映射。
-	-- {
-	-- 	"rhysd/clever-f.vim",
-	-- 	keys = { "f" },
-	-- 	config = function()
-	-- 		vim.g.clever_f_across_no_line = 1
-	-- 		vim.g.clever_f_mark_direct = 1
-	-- 		vim.g.clever_f_smart_case = 1
-	-- 		vim.g.clever_f_fix_key_direction = 1
-	-- 		vim.g.clever_f_show_prompt = 1
-	-- 		Api.nvim_del_keymap("n", "t")
-	-- 		Api.nvim_del_keymap("n", "T")
-	-- 	end,
-	-- },
-
 	-- 在 Vim 中，在字符上按 ga 显示其十进制、八进制和十六进制表示形式。 Characterize.vim 通过以下补充对其进行了现代化改造：
 	-- Unicode 字符名称： U+00A9 COPYRIGHT SYMBOL
 	-- Vim 二合字母（在 <C-K> 之后键入以插入字符）： Co , cO
@@ -267,15 +252,6 @@ M.list = {
 		},
 	},
 
-	-- {
-	--     'nullromo/go-up.nvim',
-	--     opts = {}, -- specify options here
-	--     config = function(_, opts)
-	--         local goUp = require('go-up')
-	--         goUp.setup(opts)
-	--     end,
-	-- },
-
 	-- Neovim 插件，用于预览寄存器的内容
 	-- 调用:Registers
 	-- 按 " 在正常或可视模式下
@@ -336,21 +312,7 @@ M.list = {
 			require("visual-surround").setup({})
 		end,
 	},
-	-- -- Neovim的简单模式查看器，并支持LUA模式和正则表达式。
-	-- {
-	--     "OXY2DEV/patterns.nvim",
-	-- },
 
-	-- 在插入模式下来回跳转
-	-- {
-	-- 	"AgusDOLARD/backout.nvim",
-	-- 	opts = {},
-	-- 	keys = {
-	-- 		-- Define your keybinds
-	-- 		{ "<c-k>", "<cmd>lua require('backout').back()<cr>", mode = { "i", "c" } },
-	-- 		{ "<c-j>", "<cmd>lua require('backout').out()<cr>", mode = { "i", "c" } },
-	-- 	},
-	-- },
 	-- 行内支持 % 跳转引号
 	-- 跨行不支持
 	{

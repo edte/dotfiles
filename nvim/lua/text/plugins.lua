@@ -87,16 +87,6 @@ M.list = {
 		end,
 	},
 
-	-- 如果打开的文件很大，此插件会自动禁用某些功能。文件大小和要禁用的功能是可配置的。
-	-- {
-	-- 	"lunarvim/bigfile.nvim",
-	-- 	config = function()
-	-- 		require("text.bigfile").config()
-	-- 	end,
-	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
-	-- 	event = { "FileReadPre", "BufReadPre", "User FileOpened" },
-	-- },
-
 	-- Neovim Lua 插件用于拆分和连接参数。 “mini.nvim” 库的一部分。
 	{
 		"echasnovski/mini.splitjoin",
