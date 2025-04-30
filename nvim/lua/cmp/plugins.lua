@@ -4,24 +4,9 @@ M.list = {
 
 	-- go 导包
 	{
-		"edte/cmp-go-pkgs.nvim",
+		"edte/more-go.nvim",
 		ft = "go",
 	},
-
-	-- Neovim 更快的 LuaLS 设置
-	-- {
-	-- 	"folke/lazydev.nvim",
-	-- 	ft = "lua",
-	-- 	cmd = "LazyDev",
-	-- 	opts = {
-	-- 		library = {
-	-- 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-	-- 			{ path = "LazyVim", words = { "LazyVim" } },
-	-- 			{ path = "snacks.nvim", words = { "Snacks" } },
-	-- 			{ path = "lazy.nvim", words = { "LazyVim" } },
-	-- 		},
-	-- 	},
-	-- },
 
 	-- nvim lua  源
 	{
@@ -297,21 +282,10 @@ M.list = {
 	-- 				require("luasnip.loaders.from_vscode").lazy_load()
 	-- 				require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
 	-- 			end,
-	-- 			-- dependencies = {
-	-- 			--     "rafamadriz/friendly-snippets",
-	-- 			-- },
 	-- 		},
 	-- 		{
 	-- 			"edte/cmp-nvim-lsp-signature-help",
 	-- 			event = { "InsertEnter" },
-	-- 		},
-	--
-	-- 		{
-	-- 			"edte/blink-go-import.nvim",
-	-- 			ft = "go",
-	-- 			config = function()
-	-- 				require("blink-go-import").setup()
-	-- 			end,
 	-- 		},
 	-- 	},
 	--
@@ -355,18 +329,18 @@ M.list = {
 	-- 					"ripgrep",
 	-- 					"nvim_lua",
 	-- 					"go_import",
-	-- 					"signature",
+	-- 					-- "signature",
 	-- 				},
 	-- 				providers = {
-	-- 					signature = {
-	-- 						name = "nvim_lsp_signature_help",
-	-- 						module = "blink.compat.source",
-	-- 						score_offset = -9,
-	-- 					},
+	-- 					-- signature = {
+	-- 					-- 	name = "nvim_lsp_signature_help",
+	-- 					-- 	module = "blink.compat.source",
+	-- 					-- 	score_offset = -9,
+	-- 					-- },
 	--
 	-- 					go_import = {
 	-- 						name = "Module",
-	-- 						module = "blink-go-import",
+	-- 						module = "more-go.go-pkgs-blink",
 	-- 					},
 	-- 					lsp = {
 	-- 						name = "LSP",
