@@ -7,14 +7,16 @@ M.list = {
 		"rhysd/git-messenger.vim",
 		config = function()
 			vim.cmd([[
-                let g:git_messenger_floating_win_opts = { 'border': 'single' }
-                let g:git_messenger_popup_content_margins = v:false
-                let g:git_messenger_date_format="%F %H:%M"
-                let g:git_messenger_no_default_mappings=v:true
-            ]])
+	               let g:git_messenger_floating_win_opts = { 'border': 'single' }
+	               let g:git_messenger_popup_content_margins = v:false
+	               let g:git_messenger_date_format="%F %H:%M"
+	               let g:git_messenger_no_default_mappings=v:true
+	           ]])
 		end,
 	},
 
+	-- Git blame
+	-- FIX: 大文件会很慢，看异步咋优化，git-messenger.nvim 就很快
 	{
 		"edte/git-blame.nvim",
 		lazy = true,
