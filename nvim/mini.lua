@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"edte/marks.nvim",
-		opts = {},
+		"OXY2DEV/foldtext.nvim",
+		lazy = false,
 	},
 })

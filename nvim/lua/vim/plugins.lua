@@ -203,7 +203,7 @@ M.list = {
 	},
 
 	-- Neovim 插件引入了新的操作员动作来快速替换和交换文本。
-	{
+	{ --${conf, substitute.nvim}
 		"gbprod/substitute.nvim",
 		opts = {
 			-- your configuration comes here
@@ -261,7 +261,7 @@ M.list = {
 	},
 
 	-- nvim-hlslens 帮助您更好地浏览匹配的信息，在匹配的实例之间无缝跳转。
-	{
+	{ --${conf, nvim-hlslens}
 		"kevinhwang91/nvim-hlslens",
 		keys = { "n", "N", "*", "#", "g*", "g#", "/", "?" },
 		config = function()
@@ -314,7 +314,7 @@ M.list = {
 	},
 
 	-- 一个非常轻量级的插件（~ 120loc），可突出显示您在命令行中输入的范围。
-	{ -- ${func, A helper function}
+	{ --${conf, range-highlight}
 		"winston0410/range-highlight.nvim",
 		event = { "CmdlineEnter" },
 		config = function()
@@ -324,7 +324,8 @@ M.list = {
 		end,
 	},
 
-	{
+	-- Neovim 的动态和风格化折叠文本
+	{ --${conf, foldtext}
 		"OXY2DEV/foldtext.nvim",
 		lazy = false,
 	},

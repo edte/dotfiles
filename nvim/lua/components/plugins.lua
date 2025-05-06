@@ -161,7 +161,7 @@ M.list = {
 	-- 自动保存会话
 	-- 保存目录是：（不知道哪里配置的）
 	-- /Users/edte/.local/state/nvim/view
-	{
+	{ --${conf, mini.sessions}
 		"echasnovski/mini.sessions",
 		config = function()
 			require("mini.sessions").setup({
@@ -180,6 +180,7 @@ M.list = {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
 						MiniSessions.read(GetPath())
+						vim.cmd([[silent! loadview]])
 					end
 				end,
 				nested = true,
@@ -191,6 +192,7 @@ M.list = {
 					end
 
 					MiniSessions.write(GetPath())
+					vim.cmd([[silent! mkview]])
 				end,
 			})
 		end,
@@ -441,7 +443,7 @@ M.list = {
 	--     },
 	-- },
 
-	{
+	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
@@ -601,7 +603,7 @@ M.list = {
 	},
 
 	-- mini 全家桶
-	{
+	{ --${conf, mini}
 		"echasnovski/mini.nvim",
 		event = "VeryLazy",
 		opts = {
