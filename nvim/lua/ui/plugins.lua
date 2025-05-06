@@ -3,14 +3,8 @@ local M = {}
 M.list = {
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
+		lazy = true,
 		opts = { style = "moon" },
-		config = function()
-			cmd([[colorscheme tokyonight]])
-		end,
-		dependencies = {
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
 	},
 
 	{
