@@ -19,6 +19,8 @@ export GOPATH=/Users/edte/go
 export GOBIN=/Users/edte/go/bin
 export PATH=$PATH:$GOPATH/bin
 
+export PATH=$PATH:/Users/edte/nvim-macos-arm64/bin
+
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8

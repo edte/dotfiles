@@ -17,6 +17,7 @@ function backup() {
 }
 
 function update() {
+    tmp=$(pwd)
     cd ~
     mv gongfeng-copilot-vim-latest.tar.gz gongfeng-copilot-vim-latest.tar.gz.bk
     wget https://mirrors.tencent.com/repository/generic/gongfeng-copilot/vim/gongfeng-copilot-vim-latest.tar.gz
@@ -26,12 +27,19 @@ function update() {
     git add .
     git commit -m "update"
     git push origin master
+
+    cd ~
+    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
+    tar xzf nvim-macos-arm64.tar.gz
+
     brew install --cask squirrel
     bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
     zinit self-update
     zinit update --parallel
     brew update
     brew upgrade
+
+    cd $tmp
 }
 
 function tpushbuild() {

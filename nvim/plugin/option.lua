@@ -1,5 +1,5 @@
 if vim.env.Test then
-    return
+	return
 end
 
 local default_options = {
@@ -153,18 +153,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- vim.g.loaded_zip = 0
--- vim.g.loaded_zipPlugin = 1
--- vim.g.zip_unzipcmd = "unzip"
--- vim.g.zip_zipcmd = "zip"
--- vim.cmd([[
---  let g:zipPlugin_ext= '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,
--- \ *.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,
--- \ *.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.xlam,*.xlsx,*.xlsm,
--- \ *.xlsb,*.xltx,*.xltm,*.xlam,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx,*.epub'
--- ]])
-
 -- https://www.reddit.com/r/neovim/comments/1k24zgk/weak_git_diff_in_neovim/
 if vim.fn.has("patch-9.1.1243") == 1 then
 	vim.opt.diffopt:append("inline:word")
 end
+
+-- https://github.com/neovim/neovim/pull/27855
+require("vim._extui").enable({})

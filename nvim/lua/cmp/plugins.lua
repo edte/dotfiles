@@ -217,9 +217,9 @@ M.list = {
 		"edte/copilot",
 	},
 
-	{
-		"tpope/vim-endwise",
-	},
+	-- {
+	-- 	"tpope/vim-endwise",
+	-- },
 
 	-- Neovim 插件可快速插入日志语句并捕获日志输出
 	-- glj	    :      在光标下方插入一条日志语句
