@@ -42,8 +42,8 @@ wk.add({
 	{ "<leader>gs", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "status" },
 	-- { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
 	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
-	{ "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "blame line" },
-	{ "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
+	{ "<leader>gl", "<cmd>lua require('git-blame.view').show()<cr>", desc = "blame line" },
+	-- { "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
 	{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n" }, desc = "Yank git link" },
 	{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n" }, desc = "Open git link" },
 

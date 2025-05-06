@@ -75,6 +75,9 @@ M.list = {
 				marks = {
 					enable = false,
 				},
+				gitsigns = {
+					enable = false,
+				},
 			},
 		},
 	},

@@ -16,6 +16,12 @@ function backup() {
     cd ~/dotfiles/ && git add . && git commit && git push origin master && cd -
 }
 
+function commit() {
+    git add .
+    git commit
+    git push
+}
+
 function update() {
     tmp=$(pwd)
     cd ~

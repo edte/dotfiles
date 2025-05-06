@@ -1,27 +1,23 @@
 local M = {}
 
 M.list = {
+
+	-- GitMessenger
 	{
-		"lewis6991/gitsigns.nvim",
-		lazy = false,
-		opts = {
-			signcolumn = false,
-			signs = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "" },
-				topdelete = { text = "" },
-				changedelete = { text = "▎" },
-				untracked = { text = "▎" },
-			},
-			signs_staged = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "" },
-				topdelete = { text = "" },
-				changedelete = { text = "▎" },
-			},
-		},
+		"rhysd/git-messenger.vim",
+		config = function()
+			vim.cmd([[
+                let g:git_messenger_floating_win_opts = { 'border': 'single' }
+                let g:git_messenger_popup_content_margins = v:false
+                let g:git_messenger_date_format="%F %H:%M"
+                let g:git_messenger_no_default_mappings=v:true
+            ]])
+		end,
+	},
+
+	{
+		"edte/git-blame.nvim",
+		lazy = true,
 	},
 
 	-- 单选项卡界面可轻松循环浏览任何 git rev 的所有修改文件的差异。
@@ -94,19 +90,6 @@ M.list = {
 	-- 	version = "*",
 	-- 	config = true,
 	-- },
-
-	-- Neovim 逃亡风格 git Blame 插件
-	{
-		"FabijanZulj/blame.nvim",
-		lazy = true,
-		cmd = { "BlameToggle" },
-		config = function()
-			require("blame").setup()
-		end,
-		opts = {
-			blame_options = { "-w" },
-		},
-	},
 
 	-- Neovim的 lua 插件，用于为 git 主机网站生成可共享文件永久链接（带有行范围）
 	{
