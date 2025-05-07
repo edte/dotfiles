@@ -315,7 +315,7 @@ M.list = {
 
 	-- 一个非常轻量级的插件（~ 120loc），可突出显示您在命令行中输入的范围。
 	{ --${conf, range-highlight}
-		"winston0410/range-highlight.nvim",
+		"pipoprods/range-highlight.nvim",
 		event = { "CmdlineEnter" },
 		config = function()
 			require("range-highlight").setup({

@@ -1,5 +1,5 @@
 if vim.env.Test then
-    return
+	return
 end
 
 -- tmux 状态栏和vim 状态栏同步
@@ -19,5 +19,10 @@ Autocmd({ "FocusGained", "VimResume" }, {
 	end,
 })
 
-local p = vim.system({ "tmux", "set", "status", "off" }):wait()
-assert(p.code == 0, p.stderr)
+Autocmd({ "VimEnter" }, {
+	group = GroupId("tmux-status-init", { clear = true }),
+	callback = function()
+		local p = vim.system({ "tmux", "set", "status", "off" }):wait()
+		assert(p.code == 0, p.stderr)
+	end,
+})

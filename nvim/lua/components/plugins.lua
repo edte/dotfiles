@@ -80,7 +80,7 @@ M.list = {
 	-- markdown预览
 	{
 		"OXY2DEV/markview.nvim",
-		ft = { "markdown", "Avante" },
+		ft = { "markdown" },
 
 		branch = "dev",
 

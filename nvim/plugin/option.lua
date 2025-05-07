@@ -163,17 +163,11 @@ end
 -- https://github.com/neovim/neovim/pull/27855
 -- require("vim._extui").enable({})
 
-vim.api.nvim_create_autocmd({ "BufLeave" }, {
-	pattern = "?*",
-	group = vim.api.nvim_create_augroup("remember_folds", { clear = true }),
-	callback = function()
-		vim.cmd([[mkview]])
-	end,
-})
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-	pattern = "?*",
-	group = vim.api.nvim_create_augroup("remember_folds", { clear = true }),
-	callback = function()
-		vim.cmd([[loadview]])
-	end,
-})
+-- https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save/37558470#37558470
+-- vim.cmd([[
+-- augroup remember_folds
+--   autocmd!
+--   autocmd BufWinLeave * mkview
+--   autocmd BufWinEnter * silent! loadview
+-- augroup END
+-- ]])
