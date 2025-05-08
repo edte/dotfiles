@@ -145,15 +145,15 @@ vim.o.diffopt = "internal,filler,vertical,closeoff"
 -- vim.o.winborder = "rounded"
 
 -- 如果lsp支持，则换成lsp折叠
--- vim.api.nvim_create_autocmd("LspAttach", {
--- 	callback = function(args)
--- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
--- 		if client:supports_method("textDocument/foldingRange") then
--- 			local win = vim.api.nvim_get_current_win()
--- 			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
--- 		end
--- 	end,
--- })
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client:supports_method("textDocument/foldingRange") then
+			local win = vim.api.nvim_get_current_win()
+			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+		end
+	end,
+})
 
 -- https://www.reddit.com/r/neovim/comments/1k24zgk/weak_git_diff_in_neovim/
 if vim.fn.has("patch-9.1.1243") == 1 then

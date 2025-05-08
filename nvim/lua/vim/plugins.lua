@@ -8,7 +8,10 @@ M.list = {
 			{ "kkharji/sqlite.lua" },
 		},
 		opts = {
-			ring = { storage = "sqlite" },
+			ring = {
+				storage = "sqlite",
+				update_register_on_cycle = true,
+			},
 			highlight = {
 				on_put = true,
 				on_yank = true,
@@ -17,8 +20,8 @@ M.list = {
 		},
 		keys = {
 			{ "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
-			{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-			{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+			-- { "p", "<Plug>(YankyPutAfter)", mode = { "n" }, desc = "Put yanked text after cursor" },
+			{ "p", "<Plug>(YankyPutBefore)", mode = { "x" }, desc = "Put yanked text before cursor" },
 		},
 	},
 
