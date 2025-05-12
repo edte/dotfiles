@@ -308,6 +308,8 @@ M.list = {
 
 		config = function()
 			require("blink.cmp").setup({
+				cmdline = { enabled = false },
+
 				keymap = {
 					preset = "default",
 					["<Enter>"] = { "select_and_accept", "fallback" },
@@ -332,18 +334,23 @@ M.list = {
 				},
 
 				sources = {
-					default = {
-						"lsp",
-						"path",
-						"snippets",
-						"buffer",
-						"Tabnine",
-						-- "lazydev",
-						"ripgrep",
-						-- "nvim_lua",
-						"go_import",
-						-- "signature",
-					},
+					-- default = function(ctx)
+					-- 	local success, node = pcall(vim.treesitter.get_node)
+					-- 	if
+					-- 		success
+					-- 		and node
+					-- 		and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+					-- 	then
+					-- 		return { "buffer" }
+					-- 	elseif vim.bo.filetype == "go" then
+					-- 		return { "lsp", "path", "snippets", "buffer", "Tabnine", "ripgrep", "go_import" }
+					-- 	else
+					-- 		return { "lsp", "path", "snippets", "buffer", "Tabnine", "ripgrep" }
+					-- 	end
+					-- end,
+
+					default = { "lsp", "path", "snippets", "buffer", "Tabnine", "ripgrep", "go_import" },
+
 					providers = {
 						-- signature = {
 						-- 	name = "nvim_lsp_signature_help",
@@ -365,9 +372,18 @@ M.list = {
 							opts = {
 								search_paths = { NEOVIM_CONFIG_PATH .. "/lua/cmp/snippets/" },
 							},
+							-- 隐藏触发字符后的片段
+							should_show_items = function(ctx)
+								return ctx.trigger.initial_kind ~= "trigger_character"
+							end,
 						},
+						-- 从 cwd 而不是当前缓冲区的目录完成路径
 						path = {
-							opts = { get_cwd = vim.uv.cwd },
+							opts = {
+								get_cwd = function(_)
+									return vim.fn.getcwd()
+								end,
+							},
 						},
 						buffer = {
 							max_items = 4,
@@ -446,6 +462,8 @@ M.list = {
 						},
 					},
 
+					keyword = { range = "full" },
+					list = { selection = { preselect = true, auto_insert = false } },
 					trigger = {
 						show_on_keyword = true,
 						show_on_trigger_character = true,
