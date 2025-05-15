@@ -547,8 +547,16 @@ M.list = {
 						auto_show = false,
 						auto_show_delay_ms = 200,
 					},
+
+					ghost_text = { enabled = false },
 				},
-				signature = { enabled = false, window = { border = "single" } },
+				signature = {
+					enabled = true,
+					window = {
+						border = "single",
+						show_documentation = false,
+					},
+				},
 			})
 		end,
 	},

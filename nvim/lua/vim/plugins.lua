@@ -332,6 +332,15 @@ M.list = {
 		"OXY2DEV/foldtext.nvim",
 		lazy = false,
 	},
+
+	-- {
+	-- 	name = "quickfix",
+	-- 	dir = "vim.quickfix",
+	-- 	virtual = true,
+	-- 	config = function()
+	-- 		require("vim.quickfix")
+	-- 	end,
+	-- },
 }
 
 return M
