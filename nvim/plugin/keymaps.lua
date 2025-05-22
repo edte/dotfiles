@@ -229,3 +229,7 @@ vim.keymap.set("n", "md", function()
 	require("marks"):delete_line_marks()
 	require("bookmarks").delete_bookmark()
 end, { desc = "bookmarks delete", silent = true })
+
+Command("JsonCompress", function()
+	vim.api.nvim_command(":%!jq -c")
+end, { nargs = "*" })
