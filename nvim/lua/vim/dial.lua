@@ -75,6 +75,11 @@ M.dialConfig = function()
 				cyclic = true,
 			}),
 			augend.constant.new({
+				elements = { "GET", "POST", "PUT", "DELETE" },
+				word = false,
+				cyclic = true,
+			}),
+			augend.constant.new({
 				elements = { "req", "rsp" },
 				word = false,
 				cyclic = true,

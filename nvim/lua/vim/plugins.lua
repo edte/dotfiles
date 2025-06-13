@@ -302,7 +302,7 @@ M.list = {
 
 	-- 快速添加括号或者引号，v模式选中再按就行，比surroud的sd好用很多，比较常用
 	{
-		"NStefan002/visual-surround.nvim",
+		"edte/visual-surround.nvim",
 		event = "ModeChanged *:v", -- 进入可视模式
 		config = function()
 			require("visual-surround").setup({})
@@ -332,15 +332,6 @@ M.list = {
 		"OXY2DEV/foldtext.nvim",
 		lazy = false,
 	},
-
-	-- {
-	-- 	name = "quickfix",
-	-- 	dir = "vim.quickfix",
-	-- 	virtual = true,
-	-- 	config = function()
-	-- 		require("vim.quickfix")
-	-- 	end,
-	-- },
 }
 
 return M

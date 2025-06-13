@@ -238,6 +238,13 @@ M.list = {
 				log_templates = {
 					default = {
 						lua = [[log.debug("%log_target", %log_target)]],
+						go = [[log.Debug("%log_target:%+v", %log_target)]],
+					},
+				},
+				batch_log_templates = {
+					default = {
+						go = [[log.Debug("%repeat<%log_target: %v><, >", %repeat<%log_target><, >)]],
+						lua = [[log.debug(string.format("%repeat<%log_target=%s><, >", %repeat<%log_target><, >))]],
 					},
 				},
 			})
