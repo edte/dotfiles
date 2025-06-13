@@ -6,6 +6,7 @@ alias clr=clear
 alias clea=clear
 alias cleawr=clear
 alias cleasr=clear
+alias claer=clear
 alias cle=clear
 alias clewa=clear
 alias clera=clear
