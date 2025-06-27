@@ -316,6 +316,44 @@ M.list = {
 			})
 		end,
 	},
+
+	-- Neovim 插件提供了一种使用 Telescope 运行和可视化代码操作的简单方法。
+	{
+		"rachartier/tiny-code-action.nvim",
+		keys = "gra",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+
+			{
+				"folke/snacks.nvim",
+				opts = {
+					terminal = {},
+				},
+			},
+		},
+		-- event = "LspAttach",
+		config = function()
+			require("tiny-code-action").setup({
+				backend = "vim",
+				picker = {
+					"snacks",
+					opts = {
+						focus = "list",
+					},
+				},
+			})
+
+			vim.keymap.set("n", "gra", function()
+				require("tiny-code-action").code_action({
+					filters = {
+						line = vim.api.nvim_win_get_cursor(0)[1] - 1,
+						-- kind = "refactor",
+						-- str = "Wrap",
+					},
+				})
+			end, { noremap = true, silent = true })
+		end,
+	},
 }
 
 return M
