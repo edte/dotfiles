@@ -80,9 +80,17 @@ M.list = {
 	-- markdown预览
 	{
 		"OXY2DEV/markview.nvim",
-		ft = { "markdown" },
+		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante", "codecompanion" },
 
 		branch = "dev",
+
+		opts = {
+			preview = {
+				ignore_buftypes = {},
+				filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante", "codecompanion" },
+			},
+			max_length = 99999,
+		},
 
 		dependencies = {
 			-- You will not need this if you installed the
@@ -101,9 +109,6 @@ M.list = {
 				opts = {},
 			},
 		},
-		config = function()
-			require("markview").setup({})
-		end,
 	},
 
 	-- precognition.nvim - 预识别使用虚拟文本和装订线标志来显示可用的动作。
@@ -417,31 +422,42 @@ M.list = {
 	},
 
 	-- 像使用 Cursor AI IDE 一样使用 Neovim！
-	-- {
-	--     "yetone/avante.nvim",
-	--     event = "VeryLazy",
-	--     lazy = false,
-	--     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-	--     opts = {
-	--         provider = "deepseek",
-	--         vendors = {
-	--             deepseek = {
-	--                 __inherited_from = "openai",
-	--                 api_key_name = "DEEPSEEK_API_KEY",
-	--                 endpoint = "https://api.lkeap.cloud.tencent.com/v1",
-	--                 model = "deepseek-r1",
-	--             },
-	--         },
-	--     },
-	--     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	--     build = "make",
-	--     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-	--     dependencies = {
-	--         "stevearc/dressing.nvim",
-	--         "nvim-lua/plenary.nvim",
-	--         "MunifTanjim/nui.nvim",
-	--     },
-	-- },
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		lazy = false,
+		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+		build = "make",
+
+		opts = {
+			provider = "deepseek",
+			providers = {
+				deepseek = {
+					__inherited_from = "openai",
+					api_key_name = "DEEPSEEK_API_KEY",
+					endpoint = "https://api.lkeap.cloud.tencent.com/v1",
+					model = "deepseek-v3",
+				},
+			},
+
+			-- provider = "claude",
+			-- providers = {
+			-- 	claude = {
+			-- 		endpoint = "https://api.anthropic.com",
+			-- 		model = "claude-sonnet-4-20250514",
+			-- 		timeout = 30000, -- Timeout in milliseconds
+			-- 		extra_request_body = {
+			-- 			temperature = 0.75,
+			-- 			max_tokens = 20480,
+			-- 		},
+			-- 	},
+			-- },
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 
 	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
@@ -529,6 +545,7 @@ M.list = {
 			layout = { enable = true },
 			lazygit = { enabled = false },
 			notifier = { enabled = true },
+			-- Snacks.notifier.show_history() 查询snacks notify history历史
 			notify = { enabled = true },
 			picker = {
 				enabled = true,
@@ -772,7 +789,11 @@ M.list = {
 			-- 高亮行尾空格，方便格式化
 			require("mini.trailspace").setup()
 
-			require("mini.diff").setup()
+			local diff = require("mini.diff")
+			diff.setup({
+				-- Disabled by default
+				source = diff.gen_source.none(),
+			})
 
 			require("mini.ai").setup({})
 		end,
@@ -780,6 +801,55 @@ M.list = {
 
 	-- library used by other plugins
 	{ "nvim-lua/plenary.nvim", lazy = true },
+
+	-- CodeCompanion 是一种生产力工具，可简化您在 Neovim 中使用 LLM 进行开发的方式。
+	{
+		"olimorris/codecompanion.nvim",
+		opts = {
+			display = {
+				action_palette = {
+					width = 95,
+					height = 10,
+					prompt = "Prompt ", -- Prompt used for interactive LLM calls
+					provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+					opts = {
+						show_default_actions = true, -- Show the default actions in the action palette?
+						show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+					},
+				},
+			},
+
+			adapters = {
+				deepseek = function()
+					return require("codecompanion.adapters").extend("deepseek", {
+						env = {
+							api_key = "DEEPSEEK_API_KEY",
+						},
+						url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
+						schema = {
+							model = {
+								default = "deepseek-v3",
+								choices = {
+									["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
+									["deepseek-r1"] = { opts = { can_use_tools = false } },
+								},
+							},
+						},
+					})
+				end,
+			},
+
+			strategies = {
+				chat = { adapter = "deepseek" },
+				inline = { adapter = "deepseek" },
+				agent = { adapter = "deepseek" },
+			},
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
 
 return M

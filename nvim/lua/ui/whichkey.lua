@@ -19,6 +19,8 @@ wk.add({
 	{ "<leader>rI", ":Refactor inline_func<cr>", desc = "inline_func" },
 	{ "<leader>rb", ":Refactor extract_block<cr>", desc = "extract_block" },
 	{ "<leader>rbf", ":Refactor extract_block_to_file<cr>", desc = "extract_block_to_file" },
+
+	{ "<leader>ae", "<cmd>AvanteEdit<CR>", desc = "edit" },
 })
 
 wk.add({
@@ -64,4 +66,9 @@ wk.add({
 	{ "<leader>st", "<cmd>lua Snacks.picker.grep()<cr>", desc = "text" },
 	{ "<leader>sc", "<cmd>edit" .. NEOVIM_CONFIG_PATH .. "/init.lua" .. "<CR>", desc = "config" },
 	{ "<leader>su", "<cmd>UndotreeToggle<CR>", desc = "undo" },
+
+	{ "<leader>a", group = "avante", desc = "avante" },
+	{ "<leader>aa", "<cmd>AvanteChat<CR>", desc = "chat" },
+	{ "<leader>ah", "<cmd>AvanteHistory<CR>", desc = "history" },
+	{ "<leader>ac", "<cmd>AvanteClear<CR>", desc = "clear" },
 })

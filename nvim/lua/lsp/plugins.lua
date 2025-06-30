@@ -347,7 +347,16 @@ M.list = {
 				require("tiny-code-action").code_action({
 					filters = {
 						line = vim.api.nvim_win_get_cursor(0)[1] - 1,
-						-- kind = "refactor",
+						-- kind = {
+						-- 	"refactor",
+						-- 	"quickfix",
+						-- 	"refactor.extract",
+						-- 	"refactor.inline",
+						-- 	"refactor.rewrite",
+						-- 	"source",
+						-- 	"source.organizeImports",
+						-- 	"source.fixAll",
+						-- },
 						-- str = "Wrap",
 					},
 				})
