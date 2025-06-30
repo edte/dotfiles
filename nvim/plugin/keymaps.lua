@@ -186,7 +186,7 @@ nmap("gw", "<cmd>lua Snacks.picker.grep_word()<CR>")
 nmap("C", '"_C')
 nmap("D", '"_D')
 nmap("yc", "yy<cmd>normal gcc<CR>p")
-nmap("<C-c>", "ciw")
+-- nmap("<C-c>", "ciw")
 nmap("cr", "ciw")
 
 vmap("J", ":m '>+1<CR>gv=gv")

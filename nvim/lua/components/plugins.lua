@@ -422,42 +422,42 @@ M.list = {
 	},
 
 	-- 像使用 Cursor AI IDE 一样使用 Neovim！
-	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		lazy = false,
-		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-		build = "make",
-
-		opts = {
-			provider = "deepseek",
-			providers = {
-				deepseek = {
-					__inherited_from = "openai",
-					api_key_name = "DEEPSEEK_API_KEY",
-					endpoint = "https://api.lkeap.cloud.tencent.com/v1",
-					model = "deepseek-v3",
-				},
-			},
-
-			-- provider = "claude",
-			-- providers = {
-			-- 	claude = {
-			-- 		endpoint = "https://api.anthropic.com",
-			-- 		model = "claude-sonnet-4-20250514",
-			-- 		timeout = 30000, -- Timeout in milliseconds
-			-- 		extra_request_body = {
-			-- 			temperature = 0.75,
-			-- 			max_tokens = 20480,
-			-- 		},
-			-- 	},
-			-- },
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-		},
-	},
+	-- {
+	-- 	"yetone/avante.nvim",
+	-- 	event = "VeryLazy",
+	-- 	lazy = false,
+	-- 	version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+	-- 	build = "make",
+	--
+	-- 	opts = {
+	-- 		provider = "deepseek",
+	-- 		providers = {
+	-- 			deepseek = {
+	-- 				__inherited_from = "openai",
+	-- 				api_key_name = "DEEPSEEK_API_KEY",
+	-- 				endpoint = "https://api.lkeap.cloud.tencent.com/v1",
+	-- 				model = "deepseek-v3",
+	-- 			},
+	-- 		},
+	--
+	-- 		-- provider = "claude",
+	-- 		-- providers = {
+	-- 		-- 	claude = {
+	-- 		-- 		endpoint = "https://api.anthropic.com",
+	-- 		-- 		model = "claude-sonnet-4-20250514",
+	-- 		-- 		timeout = 30000, -- Timeout in milliseconds
+	-- 		-- 		extra_request_body = {
+	-- 		-- 			temperature = 0.75,
+	-- 		-- 			max_tokens = 20480,
+	-- 		-- 		},
+	-- 		-- 	},
+	-- 		-- },
+	-- 	},
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- },
 
 	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
@@ -805,46 +805,56 @@ M.list = {
 	-- CodeCompanion 是一种生产力工具，可简化您在 Neovim 中使用 LLM 进行开发的方式。
 	{
 		"olimorris/codecompanion.nvim",
-		opts = {
-			display = {
-				action_palette = {
-					width = 95,
-					height = 10,
-					prompt = "Prompt ", -- Prompt used for interactive LLM calls
-					provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
-					opts = {
-						show_default_actions = true, -- Show the default actions in the action palette?
-						show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+
+		config = function()
+			require("codecompanion").setup({
+				language = "Chinese",
+
+				display = {
+					action_palette = {
+						width = 95,
+						height = 10,
+						prompt = "Prompt ", -- Prompt used for interactive LLM calls
+						provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+						opts = {
+							show_default_actions = true, -- Show the default actions in the action palette?
+							show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+						},
 					},
 				},
-			},
 
-			adapters = {
-				deepseek = function()
-					return require("codecompanion.adapters").extend("deepseek", {
-						env = {
-							api_key = "DEEPSEEK_API_KEY",
-						},
-						url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
-						schema = {
-							model = {
-								default = "deepseek-v3",
-								choices = {
-									["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
-									["deepseek-r1"] = { opts = { can_use_tools = false } },
+				adapters = {
+					deepseek = function()
+						return require("codecompanion.adapters").extend("deepseek", {
+							env = {
+								api_key = "DEEPSEEK_API_KEY",
+							},
+							url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
+							schema = {
+								model = {
+									default = "deepseek-v3",
+									choices = {
+										["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
+										["deepseek-r1"] = { opts = { can_use_tools = false } },
+									},
 								},
 							},
-						},
-					})
-				end,
-			},
+						})
+					end,
+				},
 
-			strategies = {
-				chat = { adapter = "deepseek" },
-				inline = { adapter = "deepseek" },
-				agent = { adapter = "deepseek" },
-			},
-		},
+				strategies = {
+					chat = { adapter = "deepseek" },
+					inline = { adapter = "deepseek" },
+					agent = { adapter = "deepseek" },
+				},
+			})
+
+			vim.keymap.set({ "n" }, "<space>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+			vim.keymap.set({ "v" }, "<space>a", "<cmd>CodeCompanion <cr>", { noremap = true, silent = true })
+			vim.cmd([[cab c CodeCompanion]])
+		end,
+
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
