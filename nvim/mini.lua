@@ -19,7 +19,9 @@ require("lazy").setup({
 
 		config = function()
 			require("codecompanion").setup({
-				language = "Chinese",
+				opts = {
+					language = "中文",
+				},
 
 				display = {
 					action_palette = {

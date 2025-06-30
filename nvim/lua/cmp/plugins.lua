@@ -270,10 +270,6 @@ M.list = {
 				},
 			},
 
-			{
-				"Kaiser-Yang/blink-cmp-avante",
-			},
-
 			-- {
 			-- 	"edte/blink-go-import.nvim",
 			-- 	ft = "go",
@@ -364,7 +360,7 @@ M.list = {
 						codecompanion = { "codecompanion" },
 					},
 
-					default = { "avante", "lsp", "path", "snippets", "buffer", "Tabnine", "ripgrep", "go_import" },
+					default = { "lsp", "path", "snippets", "buffer", "Tabnine", "ripgrep", "go_import" },
 
 					providers = {
 						-- signature = {
@@ -372,14 +368,6 @@ M.list = {
 						-- 	module = "blink.compat.source",
 						-- 	score_offset = -9,
 						-- },
-
-						avante = {
-							module = "blink-cmp-avante",
-							name = "Avante",
-							opts = {
-								-- options for blink-cmp-avante
-							},
-						},
 
 						go_import = {
 							name = "Module",

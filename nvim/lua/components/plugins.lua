@@ -80,14 +80,14 @@ M.list = {
 	-- markdown预览
 	{
 		"OXY2DEV/markview.nvim",
-		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante", "codecompanion" },
+		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
 
 		branch = "dev",
 
 		opts = {
 			preview = {
 				ignore_buftypes = {},
-				filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante", "codecompanion" },
+				filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
 			},
 			max_length = 99999,
 		},
@@ -420,44 +420,6 @@ M.list = {
 			},
 		},
 	},
-
-	-- 像使用 Cursor AI IDE 一样使用 Neovim！
-	-- {
-	-- 	"yetone/avante.nvim",
-	-- 	event = "VeryLazy",
-	-- 	lazy = false,
-	-- 	version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-	-- 	build = "make",
-	--
-	-- 	opts = {
-	-- 		provider = "deepseek",
-	-- 		providers = {
-	-- 			deepseek = {
-	-- 				__inherited_from = "openai",
-	-- 				api_key_name = "DEEPSEEK_API_KEY",
-	-- 				endpoint = "https://api.lkeap.cloud.tencent.com/v1",
-	-- 				model = "deepseek-v3",
-	-- 			},
-	-- 		},
-	--
-	-- 		-- provider = "claude",
-	-- 		-- providers = {
-	-- 		-- 	claude = {
-	-- 		-- 		endpoint = "https://api.anthropic.com",
-	-- 		-- 		model = "claude-sonnet-4-20250514",
-	-- 		-- 		timeout = 30000, -- Timeout in milliseconds
-	-- 		-- 		extra_request_body = {
-	-- 		-- 			temperature = 0.75,
-	-- 		-- 			max_tokens = 20480,
-	-- 		-- 		},
-	-- 		-- 	},
-	-- 		-- },
-	-- 	},
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 	},
-	-- },
 
 	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
@@ -808,7 +770,9 @@ M.list = {
 
 		config = function()
 			require("codecompanion").setup({
-				language = "Chinese",
+				opts = {
+					language = "中文",
+				},
 
 				display = {
 					action_palette = {
