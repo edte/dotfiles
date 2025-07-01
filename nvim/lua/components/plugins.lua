@@ -511,6 +511,11 @@ M.list = {
 			notify = { enabled = true },
 			picker = {
 				enabled = true,
+				formatters = {
+					file = {
+						truncate = 60, -- truncate the file path to (roughly) this length
+					},
+				},
 				win = {
 					input = {
 						keys = {
