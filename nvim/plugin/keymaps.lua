@@ -93,7 +93,7 @@ nmap("gd", "<C-]>zz")
 
 nmap("grr", "<cmd>Glance references<cr>")
 
-nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
+-- nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
 nmap("<c-n>", function()
 	vim.diagnostic.goto_next()

@@ -770,6 +770,19 @@ M.list = {
 	{ "nvim-lua/plenary.nvim", lazy = true },
 
 	-- CodeCompanion 是一种生产力工具，可简化您在 Neovim 中使用 LLM 进行开发的方式。
+	-- 🎯 命令
+	-- :CodeCompanionHistory - 打开历史浏览器
+	-- :CodeCompanionSummaries - 浏览所有摘要
+	-- ⌨️ 聊天缓冲区键盘映射
+	-- 历史管理：
+	--
+	-- gh - 打开历史浏览器（可通过 opts.keymap 自定义）
+	-- sc - 手动保存当前聊天（可通过 opts.save_chat_keymap 自定义）
+	-- 摘要系统：
+	--
+	-- gcs - 生成当前聊天摘要（可通过 opts.summary.create_summary_keymap 自定义）
+	-- gbs - 浏览已保存的摘要（可通过 opts.summary.browse_summaries_keymap 自定义）
+
 	{
 		"olimorris/codecompanion.nvim",
 
@@ -778,7 +791,92 @@ M.list = {
 				opts = {
 					language = "中文",
 				},
+				extensions = {
+					history = {
+						enabled = true,
+						opts = {
+							-- Keymap to open history from chat buffer (default: gh)
+							keymap = "gh",
+							-- Keymap to save the current chat manually (when auto_save is disabled)
+							save_chat_keymap = "sc",
+							-- Save all chats by default (disable to save only manually using 'sc')
+							auto_save = true,
+							-- Number of days after which chats are automatically deleted (0 to disable)
+							expiration_days = 0,
+							-- Picker interface (auto resolved to a valid picker)
+							picker = "default", --- ("telescope", "snacks", "fzf-lua", or "default")
+							---Optional filter function to control which chats are shown when browsing
+							chat_filter = nil, -- function(chat_data) return boolean end
+							-- Customize picker keymaps (optional)
+							picker_keymaps = {
+								rename = { n = "r", i = "<M-r>" },
+								delete = { n = "d", i = "<M-d>" },
+								duplicate = { n = "<C-y>", i = "<C-y>" },
+							},
+							---Automatically generate titles for new chats
+							auto_generate_title = true,
+							title_generation_opts = {
+								---Adapter for generating titles (defaults to current chat adapter)
+								adapter = nil, -- "copilot"
+								---Model for generating titles (defaults to current chat model)
+								model = nil, -- "gpt-4o"
+								---Number of user prompts after which to refresh the title (0 to disable)
+								refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
+								---Maximum number of times to refresh the title (default: 3)
+								max_refreshes = 3,
+								format_title = function(original_title)
+									-- this can be a custom function that applies some custom
+									-- formatting to the title.
+									return original_title
+								end,
+							},
+							---On exiting and entering neovim, loads the last chat on opening chat
+							continue_last_chat = false,
+							---When chat is cleared with `gx` delete the chat from history
+							delete_on_clearing_chat = false,
+							---Directory path to save the chats
+							dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+							---Enable detailed logging for history extension
+							enable_logging = false,
 
+							-- Summary system
+							summary = {
+								-- Keymap to generate summary for current chat (default: "gcs")
+								create_summary_keymap = "gcs",
+								-- Keymap to browse summaries (default: "gbs")
+								browse_summaries_keymap = "gbs",
+
+								generation_opts = {
+									adapter = nil, -- defaults to current chat adapter
+									model = nil, -- defaults to current chat model
+									context_size = 90000, -- max tokens that the model supports
+									include_references = true, -- include slash command content
+									include_tool_outputs = true, -- include tool execution results
+									system_prompt = nil, -- custom system prompt (string or function)
+									format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
+								},
+							},
+
+							-- Memory system (requires VectorCode CLI)
+							memory = {
+								-- Automatically index summaries when they are generated
+								auto_create_memories_on_summary_generation = true,
+								-- Path to the VectorCode executable
+								vectorcode_exe = "vectorcode",
+								-- Tool configuration
+								tool_opts = {
+									-- Default number of memories to retrieve
+									default_num = 10,
+								},
+								-- Enable notifications for indexing progress
+								notify = true,
+								-- Index all existing memories on startup
+								-- (requires VectorCode 0.6.12+ for efficient incremental indexing)
+								index_on_startup = false,
+							},
+						},
+					},
+				},
 				display = {
 					action_palette = {
 						width = 95,
@@ -791,7 +889,6 @@ M.list = {
 						},
 					},
 				},
-
 				adapters = {
 					deepseek = function()
 						return require("codecompanion.adapters").extend("deepseek", {
@@ -811,7 +908,6 @@ M.list = {
 						})
 					end,
 				},
-
 				strategies = {
 					chat = { adapter = "deepseek" },
 					inline = { adapter = "deepseek" },
@@ -827,6 +923,13 @@ M.list = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"ravitemer/codecompanion-history.nvim",
+			{
+				"Davidyz/VectorCode",
+				version = "*", -- optional, depending on whether you're on nightly or release
+				dependencies = { "nvim-lua/plenary.nvim" },
+				cmd = "VectorCode", -- if you're lazy-loading VectorCode
+			},
 		},
 	},
 }
