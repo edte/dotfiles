@@ -501,7 +501,14 @@ M.list = {
 			explorer = { enabled = false },
 			git = { enabled = false },
 			gitbrowser = { enabled = false },
-			image = { enabled = true },
+			image = {
+				enabled = true,
+				force = true, -- try displaying the image, even if the terminal does not support it
+				doc = {
+					max_width = 150,
+					max_height = 100,
+				},
+			},
 			indent = { enabled = true },
 			input = { enabled = true },
 			layout = { enable = true },
