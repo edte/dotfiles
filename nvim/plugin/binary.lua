@@ -26,7 +26,7 @@ for _, ext in ipairs(open_files) do
 		pattern = "*." .. ext,
 		group = vim.api.nvim_create_augroup("binFiles_" .. ext, { clear = true }),
 		callback = function()
-			print("fuck")
+			-- print("fuck")
 			-- Get the current buffer number before opening the file
 			local prev_buf = vim.fn.bufnr("%")
 
