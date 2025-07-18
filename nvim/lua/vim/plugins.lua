@@ -288,18 +288,6 @@ M.list = {
 		end,
 	},
 
-	-- 向任意方向移动任意选择
-	{
-		"echasnovski/mini.move",
-		keys = {
-			{ "<M-h>" },
-			{ "<M-l>" },
-			{ "<M-j>" },
-			{ "<M-k>" },
-		},
-		opts = {},
-	},
-
 	-- 快速添加括号或者引号，v模式选中再按就行，比surroud的sd好用很多，比较常用
 	{
 		"edte/visual-surround.nvim",

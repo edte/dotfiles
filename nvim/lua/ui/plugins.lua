@@ -85,40 +85,6 @@ M.list = {
 		end,
 	},
 
-	-- buffer 管理文件与目录树的结合
-	{
-		"echasnovski/mini.files",
-		version = false,
-		opts = {
-			options = {
-				use_as_default_explorer = true,
-			},
-			windows = {
-				preview = true,
-				width_focus = 30,
-				width_preview = 30,
-			},
-		},
-		keys = {
-			{
-				"<space>e",
-				"<cmd>lua ToggleMiniFiles()<CR>",
-				desc = "explorer",
-			},
-		},
-		config = function()
-			-- nvim-tree
-			-- vim.g.loaded_netrw = 1
-			-- vim.g.loaded_netrwPlugin = 1
-			vim.opt.termguicolors = true
-
-			vim.g.loaded_netrw = false -- or 1
-			vim.g.loaded_netrwPlugin = false -- or 1
-
-			Setup("mini.files")
-		end,
-	},
-
 	-- 这个 Neovim 插件为 Neovim 提供交替语法突出显示（“彩虹括号”），由 Tree-sitter 提供支持。目标是拥有一个可破解的插件，允许全局和每个文件类型进行不同的查询和策略配置。用户可以通过自己的配置覆盖和扩展内置默认值。
 	{
 		"HiPhish/rainbow-delimiters.nvim",

@@ -251,20 +251,6 @@ function string.ends(String, End)
 	return End == "" or string.sub(String, -string.len(End)) == End
 end
 
-function ToggleMiniFiles()
-	local mf = require("mini.files")
-	if not mf.close() then
-		local n = Api.nvim_buf_get_name(0)
-		if n ~= "" then
-			mf.open(n)
-			mf.reveal_cwd()
-		else
-			mf.open()
-			mf.reveal_cwd()
-		end
-	end
-end
-
 function is_loaded(name)
 	local Config = require("lazy.core.config")
 	return Config.plugins[name] and Config.plugins[name]._.loaded

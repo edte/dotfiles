@@ -10,6 +10,7 @@ local M = {
 	clangd = { "cpp", "c" },
 	jsonls = { "json" },
 	vimls = { "vim" },
+	asm_lsp = { "asm", "vmasm" },
 }
 
 for k, v in pairs(M) do

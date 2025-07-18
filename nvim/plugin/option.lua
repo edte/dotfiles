@@ -72,6 +72,9 @@ for k, v in pairs(default_options) do
 	vim.opt[k] = v
 end
 
+vim.g.loaded_netrw = false -- or 1
+vim.g.loaded_netrwPlugin = false -- or 1
+
 vim.cmd([[set foldopen-=search]])
 
 vim.diagnostic.config({

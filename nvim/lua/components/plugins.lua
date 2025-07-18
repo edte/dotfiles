@@ -654,14 +654,48 @@ M.list = {
 					},
 				}
 			end,
+			files = {
+				options = {
+					use_as_default_explorer = true,
+				},
+				windows = {
+					preview = true,
+					width_focus = 30,
+					width_preview = 30,
+				},
+			},
 		},
 		keys = {
+			{
+				"t",
+				function()
+					require("mini.splitjoin").toggle()
+				end,
+			},
+
 			{
 				"<space>gd",
 				function()
 					require("mini.diff").toggle_overlay(0)
 				end,
 				desc = "diff",
+			},
+			{
+				"<space>e",
+				function()
+					local mf = require("mini.files")
+					if not mf.close() then
+						local n = Api.nvim_buf_get_name(0)
+						if n ~= "" then
+							mf.open(n)
+							mf.reveal_cwd()
+						else
+							mf.open()
+							mf.reveal_cwd()
+						end
+					end
+				end,
+				desc = "explorer",
 			},
 		},
 		version = false,
@@ -759,7 +793,6 @@ M.list = {
 				return open(pair, neigh_pattern)
 			end
 
-			-- mini.trailspace
 			-- 高亮行尾空格，方便格式化
 			require("mini.trailspace").setup()
 
@@ -770,6 +803,8 @@ M.list = {
 			})
 
 			require("mini.ai").setup({})
+			require("mini.move").setup()
+			require("mini.splitjoin").setup()
 		end,
 	},
 

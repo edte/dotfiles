@@ -32,7 +32,6 @@ wk.add({
 	{ "<leader>t", "<cmd>lua Snacks.picker.grep()<CR>", desc = "text" },
 	{ "<leader>m", "<cmd>M<CR>", desc = "log" },
 	{ "<space>n", "<cmd>message<cr>", desc = "message" },
-	-- { "<leader>e", "<cmd>lua ToggleMiniFiles()<CR>", desc = "Explorer" },
 
 	-- git
 	{ "<leader>g", group = "git", desc = "git" },

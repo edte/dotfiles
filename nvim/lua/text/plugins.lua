@@ -87,35 +87,6 @@ M.list = {
 		end,
 	},
 
-	-- Neovim Lua 插件用于拆分和连接参数。 “mini.nvim” 库的一部分。
-	{
-		"echasnovski/mini.splitjoin",
-		init = function()
-			nmap("t", "<cmd>lua require('mini.splitjoin').toggle()<CR>")
-		end,
-		keys = "t",
-		version = false,
-		config = function()
-			require("mini.splitjoin").setup({
-				mappings = {
-					toggle = "t",
-				},
-			})
-		end,
-	},
-
-	-- {
-	-- 	"echasnovski/mini.align",
-	-- 	version = false,
-	-- 	config = function()
-	-- 		require("mini.align").setup({
-	-- 			mappings = {
-	-- 				start = "aa",
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
-
 	-- 使用 Treesitter 突出显示参数的定义和用法
 	{
 		"m-demare/hlargs.nvim",
