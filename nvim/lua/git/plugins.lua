@@ -71,27 +71,38 @@ M.list = {
 	-- GitConflictNextConflict — 移至下一个冲突。
 	-- GitConflictPrevConflict — 移至上一个冲突。
 	-- GitConflictListQf — 将所有冲突获取到快速修复
-
+	--       A   ← base（共同祖先）
+	--      / \
+	--     B   C
+	-- A：你们分开前的内容（base）
+	-- B：你分支的内容（current/ours）
+	-- C：同事分支的内容（incoming/theirs）
 	-- c o — 选择我们的
 	-- c t — 选择他们的
 	-- c b — 选择两者
 	-- c 0 — 不选择
 	-- ] x — 移至上一个冲突
 	-- [ x — 移至下一个冲突
-	-- {
-	-- 	"akinsho/git-conflict.nvim",
-	-- 	-- cmd = {
-	-- 	--     "GitConflictChooseOurs",
-	-- 	--     "GitConflictChooseTheirs",
-	-- 	--     "GitConflictChooseBoth",
-	-- 	--     "GitConflictChooseNone",
-	-- 	--     "GitConflictNextConflict",
-	-- 	--     "GitConflictPrevConflict",
-	-- 	--     "GitConflictListQf",
-	-- 	-- },
-	-- 	version = "*",
-	-- 	config = true,
-	-- },
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		config = function()
+			-- vim.api.nvim_set_hl(0, "DiffText", { fg = "#ffffff", bg = "#1d3b40" })
+			-- vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#ffffff", bg = "#1d3450" })
+
+			vim.api.nvim_set_hl(0, "ConflictCurrent", { fg = "#ffffff", bg = "#1d3b40" })
+			vim.api.nvim_set_hl(0, "ConflictBase", { fg = "#c8d3f5", bg = "#222436" })
+			vim.api.nvim_set_hl(0, "ConflictIncoming", { fg = "#ffffff", bg = "#1d3450" })
+
+			require("git-conflict").setup({
+				highlights = {
+					current = "ConflictCurrent",
+					ancestor = "ConflictBase", -- base
+					incoming = "ConflictIncoming",
+				},
+			})
+		end,
+	},
 
 	-- Neovim的 lua 插件，用于为 git 主机网站生成可共享文件永久链接（带有行范围）
 	{

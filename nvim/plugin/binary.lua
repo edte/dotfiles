@@ -84,6 +84,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == ".bashrc"
 			or name == "tags"
 			or name == ".ignore"
+			or name == ".gitconfig"
 		then
 			return
 		end
