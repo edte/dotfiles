@@ -793,16 +793,9 @@ M.list = {
 				return open(pair, neigh_pattern)
 			end
 
-			-- 高亮行尾空格，方便格式化
 			require("mini.trailspace").setup()
-
-			local diff = require("mini.diff")
-			diff.setup({
-				-- Disabled by default
-				source = diff.gen_source.none(),
-			})
-
-			require("mini.ai").setup({})
+			require("mini.diff").setup()
+			require("mini.ai").setup()
 			require("mini.move").setup()
 			require("mini.splitjoin").setup()
 		end,
