@@ -193,3 +193,22 @@ function GetPath()
     local dir, _ = vim.fn.getcwd():gsub('/', '_')
     return dir
 end
+
+_G.highlight = function(name, fg, bg)
+    if type(fg) == "table" then
+        Api.nvim_set_hl(0, name, fg)
+        return
+    end
+
+    local t = {}
+
+    if fg then
+        t["fg"] = fg
+    end
+
+    if bg then
+        t["bg"] = bg
+    end
+
+    Api.nvim_set_hl(0, name, t)
+end
