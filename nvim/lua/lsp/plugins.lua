@@ -13,31 +13,31 @@ M.list = {
     },
 
     -- go 插件
-    {
-        "ray-x/go.nvim",
-        ft = "go",
-        config = function()
-            require("go").setup({
-                diagnostic = false,
-            })
-
-            Command("GoAddTagEmpty", function()
-                Api.nvim_command(":GoAddTag json -add-options json=")
-            end, { nargs = "*" })
-
-            require("lsp.go-return").setup({})
-
-            require("lsp.go-impl").setup({
-                -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
-                display_package = false,
-                -- The namespace to use for the extmarks (no real reason to change this except for testing)
-                namespace_name = "goplements",
-                -- The highlight group to use (if you want to change the default colors)
-                -- The default links to DiagnosticHint
-                highlight = "Goplements",
-            })
-        end,
-    },
+    -- {
+    --     "ray-x/go.nvim",
+    --     ft = "go",
+    --     config = function()
+    --         require("go").setup({
+    --             diagnostic = false,
+    --         })
+    --
+    --         Command("GoAddTagEmpty", function()
+    --             Api.nvim_command(":GoAddTag json -add-options json=")
+    --         end, { nargs = "*" })
+    --
+    --         require("lsp.go-return").setup({})
+    --
+    --         require("lsp.go-impl").setup({
+    --             -- Whether to display the package name along with the type name (i.e., builtins.error vs error)
+    --             display_package = false,
+    --             -- The namespace to use for the extmarks (no real reason to change this except for testing)
+    --             namespace_name = "goplements",
+    --             -- The highlight group to use (if you want to change the default colors)
+    --             -- The default links to DiagnosticHint
+    --             highlight = "Goplements",
+    --         })
+    --     end,
+    -- },
 
     -- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
     {

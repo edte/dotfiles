@@ -10,9 +10,9 @@ M.list = {
             Cmd([[colorscheme tokyonight]])
         end,
 
-        dependencies = {
-            { "nvim-treesitter/nvim-treesitter" },
-        },
+        -- dependencies = {
+        --     { "nvim-treesitter/nvim-treesitter" },
+        -- },
     },
 
     -- {

@@ -23,10 +23,10 @@ M.list = {
     -- },
 
     -- 语法感知文本对象、选择、移动、交换和查看支持。
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        -- keys = { "[m", "]m", "[[", "]]", "[]", "][" },
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter-textobjects",
+    --     -- keys = { "[m", "]m", "[[", "]]", "[]", "][" },
+    -- },
 
     {
         "David-Kunz/treesitter-unit",
