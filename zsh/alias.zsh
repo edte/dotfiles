@@ -122,13 +122,6 @@ alias icat="kitty +kitten icat"
 
 alias ztest="z /Users/edte/go/src/login/test"
 
-alias word='wc -w'
-alias byte='wc -c'
-alias line='wc -l'
-alias char='wc -m'
-alias len='wc -m'
-alias length='wc -m'
-
 # alias cmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 # alias cmdtop="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 # alias topcmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"

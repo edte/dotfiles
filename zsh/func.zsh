@@ -116,3 +116,38 @@ function gs() {
         ls
     fi
 }
+
+# 统计字节数
+byte() {
+    if [[ -f $1 ]]; then
+        wc -c <"$1"
+    else
+        print -n -- "$1" | wc -c
+    fi
+}
+
+len() {
+    if [[ -f $1 ]]; then
+        wc -c <"$1"
+    else
+        print -n -- "$1" | wc -c
+    fi
+}
+
+# 统计字符数
+char() {
+    if [[ -f $1 ]]; then
+        wc -m <"$1"
+    else
+        print -n -- "$1" | wc -m
+    fi
+}
+
+# 统计行数
+line() {
+    if [[ -f $1 ]]; then
+        wc -l <"$1"
+    else
+        print -n -- "$1" | wc -l
+    fi
+}
