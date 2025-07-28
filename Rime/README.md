@@ -19,6 +19,7 @@ rime 配置，自然码双拼
 ``` config
 .
 ├── build        // 编译生成的最终文件，不用管也不用改
+├── installation.yaml // 自动生成的安装信息，忽略
 ├── default.yaml // Rime 的全局默认配置，定义了输入法的基础行为、外观、菜单等。
 ├── custom_phrase.txt
 ├── dicts
@@ -33,12 +34,8 @@ rime 配置，自然码双拼
 │   ├── thuocl_IT.dict.yaml
 │   ├── thuocl_medical.dict.yaml
 │   └── thuocl_renmingdiming.dict.yaml
-├── english.custom.yaml
-├── english.dict.yaml
-├── english.schema.yaml
 ├── essay.txt
 ├── extended.dict.yaml
-├── installation.yaml
 ├── key_bindings.yaml
 ├── LICENSE
 ├── makefile
@@ -50,7 +47,6 @@ rime 配置，自然码双拼
 ├── rime.lua
 ├── squirrel.custom.yaml
 ├── symbols.yaml
-├── user.yaml
 ├── weasel.custom.yaml
 ├── zh-hans-t-essay-bgw.gram
 ├── zrm2000.dict.yaml
