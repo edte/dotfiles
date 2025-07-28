@@ -1,0 +1,261 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: zrm_plus_plus
+  name: 自然码++
+  version: "0.15"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+    - 风沐白 <https://github.com/entr0pia/rimerc>
+  description: |
+    基于zrm2000＋自然碼雙拼原方案。
+    - 增加英文输入支持，支持大写字母
+    - 增加自然码辅码支持(自然码2000)
+    - 增加 Emoji 支持
+  dependencies:
+    - zrm2000
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+  - name: simplification
+    reset: 1  # 默认状态: 0 关闭 1 开启
+    states: [ 漢字, 汉字 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: emoji_suggestion
+    # reset: 1 # 默认状态: 0 关闭 1 开启
+    states: ["🈚︎", "🈶️"]
+
+engine:
+  #控制输入引擎，比如 英文输入引擎、反查、按键绑定 等涉及到输入引擎的「开关」，引入新的引擎需要在这儿添加激活
+  processors:
+    - ascii_composer  # Windows 用户请解除此行注释，否则将会无法切换到英文输入
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+    - lua_processor@select_character_processor # lua 选词扩展，如需关闭请注释
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+#translators 段是控制「翻译器」的，通过匹配输入替换输出来实现部分功能，
+#比如 符号转换、动态日期时间输入、用户自定义词典 都需要在这儿激活
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - script_translator
+    - table_translator@zrm2000
+    - lua_translator@date_translator # 动态日期时间输入
+    - table_translator@custom_phrase # 用户自定义词典
+
+#filters 段是控制过滤器的，过滤器如其名，用于过滤 / 重排候选词的，
+#simplifier@emoji_suggestion 项用于过滤繁体注释，不过这个并不影响本方案的设置，
+#而重排操作的具体效果可见下或见 GitHub 仓库 Wiki（注：需在 rime.lua 文件中定义过滤器）
+  filters:
+    - simplifier@emoji_suggestion
+    - simplifier
+    - uniquifier
+    # - lua_filter@long_phrase_first # 最长词组和单字在先
+    # - lua_filter@single_char_first # 单字优先
+    # - lua_filter@single_char_only # 只显示单字
+
+# 自定义短语
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: stabledb
+  enable_completion: true
+  enable_sentence: true
+  initial_quality: 1
+
+
+zrm2000:
+  dictionary: zrm2000
+  enable_sentence: true
+  max_phrase_length: 8
+
+# emoji 支持
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: none
+  inherit_comment: false
+
+
+# 模糊音
+# alphabet 字段用于定义需要参与拼写规则的字符
+# delimiter 字段用于定义输入的词与词之间的间隔符（仅接受第一个字符成为间隔符）
+# algebra 则为拼写规则，具体规则参见 官方 wiki
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  initials: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  delimiter: " '"
+  algebra:  # 码表
+    - erase/^xx$/
+    - derive/^([jqxy])u$/$1v/
+    - derive/^([aoe])([ioun])$/$1$1$2/
+    - xform/^([aoe])(ng)?$/$1$1$2/
+    - xform/iu$/Q/
+    - xform/[iu]a$/W/
+    - xform/[uv]an$/R/
+    - xform/[uv]e$/T/
+    - xform/ing$|uai$/Y/
+    - xform/^sh/U/
+    - xform/^ch/I/
+    - xform/^zh/V/
+    - xform/uo$/O/
+    - xform/[uv]n$/P/
+    - xform/i?ong$/S/
+    - xform/[iu]ang$/D/
+    - xform/(.)en$/$1F/
+    - xform/(.)eng$/$1G/
+    - xform/(.)ang$/$1H/
+    - xform/ian$/M/
+    - xform/(.)an$/$1J/
+    - xform/iao$/C/
+    - xform/(.)ao$/$1K/
+    - xform/(.)ai$/$1L/
+    - xform/(.)ei$/$1Z/
+    - xform/ie$/X/
+    - xform/ui$/V/
+    - xform/(.)ou$/$1B/
+    - xform/in$/N/
+    - xlit/QWRTYUIOPSDFGHMJCKLZXVBN/qwrtyuiopsdfghmjcklzxvbn/
+    #- abbrev/^(.).+$/$1/
+
+    # 模糊音区域
+    # 依据个人情况修改注释～
+    # 注释格式：键盘的输入码 -> 转化后的输入码
+
+    # 声母部分
+    # - derive/^([z])h/$1/ # z -> zh
+    # - derive/^([z])([^h])/$1h$2/ # zh -> z
+    # - derive/^([c])h/$1/ # c -> ch
+    # - derive/^([c])([^h])/$1h$2/ # ch -> c
+    # - derive/^([s])h/$1/ # s -> sh
+    # - derive/^([s])([^h])/$1h$2/ # sh -> s
+    # - derive/^l/n/ # n -> l
+    # - derive/^n/l/ # l -> n
+    # - derive/^r/l/ # l -> r
+    # - derive/^r/y/ # y -> r
+    # - derive/^hu$/fu/ # fu -> hu
+    # - derive/^fu$/hu/ # hu -> fu
+
+    # 韵母部分
+    # - derive/([^iu])([a])n$/$1$2ng/ # ang -> an
+    # - derive/([^iu])([a])ng$/$1$2n/ # an -> ang
+    # - derive/([e])n$/$1ng/ # eng -> en
+    # - derive/([e])ng$/$1n/ # en -> eng
+    # - derive/([i])n$/$1ng/ # ing -> in
+    # - derive/([i])ng$/$1n/ # in -> ing
+    # - derive/([i])an$/$1ang/ # iang -> ian
+    # - derive/([i])ang$/$1an/ # ian -> iang
+    # 由于小鹤双拼特性，无需 uang <-> iang
+
+    # 其它模糊音
+    # - derive/^hui$/fei/ # fei -> hui
+    # - derive/^fei$/hui/ # hui -> fei
+    # - derive/^huang$/wang/ # wang -> huang
+    # - derive/^wang$/huang/ # huang -> wang
+    # - derive/^([bpmfw])eng$/$1ong/ # bpmfw 后接 ong -> bpmfw 后接 eng
+
+
+translator:
+  dictionary: extended
+  prism: double_pinyin
+  preedit_format:
+    - xform/([bpmnljqxy])n/$1in/
+    - xform/(\w)g/$1eng/
+    - xform/(\w)q/$1iu/
+    - xform/([gkhvuirzcs])w/$1ua/
+    - xform/(\w)w/$1ia/
+    - xform/([dtnlgkhjqxyvuirzcs])r/$1uan/
+    - xform/(\w)t/$1ve/
+    - xform/([gkhvuirzcs])y/$1uai/
+    - xform/(\w)y/$1ing/
+    - xform/([dtnlgkhvuirzcs])o/$1uo/
+    - xform/(\w)p/$1un/
+    - xform/([jqx])s/$1iong/
+    - xform/(\w)s/$1ong/
+    - xform/([jqxnl])d/$1iang/
+    - xform/(\w)d/$1uang/
+    - xform/(\w)f/$1en/
+    - xform/(\w)h/$1ang/
+    - xform/(\w)j/$1an/
+    - xform/(\w)k/$1ao/
+    - xform/(\w)l/$1ai/
+    - xform/(\w)z/$1ei/
+    - xform/(\w)x/$1ie/
+    - xform/(\w)c/$1iao/
+    - xform/([dtgkhvuirzcs])v/$1ui/
+    - xform/(\w)b/$1ou/
+    - xform/(\w)m/$1ian/
+    - xform/([aoe])\1(\w)/$1$2/
+    - "xform/(^|[ '])v/$1zh/"
+    - "xform/(^|[ '])i/$1ch/"
+    - "xform/(^|[ '])u/$1sh/"
+    - xform/([jqxy])v/$1u/
+    - xform/([nl])v/$1ü/
+  contextual_suggestions: true
+  max_homophones: 7
+
+reverse_lookup:
+  dictionary: stroke
+  enable_completion: true
+  prefix: "`b"
+  suffix: "'"
+  tips: 〔笔划反查〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+  comment_format:
+    - xform/([nl])v/$1ü/
+
+# 字符映射
+punctuator:
+  # import_preset: default
+  import_preset: symbols
+  symbols:
+    "/dn": [, ⌘, ⌥, ⇧, ⌃, ⎋, ⇪, ⌫, ⌦, ↩︎, ⏎, ↑, ↓, ←, →, ↖, ↘, ⇟, ⇞]
+    "/x": [＊, ×, ✱, ★, ☆, ✩, ✧, ❋, ❊, ❉, ❈, ❅, ✿, ✲]
+    "/sm": ["《", "》", "〈", "〉", "«", "»", "<", ">"]
+    "/tab": "	"
+    "/help": [符號：/fh, 單位：/dw, 標點：/bd, 數學：/sx, 拼音：/py, 星號：/xh, 方塊：/fk, 幾何：/jh, 箭頭：/jt, 電腦：/dn, 羅馬數字：/lm, 大写羅馬數字：/lmd, 拉丁：/ld, 上標：/sb, 下標：/xb, 希臘字母：/xl, 大写希臘字母：/xld, 數字：/0到/9, 分數：/fs, いろは順：/iro, 假名：/jm或/pjm或/jmk到/jmo, 假名+圈：/jmq, 假名+半角：/jmbj, 俄語：/ey, 大写俄語：/eyd, 韓文：/hw, 韓文+圈：/hwq, 韓文+弧：/hwh, 結構：/jg, 偏旁：/pp, 康熙（部首）：/kx, 筆畫：/bh, 註音：/zy, 聲調：/sd, 漢字+圈：/hzq, 漢字+弧：/hzh, 數字+圈：/szq, 數字+弧：/szh, 數字+點：/szd, 字母+圈：/zmq, 字母+弧：/zmh, 表情：/bq, 音樂：/yy, 月份：/yf, 日期：/rq, 曜日：/yr, 時間：/sj, 天干：/tg, 地支：/dz, 干支：/gz, 節氣：/jq, 象棋：/xq, 麻將：/mj, 色子：/sz, 撲克：/pk, 八卦：/bg, 八卦名：/bgm, 六十四卦：/lssg, 六十四卦名：/lssgm, 太玄經：/txj, 天體：/tt, 星座：/xz, 星座名：/xzm, 十二宮：/seg, 蘇州碼：/szm]
+  full_shape:
+    "@": "＠"
+  half_shape:
+    "/": "/"
+    '\': "、"
+    "`": "`"
+    "~": ～
+    "@": "@"
+    "#": "#"
+    "-": "-"
+    "_": "——"
+    "+": "+"
+    "=": "="
+    "[": "「"
+    "]": "」"
+    "{": "『"
+    "}": "』"
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`b[a-z]*'?$"
+
+grammar:
+  language: zh-hans-t-essay-bgw

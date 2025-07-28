@@ -1,0 +1,14 @@
+# Rime user dictionary
+#@/db_name	luna_pinyin
+#@/db_type	userdb
+#@/rime_version	1.13.0
+#@/tick	8
+#@/user_id	mac
+bu 	不	c=1 d=0.995012 t=8
+de 	的	c=1 d=0.99005 t=8
+ni 	你	c=1 d=0.995012 t=8
+sheng xiao 	生效	c=1 d=1 t=8
+tao 	套	c=1 d=0.980199 t=8
+wo 	我	c=1 d=0.985112 t=8
+wo ri 	我日	c=1 d=0.97531 t=8
+zi 	自	c=1 d=1 t=8

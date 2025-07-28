@@ -1,0 +1,79 @@
+# 基础配置
+# 包括输入法设置，快捷键等
+
+config_version: "LTS"
+
+# 输入法列表
+schema_list:
+  - schema: zrm_plus_plus
+
+# 菜单
+menu:
+  page_size: 6 # 候选词个数
+  alternative_select_labels: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]  # 修改候选项标签，Windows用这行会自动加点
+
+# 输入法切换
+switcher:
+  caption: "[输入法切换]"
+  hotkeys:
+    - Control+grave
+  save_options:
+    - simplification
+    - ascii_mode
+    - full_shape
+    - ascii_punct
+    - traditionalization
+    - emoji_suggestion
+
+  fold_options: true            # 呼出时是否折叠，多方案时建议折叠 true ，一个方案建议展开 false
+  abbreviate_options: true      # 折叠时是否缩写选项
+  option_list_separator: '／'   # 折叠时的选项分隔符
+
+# 符号
+punctuator:
+  full_shape:
+    __include: symbols:/punctuator/full_shape
+  half_shape:
+    __include: symbols:/punctuator/half_shape
+
+
+
+# 处理符合特定规则的输入码，如网址、反查
+# 此处配置较为通用的选项，各方案中另增加了和方案功能绑定的 patterns。
+recognizer:
+  patterns:
+    camel: "[a-z]+[A-Z].*$"
+    html: "^<[a-z]+>$"
+    email: "^[A-Za-z][-_.A-Za-z]*@.*$"
+    uppercase: "[A-Z]{2,}[-_+'A-Za-z]*$" # 下划线不上屏
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+    # url_2: "^[A-Za-z]+[.].*"   # 句号不上屏，支持 google.com abc.txt 等网址或文件名，使用句号翻页时需要注释掉
+    # colon: "^[A-Za-z]+:.*"     # 冒号不上屏
+
+# 按键效果
+# commit_code  上屏原始的编码，然后切换到英文
+# commit_text  上屏拼出的词句，然后切换到英文
+# clear        清除未上屏内容，然后切换到英文
+# inline_ascii 切换到临时英文模式，按回车上屏后回到中文状态
+# noop         屏蔽快捷键，不切换中英，但不要屏蔽 CapsLock
+ascii_composer:
+  good_old_caps_lock: true
+  switch_key:
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear
+
+
+# 快捷键
+key_binder:
+  # Lua 配置: 以词定字（上屏当前词句的第一个或最后一个字），和中括号翻页有冲突
+  select_first_character: "bracketleft" # lua 选词快捷键，选第一个字
+  select_last_character: "bracketright" # lua 选词快捷键，选最后一个字
+
+  bindings:
+    # 逗号和句号翻页
+    - { when: paging, accept: comma, send: Page_Up }
+    - { when: has_menu, accept: period, send: Page_Down }

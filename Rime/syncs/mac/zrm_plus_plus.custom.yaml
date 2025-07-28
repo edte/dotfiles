@@ -1,0 +1,22 @@
+# encoding: utf-8
+
+patch:
+  # 自动造句
+  zrm2000/enable_sentence: true
+
+  # 停止补全到全拼
+  translator/preedit_format: []
+  
+  # 自定义词库
+  translator/dictionary: extended
+
+  # 自定义快捷键
+  key_binder/bindings:
+    - { when: always, accept: Control+backslash, toggle: emoji_suggestion } # 开关emoji
+    - { when: paging, accept: bracketleft, send: Page_Up }
+    - { when: has_menu, accept: bracketright, send: Page_Down }
+  
+  # 日期脚本, 会使中文标点失效, 待解决
+  # "engine/translators/@script_translator": lua_translator@date_translator
+
+

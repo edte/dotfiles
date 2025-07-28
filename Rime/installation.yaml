@@ -2,5 +2,6 @@ distribution_code_name: Squirrel
 distribution_name: "鼠鬚管"
 distribution_version: 1.0.3
 install_time: "Mon Jul 28 17:04:44 2025"
-installation_id: "9c9d1bee-1cf7-4542-abc9-ee70e9b24045"
+installation_id: "mac"
 rime_version: 1.13.0
+sync_dir: "/Users/edte/dotfiles/rime/syncs"

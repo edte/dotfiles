@@ -1,0 +1,34 @@
+# ~/Library/Rime/squirrel.custom.yaml
+# 外观设置
+# squirrel.custom.yaml 鼠须管 (Mac 版本) 设置哪些软件默认英文输入，输入法皮肤等
+
+patch:
+  style:
+    color_scheme: clean_white                 # 配色方案
+    translucency: true                        # 背景半透明总开关，不需要关掉即可
+    inline_preedit: true                      # 内嵌预编辑。设置为 false 可在输入法中显示候选拼音
+    corner_radius: 5                          # 候选词个数
+    font_face: "PingFangSC"                   # 候选词字体
+    font_point: 16                            # 候选字词大小
+    label_font_point: 14                      # 候选编号大小
+    candidate_list_layout: linear             # 水平排列
+
+
+  # 删除 mac自带的abc输入法， https://blog.csdn.net/qq_43921353/article/details/139477924
+  # 指定程序默认的输入法
+  # 获取：   osascript -e 'id of app "App名"'
+  # 中文
+  app_options/company.thebrowser.Browser: {}
+  app_options/com.google.Chrome: {}
+  app_options/com.tencent.qq: {}
+  app_options/com.tencent.WeWorkMac: {}
+  app_options/com.apple.Notes: {}
+  # 英文
+  app_options/net.kovidgoyal.kitty:
+    ascii_mode: true
+    vim_mode: true
+  app_options/com.tencent.weterm:
+    ascii_mode: true
+    vim_mode: true
+  app_options/com.runningwithcrayons.Alfred:
+    ascii_mode: true
