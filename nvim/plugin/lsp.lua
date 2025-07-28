@@ -11,6 +11,7 @@ local M = {
 	jsonls = { "json" },
 	vimls = { "vim" },
 	asm_lsp = { "asm", "vmasm" },
+	yamlls = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
 }
 
 for k, v in pairs(M) do

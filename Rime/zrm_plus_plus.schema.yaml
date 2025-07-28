@@ -15,7 +15,6 @@ schema:
     - 增加 Emoji 支持
   dependencies:
     - zrm2000
-    - english
 
 switches:
   - name: ascii_mode
@@ -56,7 +55,6 @@ engine:
     - punct_translator
     - reverse_lookup_translator
     - script_translator
-    - table_translator@english
     - table_translator@zrm2000
     - lua_translator@date_translator # 动态日期时间输入
     - table_translator@custom_phrase # 用户自定义词典
@@ -81,11 +79,6 @@ custom_phrase:
   enable_sentence: true
   initial_quality: 1
 
-english:
-  dictionary: english
-  enable_completion: true
-  enable_sentence: false
-  initial_quality: 0
 
 zrm2000:
   dictionary: zrm2000
