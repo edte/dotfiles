@@ -168,29 +168,44 @@ M.list = {
 	-- ui components
 	{ "MunifTanjim/nui.nvim", lazy = true },
 
-	{
-		"A7Lavinraj/fyler.nvim",
-		opts = {
-			close_on_select = false,
-			icon_provider = "nvim-web-devicons",
-			auto_confirm_simple_edits = true,
-
-			views = {
-				explorer = {
-					width = 0.18,
-					height = 0.8,
-					kind = "split:leftmost",
-					border = "bold",
-					win_opts = {
-						cursorline = true,
-						number = false,
-						relativenumber = false,
-						wrap = true,
-					},
-				},
-			},
-		},
-	},
+	-- {
+	-- 	"A7Lavinraj/fyler.nvim",
+	-- 	config = function()
+	-- 		require("fyler").setup({
+	-- 			close_on_select = false,
+	-- 			icon_provider = "nvim-web-devicons",
+	-- 			auto_confirm_simple_edits = true,
+	-- 			git_status = true,
+	-- 			indentscope = {
+	-- 				enabled = true,
+	-- 				group = "FylerIndentMarker",
+	-- 				marker = "│",
+	-- 			},
+	--
+	-- 			views = {
+	-- 				explorer = {
+	-- 					width = 0.18,
+	-- 					height = 0.8,
+	-- 					kind = "split:leftmost",
+	-- 					border = "bold",
+	-- 					win_opts = {
+	-- 						cursorline = true,
+	-- 						number = false,
+	-- 						relativenumber = false,
+	-- 						wrap = true,
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 			mappings = {
+	-- 				explorer = {
+	-- 					n = {
+	-- 						["<leader>o"] = "CloseView",
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 }
 
 return M

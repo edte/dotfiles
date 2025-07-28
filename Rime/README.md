@@ -1,9 +1,8 @@
-# rimerc
+# rime
 
-一个自然码双拼用户的Rime配置, **高度定制, 仅供参考**
+rime 配置，自然码双拼
 
-
-## 文件位置
+# 配置文件位置
 
 - Windows
   - Weasel: `%APPDATA%\Rime`
@@ -14,7 +13,51 @@
   - Fcitx: `~/.config/fcitx/rime`
   - iBus: `~/.config/ibus/rime`
 
-## 配置文件说明
+# 配置文件说明
+
+
+``` config
+.
+├── build        // 编译生成的最终文件，不用管也不用改
+├── default.yaml // Rime 的全局默认配置，定义了输入法的基础行为、外观、菜单等。
+├── custom_phrase.txt
+├── dicts
+│   ├── emoji.dict.yaml
+│   ├── simp-ext.dict.yaml
+│   ├── simp.dict.yaml
+│   ├── sogou_net.dict.yaml
+│   ├── thuocl_animal.dict.yaml
+│   ├── thuocl_caijing.dict.yaml
+│   ├── thuocl_food.dict.yaml
+│   ├── thuocl_idiom.dict.yaml
+│   ├── thuocl_IT.dict.yaml
+│   ├── thuocl_medical.dict.yaml
+│   └── thuocl_renmingdiming.dict.yaml
+├── english.custom.yaml
+├── english.dict.yaml
+├── english.schema.yaml
+├── essay.txt
+├── extended.dict.yaml
+├── installation.yaml
+├── key_bindings.yaml
+├── LICENSE
+├── makefile
+├── opencc
+│   ├── emoji.json
+│   ├── emoji_category.txt
+│   └── emoji_word.txt
+├── README.md
+├── rime.lua
+├── squirrel.custom.yaml
+├── symbols.yaml
+├── user.yaml
+├── weasel.custom.yaml
+├── zh-hans-t-essay-bgw.gram
+├── zrm2000.dict.yaml
+├── zrm2000.schema.yaml
+├── zrm_plus_plus.custom.yaml
+└── zrm_plus_plus.schema.yaml
+```
 
 > 不带 custom 的是配置的定制，用于实现配置；带 custom 的则是配置的覆写，用于覆写不带 custom 的某些配置；其他内容继承不带 custom 配置
 
@@ -46,4 +89,4 @@ https://github.com/rime/home/wiki/CustomizationGuide
 
 [rimerc: rimer 的词库和配置](https://github.com/Bambooin/rimerc)
 
-[Rime](https://blog.isteed.cc/post/rime-2022/)
+[Rime](https://blog.isteed.cc/post/rime-2022)
