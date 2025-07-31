@@ -1,0 +1,15 @@
+date: '+%Y-%m-%d %H:%M:%S'
+
+blocks:
+  - permission
+  - user
+  - group
+  - size
+  - date
+  - name
+  - git
+
+total-size: true
+
+# header: true
+
