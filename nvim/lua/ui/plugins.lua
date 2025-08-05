@@ -170,41 +170,39 @@ M.list = {
 
 	-- {
 	-- 	"A7Lavinraj/fyler.nvim",
-	-- 	config = function()
-	-- 		require("fyler").setup({
-	-- 			close_on_select = false,
-	-- 			icon_provider = "nvim-web-devicons",
-	-- 			auto_confirm_simple_edits = true,
-	-- 			git_status = true,
-	-- 			indentscope = {
-	-- 				enabled = true,
-	-- 				group = "FylerIndentMarker",
-	-- 				marker = "│",
+	-- 	dependencies = "echasnovski/mini.icons",
+	-- 	cmd = { "Fyler" },
+	-- 	keys = {
+	-- 		{
+	-- 			"<Space>e",
+	-- 			"<CMD>Fyler kind=split_left_most<CR>",
+	-- 			desc = "Open Fyler",
+	-- 		},
+	-- 	},
+	-- 	opts = {
+	-- 		default_explorer = true,
+	-- 		mappings = {
+	-- 			explorer = {
+	-- 				["<Space>e"] = "CloseView",
 	-- 			},
-	--
-	-- 			views = {
-	-- 				explorer = {
-	-- 					width = 0.18,
-	-- 					height = 0.8,
-	-- 					kind = "split:leftmost",
-	-- 					border = "bold",
+	-- 		},
+	-- 		views = {
+	-- 			explorer = {
+	-- 				close_on_select = false,
+	-- 				win = {
+	-- 					kind_presets = {
+	-- 						split_left_most = {
+	-- 							width = 0.2,
+	-- 						},
+	-- 					},
 	-- 					win_opts = {
-	-- 						cursorline = true,
 	-- 						number = false,
 	-- 						relativenumber = false,
-	-- 						wrap = true,
 	-- 					},
 	-- 				},
 	-- 			},
-	-- 			mappings = {
-	-- 				explorer = {
-	-- 					n = {
-	-- 						["<leader>o"] = "CloseView",
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
+	-- 		},
+	-- 	},
 	-- },
 }
 
