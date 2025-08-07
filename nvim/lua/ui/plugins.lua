@@ -180,7 +180,6 @@ M.list = {
 	-- 		},
 	-- 	},
 	-- 	opts = {
-	-- 		default_explorer = true,
 	-- 		mappings = {
 	-- 			explorer = {
 	-- 				["<Space>e"] = "CloseView",
@@ -189,10 +188,12 @@ M.list = {
 	-- 		views = {
 	-- 			explorer = {
 	-- 				close_on_select = false,
+	-- 				confirm_simple = true,
+	-- 				default_explorer = true,
 	-- 				win = {
 	-- 					kind_presets = {
 	-- 						split_left_most = {
-	-- 							width = 0.2,
+	-- 							width = 0.15,
 	-- 						},
 	-- 					},
 	-- 					win_opts = {

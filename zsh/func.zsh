@@ -151,3 +151,9 @@ line() {
         print -n -- "$1" | wc -l
     fi
 }
+
+gm() {
+    git add .
+    git commit
+    git push
+}

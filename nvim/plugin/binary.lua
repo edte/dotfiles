@@ -85,6 +85,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == "tags"
 			or name == ".ignore"
 			or name == ".gitconfig"
+			or name == "prepare-commit-msg"
 		then
 			return
 		end
