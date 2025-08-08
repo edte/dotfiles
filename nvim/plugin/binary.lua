@@ -55,7 +55,6 @@ local xxd_files = {
 	"a",
 	"so",
 	"o",
-	"",
 	-- "p12",
 	-- "p8",
 	"scel",
@@ -86,6 +85,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 			or name == ".ignore"
 			or name == ".gitconfig"
 			or name == "prepare-commit-msg"
+			or name == ".vimrc"
 		then
 			return
 		end
