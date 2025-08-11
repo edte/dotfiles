@@ -60,6 +60,23 @@ M.dialConfig = function()
 			}),
 
 			augend.constant.new({
+				elements = {
+					"一",
+					"二",
+					"三",
+					"四",
+					"五",
+					"六",
+					"七",
+					"八",
+					"九",
+					"十",
+				},
+				word = false,
+				cyclic = true,
+			}),
+
+			augend.constant.new({
 				elements = { "Debug", "Error" },
 				word = false,
 				cyclic = true,

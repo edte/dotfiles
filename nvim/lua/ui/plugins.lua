@@ -183,6 +183,13 @@ M.list = {
 	-- 		mappings = {
 	-- 			explorer = {
 	-- 				["<Space>e"] = "CloseView",
+	-- 				["<CR>"] = "Select",
+	-- 				["<C-t>"] = "SelectTab",
+	-- 				["|"] = "SelectVSplit",
+	-- 				["-"] = "SelectSplit",
+	-- 				["h"] = "GotoParent",
+	-- 				["="] = "GotoCwd",
+	-- 				["."] = "GotoNode",
 	-- 			},
 	-- 		},
 	-- 		views = {
@@ -193,7 +200,7 @@ M.list = {
 	-- 				win = {
 	-- 					kind_presets = {
 	-- 						split_left_most = {
-	-- 							width = 0.15,
+	-- 							width = "0.15rel",
 	-- 						},
 	-- 					},
 	-- 					win_opts = {

@@ -5,6 +5,7 @@
     pager = delta
     difftool = true
 	hooksPath = /Users/edte/.git_hooks
+	editor = vim
 
 [interactive]
     diffFilter = delta 
