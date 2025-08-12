@@ -69,15 +69,36 @@ function M.find_lsp_root()
 end
 
 function M.find_pattern_root()
-	return vim.fs.root(0, M.patterns)
-	-- local res
-	-- for _, pattern in ipairs(M.patterns) do
-	-- 	res = vim.fs.root(0, pattern)
-	-- 	-- print(pattern, res)
-	-- 	if res then
-	-- 		return res
-	-- 	end
-	-- end
+	-- 目录优先：从当前文件所在目录开始，逐级向上；
+	-- 每一层目录内依次检查所有 patterns，命中即返回该目录。
+
+	-- 获取起始目录：优先当前缓冲区文件目录，否则使用当前工作目录
+	local buf_path = Api.nvim_buf_get_name(0)
+	local start_dir = buf_path ~= "" and vim.fs.dirname(buf_path) or vim.uv.cwd()
+
+	if not start_dir or start_dir == "" then
+		return nil
+	end
+
+	local dir = start_dir
+	while dir and dir ~= "" do
+		for _, pattern in ipairs(M.patterns) do
+			local candidate = vim.fs.joinpath(dir, pattern)
+			local stat = vim.uv.fs_stat(candidate)
+			if stat then
+				-- 返回匹配到的目录与命中的 pattern 名称
+				return dir, pattern
+			end
+		end
+
+		local parent = vim.fs.dirname(dir)
+		if not parent or parent == "" or parent == dir then
+			break
+		end
+		dir = parent
+	end
+
+	return nil
 end
 
 function M.get_project_root()
