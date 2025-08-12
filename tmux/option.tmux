@@ -11,12 +11,8 @@ set-environment -g PATH "/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin"
 
 # set -g default-terminal "screen-256color"
 
-
-
 # set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
-
-
 
 setw -q -g utf8 on
 setw -g mode-keys vi
@@ -75,7 +71,7 @@ set -g pane-base-index 1 # 设置面板的起始下标为1
 setw -g automatic-rename off
 setw -g allow-rename off
 
-set -g history-limit 200
+set -g history-limit 100000
 # set-option -g mouse on # 等同于以上4个指令的效果
 # setw -g mouse on
 set-option -g prefix2 ^ # 设置一个不常用的`键作为指令前缀，按键更快些

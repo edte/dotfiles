@@ -16,40 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
 	{
-		"A7Lavinraj/fyler.nvim",
-		dependencies = "echasnovski/mini.icons",
-		cmd = { "Fyler" },
-		keys = {
-			{
-				"<Space>e",
-				"<CMD>Fyler kind=split_left_most<CR>",
-				desc = "Open Fyler",
-			},
+		"edte/bookmarks.nvim",
+		dependencies = {
+			"folke/snacks.nvim",
 		},
-		opts = {
-			mappings = {
-				explorer = {
-					["<Space>e"] = "CloseView",
-				},
-			},
-			views = {
-				explorer = {
-					close_on_select = false,
-					confirm_simple = true,
-					default_explorer = true,
-					win = {
-						kind_presets = {
-							split_left_most = {
-								width = 0.15,
-							},
-						},
-						win_opts = {
-							number = false,
-							relativenumber = false,
-						},
-					},
-				},
-			},
-		},
+		opts = {},
 	},
 })

@@ -794,6 +794,12 @@ M.list = {
 			end
 
 			require("mini.trailspace").setup()
+
+			-- vip 后接 gh / gH 可应用/重置当前段落中的块。同样的操作符形式 ghip / gHip 也可以实现，其优点是可点重复。
+			-- gh_ / gH_ 应用/重置当前行（即使它不是完整的块）。
+			-- ghgh / gHgh 应用/重置光标下的块范围。
+			-- dgh 删除光标下的大块范围。
+			-- [H / [h / ]h / ]H 将光标导航到当前缓冲区的第一个/上一个/下一个/最后一个块范围。
 			require("mini.diff").setup()
 			require("mini.ai").setup()
 			require("mini.move").setup()
