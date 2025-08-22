@@ -152,6 +152,11 @@ line() {
     fi
 }
 
+zlog() {
+    rm -rf ~/test/tmp.log
+    unzip -p "$1" | >~/test/tmp.log | v ~/test/tmp.log
+}
+
 gm() {
     git add .
     git commit
