@@ -8,7 +8,7 @@ all:
 mini:
 	rm -rf ~/.config/nvim
 	mkdir -p ~/.config/nvim
-	cp ./mini.lua ~/.config/nvim/init.lua
+	ln -s ~/dotfiles/nvim/mini.lua ~/.config/nvim/init.lua
 
 clean:
 	rm -rf ~/.config/nvim
