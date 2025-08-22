@@ -353,6 +353,7 @@ M.list = {
 		end,
 	},
 
+	-- 🧩 Claude Code Neovim IDE 扩展
 	{
 		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
@@ -360,26 +361,6 @@ M.list = {
 		opts = {
 			terminal_cmd = "/opt/homebrew/bin/codebuddy-code", -- Point to local installation
 		},
-
-		-- keys = {
-		-- 	{ "<leader>b", nil, desc = "AI/Claude Code" },
-		-- 	{ "<leader>bc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-		-- 	{ "<leader>bf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-		-- 	{ "<leader>br", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-		-- 	{ "<leader>bC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-		-- 	{ "<leader>bm", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-		-- 	{ "<leader>bb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-		-- 	{ "<leader>bs", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-		-- 	{
-		-- 		"<leader>bs",
-		-- 		"<cmd>ClaudeCodeTreeAdd<cr>",
-		-- 		desc = "Add file",
-		-- 		ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
-		-- 	},
-		-- 	-- Diff management
-		-- 	{ "<leader>ba", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-		-- 	{ "<leader>bd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-		-- },
 	},
 }
 

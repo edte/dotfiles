@@ -12,7 +12,6 @@ patch:
 
   # 自定义快捷键
   key_binder/bindings:
-    - { when: always, accept: Control+backslash, toggle: emoji_suggestion } # 开关emoji
     - { when: paging, accept: bracketleft, send: Page_Up }
     - { when: has_menu, accept: bracketright, send: Page_Down }
   
