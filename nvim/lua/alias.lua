@@ -1,29 +1,38 @@
--- utils alias
+-- =============================================================================
+-- Neovim 工具函数库 - 全局别名和实用工具
+-- =============================================================================
 
-------------------------------------------------- var --------------------------------------------------
-_G.NEOVIM_CONFIG_PATH = vim.fn.stdpath("config")
-_G.NEOVIM_SESSION_DATA = vim.fn.stdpath("data") .. "/session"
-_G.NEOVIM_BOOKMARKS_DATA = vim.fn.stdpath("data") .. "/bookmarks"
-_G.NEOVIM_MESSAGE_DATA = vim.fn.stdpath("state") .. "/message.log"
-_G.NEOVIM_LAZY_DATA = vim.fn.stdpath("data") .. "/lazy"
-_G.NEOVIM_UNDO_DATA = vim.fn.stdpath("state") .. "/undo"
-_G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"
-_G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"
+-- ============================ 路径配置变量 ============================
+_G.NEOVIM_CONFIG_PATH = vim.fn.stdpath("config")        -- Neovim 配置目录
+_G.NEOVIM_SESSION_DATA = vim.fn.stdpath("data") .. "/session"    -- 会话数据目录
+_G.NEOVIM_BOOKMARKS_DATA = vim.fn.stdpath("data") .. "/bookmarks" -- 书签数据目录
+_G.NEOVIM_MESSAGE_DATA = vim.fn.stdpath("state") .. "/message.log" -- 消息日志文件
+_G.NEOVIM_LAZY_DATA = vim.fn.stdpath("data") .. "/lazy"          -- Lazy.nvim 插件目录
+_G.NEOVIM_UNDO_DATA = vim.fn.stdpath("state") .. "/undo"         -- 撤销文件目录
+_G.NEOVIM_SWAP_DATA = vim.fn.stdpath("state") .. "/swap"         -- 交换文件目录
+_G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup"     -- 备份文件目录
 
-_G.log = require("utils.log")
-_G.Api = vim.api
-_G.Command = vim.api.nvim_create_user_command
-_G.cmd = vim.cmd
-_G.Autocmd = vim.api.nvim_create_autocmd
-_G.GroupId = vim.api.nvim_create_augroup
-_G.Del_cmd = vim.api.nvim_del_user_command
-_G.icon = require("utils.icons")
-_G.icons = require("utils.icons")
+-- ============================ API 别名 ============================
+_G.log = require("utils.log")                           -- 日志工具
+_G.Api = vim.api                                        -- Neovim API
+_G.Command = vim.api.nvim_create_user_command           -- 创建用户命令
+_G.cmd = vim.cmd                                        -- 执行 Vim 命令
+_G.Autocmd = vim.api.nvim_create_autocmd                -- 创建自动命令
+_G.GroupId = vim.api.nvim_create_augroup                -- 创建自动命令组
+_G.Del_cmd = vim.api.nvim_del_user_command              -- 删除用户命令
+_G.icon = require("utils.icons")                        -- 图标工具
+_G.icons = require("utils.icons")                       -- 图标工具别名
 
+-- ============================ 显示相关函数 ============================
+
+--- 屏幕居中当前行
 _G.zz = function()
 	Api.nvim_feedkeys("zz", "n", false)
 end
 
+--- 链接高亮组
+--- @param name string 目标高亮组名
+--- @param link string 源高亮组名
 _G.link_highlight = function(name, link)
 	Api.nvim_set_hl(0, name, {
 		link = link,
@@ -31,7 +40,10 @@ _G.link_highlight = function(name, link)
 	})
 end
 
---- @param name string Highlight group name, e.g. "ErrorMsg"
+--- 设置高亮组
+--- @param name string 高亮组名，如 "ErrorMsg"
+--- @param fg string|table 前景色或完整高亮配置表
+--- @param bg string 背景色
 _G.highlight = function(name, fg, bg)
 	if type(fg) == "table" then
 		Api.nvim_set_hl(0, name, fg)
@@ -51,6 +63,9 @@ _G.highlight = function(name, fg, bg)
 	Api.nvim_set_hl(0, name, t)
 end
 
+-- ============================ 文件操作函数 ============================
+
+--- 智能文件选择器：Git 项目中使用 git_files，否则使用普通文件选择
 _G.project_files = function()
 	local ret = vim.fn.system("git rev-parse --show-toplevel 2> /dev/null")
 	if ret == "" then
@@ -60,6 +75,7 @@ _G.project_files = function()
 	end
 end
 
+--- 与剪贴板内容进行差异比较
 _G.compare_to_clipboard = function()
 	local ftype = Api.nvim_eval("&filetype")
 	cmd(string.format(
@@ -82,32 +98,34 @@ _G.compare_to_clipboard = function()
 	))
 end
 
--- 使用 pcall 和 require 尝试加载包
+-- ============================ 模块加载工具 ============================
+
+--- 安全地加载模块，避免 require 失败导致崩溃
+--- @param package_name string 模块名
+--- @return table|nil 加载的模块或 nil
 function Require(package_name)
 	local status, plugin = pcall(require, package_name)
 	if not status then
-		-- 如果加载失败，打印错误信息
 		print("Error loading package " .. package_name .. ": " .. package_name)
 		log.error("Error loading package " .. package_name .. ": " .. package_name)
 		return nil
 	else
-		-- 如果加载成功，返回包
 		return plugin
 	end
 end
 
+--- 安全地调用插件的 setup 函数
+--- @param package_name string 插件名
+--- @param options table|nil 配置选项
 function Setup(package_name, options)
-	-- 尝试加载包，捕获加载过程中的错误
 	local success, package = pcall(require, package_name)
 
 	if not success then
-		-- 如果加载失败，打印错误信息
 		log.error("Error loading package " .. package_name .. ": " .. package)
 		print("Error loading package " .. package_name .. ": " .. package)
 		return
 	end
 
-	-- 检查包是否具有 'setup' 函数
 	if type(package.setup) ~= "function" then
 		log.error("Error: package " .. package_name .. " does not have a 'setup' function")
 		print("Error: package " .. package_name .. " does not have a 'setup' function")
@@ -124,30 +142,22 @@ function Setup(package_name, options)
 		end
 	end
 
-	-- 调用包的 'setup' 函数进行设置
 	package.setup(options)
 end
 
-_G.nmap = function(lhs, rhs, opts)
-	Keymap("n", lhs, rhs, opts)
-end
+-- ============================ 键映射工具 ============================
 
-_G.cmap = function(lhs, rhs, opts)
-	Keymap("c", lhs, rhs, opts)
-end
+_G.nmap = function(lhs, rhs, opts) Keymap("n", lhs, rhs, opts) end  -- Normal 模式映射
+_G.cmap = function(lhs, rhs, opts) Keymap("c", lhs, rhs, opts) end  -- Command 模式映射
+_G.vmap = function(lhs, rhs, opts) Keymap("v", lhs, rhs, opts) end  -- Visual 模式映射
+_G.imap = function(lhs, rhs, opts) Keymap("i", lhs, rhs, opts) end  -- Insert 模式映射
+_G.xmap = function(lhs, rhs, opts) Keymap("x", lhs, rhs, opts) end  -- Visual Line 模式映射
 
-_G.vmap = function(lhs, rhs, opts)
-	Keymap("v", lhs, rhs, opts)
-end
-
-_G.imap = function(lhs, rhs, opts)
-	Keymap("i", lhs, rhs, opts)
-end
-
-_G.xmap = function(lhs, rhs, opts)
-	Keymap("x", lhs, rhs, opts)
-end
-
+--- 统一键映射设置函数
+--- @param mode string 模式（n, i, v, c, x）
+--- @param lhs string 左边键位
+--- @param rhs string|function 右边命令或函数
+--- @param opts table|nil 选项
 _G.Keymap = function(mode, lhs, rhs, opts)
 	if opts == nil then
 		opts = { noremap = true, silent = true }
@@ -166,12 +176,12 @@ _G.Keymap = function(mode, lhs, rhs, opts)
 	log.error("rhs type error", type(rhs))
 end
 
----
--- @function: 打印table的内容，递归
--- @param: tbl 要打印的table
--- @param: level 递归的层数，默认不用传值进来
--- @param: filteDefault 是否过滤打印构造函数，默认为是
--- @return: return
+-- ============================ 调试工具 ============================
+
+--- 递归打印 table 内容
+--- @param tbl table 要打印的 table
+--- @param level number 递归层级
+--- @param filteDefault boolean 是否过滤构造函数关键字
 function Print(tbl, level, filteDefault)
 	if type(tbl) ~= "table" then
 		print(tbl)
@@ -183,7 +193,7 @@ function Print(tbl, level, filteDefault)
 	end
 
 	local msg = ""
-	filteDefault = filteDefault or true --默认过滤关键字（DeleteMe, _class_type）
+	filteDefault = filteDefault or true
 	level = level or 1
 	local indent_str = ""
 	for i = 1, level do
@@ -205,75 +215,77 @@ function Print(tbl, level, filteDefault)
 			print(item_str)
 			if type(v) == "table" then
 				Print(v, level + 1)
-			end
+				end
 		end
 	end
 	print(indent_str .. "}")
 end
 
---  字符串扩展方法 split_b，用于将字符串按照指定的分隔符 sep 进行分割，并返回一个包含切割结果的表
+-- ============================ 字符串工具 ============================
+
+--- 字符串分割方法
+--- @param sep string 分隔符
+--- @return table 分割后的字符串数组
 function string:split_b(sep)
 	local cuts = {}
 	for v in string.gmatch(self, "[^'" .. sep .. "']+") do
 		cuts[#cuts + 1] = v
 	end
-
 	return cuts
 end
 
+--- 计算 UTF-8 字符串的字符长度（非字节长度）
+--- @param input string 输入字符串
+--- @return number 字符长度
 _G.utf8len = function(input)
-	local len = string.len(input) --这里获取到的长度为字节数，如示例长度为：21，而我们肉眼看到的长度应该是15（包含空格）
-	local left = len --将字节长度赋值给将要使用的变量，作为判断退出while循环的字节长度
-	local cnt = 0 --将要返回的字符长度
-	local arr = { 0, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc } --用来判断是否满足字节长度的列表
-	while left ~= 0 do --遍历每一个字符
-		--获取字节的ASCII值，这里的 “-” 代表反向对应的索引，-left：input反着第left
-		--假设字符串字符input长度是：21，left的值是：21，那string.byte(input, -left)就是第一个字节的ASCII值
-		local tmp = string.byte(input, -left) --看上面两行
-		local i = #arr --获取判断列表的长度，同时作为字节长度
-		while arr[i] do --循环判定列表
-			if tmp >= arr[i] then --判定当前 “字符” 的 头“字节” ACSII值符合的范围
-				left = left - i --字符串字节长度 -i，也就是 减去字节长度
-				break --结束判断
+	local len = string.len(input)
+	local left = len
+	local cnt = 0
+	local arr = { 0, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc }
+	while left ~= 0 do
+		local tmp = string.byte(input, -left)
+		local i = #arr
+		while arr[i] do
+			if tmp >= arr[i] then
+				left = left - i
+				break
 			end
-			i = i - 1 --每次判断失败都说明不符合当前字节长度
+			i = i - 1
 		end
-		cnt = cnt + 1 --“字符” 长度+1
+		cnt = cnt + 1
 	end
-	return cnt --返回 “字符” 长度
+	return cnt
 end
 
+--- 检查字符串是否以指定前缀开头
+--- @param String string 源字符串
+--- @param Start string 前缀
+--- @return boolean
 function string.starts(String, Start)
 	return string.sub(String, 1, string.len(Start)) == Start
 end
 
+--- 检查字符串是否以指定后缀结尾
+--- @param String string 源字符串
+--- @param End string 后缀
+--- @return boolean
 function string.ends(String, End)
 	return End == "" or string.sub(String, -string.len(End)) == End
 end
 
+-- ============================ 插件管理工具 ============================
+
+--- 检查插件是否已加载
+--- @param name string 插件名
+--- @return boolean
 function is_loaded(name)
 	local Config = require("lazy.core.config")
 	return Config.plugins[name] and Config.plugins[name]._.loaded
 end
 
----@param name string
----@param fn fun(name:string)
-function on_load(name, fn)
-	if is_loaded(name) then
-		fn(name)
-	else
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "LazyLoad",
-			callback = function(event)
-				if event.data == name then
-					fn(name)
-					return true
-				end
-			end,
-		})
-	end
-end
-
+--- 获取插件配置选项
+--- @param name string 插件名
+--- @return table
 function get_opts(name)
 	local plugin = get_plugin(name)
 	if not plugin then
@@ -283,14 +295,23 @@ function get_opts(name)
 	return Plugin.values(plugin, "opts", false)
 end
 
+--- 获取插件对象
+--- @param name string 插件名
+--- @return table|nil
 function get_plugin(name)
 	return require("lazy.core.config").spec.plugins[name]
 end
 
+--- 检查插件是否存在
+--- @param plugin string 插件名
+--- @return boolean
 function has_plugin(plugin)
 	return get_plugin(plugin) ~= nil
 end
 
+--- 插件加载完成后执行回调
+--- @param name string 插件名
+--- @param fn function 回调函数
 function on_load(name, fn)
 	if is_loaded(name) then
 		fn(name)
