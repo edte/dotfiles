@@ -132,19 +132,6 @@ M.list = {
 	-- 	end,
 	-- },
 
-	-- 图片预览
-	-- {
-	--     "3rd/image.nvim",
-	--     -- ft = "markdown", -- If you decide to lazy-load anyway
-	--     opts = {
-	--         max_height_window_percentage = 80,
-	--         max_width_window_percentage = 80,
-	--         window_overlap_clear_enabled = false,
-	--         editor_only_render_when_focused = false,
-	--         tmux_show_only_in_active_window = true,
-	--     }
-	-- },
-
 	-- 一些文件用了x权限，忘记用sudo打开但是又编辑过文件了，用这个插件可以保存，或者直接打开新的文件
 	-- 比如 /etc/hosts 文件
 	{
