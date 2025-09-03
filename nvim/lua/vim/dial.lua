@@ -20,6 +20,12 @@ M.dialConfig = function()
 			}),
 
 			augend.constant.new({
+				elements = { "int", "string", "float" },
+				word = false,
+				cyclic = true,
+			}),
+
+			augend.constant.new({
 				elements = {
 					"first",
 					"second",

@@ -58,6 +58,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 				legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
 				range = true,
 			}
+			client.capabilities.textDocument.onTypeFormatting = { dynamicRegistration = false }
 		end
 	end,
 })

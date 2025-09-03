@@ -359,6 +359,7 @@ M.list = {
 		dependencies = { "folke/snacks.nvim" },
 		config = true,
 		opts = {
+			-- terminal_cmd = "/opt/homebrew/bin/codebuddy-code", -- Point to local installation
 			terminal_cmd = "/opt/homebrew/bin/codebuddy", -- Point to local installation
 		},
 	},
