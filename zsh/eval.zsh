@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # eval $(thefuck --alias)
 
 # eval "$(lua /Users/edte/.oh-my-zsh/plugins/z.lua/z.lua --init zsh)"

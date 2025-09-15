@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 开启 ZSH 自带的自动补全：
 setopt AUTO_PUSHD
 

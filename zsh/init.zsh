@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
 # mac 优化速度
 # defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
