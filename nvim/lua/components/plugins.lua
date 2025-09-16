@@ -787,7 +787,22 @@ M.list = {
 			-- ghgh / gHgh 应用/重置光标下的块范围。
 			-- dgh 删除光标下的大块范围。
 			-- [H / [h / ]h / ]H 将光标导航到当前缓冲区的第一个/上一个/下一个/最后一个块范围。
-			require("mini.diff").setup()
+			require("mini.diff").setup({
+				mappings = {
+					-- Apply hunks inside a visual/operator region
+					apply = "gH",
+					-- Reset hunks inside a visual/operator region
+					reset = "gh",
+					-- Hunk range textobject to be used inside operator
+					-- Works also in Visual mode if mapping differs from apply and reset
+					textobject = "gh",
+					-- Go to hunk range in corresponding direction
+					goto_first = "[H",
+					goto_prev = "[h",
+					goto_next = "]h",
+					goto_last = "]H",
+				},
+			})
 			require("mini.ai").setup()
 			require("mini.move").setup()
 			require("mini.splitjoin").setup()
