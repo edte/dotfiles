@@ -40,7 +40,7 @@ local function get_file()
 	if fname == "" then
 		return vim.bo.filetype
 	end
-	return fname .. " "
+	return fname .. " -> " .. vim.bo.filetype .. " "
 end
 
 local function get_branch()
