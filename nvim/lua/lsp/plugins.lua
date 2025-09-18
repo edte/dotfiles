@@ -211,11 +211,11 @@ M.list = {
 		end,
 	},
 
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^5", -- Recommended
-		ft = { "rust" },
-	},
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	version = "^5", -- Recommended
+	-- 	ft = { "rust" },
+	-- },
 
 	-- Neovim 的异步 linter 插件对内置语言服务器协议支持进行了补充
 	{
@@ -317,41 +317,42 @@ M.list = {
 		end,
 	},
 
+	-- 这玩意不太行，主要lsp action经常没有，不像jetbrains那样强
 	-- Neovim 插件提供了一种使用 Telescope 运行和可视化代码操作的简单方法。
-	{
-		"rachartier/tiny-code-action.nvim",
-		keys = "gra",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-
-			{
-				"folke/snacks.nvim",
-				opts = {
-					terminal = {},
-				},
-			},
-		},
-		-- event = "LspAttach",
-		config = function()
-			require("tiny-code-action").setup({
-				backend = "vim",
-				picker = {
-					"snacks",
-					opts = {
-						focus = "list",
-					},
-				},
-			})
-
-			vim.keymap.set("n", "gra", function()
-				require("tiny-code-action").code_action({
-					filters = {
-						line = vim.api.nvim_win_get_cursor(0)[1] - 1,
-					},
-				})
-			end, { noremap = true, silent = true })
-		end,
-	},
+	-- {
+	-- 	"rachartier/tiny-code-action.nvim",
+	-- 	keys = "gra",
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	--
+	-- 		{
+	-- 			"folke/snacks.nvim",
+	-- 			opts = {
+	-- 				terminal = {},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	-- event = "LspAttach",
+	-- 	config = function()
+	-- 		require("tiny-code-action").setup({
+	-- 			backend = "vim",
+	-- 			picker = {
+	-- 				"snacks",
+	-- 				opts = {
+	-- 					focus = "list",
+	-- 				},
+	-- 			},
+	-- 		})
+	--
+	-- 		vim.keymap.set("n", "gra", function()
+	-- 			require("tiny-code-action").code_action({
+	-- 				filters = {
+	-- 					line = vim.api.nvim_win_get_cursor(0)[1] - 1,
+	-- 				},
+	-- 			})
+	-- 		end, { noremap = true, silent = true })
+	-- 	end,
+	-- },
 
 	-- 🧩 Claude Code Neovim IDE 扩展
 	{

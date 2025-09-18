@@ -71,12 +71,6 @@ M.list = {
 	-- 		end,
 	-- 	},
 
-	-- 翻译插件
-	{
-		cmd = { "Translate" },
-		"uga-rosa/translate.nvim",
-	},
-
 	-- markdown预览
 	{
 		"OXY2DEV/markview.nvim",
@@ -351,28 +345,28 @@ M.list = {
 	},
 
 	-- 局部run代码
-	{
-		"michaelb/sniprun",
-		branch = "master",
-		cmd = "SnipRun",
-
-		build = "sh install.sh",
-		-- do 'sh install.sh 1' if you want to force compile locally
-		-- (instead of fetching a binary from the github release). Requires Rust >= 1.65
-
-		config = function()
-			require("sniprun").setup({
-				display = {
-					"VirtualText", --# display results as virtual text
-					"Terminal", --# display ok results as virtual text (multiline is shortened)
-				},
-				display_options = {
-					terminal_position = "horizontal", --# or "horizontal", to open as horizontal split instead of vertical split
-					terminal_height = 5, --# change the terminal display option height (if horizontal)
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"michaelb/sniprun",
+	-- 	branch = "master",
+	-- 	cmd = "SnipRun",
+	--
+	-- 	build = "sh install.sh",
+	-- 	-- do 'sh install.sh 1' if you want to force compile locally
+	-- 	-- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+	--
+	-- 	config = function()
+	-- 		require("sniprun").setup({
+	-- 			display = {
+	-- 				"VirtualText", --# display results as virtual text
+	-- 				"Terminal", --# display ok results as virtual text (multiline is shortened)
+	-- 			},
+	-- 			display_options = {
+	-- 				terminal_position = "horizontal", --# or "horizontal", to open as horizontal split instead of vertical split
+	-- 				terminal_height = 5, --# change the terminal display option height (if horizontal)
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- 用于 Lua 开发和 Neovim 探索的便捷便签本/REPL/调试控制台
 	{
@@ -933,23 +927,35 @@ M.list = {
 	-- 				},
 	-- 			},
 	-- 			adapters = {
-	-- 				deepseek = function()
-	-- 					return require("codecompanion.adapters").extend("deepseek", {
-	-- 						env = {
-	-- 							api_key = "DEEPSEEK_API_KEY",
-	-- 						},
-	-- 						url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
-	-- 						schema = {
-	-- 							model = {
-	-- 								default = "deepseek-v3",
-	-- 								choices = {
-	-- 									["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
-	-- 									["deepseek-r1"] = { opts = { can_use_tools = false } },
+	-- 				http = {
+	-- 					acp = {
+	-- 						claude_code = function()
+	-- 							return require("codecompanion.adapters").extend("claude_code", {
+	-- 								env = {
+	-- 									CLAUDE_CODE_OAUTH_TOKEN = "my-oauth-token",
+	-- 								},
+	-- 							})
+	-- 						end,
+	-- 					},
+	--
+	-- 					deepseek = function()
+	-- 						return require("codecompanion.adapters").extend("deepseek", {
+	-- 							env = {
+	-- 								api_key = "DEEPSEEK_API_KEY",
+	-- 							},
+	-- 							url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
+	-- 							schema = {
+	-- 								model = {
+	-- 									default = "deepseek-v3",
+	-- 									choices = {
+	-- 										["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
+	-- 										["deepseek-r1"] = { opts = { can_use_tools = false } },
+	-- 									},
 	-- 								},
 	-- 							},
-	-- 						},
-	-- 					})
-	-- 				end,
+	-- 						})
+	-- 					end,
+	-- 				},
 	-- 			},
 	-- 			strategies = {
 	-- 				chat = { adapter = "deepseek" },
