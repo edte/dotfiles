@@ -981,6 +981,109 @@ M.list = {
 	-- 		},
 	-- 	},
 	-- },
+
+	{
+		"v1nh1shungry/biquge.nvim",
+		dependencies = {
+			"folke/snacks.nvim", -- optional for snacks picker
+		},
+		keys = {
+			{
+				"<space>bb",
+				function()
+					require("biquge").toggle()
+				end,
+				desc = "Toggle",
+			},
+			{
+				"<space>bt",
+				function()
+					require("biquge").toc()
+				end,
+				desc = "Toc",
+			},
+			{
+				"<space>bn",
+				function()
+					require("biquge").next_chap()
+				end,
+				desc = "Next chapter",
+			},
+			{
+				"<space>bp",
+				function()
+					require("biquge").prev_chap()
+				end,
+				desc = "Previous chapter",
+			},
+			{
+				"<space>bs",
+				function()
+					require("biquge").star()
+				end,
+				desc = "Star current book",
+			},
+			{
+				"<space>bl",
+				function()
+					require("biquge").bookshelf()
+				end,
+				desc = "Bookshelf",
+			},
+
+			{
+				"<space>b/",
+				function()
+					require("biquge").search()
+				end,
+				desc = "Search online",
+			},
+			{
+				"<space>bf",
+				function()
+					require("biquge").local_search()
+				end,
+				desc = "Open local file",
+			},
+			{
+				"<space>bd",
+				function()
+					require("biquge").local_browse()
+				end,
+				desc = "Browse local directory",
+			},
+
+			{
+				"<M-d>",
+				function()
+					require("biquge").scroll(1)
+				end,
+				desc = "Scroll down",
+			},
+			{
+				"<M-u>",
+				function()
+					require("biquge").scroll(-1)
+				end,
+				desc = "Scroll up",
+			},
+			{
+				"<space>br",
+				function()
+					require("biquge").resume_last_reading()
+				end,
+				desc = "Resume last reading",
+			},
+			{
+				"<space>bh",
+				function()
+					require("biquge").reading_history()
+				end,
+				desc = "Reading history",
+			},
+		},
+		opts = {},
+	},
 }
 
 return M
