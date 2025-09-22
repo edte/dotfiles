@@ -983,7 +983,7 @@ M.list = {
 	-- },
 
 	{
-		"v1nh1shungry/biquge.nvim",
+		"edte/novel.nvim",
 		dependencies = {
 			"folke/snacks.nvim", -- optional for snacks picker
 		},
