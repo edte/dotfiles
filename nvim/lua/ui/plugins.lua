@@ -170,25 +170,20 @@ M.list = {
 
 	-- {
 	-- 	"A7Lavinraj/fyler.nvim",
-	-- 	dependencies = "echasnovski/mini.icons",
 	-- 	cmd = { "Fyler" },
 	-- 	keys = {
 	-- 		{
 	-- 			"<space>e",
 	-- 			function()
-	-- 				for _, win in ipairs(vim.api.nvim_list_wins()) do
-	-- 					if string.match(vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win)), "^fyler:") then
-	-- 						return vim.api.nvim_win_close(win, false)
-	-- 					end
-	-- 				end
-	-- 				cmd("Fyler kind=split_left_most")
+	-- 				require("fyler").toggle({
+	-- 					kind = "split_left_most",
+	-- 				})
 	-- 			end,
 	-- 		},
 	-- 	},
 	-- 	opts = {
 	-- 		mappings = {
 	-- 			explorer = {
-	-- 				["<Space>e"] = "CloseView",
 	-- 				["<CR>"] = "Select",
 	-- 				["<C-t>"] = "SelectTab",
 	-- 				["|"] = "SelectVSplit",
