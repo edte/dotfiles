@@ -16,3 +16,20 @@
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 #
 # nvm use v23.6.0
+
+eval "$(~/.local/bin/mise activate zsh)"
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(lua /Users/edte/.oh-my-zsh/plugins/z.lua/z.lua --init zsh)"
+
+# pnpm
+# export PNPM_HOME="/Users/edte/Library/pnpm"
+# case ":$PATH:" in
+# *":$PNPM_HOME:"*) ;;
+# *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
+# pnpm end
