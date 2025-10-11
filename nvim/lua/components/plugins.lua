@@ -1056,14 +1056,14 @@ M.list = {
 			{
 				"<M-d>",
 				function()
-					require("biquge").scroll(1)
+					require("biquge").scroll(2)
 				end,
 				desc = "Scroll down",
 			},
 			{
 				"<M-u>",
 				function()
-					require("biquge").scroll(-1)
+					require("biquge").scroll(-2)
 				end,
 				desc = "Scroll up",
 			},
