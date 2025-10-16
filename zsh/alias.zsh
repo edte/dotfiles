@@ -27,6 +27,7 @@ alias sl="ls"
 alias rf="trash"
 alias rl='ls ~/.Trash'
 alias rm="trash"
+alias remove="rm"
 # alias rg="rg -i"
 alias rg="rg -i"
 alias grep="rg"
