@@ -30,36 +30,24 @@ M.list = {
 		end,
 	},
 
-	--TODO:
-	--FIX:
-	--NOTE:
-	--WARN:
-	-- {
-	-- 	"echasnovski/mini.hipatterns",
-	-- 	version = false,
-	-- 	config = function()
-	-- 		require("components.todo").setup()
-	-- 	end,
-	-- },
-
 	-- Neovim 中人类可读的内联 cron 表达式
-	-- 	{
-	-- 		"fabridamicelli/cronex.nvim",
-	-- 		opts = {},
-	-- 		ft = { "go" },
-	-- 		config = function()
-	-- 			require("cronex").setup({
-	-- 				explainer = {
-	-- 					cmd = "hcron",
-	-- 					args = { "-24-hour", "-locale", "zh_CN" },
-	-- 				},
+	-- {
+	-- 	"fabridamicelli/cronex.nvim",
+	-- 	opts = {},
+	-- 	ft = { "go" },
+	-- 	config = function()
+	-- 		require("cronex").setup({
+	-- 			explainer = {
+	-- 				cmd = "hcron",
+	-- 				args = { "-24-hour", "-locale", "zh_CN" },
+	-- 			},
 	--
-	-- 				format = function(s)
-	-- 					return require("cronex.format").all_after_colon(s)
-	-- 				end,
-	-- 			})
+	-- 			format = function(s)
+	-- 				return require("cronex.format").all_after_colon(s)
+	-- 			end,
+	-- 		})
 	--
-	-- 			cmd([[
+	-- 		cmd([[
 	-- augroup input_method
 	--   autocmd!
 	--   autocmd InsertEnter * :CronExplainedEnable
@@ -67,9 +55,9 @@ M.list = {
 	-- augroup END
 	-- ]])
 	--
-	-- 			cmd("CronExplainedEnable")
-	-- 		end,
-	-- 	},
+	-- 		cmd("CronExplainedEnable")
+	-- 	end,
+	-- },
 
 	-- markdown预览
 	{
@@ -104,27 +92,6 @@ M.list = {
 			},
 		},
 	},
-
-	-- precognition.nvim - 预识别使用虚拟文本和装订线标志来显示可用的动作。
-	-- Precognition toggle
-	-- {
-	-- 	"tris203/precognition.nvim",
-	-- 	opts = {},
-	-- },
-
-	-- 跟踪在 Neovim 中编码所花费的时间
-	-- {
-	-- 	"ptdewey/pendulum-nvim",
-	-- 	config = function()
-	-- 		require("pendulum").setup({
-	-- 			log_file = vim.fn.expand("$HOME/Documents/my_custom_log.csv"),
-	-- 			timeout_len = 300, -- 5 minutes
-	-- 			timer_len = 60, -- 1 minute
-	-- 			gen_reports = true, -- Enable report generation (requires Go)
-	-- 			top_n = 10, -- Include top 10 entries in the report
-	-- 		})
-	-- 	end,
-	-- },
 
 	-- 一些文件用了x权限，忘记用sudo打开但是又编辑过文件了，用这个插件可以保存，或者直接打开新的文件
 	-- 比如 /etc/hosts 文件
@@ -211,88 +178,6 @@ M.list = {
 		version = "*", -- or branch = "dev", to use the latest commit
 	},
 
-	-- neovim 交互式数据库客户端
-	{
-		"kndndrj/nvim-dbee",
-		ft = "sql",
-		dependencies = {
-			{
-				"MunifTanjim/nui.nvim",
-				config = function()
-					local NuiTable = require("nui.table")
-
-					function render_tsv_as_table()
-						local lines = {}
-						local headers = {}
-						local data = {}
-
-						-- Get the current buffer number
-						local bufnr = vim.api.nvim_get_current_buf()
-
-						-- Get the filetype of the current buffer
-						local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-
-						-- Check if the filetype is tsv
-						if filetype ~= "tsv" then
-							log.error("Error: Current buffer is not a TSV file.")
-							return
-						end
-
-						-- Get the lines from the current buffer
-						lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-
-						-- log.error(vim.api.nvim_buf_get_option("0", {"filetype"}), lines, #lines)
-
-						if #lines == 1 then
-							return
-						end
-
-						if #lines > 0 then
-							headers = vim.split(lines[1], "\t")
-							for i = 2, #lines do
-								local row = {}
-								local values = vim.split(lines[i], "\t")
-								for j, header in ipairs(headers) do
-									row[header] = values[j]
-								end
-								table.insert(data, row)
-							end
-						else
-							log.error("Error: Current buffer is empty.")
-							return
-						end
-
-						-- Clear the current buffer
-						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})
-
-						local tbl = NuiTable({
-							bufnr = bufnr,
-							columns = vim.tbl_map(function(header)
-								return {
-									align = "center",
-									accessor_key = header,
-									header = header,
-								}
-							end, headers),
-							data = data,
-						})
-
-						tbl:render()
-					end
-				end,
-			},
-		},
-		build = function()
-			-- Install tries to automatically detect the install method.
-			-- if it fails, try calling it with one of these parameters:
-			--    "curl", "wget", "bitsadmin", "go"
-			require("dbee").install()
-		end,
-		config = function()
-			require("dbee").setup( --[[optional config]])
-		end,
-	},
-
 	-- http 请求
 	{
 		"mistweaverco/kulala.nvim",
@@ -343,30 +228,6 @@ M.list = {
 		cmd = "PasteImage",
 		opts = {},
 	},
-
-	-- 局部run代码
-	-- {
-	-- 	"michaelb/sniprun",
-	-- 	branch = "master",
-	-- 	cmd = "SnipRun",
-	--
-	-- 	build = "sh install.sh",
-	-- 	-- do 'sh install.sh 1' if you want to force compile locally
-	-- 	-- (instead of fetching a binary from the github release). Requires Rust >= 1.65
-	--
-	-- 	config = function()
-	-- 		require("sniprun").setup({
-	-- 			display = {
-	-- 				"VirtualText", --# display results as virtual text
-	-- 				"Terminal", --# display ok results as virtual text (multiline is shortened)
-	-- 			},
-	-- 			display_options = {
-	-- 				terminal_position = "horizontal", --# or "horizontal", to open as horizontal split instead of vertical split
-	-- 				terminal_height = 5, --# change the terminal display option height (if horizontal)
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 
 	-- 用于 Lua 开发和 Neovim 探索的便捷便签本/REPL/调试控制台
 	{
@@ -805,182 +666,6 @@ M.list = {
 
 	-- library used by other plugins
 	{ "nvim-lua/plenary.nvim", lazy = true },
-
-	-- CodeCompanion 是一种生产力工具，可简化您在 Neovim 中使用 LLM 进行开发的方式。
-	-- 🎯 命令
-	-- :CodeCompanionHistory - 打开历史浏览器
-	-- :CodeCompanionSummaries - 浏览所有摘要
-	-- ⌨️ 聊天缓冲区键盘映射
-	-- 历史管理：
-	--
-	-- gh - 打开历史浏览器（可通过 opts.keymap 自定义）
-	-- sc - 手动保存当前聊天（可通过 opts.save_chat_keymap 自定义）
-	-- 摘要系统：
-	--
-	-- gcs - 生成当前聊天摘要（可通过 opts.summary.create_summary_keymap 自定义）
-	-- gbs - 浏览已保存的摘要（可通过 opts.summary.browse_summaries_keymap 自定义）
-
-	-- {
-	-- 	"olimorris/codecompanion.nvim",
-	--
-	-- 	config = function()
-	-- 		require("codecompanion").setup({
-	-- 			opts = {
-	-- 				language = "中文",
-	-- 			},
-	-- 			extensions = {
-	-- 				history = {
-	-- 					enabled = true,
-	-- 					opts = {
-	-- 						-- Keymap to open history from chat buffer (default: gh)
-	-- 						keymap = "gh",
-	-- 						-- Keymap to save the current chat manually (when auto_save is disabled)
-	-- 						save_chat_keymap = "sc",
-	-- 						-- Save all chats by default (disable to save only manually using 'sc')
-	-- 						auto_save = true,
-	-- 						-- Number of days after which chats are automatically deleted (0 to disable)
-	-- 						expiration_days = 0,
-	-- 						-- Picker interface (auto resolved to a valid picker)
-	-- 						picker = "default", --- ("telescope", "snacks", "fzf-lua", or "default")
-	-- 						---Optional filter function to control which chats are shown when browsing
-	-- 						chat_filter = nil, -- function(chat_data) return boolean end
-	-- 						-- Customize picker keymaps (optional)
-	-- 						picker_keymaps = {
-	-- 							rename = { n = "r", i = "<M-r>" },
-	-- 							delete = { n = "d", i = "<M-d>" },
-	-- 							duplicate = { n = "<C-y>", i = "<C-y>" },
-	-- 						},
-	-- 						---Automatically generate titles for new chats
-	-- 						auto_generate_title = true,
-	-- 						title_generation_opts = {
-	-- 							---Adapter for generating titles (defaults to current chat adapter)
-	-- 							adapter = nil, -- "copilot"
-	-- 							---Model for generating titles (defaults to current chat model)
-	-- 							model = nil, -- "gpt-4o"
-	-- 							---Number of user prompts after which to refresh the title (0 to disable)
-	-- 							refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
-	-- 							---Maximum number of times to refresh the title (default: 3)
-	-- 							max_refreshes = 3,
-	-- 							format_title = function(original_title)
-	-- 								-- this can be a custom function that applies some custom
-	-- 								-- formatting to the title.
-	-- 								return original_title
-	-- 							end,
-	-- 						},
-	-- 						---On exiting and entering neovim, loads the last chat on opening chat
-	-- 						continue_last_chat = false,
-	-- 						---When chat is cleared with `gx` delete the chat from history
-	-- 						delete_on_clearing_chat = false,
-	-- 						---Directory path to save the chats
-	-- 						dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
-	-- 						---Enable detailed logging for history extension
-	-- 						enable_logging = false,
-	--
-	-- 						-- Summary system
-	-- 						summary = {
-	-- 							-- Keymap to generate summary for current chat (default: "gcs")
-	-- 							create_summary_keymap = "gcs",
-	-- 							-- Keymap to browse summaries (default: "gbs")
-	-- 							browse_summaries_keymap = "gbs",
-	--
-	-- 							generation_opts = {
-	-- 								adapter = nil, -- defaults to current chat adapter
-	-- 								model = nil, -- defaults to current chat model
-	-- 								context_size = 90000, -- max tokens that the model supports
-	-- 								include_references = true, -- include slash command content
-	-- 								include_tool_outputs = true, -- include tool execution results
-	-- 								system_prompt = nil, -- custom system prompt (string or function)
-	-- 								format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
-	-- 							},
-	-- 						},
-	--
-	-- 						-- Memory system (requires VectorCode CLI)
-	-- 						memory = {
-	-- 							-- Automatically index summaries when they are generated
-	-- 							auto_create_memories_on_summary_generation = true,
-	-- 							-- Path to the VectorCode executable
-	-- 							vectorcode_exe = "vectorcode",
-	-- 							-- Tool configuration
-	-- 							tool_opts = {
-	-- 								-- Default number of memories to retrieve
-	-- 								default_num = 10,
-	-- 							},
-	-- 							-- Enable notifications for indexing progress
-	-- 							notify = true,
-	-- 							-- Index all existing memories on startup
-	-- 							-- (requires VectorCode 0.6.12+ for efficient incremental indexing)
-	-- 							index_on_startup = false,
-	-- 						},
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 			display = {
-	-- 				action_palette = {
-	-- 					width = 95,
-	-- 					height = 10,
-	-- 					prompt = "Prompt ", -- Prompt used for interactive LLM calls
-	-- 					provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
-	-- 					opts = {
-	-- 						show_default_actions = true, -- Show the default actions in the action palette?
-	-- 						show_default_prompt_library = true, -- Show the default prompt library in the action palette?
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 			adapters = {
-	-- 				http = {
-	-- 					acp = {
-	-- 						claude_code = function()
-	-- 							return require("codecompanion.adapters").extend("claude_code", {
-	-- 								env = {
-	-- 									CLAUDE_CODE_OAUTH_TOKEN = "my-oauth-token",
-	-- 								},
-	-- 							})
-	-- 						end,
-	-- 					},
-	--
-	-- 					deepseek = function()
-	-- 						return require("codecompanion.adapters").extend("deepseek", {
-	-- 							env = {
-	-- 								api_key = "DEEPSEEK_API_KEY",
-	-- 							},
-	-- 							url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
-	-- 							schema = {
-	-- 								model = {
-	-- 									default = "deepseek-v3",
-	-- 									choices = {
-	-- 										["deepseek-v3"] = { opts = { can_reason = true, can_use_tools = false } },
-	-- 										["deepseek-r1"] = { opts = { can_use_tools = false } },
-	-- 									},
-	-- 								},
-	-- 							},
-	-- 						})
-	-- 					end,
-	-- 				},
-	-- 			},
-	-- 			strategies = {
-	-- 				chat = { adapter = "deepseek" },
-	-- 				inline = { adapter = "deepseek" },
-	-- 				agent = { adapter = "deepseek" },
-	-- 			},
-	-- 		})
-	--
-	-- 		vim.keymap.set({ "n" }, "<space>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-	-- 		vim.keymap.set({ "v" }, "<space>a", "<cmd>CodeCompanion <cr>", { noremap = true, silent = true })
-	-- 		vim.cmd([[cab c CodeCompanion]])
-	-- 	end,
-	--
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"ravitemer/codecompanion-history.nvim",
-	-- 		{
-	-- 			"Davidyz/VectorCode",
-	-- 			version = "*", -- optional, depending on whether you're on nightly or release
-	-- 			dependencies = { "nvim-lua/plenary.nvim" },
-	-- 			cmd = "VectorCode", -- if you're lazy-loading VectorCode
-	-- 		},
-	-- 	},
-	-- },
 
 	{
 		"edte/novel.nvim",
