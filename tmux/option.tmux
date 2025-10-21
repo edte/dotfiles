@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 set-environment -g PATH "/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin"
 

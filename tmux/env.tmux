@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 TMUX_FZF_SESSION_FORMAT="#{session_windows}"
 TMUX_FZF_WINDOW_FORMAT="#{window_name}"
