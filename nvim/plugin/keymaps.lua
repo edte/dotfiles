@@ -1,21 +1,7 @@
--- fuck default keymaps
--- if vim.fn.has("nvim-0.11") == 1 then
---     vim.keymap.del("", "grr", {})
---     vim.keymap.del("", "gra", {})
---     vim.keymap.del("", "grn", {})
---     -- vim.keymap.del("", "gcc", {})
--- end
-
--- cmd("nmap <tab> %")
-
 nmap("}", "}w")
 nmap("}", "}j")
 vim.cmd("nnoremap <expr><silent> { (col('.')==1 && len(getline(line('.')-1))==0? '2{j' : '{j')")
 
--- 上下滚动浏览
--- nmap("<C-j>", "5j")
--- nmap("<C-k>", "5k")
---
 nmap("<C-u>", "<C-u>zz")
 nmap("<C-d>", "<C-d>zz")
 
@@ -25,12 +11,7 @@ nmap("N", "Nzzzv")
 -- 保存文件
 nmap("<C-s>", "<cmd>w<cr>")
 
--- 删除整行
--- keymap("", "D", "Vd")
-
--- nmap( "c", '"_c')
-
--- -- 设置 jj、jk 为 ESC,避免频繁按 esc
+-- 设置 jj、jk 为 ESC,避免频繁按 esc
 imap("jk", "<Esc><right>")
 
 -- 按 esc 消除上一次的高亮
@@ -62,12 +43,6 @@ end)
 nmap("<C-i>", "<C-i>zz")
 nmap("<C-o>", "<C-o>zz")
 
--- 大小写转换
--- map("n", "<esc>", "~", opt)
-
--- what?
--- map("n", "<cmd>lua vim.lsp.buf.hover()<cr>", opt)
-
 nmap("yp", 'vi"p')
 nmap("vp", 'vi"p')
 
@@ -75,21 +50,12 @@ nmap("vp", 'vi"p')
 -- 取消撤销
 nmap("U", "<c-r>")
 
--- 重命名
--- keymap("n", "R", "<cmd>lua vim.lsp.buf.rename()<CR>")
-
--- nmap("R", ":IncRename ")
-
--- nmap("<bs>", "<C-^>")
-
 nmap("gI", "<cmd>Glance implementations<cr>")
 
 nmap("<C-]>", "<C-]>zz")
 nmap("gd", "<C-]>zz")
 
 nmap("grr", "<cmd>Glance references<cr>")
-
--- nmap("gh", "<CMD>ClangdSwitchSourceHeader<CR>")
 
 nmap("<c-n>", function()
 	vim.diagnostic.goto_next()
@@ -118,13 +84,8 @@ end)
 -- nmap("s", "") -- 取消 s 默认功能
 -- map("n", "S", "", opt)                          -- 取消 s 默认功能
 
--- 分屏状态下，一起滚动，用于简单的diff
--- set scrollbind
--- 恢复
--- set noscrollbind
-
 nmap("sv", "<cmd>vsp<CR>") -- 水平分屏
--- keymap("n", "sh", "<cmd>sp<CR>")                  -- 垂直分屏
+nmap("sh", "<cmd>sp<CR>") -- 垂直分屏
 
 nmap("sc", "<C-w>c") -- 关闭当前屏幕
 nmap("so", "<C-w>o") -- 关闭其它屏幕
@@ -144,18 +105,6 @@ nmap("<right>", "<c-w>l")
 nmap("<up>", "<c-w>k")
 nmap("<down>", "<c-w>j")
 
--- kitty 终端区分 c-i 和 tab
-if vim.env.TERM == "xterm-kitty" then
-	cmd([[autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[>1u") | endif]])
-	cmd([[autocmd UILeave * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[<1u") | endif]])
-	cmd("nnoremap <c-i> <c-i>")
-	cmd("nnoremap <ESC>[105;5u <C-I>")
-	cmd("nnoremap <Tab>        %")
-	cmd("noremap  <ESC>[88;5u  :!echo B<CR>")
-	cmd("noremap  <ESC>[49;5u  :!echo C<CR>")
-	cmd("noremap  <ESC>[1;5P   :!echo D<CR>")
-end
-
 -- 交换 : ;
 
 cmd("noremap ; :")
@@ -168,21 +117,17 @@ cmd("inoremap ; :")
 cmd("inoremap : ;")
 
 cmd("nnoremap <Enter> o<ESC>") -- Insert New Line quickly
--- cmd("nnoremap <Enter> %")
 
 cmd("xnoremap p P")
 
 cmd("silent!")
-
--- cmd("nnoremap # *")
--- cmd("nnoremap * #")
 
 nmap("gw", "<cmd>lua Snacks.picker.grep_word()<CR>")
 
 nmap("C", '"_C')
 nmap("D", '"_D')
 nmap("yc", "yy<cmd>normal gcc<CR>p")
--- nmap("<C-c>", "ciw")
+nmap("<C-c>", "ciw")
 nmap("cr", "ciw")
 
 vmap("J", ":m '>+1<CR>gv=gv")

@@ -1,12 +1,3 @@
--- https://vi.stackexchange.com/questions/4493/what-is-the-order-of-winenter-bufenter-bufread-syntax-filetype-events
-
--- autocmd({ "VimLeave" }, {
--- 	pattern = "*",
--- 	callback = function()
--- 		require("plenary.profile").stop()
--- 	end,
--- })
-
 -- 这段自动命令可以防止你在一个注释行中换行后，新行会继续注释的情况
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = "*",
@@ -61,27 +52,27 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Dim inactive windows
 -- vim.cmd("highlight default DimInactiveWindows guifg=#666666")
 -- vim.api.nvim_create_autocmd({ "WinLeave" }, {
---     group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
---     callback = function()
---         if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
---             return
---         end
+-- 	group = vim.api.nvim_create_augroup("EnableDimInactiveWindows", { clear = true }),
+-- 	callback = function()
+-- 		if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
+-- 			return
+-- 		end
 --
---         local highlights = {}
---         for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
---             table.insert(highlights, hl .. ":DimInactiveWindows")
---         end
---         vim.wo.winhighlight = table.concat(highlights, ",")
---     end,
+-- 		local highlights = {}
+-- 		for hl, _ in pairs(vim.api.nvim_get_hl(0, {})) do
+-- 			table.insert(highlights, hl .. ":DimInactiveWindows")
+-- 		end
+-- 		vim.wo.winhighlight = table.concat(highlights, ",")
+-- 	end,
 -- })
 -- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
---     group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
---     callback = function()
---         if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
---             return
---         end
---         vim.wo.winhighlight = ""
---     end,
+-- 	group = vim.api.nvim_create_augroup("DisableDimInactiveWindows", { clear = true }),
+-- 	callback = function()
+-- 		if vim.bo.filetype == "minifiles" or vim.bo.filetype == "DiffviewFiles" then
+-- 			return
+-- 		end
+-- 		vim.wo.winhighlight = ""
+-- 	end,
 -- })
 
 -- Close on "q"
@@ -158,34 +149,6 @@ vim.api.nvim_create_autocmd({ "WinResized" }, {
 		vim.opt.scrolloff = math.floor(vim.o.lines * scrolloffPercentage)
 	end,
 })
-
--- 退出的时候也会写message到日志文件
--- 调试用
--- Redir message
--- vim.api.nvim_create_autocmd({ "VimEnter", "BufEnter", "CmdlineEnter" }, {
---     group = vim.api.nvim_create_augroup("redir-message-begin", { clear = true }),
---     callback = function()
---         cmd("redir >> " .. NEOVIM_MESSAGE_DATA)
---     end,
--- })
---
--- vim.api.nvim_create_autocmd("VimLeave", {
---     group = vim.api.nvim_create_augroup("redir-message-end", { clear = true }),
---     callback = function()
---         cmd("redir END")
---     end,
--- })
-
--- vim.api.nvim_create_autocmd("CmdwinEnter", {
--- 	group = vim.api.nvim_create_augroup("cmdwin_syntax", {}),
--- 	callback = function()
--- 		print("fuck")
--- 		local is_loadable, _ = pcall(vim.treesitter.language.add, "vim")
--- 		if is_loadable then
--- 			vim.cmd("set syntax=vim")
--- 		end
--- 	end,
--- })
 
 vim.cmd([[
 augroup diffcolors
