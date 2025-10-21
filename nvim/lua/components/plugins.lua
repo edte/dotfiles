@@ -332,6 +332,14 @@ M.list = {
 				ft = "snacks_terminal",
 				desc = "Toggle terminal",
 			},
+			{
+				"<space>h",
+				mode = "n",
+				function()
+					Snacks.notifier.show_history()
+				end,
+				desc = "show history",
+			},
 		},
 		opts = {
 			animate = { enabled = true },
