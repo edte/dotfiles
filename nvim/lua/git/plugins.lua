@@ -3,17 +3,17 @@ local M = {}
 M.list = {
 
 	-- GitMessenger
-	-- {
-	-- 	"rhysd/git-messenger.vim",
-	-- 	config = function()
-	-- 		vim.cmd([[
-	--                let g:git_messenger_floating_win_opts = { 'border': 'single' }
-	--                let g:git_messenger_popup_content_margins = v:false
-	--                let g:git_messenger_date_format="%F %H:%M"
-	--                let g:git_messenger_no_default_mappings=v:true
-	--            ]])
-	-- 	end,
-	-- },
+	{
+		"rhysd/git-messenger.vim",
+		config = function()
+			vim.cmd([[
+	               let g:git_messenger_floating_win_opts = { 'border': 'single' }
+	               let g:git_messenger_popup_content_margins = v:false
+	               let g:git_messenger_date_format="%F %H:%M"
+	               let g:git_messenger_no_default_mappings=v:true
+	           ]])
+		end,
+	},
 
 	-- Git blame
 	-- FIX: 大文件会很慢，看异步咋优化，git-messenger.nvim 就很快
@@ -23,45 +23,45 @@ M.list = {
 	},
 
 	-- 单选项卡界面可轻松循环浏览任何 git rev 的所有修改文件的差异。
-	{
-		"sindrets/diffview.nvim",
-		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-		config = function()
-			Setup("diffview", {
-				view = {
-					-- Configure the layout and behavior of different types of views.
-					-- Available layouts:
-					--  'diff1_plain'
-					--    |'diff2_horizontal'
-					--    |'diff2_vertical'
-					--    |'diff3_horizontal'
-					--    |'diff3_vertical'
-					--    |'diff3_mixed'
-					--    |'diff4_mixed'
-					-- For more info, see |diffview-config-view.x.layout|.
-					default = {
-						-- Config for changed files, and staged files in diff views.
-						layout = "diff2_horizontal",
-						disable_diagnostics = false, -- Temporarily disable diagnostics for diff buffers while in the view.
-						winbar_info = false, -- See |diffview-config-view.x.winbar_info|
-					},
-					merge_tool = {
-						-- Config for conflicted files in diff views during a merge or rebase.
-						--  ('diff1_plain'|'diff3_horizontal'|'diff3_vertical'|'diff3_mixed'|'diff4_mixed'|-
-						layout = "diff3_horizontal",
-						disable_diagnostics = true, -- Temporarily disable diagnostics for diff buffers while in the view.
-						winbar_info = true, -- See |diffview-config-view.x.winbar_info|
-					},
-					file_history = {
-						-- Config for changed files in file history views.
-						layout = "diff2_horizontal",
-						disable_diagnostics = false, -- Temporarily disable diagnostics for diff buffers while in the view.
-						winbar_info = false, -- See |diffview-config-view.x.winbar_info|
-					},
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"sindrets/diffview.nvim",
+	-- 	cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+	-- 	config = function()
+	-- 		Setup("diffview", {
+	-- 			view = {
+	-- 				-- Configure the layout and behavior of different types of views.
+	-- 				-- Available layouts:
+	-- 				--  'diff1_plain'
+	-- 				--    |'diff2_horizontal'
+	-- 				--    |'diff2_vertical'
+	-- 				--    |'diff3_horizontal'
+	-- 				--    |'diff3_vertical'
+	-- 				--    |'diff3_mixed'
+	-- 				--    |'diff4_mixed'
+	-- 				-- For more info, see |diffview-config-view.x.layout|.
+	-- 				default = {
+	-- 					-- Config for changed files, and staged files in diff views.
+	-- 					layout = "diff2_horizontal",
+	-- 					disable_diagnostics = false, -- Temporarily disable diagnostics for diff buffers while in the view.
+	-- 					winbar_info = false, -- See |diffview-config-view.x.winbar_info|
+	-- 				},
+	-- 				merge_tool = {
+	-- 					-- Config for conflicted files in diff views during a merge or rebase.
+	-- 					--  ('diff1_plain'|'diff3_horizontal'|'diff3_vertical'|'diff3_mixed'|'diff4_mixed'|-
+	-- 					layout = "diff3_horizontal",
+	-- 					disable_diagnostics = true, -- Temporarily disable diagnostics for diff buffers while in the view.
+	-- 					winbar_info = true, -- See |diffview-config-view.x.winbar_info|
+	-- 				},
+	-- 				file_history = {
+	-- 					-- Config for changed files in file history views.
+	-- 					layout = "diff2_horizontal",
+	-- 					disable_diagnostics = false, -- Temporarily disable diagnostics for diff buffers while in the view.
+	-- 					winbar_info = false, -- See |diffview-config-view.x.winbar_info|
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- Neovim 中可视化和解决合并冲突的插件
 	-- GitConflictChooseOurs — 选择当前更改。
