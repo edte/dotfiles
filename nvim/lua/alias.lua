@@ -19,7 +19,6 @@ _G.Command = vim.api.nvim_create_user_command -- 创建用户命令
 _G.cmd = vim.cmd -- 执行 Vim 命令
 _G.Autocmd = vim.api.nvim_create_autocmd -- 创建自动命令
 _G.GroupId = vim.api.nvim_create_augroup -- 创建自动命令组
-_G.Del_cmd = vim.api.nvim_del_user_command -- 删除用户命令
 _G.icon = require("utils.icons") -- 图标工具
 _G.icons = require("utils.icons") -- 图标工具别名
 
@@ -27,14 +26,14 @@ _G.icons = require("utils.icons") -- 图标工具别名
 
 --- 屏幕居中当前行
 _G.zz = function()
-	Api.nvim_feedkeys("zz", "n", false)
+	vim.api.nvim_feedkeys("zz", "n", false)
 end
 
 --- 链接高亮组
 --- @param name string 目标高亮组名
 --- @param link string 源高亮组名
 _G.link_highlight = function(name, link)
-	Api.nvim_set_hl(0, name, {
+	vim.api.nvim_set_hl(0, name, {
 		link = link,
 		default = true,
 	})
@@ -46,7 +45,7 @@ end
 --- @param bg string 背景色
 _G.highlight = function(name, fg, bg)
 	if type(fg) == "table" then
-		Api.nvim_set_hl(0, name, fg)
+		vim.api.nvim_set_hl(0, name, fg)
 		return
 	end
 
@@ -60,7 +59,7 @@ _G.highlight = function(name, fg, bg)
 		t["bg"] = bg
 	end
 
-	Api.nvim_set_hl(0, name, t)
+	vim.api.nvim_set_hl(0, name, t)
 end
 
 -- ============================ 文件操作函数 ============================
@@ -77,7 +76,7 @@ end
 
 --- 与剪贴板内容进行差异比较
 _G.compare_to_clipboard = function()
-	local ftype = Api.nvim_eval("&filetype")
+	local ftype = vim.api.nvim_eval("&filetype")
 	cmd(string.format(
 		[[
   execute "normal! \"xy"
@@ -174,7 +173,7 @@ _G.Keymap = function(mode, lhs, rhs, opts)
 	end
 
 	if type(rhs) == "string" then
-		Api.nvim_set_keymap(mode, lhs, rhs, opts)
+		vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 		return
 	end
 
