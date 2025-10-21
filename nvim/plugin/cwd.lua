@@ -73,7 +73,7 @@ function M.find_pattern_root()
 	-- 每一层目录内依次检查所有 patterns，命中即返回该目录。
 
 	-- 获取起始目录：优先当前缓冲区文件目录，否则使用当前工作目录
-	local buf_path = Api.nvim_buf_get_name(0)
+	local buf_path = api.nvim_buf_get_name(0)
 	local start_dir = buf_path ~= "" and vim.fs.dirname(buf_path) or vim.uv.cwd()
 
 	if not start_dir or start_dir == "" then
@@ -122,7 +122,7 @@ function M.set_pwd(dir, method)
 		if vim.uv.cwd() ~= dir then
 			local scope_chdir = M.scope_chdir
 			if scope_chdir == "global" then
-				Api.nvim_set_current_dir(dir)
+				api.nvim_set_current_dir(dir)
 			elseif scope_chdir == "tab" then
 				cmd("tcd " .. dir)
 			elseif scope_chdir == "win" then

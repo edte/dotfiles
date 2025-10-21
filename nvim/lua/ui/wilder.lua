@@ -14,7 +14,7 @@ M.setup = function()
 		reject_key = 0,
 		accept_key = 0,
 	})
-	Api.nvim_command("silent! UpdateRemotePlugins") -- 需要载入一次py依赖 不然模糊过滤等失效
+	api.nvim_command("silent! UpdateRemotePlugins") -- 需要载入一次py依赖 不然模糊过滤等失效
 
 	-- 设置source
 	wilder.set_option("pipeline", {

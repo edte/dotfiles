@@ -20,7 +20,7 @@ end
 -- LSP clients attached to buffer
 
 local function get_lsp()
-	local current_buf = Api.nvim_get_current_buf()
+	local current_buf = api.nvim_get_current_buf()
 
 	local clients = vim.lsp.get_clients({ bufnr = current_buf })
 	if next(clients) == nil then

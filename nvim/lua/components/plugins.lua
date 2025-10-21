@@ -666,7 +666,7 @@ M.list = {
 				function()
 					local mf = require("mini.files")
 					if not mf.close() then
-						local n = Api.nvim_buf_get_name(0)
+						local n = api.nvim_buf_get_name(0)
 						if n ~= "" then
 							mf.open(n)
 							mf.reveal_cwd()

@@ -14,7 +14,7 @@ _G.NEOVIM_BACKUP_DATA = vim.fn.stdpath("state") .. "/backup" -- 备份文件目�
 
 -- ============================ API 别名 ============================
 _G.log = require("utils.log") -- 日志工具
-_G.Api = vim.api -- Neovim API
+_G.api = vim.api -- Neovim API
 _G.Command = vim.api.nvim_create_user_command -- 创建用户命令
 _G.cmd = vim.cmd -- 执行 Vim 命令
 _G.Autocmd = vim.api.nvim_create_autocmd -- 创建自动命令
