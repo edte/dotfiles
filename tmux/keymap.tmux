@@ -63,6 +63,11 @@ set -g repeat-time 10
 bind Enter copy-mode # enter copy mode
 bind-key -n c-y copy-mode
 
+bind-key -T copy-mode-vi d send-keys -X halfpage-down
+bind-key -T copy-mode-vi u send-keys -X halfpage-up
+bind-key -T copy-mode-vi C-d send-keys -X halfpage-down
+bind-key -T copy-mode-vi C-u send-keys -X halfpage-up
+
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi C-v send -X rectangle-toggle
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
