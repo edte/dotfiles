@@ -1,7 +1,3 @@
-if vim.env.Test then
-	return
-end
-
 -- 自动切换cwd（项目维度），方便各种插件使用，比如bookmark，arrow，telescope等等，
 -- 包括 git，makefile，lsp根目录，兼容普通目录，即进入的那个目录
 -- 这个必须在init插件加载之前load，不能放在plugin里，因为有的插件会依赖cwd

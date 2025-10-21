@@ -1,7 +1,3 @@
--- if vim.env.Test then
---     return
--- end
-
 -- 根据语言启动 lsp
 
 local M = {
