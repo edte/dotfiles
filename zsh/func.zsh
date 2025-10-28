@@ -51,7 +51,7 @@ function update() {
 }
 
 function tpushbuild() {
-    ~/Downloads/epc build -b -r https://git.woa.com/tme/push/tpush/server --path "$1"
+    epc build -b -r https://git.woa.com/tme/push/tpush/server --path "$1"
 }
 
 # http proxy
