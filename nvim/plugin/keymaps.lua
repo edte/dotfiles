@@ -174,3 +174,23 @@ end, { desc = "bookmarks delete", silent = true })
 Command("JsonCompress", function()
 	vim.api.nvim_command(":%!jq -c")
 end, { nargs = "*" })
+
+-- cmdline 模式下的emacs键位
+vim.cmd("cnoremap <C-A>		<Home>")
+vim.cmd("cnoremap <C-D>		<Del>")
+vim.cmd("cnoremap <C-E>		<End>")
+vim.cmd("cnoremap <C-F>		<Right>")
+vim.cmd("cnoremap <C-N>		<Down>")
+vim.cmd("cnoremap <C-P>		<Up>")
+vim.cmd("cnoremap <Esc><C-B>	<S-Left>")
+vim.cmd("cnoremap <Esc><C-F>	<S-Right>")
+
+-- insert 模式下的emacs键位
+vim.cmd("inoremap <C-A>		<Home>")
+vim.cmd("inoremap <C-D>		<Del>")
+vim.cmd("inoremap <C-E>		<End>")
+vim.cmd("inoremap <C-F>		<Right>")
+vim.cmd("inoremap <C-N>		<Down>")
+vim.cmd("inoremap <C-P>		<Up>")
+vim.cmd("inoremap <Esc><C-B>	<S-Left>")
+vim.cmd("inoremap <Esc><C-F>	<S-Right>")

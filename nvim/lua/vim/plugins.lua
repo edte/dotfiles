@@ -230,12 +230,6 @@ M.list = {
 		end,
 	},
 
-	-- 在插入模式和命令行模式下提供emacs键位，比如c-a行首，c-e行尾，normal模式无效
-	{
-		"tpope/vim-rsi",
-		event = { "InsertEnter", "CmdlineEnter" },
-	},
-
 	-- Neovim 中更好的快速修复窗口，抛光旧的快速修复窗口。
 	{
 		"kevinhwang91/nvim-bqf",
