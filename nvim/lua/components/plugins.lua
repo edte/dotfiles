@@ -104,13 +104,6 @@ M.list = {
 		end,
 	},
 
-	-- 最精美的 Neovim 色彩工具
-	{ "nvzone/volt", lazy = true },
-	{
-		"nvzone/minty",
-		cmd = { "Shades", "Huefy" },
-	},
-
 	-- 自动保存会话
 	-- 保存目录是：（不知道哪里配置的）
 	-- /Users/edte/.local/state/nvim/view
@@ -157,8 +150,12 @@ M.list = {
 		keys = { "cp" },
 		config = function()
 			nmap("cp", "<cmd>Colortils<CR>")
-			require("colortils").setup()
-			highlight("ColortilsCurrentLine", "#A10000")
+			require("colortils").setup({
+				mappings = {
+					replace_default_format = "<cr>",
+				},
+			})
+			highlight("ColortilsCurrentLine", "#B81C15")
 		end,
 	},
 
