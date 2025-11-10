@@ -198,13 +198,6 @@ M.list = {
 		end,
 	},
 
-	-- vim undo tree
-	{
-		"mbbill/undotree",
-		lazy = true,
-		cmd = "UndotreeToggle",
-	},
-
 	-- Neovim 插件引入了新的操作员动作来快速替换和交换文本。
 	{ --${conf, substitute.nvim}
 		"gbprod/substitute.nvim",
