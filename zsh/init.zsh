@@ -11,8 +11,9 @@
 # https://blog.skk.moe/post/make-oh-my-zsh-fly/
 zmodload zsh/zprof
 
-# ----------------- zinit 基础，不要动 ------------------------------------------------------------------------------------------------------------
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ----------------- zinit 基础,不要动 ------------------------------------------------------------------------------------------------------------
+# 优先使用 homebrew 的工具,然后是 /usr/local/bin
+export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
 source ~/.bash_profile
 # source your own zsh file if exists
 # [ -f ~/.config/.zsh.sh ] && source ~/.config/.zsh.sh

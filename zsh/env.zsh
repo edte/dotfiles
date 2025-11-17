@@ -8,8 +8,16 @@ setopt AUTO_PUSHD
 export LANGUAGE=en_US
 export LANG=en_US.UTF-8
 
-export PATH=/home/edte/.local/bin:$PATH
+# PATH 设置 - 从低优先级到高优先级设置(后面的会覆盖前面的)
+# 1. 其他工具
+export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
+# 2. Homebrew (确保 homebrew 的工具优先于系统自带的)
+export PATH=/opt/homebrew/bin:$PATH
+# 3. 本地 bin 目录 (最高优先级)
+export PATH=/home/edte/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+
 # export HTTP_PROXY=
 # export HTTPS_PROXY=
 # export NO_PROXY="localhost,127.0.0.1"
@@ -27,10 +35,7 @@ export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
 
-export PATH=/Users/edte/.local/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-
-# #oh my zsh 内置了安全功能、避免 oh my zsh 插件使用不安全的目录和文件，但是这意味着插件在加载时需要通过一系列 security checker。通过禁用安全功能 （export ZSH_DISABLE_COMPFIX="true"）可以使 zsh 启动速度加快 0.06s。微不足道，但值得一试。
+# #oh my zsh 内置了安全功能、避免 oh my zsh 插件使用不安全的目录和文件,但是这意味着插件在加载时需要通过一系列 security checker。通过禁用安全功能 (export ZSH_DISABLE_COMPFIX="true")可以使 zsh 启动速度加快 0.06s。微不足道,但值得一试。
 export ZSH_DISABLE_COMPFIX="true"
 
 # export DYLD_LIBRARY_PATH=/usr/local/lib
@@ -53,8 +58,6 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
 export ESCDELAY=0
 
-export PATH=~/.local/bin/:$PATH
-
 # export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -66,3 +69,8 @@ export PATH=~/.local/bin/:$PATH
 # *":$PNPM_HOME:"*) ;;
 # *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
+
+# 最终确保 PATH 优先级正确:homebrew 工具优先于 /usr/local/bin
+# 移除 /usr/local/bin 和 /opt/homebrew/bin,然后按正确顺序重新添加
+PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | tr '\n' ':' | sed 's/:$//')
+export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
