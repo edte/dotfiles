@@ -74,3 +74,5 @@ export ESCDELAY=0
 # 移除 /usr/local/bin 和 /opt/homebrew/bin,然后按正确顺序重新添加
 PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | tr '\n' ':' | sed 's/:$//')
 export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
+
+export PATH=$PATH:~/dotfiles/zsh/shell/
