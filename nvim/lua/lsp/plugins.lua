@@ -24,6 +24,18 @@ M.list = {
 		end,
 	},
 
+	{
+		"TheNoeTrevino/no-go.nvim",
+		ft = "go",
+		config = function()
+			vim.highlight.priorities.semantic_tokens = 95 -- default is 125
+			vim.highlight.priorities.treesitter = 100 -- default is 100
+			require("no-go").setup({
+				identifiers = { "err", "error" }, -- Customize which identifiers to collapse
+			})
+		end,
+	},
+
 	-- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
