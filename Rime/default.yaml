@@ -58,6 +58,12 @@ recognizer:
 # noop         屏蔽快捷键，不切换中英，但不要屏蔽 CapsLock
 ascii_composer:
   good_old_caps_lock: true
+  switch_key:
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear
 
 
 # 快捷键
@@ -71,4 +77,4 @@ key_binder:
     - { when: paging, accept: comma, send: Page_Up }
     - { when: has_menu, accept: period, send: Page_Down }
     # Ctrl+Space 切换中英文
-    - { when: always, accept: Control+space, toggle: ascii_mode }
+    # - { when: always, accept: Control+space, toggle: ascii_mode }
