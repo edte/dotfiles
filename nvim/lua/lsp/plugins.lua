@@ -32,6 +32,9 @@ M.list = {
 			vim.highlight.priorities.treesitter = 100 -- default is 100
 			require("no-go").setup({
 				identifiers = { "err", "error" }, -- Customize which identifiers to collapse
+				-- look at the default config for more details
+				highlight_group = "LspInlayHint",
+				fold_imports = true,
 			})
 		end,
 	},
