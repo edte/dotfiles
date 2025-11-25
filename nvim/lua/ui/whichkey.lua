@@ -19,8 +19,6 @@ wk.add({
 	{ "<leader>rI", ":Refactor inline_func<cr>", desc = "inline_func" },
 	{ "<leader>rb", ":Refactor extract_block<cr>", desc = "extract_block" },
 	{ "<leader>rbf", ":Refactor extract_block_to_file<cr>", desc = "extract_block_to_file" },
-
-	{ "<leader>as", "<cmd>ClaudeCodeSend<cr>", desc = "Send to Claude" },
 })
 
 wk.add({
@@ -65,15 +63,4 @@ wk.add({
 	{ "<leader>st", "<cmd>lua Snacks.picker.grep()<cr>", desc = "text" },
 	{ "<leader>sc", "<cmd>edit" .. NEOVIM_CONFIG_PATH .. "/init.lua" .. "<CR>", desc = "config" },
 	{ "<leader>su", "<cmd>UndotreeToggle<CR>", desc = "undo" },
-
-	{ "<leader>a", nil, desc = "AI/Claude Code" },
-	{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-	{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-	{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-	{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-	{ "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-	{ "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-	{ "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", desc = "Add file" }, -- Diff management
-	{ "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-	{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
 })

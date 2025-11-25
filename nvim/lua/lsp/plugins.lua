@@ -326,17 +326,6 @@ M.list = {
 		end,
 	},
 
-	-- 🧩 Claude Code Neovim IDE 扩展
-	{
-		"coder/claudecode.nvim",
-		dependencies = { "folke/snacks.nvim" },
-		config = true,
-		opts = {
-			-- terminal_cmd = "/opt/homebrew/bin/codebuddy-code", -- Point to local installation
-			terminal_cmd = "/opt/homebrew/bin/codebuddy", -- Point to local installation
-		},
-	},
-
 	-- 从你的代码库中学习的导入选择器
 	{
 		"piersolenski/import.nvim",
