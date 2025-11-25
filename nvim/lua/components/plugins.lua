@@ -661,6 +661,7 @@ M.list = {
 	-- library used by other plugins
 	{ "nvim-lua/plenary.nvim", lazy = true },
 
+	-- 看小说专用
 	{
 		"edte/novel.nvim",
 		dependencies = {
@@ -762,6 +763,82 @@ M.list = {
 			},
 		},
 		opts = {},
+	},
+
+	{
+		"olimorris/codecompanion.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("codecompanion").setup({
+				adapters = {
+					acp = {
+						codebuddy = function()
+							local helpers = require("codecompanion.adapters.acp.helpers")
+							return {
+								name = "codebuddy",
+								formatted_name = "CodeBuddy",
+								type = "acp",
+								roles = {
+									llm = "assistant",
+									user = "user",
+								},
+								opts = {
+									vision = true,
+								},
+								commands = {
+									default = {
+										"codebuddy",
+										"--acp",
+									},
+								},
+								defaults = {
+									mcpServers = {},
+									timeout = 20000,
+								},
+								parameters = {
+									protocolVersion = 1,
+									clientCapabilities = {
+										fs = { readTextFile = true, writeTextFile = true },
+									},
+									clientInfo = {
+										name = "CodeCompanion.nvim",
+										version = "1.0.0",
+									},
+								},
+								handlers = {
+									---@param self CodeCompanion.ACPAdapter
+									---@return boolean
+									setup = function(self)
+										-- 确保 HOME 环境变量被设置，以便 codebuddy 能找到 ~/.codebuddy-code/config
+										-- 这样 codebuddy 就能自动读取之前保存的认证 token
+										vim.env.HOME = vim.env.HOME or os.getenv("HOME")
+										return true
+									end,
+									---@param self CodeCompanion.ACPAdapter
+									---@return boolean
+									auth = function(self)
+										-- 返回 true 告诉 CodeCompanion 认证已由 codebuddy 自己处理
+										-- codebuddy 启动时会自动从 ~/.codebuddy-code/config 读取保存的 access_token
+										return true
+									end,
+									form_messages = function(self, messages, capabilities)
+										return helpers.form_messages(self, messages, capabilities)
+									end,
+									on_exit = function(self, code) end,
+								},
+							}
+						end,
+					},
+				},
+				strategies = {
+					chat = { adapter = "codebuddy" },
+					inline = { adapter = "codebuddy" },
+				},
+			})
+		end,
 	},
 }
 
