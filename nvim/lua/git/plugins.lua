@@ -118,6 +118,15 @@ M.list = {
 		"esmuellert/vscode-diff.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		cmd = "CodeDiff",
+		keys = {
+			{
+				"<space>gd",
+				function()
+					vim.cmd("CodeDiff")
+				end,
+				desc = "diff",
+			},
+		},
 	},
 }
 
