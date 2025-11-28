@@ -825,6 +825,23 @@ M.list = {
 									end,
 									on_exit = function(self, code) end,
 								},
+								-- 修复 Inline 策略崩溃的问题：添加缺失的方法
+								map_schema_to_params = function(self)
+									return {
+										parameters = self.parameters,
+									}
+								end,
+								-- 还需要这个方法
+								map_roles = function(self, messages)
+									local helpers = require("codecompanion.adapters.acp.helpers")
+									-- 需要根据 capabilities 调整，这里简化处理
+									return messages
+								end,
+								schema = {
+									model = {
+										default = "codebuddy",
+									},
+								},
 							}
 						end,
 					},
@@ -834,6 +851,18 @@ M.list = {
 					inline = { adapter = "codebuddy" },
 				},
 			})
+
+			vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+			vim.keymap.set(
+				{ "n", "v" },
+				"<space>a",
+				"<cmd>CodeCompanionChat Toggle<cr>",
+				{ noremap = true, silent = true }
+			)
+			vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+			-- Expand 'cc' into 'CodeCompanion' in the command line
+			vim.cmd([[cab cc CodeCompanion]])
 		end,
 	},
 }
