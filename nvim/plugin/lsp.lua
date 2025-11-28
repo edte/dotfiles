@@ -75,6 +75,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 -- 	end,
 -- })
 
+-- 颜色高亮，可以替代 nvim-colorizer 插件，不过有个问题，只有attach 了lsp的才会生效，比如搜索或者不支持lsp的buffer就没，比较头疼
 -- https://www.reddit.com/r/neovim/comments/1k7arqq/lsp_document_color_support_available_on_master/
 vim.api.nvim_create_autocmd("LspAttach", {
 	pattern = { "*.html", "*.vue", "*.css" },
