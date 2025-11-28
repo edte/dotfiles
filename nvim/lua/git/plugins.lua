@@ -120,7 +120,7 @@ M.list = {
 		cmd = "CodeDiff",
 		keys = {
 			{
-				"<space>gd",
+				"<space>d",
 				function()
 					vim.cmd("CodeDiff")
 				end,

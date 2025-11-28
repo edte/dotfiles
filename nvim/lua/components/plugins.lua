@@ -509,13 +509,13 @@ M.list = {
 				end,
 			},
 
-			-- {
-			-- 	"<space>gd",
-			-- 	function()
-			-- 		require("mini.diff").toggle_overlay(0)
-			-- 	end,
-			-- 	desc = "diff",
-			-- },
+			{
+				"<space>gd",
+				function()
+					require("mini.diff").toggle_overlay(0)
+				end,
+				desc = "diff",
+			},
 			{
 				"<space>e",
 				function()
