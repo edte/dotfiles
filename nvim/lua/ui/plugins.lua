@@ -170,6 +170,7 @@ M.list = {
 
 	-- {
 	-- 	"A7Lavinraj/fyler.nvim",
+	-- 	dependencies = { "nvim-mini/mini.icons" },
 	-- 	cmd = { "Fyler" },
 	-- 	keys = {
 	-- 		{
@@ -182,6 +183,10 @@ M.list = {
 	-- 		},
 	-- 	},
 	-- 	opts = {
+	-- 		integrations = {
+	-- 			-- icon = "nvim_web_devicons",
+	-- 		},
+	--
 	-- 		mappings = {
 	-- 			explorer = {
 	-- 				["<CR>"] = "Select",
@@ -190,12 +195,11 @@ M.list = {
 	-- 				["-"] = "SelectSplit",
 	-- 				["h"] = "GotoParent",
 	-- 				["="] = "GotoCwd",
-	-- 				["."] = "GotoNode",
 	-- 			},
 	-- 		},
 	-- 		views = {
 	-- 			explorer = {
-	-- 				close_on_select = false,
+	-- 				close_on_select = true,
 	-- 				confirm_simple = true,
 	-- 				default_explorer = true,
 	-- 				win = {
