@@ -346,61 +346,6 @@ M.list = {
 			},
 		},
 	},
-
-	{
-		"piersolenski/wtf.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {
-			popup_type = "popup",
-			provider = "deepseek",
-			providers = {
-				deepseek = {
-					url = "https://api.lkeap.cloud.tencent.com/v1/chat/completions",
-					model_id = "deepseek-v3",
-				},
-			},
-
-			language = "中文",
-			search_engine = "google",
-		},
-		keys = {
-			{
-				"<space>wd",
-				mode = { "n", "x" },
-				function()
-					require("wtf").diagnose()
-				end,
-				desc = "Debug diagnostic with AI",
-			},
-			{
-				"<space>wf",
-				mode = { "n", "x" },
-				function()
-					require("wtf").fix()
-				end,
-				desc = "Fix diagnostic with AI",
-			},
-			{
-				mode = { "n" },
-				"<space>wg",
-				function()
-					require("wtf").search()
-				end,
-				desc = "Search diagnostic with Google",
-			},
-			{
-				mode = { "n" },
-				"<space>wh",
-				function()
-					require("wtf").history()
-				end,
-				desc = "Populate the quickfix list with previous chat history",
-			},
-		},
-	},
 }
 
 return M
