@@ -49,9 +49,6 @@ alias list=cheat
 
 alias dns=dog
 
-alias vbackup="vim /Users/edte/config/backup.sh"
-alias vupdate="vim /Users/edte/config/update.sh"
-
 #git
 alias gc="git clone"
 # alias gs="git status -s"

@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# 颜色定义
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# 统计变量
+total=0
+success=0
+failed=0
+skipped=0
+
+# 获取 nvim lazy 插件目录
+LAZY_DIR="$HOME/.local/share/nvim/lazy"
+
+echo -e "${BLUE}========================================${NC}"
+echo -e "${BLUE}开始更新所有 nvim 插件${NC}"
+echo -e "${BLUE}目录: $LAZY_DIR${NC}"
+echo -e "${BLUE}========================================${NC}\n"
+
+# 检查目录是否存在
+if [ ! -d "$LAZY_DIR" ]; then
+    echo -e "${RED}错误: $LAZY_DIR 目录不存在${NC}"
+    exit 1
+fi
+
+# 遍历所有子目录
+for plugin_dir in "$LAZY_DIR"/*; do
+    # 跳过非目录
+    if [ ! -d "$plugin_dir" ]; then
+        continue
+    fi
+
+    # 跳过以 . 开头的目录和脚本本身
+    basename=$(basename "$plugin_dir")
+    if [[ $basename == .* ]] || [[ $basename == "update"* ]]; then
+        continue
+    fi
+
+    ((total++))
+    echo -e "${YELLOW}[$total] 处理: $basename${NC}"
+
+    # 检查是否是 git 仓库
+    if [ ! -d "$plugin_dir/.git" ]; then
+        echo -e "${YELLOW}  → 跳过 (不是 git 仓库)${NC}\n"
+        ((skipped++))
+        continue
+    fi
+
+    # 进入目录
+    cd "$plugin_dir" || continue
+
+    # 检查是否存在 master 分支
+    if git show-ref --quiet refs/heads/master; then
+        target_branch="master"
+    # 检查是否存在 main 分支
+    elif git show-ref --quiet refs/heads/main; then
+        target_branch="main"
+    else
+        echo -e "${RED}  × 失败 (无 master 或 main 分支)${NC}\n"
+        ((failed++))
+        continue
+    fi
+
+    # 获取当前分支
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    # 切换分支（如果需要）
+    if [ "$current_branch" != "$target_branch" ]; then
+        echo -e "  → 切换分支: $current_branch → $target_branch"
+        if ! git checkout "$target_branch" > /dev/null 2>&1; then
+            echo -e "${RED}  × 失败 (无法切换到 $target_branch 分支)${NC}\n"
+            ((failed++))
+            continue
+        fi
+    fi
+
+    # 拉取最新版本
+    echo -e "  → 拉取最新版本..."
+    if git pull --ff-only > /dev/null 2>&1; then
+        echo -e "${GREEN}  ✓ 成功${NC}\n"
+        ((success++))
+    else
+        echo -e "${RED}  × 失败 (pull 出错)${NC}\n"
+        ((failed++))
+    fi
+done
+
+echo -e "${BLUE}========================================${NC}"
+echo -e "${BLUE}更新完成${NC}"
+echo -e "${GREEN}成功: $success${NC}"
+echo -e "${RED}失败: $failed${NC}"
+echo -e "${YELLOW}跳过: $skipped${NC}"
+echo -e "${BLUE}总计: $total${NC}"
+echo -e "${BLUE}========================================${NC}"

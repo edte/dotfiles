@@ -47,6 +47,9 @@ function update() {
     brew update
     brew upgrade
 
+    # 更新 nvim 插件
+    $HOME/dotfiles/zsh/shell/update-nvim-plugins
+
     cd $tmp
 }
 
