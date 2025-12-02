@@ -860,10 +860,26 @@ M.list = {
 							title = "CodeCompanion actions", -- The title of the action palette
 						},
 					},
+					chat = {
+						intro_message = "",
+						auto_scroll = true,
+						prompt_decorator = function(message, adapter, context)
+							return string.format([[<prompt>%s</prompt>]], message)
+						end,
+					},
 				},
 
 				strategies = {
-					chat = { adapter = "codebuddy" },
+					chat = {
+						adapter = "codebuddy",
+						roles = {
+							llm = function(adapter)
+								return "  Assistant"
+							end,
+
+							user = "  User",
+						},
+					},
 					inline = { adapter = "codebuddy" },
 				},
 
