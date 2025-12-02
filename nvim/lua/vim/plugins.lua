@@ -140,21 +140,6 @@ M.list = {
 		},
 	},
 
-	-- Neovim 动作速度极快！
-	{
-		"edte/hop.nvim",
-		keys = "f",
-		config = function()
-			require("hop").setup({
-				jump_on_sole_occurrence = true,
-				create_hl_autocmd = false,
-			})
-			vim.keymap.set("", "f", function()
-				require("hop").hint_patterns()
-			end, { remap = true })
-		end,
-	},
-
 	-- 扩展递增/递减 ctrl+x/a
 	{
 		"monaqa/dial.nvim",
