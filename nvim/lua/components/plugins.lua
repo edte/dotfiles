@@ -738,8 +738,7 @@ M.list = {
 							local is_symlink = isSymlink(entry.path)
 							local symbol, hlGroup = mapSymbols(status, is_symlink)
 							vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, 0, {
-								-- NOTE: if you want the signs on the right uncomment those and comment
-								-- the 3 lines after
+								-- NOTE: 如果您想要右侧的符号，请取消注释并注释后面的 3 行
 								-- virt_text = { { symbol, hlGroup } },
 								-- virt_text_pos = "right_align",
 								sign_text = symbol,
