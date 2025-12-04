@@ -667,17 +667,17 @@ M.list = {
 			local function mapSymbols(status, is_symlink)
 				local statusMap = {
 					[" M"] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- Modified in the working directory
-					["M "] = { symbol = "•", hlGroup = "HG_GIT_MODIFIED" }, -- modified in index
-					["MM"] = { symbol = "≠", hlGroup = "HG_GIT_MODIFIED" }, -- modified in both working tree and index
-					["A "] = { symbol = "+", hlGroup = "HG_GIT_ADDED" }, -- Added to the staging area, new file
+					["M "] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- modified in index
+					["MM"] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- modified in both working tree and index
+					["A "] = { symbol = "A", hlGroup = "HG_GIT_ADDED" }, -- Added to the staging area, new file
 					["AA"] = { symbol = "≈", hlGroup = "HG_GIT_ADDED" }, -- file is added in both working tree and index
-					["D "] = { symbol = "-", hlGroup = "HG_GIT_DELETED" }, -- Deleted from the staging area
-					["AM"] = { symbol = "⊕", hlGroup = "HG_GIT_MODIFIED" }, -- added in working tree, modified in index
-					["AD"] = { symbol = "-•", hlGroup = "HG_GIT_DELETED" }, -- Added in the index and deleted in the working directory
-					["R "] = { symbol = "→", hlGroup = "HG_GIT_RENAMED" }, -- Renamed in the index
-					["U "] = { symbol = "‖", hlGroup = "HG_GIT_UNMERGED" }, -- Unmerged path
-					["UU"] = { symbol = "⇄", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged
-					["UA"] = { symbol = "⊕", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged and added in working tree
+					["D "] = { symbol = "D", hlGroup = "HG_GIT_DELETED" }, -- Deleted from the staging area
+					["AM"] = { symbol = "A", hlGroup = "HG_GIT_MODIFIED" }, -- added in working tree, modified in index
+					["AD"] = { symbol = "A•", hlGroup = "HG_GIT_DELETED" }, -- Added in the index and deleted in the working directory
+					["R "] = { symbol = "R", hlGroup = "HG_GIT_RENAMED" }, -- Renamed in the index
+					["U "] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- Unmerged path
+					["UU"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged
+					["UA"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged and added in working tree
 					["??"] = { symbol = "?", hlGroup = "HG_GIT_UNTRACKED" }, -- Untracked files
 					["!!"] = { symbol = "!", hlGroup = "HG_GIT_UNTRACKED" }, -- Ignored files
 				}
