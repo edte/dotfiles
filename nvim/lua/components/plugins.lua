@@ -689,6 +689,10 @@ M.list = {
 			---@param callback function
 			---@return nil
 			local function fetchGitStatus(cwd, callback)
+				-- 验证路径是否有效
+				if not cwd or cwd == "" or vim.fn.isdirectory(cwd) == 0 then
+					return
+				end
 				local function on_exit(content)
 					if content.code == 0 then
 						callback(content.stdout)
@@ -711,10 +715,11 @@ M.list = {
 			---@param gitStatusMap table
 			---@return nil
 			local function updateMiniWithGit(buf_id, gitStatusMap)
+				local MiniFiles = require("mini.files")
 				vim.schedule(function()
 					local nlines = vim.api.nvim_buf_line_count(buf_id)
-					local cwd = vim.fs.root(buf_id, ".git")
-					local escapedcwd = escapePattern(cwd)
+					local git_root = vim.fs.root(vim.uv.cwd(), ".git")
+					local escapedcwd = escapePattern(git_root)
 					if vim.fn.has("win32") == 1 then
 						escapedcwd = escapedcwd:gsub("\\", "/")
 					end
@@ -728,8 +733,7 @@ M.list = {
 						local status = gitStatusMap[relativePath]
 
 						if status then
-							local is_symlink = isSymlink(entry.path)
-							local symbol, hlGroup = mapSymbols(status, is_symlink)
+							local symbol, hlGroup = mapSymbols(status)
 							vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, 0, {
 								-- NOTE: if you want the signs on the right uncomment those and comment
 								-- the 3 lines after
@@ -739,7 +743,6 @@ M.list = {
 								sign_hl_group = hlGroup,
 								priority = 2,
 							})
-
 							local line = vim.api.nvim_buf_get_lines(buf_id, i - 1, i, false)[1]
 							-- Find the name position accounting for potential icons
 							local nameStartCol = line:find(vim.pesc(entry.name)) or 0
@@ -798,12 +801,22 @@ M.list = {
 
 			---@param buf_id integer
 			---@return nil
+
 			local function updateGitStatus(buf_id)
-				local cwd = vim.uv.cwd()
-				if not cwd or not vim.fs.root(cwd, ".git") then
+				if not vim.fs.root(vim.uv.cwd(), ".git") then
+					vim.notify("Not a valid git repo")
 					return
 				end
-
+				-- 获取 mini.files 正在浏览的真实目录
+				local entry = MiniFiles.get_fs_entry(buf_id, 1)
+				if not entry or not entry.path then
+					return
+				end
+				-- 从第一个条目的路径推断当前浏览目录
+				local cwd = vim.fn.fnamemodify(entry.path, ":h")
+				if vim.fn.isdirectory(cwd) == 0 then
+					cwd = entry.path
+				end
 				local currentTime = os.time()
 				if gitStatusCache[cwd] and currentTime - gitStatusCache[cwd].time < cacheTimeout then
 					updateMiniWithGit(buf_id, gitStatusCache[cwd].statusMap)
