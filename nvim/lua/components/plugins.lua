@@ -543,10 +543,10 @@ M.list = {
 
 			-- Git 状态高亮组
 			highlight("HG_GIT_MODIFIED", { bold = true, fg = "#ffc777" }) -- Modified
-			highlight("HG_GIT_ADDED", { bold = true, fg = "#9ece6a" }) -- Added
+			highlight("HG_GIT_ADDED", { bold = true, fg = "#B3F6C0" }) -- Added
 			highlight("HG_GIT_DELETED", { bold = true, fg = "#c53b53" }) -- Deleted
 			highlight("HG_GIT_UNTRACKED", { bold = true, fg = "#545C7E" }) -- Untracked
-			highlight("HG_GIT_RENAMED", { bold = true, fg = "#bb9af7" }) -- Renamed
+			highlight("HG_GIT_RENAMED", { bold = true, fg = "#65BCFF" }) -- Renamed
 			highlight("HG_GIT_UNMERGED", { bold = true, fg = "#ff9e64" }) -- Unmerged
 			highlight("HG_GIT_SYMLINK", { bold = true, fg = "#c53b53" }) -- Symlink
 
@@ -779,6 +779,23 @@ M.list = {
 			---@return table
 			local function parseGitStatus(content)
 				local gitStatusMap = {}
+				-- Priority map for directory status (higher value = higher priority)
+				local statusPriority = {
+					["D "] = 90,  -- Deleted (most critical)
+					["UU"] = 85,  -- Unmerged (both added)
+					["U "] = 85,  -- Unmerged
+					["UA"] = 85,  -- Unmerged and added
+					["MM"] = 80,  -- Modified in both
+					["AM"] = 75,  -- Added then modified
+					["AD"] = 80,  -- Added then deleted
+					["R "] = 70,  -- Renamed
+					["M "] = 65,  -- Modified in index
+					[" M"] = 60,  -- Modified in working directory
+					["A "] = 50,  -- Added
+					["AA"] = 50,  -- Both added
+					["??"] = 30,  -- Untracked
+					["!!"] = 10,  -- Ignored
+				}
 				-- lua match is faster than vim.split (in my experience )
 				for line in content:gmatch("[^\r\n]+") do
 					local status, filePath = string.match(line, "^(..)%s+(.*)")
@@ -809,9 +826,17 @@ M.list = {
 						if i == #parts then
 							gitStatusMap[currentKey] = status
 						else
-							-- If it's not the last part, it's a directory. Check if it exists, if not, add it.
+							-- If it's not the last part, it's a directory.
+							-- Use priority to keep the most important status
 							if not gitStatusMap[currentKey] then
 								gitStatusMap[currentKey] = status
+							else
+								-- Compare priorities and update if current status has higher priority
+								local currentPriority = statusPriority[gitStatusMap[currentKey]] or 0
+								local newPriority = statusPriority[status] or 0
+								if newPriority > currentPriority then
+									gitStatusMap[currentKey] = status
+								end
 							end
 						end
 					end
@@ -907,6 +932,32 @@ M.list = {
 							}
 							updateMiniWithGit(bufnr, gitStatusMap)
 						end)
+					end
+				end,
+			})
+
+			-- 监听文件操作事件，清理对应目录的缓存
+			autocmd("User", {
+				group = augroup("actions"),
+				pattern = { "MiniFilesActionCreate", "MiniFilesActionDelete", "MiniFilesActionRename", "MiniFilesActionCopy", "MiniFilesActionMove" },
+				callback = function(event)
+					local data = event.data
+					-- 获取文件所在的目录
+					local from_dir = data.from and vim.fn.fnamemodify(data.from, ":h") or nil
+					local to_dir = data.to and vim.fn.fnamemodify(data.to, ":h") or nil
+
+					-- 清理相关目录的缓存
+					if from_dir then
+						gitStatusCache[from_dir] = nil
+					end
+					if to_dir and to_dir ~= from_dir then
+						gitStatusCache[to_dir] = nil
+					end
+
+					-- 重新更新当前 mini.files 缓冲区的显示
+					local bufnr = vim.api.nvim_get_current_buf()
+					if MiniFiles and bufnr then
+						updateGitStatus(bufnr)
 					end
 				end,
 			})
@@ -1260,4 +1311,6 @@ M.list = {
 }
 
 return M
+
+
 
