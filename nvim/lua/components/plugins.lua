@@ -74,10 +74,6 @@ M.list = {
 		},
 
 		dependencies = {
-			-- You will not need this if you installed the
-			-- parsers manually
-			-- Or if the parsers are in your $RUNTIMEPATH
-
 			"nvim-tree/nvim-web-devicons",
 
 			-- Otter.nvim 为其他文档中嵌入的代码提供 lsp 功能和代码补全源
@@ -764,6 +760,30 @@ M.list = {
 			"nvim-treesitter/nvim-treesitter",
 			"ravitemer/codecompanion-history.nvim",
 		},
+		keys = {
+			{
+				"<space>a",
+				"<cmd>CodeCompanionChat Toggle<cr>",
+				mode = { "n", "v" },
+				desc = "CodeCompanionChat Toggle",
+			},
+			{
+				"ga",
+				"<cmd>CodeCompanionChat Add<cr>",
+				mode = { "v", "n" },
+				desc = "CodeCompanionChat Add",
+			},
+			{
+				"gh",
+				"<cmd>CodeCompanionHistory<cr>",
+				mode = "n",
+				desc = "CodeCompanion History",
+			},
+		},
+		init = function()
+			-- Expand 'cc' into 'CodeCompanion' in the command line
+			vim.cmd([[cab cc CodeCompanion]])
+		end,
 		config = function()
 			require("codecompanion").setup({
 				adapters = {
@@ -967,19 +987,6 @@ M.list = {
 					},
 				},
 			})
-
-			vim.keymap.set(
-				{ "n", "v" },
-				"<space>a",
-				"<cmd>CodeCompanionChat Toggle<cr>",
-				{ noremap = true, silent = true }
-			)
-			vim.keymap.set({ "v", "n" }, "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
-			nmap("gh", "<cmd>CodeCompanionHistory<cr>")
-
-			-- Expand 'cc' into 'CodeCompanion' in the command line
-			vim.cmd([[cab cc CodeCompanion]])
 		end,
 	},
 }
