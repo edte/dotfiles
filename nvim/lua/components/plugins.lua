@@ -72,22 +72,6 @@ M.list = {
 			},
 			max_length = 99999,
 		},
-
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-
-			-- Otter.nvim 为其他文档中嵌入的代码提供 lsp 功能和代码补全源
-			{
-				"jmbuhr/otter.nvim",
-				dependencies = {
-					"nvim-treesitter/nvim-treesitter",
-				},
-				opts = {},
-				config = function()
-					require("otter").activate()
-				end,
-			},
-		},
 	},
 
 	-- 自动保存会话
@@ -760,6 +744,7 @@ M.list = {
 			"nvim-treesitter/nvim-treesitter",
 			"ravitemer/codecompanion-history.nvim",
 		},
+		cmd = { "CodeCompanion", "CodeCompanionChat" },
 		keys = {
 			{
 				"<space>a",
