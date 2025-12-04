@@ -636,6 +636,8 @@ M.list = {
 			require("mini.splitjoin").setup()
 
 			-- mini.files git
+			-- https://www.reddit.com/r/neovim/comments/1c37m7c/is_there_a_way_to_get_the_minifiles_plugin_to/
+			-- https://gist.github.com/bassamsdata/eec0a3065152226581f8d4244cce9051#file-notes-md
 
 			local nsMiniFiles = vim.api.nvim_create_namespace("mini_files_git")
 			local autocmd = vim.api.nvim_create_autocmd
