@@ -735,7 +735,8 @@ M.list = {
 						local status = gitStatusMap[relativePath]
 
 						if status then
-							local symbol, hlGroup = mapSymbols(status)
+							local is_symlink = isSymlink(entry.path)
+							local symbol, hlGroup = mapSymbols(status, is_symlink)
 							vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, 0, {
 								-- NOTE: if you want the signs on the right uncomment those and comment
 								-- the 3 lines after
