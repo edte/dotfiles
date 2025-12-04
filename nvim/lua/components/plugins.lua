@@ -867,9 +867,27 @@ M.list = {
 				pattern = "MiniFilesBufferUpdate",
 				callback = function(sii)
 					local bufnr = sii.data.buf_id
-					local cwd = vim.fn.expand("%:p:h")
+					-- 从 mini.files 缓冲区获取当前浏览的目录
+					local entry = MiniFiles.get_fs_entry(bufnr, 1)
+					if not entry or not entry.path then
+						return
+					end
+					local cwd = vim.fn.fnamemodify(entry.path, ":h")
+					if vim.fn.isdirectory(cwd) == 0 then
+						cwd = entry.path
+					end
 					if gitStatusCache[cwd] then
 						updateMiniWithGit(bufnr, gitStatusCache[cwd].statusMap)
+					else
+						-- 如果缓存中没有，主动查询
+						fetchGitStatus(cwd, function(content)
+							local gitStatusMap = parseGitStatus(content)
+							gitStatusCache[cwd] = {
+								time = os.time(),
+								statusMap = gitStatusMap,
+							}
+							updateMiniWithGit(bufnr, gitStatusMap)
+						end)
 					end
 				end,
 			})
