@@ -364,6 +364,44 @@ M.list = {
 			},
 		},
 	},
+
+	-- 灵活、时尚的模糊选择器、LSP 符号导航器等等。灵感来自zed
+	{
+		"bassamsdata/namu.nvim",
+		opts = {
+			global = {},
+			namu_symbols = { -- Specific Module options
+				options = {},
+			},
+		},
+
+		keys = {
+			{
+				"<space>ss",
+				":Namu symbols<cr>",
+				desc = "Jump to LSP symbol",
+				silent = true,
+			},
+			{
+				"<space>sw",
+				":Namu workspace<cr>",
+				desc = "LSP Symbols - Workspace",
+				silent = true,
+			},
+			{
+				"<space>sd",
+				":Namu diagnostics<cr>",
+				desc = "LSP Diagnostics",
+				silent = true,
+			},
+			{
+				"<space>sc",
+				":Namu call both<cr>",
+				desc = "LSP Call Both",
+				silent = true,
+			},
+		},
+	},
 }
 
 return M

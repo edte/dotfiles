@@ -55,6 +55,4 @@ wk.add({
 	{ "<leader>sf", "<cmd>lua Snacks.picker.git_files()<cr>", desc = "file" },
 	{ "<leader>sk", "<cmd>lua Snacks.picker.keymaps() <cr>", desc = "keymaps" },
 	{ "<leader>st", "<cmd>lua Snacks.picker.grep()<cr>", desc = "text" },
-	{ "<leader>sc", "<cmd>edit" .. NEOVIM_CONFIG_PATH .. "/init.lua" .. "<CR>", desc = "config" },
-	{ "<leader>su", "<cmd>UndotreeToggle<CR>", desc = "undo" },
 })

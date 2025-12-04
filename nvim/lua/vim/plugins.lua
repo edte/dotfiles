@@ -101,16 +101,6 @@ M.list = {
 		end,
 	},
 
-	-- 在 Vim 中，在字符上按 ga 显示其十进制、八进制和十六进制表示形式。 Characterize.vim 通过以下补充对其进行了现代化改造：
-	-- Unicode 字符名称： U+00A9 COPYRIGHT SYMBOL
-	-- Vim 二合字母（在 <C-K> 之后键入以插入字符）： Co , cO
-	-- 表情符号代码：： :copyright:
-	-- HTML 实体： &copy;
-	{
-		"tpope/vim-characterize",
-		keys = "ga",
-	},
-
 	-- neovim 插件将文件路径和光标所在行复制到剪贴板
 	{
 		"diegoulloao/nvim-file-location",
