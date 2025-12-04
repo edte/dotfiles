@@ -65,7 +65,6 @@ M.list = {
 		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
 
 		branch = "dev",
-
 		opts = {
 			preview = {
 				ignore_buftypes = {},
@@ -84,11 +83,13 @@ M.list = {
 			-- Otter.nvim 为其他文档中嵌入的代码提供 lsp 功能和代码补全源
 			{
 				"jmbuhr/otter.nvim",
-				ft = "markdown", -- If you decide to lazy-load anyway
 				dependencies = {
 					"nvim-treesitter/nvim-treesitter",
 				},
 				opts = {},
+				config = function()
+					require("otter").activate()
+				end,
 			},
 		},
 	},
@@ -857,6 +858,9 @@ M.list = {
 						prompt_decorator = function(message, adapter, context)
 							return string.format([[<prompt>%s</prompt>]], message)
 						end,
+						window = {
+							layout = "vertical", -- float|vertical|horizontal|buffer
+						},
 					},
 				},
 
@@ -970,7 +974,7 @@ M.list = {
 				"<cmd>CodeCompanionChat Toggle<cr>",
 				{ noremap = true, silent = true }
 			)
-			vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+			vim.keymap.set({ "v", "n" }, "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 			nmap("gh", "<cmd>CodeCompanionHistory<cr>")
 
