@@ -12,13 +12,7 @@ wk.add({
 	{ "<enter>", ":'<,'>SnipRun<CR>", desc = "run code" },
 
 	--refactor
-	{ "<leader>r", group = "Refactor", desc = "Refactor" },
-	{ "<leader>re", ":Refactor extract<cr>", desc = "extract" },
-	{ "<leader>rf", ":Refactor extract_to_file<cr>", desc = "extract_to_file" },
-	{ "<leader>rv", ":Refactor extract_var<cr>", desc = "extract_var" },
-	{ "<leader>rI", ":Refactor inline_func<cr>", desc = "inline_func" },
-	{ "<leader>rb", ":Refactor extract_block<cr>", desc = "extract_block" },
-	{ "<leader>rbf", ":Refactor extract_block_to_file<cr>", desc = "extract_block_to_file" },
+	{ "<leader>r", ":lua require('refactoring').select_refactor()<cr>", desc = "refactor" },
 })
 
 wk.add({
@@ -28,7 +22,7 @@ wk.add({
 	{ "<leader>f", "<cmd>lua project_files()<CR>", desc = "files" },
 	{ "<leader>p", "<cmd>Lazy<cr>", desc = "plugins" },
 	{ "<leader>q", "<cmd>confirm q<CR>", desc = "quit" },
-	{ "<leader>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
+	-- { "<leader>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
 	{ "<leader>t", "<cmd>lua Snacks.picker.grep()<CR>", desc = "text" },
 	{ "<leader>m", "<cmd>M<CR>", desc = "log" },
 	{ "<space>n", "<cmd>message<cr>", desc = "message" },
