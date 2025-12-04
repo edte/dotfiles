@@ -701,7 +701,7 @@ M.list = {
 						vim.g.content = content.stdout
 					end
 				end
-				vim.system({ "git", "status", "--ignored", "--porcelain" }, { text = true, cwd = cwd }, on_exit)
+				vim.system({ "git", "status", "--porcelain" }, { text = true, cwd = cwd }, on_exit)
 			end
 
 			---@param str string|nil
