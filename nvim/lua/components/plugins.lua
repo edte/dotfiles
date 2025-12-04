@@ -541,6 +541,15 @@ M.list = {
 			highlight("HG_TODO_LIST_NOTE", { italic = true, bold = true, bg = "#4fd6be", fg = "#222436" })
 			highlight("HG_TODO_LIST_TODO", { italic = true, bold = true, bg = "#0db9d7", fg = "#222436" })
 
+			-- Git 状态高亮组
+			highlight("HG_GIT_MODIFIED", { bold = true, fg = "#ffc777" }) -- Modified
+			highlight("HG_GIT_ADDED", { bold = true, fg = "#9ece6a" }) -- Added
+			highlight("HG_GIT_DELETED", { bold = true, fg = "#c53b53" }) -- Deleted
+			highlight("HG_GIT_UNTRACKED", { bold = true, fg = "#545C7E" }) -- Untracked
+			highlight("HG_GIT_RENAMED", { bold = true, fg = "#bb9af7" }) -- Renamed
+			highlight("HG_GIT_UNMERGED", { bold = true, fg = "#ff9e64" }) -- Unmerged
+			highlight("HG_GIT_SYMLINK", { bold = true, fg = "#c53b53" }) -- Symlink
+
 			local hipatterns = require("mini.hipatterns")
 			hipatterns.setup({
 				highlighters = {
@@ -657,20 +666,20 @@ M.list = {
 			---@return string symbol, string hlGroup
 			local function mapSymbols(status, is_symlink)
 				local statusMap = {
-					[" M"] = { symbol = "✹", hlGroup = "SnacksPickerGitStatusModified" }, -- Modified in the working directory
-					["M "] = { symbol = "•", hlGroup = "SnacksPickerGitStatusModified" }, -- modified in index
-					["MM"] = { symbol = "≠", hlGroup = "SnacksPickerGitStatusModified" }, -- modified in both working tree and index
-					["A "] = { symbol = "+", hlGroup = "SnacksPickerGitStatusUntracked" }, -- Added to the staging area, new file
-					["AA"] = { symbol = "≈", hlGroup = "SnacksPickerGitStatusUntracked" }, -- file is added in both working tree and index
-					["D "] = { symbol = "-", hlGroup = "MiniDiffSignDelete" }, -- Deleted from the staging area
-					["AM"] = { symbol = "⊕", hlGroup = "MiniTablineModifiedVisible" }, -- added in working tree, modified in index
-					["AD"] = { symbol = "-•", hlGroup = "MiniTablineModifiedVisible" }, -- Added in the index and deleted in the working directory
-					["R "] = { symbol = "→", hlGroup = "MiniTablineModifiedVisible" }, -- Renamed in the index
-					["U "] = { symbol = "‖", hlGroup = "MiniTablineModifiedVisible" }, -- Unmerged path
-					["UU"] = { symbol = "⇄", hlGroup = "SnacksPickerGitStatusUntracked" }, -- file is unmerged
-					["UA"] = { symbol = "⊕", hlGroup = "SnacksPickerGitStatusUntracked" }, -- file is unmerged and added in working tree
-					["??"] = { symbol = "?", hlGroup = "SnacksPickerGitStatusUntracked" }, -- Untracked files
-					["!!"] = { symbol = "!", hlGroup = "MiniTablineModifiedVisible" }, -- Ignored files
+					[" M"] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- Modified in the working directory
+					["M "] = { symbol = "•", hlGroup = "HG_GIT_MODIFIED" }, -- modified in index
+					["MM"] = { symbol = "≠", hlGroup = "HG_GIT_MODIFIED" }, -- modified in both working tree and index
+					["A "] = { symbol = "+", hlGroup = "HG_GIT_ADDED" }, -- Added to the staging area, new file
+					["AA"] = { symbol = "≈", hlGroup = "HG_GIT_ADDED" }, -- file is added in both working tree and index
+					["D "] = { symbol = "-", hlGroup = "HG_GIT_DELETED" }, -- Deleted from the staging area
+					["AM"] = { symbol = "⊕", hlGroup = "HG_GIT_MODIFIED" }, -- added in working tree, modified in index
+					["AD"] = { symbol = "-•", hlGroup = "HG_GIT_DELETED" }, -- Added in the index and deleted in the working directory
+					["R "] = { symbol = "→", hlGroup = "HG_GIT_RENAMED" }, -- Renamed in the index
+					["U "] = { symbol = "‖", hlGroup = "HG_GIT_UNMERGED" }, -- Unmerged path
+					["UU"] = { symbol = "⇄", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged
+					["UA"] = { symbol = "⊕", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged and added in working tree
+					["??"] = { symbol = "?", hlGroup = "HG_GIT_UNTRACKED" }, -- Untracked files
+					["!!"] = { symbol = "!", hlGroup = "HG_GIT_UNTRACKED" }, -- Ignored files
 				}
 
 				local result = statusMap[status] or { symbol = "?", hlGroup = "NonText" }
@@ -681,8 +690,8 @@ M.list = {
 
 				-- Combine symlink symbol with Git status if both exist
 				local combinedSymbol = (symlinkSymbol .. gitSymbol):gsub("^%s+", ""):gsub("%s+$", "")
-				-- Change the color of the symlink icon from "MiniDiffSignDelete" to something else
-				local combinedHlGroup = is_symlink and "MiniDiffSignDelete" or gitHlGroup
+				-- Use custom symlink highlight group
+				local combinedHlGroup = is_symlink and "HG_GIT_SYMLINK" or gitHlGroup
 
 				return combinedSymbol, combinedHlGroup
 			end
@@ -773,6 +782,15 @@ M.list = {
 				-- lua match is faster than vim.split (in my experience )
 				for line in content:gmatch("[^\r\n]+") do
 					local status, filePath = string.match(line, "^(..)%s+(.*)")
+
+					-- Handle rename case: "R  oldname -> newname"
+					-- For rename, we need to use the new name (after ->)
+					if status == "R " and filePath and filePath:find("->") then
+						filePath = filePath:match("%s*->%s*(.+)$") or filePath
+					end
+
+					if not filePath then goto continue end
+
 					-- Split the file path into parts
 					local parts = {}
 					for part in filePath:gmatch("[^/]+") do
@@ -797,6 +815,8 @@ M.list = {
 							end
 						end
 					end
+
+					::continue::
 				end
 				return gitStatusMap
 			end
@@ -1240,3 +1260,4 @@ M.list = {
 }
 
 return M
+
