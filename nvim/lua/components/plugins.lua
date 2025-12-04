@@ -603,6 +603,8 @@ M.list = {
 
 			require("mini.trailspace").setup()
 
+			require("mini.icons").setup()
+
 			-- vip 后接 gh / gH 可应用/重置当前段落中的块。同样的操作符形式 ghip / gHip 也可以实现，其优点是可点重复。
 			-- gh_ / gH_ 应用/重置当前行（即使它不是完整的块）。
 			-- ghgh / gHgh 应用/重置光标下的块范围。
