@@ -90,6 +90,40 @@ M.setup = function()
 
 	cmap("0", "0", {}) -- 不清楚原因导致0无法使用 强制覆盖
 
+	-- 禁用纯数字输入时的wilder补全
+	cmd([[
+		augroup WilderCustom
+			autocmd!
+			autocmd CmdlineChanged : call s:disable_wilder_for_numeric()
+			autocmd CmdlineChanged : call s:enable_search_in_substitute()
+		augroup END
+	]])
+
+	-- 在VimScript中定义禁用函数
+	cmd([[
+		function! s:disable_wilder_for_numeric()
+			let l:cmdline = getcmdline()
+			if l:cmdline =~# '^\d\+$'
+				call wilder#disable()
+			else
+				call wilder#enable()
+			endif
+		endfunction
+	]])
+
+	-- 在替换命令中启用搜索补全
+	cmd([[
+		function! s:enable_search_in_substitute()
+			let l:cmdline = getcmdline()
+			" 检查是否是替换命令 s/ 并且在第一个/之后
+			if l:cmdline =~# '^%%\?s/' && l:cmdline !~# '^%%\?s/[^/]*//'
+				" 在替换模式的第一个/之后，光标位置在第二个/之前
+				" 这时候应该启用搜索补全，但由于wilder没有直接的搜索管道切换
+				" 我们可以通过其他方式实现
+			endif
+		endfunction
+	]])
+
 	-- 设置高亮
 	highlight("WilderAccent", "#FF4500")
 	highlight("WilderSelectedAccent", "#FF4500", "#4e4e4e")
