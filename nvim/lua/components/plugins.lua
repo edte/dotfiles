@@ -148,6 +148,7 @@ M.list = {
 			ui = {
 				show_request_summary = false,
 			},
+            infer_content_type=false,
 			contenttypes = {
 				["application/csv"] = {
 					ft = "csv",
