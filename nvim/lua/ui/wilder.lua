@@ -19,6 +19,29 @@ M.setup = function()
 	-- 设置source
 	wilder.set_option("pipeline", {
 		wilder.branch(
+			-- 在替换命令中为搜索部分提供搜索建议
+			wilder.substitute_pipeline({
+				pipeline = wilder.python_search_pipeline({
+					skip_cmdtype_check = 1,
+					pattern = wilder.python_fuzzy_pattern({
+						start_at_boundary = 0,
+					}),
+				}),
+			}),
+
+			-- 当输入文件名时 展示文件名
+			wilder.python_file_finder_pipeline({
+				file_command = function(ctx, arg)
+					if string.find(arg, ".") ~= nil then
+						return { "fdfind", "-tf", "-H" }
+					else
+						return { "fdfind", "-tf" }
+					end
+				end,
+				dir_command = { "fd", "-td" },
+				filters = { "cpsm_filter" },
+			}),
+
 			-- 当默认无输入时 展示10条历史记录
 			{
 				wilder.check(function(_, x)
@@ -33,9 +56,15 @@ M.setup = function()
 				set_pcre2_pattern = 1,
 			}),
 			-- pipeline for search
-			wilder.search_pipeline({
-				-- 去抖动
-				debounce = 10,
+			-- wilder.search_pipeline({
+			-- 	-- 去抖动
+			-- 	debounce = 10,
+			-- }),
+
+			wilder.python_search_pipeline({
+				pattern = wilder.python_fuzzy_pattern({
+					start_at_boundary = 0,
+				}),
 			})
 		),
 	})
