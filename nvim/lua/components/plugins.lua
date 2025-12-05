@@ -191,7 +191,7 @@ M.list = {
 	{
 		"yarospace/lua-console.nvim",
 		lazy = true,
-		keys = "&",
+		keys = "<space>ll",
 		opts = {
 			buffer = {
 				result_prefix = "=> ",
@@ -205,7 +205,7 @@ M.list = {
 				height = 0.6, -- percentage of main window
 			},
 			mappings = {
-				toggle = "&",
+				toggle = "<space>ll",
 				attach = "<c-\\>",
 				quit = "q",
 				eval = "<CR>",

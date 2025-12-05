@@ -212,38 +212,6 @@ M.list = {
 		cmd = "Glance",
 	},
 
-	-- 基于 Martin Fowler 的 Refactoring 书籍的 Refactoring 库
-	{
-		"ThePrimeagen/refactoring.nvim",
-		cmd = { "Refactor" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		lazy = true,
-		opts = {
-			prompt_func_return_type = {
-				go = false,
-				cpp = false,
-				c = false,
-			},
-			prompt_func_param_type = {
-				go = false,
-				cpp = false,
-				c = false,
-			},
-		},
-		keys = {
-			{
-				"<space>r",
-				function()
-					require("refactoring").select_refactor()
-				end,
-				desc = "Import",
-			},
-		},
-	},
-
 	-- Neovim 的异步 linter 插件对内置语言服务器协议支持进行了补充
 	{
 		"mfussenegger/nvim-lint",

@@ -10,9 +10,6 @@ wk.add({
 	{ "<leader>d", ":lua compare_to_clipboard()<cr>", desc = "diff copy" },
 	{ "<leader>g", "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "git history" },
 	{ "<enter>", ":'<,'>SnipRun<CR>", desc = "run code" },
-
-	--refactor
-	{ "<leader>r", ":lua require('refactoring').select_refactor()<cr>", desc = "refactor" },
 })
 
 wk.add({
