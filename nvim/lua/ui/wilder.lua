@@ -49,7 +49,7 @@ M.setup = function()
 				selected_accent = "WilderSelectedAccent",
 			},
 			highlighter = wilder.basic_highlighter(),
-			left = { " ", wilder.popupmenu_devicons() }, -- 左侧加入icon
+			left = { " " }, -- 临时禁用 devicons，避免 Lua 回调错误
 			right = { " ", wilder.popupmenu_scrollbar() }, -- 右侧加入滚动条
 			border = "rounded",
 			max_height = 17, -- 最大高度限制 因为要计算上下 所以17支持最多15个选项
