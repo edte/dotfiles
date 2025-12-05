@@ -139,7 +139,6 @@ M.list = {
 	-- http 请求
 	{
 		"mistweaverco/kulala.nvim",
-		tag = "v4.10.0",
 		ft = "http",
 		opts = {
 			default_view = "body",
