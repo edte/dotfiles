@@ -107,8 +107,8 @@ local function get_branch()
 	if res == "" then
 		res = cached_system_call("git_head", "git rev-parse HEAD")
 	end
-	git_cache["git_branch"] = "  " .. res
-	return "  " .. res
+	git_cache["git_branch"] = res
+	return res
 end
 
 local function get_time()
@@ -131,7 +131,7 @@ Autocmd({ "WinEnter", "BufEnter", "FileType" }, {
 
 		StatusLine.project_name = "%#StatusLineProject#" .. getProjectName()
 		StatusLine.file = "%#StatusLineFilename#" .. get_file()
-		StatusLine.branch = "%#StatusLineGitBranch#" .. get_branch()
+		StatusLine.branch = "%#StatusLineGitBranch#" .. icons.git.Branch .. " " .. get_branch()
 		StatusLine.time = "%#StatusLineTime#" .. get_time()
 	end,
 })
