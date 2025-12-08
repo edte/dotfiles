@@ -1,47 +1,77 @@
 local statusline_augroup = GroupId("native_statusline", { clear = true })
 
--- Cache for git commands
+-- Cache for git commands with longer TTL
 local git_cache = {}
 local cache_time = {}
-local cache_ttl = 2 -- seconds
+local cache_ttl = 5 -- seconds, increased to reduce frequency
+
+-- Flag to disable statusline updates during exit
+local is_exiting = false
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	callback = function()
+		is_exiting = true
+	end,
+})
 
 local function cached_system_call(key, cmd, fallback_cmd)
+	-- Never execute during exit to avoid blocking
+	if is_exiting then
+		return git_cache[key] or ""
+	end
+
 	local now = vim.fn.localtime()
 	if git_cache[key] and (now - (cache_time[key] or 0)) < cache_ttl then
 		return git_cache[key]
 	end
-	
+
 	local result = vim.fn.system(cmd):gsub("%c", "")
 	-- If result is empty and we have a fallback, try that
 	if result == "" and fallback_cmd then
 		result = vim.fn.system(fallback_cmd):gsub("%c", "")
 	end
-	
+
 	git_cache[key] = result
 	cache_time[key] = now
 	return result
 end
 
 local function getProjectName()
+	if is_exiting then
+		return git_cache["project_name"] or ""
+	end
+
 	if vim.env.TMUX ~= nil then
-		return vim.fn.system({ "tmux", "display-message", "-p", "#W" }):gsub("%c", "")
+		local result = vim.fn.system({ "tmux", "display-message", "-p", "#W" }):gsub("%c", "")
+		git_cache["project_name"] = result
+		return result
 	end
 
 	if cached_system_call("git_toplevel", [[git rev-parse --show-toplevel 2> /dev/null]]) == "" then
-		return vim.fn.system("basename $(pwd)"):gsub("%c", "")
+		local result = vim.fn.system("basename $(pwd)"):gsub("%c", "")
+		git_cache["project_name"] = result
+		return result
 	end
 
-	local res = cached_system_call("git_remote", [[git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p']])
+	local res =
+		cached_system_call("git_remote", [[git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p']])
 	if res ~= "" then
+		git_cache["project_name"] = res
 		return res
 	end
 
-	return vim.fn.system([[ TOP=$(git rev-parse --show-toplevel); echo ${TOP##*/} ]]):gsub("%c", "")
+	local result = vim.fn.system([[ TOP=$(git rev-parse --show-toplevel); echo ${TOP##*/} ]]):gsub("%c", "")
+	git_cache["project_name"] = result
+	return result
 end
 
 -- LSP clients attached to buffer
 
 local function get_lsp()
+	if is_exiting then
+		return "[null]"
+	end
+
 	local current_buf = api.nvim_get_current_buf()
 
 	local clients = vim.lsp.get_clients({ bufnr = current_buf })
@@ -66,6 +96,10 @@ local function get_file()
 end
 
 local function get_branch()
+	if is_exiting then
+		return git_cache["git_branch"] or ""
+	end
+
 	local res = cached_system_call("git_branch", "git branch --show-current")
 	if res == "致命错误：不是 git 仓库（或者任何父目录）：.git" then
 		return ""
@@ -73,6 +107,7 @@ local function get_branch()
 	if res == "" then
 		res = cached_system_call("git_head", "git rev-parse HEAD")
 	end
+	git_cache["git_branch"] = "  " .. res
 	return "  " .. res
 end
 
@@ -84,6 +119,10 @@ Autocmd({ "WinEnter", "BufEnter", "FileType" }, {
 	group = statusline_augroup,
 	pattern = "*",
 	callback = function()
+		if is_exiting then
+			return
+		end
+
 		if vim.bo.filetype == "minifiles" or vim.bo.filetype == "alpha" then
 			vim.o.laststatus = 0
 			return
@@ -106,6 +145,9 @@ Autocmd("InsertEnter", {
 	group = GroupId("status_insert_redraw", { clear = true }),
 	pattern = "*",
 	callback = function()
+		if is_exiting then
+			return
+		end
 		vim.schedule(function()
 			cmd("redraw")
 		end)
@@ -117,6 +159,10 @@ Autocmd("LspProgress", {
 	desc = "Update LSP progress in statusline",
 	pattern = { "begin", "report", "end" },
 	callback = function(args)
+		if is_exiting then
+			return
+		end
+
 		if not (args.data and args.data.client_id) then
 			return
 		end
@@ -132,7 +178,9 @@ Autocmd("LspProgress", {
 		if lsp_progress.kind == "end" then
 			lsp_progress.title = nil
 			vim.defer_fn(function()
-				vim.cmd.redrawstatus()
+				if not is_exiting then
+					vim.cmd.redrawstatus()
+				end
 			end, 500)
 		else
 			vim.cmd.redrawstatus()
@@ -159,6 +207,10 @@ highlight("StatusLineLSP", { fg = "#7AA2F7", bg = "#1E1E2E", bold = true })
 highlight("StatusLineTime", { fg = "#D5C4A1", bg = "#1E1E2E", bold = true })
 
 StatusLine.active = function()
+	if is_exiting then
+		return ""
+	end
+
 	StatusLine.lsp_clients = "%#StatusLineLSP#" .. get_lsp()
 
 	local statusline = {

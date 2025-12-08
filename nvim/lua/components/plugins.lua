@@ -103,6 +103,8 @@ M.list = {
 			})
 			vim.api.nvim_create_autocmd("VimLeavePre", {
 				callback = function()
+					-- Set flag to prevent slow operations during exit
+					vim.g.is_exiting = true
 					if vim.fn.argc(-1) > 0 then
 						cmd("argdelete *")
 					end
@@ -847,6 +849,11 @@ M.list = {
 			---@return nil
 
 			local function updateGitStatus(buf_id)
+				-- Skip git status updates during exit to avoid blocking
+				if vim.g.is_exiting then
+					return
+				end
+				
 				if not vim.fs.root(vim.uv.cwd(), ".git") then
 					vim.notify("Not a valid git repo")
 					return
@@ -1308,6 +1315,8 @@ M.list = {
 }
 
 return M
+
+
 
 
 
