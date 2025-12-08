@@ -36,6 +36,9 @@ M.list = {
 	-- ai代码补全
 	{
 		"edte/copilot",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		lazy = true,
 	},
 
 	-- Neovim 插件可快速插入日志语句并捕获日志输出
