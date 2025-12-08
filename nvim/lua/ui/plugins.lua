@@ -126,18 +126,6 @@ M.list = {
 		end,
 	},
 
-	-- 更好的注释生成器。支持多种语言和注释约定。
-	-- gcn 在内部快速生成注释
-	{
-		"danymat/neogen",
-		after = "nvim-treesitter",
-		keys = "gcn",
-		config = function()
-			require("neogen").setup({})
-			nmap("gcn", "<cmd>lua require('neogen').generate()<CR>")
-		end,
-	},
-
 	-- Whichkey
 	{
 		"folke/which-key.nvim",

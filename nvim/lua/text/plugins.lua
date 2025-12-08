@@ -79,16 +79,6 @@ M.list = {
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 	},
 
-	-- -- 使用treesitter自动关闭并自动重命名html标签
-	{
-		"windwp/nvim-ts-autotag",
-		ft = { "html", "vue" },
-		-- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-		config = function()
-			Setup("nvim-ts-autotag")
-		end,
-	},
-
 	-- 使用 Treesitter 突出显示参数的定义和用法
 	{
 		"m-demare/hlargs.nvim",

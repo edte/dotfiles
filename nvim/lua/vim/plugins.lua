@@ -101,22 +101,6 @@ M.list = {
 		end,
 	},
 
-	-- neovim 插件将文件路径和光标所在行复制到剪贴板
-	{
-		"diegoulloao/nvim-file-location",
-		cmd = "Path",
-		config = function()
-			require("nvim-file-location").setup({
-				-- keymap = 'yP',
-				mode = "absolute",
-				add_line = false,
-				add_column = false,
-				default_register = "*",
-			})
-			cmd("command! Path lua NvimFileLocation.copy_file_location('absolute', false, false)<cr>")
-		end,
-	},
-
 	-- Neovim 中 vimdoc/帮助文件的装饰
 	-- https://github.com/OXY2DEV/helpview.nvim
 	{
