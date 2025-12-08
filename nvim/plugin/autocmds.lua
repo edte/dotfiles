@@ -33,18 +33,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.o.backupext = "-" .. timestamp
 		vim.o.backupdir = backup_dir
 
-		-- Limit the number of backups to 2
-		-- Configurable limit for the number of backups
-		local max_backups = vim.g.max_backups or 2
+		-- Reduced from 2 to 1 to minimize backup storage and cleanup time
+		-- Cleanup is now done asynchronously to avoid blocking
+		local max_backups = vim.g.max_backups or 1
 
-		local backups = vim.fn.globpath(backup_dir, filename .. "-*")
-		local backup_list = vim.split(backups, "\n")
-		if #backup_list > max_backups then
-			table.sort(backup_list)
-			for i = 1, #backup_list - max_backups do
-				vim.fn.delete(backup_list[i])
+		-- Perform cleanup asynchronously to avoid blocking editor
+		vim.schedule(function()
+			local backups = vim.fn.globpath(backup_dir, filename .. "-*")
+			if backups == "" then return end
+			local backup_list = vim.split(backups, "\n")
+			if #backup_list > max_backups then
+				table.sort(backup_list, function(a, b) return a > b end) -- Sort descending to keep newest
+				for i = max_backups + 1, #backup_list do
+					vim.fn.delete(backup_list[i])
+				end
 			end
-		end
+		end)
 	end,
 })
 

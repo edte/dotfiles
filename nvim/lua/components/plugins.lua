@@ -107,8 +107,12 @@ M.list = {
 						cmd("argdelete *")
 					end
 
-					MiniSessions.write(GetPath())
-					vim.cmd([[silent! mkview]])
+					-- Save session asynchronously to avoid blocking exit
+					vim.schedule(function()
+						MiniSessions.write(GetPath())
+					end)
+					-- mkview is disabled as it can be slow on exit when many files are open
+					-- vim.cmd([[silent! mkview]])
 				end,
 			})
 		end,

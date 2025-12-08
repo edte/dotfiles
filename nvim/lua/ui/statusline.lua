@@ -1,15 +1,37 @@
 local statusline_augroup = GroupId("native_statusline", { clear = true })
 
+-- Cache for git commands
+local git_cache = {}
+local cache_time = {}
+local cache_ttl = 2 -- seconds
+
+local function cached_system_call(key, cmd, fallback_cmd)
+	local now = vim.fn.localtime()
+	if git_cache[key] and (now - (cache_time[key] or 0)) < cache_ttl then
+		return git_cache[key]
+	end
+	
+	local result = vim.fn.system(cmd):gsub("%c", "")
+	-- If result is empty and we have a fallback, try that
+	if result == "" and fallback_cmd then
+		result = vim.fn.system(fallback_cmd):gsub("%c", "")
+	end
+	
+	git_cache[key] = result
+	cache_time[key] = now
+	return result
+end
+
 local function getProjectName()
 	if vim.env.TMUX ~= nil then
 		return vim.fn.system({ "tmux", "display-message", "-p", "#W" }):gsub("%c", "")
 	end
 
-	if vim.fn.system([[git rev-parse --show-toplevel 2> /dev/null]]) == "" then
+	if cached_system_call("git_toplevel", [[git rev-parse --show-toplevel 2> /dev/null]]) == "" then
 		return vim.fn.system("basename $(pwd)"):gsub("%c", "")
 	end
 
-	local res = vim.fn.system([[git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p']]):gsub("%c", "")
+	local res = cached_system_call("git_remote", [[git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p']])
 	if res ~= "" then
 		return res
 	end
@@ -44,14 +66,14 @@ local function get_file()
 end
 
 local function get_branch()
-	local res = vim.fn.system("git branch --show-current"):gsub("%c", "")
+	local res = cached_system_call("git_branch", "git branch --show-current")
 	if res == "致命错误：不是 git 仓库（或者任何父目录）：.git" then
 		return ""
 	end
 	if res == "" then
-		res = vim.fn.system("git rev-parse HEAD"):gsub("%c", "")
+		res = cached_system_call("git_head", "git rev-parse HEAD")
 	end
-	return "  " .. res
+	return "  " .. res
 end
 
 local function get_time()
