@@ -180,13 +180,6 @@ M.list = {
 		},
 	},
 
-	-- 轻松将图像嵌入到任何标记语言中，例如 LaTeX、Markdown 或 Typst
-	{
-		"HakonHarnes/img-clip.nvim",
-		cmd = "PasteImage",
-		opts = {},
-	},
-
 	-- 用于 Lua 开发和 Neovim 探索的便捷便签本/REPL/调试控制台
 	{
 		"yarospace/lua-console.nvim",

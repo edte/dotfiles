@@ -18,6 +18,7 @@ ftplugin/
 当 Neovim 检测到文件类型时，会自动加载对应的 `ftplugin/{filetype}.lua` 文件。这是 Vim/Neovim 的标准机制。
 
 ### 触发条件
+
 - **文件扩展名**: 根据文件扩展名自动检测
 - **文件内容**: 根据文件内容特征检测
 - **手动设置**: 使用 `:set filetype=type` 手动设置
@@ -25,6 +26,7 @@ ftplugin/
 ## 📄 文件类型配置
 
 ### 📊 CSV 文件 (csv.lua)
+
 CSV (逗号分隔值) 文件的专用配置：
 
 ```lua
@@ -45,16 +47,19 @@ vim.opt_local.shiftwidth = 2        -- 缩进宽度
 ```
 
 **适用文件**:
+
 - `.csv` - 标准 CSV 文件
 - `.CSV` - 大写扩展名
 
 **常用操作**:
+
 - 列对齐查看
 - 数据排序
 - 字段验证
 - 导出转换
 
 ### 🌐 HTTP 文件 (http.lua)
+
 HTTP 请求文件的配置：
 
 ```lua
@@ -73,16 +78,19 @@ vim.opt_local.cursorline = true     -- 高亮当前行
 ```
 
 **适用文件**:
+
 - `.http` - HTTP 请求文件
 - `.rest` - REST API 测试文件
 
 **功能特性**:
+
 - 语法高亮
 - 请求执行
 - 响应预览
 - 环境管理
 
 ### 📝 Markdown 文件 (markdown.lua)
+
 Markdown 文档的专用配置：
 
 ```lua
@@ -104,11 +112,13 @@ vim.opt_local.formatoptions:append("t")  -- 自动格式化
 ```
 
 **适用文件**:
+
 - `.md` - Markdown 文件
 - `.markdown` - 完整扩展名
 - `.mdown` - 简化扩展名
 
 **增强功能**:
+
 - 实时预览
 - 语法高亮
 - 目录导航
@@ -116,6 +126,7 @@ vim.opt_local.formatoptions:append("t")  -- 自动格式化
 - 链接检查
 
 ### 📋 TSV 文件 (tsv.lua)
+
 TSV (制表符分隔值) 文件配置：
 
 ```lua
@@ -136,10 +147,12 @@ vim.opt_local.softtabstop = 8       -- 软 Tab 宽度
 ```
 
 **适用文件**:
+
 - `.tsv` - 标准 TSV 文件
 - `.TSV` - 大写扩展名
 
 **特殊处理**:
+
 - Tab 字符保护
 - 列对齐显示
 - 数据完整性检查
@@ -149,12 +162,14 @@ vim.opt_local.softtabstop = 8       -- 软 Tab 宽度
 ### 创建新的文件类型配置
 
 1. **创建配置文件**:
+
 ```bash
 # 为 Python 文件创建配置
 touch ftplugin/python.lua
 ```
 
-2. **编写配置内容**:
+1. **编写配置内容**:
+
 ```lua
 -- ftplugin/python.lua
 -- Python 文件特定配置
@@ -202,6 +217,7 @@ map("n", "<leader>mp", ":MarkdownPreview<CR>", { buffer = true })
 ## 🎯 常见文件类型配置
 
 ### 编程语言
+
 ```lua
 -- JavaScript/TypeScript
 -- ftplugin/javascript.lua, ftplugin/typescript.lua
@@ -219,6 +235,7 @@ vim.opt_local.textwidth = 100      -- Rust 推荐宽度
 ```
 
 ### 配置文件
+
 ```lua
 -- YAML
 -- ftplugin/yaml.lua
@@ -233,6 +250,7 @@ vim.opt_local.foldmethod = "syntax"
 ```
 
 ### 文档类型
+
 ```lua
 -- LaTeX
 -- ftplugin/tex.lua
@@ -249,6 +267,7 @@ vim.opt_local.textwidth = 79
 ## 🔍 文件类型检测
 
 ### 自动检测
+
 Neovim 通过以下方式检测文件类型：
 
 1. **文件扩展名**: 最常用的方式
@@ -257,6 +276,7 @@ Neovim 通过以下方式检测文件类型：
 4. **Shebang**: Unix 脚本的 `#!/bin/bash` 等
 
 ### 手动设置
+
 ```lua
 -- 临时设置文件类型
 :set filetype=python
@@ -278,6 +298,7 @@ vim.filetype.add({
 ## 🐛 故障排除
 
 ### 配置不生效
+
 ```lua
 -- 检查文件类型
 :set filetype?
@@ -290,6 +311,7 @@ vim.filetype.add({
 ```
 
 ### 冲突解决
+
 ```lua
 -- 查看所有文件类型插件
 :scriptnames
@@ -299,6 +321,7 @@ vim.filetype.add({
 ```
 
 ### 调试文件类型
+
 ```lua
 -- 开启文件类型调试
 :set verbose=1
@@ -318,12 +341,15 @@ vim.filetype.add({
 ## 💡 最佳实践
 
 ### 1. 使用局部选项
+
 在 ftplugin 中使用 `vim.opt_local` 而不是 `vim.opt`，避免影响其他文件类型。
 
 ### 2. 缓冲区特定映射
+
 使用 `{ buffer = true }` 选项创建缓冲区特定的键位映射。
 
 ### 3. 条件配置
+
 根据项目或环境条件应用不同的配置：
 
 ```lua
@@ -335,9 +361,11 @@ end
 ```
 
 ### 4. 性能考虑
+
 避免在 ftplugin 中执行耗时操作，使用懒加载或异步执行。
 
 ### 5. 插件集成
+
 与相关插件协调配置，避免冲突：
 
 ```lua
@@ -350,3 +378,4 @@ end
 ---
 
 📄 **提示**: ftplugin 配置只对特定文件类型生效，是实现文件类型特定功能的最佳方式。
+
