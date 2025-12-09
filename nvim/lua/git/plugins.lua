@@ -108,10 +108,16 @@ M.list = {
 	{
 		"linrongbin16/gitlinker.nvim",
 		cmd = "GitLink",
-		opts = {},
+		opts = {
+			router = {
+				browse = {
+					["^git%.woa%.com"] = "https://git.woa.com/{_A.ORG}/{_A.REPO}/blob/{_A.REV}/{_A.FILE}#L{_A.LSTART}{_A.LEND > _A.LSTART and ('-' .. _A.LEND) or ''}",
+				},
+			},
+		},
 		keys = {
-			{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-			{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+			{ "<space>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+			{ "<space>go", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
 		},
 	},
 	{
