@@ -1109,30 +1109,42 @@ M.list = {
 		end,
 		config = function()
 			require("codecompanion").setup({
+                opts = {
+                    log_level = "DEBUG", -- TRACE|DEBUG|ERROR|INFO
+                    language = "中文",
+                },
+
 				adapters = {
 					acp = {
-						codebuddy = function()
-							local helpers = require("codecompanion.adapters.acp.helpers")
-							return {
-								name = "codebuddy",
-								formatted_name = "CodeBuddy",
-								type = "acp",
-								roles = {
+					codebuddy = function()
+						local helpers = require("codecompanion.adapters.acp.helpers")
+						return {
+							name = "codebuddy",
+							formatted_name = "CodeBuddy",
+							type = "acp",
+							roles = {
 									llm = "assistant",
 									user = "user",
 								},
 								opts = {
 									vision = true,
 								},
-								commands = {
-									default = {
-										"codebuddy",
-										"--acp",
-										"--permission-mode",
-										"bypassPermissions",
-										"--dangerously-skip-permissions",
-									},
+							commands = {
+								default = {
+									"env",
+									"-u",
+									"TMUX",
+									"-u",
+									"TERM_PROGRAM",
+									"-u",
+									"TERM_PROGRAM_VERSION",
+									"codebuddy",
+									"--acp",
+									"--permission-mode",
+									"bypassPermissions",
+									"--dangerously-skip-permissions",
 								},
+							},
 								defaults = {
 									mcpServers = {},
 									timeout = 20000,
