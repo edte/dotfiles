@@ -40,10 +40,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		-- Perform cleanup asynchronously to avoid blocking editor
 		vim.schedule(function()
 			local backups = vim.fn.globpath(backup_dir, filename .. "-*")
-			if backups == "" then return end
+			if backups == "" then
+				return
+			end
 			local backup_list = vim.split(backups, "\n")
 			if #backup_list > max_backups then
-				table.sort(backup_list, function(a, b) return a > b end) -- Sort descending to keep newest
+				table.sort(backup_list, function(a, b)
+					return a > b
+				end) -- Sort descending to keep newest
 				for i = max_backups + 1, #backup_list do
 					vim.fn.delete(backup_list[i])
 				end

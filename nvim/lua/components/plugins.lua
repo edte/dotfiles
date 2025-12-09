@@ -153,7 +153,7 @@ M.list = {
 			ui = {
 				show_request_summary = false,
 			},
-            infer_content_type=false,
+			infer_content_type = false,
 			contenttypes = {
 				["application/csv"] = {
 					ft = "csv",
@@ -780,20 +780,20 @@ M.list = {
 				local gitStatusMap = {}
 				-- Priority map for directory status (higher value = higher priority)
 				local statusPriority = {
-					["D "] = 90,  -- Deleted (most critical)
-					["UU"] = 85,  -- Unmerged (both added)
-					["U "] = 85,  -- Unmerged
-					["UA"] = 85,  -- Unmerged and added
-					["MM"] = 80,  -- Modified in both
-					["AM"] = 75,  -- Added then modified
-					["AD"] = 80,  -- Added then deleted
-					["R "] = 70,  -- Renamed
-					["M "] = 65,  -- Modified in index
-					[" M"] = 60,  -- Modified in working directory
-					["A "] = 50,  -- Added
-					["AA"] = 50,  -- Both added
-					["??"] = 30,  -- Untracked
-					["!!"] = 10,  -- Ignored
+					["D "] = 90, -- Deleted (most critical)
+					["UU"] = 85, -- Unmerged (both added)
+					["U "] = 85, -- Unmerged
+					["UA"] = 85, -- Unmerged and added
+					["MM"] = 80, -- Modified in both
+					["AM"] = 75, -- Added then modified
+					["AD"] = 80, -- Added then deleted
+					["R "] = 70, -- Renamed
+					["M "] = 65, -- Modified in index
+					[" M"] = 60, -- Modified in working directory
+					["A "] = 50, -- Added
+					["AA"] = 50, -- Both added
+					["??"] = 30, -- Untracked
+					["!!"] = 10, -- Ignored
 				}
 				-- lua match is faster than vim.split (in my experience )
 				for line in content:gmatch("[^\r\n]+") do
@@ -805,42 +805,40 @@ M.list = {
 						filePath = filePath:match("%s*->%s*(.+)$") or filePath
 					end
 
-					if not filePath then goto continue end
-
-					-- Split the file path into parts
-					local parts = {}
-					for part in filePath:gmatch("[^/]+") do
-						table.insert(parts, part)
-					end
-					-- Start with the root directory
-					local currentKey = ""
-					for i, part in ipairs(parts) do
-						if i > 1 then
-							-- Concatenate parts with a separator to create a unique key
-							currentKey = currentKey .. "/" .. part
-						else
-							currentKey = part
+					if filePath then
+						-- Split the file path into parts
+						local parts = {}
+						for part in filePath:gmatch("[^/]+") do
+							table.insert(parts, part)
 						end
-						-- If it's the last part, it's a file, so add it with its status
-						if i == #parts then
-							gitStatusMap[currentKey] = status
-						else
-							-- If it's not the last part, it's a directory.
-							-- Use priority to keep the most important status
-							if not gitStatusMap[currentKey] then
+						-- Start with the root directory
+						local currentKey = ""
+						for i, part in ipairs(parts) do
+							if i > 1 then
+								-- Concatenate parts with a separator to create a unique key
+								currentKey = currentKey .. "/" .. part
+							else
+								currentKey = part
+							end
+							-- If it's the last part, it's a file, so add it with its status
+							if i == #parts then
 								gitStatusMap[currentKey] = status
 							else
-								-- Compare priorities and update if current status has higher priority
-								local currentPriority = statusPriority[gitStatusMap[currentKey]] or 0
-								local newPriority = statusPriority[status] or 0
-								if newPriority > currentPriority then
+								-- If it's not the last part, it's a directory.
+								-- Use priority to keep the most important status
+								if not gitStatusMap[currentKey] then
 									gitStatusMap[currentKey] = status
+								else
+									-- Compare priorities and update if current status has higher priority
+									local currentPriority = statusPriority[gitStatusMap[currentKey]] or 0
+									local newPriority = statusPriority[status] or 0
+									if newPriority > currentPriority then
+										gitStatusMap[currentKey] = status
+									end
 								end
 							end
 						end
 					end
-
-					::continue::
 				end
 				return gitStatusMap
 			end
@@ -853,7 +851,7 @@ M.list = {
 				if vim.g.is_exiting then
 					return
 				end
-				
+
 				if not vim.fs.root(vim.uv.cwd(), ".git") then
 					vim.notify("Not a valid git repo")
 					return
@@ -943,7 +941,13 @@ M.list = {
 			-- 监听文件操作事件，清理对应目录的缓存
 			autocmd("User", {
 				group = augroup("actions"),
-				pattern = { "MiniFilesActionCreate", "MiniFilesActionDelete", "MiniFilesActionRename", "MiniFilesActionCopy", "MiniFilesActionMove" },
+				pattern = {
+					"MiniFilesActionCreate",
+					"MiniFilesActionDelete",
+					"MiniFilesActionRename",
+					"MiniFilesActionCopy",
+					"MiniFilesActionMove",
+				},
 				callback = function(event)
 					local data = event.data
 					-- 获取文件所在的目录
@@ -1109,42 +1113,42 @@ M.list = {
 		end,
 		config = function()
 			require("codecompanion").setup({
-                opts = {
-                    log_level = "DEBUG", -- TRACE|DEBUG|ERROR|INFO
-                    language = "中文",
-                },
+				opts = {
+					log_level = "DEBUG", -- TRACE|DEBUG|ERROR|INFO
+					language = "中文",
+				},
 
 				adapters = {
 					acp = {
-					codebuddy = function()
-						local helpers = require("codecompanion.adapters.acp.helpers")
-						return {
-							name = "codebuddy",
-							formatted_name = "CodeBuddy",
-							type = "acp",
-							roles = {
+						codebuddy = function()
+							local helpers = require("codecompanion.adapters.acp.helpers")
+							return {
+								name = "codebuddy",
+								formatted_name = "CodeBuddy",
+								type = "acp",
+								roles = {
 									llm = "assistant",
 									user = "user",
 								},
 								opts = {
 									vision = true,
 								},
-							commands = {
-								default = {
-									"env",
-									"-u",
-									"TMUX",
-									"-u",
-									"TERM_PROGRAM",
-									"-u",
-									"TERM_PROGRAM_VERSION",
-									"codebuddy",
-									"--acp",
-									"--permission-mode",
-									"bypassPermissions",
-									"--dangerously-skip-permissions",
+								commands = {
+									default = {
+										"env",
+										"-u",
+										"TMUX",
+										"-u",
+										"TERM_PROGRAM",
+										"-u",
+										"TERM_PROGRAM_VERSION",
+										"codebuddy",
+										"--acp",
+										"--permission-mode",
+										"bypassPermissions",
+										"--dangerously-skip-permissions",
+									},
 								},
-							},
 								defaults = {
 									mcpServers = {},
 									timeout = 20000,
