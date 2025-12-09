@@ -113,8 +113,8 @@ M.list = {
 					vim.schedule(function()
 						MiniSessions.write(GetPath())
 					end)
-					-- mkview is disabled as it can be slow on exit when many files are open
-					-- vim.cmd([[silent! mkview]])
+					-- Save view to restore cursor position
+					vim.cmd([[silent! mkview]])
 				end,
 			})
 		end,
@@ -1327,8 +1327,3 @@ M.list = {
 }
 
 return M
-
-
-
-
-
