@@ -678,7 +678,6 @@ M.list = {
 					["UU"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged
 					["UA"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged and added in working tree
 					["??"] = { symbol = "?", hlGroup = "HG_GIT_UNTRACKED" }, -- Untracked files
-					["!!"] = { symbol = "!", hlGroup = "HG_GIT_UNTRACKED" }, -- Ignored files
 				}
 
 				local result = statusMap[status] or { symbol = "?", hlGroup = "NonText" }
