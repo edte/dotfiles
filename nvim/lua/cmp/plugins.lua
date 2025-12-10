@@ -2,13 +2,6 @@ local M = {}
 
 M.list = {
 
-	-- go 导包
-	{
-		"edte/more-go.nvim",
-		ft = "go",
-		opts = {},
-	},
-
 	-- 自定义代码片段
 	{
 		"L3MON4D3/LuaSnip",

@@ -39,6 +39,25 @@ M.list = {
 		end,
 	},
 
+	{
+		"edte/more-go.nvim",
+		ft = "go",
+		opts = {},
+	},
+
+	{
+		"olexsmir/gopher.nvim",
+		ft = "go",
+		-- branch = "develop"
+		-- (optional) updates the plugin's dependencies on each update
+		build = function()
+			vim.cmd.GoInstallDeps()
+		end,
+		---@module "gopher"
+		---@type gopher.Config
+		opts = {},
+	},
+
 	-- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
