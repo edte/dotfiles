@@ -63,15 +63,15 @@ M.list = {
 	{
 		"OXY2DEV/markview.nvim",
 		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
-
-		branch = "dev",
-		opts = {
-			preview = {
-				ignore_buftypes = {},
-				filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
-			},
-			max_length = 99999,
-		},
+		config = function()
+			require("markview").setup({
+				preview = {
+					ignore_buftypes = {},
+					filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "codecompanion" },
+				},
+				max_length = 99999,
+			})
+		end,
 	},
 
 	-- 自动保存会话
@@ -1259,6 +1259,7 @@ M.list = {
 					chat = {
 						intro_message = "",
 						auto_scroll = true,
+						show_context = false, -- 隐藏上下文显示
 						prompt_decorator = function(message, adapter, context)
 							return string.format([[<prompt>%s</prompt>]], message)
 						end,
@@ -1307,10 +1308,10 @@ M.list = {
 								duplicate = { n = "<C-y>", i = "<C-y>" },
 							},
 							---Automatically generate titles for new chats
-							auto_generate_title = true,
+							auto_generate_title = false, -- ACP 适配器不支持自动生成标题
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
-								adapter = nil, -- "copilot"
+								adapter = "copilot", -- 使用 HTTP 适配器而不是 ACP
 								---Model for generating titles (defaults to current chat model)
 								model = nil, -- "gpt-4o"
 								---Number of user prompts after which to refresh the title (0 to disable)
