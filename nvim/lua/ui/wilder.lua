@@ -51,7 +51,7 @@ M.setup = function()
 			},
 			-- 当输入时 展示所有匹配项(模糊匹配)
 			wilder.cmdline_pipeline({
-				fuzzy = 1,
+				fuzzy = 2,
 				fuzzy_filter = wilder.vim_fuzzy_filter(),
 				set_pcre2_pattern = 1,
 			}),

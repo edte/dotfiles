@@ -312,8 +312,8 @@ M.list = {
 				enabled = true,
 				force = true, -- try displaying the image, even if the terminal does not support it
 				doc = {
-					max_width = 150,
-					max_height = 100,
+					-- max_width = 100,
+					-- max_height = 80,
 				},
 			},
 			indent = { enabled = true },
