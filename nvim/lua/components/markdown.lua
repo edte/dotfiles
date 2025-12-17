@@ -1,0 +1,3 @@
+-- Require('glow').setup({
+--     glow_path = "/Users/edte/.local/bin/glow",
+-- })
