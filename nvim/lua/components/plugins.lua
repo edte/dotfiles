@@ -347,7 +347,11 @@ M.list = {
         config = function()
             require("log-highlight").setup({})
         end,
-    }
+    },
+    {
+        "MTDL9/vim-log-highlighting",
+        ft = "log",
+    },
 
 
 
