@@ -229,9 +229,6 @@ M.list = {
     },
 
     -- ai代码补全
-    {
-        "edte/copilot",
-    },
 
 
     {

@@ -128,6 +128,5 @@ vim.diagnostic.config({
     },
 })
 
-vim.g.clipboard = "xclip"
 
 vim.cmd("syntax on")

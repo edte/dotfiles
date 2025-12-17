@@ -241,7 +241,7 @@ M.list = {
         },
         opts = {
             animate = { enabled = true },
-            bigfile = { enabled = true },
+            bigfile = { enabled = false },
             buffdelete = { enabled = true },
             dashboard = { enabled = false },
             debug = { enabled = false },
@@ -340,7 +340,7 @@ M.list = {
             })
         end,
     },
-    -- Neovim 的通用日志语法突出显示和文件类型管理
+
     {
         "fei6409/log-highlight.nvim",
         ft = "log",
@@ -348,10 +348,10 @@ M.list = {
             require("log-highlight").setup({})
         end,
     },
-    {
-        "MTDL9/vim-log-highlighting",
-        ft = "log",
-    },
+    -- {
+    --     "MTDL9/vim-log-highlighting",
+    --     ft = "log",
+    -- }
 
 
 

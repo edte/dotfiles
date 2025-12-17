@@ -90,27 +90,6 @@ M.list = {
         end,
     },
 
-    {
-        "ibhagwan/fzf-lua",
-        cmd = "FzfLua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("fzf-lua").setup({
-                "telescope",
-                fzf_opts = { ["--cycle"] = "" },
-                winopts = {
-                    fullscreen = true,
-                },
-            })
-        end,
-    },
-
-    -- fzflua 查看插件
-    -- require("fzf-lua-lazy").search()
-    {
-        url = "https://github.com/edte/fzf-lua-lazy.nvim.git",
-        lazy = true,
-    },
 
     {
         'echasnovski/mini.align',
