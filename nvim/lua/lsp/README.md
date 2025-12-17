@@ -5,65 +5,76 @@
 ## 📦 包含的插件
 
 ### 🔧 核心 LSP
+
 - **go.nvim** - Go 语言专用增强
   - 自动导入管理
   - 结构体标签添加
   - Go 特定命令集成
 
 ### 💊 诊断显示
+
 - **tiny-inline-diagnostic.nvim** - 内联诊断显示
   - 实时错误提示
   - 多种显示风格
   - 性能优化
 
 ### 🎨 代码格式化
+
 - **conform.nvim** - 统一格式化工具
   - 多语言支持
   - 保存时自动格式化
   - 自定义格式化器
 
 ### 🔨 C/C++ 增强
+
 - **clangd_extensions.nvim** - Clangd 扩展功能
   - 内联提示
   - AST 查看
   - 头文件切换
 
 ### 🎯 语法高亮
+
 - **jce-highlight** - JCE 文件语法高亮
 - **codelens.nvim** - 代码引用显示
 - **lsp-hover.nvim** - 悬停信息增强
 
 ### 👁️ 代码预览
+
 - **glance.nvim** - LSP 位置预览
   - 定义预览
   - 引用查看
   - 实现预览
 
 ### 🔄 重构工具
+
 - **refactoring.nvim** - 代码重构
   - 提取函数
   - 内联变量
   - 重命名重构
 
 ### 🔍 代码检查
+
 - **nvim-lint** - 异步代码检查
   - 多种 linter 支持
   - 实时错误检查
   - 自定义规则
 
 ### 🤖 AI 辅助
+
 - **import.nvim** - 智能导入管理
 - **wtf.nvim** - AI 错误诊断和修复
 
 ## 🌍 支持的语言
 
 ### 完整支持
+
 - **Go** - 完整的 LSP + 专用工具
 - **Lua** - Neovim 配置开发
 - **C/C++** - Clangd 集成
 - **Rust** - 基础 LSP 支持
 
 ### 格式化支持
+
 - **Go** - goimports-reviser
 - **Lua** - stylua
 - **SQL** - sleek
@@ -74,6 +85,7 @@
 - **Markdown** - prettier + markdownlint
 
 ### Linting 支持
+
 - **Fish** - fish
 - **SQL** - sqlfluff
 - **Markdown** - markdownlint-cli2
@@ -84,19 +96,23 @@
 ## ⌨️ 键位映射
 
 ### LSP 导航
+
 - `gd` - 跳转到定义
 - `gI` - 查看实现
 - `grr` - 查看引用
 - `K` - 显示悬停文档
 
 ### 诊断导航
+
 - `<C-n>` - 下一个诊断
 - `<C-p>` - 上一个诊断
 
 ### 代码操作
+
 - `<Space>i` - 智能导入
 
 ### AI 辅助
+
 - `<Space>wd` - AI 诊断错误
 - `<Space>wf` - AI 修复错误
 - `<Space>wg` - Google 搜索错误
@@ -105,12 +121,15 @@
 ## 🔧 Go 语言特殊功能
 
 ### 自动命令
+
 - **保存时自动导入** - 保存 Go 文件时自动运行 `GoImports`
 
 ### 自定义命令
+
 - `:GoAddTagEmpty` - 添加空的 JSON 标签
 
 ### 配置示例
+
 ```lua
 -- Go 文件保存时自动导入
 Autocmd("BufWritePost", {
@@ -125,6 +144,7 @@ Autocmd("BufWritePost", {
 ## 🎨 诊断配置
 
 ### 显示设置
+
 ```lua
 vim.diagnostic.config({
   virtual_text = false,        -- 禁用虚拟文本
@@ -136,6 +156,7 @@ vim.diagnostic.config({
 ```
 
 ### Tiny Inline Diagnostic 配置
+
 - **预设风格**: ghost
 - **节流时间**: 0ms (实时更新)
 - **软换行**: 30 字符
@@ -145,6 +166,7 @@ vim.diagnostic.config({
 ## 📝 格式化配置
 
 ### 保存时格式化
+
 ```lua
 format_on_save = {
   timeout_ms = 200,  -- 格式化超时时间
@@ -152,6 +174,7 @@ format_on_save = {
 ```
 
 ### 语言特定配置
+
 - **Go**: 使用 goimports-reviser 而非 LSP
 - **C++**: 禁用 LSP 格式化
 - **Shell**: 使用 shfmt，禁用 LSP
@@ -160,26 +183,20 @@ format_on_save = {
 ## 🔍 代码检查配置
 
 ### 事件触发
+
 - `BufWritePost` - 保存后检查
 - `BufReadPost` - 读取后检查
 - `InsertLeave` - 离开插入模式后检查
 
 ### 防抖设置
+
 - **延迟**: 100ms
 - **避免频繁检查**，提升性能
-
-## 🤖 AI 功能配置
-
-### WTF.nvim 设置
-- **提供商**: DeepSeek
-- **模型**: deepseek-v3
-- **语言**: 中文
-- **搜索引擎**: Google
-
 
 ## 🔧 自定义配置
 
 ### 添加新的格式化器
+
 ```lua
 -- 在 conform.nvim 配置中添加
 formatters_by_ft = {
@@ -188,6 +205,7 @@ formatters_by_ft = {
 ```
 
 ### 添加新的 Linter
+
 ```lua
 -- 在 nvim-lint 配置中添加
 linters_by_ft = {
@@ -196,6 +214,7 @@ linters_by_ft = {
 ```
 
 ### 自定义诊断显示
+
 ```lua
 -- 修改 tiny-inline-diagnostic 配置
 require("tiny-inline-diagnostic").setup({
@@ -209,6 +228,7 @@ require("tiny-inline-diagnostic").setup({
 ## 🐛 故障排除
 
 ### LSP 服务器未启动
+
 ```lua
 :LspInfo                    -- 查看 LSP 状态
 :checkhealth lsp           -- 检查 LSP 健康状态
@@ -216,18 +236,21 @@ require("tiny-inline-diagnostic").setup({
 ```
 
 ### 格式化不工作
+
 ```lua
 :ConformInfo               -- 查看格式化器状态
 :checkhealth conform       -- 检查 conform 健康状态
 ```
 
 ### 诊断不显示
+
 ```lua
 :lua vim.diagnostic.show() -- 强制显示诊断
 :checkhealth nvim-lint     -- 检查 lint 状态
 ```
 
 ### Go 特定问题
+
 ```lua
 :GoInstallBinaries         -- 安装 Go 工具
 :checkhealth go            -- 检查 Go 环境
@@ -242,15 +265,19 @@ require("tiny-inline-diagnostic").setup({
 ## 💡 使用技巧
 
 ### 1. 快速诊断
+
 使用 `<C-n>` 和 `<C-p>` 快速在错误间跳转，每次跳转后会自动居中显示。
 
 ### 2. AI 辅助调试
+
 遇到不理解的错误时，使用 `<Space>wd` 让 AI 解释错误原因。
 
 ### 3. 智能导入
+
 在 Go/TypeScript 等语言中，使用 `<Space>i` 快速导入需要的包。
 
 ### 4. 代码预览
+
 使用 `grr` 查看引用时，可以在预览窗口中直接编辑代码。
 
 ---

@@ -170,3 +170,5 @@ end
 --   autocmd BufWinEnter * silent! loadview
 -- augroup END
 -- ]])
+
+vim.cmd("syntax on")
