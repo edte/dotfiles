@@ -121,7 +121,7 @@ M.list = {
 		},
 	},
 	{
-		"esmuellert/vscode-diff.nvim",
+		"edte/vscode-diff.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		cmd = "CodeDiff",
 		opts = {

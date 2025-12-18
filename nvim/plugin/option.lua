@@ -65,7 +65,13 @@ local default_options = {
 }
 
 for k, v in pairs(default_options) do
-	vim.opt[k] = v
+	local ok, err = pcall(function()
+		vim.opt[k] = v
+	end)
+	-- 忽略 modifiable 关闭导致的错误，其他错误才抛出
+	if not ok and not err:match("modifiable") then
+		error(err)
+	end
 end
 
 vim.g.loaded_netrw = false -- or 1
