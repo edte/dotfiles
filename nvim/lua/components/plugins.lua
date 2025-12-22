@@ -1014,6 +1014,9 @@ M.list = {
 			end
 
 			vim.api.nvim_create_autocmd("User", { pattern = "MiniFilesWindowUpdate", callback = ensure_center_layout })
+
+			-- mini-cmdline
+			-- require("mini.cmdline").setup()
 		end,
 	},
 
