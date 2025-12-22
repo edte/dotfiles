@@ -15,3 +15,5 @@ vim.cmd.colorscheme(colors.theme)
 for _, hl_group in ipairs({ "LineNr", "LineNrAbove", "LineNrBelow" }) do
 	vim.api.nvim_set_hl(0, hl_group, { fg = colors.line_number })
 end
+
+require("vim.match").setup()

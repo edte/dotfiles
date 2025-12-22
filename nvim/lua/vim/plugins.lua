@@ -243,13 +243,6 @@ M.list = {
 		end,
 	},
 
-	-- 行内支持 % 跳转引号
-	-- 跨行不支持
-	{
-		"airblade/vim-matchquote",
-		keys = "%",
-	},
-
 	-- 一个非常轻量级的插件（~ 120loc），可突出显示您在命令行中输入的范围。
 	{ --${conf, range-highlight}
 		"pipoprods/range-highlight.nvim",

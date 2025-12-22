@@ -75,8 +75,8 @@ alias m="make -j5"
 alias mc="make clean"
 alias mi="make mini"
 
-#proxy
-alias p="proxychains"
+# show env
+alias p="printenv | fzf --multi | pbcopy"
 
 #else
 alias gcc="gcc-5"
