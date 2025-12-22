@@ -107,7 +107,7 @@ function! s:character_at_cursor()
 endfunction
 
 
-nnoremap <silent> <expr> % (v:count == 0 ? ":call <SID>matchquote('n')<CR>" : '%')
+nnoremap <silent> <expr> % (v:count == 0 ? "<cmd>call <SID>matchquote('n')<CR>" : '%')
 xnoremap <silent> % :<C-U>call <SID>matchquote('x')<CR>
 onoremap <silent> % :normal v%<CR>
 
@@ -117,3 +117,4 @@ if empty(maparg('i<Bar>', 'x')) && empty(maparg('a<Bar>', 'x'))
   xnoremap <silent> a<Bar> :<C-U>normal! F<Bar>vf<Bar><CR>
   onoremap <silent> a<Bar> :normal va<Bar><CR>
 endif
+
