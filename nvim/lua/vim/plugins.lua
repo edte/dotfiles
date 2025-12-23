@@ -183,16 +183,16 @@ M.list = {
 	},
 
 	-- Neovim 中更好的快速修复窗口，抛光旧的快速修复窗口。
-	{
-		"kevinhwang91/nvim-bqf",
-		ft = "qf",
-		dependencies = {
-			"junegunn/fzf",
-			run = function()
-				vim.fn["fzf#install"]()
-			end,
-		},
-	},
+	-- {
+	-- 	"kevinhwang91/nvim-bqf",
+	-- 	ft = "qf",
+	-- 	dependencies = {
+	-- 		"junegunn/fzf",
+	-- 		run = function()
+	-- 			vim.fn["fzf#install"]()
+	-- 		end,
+	-- 	},
+	-- },
 
 	-- Neovim 插件，用于预览寄存器的内容
 	-- 调用:Registers
