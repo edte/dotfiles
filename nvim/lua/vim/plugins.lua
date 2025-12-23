@@ -182,17 +182,27 @@ M.list = {
 		end,
 	},
 
-	-- Neovim 中更好的快速修复窗口，抛光旧的快速修复窗口。
-	-- {
-	-- 	"kevinhwang91/nvim-bqf",
-	-- 	ft = "qf",
-	-- 	dependencies = {
-	-- 		"junegunn/fzf",
-	-- 		run = function()
-	-- 			vim.fn["fzf#install"]()
-	-- 		end,
-	-- 	},
-	-- },
+	{
+		"stevearc/quicker.nvim",
+		ft = "qf",
+		opts = {
+			opts = {
+				number = true,
+				wrap = true,
+			},
+			keys = {
+				{ ">", "<cmd>lua require('quicker').expand()<CR>", desc = "Expand quickfix content" },
+				{ "<", "<cmd>lua require('quicker').collapse()<CR>", desc = "Collapse quickfix content" },
+			},
+		},
+	},
+
+	-- 增强 quickfix 窗口功能
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		opts = {},
+	},
 
 	-- Neovim 插件，用于预览寄存器的内容
 	-- 调用:Registers

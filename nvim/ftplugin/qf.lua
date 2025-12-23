@@ -1,0 +1,2 @@
+-- vim.pack.add({ { src = "https://github.com/kevinhwang91/nvim-bqf.git", version = vim.version.range("*") } })
+-- vim.pack.add({ { src = "https://github.com/stevearc/quicker.nvim.git", version = vim.version.range("*") } })
