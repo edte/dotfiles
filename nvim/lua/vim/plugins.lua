@@ -264,12 +264,6 @@ M.list = {
 		end,
 	},
 
-	-- Neovim 的动态和风格化折叠文本
-	{ --${conf, foldtext}
-		"OXY2DEV/foldtext.nvim",
-		lazy = false,
-	},
-
 	{
 		"abecodes/tabout.nvim",
 		lazy = false,
