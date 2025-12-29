@@ -17,3 +17,5 @@ for _, hl_group in ipairs({ "LineNr", "LineNrAbove", "LineNrBelow" }) do
 end
 
 vim.cmd.source(vim.fn.stdpath("config") .. "/lua/vim/match.vim")
+
+-- vim.fn.serverstart("/tmp/nvim.sock")

@@ -7,6 +7,12 @@
                 "@modelcontextprotocol/server-sequential-thinking"
             ]
         },
+        "neovim": {
+            "command": "/opt/homebrew/bin/neovim-mcp",
+            "env": {
+                "NVIM_MCP_LISTEN_ADDRESS": "/tmp/nvim.sock"
+            }
+        },
         "context7": {
             "command": "npx",
             "args": [
