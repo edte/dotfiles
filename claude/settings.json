@@ -1,84 +1,84 @@
 {
-    "sandbox": {
-        "enabled": false,
-        "autoAllowBashIfSandboxed": true,
-        "network": {
-            "allowedDomains": [],
-            "deniedDomains": [],
-            "allowLocalBinding": false,
-            "allowUnixSockets": [],
-            "allowAllUnixSockets": false
-        },
-        "filesystem": {
-            "denyRead": [
-                "~/.ssh",
-                "~/.aws",
-                "~/.gcp"
-            ],
-            "allowWrite": [
-                ".",
-                "/dev/stdout",
-                "/dev/stderr",
-                "/dev/null",
-                "/dev/tty",
-                "/dev/dtracehelper",
-                "/dev/autofs_nowait",
-                "/tmp/codebuddy",
-                "/private/tmp/codebuddy",
-                "~/.npm/_logs",
-                "~/.codebuddy/debug",
-                "~/.codebuddy/statsig"
-            ],
-            "denyWrite": []
-        },
-        "excludedCommands": [],
-        "allowUnsandboxedCommands": true,
-        "enableWeakerNestedSandbox": false
+  "sandbox": {
+    "enabled": false,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [],
+      "deniedDomains": [],
+      "allowLocalBinding": false,
+      "allowUnixSockets": [],
+      "allowAllUnixSockets": false
     },
-    "alwaysThinkingEnabled": false,
-    "trustedDirectories": [
-        "/Users/edte/dotfiles/nvim",
-        "/Users/edte/go/src/test",
-        "/Users/edte/dotfiles/claude",
-        "/Users/edte/go/src/push/push-manage-console",
-        "/Users/edte/go/src/push/push-plugin-service",
-        "/Users/edte/go/src/push/test/alfred-epoch-converter",
-        "/Users/edte/go/src/push/tpush/tpush-console",
-        "/Users/edte/.local/share/nvim/lazy/no-go.nvim",
-        "/Users/edte/Desktop",
-        "/Users/edte/dotfiles/Rime",
-        "/Users/edte/go/src/push/operation/push-operation-dispatch",
-        "/Users/edte/go/src/push/offline/push-and",
-        "/Users/edte/go/src/push/test",
-        "/Users/edte/.local/share/nvim/lazy/codecompanion.nvim",
-        "/Users/edte/.local/share/nvim/lazy",
-        "/Users/edte/go/src/push/flow/push-admin",
-        "/Users/edte/go/src/push/tpush",
-        "/Users/edte/.local/share/nvim/lazy/vscode-diff.nvim",
-        "/Users/edte/go/src/push/push-dispatch-service",
-        "/Users/edte/dotfiles/zsh",
-        "/Users/edte/.local/share/nvim/lazy/vim-matchquote",
-        "/opt/homebrew/Caskroom/neovim-nightly/latest/nvim-macos-arm64/share/nvim/runtime",
-        "/Users/edte/go/src/push",
-        "/Users/edte/go/src/wns_project/application/push",
-        "/Users/edte/go/src/wns_project/application/push/push_channel",
-        "/Users/edte/go/src/test/jce2go",
-        "/Users/edte/go/src/push/engine/push-engine-service",
-        "/Users/edte/.codebuddy"
-    ],
-    "model": "claude-4.5",
-    "extraKnownMarketplaces": {
-        "anthropic-official": {
-            "source": {
-                "source": "git",
-                "url": "git@github.com:anthropics/claude-plugins-official.git"
-            }
-        }
+    "filesystem": {
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/.gcp"
+      ],
+      "allowWrite": [
+        ".",
+        "/dev/stdout",
+        "/dev/stderr",
+        "/dev/null",
+        "/dev/tty",
+        "/dev/dtracehelper",
+        "/dev/autofs_nowait",
+        "/tmp/codebuddy",
+        "/private/tmp/codebuddy",
+        "~/.npm/_logs",
+        "~/.codebuddy/debug",
+        "~/.codebuddy/statsig"
+      ],
+      "denyWrite": []
     },
-    "enabledPlugins": {
-        "gopls-lsp@anthropic-official": true,
-        "gopls-lsp@claude-plugins-official": true,
-        "lua-lsp@claude-plugins-official": true
+    "excludedCommands": [],
+    "allowUnsandboxedCommands": true,
+    "enableWeakerNestedSandbox": false
+  },
+  "alwaysThinkingEnabled": false,
+  "trustedDirectories": [
+    "/Users/edte/dotfiles/nvim",
+    "/Users/edte/go/src/test",
+    "/Users/edte/dotfiles/claude",
+    "/Users/edte/go/src/push/push-manage-console",
+    "/Users/edte/go/src/push/push-plugin-service",
+    "/Users/edte/go/src/push/test/alfred-epoch-converter",
+    "/Users/edte/go/src/push/tpush/tpush-console",
+    "/Users/edte/.local/share/nvim/lazy/no-go.nvim",
+    "/Users/edte/Desktop",
+    "/Users/edte/dotfiles/Rime",
+    "/Users/edte/go/src/push/operation/push-operation-dispatch",
+    "/Users/edte/go/src/push/offline/push-and",
+    "/Users/edte/go/src/push/test",
+    "/Users/edte/.local/share/nvim/lazy/codecompanion.nvim",
+    "/Users/edte/.local/share/nvim/lazy",
+    "/Users/edte/go/src/push/flow/push-admin",
+    "/Users/edte/go/src/push/tpush",
+    "/Users/edte/.local/share/nvim/lazy/vscode-diff.nvim",
+    "/Users/edte/go/src/push/push-dispatch-service",
+    "/Users/edte/dotfiles/zsh",
+    "/Users/edte/.local/share/nvim/lazy/vim-matchquote",
+    "/opt/homebrew/Caskroom/neovim-nightly/latest/nvim-macos-arm64/share/nvim/runtime",
+    "/Users/edte/go/src/push",
+    "/Users/edte/go/src/wns_project/application/push",
+    "/Users/edte/go/src/wns_project/application/push/push_channel",
+    "/Users/edte/go/src/test/jce2go",
+    "/Users/edte/go/src/push/engine/push-engine-service",
+    "/Users/edte/.codebuddy",
+    "/Users/edte/.local/share/nvim/lazy/snacks.nvim"
+  ],
+  "model": "claude-4.5",
+  "extraKnownMarketplaces": {
+    "anthropic-official": {
+      "source": {
+        "source": "git",
+        "url": "git@github.com:anthropics/claude-plugins-official.git"
+      }
     }
+  },
+  "enabledPlugins": {
+    "gopls-lsp@anthropic-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
+  }
 }
-
