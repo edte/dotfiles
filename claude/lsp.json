@@ -1,0 +1,18 @@
+{
+    "go": {
+        "command": "gopls",
+        "args": [
+            "serve"
+        ],
+        "extensionToLanguage": {
+            ".go": "go"
+        }
+    },
+    "lua": {
+        "command": "lua-language-server",
+        "args": [],
+        "extensionToLanguage": {
+            ".lua": "lua"
+        }
+    }
+}
