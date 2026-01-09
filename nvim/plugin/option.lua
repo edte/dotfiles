@@ -54,7 +54,7 @@ local default_options = {
 
 	-- 折叠相关
 	foldcolumn = "1",
-	fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
+	fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,vert:┃]],
 	foldmethod = "expr",
 	foldlevelstart = 99,
 	foldenable = true,

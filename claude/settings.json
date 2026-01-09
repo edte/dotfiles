@@ -65,7 +65,8 @@
     "/Users/edte/go/src/test/jce2go",
     "/Users/edte/go/src/push/engine/push-engine-service",
     "/Users/edte/.codebuddy",
-    "/Users/edte/.local/share/nvim/lazy/snacks.nvim"
+    "/Users/edte/.local/share/nvim/lazy/snacks.nvim",
+    "/Users/edte/go/src/test/git-conflict-demo"
   ],
   "model": "claude-opus-4.5",
   "extraKnownMarketplaces": {

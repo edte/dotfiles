@@ -16,6 +16,9 @@ for _, hl_group in ipairs({ "LineNr", "LineNrAbove", "LineNrBelow" }) do
 	vim.api.nvim_set_hl(0, hl_group, { fg = colors.line_number })
 end
 
+-- 分屏分隔线颜色（更醒目）
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "NONE" })
+
 vim.cmd.source(vim.fn.stdpath("config") .. "/lua/vim/match.vim")
 
 -- vim.fn.serverstart("/tmp/nvim.sock")
