@@ -3,7 +3,7 @@
 -- https://lazy.folke.io/spec
 
 vim.pack.add({
-	{ src = "https://github.com/folke/lazy.nvim.git", version = vim.version.range("*") },
+	{ src = "https://github.com/folke/lazy.nvim", version = vim.version.range("*") },
 })
 
 -- 组装插件列表
@@ -192,7 +192,7 @@ require("lazy").setup({
 		cache = {
 			enabled = true,
 		},
-		reset_packpath = true, -- reset the package path to improve startup time
+		reset_packpath = false, -- reset the package path to improve startup time
 		rtp = {
 			reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
 			---@type string[]

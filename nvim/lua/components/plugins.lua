@@ -142,50 +142,6 @@ M.list = {
 		version = "*", -- or branch = "dev", to use the latest commit
 	},
 
-	-- http 请求
-	{
-		"mistweaverco/kulala.nvim",
-		ft = "http",
-		opts = {
-			default_view = "body",
-			display_mode = "float",
-			winbar = false,
-			ui = {
-				show_request_summary = false,
-			},
-			infer_content_type = false,
-			contenttypes = {
-				["application/csv"] = {
-					ft = "csv",
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
-				["text/csv"] = {
-					ft = "csv",
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
-				["text/tsv"] = {
-					ft = "tsv",
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
-			},
-		},
-	},
-
 	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
 		priority = 1000,
