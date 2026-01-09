@@ -186,40 +186,6 @@ M.list = {
 		},
 	},
 
-	-- 用于 Lua 开发和 Neovim 探索的便捷便签本/REPL/调试控制台
-	{
-		"yarospace/lua-console.nvim",
-		lazy = true,
-		keys = "<space>ll",
-		opts = {
-			buffer = {
-				result_prefix = "=> ",
-				save_path = vim.fn.stdpath("state") .. "/lua-console.lua",
-				autosave = true, -- autosave on console hide / close
-				load_on_start = true, -- load saved session on start
-				preserve_context = true, -- preserve results between evaluations
-			},
-			window = {
-				border = "double", -- single|double|rounded
-				height = 0.6, -- percentage of main window
-			},
-			mappings = {
-				toggle = "<space>ll",
-				attach = "<c-\\>",
-				quit = "q",
-				eval = "<CR>",
-				eval_buffer = "<S-CR>",
-				open = "gf",
-				messages = "M",
-				save = "S",
-				load = "L",
-				resize_up = "<C-Up>",
-				resize_down = "<C-Down>",
-				help = "?",
-			},
-		},
-	},
-
 	{ --${conf, snacks.nvim}
 		"folke/snacks.nvim",
 		priority = 1000,
