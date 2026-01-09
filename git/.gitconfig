@@ -17,7 +17,8 @@
     true-color = always
 
 [merge]
-    conflictstyle = diff3
+	conflictstyle = zdiff3
+	tool = codediff
 
 [diff]
     colorMoved = default
@@ -52,3 +53,5 @@
 [push]
 	default = current
 	autoSetupRemote = true
+[mergetool "codediff"]
+	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"

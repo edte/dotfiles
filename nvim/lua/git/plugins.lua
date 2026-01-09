@@ -121,7 +121,7 @@ M.list = {
 		},
 	},
 	{
-		"esmuellert/codediff.nvim",
+		"edte/codediff.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		cmd = "CodeDiff",
 		opts = {
@@ -138,6 +138,15 @@ M.list = {
 					select = "l", -- Open diff for selected file
 					hover = "K", -- Show file diff preview
 					refresh = "R", -- Refresh git status
+				},
+				conflict = {
+					accept_incoming = "ct", -- Accept incoming (theirs/left) change
+					accept_current = "co", -- Accept current (ours/right) change
+					accept_this = "ca",
+					accept_both = "cb", -- Accept both changes (incoming first)
+					discard = "cx", -- Discard both, keep base
+					next_conflict = "]x", -- Jump to next conflict
+					prev_conflict = "[x", -- Jump to previous conflict
 				},
 			},
 		},

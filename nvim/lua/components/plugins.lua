@@ -257,13 +257,21 @@ M.list = {
 						elseif row == top then
 							move = "j"
 						end
+						local bufnr = vim.api.nvim_get_current_buf()
 						local ns = vim.api.nvim_create_namespace("border")
-						vim.hl.range(0, ns, "Substitute", { top - 1, 0 }, { top - 1, -1 })
-						vim.hl.range(0, ns, "Substitute", { bottom - 1, 0 }, { bottom - 1, -1 })
+						vim.hl.range(bufnr, ns, "Substitute", { top - 1, 0 }, { top - 1, -1 })
+						vim.hl.range(bufnr, ns, "Substitute", { bottom - 1, 0 }, { bottom - 1, -1 })
 						vim.defer_fn(function()
-							vim.api.nvim_buf_set_text(0, top - 1, 0, top - 1, -1, {})
-							vim.api.nvim_buf_set_text(0, bottom - 1, 0, bottom - 1, -1, {})
-							vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+							if not vim.api.nvim_buf_is_valid(bufnr) then
+								return
+							end
+							if not vim.bo[bufnr].modifiable then
+								vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+								return
+							end
+							vim.api.nvim_buf_set_text(bufnr, top - 1, 0, top - 1, -1, {})
+							vim.api.nvim_buf_set_text(bufnr, bottom - 1, 0, bottom - 1, -1, {})
+							vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 						end, 150)
 						return "<esc>" .. move
 					else

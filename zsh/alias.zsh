@@ -60,7 +60,7 @@ alias gcm="git commit -m"
 alias gd="git diff"
 alias gpl="git pull"
 alias gps="git push"
-alias merge='git diff --name-only --diff-filter=U | xargs nvim'
+alias merge='git mergetool'
 
 #tmux
 alias t=tmux

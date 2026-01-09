@@ -67,7 +67,7 @@
     "/Users/edte/.codebuddy",
     "/Users/edte/.local/share/nvim/lazy/snacks.nvim"
   ],
-  "model": "claude-4.5",
+  "model": "claude-opus-4.5",
   "extraKnownMarketplaces": {
     "anthropic-official": {
       "source": {
