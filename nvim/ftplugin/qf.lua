@@ -1,2 +1,19 @@
--- vim.pack.add({ { src = "https://github.com/kevinhwang91/nvim-bqf.git", version = vim.version.range("*") } })
--- vim.pack.add({ { src = "https://github.com/stevearc/quicker.nvim.git", version = vim.version.range("*") } })
+-- -- 防止重复加载
+-- if vim.g.qf_plugins_loaded then
+-- 	return
+-- end
+-- vim.g.qf_plugins_loaded = true
+--
+-- vim.pack.add({
+-- 	{ src = "https://github.com/kevinhwang91/nvim-bqf" },
+-- 	{ src = "https://github.com/stevearc/quicker.nvim" },
+-- })
+--
+-- require("bqf").setup({})
+--
+-- require("quicker").setup({
+-- 	opts = {
+-- 		number = true,
+-- 		wrap = true,
+-- 	},
+-- })
