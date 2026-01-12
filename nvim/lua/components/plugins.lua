@@ -229,7 +229,7 @@ M.list = {
 			},
 		},
 		opts = {
-			animate = { enabled = true },
+			animate = { enabled = false },
 			bigfile = { enabled = true },
 			buffdelete = { enabled = true },
 			dashboard = { enabled = false },
@@ -281,7 +281,7 @@ M.list = {
 			profiler = { enabled = true },
 			quickfile = { enabled = true },
 			rename = { enabled = true },
-			scope = { enabled = true },
+			scope = { enabled = false },
 			scratch = { enabled = true },
 			scroll = { enabled = false },
 			statuscolumn = {
