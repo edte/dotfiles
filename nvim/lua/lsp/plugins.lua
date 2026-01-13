@@ -1,43 +1,6 @@
 local M = {}
 
 M.list = {
-	-- go 插件
-	{
-		"ray-x/go.nvim",
-		ft = "go",
-		config = function()
-			require("go").setup({
-				diagnostic = false,
-			})
-
-			Command("GoAddTagEmpty", function()
-				vim.api.nvim_command(":GoAddTag json -add-options json=")
-			end, { nargs = "*" })
-
-			Autocmd("BufWritePost", {
-				group = GroupId("go_auto_import", { clear = true }),
-				nested = true,
-				callback = function()
-					cmd("GoImports")
-				end,
-			})
-		end,
-	},
-
-	{
-		"TheNoeTrevino/no-go.nvim",
-		ft = "go",
-		config = function()
-			vim.highlight.priorities.semantic_tokens = 95 -- default is 125
-			vim.highlight.priorities.treesitter = 100 -- default is 100
-			require("no-go").setup({
-				identifiers = { "err", "error" }, -- Customize which identifiers to collapse
-				-- look at the default config for more details
-				highlight_group = "LspInlayHint",
-				fold_imports = true,
-			})
-		end,
-	},
 
 	{
 		"edte/more-go.nvim",
@@ -160,12 +123,6 @@ M.list = {
 				timeout_ms = 200,
 			},
 		},
-	},
-
-	-- jce 高亮
-	{
-		"edte/jce-highlight",
-		ft = { "jce" },
 	},
 
 	-- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。

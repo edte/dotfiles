@@ -227,3 +227,10 @@ vim.api.nvim_create_autocmd("TabClosed", {
 		end
 	end,
 })
+
+-- 自定义文件类型检测
+vim.filetype.add({
+	extension = {
+		jce = "jce",
+	},
+})
