@@ -6,18 +6,20 @@ vim.g.jce_loaded = true
 vim.pack.add({
 	"https://github.com/ray-x/go.nvim.git",
 	"https://github.com/edte/no-go.nvim.git",
+	"https://github.com/edte/more-go.nvim.git",
+	"https://github.com/olexsmir/gopher.nvim.git",
 })
 
 require("go").setup({
 	diagnostic = false,
 })
 
-Command("GoAddTagEmpty", function()
+vim.api.nvim_create_user_command("GoAddTagEmpty", function()
 	vim.api.nvim_command(":GoAddTag json -add-options json=")
 end, { nargs = "*" })
 
-Autocmd("BufWritePost", {
-	group = GroupId("go_auto_import", { clear = true }),
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = vim.api.nvim_create_augroup("go_auto_import", { clear = true }),
 	nested = true,
 	callback = function()
 		cmd("GoImports")
@@ -33,3 +35,7 @@ require("no-go").setup({
 	highlight_group = "LspInlayHint",
 	fold_imports = true,
 })
+
+require("more-go").setup()
+
+require("gopher").setup()
