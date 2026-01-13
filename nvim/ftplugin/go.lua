@@ -10,6 +10,12 @@ vim.pack.add({
 	"https://github.com/olexsmir/gopher.nvim.git",
 })
 
+-- 确保 go.nvim 的 lua 路径被正确添加到 package.path
+local go_nvim_path = vim.fn.stdpath("data") .. "/site/pack/core/opt/go.nvim/lua"
+if not package.path:find(go_nvim_path, 1, true) then
+	package.path = package.path .. ";" .. go_nvim_path .. "/?.lua;" .. go_nvim_path .. "/?/init.lua"
+end
+
 require("go").setup({
 	diagnostic = false,
 })
