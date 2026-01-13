@@ -158,12 +158,9 @@ M.config = function()
 		require("treesitter-context").go_to_context(vim.v.count1)
 	end, { silent = true })
 
-	-- local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
-	-- parser_configs.comment = {
+	-- require("nvim-treesitter.parsers").comment = {
 	-- 	install_info = {
 	-- 		url = "https://github.com/OXY2DEV/tree-sitter-comment",
-	-- 		files = { "src/parser.c" },
 	-- 		branch = "main",
 	--
 	-- 		-- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.

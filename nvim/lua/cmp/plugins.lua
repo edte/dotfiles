@@ -72,6 +72,8 @@ M.list = {
 				"niuiic/blink-cmp-rg.nvim",
 			},
 
+			{ "edte/more-go.nvim" },
+
 			-- 自定义代码片段
 			{
 				"L3MON4D3/LuaSnip",

@@ -2,7 +2,6 @@
 
 local M = {
 	lua_ls = { "lua" },
-	gopls = { "go" },
 	clangd = { "cpp", "c" },
 	jsonls = { "json" },
 	vimls = { "vim" },
