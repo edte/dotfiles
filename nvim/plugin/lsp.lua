@@ -1,10 +1,8 @@
 -- 根据语言启动 lsp
 
 local M = {
-	lua_ls = { "lua" },
 	clangd = { "cpp", "c" },
 	jsonls = { "json" },
-	vimls = { "vim" },
 	asm_lsp = { "asm", "vmasm" },
 	yamlls = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
 }

@@ -1,4 +1,11 @@
-return {
+if vim.g.vim_lsp_loaded then
+	return
+end
+vim.g.vim_lsp_loaded = true
+
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/lua_ls.lua
+vim.lsp.config("vimls", {
 	name = "vimls",
 	cmd = { "vim-language-server", "--stdio" },
 	filetypes = { "vim" },
@@ -28,4 +35,6 @@ return {
 		},
 	},
 	single_file_support = true,
-}
+})
+
+vim.lsp.enable("vimls")

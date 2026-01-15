@@ -1,6 +1,12 @@
+if vim.g.lua_lsp_loaded then
+	return
+end
+vim.g.lua_lsp_loaded = true
+vim.notify("set lua")
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/lua_ls.lua
-return {
+vim.lsp.config("lua_ls", {
 	name = "lua_ls",
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -45,4 +51,6 @@ return {
 			vim.lsp.handlers["textDocument/definition"](err, result, ctx, config)
 		end,
 	},
-}
+})
+
+vim.lsp.enable("lua_ls")
