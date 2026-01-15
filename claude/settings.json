@@ -35,7 +35,7 @@
     "allowUnsandboxedCommands": true,
     "enableWeakerNestedSandbox": false
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "trustedDirectories": [
     "/Users/edte/dotfiles/nvim",
     "/Users/edte/go/src/test",
@@ -68,9 +68,11 @@
     "/Users/edte/.local/share/nvim/lazy/snacks.nvim",
     "/Users/edte/go/src/test/git-conflict-demo",
     "/Users/edte/go/src/push/offline/push-harmony/**",
-    "/Users/edte/go/src/test/tree-sitter-comment/**"
+    "/Users/edte/go/src/test/tree-sitter-comment/**",
+    "/Users/edte/.local/state/nvim",
+    "/Users/edte/go/src/login/templates"
   ],
-  "model": "claude-opus-4.5",
+  "model": "claude-haiku-4.5",
   "extraKnownMarketplaces": {
     "anthropic-official": {
       "source": {
