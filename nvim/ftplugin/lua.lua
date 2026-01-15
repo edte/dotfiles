@@ -1,8 +1,7 @@
-if vim.g.lua_lsp_loaded then
+if vim.g.lua_loaded then
 	return
 end
-vim.g.lua_lsp_loaded = true
-vim.notify("set lua")
+vim.g.lua_loaded = true
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/lua_ls.lua
