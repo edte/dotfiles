@@ -1,4 +1,9 @@
-return {
+if vim.g.json_loaded then
+	return
+end
+vim.g.json_loaded = true
+
+vim.lsp.config("jsonls", {
 	name = "jsonls",
 	cmd = { "vscode-json-language-server", "--stdio" },
 	filetypes = { "json" },
@@ -16,4 +21,8 @@ return {
 			},
 		},
 	},
-}
+})
+
+vim.lsp.enable("jsonls")
+
+vim.lsp.start(vim.lsp.config.jsonls)

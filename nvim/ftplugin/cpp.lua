@@ -1,9 +1,14 @@
+if vim.g.cpp_loaded then
+	return
+end
+vim.g.cpp_loaded = true
+
 -- 根目录下保存文件为 .clang-format
 -- BasedOnStyle: LLVM
 -- IndentWidth: 4
 -- ColumnLimit: 120
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
-return {
+vim.lsp.config("clangd", {
 	name = "clangd",
 	root_markers = { ".git", "Makefile" },
 	cmd = {
@@ -69,4 +74,6 @@ return {
 	on_attach = function(client, buf)
 		vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 	end,
-}
+})
+
+vim.lsp.enable("clangd")

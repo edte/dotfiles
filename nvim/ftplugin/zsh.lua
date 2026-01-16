@@ -1,18 +1,16 @@
--- bash没诊断，需要看咋弄
+if vim.g.zsh_loaded then
+	return
+end
+vim.g.zsh_loaded = true
 
-local M = {
+vim.lsp.config("bashls", {
 	name = "bashls",
 	cmd = { "bash-language-server", "start" },
 	filetypes = { "sh", "zsh", "bash", "tmux" },
 	root_markers = { ".git", "Makefile" },
 	single_file_support = true,
-	settings = {
-		{
-			bashIde = {
-				globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
-			},
-		},
-	},
-}
+})
 
-return M
+vim.lsp.enable("bashls")
+
+vim.lsp.start(vim.lsp.config.bashls)

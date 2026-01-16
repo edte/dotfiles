@@ -230,7 +230,7 @@ M.list = {
 		},
 		opts = {
 			animate = { enabled = false },
-			bigfile = { enabled = true },
+			bigfile = { enabled = false },
 			buffdelete = { enabled = true },
 			dashboard = { enabled = false },
 			debug = { enabled = false },
@@ -428,13 +428,13 @@ M.list = {
 					local mf = require("mini.files")
 					if not mf.close() then
 						local n = api.nvim_buf_get_name(0)
-						if n ~= "" then
+						-- 检查文件是否存在，不存在则打开 pwd
+						if n ~= "" and vim.uv.fs_stat(n) then
 							mf.open(n)
-							mf.reveal_cwd()
 						else
-							mf.open()
-							mf.reveal_cwd()
+							mf.open(vim.uv.cwd())
 						end
+						mf.reveal_cwd()
 					end
 				end,
 				desc = "explorer",

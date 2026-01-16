@@ -1,25 +1,3 @@
--- 根据语言启动 lsp
-
-local M = {
-	clangd = { "cpp", "c" },
-	jsonls = { "json" },
-	asm_lsp = { "asm", "vmasm" },
-	yamlls = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
-}
-
-for k, v in pairs(M) do
-	Autocmd("FileType", {
-		pattern = v,
-		callback = function()
-			vim.lsp.enable({ k })
-		end,
-		group = GroupId("lsp_enable_" .. k, { clear = true }),
-	})
-end
-
--- FIX: 这行代码不能删，而且不能放到上面的autocmd上，不知道为啥。。不然就会导致启动的第一个文件不能attach lsp，其他的文件可以
-vim.lsp.enable({ "bashls" })
-
 vim.api.nvim_create_user_command("LspLog", function()
 	vim.cmd(string.format("e %s", vim.lsp.get_log_path()))
 end, {

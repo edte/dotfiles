@@ -1,0 +1,12 @@
+{
+  "enabledMcpjsonServers": [],
+  "disabledMcpjsonServers": [
+    "sequential-thinking",
+    "neovim",
+    "context7",
+    "mcp-feedback-enhanced",
+    "filesystem",
+    "time",
+    "amap-maps"
+  ]
+}
