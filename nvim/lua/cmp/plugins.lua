@@ -120,6 +120,10 @@ M.list = {
 					default = { "lsp", "path", "snippets", "buffer", "ripgrep", "go_import" },
 
 					providers = {
+						codecompanion = {
+							name = "CodeCompanion",
+							module = "codecompanion.providers.completion.blink",
+						},
 						go_import = {
 							name = "Module",
 							module = "more-go.go-pkgs-blink",

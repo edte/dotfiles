@@ -13,5 +13,6 @@ vim.filetype.add({
 		jce = "jce",
 		tmux = "zsh",
 		sh = "zsh",
+		codecompanion = "codecompanion",
 	},
 })

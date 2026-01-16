@@ -3,6 +3,10 @@ local M = {}
 M.config = function()
 	vim.g.skip_ts_context_commentstring_module = true
 
+	-- 让 codecompanion filetype 使用 markdown parser
+	-- 这样 markview 才能正确渲染 markdown 内容
+	vim.treesitter.language.register("markdown", "codecompanion")
+
 	local config = Require("nvim-treesitter.configs")
 	if config == nil then
 		return
