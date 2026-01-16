@@ -1,34 +1,6 @@
 local M = {}
 
 M.list = {
-	-- 展示颜色
-	-- TODO: cmp 集成
-	-- {
-	-- 	"NvChad/nvim-colorizer.lua",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		local r = Require("colorizer")
-	-- 		if r == nil then
-	-- 			return
-	-- 		end
-	--
-	-- 		r.setup({
-	-- 			filetypes = {
-	-- 				"*", -- Highlight all files, but customize some others.
-	-- 				cmp_docs = { always_update = true },
-	-- 			},
-	-- 			RGB = true, -- #RGB hex codes
-	-- 			RRGGBB = true, -- #RRGGBB hex codes
-	-- 			names = true, -- "Name" codes like Blue or blue
-	-- 			RRGGBBAA = true, -- #RRGGBBAA hex codes
-	-- 			AARRGGBB = true, -- 0xAARRGGBB hex codes
-	-- 			rgb_fn = true, -- CSS rgb() and rgba() functions
-	-- 			hsl_fn = true, -- CSS hsl() and hsla() functions
-	-- 			css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-	-- 			css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-	-- 		})
-	-- 	end,
-	-- },
 
 	-- Neovim 中人类可读的内联 cron 表达式
 	-- {
