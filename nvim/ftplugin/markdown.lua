@@ -96,5 +96,20 @@ vim.lsp.config("markdown-oxide", {
 })
 
 vim.lsp.enable("marksman")
-
 vim.lsp.enable("markdown-oxide")
+
+-- 手动为当前 buffer 启动 LSP（因为 enable 只对新打开的 buffer 生效）
+vim.schedule(function()
+	local buf = vim.api.nvim_get_current_buf()
+	for _, name in ipairs({ "marksman", "markdown-oxide" }) do
+		local config = vim.lsp.config[name]
+		if config then
+			vim.lsp.start(
+				vim.tbl_extend("force", config, {
+					root_dir = vim.fs.root(buf, config.root_markers or { ".git" }) or vim.fn.getcwd(),
+				}),
+				{ bufnr = buf }
+			)
+		end
+	end
+end)
