@@ -48,12 +48,18 @@ M.list = {
 				return dir
 			end
 
-			-- FIX: 这里如果打开了一个没有打开过的session，会报错，看能不能提前判断一下
 			vim.api.nvim_create_autocmd("VimEnter", {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
-						MiniSessions.read(GetPath())
-						vim.cmd([[silent! loadview]])
+						local session_name = GetPath()
+						if MiniSessions.detected[session_name] then
+							-- Session exists, read it
+							MiniSessions.read(session_name)
+							vim.cmd([[silent! loadview]])
+						else
+							-- First time in this directory, create empty session
+							MiniSessions.write(session_name)
+						end
 					end
 				end,
 				nested = true,
@@ -1014,6 +1020,25 @@ M.list = {
 		opts = {},
 	},
 
+	-- 翻译
+	{
+		"edte/comment-translate.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("comment-translate").setup({
+				target_language = "zh",
+				-- translate_service = "codebuddy",
+				hover = {
+					loading = false, -- 关闭加载动画
+				},
+			})
+		end,
+	},
+
+	-- llm
 	{
 		"olimorris/codecompanion.nvim",
 		dependencies = {
