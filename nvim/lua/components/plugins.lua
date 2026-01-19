@@ -470,10 +470,10 @@ M.list = {
 				markdown = true,
 			}
 
-			local pairs = require("mini.pairs")
-			pairs.setup({})
-			local open = pairs.open
-			pairs.open = function(pair, neigh_pattern)
+			local mini_pairs = require("mini.pairs")
+			mini_pairs.setup({})
+			local open = mini_pairs.open
+			mini_pairs.open = function(pair, neigh_pattern)
 				if vim.fn.getcmdline() ~= "" then
 					return open(pair, neigh_pattern)
 				end
@@ -548,6 +548,13 @@ M.list = {
 			local gitStatusCache = {}
 			local cacheTimeout = 2000 -- Cache timeout in milliseconds
 
+			-- 防止文件描述符耗尽的保护机制
+			local pendingRequests = {} -- 追踪进行中的请求
+			local maxConcurrent = 3 -- 最大并发数
+			local activeCount = 0 -- 当前活跃的请求数
+			local requestQueue = {} -- 请求队列
+			local debounceTimers = {} -- 防抖定时器
+
 			local function isSymlink(path)
 				local stat = vim.loop.fs_lstat(path)
 				return stat and stat.type == "link"
@@ -595,13 +602,55 @@ M.list = {
 				if not cwd or cwd == "" or vim.fn.isdirectory(cwd) == 0 then
 					return
 				end
-				local function on_exit(content)
-					if content.code == 0 then
-						callback(content.stdout)
-						vim.g.content = content.stdout
+
+				-- 如果已有相同目录的请求在进行中，跳过
+				if pendingRequests[cwd] then
+					return
+				end
+
+				-- 处理队列中的下一个请求
+				local function processQueue()
+					if activeCount >= maxConcurrent or #requestQueue == 0 then
+						return
+					end
+					local next_request = table.remove(requestQueue, 1)
+					if next_request then
+						next_request()
 					end
 				end
-				vim.system({ "git", "status", "--porcelain" }, { text = true, cwd = cwd }, on_exit)
+
+				-- 实际执行 git status 的函数
+				local function doFetch()
+					-- 再次检查，防止队列等待期间状态变化
+					if pendingRequests[cwd] then
+						processQueue()
+						return
+					end
+
+					pendingRequests[cwd] = true
+					activeCount = activeCount + 1
+
+					local function on_exit(content)
+						pendingRequests[cwd] = nil
+						activeCount = activeCount - 1
+
+						if content.code == 0 then
+							callback(content.stdout)
+						end
+
+						-- 处理队列中的下一个请求
+						vim.schedule(processQueue)
+					end
+
+					vim.system({ "git", "status", "--porcelain" }, { text = true, cwd = cwd }, on_exit)
+				end
+
+				-- 如果并发数未满，直接执行；否则加入队列
+				if activeCount < maxConcurrent then
+					doFetch()
+				else
+					table.insert(requestQueue, doFetch)
+				end
 			end
 
 			---@param str string|nil
@@ -797,6 +846,13 @@ M.list = {
 				pattern = "MiniFilesExplorerClose",
 				callback = function()
 					clearCache()
+					-- 清理所有防抖定时器
+					for bufnr, timer_id in pairs(debounceTimers) do
+						vim.fn.timer_stop(timer_id)
+						debounceTimers[bufnr] = nil
+					end
+					-- 清空请求队列
+					requestQueue = {}
 				end,
 			})
 
@@ -805,28 +861,45 @@ M.list = {
 				pattern = "MiniFilesBufferUpdate",
 				callback = function(sii)
 					local bufnr = sii.data.buf_id
-					-- 从 mini.files 缓冲区获取当前浏览的目录
-					local entry = MiniFiles.get_fs_entry(bufnr, 1)
-					if not entry or not entry.path then
-						return
+
+					-- 防抖：取消之前的定时器
+					if debounceTimers[bufnr] then
+						vim.fn.timer_stop(debounceTimers[bufnr])
+						debounceTimers[bufnr] = nil
 					end
-					local cwd = vim.fn.fnamemodify(entry.path, ":h")
-					if vim.fn.isdirectory(cwd) == 0 then
-						cwd = entry.path
-					end
-					if gitStatusCache[cwd] then
-						updateMiniWithGit(bufnr, gitStatusCache[cwd].statusMap)
-					else
-						-- 如果缓存中没有，主动查询
-						fetchGitStatus(cwd, function(content)
-							local gitStatusMap = parseGitStatus(content)
-							gitStatusCache[cwd] = {
-								time = os.time(),
-								statusMap = gitStatusMap,
-							}
-							updateMiniWithGit(bufnr, gitStatusMap)
-						end)
-					end
+
+					-- 设置新的定时器，100ms 后执行
+					debounceTimers[bufnr] = vim.fn.timer_start(100, function()
+						debounceTimers[bufnr] = nil
+
+						-- 检查 buffer 是否仍然有效
+						if not vim.api.nvim_buf_is_valid(bufnr) then
+							return
+						end
+
+						-- 从 mini.files 缓冲区获取当前浏览的目录
+						local entry = MiniFiles.get_fs_entry(bufnr, 1)
+						if not entry or not entry.path then
+							return
+						end
+						local cwd = vim.fn.fnamemodify(entry.path, ":h")
+						if vim.fn.isdirectory(cwd) == 0 then
+							cwd = entry.path
+						end
+						if gitStatusCache[cwd] then
+							updateMiniWithGit(bufnr, gitStatusCache[cwd].statusMap)
+						else
+							-- 如果缓存中没有，主动查询
+							fetchGitStatus(cwd, function(content)
+								local gitStatusMap = parseGitStatus(content)
+								gitStatusCache[cwd] = {
+									time = os.time(),
+									statusMap = gitStatusMap,
+								}
+								updateMiniWithGit(bufnr, gitStatusMap)
+							end)
+						end
+					end)
 				end,
 			})
 
