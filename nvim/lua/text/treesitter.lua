@@ -7,141 +7,135 @@ M.config = function()
 	-- 这样 markview 才能正确渲染 markdown 内容
 	vim.treesitter.language.register("markdown", "codecompanion")
 
-	-- local config = Require("nvim-treesitter.configs")
-	-- if config == nil then
-	-- 	return
-	-- end
+	require("nvim-treesitter").install({
+		"bash",
+		"c",
+		"cpp",
+		"diff",
+		"go",
+		"gomod",
+		"gowork",
+		"gosum",
+		"html",
+		"javascript",
+		"jsdoc",
+		"json",
+		"jsonc",
+		"json5",
+		"lua",
+		"luadoc",
+		"luap",
+		"markdown",
+		"markdown_inline",
+		"printf",
+		"python",
+		"query",
+		"regex",
+		"toml",
+		"tsx",
+		"typescript",
+		"vim",
+		"vimdoc",
+		"xml",
+		"yaml",
+		"git_config",
+		"gitcommit",
+		"git_rebase",
+		"gitignore",
+		"gitattributes",
+	})
 
-	-- TSBufToggle highlight
+	require("nvim-treesitter").setup({
+		install_dir = vim.fn.stdpath("data") .. "/site",
+		indent = {
+			enable = true,
+		},
 
-	-- config.setup({
-	-- 	ensure_installed = {
-	-- 		"bash",
-	-- 		"c",
-	-- 		"cpp",
-	-- 		"diff",
-	-- 		"go",
-	-- 		"gomod",
-	-- 		"gowork",
-	-- 		"gosum",
-	-- 		"html",
-	-- 		"javascript",
-	-- 		"jsdoc",
-	-- 		"json",
-	-- 		"jsonc",
-	-- 		"json5",
-	-- 		"lua",
-	-- 		"luadoc",
-	-- 		"luap",
-	-- 		"markdown",
-	-- 		"markdown_inline",
-	-- 		"printf",
-	-- 		"python",
-	-- 		"query",
-	-- 		"regex",
-	-- 		"toml",
-	-- 		"tsx",
-	-- 		"typescript",
-	-- 		"vim",
-	-- 		"vimdoc",
-	-- 		"xml",
-	-- 		"yaml",
-	-- 		"git_config",
-	-- 		"gitcommit",
-	-- 		"git_rebase",
-	-- 		"gitignore",
-	-- 		"gitattributes",
-	-- 	},
-	-- 	auto_install = true,
-	-- 	indent = {
-	-- 		enable = true,
-	-- 	},
-	--
-	-- 	-- 启用增量选择,
-	-- 	incremental_selection = {
-	-- 		enable = false,
-	-- 		keymaps = {
-	-- 			init_selection = "<CR>",
-	-- 			scope_incremental = "<TAB>",
-	-- 			node_incremental = "<CR>",
-	-- 			node_decremental = "<BS>",
-	-- 		},
-	-- 	},
-	--
-	-- 	highlight = {
-	-- 		enable = true,
-	-- 		-- additional_vim_regex_highlighting = false,
-	-- 		language_tree = true,
-	-- 		is_supported = function()
-	-- 			local cur_path = (vim.fn.expand("%"):gsub("^%d+/", ""))
-	-- 			if
-	-- 				cur_path:match("term://")
-	-- 				or vim.fn.getfsize(cur_path) > 1024 * 1024 -- file size > 1 MB.
-	-- 				or vim.fn.strwidth(vim.fn.getline(".")) > 300 -- width > 300 chars.
-	-- 			then
-	-- 				return false
-	-- 			end
-	-- 			return true
-	-- 		end,
-	-- 	},
-	-- 	-- gf 跳函数开头
-	-- 	textobjects = {
-	-- 		-- 文本对象：移动
-	-- 		move = {
-	-- 			enable = true,
-	-- 			set_jumps = true,
-	--
-	-- 			goto_next_start = {
-	-- 				-- ["]m"] = "@function.outer",
-	-- 				["]]"] = { query = "@class.outer", desc = "Next class start" },
-	-- 			},
-	-- 			goto_next_end = {
-	-- 				["]m"] = "@function.outer",
-	-- 				["]["] = "@class.outer",
-	-- 			},
-	-- 			goto_previous_start = {
-	-- 				["[m"] = "@function.outer",
-	-- 				["[["] = "@class.outer",
-	-- 			},
-	-- 			goto_previous_end = {
-	-- 				-- ["[M"] = "@function.outer",
-	-- 				["[]"] = "@class.outer",
-	-- 			},
-	-- 		},
-	--
-	-- 		-- 文本对象：选择
-	-- 		select = {
-	-- 			enable = true,
-	-- 			keymaps = {
-	-- 				-- You can use the capture groups defined in textobjects.scm
-	-- 				["af"] = "@function.outer",
-	-- 				["if"] = "@function.inner",
-	-- 				["ac"] = "@class.outer",
-	-- 				-- You can optionally set descriptions to the mappings (used in the desc parameter of
-	-- 				-- nvim_buf_set_keymap) which plugins like which-key display
-	-- 				["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-	-- 				-- You can also use captures from other query groups like `locals.scm`
-	-- 				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-	-- 			},
-	-- 		},
-	--
-	-- 		-- 文本对象：交换
-	-- 		swap = {
-	-- 			enable = false,
-	-- 			swap_next = {
-	-- 				["<leader>a"] = "@parameter.inner",
-	-- 			},
-	-- 			swap_previous = {
-	-- 				["<leader>A"] = "@parameter.inner",
-	-- 			},
-	-- 		},
-	-- 	},
-	--
-	-- 	matchup = {
-	-- 		enable = true, -- mandatory, false will disable the whole extension
-	-- 	},
-	-- })
-	--
+		-- 启用增量选择,
+		incremental_selection = {
+			enable = false,
+			keymaps = {
+				init_selection = "<CR>",
+				scope_incremental = "<TAB>",
+				node_incremental = "<CR>",
+				node_decremental = "<BS>",
+			},
+		},
+
+		highlight = {
+			enable = true,
+			-- additional_vim_regex_highlighting = false,
+			language_tree = true,
+			is_supported = function()
+				local cur_path = (vim.fn.expand("%"):gsub("^%d+/", ""))
+				if
+					cur_path:match("term://")
+					or vim.fn.getfsize(cur_path) > 1024 * 1024 -- file size > 1 MB.
+					or vim.fn.strwidth(vim.fn.getline(".")) > 300 -- width > 300 chars.
+				then
+					return false
+				end
+				return true
+			end,
+		},
+		-- gf 跳函数开头
+		textobjects = {
+			-- 文本对象：移动
+			move = {
+				enable = true,
+				set_jumps = true,
+
+				goto_next_start = {
+					-- ["]m"] = "@function.outer",
+					["]]"] = { query = "@class.outer", desc = "Next class start" },
+				},
+				goto_next_end = {
+					["]m"] = "@function.outer",
+					["]["] = "@class.outer",
+				},
+				goto_previous_start = {
+					["[m"] = "@function.outer",
+					["[["] = "@class.outer",
+				},
+				goto_previous_end = {
+					-- ["[M"] = "@function.outer",
+					["[]"] = "@class.outer",
+				},
+			},
+
+			-- 文本对象：选择
+			select = {
+				enable = true,
+				keymaps = {
+					-- You can use the capture groups defined in textobjects.scm
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@class.outer",
+					-- You can optionally set descriptions to the mappings (used in the desc parameter of
+					-- nvim_buf_set_keymap) which plugins like which-key display
+					["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+					-- You can also use captures from other query groups like `locals.scm`
+					["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+				},
+			},
+
+			-- 文本对象：交换
+			swap = {
+				enable = false,
+				swap_next = {
+					["<leader>a"] = "@parameter.inner",
+				},
+				swap_previous = {
+					["<leader>A"] = "@parameter.inner",
+				},
+			},
+		},
+
+		matchup = {
+			enable = true, -- mandatory, false will disable the whole extension
+		},
+	})
+
 	-- Setup("treesitter-context", {
 	-- 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 	-- 	max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -156,21 +150,21 @@ M.config = function()
 	-- 	zindex = 1, -- The Z-index of the context window
 	-- 	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 	-- })
-	--
+
 	-- -- 跳转到上下文（向上）
 	-- vim.keymap.set("n", "[c", function()
 	-- 	require("treesitter-context").go_to_context(vim.v.count1)
 	-- end, { silent = true })
+
+	-- require("nvim-treesitter.parsers").comment = {
+	-- 	install_info = {
+	-- 		url = "https://github.com/OXY2DEV/tree-sitter-comment",
+	-- 		branch = "main",
 	--
-	-- -- require("nvim-treesitter.parsers").comment = {
-	-- -- 	install_info = {
-	-- -- 		url = "https://github.com/OXY2DEV/tree-sitter-comment",
-	-- -- 		branch = "main",
-	-- --
-	-- -- 		-- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.
-	-- -- 		queries = "queries/",
-	-- -- 	},
-	-- -- }
+	-- 		-- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.
+	-- 		queries = "queries/",
+	-- 	},
+	-- }
 end
 
 return M

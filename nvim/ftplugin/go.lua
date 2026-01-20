@@ -3,9 +3,11 @@ if vim.g.jce_loaded then
 end
 vim.g.jce_loaded = true
 
+vim.treesitter.start()
+
 vim.pack.add({
 	"https://github.com/ray-x/go.nvim.git",
-	"https://github.com/edte/no-go.nvim.git",
+	"https://github.com/TheNoeTrevino/no-go.nvim.git",
 	"https://github.com/edte/more-go.nvim.git",
 	"https://github.com/olexsmir/gopher.nvim.git",
 })

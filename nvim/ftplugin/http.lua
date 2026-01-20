@@ -3,6 +3,8 @@ if vim.g.kulala_loaded then
 end
 vim.g.kulala_loaded = true
 
+vim.treesitter.start()
+
 vim.pack.add({
 	{ src = "https://github.com/mistweaverco/kulala.nvim" },
 })

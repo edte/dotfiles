@@ -11,8 +11,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.filetype.add({
 	extension = {
 		jce = "jce",
-		tmux = "zsh",
-		sh = "zsh",
+		tmux = "bash",
+		sh = "bash",
+		zsh = "bash",
 		codecompanion = "codecompanion",
 	},
 })

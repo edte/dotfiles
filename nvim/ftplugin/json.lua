@@ -3,6 +3,8 @@ if vim.g.json_loaded then
 end
 vim.g.json_loaded = true
 
+vim.treesitter.start()
+
 vim.lsp.config("jsonls", {
 	name = "jsonls",
 	cmd = { "vscode-json-language-server", "--stdio" },

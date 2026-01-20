@@ -3,6 +3,8 @@ if vim.g.cpp_loaded then
 end
 vim.g.cpp_loaded = true
 
+vim.treesitter.start()
+
 -- 根目录下保存文件为 .clang-format
 -- BasedOnStyle: LLVM
 -- IndentWidth: 4
