@@ -4,57 +4,115 @@ M.list = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		branch = "main",
 		config = function()
-			local r = Require("text.treesitter")
-			if r ~= nil then
-				r.config()
-			end
+			-- 让 codecompanion filetype 使用 markdown parser
+			-- 这样 markview 才能正确渲染 markdown 内容
+			vim.treesitter.language.register("markdown", "codecompanion")
+
+			require("nvim-treesitter").install({
+				"bash",
+				"c",
+				"cpp",
+				"diff",
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
+				"html",
+				"http",
+				"javascript",
+				"jsdoc",
+				"json",
+				"lua",
+				"luadoc",
+				"luap",
+				"markdown",
+				"markdown_inline",
+				"printf",
+				"python",
+				"query",
+				"regex",
+				"toml",
+				"tsx",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"xml",
+				"yaml",
+				"git_config",
+				"gitcommit",
+				"git_rebase",
+				"gitignore",
+				"gitattributes",
+			})
+
+			require("nvim-treesitter").setup({
+				install_dir = vim.fn.stdpath("data") .. "/site",
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					require("nvim-treesitter.parsers").comment = {
+						install_info = {
+							url = "https://github.com/OXY2DEV/tree-sitter-comment",
+							branch = "main", -- only needed if different from default branch
+							queries = "queries/",
+						},
+					}
+				end,
+			})
 		end,
 	},
 
 	-- 语法感知文本对象、选择、移动、交换和查看支持。
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
-	-- 	event = "VeryLazy",
-	-- 	enabled = true,
-	-- 	config = function()
-	-- 		-- If treesitter is already loaded, we need to run config again for textobjects
-	-- 		if is_loaded("nvim-treesitter") then
-	-- 			local opts = get_opts("nvim-treesitter")
-	-- 			require("nvim-treesitter.configs").setup({
-	-- 				textobjects = opts.textobjects,
-	-- 			})
-	-- 		end
-	--
-	-- 		-- When in diff mode, we want to use the default
-	-- 		-- vim text objects c & C instead of the treesitter ones.
-	-- 		local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
-	-- 		local configs = require("nvim-treesitter.configs")
-	-- 		for name, fn in pairs(move) do
-	-- 			if name:find("goto") == 1 then
-	-- 				move[name] = function(q, ...)
-	-- 					if vim.wo.diff then
-	-- 						local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
-	-- 						for key, query in pairs(config or {}) do
-	-- 							if q == query and key:find("[%]%[][cC]") then
-	-- 								vim.cmd("normal! " .. key)
-	-- 								return
-	-- 							end
-	-- 						end
-	-- 					end
-	-- 					return fn(q, ...)
-	-- 				end
-	-- 			end
-	-- 		end
-	-- 	end,
-	-- },
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		init = function()
+			vim.g.no_plugin_maps = true
+		end,
+		config = function()
+			require("nvim-treesitter-textobjects").setup({
+				move = {
+					set_jumps = true,
+				},
+			})
+
+			vim.keymap.set({ "x", "o" }, "af", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+			end)
+			vim.keymap.set({ "x", "o" }, "if", function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+			end)
+
+			vim.keymap.set({ "n", "x", "o" }, "]m", function()
+				require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+				zz()
+			end)
+
+			vim.keymap.set({ "n", "x", "o" }, "[m", function()
+				require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+				zz()
+			end)
+		end,
+	},
 
 	-- 显示代码上下文,包含函数签名
 	-- 只能从下面固定多少个，而不是从上面固定，所以如果套太多层，函数名会显示不出来
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		after = "nvim-treesitter",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		config = function()
+			require("treesitter-context").setup({
+				max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
+				min_window_height = 1, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+				multiline_threshold = 3, -- Maximum number of lines to show for a single context
+				trim_scope = "inner", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+				mode = "topline", -- Line used to calculate context. Choices: 'cursor', 'topline'
+				zindex = 1, -- The Z-index of the context window
+			})
+		end,
 	},
 
 	-- 使用 Treesitter 突出显示参数的定义和用法
