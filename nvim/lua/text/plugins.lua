@@ -66,39 +66,6 @@ M.list = {
 		end,
 	},
 
-	-- 语法感知文本对象、选择、移动、交换和查看支持。
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		branch = "main",
-		init = function()
-			vim.g.no_plugin_maps = true
-		end,
-		config = function()
-			require("nvim-treesitter-textobjects").setup({
-				move = {
-					set_jumps = true,
-				},
-			})
-
-			vim.keymap.set({ "x", "o" }, "af", function()
-				require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
-			end)
-			vim.keymap.set({ "x", "o" }, "if", function()
-				require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
-			end)
-
-			vim.keymap.set({ "n", "x", "o" }, "]m", function()
-				require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-				zz()
-			end)
-
-			vim.keymap.set({ "n", "x", "o" }, "[m", function()
-				require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-				zz()
-			end)
-		end,
-	},
-
 	-- 显示代码上下文,包含函数签名
 	-- 只能从下面固定多少个，而不是从上面固定，所以如果套太多层，函数名会显示不出来
 	{
