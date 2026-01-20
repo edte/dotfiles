@@ -1,13 +1,12 @@
-if vim.g.kulala_loaded then
-	return
+if not vim.g.lua_loaded then
+	vim.g.lua_loaded = true
+
+	vim.pack.add({
+		{ src = "https://github.com/mistweaverco/kulala.nvim" },
+	})
 end
-vim.g.kulala_loaded = true
 
 vim.treesitter.start()
-
-vim.pack.add({
-	{ src = "https://github.com/mistweaverco/kulala.nvim" },
-})
 
 require("kulala").setup({
 	default_view = "body",
