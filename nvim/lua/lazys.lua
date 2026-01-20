@@ -4,7 +4,7 @@
 
 vim.pack.add({
 	{ src = "https://github.com/folke/lazy.nvim", version = vim.version.range("*") },
-})
+}, { confirm = false })
 
 -- 组装插件列表
 

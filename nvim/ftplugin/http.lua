@@ -3,7 +3,7 @@ if not vim.g.lua_loaded then
 
 	vim.pack.add({
 		{ src = "https://github.com/mistweaverco/kulala.nvim" },
-	})
+	}, { confirm = false })
 end
 
 vim.treesitter.start()
