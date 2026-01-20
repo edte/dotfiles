@@ -1094,22 +1094,22 @@ M.list = {
 	},
 
 	-- 翻译
-	{
-		"edte/comment-translate.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("comment-translate").setup({
-				target_language = "zh",
-				-- translate_service = "codebuddy",
-				hover = {
-					loading = false, -- 关闭加载动画
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"edte/comment-translate.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	config = function()
+	-- 		require("comment-translate").setup({
+	-- 			target_language = "zh",
+	-- 			-- translate_service = "codebuddy",
+	-- 			hover = {
+	-- 				loading = false, -- 关闭加载动画
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- llm
 	{

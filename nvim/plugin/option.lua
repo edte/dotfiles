@@ -55,13 +55,13 @@ local default_options = {
 	-- 折叠相关
 	foldcolumn = "1",
 	fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,vert:┃]],
-	foldmethod = "expr",
 	foldlevelstart = 99,
 	foldenable = true,
 	foldlevel = 99,
-	-- 默认treessiter折叠，如果lsp支持换成lsp
-	foldexpr = "v:lua.vim.treesitter.foldexpr()",
 	foldtext = "",
+	-- 默认treessiter折叠，如果lsp支持换成lsp
+	foldmethod = "expr",
+	foldexpr = "v:lua.vim.treesitter.foldexpr()",
 }
 
 for k, v in pairs(default_options) do
@@ -150,10 +150,16 @@ vim.o.diffopt = "internal,filler,vertical,closeoff"
 -- vim.o.winborder = "rounded"
 
 -- 如果lsp支持，则换成lsp折叠
+-- 排除已有自定义折叠的文件类型（如 jce）
+local custom_fold_filetypes = { "jce" }
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		if client:supports_method("textDocument/foldingRange") then
+			-- 跳过已有自定义折叠的文件类型
+			if vim.tbl_contains(custom_fold_filetypes, vim.bo.filetype) then
+				return
+			end
 			local win = vim.api.nvim_get_current_win()
 			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
 		end
