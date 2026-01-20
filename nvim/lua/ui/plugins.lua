@@ -144,15 +144,6 @@ M.list = {
 		},
 	},
 
-	-- Neovim 的通用日志语法突出显示和文件类型管理
-	{
-		"fei6409/log-highlight.nvim",
-		ft = "log",
-		config = function()
-			require("log-highlight").setup({})
-		end,
-	},
-
 	-- ui components
 	{ "MunifTanjim/nui.nvim", lazy = true },
 
