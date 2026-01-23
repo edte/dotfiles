@@ -6,6 +6,7 @@ if not vim.g.go_loaded then
 		"https://github.com/TheNoeTrevino/no-go.nvim.git",
 		"https://github.com/edte/more-go.nvim.git",
 		"https://github.com/olexsmir/gopher.nvim.git",
+		"https://github.com/ray-x/guihua.lua.git",
 	}, { confirm = false })
 
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
