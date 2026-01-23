@@ -513,6 +513,12 @@ M.list = {
 				return stat and stat.type == "link"
 			end
 
+			local function isMiniFilesBuffer(buf_id)
+				return buf_id
+					and vim.api.nvim_buf_is_valid(buf_id)
+					and vim.bo[buf_id].filetype == "minifiles"
+			end
+
 			---@type table<string, {symbol: string, hlGroup: string}>
 			---@param status string
 			---@return string symbol, string hlGroup
@@ -746,13 +752,17 @@ M.list = {
 					return
 				end
 
+				if not MiniFiles or not isMiniFilesBuffer(buf_id) then
+					return
+				end
+
 				if not vim.fs.root(vim.uv.cwd(), ".git") then
 					vim.notify("Not a valid git repo")
 					return
 				end
 				-- 获取 mini.files 正在浏览的真实目录
-				local entry = MiniFiles.get_fs_entry(buf_id, 1)
-				if not entry or not entry.path then
+				local ok, entry = pcall(MiniFiles.get_fs_entry, buf_id, 1)
+				if not ok or not entry or not entry.path then
 					return
 				end
 				-- 从第一个条目的路径推断当前浏览目录
@@ -881,8 +891,8 @@ M.list = {
 					end
 
 					-- 重新更新当前 mini.files 缓冲区的显示
-					local bufnr = vim.api.nvim_get_current_buf()
-					if MiniFiles and bufnr then
+					local bufnr = (data and data.buf_id) or vim.api.nvim_get_current_buf()
+					if bufnr then
 						updateGitStatus(bufnr)
 					end
 				end,
