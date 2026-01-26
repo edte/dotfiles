@@ -62,13 +62,7 @@ vim.keymap.set("n", "]]", function()
 end, vim.tbl_extend("force", opts, { desc = "Jump to the next request" }))
 
 vim.keymap.set("n", "t", function()
-	local ui = require("kulala.ui")
-	-- 检查是否有 kulala buffer 存在
-	if ui.get_kulala_buffer() then
-		ui.show_body()
-	else
-		vim.notify("No HTTP response yet. Run a request first with <CR>", vim.log.levels.WARN)
-	end
+	require("kulala.ui").show_body()
 end, vim.tbl_extend("force", opts, { desc = "Show response body" }))
 
 -- 设置折叠 - 使用手动折叠
