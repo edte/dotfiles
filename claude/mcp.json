@@ -7,19 +7,6 @@
                 "@modelcontextprotocol/server-sequential-thinking"
             ]
         },
-        "neovim": {
-            "command": "/opt/homebrew/bin/neovim-mcp",
-            "env": {
-                "NVIM_MCP_LISTEN_ADDRESS": "/tmp/nvim.sock"
-            }
-        },
-        "context7": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@upstash/context7-mcp@latest"
-            ]
-        },
         "mcp-feedback-enhanced": {
             "command": "uvx",
             "args": [
@@ -35,30 +22,18 @@
                 "interactive_feedback"
             ]
         },
-        "filesystem": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@modelcontextprotocol/server-filesystem",
-                "/Users/edte/"
-            ]
-        },
-        "time": {
-            "command": "uvx",
-            "args": [
-                "mcp-server-time",
-                "--local-timezone=America/New_York"
-            ]
-        },
-        "amap-maps": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@amap/amap-maps-mcp-server"
-            ],
+        "neovim": {
+            "command": "/opt/homebrew/bin/neovim-mcp",
             "env": {
-                "AMAP_MAPS_API_KEY": "3f8a6fe1783549e95e7a49e145e563d8"
+                "NVIM_MCP_LISTEN_ADDRESS": "/tmp/nvim.sock"
             }
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@latest"
+            ]
         }
     }
 }
