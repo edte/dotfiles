@@ -38,10 +38,25 @@ local function set_tmux_status(status)
 	end
 end
 
-Autocmd({ "VimLeavePre", "FocusLost", "VimSuspend" }, {
+Autocmd({ "FocusLost", "VimSuspend" }, {
 	group = GroupId("tmux-status-on", { clear = true }),
 	callback = function()
 		set_tmux_status("on")
+	end,
+})
+
+-- VimLeavePre 必须同步执行，不能用节流
+Autocmd({ "VimLeavePre" }, {
+	group = GroupId("tmux-status-leave", { clear = true }),
+	callback = function()
+		-- 取消待处理的定时器
+		if tmux_timer then
+			tmux_timer:stop()
+			tmux_timer:close()
+			tmux_timer = nil
+		end
+		-- 同步执行，确保退出前完成
+		vim.fn.system({ "tmux", "set", "status", "on" })
 	end,
 })
 
