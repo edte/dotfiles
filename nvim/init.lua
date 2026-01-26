@@ -21,4 +21,5 @@ vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "NONE" })
 
 vim.cmd.source(vim.fn.stdpath("config") .. "/lua/vim/match.vim")
 
+-- 启动nvim mcp，搞一个panel启动实例给模型用就行，正常注释
 -- vim.fn.serverstart("/tmp/nvim.sock")
