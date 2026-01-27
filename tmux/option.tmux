@@ -16,8 +16,8 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 setw -q -g utf8 on
 setw -g mode-keys vi
-set -sg escape-time 5
-set -g status-interval 60
+set -sg escape-time 10
+set -g -s status-interval 360
 
 set-window-option -g automatic-rename off
 set-option -g allow-rename off
@@ -90,7 +90,7 @@ set -g @resurrect-restore 'C-r'
 
 # set -g @resurrect-processes 'vim nvim lvim'
 
-set -g @continuum-save-interval '5'
+set -g @continuum-save-interval '60'
 set -g @continuum-restore 'on'
 set -g @resurrect-capture-pane-contents 'off'
 
