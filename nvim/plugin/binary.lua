@@ -43,62 +43,62 @@ for _, ext in ipairs(open_files) do
 	})
 end
 
--- 这些文件用xxd打开
-local xxd_files = {
-	"bin",
-	"dmg",
-	"exe",
-	"a",
-	"so",
-	"o",
-	-- "p12",
-	-- "p8",
-	"scel",
-}
-
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-	pattern = "*",
-	group = vim.api.nvim_create_augroup("xxd_binFiles", { clear = true }),
-	callback = function()
-		local current_file = vim.fn.expand("%:p")
-		if vim.fn.isdirectory(current_file) == 1 then
-			return
-		end
-
-		local name = vim.fs.basename(vim.fn.expand("%"))
-		if
-			name == "Makefile"
-			or name == ".gitignore"
-			or name == "makefile"
-			or name == ".clangd"
-			or name == "LICENSE"
-			or name == ".gitattributes"
-			or name == ".editorconfig"
-			or name == ".bash_profile"
-			or name == ".zshrc"
-			or name == ".bashrc"
-			or name == "tags"
-			or name == ".ignore"
-			or name == ".gitconfig"
-			or name == "prepare-commit-msg"
-			or name == ".vimrc"
-		then
-			return
-		end
-
-		if vim.bo.filetype == "qf" then
-			return
-		end
-
-		local exetension = vim.fn.expand("%:e")
-		for _, filetype in ipairs(xxd_files) do
-			if filetype == exetension then
-				vim.cmd([[silent %!xxd  -c 32]])
-				return
-			end
-		end
-	end,
-})
+-- -- 这些文件用xxd打开
+-- local xxd_files = {
+-- 	"bin",
+-- 	"dmg",
+-- 	"exe",
+-- 	"a",
+-- 	"so",
+-- 	"o",
+-- 	-- "p12",
+-- 	-- "p8",
+-- 	"scel",
+-- }
+--
+-- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+-- 	pattern = "*",
+-- 	group = vim.api.nvim_create_augroup("xxd_binFiles", { clear = true }),
+-- 	callback = function()
+-- 		local current_file = vim.fn.expand("%:p")
+-- 		if vim.fn.isdirectory(current_file) == 1 then
+-- 			return
+-- 		end
+--
+-- 		local name = vim.fs.basename(vim.fn.expand("%"))
+-- 		if
+-- 			name == "Makefile"
+-- 			or name == ".gitignore"
+-- 			or name == "makefile"
+-- 			or name == ".clangd"
+-- 			or name == "LICENSE"
+-- 			or name == ".gitattributes"
+-- 			or name == ".editorconfig"
+-- 			or name == ".bash_profile"
+-- 			or name == ".zshrc"
+-- 			or name == ".bashrc"
+-- 			or name == "tags"
+-- 			or name == ".ignore"
+-- 			or name == ".gitconfig"
+-- 			or name == "prepare-commit-msg"
+-- 			or name == ".vimrc"
+-- 		then
+-- 			return
+-- 		end
+--
+-- 		if vim.bo.filetype == "qf" then
+-- 			return
+-- 		end
+--
+-- 		local exetension = vim.fn.expand("%:e")
+-- 		for _, filetype in ipairs(xxd_files) do
+-- 			if filetype == exetension then
+-- 				vim.cmd([[silent %!xxd  -c 32]])
+-- 				return
+-- 			end
+-- 		end
+-- 	end,
+-- })
 
 -- 打开目录显示下面的文件
 vim.api.nvim_create_autocmd({ "VimEnter" }, {

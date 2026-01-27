@@ -514,9 +514,7 @@ M.list = {
 			end
 
 			local function isMiniFilesBuffer(buf_id)
-				return buf_id
-					and vim.api.nvim_buf_is_valid(buf_id)
-					and vim.bo[buf_id].filetype == "minifiles"
+				return buf_id and vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].filetype == "minifiles"
 			end
 
 			---@type table<string, {symbol: string, hlGroup: string}>
@@ -1332,6 +1330,13 @@ M.list = {
 					},
 				},
 			})
+		end,
+	},
+
+	{
+		"DamianVCechov/hexview.nvim",
+		config = function()
+			require("hexview").setup()
 		end,
 	},
 }
