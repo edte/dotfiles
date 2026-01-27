@@ -92,7 +92,7 @@ set -g @resurrect-restore 'C-r'
 
 set -g @continuum-save-interval '5'
 set -g @continuum-restore 'on'
-set -g @resurrect-capture-pane-contents 'on'
+set -g @resurrect-capture-pane-contents 'off'
 
 # tmux 状态栏消息仅持续约一秒：我可以延长它吗？
 # set -g display-time 60
