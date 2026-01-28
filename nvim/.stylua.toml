@@ -1,0 +1,11 @@
+column_width = 120
+line_endings = "Unix"
+indent_type = "Tabs"
+indent_width = 1
+quote_style = "AutoPreferSingle"
+call_parentheses = "Always"
+collapse_simple_statement = "Never"
+
+# 启用对 Lua 5.2+ 特性的支持（包括 goto 语句）
+# 使用 "All" 以支持所有 Lua 特性
+syntax = "All"

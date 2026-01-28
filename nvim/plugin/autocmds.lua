@@ -83,26 +83,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	end,
 -- })
 
--- Close on "q"
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"help",
-		"startuptime",
-		"qf",
-		"lspinfo",
-		"man",
-		"checkhealth",
-		"neotest-output-panel",
-		"neotest-summary",
-		"lazy",
-	},
-	command = [[
-          nnoremap <buffer><silent> q :close<CR>
-          nnoremap <buffer><silent> <ESC> :close<CR>
-          set nobuflisted
-      ]],
-})
-
 -- Show cursorline only on active windows
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
 	callback = function()
@@ -178,23 +158,6 @@ function! s:SetDiffHighlights()
     endif
 endfunction
 ]])
-
-vim.api.nvim_create_autocmd({ "LspDetach" }, {
-	group = vim.api.nvim_create_augroup("LspStopWithLastClient", {}),
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if not client or not client.attached_buffers then
-			return
-		end
-		for buf_id in pairs(client.attached_buffers) do
-			if buf_id ~= args.buf then
-				return
-			end
-		end
-		client:stop()
-	end,
-	desc = "Stop lsp client when no buffer is attached",
-})
 
 -- Delete empty [No Name] buffer when closing a tab
 vim.api.nvim_create_autocmd("TabClosed", {

@@ -1,28 +1,28 @@
-vim.api.nvim_create_user_command("LspLog", function()
-	vim.cmd(string.format("e %s", vim.lsp.get_log_path()))
+vim.api.nvim_create_user_command('LspLog', function()
+	vim.cmd(string.format('e %s', vim.lsp.get_log_path()))
 end, {
-	desc = "Opens the Nvim LSP client log.",
+	desc = 'Opens the Nvim LSP client log.',
 })
 
 -- TODO: 这里待弄成 lspconfig 分支 a89de2e0 的格式
 -- Called from plugin/lspconfig.vim because it requires knowing that the last
 -- script in scriptnames to be executed is lspconfig.
-vim.api.nvim_create_user_command("LspInfo", function()
-	vim.cmd("check vim.lsp")
+vim.api.nvim_create_user_command('LspInfo', function()
+	vim.cmd('check vim.lsp')
 end, {
-	desc = "Displays attached, active, and configured language servers",
+	desc = 'Displays attached, active, and configured language servers',
 })
 
 -- workaround for gopls not supporting semanticTokensProvider
 -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-vim.api.nvim_create_autocmd({ "LspAttach" }, {
-	group = vim.api.nvim_create_augroup("go_semanticTokens", { clear = true }),
+vim.api.nvim_create_autocmd({ 'LspAttach' }, {
+	group = vim.api.nvim_create_augroup('go_semanticTokens', { clear = true }),
 
-	pattern = { "*.go" },
+	pattern = { '*.go' },
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-		if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
+		if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
 			local semantic = client.config.capabilities.textDocument.semanticTokens
 			client.server_capabilities.semanticTokensProvider = {
 				full = true,
@@ -52,15 +52,32 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 
 -- 颜色高亮，可以替代 nvim-colorizer 插件，不过有个问题，只有attach 了lsp的才会生效，比如搜索或者不支持lsp的buffer就没，比较头疼
 -- https://www.reddit.com/r/neovim/comments/1k7arqq/lsp_document_color_support_available_on_master/
-vim.api.nvim_create_autocmd("LspAttach", {
-	pattern = { "*.html", "*.vue", "*.css" },
+vim.api.nvim_create_autocmd('LspAttach', {
+	pattern = { '*.html', '*.vue', '*.css' },
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		if client == nil then
 			return
 		end
-		if client:supports_method("textDocument/documentColor") then
+		if client:supports_method('textDocument/documentColor') then
 			vim.lsp.document_color.enable(true, args.buf)
 		end
 	end,
+})
+
+vim.api.nvim_create_autocmd({ 'LspDetach' }, {
+	group = vim.api.nvim_create_augroup('LspStopWithLastClient', {}),
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if not client or not client.attached_buffers then
+			return
+		end
+		for buf_id in pairs(client.attached_buffers) do
+			if buf_id ~= args.buf then
+				return
+			end
+		end
+		client:stop()
+	end,
+	desc = 'Stop lsp client when no buffer is attached',
 })
