@@ -57,12 +57,7 @@ nmap('vp', 'vi"p')
 -- 取消撤销
 nmap('U', '<c-r>')
 
-nmap('gI', '<cmd>Glance implementations<cr>')
-
 nmap('<C-]>', '<C-]>zz')
-nmap('gd', '<C-]>zz')
-
-nmap('grr', '<cmd>Glance references<cr>')
 
 nmap('<c-n>', function()
 	vim.diagnostic.goto_next()
@@ -82,7 +77,7 @@ end)
 -- gs 等待重新映射
 -- gv 最后的视觉选择
 -- gi 上一个插入点
--- g* 类似于“*”，但不使用“\<”和“\>”
+-- g* 类似于"*"，但不使用"\<"和"\>"
 
 --------------------------------------------------------------screen ------------------------------------------------
 ------------------------------------------------------------------
@@ -90,27 +85,6 @@ end)
 ------------------------------------------------------------------
 -- nmap("s", "") -- 取消 s 默认功能
 -- map("n", "S", "", opt)                          -- 取消 s 默认功能
-
-nmap('sv', '<cmd>vsp<CR>') -- 水平分屏
-nmap('sh', '<cmd>sp<CR>') -- 垂直分屏
-
-nmap('sc', '<C-w>c') -- 关闭当前屏幕
-nmap('so', '<C-w>o') -- 关闭其它屏幕
-
-nmap('s,', '<cmd>vertical resize +20<CR>') -- 向右移动屏幕
-nmap('s.', '<cmd>vertical resize -20<CR>') -- 向左移动屏幕
-
-nmap('sm', '<C-w>|') -- 全屏
-nmap('sn', '<C-w>=') -- 恢复全屏
-
-nmap('<a-,>', '<C-w>h') -- 移动到左分屏
-nmap('<a-.>', '<C-w>l') -- 移动到右分屏
-
--- 窗口切换
-nmap('<left>', '<c-w>h')
-nmap('<right>', '<c-w>l')
-nmap('<up>', '<c-w>k')
-nmap('<down>', '<c-w>j')
 
 -- 交换 : ;
 
@@ -128,8 +102,6 @@ cmd('nnoremap <Enter> o<ESC>') -- Insert New Line quickly
 cmd('xnoremap p P')
 
 cmd('silent!')
-
-nmap('gw', '<cmd>lua Snacks.picker.grep_word()<CR>')
 
 nmap('C', '"_C')
 nmap('D', '"_D')
@@ -149,8 +121,6 @@ end, { nargs = 1 })
 
 nmap('<space>/', 'gcc', { noremap = false, silent = true, desc = 'comment' })
 vmap('<space>/', 'gc', { noremap = false, silent = true, desc = 'comment' })
-
-nmap('go', ':lua vim.lsp.buf.document_symbol()<cr>')
 
 -- FIX: 过滤函数和结构体，但是没成功
 -- nmap("go", function()
@@ -306,55 +276,82 @@ vim.api.nvim_create_autocmd('FileType', {
 
 --------------------------------------------------------------which key ------------------------------------------------------------------------
 local wk = require('which-key')
-wk.setup()
+wk.setup({
+	delay = 100,
+})
 
+-- visual
 wk.add({
 	mode = { 'v' },
 	-- lsp
-	{ '<leader>l', group = 'LSP', desc = 'lsp' },
-	{ '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'code Action' },
-	{ '<leader>t', ":'<,'>Translate ZH<cr>", desc = 'translate' },
-	{ '<leader>d', ':lua compare_to_clipboard()<cr>', desc = 'diff copy' },
-	{ '<leader>g', "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = 'git history' },
+	{ '<space>l', group = 'LSP', desc = 'lsp' },
+	{ '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'code Action' },
+	{ '<space>t', ":'<,'>Translate ZH<cr>", desc = 'translate' },
+	{ '<space>d', ':lua compare_to_clipboard()<cr>', desc = 'diff copy' },
+	{ '<space>g', "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = 'git history' },
 	{ '<enter>', ":'<,'>SnipRun<CR>", desc = 'run code' },
 })
 
+-- normal
 wk.add({
-	-- normal
-	{ '<leader>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
-	{ '<leader>c', '<cmd>bd<CR>', desc = 'close Buffer' },
-	{ '<leader>f', '<cmd>lua project_files()<CR>', desc = 'files' },
-	{ '<leader>p', '<cmd>Lazy<cr>', desc = 'plugins' },
-	{ '<leader>q', '<cmd>confirm q<CR>', desc = 'quit' },
-	-- { "<leader>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
-	{ '<leader>t', '<cmd>lua Snacks.picker.grep()<CR>', desc = 'text' },
-	{ '<leader>m', '<cmd>M<CR>', desc = 'log' },
+	{ '<space>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
+	{ '<space>c', '<cmd>bd<CR>', desc = 'close Buffer' },
+	{ '<space>f', '<cmd>lua project_files()<CR>', desc = 'files' },
+	{ '<space>p', '<cmd>Lazy<cr>', desc = 'plugins' },
+	{ '<space>q', '<cmd>confirm q<CR>', desc = 'quit' },
+	-- { "<space>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
+	{ '<space>t', '<cmd>lua Snacks.picker.grep()<CR>', desc = 'text' },
+	{ '<space>m', '<cmd>M<CR>', desc = 'log' },
 	{ '<space>n', '<cmd>message<cr>', desc = 'message' },
+	{ '<space>/', 'gcc', desc = 'comment', noremap = false },
 
 	-- git
-	{ '<leader>g', group = 'git', desc = 'git' },
-	{ '<leader>gb', '<cmd>lua Snacks.picker.git_branches()<cr>', desc = 'branch' },
-	{ '<leader>gp', '<cmd>DiffviewFileHistory<cr>', desc = 'project history' },
-	{ '<leader>gf', '<cmd>DiffviewFileHistory --follow %<cr>', desc = 'file history' },
-	{ '<leader>gs', '<cmd>lua Snacks.picker.git_status()<cr>', desc = 'status' },
-	-- { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
-	-- { "<leader>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
-	{ '<leader>gl', "<cmd>lua require('git-blame.view').show()<cr>", desc = 'blame line' },
-	-- { "<leader>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
+	{ '<space>g', group = 'git', desc = 'git' },
+	{ '<space>gb', '<cmd>lua Snacks.picker.git_branches()<cr>', desc = 'branch' },
+	{ '<space>gp', '<cmd>DiffviewFileHistory<cr>', desc = 'project history' },
+	{ '<space>gf', '<cmd>DiffviewFileHistory --follow %<cr>', desc = 'file history' },
+	{ '<space>gs', '<cmd>lua Snacks.picker.git_status()<cr>', desc = 'status' },
+	-- { "<space>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
+	-- { "<space>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
+	{ '<space>gl', "<cmd>lua require('git-blame.view').show()<cr>", desc = 'blame line' },
+	-- { "<space>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
+
+	-- jump
+	{ 'g', group = 'jump', desc = 'jump' },
+	{ 'gd', '<C-]>zz', desc = 'go define' },
+	{ 'grr', '<cmd>Glance references<cr>', desc = 'go references' },
+	{ 'gI', '<cmd>Glance implementations<cr>', desc = 'go implementations' },
+	{ 'go', ':lua vim.lsp.buf.document_symbol()<cr>', desc = 'document symbol' },
+	{ 'gw', '<cmd>lua Snacks.picker.grep_word()<CR>', desc = 'grep word' },
 
 	-- lsp
-	{ '<leader>l', group = 'lsp', desc = 'lsp' },
-	{ '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'Code Action' },
-	{ '<leader>lf', '<cmd>lua vim.lsp.buf.format()<cr>', desc = 'Format' },
-	{ '<leader>li', '<cmd>LspInfo<cr>', desc = 'Info' },
-	{ '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
-	{ '<leader>ls', '<cmd>lua Snacks.picker.lsp_symbols()<cr>', desc = 'Document Symbols' },
+	{ '<space>l', group = 'lsp', desc = 'lsp' },
+	{ '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'Code Action' },
+	{ '<space>lf', '<cmd>lua vim.lsp.buf.format()<cr>', desc = 'Format' },
+	{ '<space>li', '<cmd>LspInfo<cr>', desc = 'Info' },
+	{ '<space>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
+	{ '<space>ls', '<cmd>lua Snacks.picker.lsp_symbols()<cr>', desc = 'Document Symbols' },
 
 	-- search
-	{ '<leader>s', group = 'search', desc = 'search' },
-	{ '<leader>sh', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'highlight' },
-	{ '<leader>sa', '<cmd>lua Snacks.picker.autocmds() <cr>', desc = 'autocmds' },
-	{ '<leader>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
-	{ '<leader>sk', '<cmd>lua Snacks.picker.keymaps() <cr>', desc = 'keymaps' },
-	{ '<leader>st', '<cmd>lua Snacks.picker.grep()<cr>', desc = 'text' },
+	{ '<space>s', group = 'search', desc = 'search' },
+	{ '<space>sh', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'highlight' },
+	{ '<space>sa', '<cmd>lua Snacks.picker.autocmds() <cr>', desc = 'autocmds' },
+	{ '<space>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
+	{ '<space>sk', '<cmd>lua Snacks.picker.keymaps() <cr>', desc = 'keymaps' },
+	{ '<space>st', '<cmd>lua Snacks.picker.grep()<cr>', desc = 'text' },
+
+	-- window
+	{ 's', group = 'window', desc = 'window' },
+	{ 'sv', '<cmd>vsp<CR>', desc = 'split vertical' },
+	{ 'sh', '<cmd>sp<CR>', desc = 'split horizontal' },
+	{ 'sc', '<C-w>c', desc = 'close window' },
+	{ 'so', '<C-w>o', desc = 'close other' },
+	{ 's,', '<cmd>vertical resize +20<CR>', desc = 'resize right' },
+	{ 's.', '<cmd>vertical resize -20<CR>', desc = 'resize left' },
+	{ 'sm', '<C-w>|', desc = 'maximize' },
+	{ 'sn', '<C-w>=', desc = 'normalize' },
+	{ '<left>', '<c-w>h', desc = 'move left' },
+	{ '<right>', '<c-w>l', desc = 'move right' },
+	{ '<up>', '<c-w>k', desc = 'move up' },
+	{ '<down>', '<c-w>j', desc = 'move down' },
 })
