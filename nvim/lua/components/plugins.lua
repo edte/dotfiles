@@ -35,20 +35,20 @@ M.list = {
 	-- 保存目录是：（不知道哪里配置的）
 	-- /Users/edte/.local/state/nvim/view
 	{ --${conf, mini.sessions}
-		"echasnovski/mini.sessions",
+		'echasnovski/mini.sessions',
 		config = function()
-			require("mini.sessions").setup({
+			require('mini.sessions').setup({
 				autoread = false,
 				autowrite = false,
 				verbose = { read = false, write = false, delete = false },
 			})
 
 			local function GetPath()
-				local dir, _ = vim.fn.getcwd():gsub("/", "_"):gsub("%.", "-")
+				local dir, _ = vim.fn.getcwd():gsub('/', '_'):gsub('%.', '-')
 				return dir
 			end
 
-			vim.api.nvim_create_autocmd("VimEnter", {
+			vim.api.nvim_create_autocmd('VimEnter', {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
 						local session_name = GetPath()
@@ -64,12 +64,12 @@ M.list = {
 				end,
 				nested = true,
 			})
-			vim.api.nvim_create_autocmd("VimLeavePre", {
+			vim.api.nvim_create_autocmd('VimLeavePre', {
 				callback = function()
 					-- Set flag to prevent slow operations during exit
 					vim.g.is_exiting = true
 					if vim.fn.argc(-1) > 0 then
-						cmd("argdelete *")
+						cmd('argdelete *')
 					end
 
 					-- Save session asynchronously to avoid blocking exit
@@ -85,67 +85,67 @@ M.list = {
 
 	-- cp 选择颜色
 	{
-		"edte/colortils.nvim",
-		keys = { "cp" },
+		'edte/colortils.nvim',
+		keys = { 'cp' },
 		config = function()
-			nmap("cp", "<cmd>Colortils<CR>")
-			require("colortils").setup({
+			nmap('cp', '<cmd>Colortils<CR>')
+			require('colortils').setup({
 				mappings = {
-					replace_default_format = "<cr>",
+					replace_default_format = '<cr>',
 				},
 			})
-			highlight("ColortilsCurrentLine", "#B81C15")
+			highlight('ColortilsCurrentLine', '#B81C15')
 		end,
 	},
 
 	-- Screencast your keys in Neovim
 	{
-		"NStefan002/screenkey.nvim",
-		cmd = "Screenkey",
-		version = "*", -- or branch = "dev", to use the latest commit
+		'NStefan002/screenkey.nvim',
+		cmd = 'Screenkey',
+		version = '*', -- or branch = "dev", to use the latest commit
 	},
 
 	{ --${conf, snacks.nvim}
-		"folke/snacks.nvim",
+		'folke/snacks.nvim',
 		priority = 1000,
 		lazy = false,
 		init = function()
-			highlight("SnacksPickerMatch", { italic = true, bold = true, bg = "#ffc777", fg = "#222436" })
+			highlight('SnacksPickerMatch', { italic = true, bold = true, bg = '#ffc777', fg = '#222436' })
 		end,
 		keys = {
 			{
-				"<space>.",
+				'<space>.',
 				function()
 					Snacks.scratch()
 				end,
-				desc = "scratch",
+				desc = 'scratch',
 			},
 			-- do 删除范围上下两行
 			{
-				"o",
-				mode = "o",
-				desc = "delete scope",
+				'o',
+				mode = 'o',
+				desc = 'delete scope',
 				function()
 					local operator = vim.v.operator
-					if operator == "d" then
+					if operator == 'd' then
 						local res
-						require("snacks").scope.get(function(scope)
+						require('snacks').scope.get(function(scope)
 							res = scope
 						end)
 						local top = res.from
 						local bottom = res.to
 						local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 						_ = col
-						local move = ""
+						local move = ''
 						if row == bottom then
-							move = "k"
+							move = 'k'
 						elseif row == top then
-							move = "j"
+							move = 'j'
 						end
 						local bufnr = vim.api.nvim_get_current_buf()
-						local ns = vim.api.nvim_create_namespace("border")
-						vim.hl.range(bufnr, ns, "Substitute", { top - 1, 0 }, { top - 1, -1 })
-						vim.hl.range(bufnr, ns, "Substitute", { bottom - 1, 0 }, { bottom - 1, -1 })
+						local ns = vim.api.nvim_create_namespace('border')
+						vim.hl.range(bufnr, ns, 'Substitute', { top - 1, 0 }, { top - 1, -1 })
+						vim.hl.range(bufnr, ns, 'Substitute', { bottom - 1, 0 }, { bottom - 1, -1 })
 						vim.defer_fn(function()
 							if not vim.api.nvim_buf_is_valid(bufnr) then
 								return
@@ -158,37 +158,37 @@ M.list = {
 							vim.api.nvim_buf_set_text(bufnr, bottom - 1, 0, bottom - 1, -1, {})
 							vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 						end, 150)
-						return "<esc>" .. move
+						return '<esc>' .. move
 					else
-						return "o"
+						return 'o'
 					end
 				end,
 			},
 
 			{
-				"<M-n>",
-				mode = { "n", "i" },
+				'<M-n>',
+				mode = { 'n', 'i' },
 				function()
-					Snacks.terminal.toggle("zsh")
+					Snacks.terminal.toggle('zsh')
 				end,
-				desc = "Toggle floating terminal",
+				desc = 'Toggle floating terminal',
 			},
 			{
-				"<m-n>",
-				mode = { "t" },
+				'<m-n>',
+				mode = { 't' },
 				function()
-					Snacks.terminal.toggle("zsh")
+					Snacks.terminal.toggle('zsh')
 				end,
-				ft = "snacks_terminal",
-				desc = "Toggle terminal",
+				ft = 'snacks_terminal',
+				desc = 'Toggle terminal',
 			},
 			{
-				"<space>h",
-				mode = "n",
+				'<space>h',
+				mode = 'n',
 				function()
 					Snacks.notifier.show_history()
 				end,
-				desc = "show history",
+				desc = 'show history',
 			},
 		},
 		opts = {
@@ -226,17 +226,17 @@ M.list = {
 				win = {
 					input = {
 						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
+							['<Esc>'] = { 'close', mode = { 'n', 'i' } },
 						},
 					},
 					list = {
 						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
+							['<Esc>'] = { 'close', mode = { 'n', 'i' } },
 						},
 					},
 					preview = {
 						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
+							['<Esc>'] = { 'close', mode = { 'n', 'i' } },
 						},
 					},
 				},
@@ -249,21 +249,21 @@ M.list = {
 			scroll = { enabled = false },
 			statuscolumn = {
 				enabled = true,
-				left = { "mark" }, -- priority of signs on the left (high to low)
-				right = { "fold" }, -- priority of signs on the right (high to low)
+				left = { 'mark' }, -- priority of signs on the left (high to low)
+				right = { 'fold' }, -- priority of signs on the right (high to low)
 				folds = {
 					open = true, -- show open fold icons
 					git_hl = false, -- use Git Signs hl for fold icons
 				},
 				git = {
 					-- patterns to match Git signs
-					patterns = { "MiniDiffSign" },
+					patterns = { 'MiniDiffSign' },
 				},
 				refresh = 50, -- refresh at most every 50ms
 			},
 			styles = {
 				input = {
-					relative = "cursor",
+					relative = 'cursor',
 				},
 			},
 			terminal = {
@@ -274,7 +274,7 @@ M.list = {
 			words = { enabled = true },
 		},
 		config = function(_, opts)
-			require("snacks").setup(opts)
+			require('snacks').setup(opts)
 
 			_G.dd = function(...)
 				Snacks.debug.inspect(...)
@@ -284,8 +284,8 @@ M.list = {
 			end
 			vim.print = _G.dd
 
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "MiniFilesActionRename",
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'MiniFilesActionRename',
 				callback = function(event)
 					Snacks.rename.on_rename_file(event.data.from, event.data.to)
 				end,
@@ -294,22 +294,22 @@ M.list = {
 	},
 
 	{
-		"nvim-tree/nvim-web-devicons",
+		'nvim-tree/nvim-web-devicons',
 		lazy = true,
 	},
 
 	-- mini 全家桶
 	{ --${conf, mini}
-		"echasnovski/mini.nvim",
-		event = "VeryLazy",
+		'echasnovski/mini.nvim',
+		event = 'VeryLazy',
 		opts = {
 			diff = {
 				view = {
-					style = "sign",
+					style = 'sign',
 					signs = {
-						add = "▎",
-						change = "▎",
-						delete = "",
+						add = '▎',
+						change = '▎',
+						delete = '',
 					},
 				},
 			},
@@ -326,27 +326,27 @@ M.list = {
 		},
 		keys = {
 			{
-				"t",
+				't',
 				function()
-					require("mini.splitjoin").toggle()
+					require('mini.splitjoin').toggle()
 				end,
 			},
 
 			{
-				"<space>gd",
+				'<space>gd',
 				function()
-					require("mini.diff").toggle_overlay(0)
+					require('mini.diff').toggle_overlay(0)
 				end,
-				desc = "diff",
+				desc = 'diff',
 			},
 			{
-				"<space>e",
+				'<space>e',
 				function()
-					local mf = require("mini.files")
+					local mf = require('mini.files')
 					if not mf.close() then
 						local n = api.nvim_buf_get_name(0)
 						-- 检查文件是否存在，不存在则打开 pwd
-						if n ~= "" and vim.uv.fs_stat(n) then
+						if n ~= '' and vim.uv.fs_stat(n) then
 							mf.open(n)
 						else
 							mf.open(vim.uv.cwd())
@@ -354,7 +354,7 @@ M.list = {
 						mf.reveal_cwd()
 					end
 				end,
-				desc = "explorer",
+				desc = 'explorer',
 			},
 		},
 		version = false,
@@ -364,12 +364,12 @@ M.list = {
 			local make_pattern_in_comment = function(pattern)
 				return function(buf_id)
 					local cs = vim.bo[buf_id].commentstring
-					if cs == nil or cs == "" then
-						cs = "# %s"
+					if cs == nil or cs == '' then
+						cs = '# %s'
 					end
 
 					-- Extract left and right part relative to '%s'
-					local left, right = cs:match("^(.*)%%s(.-)$")
+					local left, right = cs:match('^(.*)%%s(.-)$')
 					left, right = vim.trim(left), vim.trim(right)
 					-- General ideas:
 					-- - Line is commented if it has structure
@@ -377,32 +377,32 @@ M.list = {
 					-- - Highlight pattern only if it is to the right of left comment part
 					--   (possibly after some whitespace)
 					-- Example output for '/* %s */' commentstring: '^%s*/%*%s*()TODO().*%*/%s*'
-					return string.format("^%%s*%s%%s*()%s().*%s%%s*$", vim.pesc(left), pattern, vim.pesc(right))
+					return string.format('^%%s*%s%%s*()%s().*%s%%s*$', vim.pesc(left), pattern, vim.pesc(right))
 				end
 			end
 
 			-- 创建高亮组
-			highlight("HG_TODO_LIST_WARN", { italic = true, bold = true, bg = "#ffc777", fg = "#222436" })
-			highlight("HG_TODO_LIST_FIX", { italic = true, bold = true, bg = "#c53b53", fg = "#222436" })
-			highlight("HG_TODO_LIST_NOTE", { italic = true, bold = true, bg = "#4fd6be", fg = "#222436" })
-			highlight("HG_TODO_LIST_TODO", { italic = true, bold = true, bg = "#0db9d7", fg = "#222436" })
+			highlight('HG_TODO_LIST_WARN', { italic = true, bold = true, bg = '#ffc777', fg = '#222436' })
+			highlight('HG_TODO_LIST_FIX', { italic = true, bold = true, bg = '#c53b53', fg = '#222436' })
+			highlight('HG_TODO_LIST_NOTE', { italic = true, bold = true, bg = '#4fd6be', fg = '#222436' })
+			highlight('HG_TODO_LIST_TODO', { italic = true, bold = true, bg = '#0db9d7', fg = '#222436' })
 
 			-- Git 状态高亮组
-			highlight("HG_GIT_MODIFIED", { bold = true, fg = "#ffc777" }) -- Modified
-			highlight("HG_GIT_ADDED", { bold = true, fg = "#B3F6C0" }) -- Added
-			highlight("HG_GIT_DELETED", { bold = true, fg = "#c53b53" }) -- Deleted
-			highlight("HG_GIT_UNTRACKED", { bold = true, fg = "#545C7E" }) -- Untracked
-			highlight("HG_GIT_RENAMED", { bold = true, fg = "#65BCFF" }) -- Renamed
-			highlight("HG_GIT_UNMERGED", { bold = true, fg = "#ff9e64" }) -- Unmerged
-			highlight("HG_GIT_SYMLINK", { bold = true, fg = "#c53b53" }) -- Symlink
+			highlight('HG_GIT_MODIFIED', { bold = true, fg = '#ffc777' }) -- Modified
+			highlight('HG_GIT_ADDED', { bold = true, fg = '#B3F6C0' }) -- Added
+			highlight('HG_GIT_DELETED', { bold = true, fg = '#c53b53' }) -- Deleted
+			highlight('HG_GIT_UNTRACKED', { bold = true, fg = '#545C7E' }) -- Untracked
+			highlight('HG_GIT_RENAMED', { bold = true, fg = '#65BCFF' }) -- Renamed
+			highlight('HG_GIT_UNMERGED', { bold = true, fg = '#ff9e64' }) -- Unmerged
+			highlight('HG_GIT_SYMLINK', { bold = true, fg = '#c53b53' }) -- Symlink
 
-			local hipatterns = require("mini.hipatterns")
+			local hipatterns = require('mini.hipatterns')
 			hipatterns.setup({
 				highlighters = {
-					fix = { pattern = make_pattern_in_comment("FIX:"), group = "HG_TODO_LIST_FIX" },
-					warn = { pattern = make_pattern_in_comment("WARN:"), group = "HG_TODO_LIST_WARN" },
-					todo = { pattern = make_pattern_in_comment("TODO:"), group = "HG_TODO_LIST_TODO" },
-					note = { pattern = make_pattern_in_comment("NOTE:"), group = "HG_TODO_LIST_NOTE" },
+					fix = { pattern = make_pattern_in_comment('FIX:'), group = 'HG_TODO_LIST_FIX' },
+					warn = { pattern = make_pattern_in_comment('WARN:'), group = 'HG_TODO_LIST_WARN' },
+					todo = { pattern = make_pattern_in_comment('TODO:'), group = 'HG_TODO_LIST_TODO' },
+					note = { pattern = make_pattern_in_comment('NOTE:'), group = 'HG_TODO_LIST_NOTE' },
 
 					-- Highlight hex color strings (`#rrggbb`) using that color
 					hex_color = hipatterns.gen_highlighter.hex_color(),
@@ -416,7 +416,7 @@ M.list = {
 				-- skip autopair when next character is one of these
 				skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
 				-- skip autopair when the cursor is inside these treesitter nodes
-				skip_ts = { "string" },
+				skip_ts = { 'string' },
 				-- skip autopair when next character is closing pair
 				-- and there are more closing pairs than opening pairs
 				skip_unbalanced = true,
@@ -424,11 +424,11 @@ M.list = {
 				markdown = true,
 			}
 
-			local mini_pairs = require("mini.pairs")
+			local mini_pairs = require('mini.pairs')
 			mini_pairs.setup({})
 			local open = mini_pairs.open
 			mini_pairs.open = function(pair, neigh_pattern)
-				if vim.fn.getcmdline() ~= "" then
+				if vim.fn.getcmdline() ~= '' then
 					return open(pair, neigh_pattern)
 				end
 				local o, c = pair:sub(1, 1), pair:sub(2, 2)
@@ -436,15 +436,14 @@ M.list = {
 				local cursor = vim.api.nvim_win_get_cursor(0)
 				local next = line:sub(cursor[2] + 1, cursor[2] + 1)
 				local before = line:sub(1, cursor[2])
-				if o == "`" and vim.bo.filetype == "markdown" and before:match("^%s*``") then
-					return "`\n```" .. vim.api.nvim_replace_termcodes("<up>", true, true, true)
+				if o == '`' and vim.bo.filetype == 'markdown' and before:match('^%s*``') then
+					return '`\n```' .. vim.api.nvim_replace_termcodes('<up>', true, true, true)
 				end
-				if opts.skip_next and next ~= "" and next:match(opts.skip_next) then
+				if opts.skip_next and next ~= '' and next:match(opts.skip_next) then
 					return o
 				end
 				if opts.skip_ts and #opts.skip_ts > 0 then
-					local ok, captures =
-						pcall(vim.treesitter.get_captures_at_pos, 0, cursor[1] - 1, math.max(cursor[2] - 1, 0))
+					local ok, captures = pcall(vim.treesitter.get_captures_at_pos, 0, cursor[1] - 1, math.max(cursor[2] - 1, 0))
 					for _, capture in ipairs(ok and captures or {}) do
 						if vim.tbl_contains(opts.skip_ts, capture.capture) then
 							return o
@@ -452,8 +451,8 @@ M.list = {
 					end
 				end
 				if opts.skip_unbalanced and next == c and c ~= o then
-					local _, count_open = line:gsub(vim.pesc(pair:sub(1, 1)), "")
-					local _, count_close = line:gsub(vim.pesc(pair:sub(2, 2)), "")
+					local _, count_open = line:gsub(vim.pesc(pair:sub(1, 1)), '')
+					local _, count_close = line:gsub(vim.pesc(pair:sub(2, 2)), '')
 					if count_close > count_open then
 						return o
 					end
@@ -461,7 +460,7 @@ M.list = {
 				return open(pair, neigh_pattern)
 			end
 
-			require("mini.trailspace").setup()
+			require('mini.trailspace').setup()
 
 			-- require("mini.icons").setup()
 
@@ -470,32 +469,32 @@ M.list = {
 			-- ghgh / gHgh 应用/重置光标下的块范围。
 			-- dgh 删除光标下的大块范围。
 			-- [H / [h / ]h / ]H 将光标导航到当前缓冲区的第一个/上一个/下一个/最后一个块范围。
-			require("mini.diff").setup({
+			require('mini.diff').setup({
 				mappings = {
 					-- Apply hunks inside a visual/operator region
-					apply = "gB",
+					apply = 'gB',
 					-- Reset hunks inside a visual/operator region
-					reset = "gb",
+					reset = 'gb',
 					-- Hunk range textobject to be used inside operator
 					-- Works also in Visual mode if mapping differs from apply and reset
-					textobject = "gb",
+					textobject = 'gb',
 					-- Go to hunk range in corresponding direction
-					goto_first = "[H",
-					goto_prev = "[h",
-					goto_next = "]h",
-					goto_last = "]H",
+					goto_first = '[H',
+					goto_prev = '[h',
+					goto_next = ']h',
+					goto_last = ']H',
 				},
 			})
-			require("mini.move").setup()
-			require("mini.splitjoin").setup()
+			require('mini.move').setup()
+			require('mini.splitjoin').setup()
 
 			-- mini.files git
 			-- https://www.reddit.com/r/neovim/comments/1c37m7c/is_there_a_way_to_get_the_minifiles_plugin_to/
 			-- https://gist.github.com/bassamsdata/eec0a3065152226581f8d4244cce9051#file-notes-md
 
-			local nsMiniFiles = vim.api.nvim_create_namespace("mini_files_git")
+			local nsMiniFiles = vim.api.nvim_create_namespace('mini_files_git')
 			local autocmd = vim.api.nvim_create_autocmd
-			local _, MiniFiles = pcall(require, "mini.files")
+			local _, MiniFiles = pcall(require, 'mini.files')
 
 			-- Cache for git status
 			local gitStatusCache = {}
@@ -510,11 +509,11 @@ M.list = {
 
 			local function isSymlink(path)
 				local stat = vim.loop.fs_lstat(path)
-				return stat and stat.type == "link"
+				return stat and stat.type == 'link'
 			end
 
 			local function isMiniFilesBuffer(buf_id)
-				return buf_id and vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].filetype == "minifiles"
+				return buf_id and vim.api.nvim_buf_is_valid(buf_id) and vim.bo[buf_id].filetype == 'minifiles'
 			end
 
 			---@type table<string, {symbol: string, hlGroup: string}>
@@ -522,31 +521,31 @@ M.list = {
 			---@return string symbol, string hlGroup
 			local function mapSymbols(status, is_symlink)
 				local statusMap = {
-					[" M"] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- Modified in the working directory
-					["M "] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- modified in index
-					["MM"] = { symbol = "M", hlGroup = "HG_GIT_MODIFIED" }, -- modified in both working tree and index
-					["A "] = { symbol = "A", hlGroup = "HG_GIT_ADDED" }, -- Added to the staging area, new file
-					["AA"] = { symbol = "≈", hlGroup = "HG_GIT_ADDED" }, -- file is added in both working tree and index
-					["D "] = { symbol = "D", hlGroup = "HG_GIT_DELETED" }, -- Deleted from the staging area
-					["AM"] = { symbol = "A", hlGroup = "HG_GIT_MODIFIED" }, -- added in working tree, modified in index
-					["AD"] = { symbol = "A•", hlGroup = "HG_GIT_DELETED" }, -- Added in the index and deleted in the working directory
-					["R "] = { symbol = "R", hlGroup = "HG_GIT_RENAMED" }, -- Renamed in the index
-					["U "] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- Unmerged path
-					["UU"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged
-					["UA"] = { symbol = "U", hlGroup = "HG_GIT_UNMERGED" }, -- file is unmerged and added in working tree
-					["??"] = { symbol = "?", hlGroup = "HG_GIT_UNTRACKED" }, -- Untracked files
+					[' M'] = { symbol = 'M', hlGroup = 'HG_GIT_MODIFIED' }, -- Modified in the working directory
+					['M '] = { symbol = 'M', hlGroup = 'HG_GIT_MODIFIED' }, -- modified in index
+					['MM'] = { symbol = 'M', hlGroup = 'HG_GIT_MODIFIED' }, -- modified in both working tree and index
+					['A '] = { symbol = 'A', hlGroup = 'HG_GIT_ADDED' }, -- Added to the staging area, new file
+					['AA'] = { symbol = '≈', hlGroup = 'HG_GIT_ADDED' }, -- file is added in both working tree and index
+					['D '] = { symbol = 'D', hlGroup = 'HG_GIT_DELETED' }, -- Deleted from the staging area
+					['AM'] = { symbol = 'A', hlGroup = 'HG_GIT_MODIFIED' }, -- added in working tree, modified in index
+					['AD'] = { symbol = 'A•', hlGroup = 'HG_GIT_DELETED' }, -- Added in the index and deleted in the working directory
+					['R '] = { symbol = 'R', hlGroup = 'HG_GIT_RENAMED' }, -- Renamed in the index
+					['U '] = { symbol = 'U', hlGroup = 'HG_GIT_UNMERGED' }, -- Unmerged path
+					['UU'] = { symbol = 'U', hlGroup = 'HG_GIT_UNMERGED' }, -- file is unmerged
+					['UA'] = { symbol = 'U', hlGroup = 'HG_GIT_UNMERGED' }, -- file is unmerged and added in working tree
+					['??'] = { symbol = '?', hlGroup = 'HG_GIT_UNTRACKED' }, -- Untracked files
 				}
 
-				local result = statusMap[status] or { symbol = "?", hlGroup = "NonText" }
+				local result = statusMap[status] or { symbol = '?', hlGroup = 'NonText' }
 				local gitSymbol = result.symbol
 				local gitHlGroup = result.hlGroup
 
-				local symlinkSymbol = is_symlink and "↩" or ""
+				local symlinkSymbol = is_symlink and '↩' or ''
 
 				-- Combine symlink symbol with Git status if both exist
-				local combinedSymbol = (symlinkSymbol .. gitSymbol):gsub("^%s+", ""):gsub("%s+$", "")
+				local combinedSymbol = (symlinkSymbol .. gitSymbol):gsub('^%s+', ''):gsub('%s+$', '')
 				-- Use custom symlink highlight group
-				local combinedHlGroup = is_symlink and "HG_GIT_SYMLINK" or gitHlGroup
+				local combinedHlGroup = is_symlink and 'HG_GIT_SYMLINK' or gitHlGroup
 
 				return combinedSymbol, combinedHlGroup
 			end
@@ -556,7 +555,7 @@ M.list = {
 			---@return nil
 			local function fetchGitStatus(cwd, callback)
 				-- 验证路径是否有效
-				if not cwd or cwd == "" or vim.fn.isdirectory(cwd) == 0 then
+				if not cwd or cwd == '' or vim.fn.isdirectory(cwd) == 0 then
 					return
 				end
 
@@ -599,7 +598,7 @@ M.list = {
 						vim.schedule(processQueue)
 					end
 
-					vim.system({ "git", "status", "--porcelain" }, { text = true, cwd = cwd }, on_exit)
+					vim.system({ 'git', 'status', '--porcelain' }, { text = true, cwd = cwd }, on_exit)
 				end
 
 				-- 如果并发数未满，直接执行；否则加入队列
@@ -614,22 +613,22 @@ M.list = {
 			---@return string
 			local function escapePattern(str)
 				if not str then
-					return ""
+					return ''
 				end
-				return (str:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1"))
+				return (str:gsub('([%^%$%(%)%%%.%[%]%*%+%-%?])', '%%%1'))
 			end
 
 			---@param buf_id integer
 			---@param gitStatusMap table
 			---@return nil
 			local function updateMiniWithGit(buf_id, gitStatusMap)
-				local MiniFiles = require("mini.files")
+				local MiniFiles = require('mini.files')
 				vim.schedule(function()
 					local nlines = vim.api.nvim_buf_line_count(buf_id)
-					local git_root = vim.fs.root(vim.uv.cwd(), ".git")
+					local git_root = vim.fs.root(vim.uv.cwd(), '.git')
 					local escapedcwd = escapePattern(git_root)
-					if vim.fn.has("win32") == 1 then
-						escapedcwd = escapedcwd:gsub("\\", "/")
+					if vim.fn.has('win32') == 1 then
+						escapedcwd = escapedcwd:gsub('\\', '/')
 					end
 
 					for i = 1, nlines do
@@ -637,7 +636,7 @@ M.list = {
 						if not entry then
 							break
 						end
-						local relativePath = entry.path:gsub("^" .. escapedcwd .. "/", "")
+						local relativePath = entry.path:gsub('^' .. escapedcwd .. '/', '')
 						local status = gitStatusMap[relativePath]
 
 						if status then
@@ -678,43 +677,43 @@ M.list = {
 				local gitStatusMap = {}
 				-- Priority map for directory status (higher value = higher priority)
 				local statusPriority = {
-					["D "] = 90, -- Deleted (most critical)
-					["UU"] = 85, -- Unmerged (both added)
-					["U "] = 85, -- Unmerged
-					["UA"] = 85, -- Unmerged and added
-					["MM"] = 80, -- Modified in both
-					["AM"] = 75, -- Added then modified
-					["AD"] = 80, -- Added then deleted
-					["R "] = 70, -- Renamed
-					["M "] = 65, -- Modified in index
-					[" M"] = 60, -- Modified in working directory
-					["A "] = 50, -- Added
-					["AA"] = 50, -- Both added
-					["??"] = 30, -- Untracked
-					["!!"] = 10, -- Ignored
+					['D '] = 90, -- Deleted (most critical)
+					['UU'] = 85, -- Unmerged (both added)
+					['U '] = 85, -- Unmerged
+					['UA'] = 85, -- Unmerged and added
+					['MM'] = 80, -- Modified in both
+					['AM'] = 75, -- Added then modified
+					['AD'] = 80, -- Added then deleted
+					['R '] = 70, -- Renamed
+					['M '] = 65, -- Modified in index
+					[' M'] = 60, -- Modified in working directory
+					['A '] = 50, -- Added
+					['AA'] = 50, -- Both added
+					['??'] = 30, -- Untracked
+					['!!'] = 10, -- Ignored
 				}
 				-- lua match is faster than vim.split (in my experience )
-				for line in content:gmatch("[^\r\n]+") do
-					local status, filePath = string.match(line, "^(..)%s+(.*)")
+				for line in content:gmatch('[^\r\n]+') do
+					local status, filePath = string.match(line, '^(..)%s+(.*)')
 
 					-- Handle rename case: "R  oldname -> newname"
 					-- For rename, we need to use the new name (after ->)
-					if status == "R " and filePath and filePath:find("->") then
-						filePath = filePath:match("%s*->%s*(.+)$") or filePath
+					if status == 'R ' and filePath and filePath:find('->') then
+						filePath = filePath:match('%s*->%s*(.+)$') or filePath
 					end
 
 					if filePath then
 						-- Split the file path into parts
 						local parts = {}
-						for part in filePath:gmatch("[^/]+") do
+						for part in filePath:gmatch('[^/]+') do
 							table.insert(parts, part)
 						end
 						-- Start with the root directory
-						local currentKey = ""
+						local currentKey = ''
 						for i, part in ipairs(parts) do
 							if i > 1 then
 								-- Concatenate parts with a separator to create a unique key
-								currentKey = currentKey .. "/" .. part
+								currentKey = currentKey .. '/' .. part
 							else
 								currentKey = part
 							end
@@ -754,8 +753,8 @@ M.list = {
 					return
 				end
 
-				if not vim.fs.root(vim.uv.cwd(), ".git") then
-					vim.notify("Not a valid git repo")
+				if not vim.fs.root(vim.uv.cwd(), '.git') then
+					vim.notify('Not a valid git repo')
 					return
 				end
 				-- 获取 mini.files 正在浏览的真实目录
@@ -764,7 +763,7 @@ M.list = {
 					return
 				end
 				-- 从第一个条目的路径推断当前浏览目录
-				local cwd = vim.fn.fnamemodify(entry.path, ":h")
+				local cwd = vim.fn.fnamemodify(entry.path, ':h')
 				if vim.fn.isdirectory(cwd) == 0 then
 					cwd = entry.path
 				end
@@ -789,12 +788,12 @@ M.list = {
 			end
 
 			local function augroup(name)
-				return vim.api.nvim_create_augroup("MiniFiles_" .. name, { clear = true })
+				return vim.api.nvim_create_augroup('MiniFiles_' .. name, { clear = true })
 			end
 
-			autocmd("User", {
-				group = augroup("start"),
-				pattern = "MiniFilesExplorerOpen",
+			autocmd('User', {
+				group = augroup('start'),
+				pattern = 'MiniFilesExplorerOpen',
 				-- pattern = { "minifiles" },
 				callback = function()
 					local bufnr = vim.api.nvim_get_current_buf()
@@ -802,9 +801,9 @@ M.list = {
 				end,
 			})
 
-			autocmd("User", {
-				group = augroup("close"),
-				pattern = "MiniFilesExplorerClose",
+			autocmd('User', {
+				group = augroup('close'),
+				pattern = 'MiniFilesExplorerClose',
 				callback = function()
 					clearCache()
 					-- 清理所有防抖定时器
@@ -817,9 +816,9 @@ M.list = {
 				end,
 			})
 
-			autocmd("User", {
-				group = augroup("update"),
-				pattern = "MiniFilesBufferUpdate",
+			autocmd('User', {
+				group = augroup('update'),
+				pattern = 'MiniFilesBufferUpdate',
 				callback = function(sii)
 					local bufnr = sii.data.buf_id
 
@@ -843,7 +842,7 @@ M.list = {
 						if not entry or not entry.path then
 							return
 						end
-						local cwd = vim.fn.fnamemodify(entry.path, ":h")
+						local cwd = vim.fn.fnamemodify(entry.path, ':h')
 						if vim.fn.isdirectory(cwd) == 0 then
 							cwd = entry.path
 						end
@@ -865,20 +864,20 @@ M.list = {
 			})
 
 			-- 监听文件操作事件，清理对应目录的缓存
-			autocmd("User", {
-				group = augroup("actions"),
+			autocmd('User', {
+				group = augroup('actions'),
 				pattern = {
-					"MiniFilesActionCreate",
-					"MiniFilesActionDelete",
-					"MiniFilesActionRename",
-					"MiniFilesActionCopy",
-					"MiniFilesActionMove",
+					'MiniFilesActionCreate',
+					'MiniFilesActionDelete',
+					'MiniFilesActionRename',
+					'MiniFilesActionCopy',
+					'MiniFilesActionMove',
 				},
 				callback = function(event)
 					local data = event.data
 					-- 获取文件所在的目录
-					local from_dir = data.from and vim.fn.fnamemodify(data.from, ":h") or nil
-					local to_dir = data.to and vim.fn.fnamemodify(data.to, ":h") or nil
+					local from_dir = data.from and vim.fn.fnamemodify(data.from, ':h') or nil
+					local to_dir = data.to and vim.fn.fnamemodify(data.to, ':h') or nil
 
 					-- 清理相关目录的缓存
 					if from_dir then
@@ -908,7 +907,7 @@ M.list = {
 				end
 
 				-- Compute "depth offset" - how many windows are between this and focused
-				local path_this = vim.api.nvim_buf_get_name(ev.data.buf_id):match("^minifiles://%d+/(.*)$")
+				local path_this = vim.api.nvim_buf_get_name(ev.data.buf_id):match('^minifiles://%d+/(.*)$')
 				local depth_this
 				for i, path in ipairs(state.branch) do
 					if path == path_this then
@@ -936,119 +935,121 @@ M.list = {
 
 				win_config.height = depth_offset == 0 and 25 or 20
 				win_config.row = math.ceil(0.5 * (vim.o.lines - win_config.height))
-				win_config.border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
+				win_config.border = { '🭽', '▔', '🭾', '▕', '🭿', '▁', '🭼', '▏' }
 				vim.api.nvim_win_set_config(ev.data.win_id, win_config)
 			end
 
-			vim.api.nvim_create_autocmd("User", { pattern = "MiniFilesWindowUpdate", callback = ensure_center_layout })
+			vim.api.nvim_create_autocmd('User', { pattern = 'MiniFilesWindowUpdate', callback = ensure_center_layout })
 
 			-- mini-cmdline
 			-- require("mini.cmdline").setup()
+
+			-- require('mini.cursorword').setup()
 		end,
 	},
 
 	-- library used by other plugins
-	{ "nvim-lua/plenary.nvim", lazy = true },
+	{ 'nvim-lua/plenary.nvim', lazy = true },
 
 	-- 看小说专用
 	{
-		"edte/novel.nvim",
+		'edte/novel.nvim',
 		dependencies = {
-			"folke/snacks.nvim", -- optional for snacks picker
+			'folke/snacks.nvim', -- optional for snacks picker
 		},
 		keys = {
 			{
-				"<space>bb",
+				'<space>bb',
 				function()
-					require("biquge").toggle()
+					require('biquge').toggle()
 				end,
-				desc = "Toggle",
+				desc = 'Toggle',
 			},
 			{
-				"<space>bt",
+				'<space>bt',
 				function()
-					require("biquge").toc()
+					require('biquge').toc()
 				end,
-				desc = "Toc",
+				desc = 'Toc',
 			},
 			{
-				"<space>bn",
+				'<space>bn',
 				function()
-					require("biquge").next_chap()
+					require('biquge').next_chap()
 				end,
-				desc = "Next chapter",
+				desc = 'Next chapter',
 			},
 			{
-				"<space>bp",
+				'<space>bp',
 				function()
-					require("biquge").prev_chap()
+					require('biquge').prev_chap()
 				end,
-				desc = "Previous chapter",
+				desc = 'Previous chapter',
 			},
 			{
-				"<space>bs",
+				'<space>bs',
 				function()
-					require("biquge").star()
+					require('biquge').star()
 				end,
-				desc = "Star current book",
+				desc = 'Star current book',
 			},
 			{
-				"<space>bl",
+				'<space>bl',
 				function()
-					require("biquge").bookshelf()
+					require('biquge').bookshelf()
 				end,
-				desc = "Bookshelf",
-			},
-
-			{
-				"<space>b/",
-				function()
-					require("biquge").search()
-				end,
-				desc = "Search online",
-			},
-			{
-				"<space>bf",
-				function()
-					require("biquge").local_search()
-				end,
-				desc = "Open local file",
-			},
-			{
-				"<space>bd",
-				function()
-					require("biquge").local_browse()
-				end,
-				desc = "Browse local directory",
+				desc = 'Bookshelf',
 			},
 
 			{
-				"<M-d>",
+				'<space>b/',
 				function()
-					require("biquge").scroll(2)
+					require('biquge').search()
 				end,
-				desc = "Scroll down",
+				desc = 'Search online',
 			},
 			{
-				"<M-u>",
+				'<space>bf',
 				function()
-					require("biquge").scroll(-2)
+					require('biquge').local_search()
 				end,
-				desc = "Scroll up",
+				desc = 'Open local file',
 			},
 			{
-				"<space>br",
+				'<space>bd',
 				function()
-					require("biquge").resume_last_reading()
+					require('biquge').local_browse()
 				end,
-				desc = "Resume last reading",
+				desc = 'Browse local directory',
+			},
+
+			{
+				'<M-d>',
+				function()
+					require('biquge').scroll(2)
+				end,
+				desc = 'Scroll down',
 			},
 			{
-				"<space>bh",
+				'<M-u>',
 				function()
-					require("biquge").reading_history()
+					require('biquge').scroll(-2)
 				end,
-				desc = "Reading history",
+				desc = 'Scroll up',
+			},
+			{
+				'<space>br',
+				function()
+					require('biquge').resume_last_reading()
+				end,
+				desc = 'Resume last reading',
+			},
+			{
+				'<space>bh',
+				function()
+					require('biquge').reading_history()
+				end,
+				desc = 'Reading history',
 			},
 		},
 		opts = {},
@@ -1074,40 +1075,40 @@ M.list = {
 
 	-- Neovim 的通用日志语法突出显示和文件类型管理
 	{
-		"fei6409/log-highlight.nvim",
-		ft = "log",
+		'fei6409/log-highlight.nvim',
+		ft = 'log',
 		config = function()
-			require("log-highlight").setup({})
+			require('log-highlight').setup({})
 		end,
 	},
 
 	-- llm
 	{
-		"olimorris/codecompanion.nvim",
+		'olimorris/codecompanion.nvim',
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"ravitemer/codecompanion-history.nvim",
+			'nvim-lua/plenary.nvim',
+			'nvim-treesitter/nvim-treesitter',
+			'ravitemer/codecompanion-history.nvim',
 		},
-		cmd = { "CodeCompanion", "CodeCompanionChat" },
+		cmd = { 'CodeCompanion', 'CodeCompanionChat' },
 		keys = {
 			{
-				"<space>a",
-				"<cmd>CodeCompanionChat Toggle<cr>",
-				mode = { "n", "v" },
-				desc = "CodeCompanionChat Toggle",
+				'<space>a',
+				'<cmd>CodeCompanionChat Toggle<cr>',
+				mode = { 'n', 'v' },
+				desc = 'CodeCompanionChat Toggle',
 			},
 			{
-				"ga",
-				"<cmd>CodeCompanionChat Add<cr>",
-				mode = { "v", "n" },
-				desc = "CodeCompanionChat Add",
+				'ga',
+				'<cmd>CodeCompanionChat Add<cr>',
+				mode = { 'v', 'n' },
+				desc = 'CodeCompanionChat Add',
 			},
 			{
-				"gh",
-				"<cmd>CodeCompanionHistory<cr>",
-				mode = "n",
-				desc = "CodeCompanion History",
+				'gh',
+				'<cmd>CodeCompanionHistory<cr>',
+				mode = 'n',
+				desc = 'CodeCompanion History',
 			},
 		},
 		init = function()
@@ -1115,23 +1116,23 @@ M.list = {
 			vim.cmd([[cab cc CodeCompanion]])
 		end,
 		config = function()
-			require("codecompanion").setup({
+			require('codecompanion').setup({
 				opts = {
-					log_level = "DEBUG", -- TRACE|DEBUG|ERROR|INFO
-					language = "中文",
+					log_level = 'DEBUG', -- TRACE|DEBUG|ERROR|INFO
+					language = '中文',
 				},
 
 				adapters = {
 					acp = {
 						codebuddy = function()
-							local helpers = require("codecompanion.adapters.acp.helpers")
+							local helpers = require('codecompanion.adapters.acp.helpers')
 							return {
-								name = "codebuddy",
-								formatted_name = "CodeBuddy",
-								type = "acp",
+								name = 'codebuddy',
+								formatted_name = 'CodeBuddy',
+								type = 'acp',
 								roles = {
-									llm = "assistant",
-									user = "user",
+									llm = 'assistant',
+									user = 'user',
 								},
 								opts = {
 									vision = true,
@@ -1145,11 +1146,11 @@ M.list = {
 										-- "TERM_PROGRAM",
 										-- "-u",
 										-- "TERM_PROGRAM_VERSION",
-										"codebuddy",
-										"--acp",
-										"--permission-mode",
-										"bypassPermissions",
-										"--dangerously-skip-permissions",
+										'codebuddy',
+										'--acp',
+										'--permission-mode',
+										'bypassPermissions',
+										'--dangerously-skip-permissions',
 									},
 								},
 								defaults = {
@@ -1163,13 +1164,13 @@ M.list = {
 										fs = { readTextFile = true, writeTextFile = true },
 									},
 									clientInfo = {
-										name = "CodeCompanion.nvim",
-										version = "1.0.0",
+										name = 'CodeCompanion.nvim',
+										version = '1.0.0',
 									},
 								},
 								handlers = {
 									setup = function(self)
-										vim.env.HOME = vim.env.HOME or os.getenv("HOME")
+										vim.env.HOME = vim.env.HOME or os.getenv('HOME')
 										return true
 									end,
 									auth = function(self)
@@ -1188,13 +1189,13 @@ M.list = {
 								end,
 								-- 还需要这个方法
 								map_roles = function(self, messages)
-									local helpers = require("codecompanion.adapters.acp.helpers")
+									local helpers = require('codecompanion.adapters.acp.helpers')
 									-- 需要根据 capabilities 调整，这里简化处理
 									return messages
 								end,
 								schema = {
 									model = {
-										default = "codebuddy",
+										default = 'codebuddy',
 									},
 								},
 							}
@@ -1206,39 +1207,39 @@ M.list = {
 					action_palette = {
 						width = 95,
 						height = 10,
-						prompt = "Prompt ", -- Prompt used for interactive LLM calls
-						provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+						prompt = 'Prompt ', -- Prompt used for interactive LLM calls
+						provider = 'default', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
 						opts = {
 							show_preset_actions = true, -- Show the default actions in the action palette?
 							show_default_prompt_library = true, -- Show the default prompt library in the action palette?
-							title = "CodeCompanion actions", -- The title of the action palette
+							title = 'CodeCompanion actions', -- The title of the action palette
 						},
 					},
 					chat = {
-						intro_message = "",
+						intro_message = '',
 						auto_scroll = true,
 						show_context = false, -- 隐藏上下文显示
 						prompt_decorator = function(message, adapter, context)
 							return string.format([[<prompt>%s</prompt>]], message)
 						end,
 						window = {
-							layout = "vertical", -- float|vertical|horizontal|buffer
+							layout = 'vertical', -- float|vertical|horizontal|buffer
 						},
 					},
 				},
 
 				interactions = {
 					chat = {
-						adapter = "codebuddy",
+						adapter = 'codebuddy',
 						roles = {
 							llm = function(adapter)
-								return "  Assistant"
+								return '  Assistant'
 							end,
 
-							user = "  User",
+							user = '  User',
 						},
 					},
-					inline = { adapter = "codebuddy" },
+					inline = { adapter = 'codebuddy' },
 				},
 
 				extensions = {
@@ -1246,30 +1247,30 @@ M.list = {
 						enabled = true,
 						opts = {
 							-- Keymap to open history from chat buffer (default: gh)
-							keymap = "gh",
+							keymap = 'gh',
 							-- Keymap to save the current chat manually (when auto_save is disabled)
-							save_chat_keymap = "sc",
+							save_chat_keymap = 'sc',
 							-- Save all chats by default (disable to save only manually using 'sc')
 							auto_save = true,
 							-- Number of days after which chats are automatically deleted (0 to disable)
 							expiration_days = 0,
 							-- Picker interface (auto resolved to a valid picker)
-							picker = "snacks", --- ("telescope", "snacks", "fzf-lua", or "default")
+							picker = 'snacks', --- ("telescope", "snacks", "fzf-lua", or "default")
 							---Optional filter function to control which chats are shown when browsing
 							chat_filter = function(chat_data)
 								return chat_data.cwd == vim.fn.getcwd()
 							end,
 							-- Customize picker keymaps (optional)
 							picker_keymaps = {
-								rename = { n = "r", i = "<M-r>" },
-								delete = { n = "d", i = "<M-d>" },
-								duplicate = { n = "<C-y>", i = "<C-y>" },
+								rename = { n = 'r', i = '<M-r>' },
+								delete = { n = 'd', i = '<M-d>' },
+								duplicate = { n = '<C-y>', i = '<C-y>' },
 							},
 							---Automatically generate titles for new chats
 							auto_generate_title = false, -- ACP 适配器不支持自动生成标题
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
-								adapter = "copilot", -- 使用 HTTP 适配器而不是 ACP
+								adapter = 'copilot', -- 使用 HTTP 适配器而不是 ACP
 								---Model for generating titles (defaults to current chat model)
 								model = nil, -- "gpt-4o"
 								---Number of user prompts after which to refresh the title (0 to disable)
@@ -1287,16 +1288,16 @@ M.list = {
 							---When chat is cleared with `gx` delete the chat from history
 							delete_on_clearing_chat = false,
 							---Directory path to save the chats
-							dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+							dir_to_save = vim.fn.stdpath('data') .. '/codecompanion-history',
 							---Enable detailed logging for history extension
 							enable_logging = false,
 
 							-- Summary system
 							summary = {
 								-- Keymap to generate summary for current chat (default: "gcs")
-								create_summary_keymap = "gcs",
+								create_summary_keymap = 'gcs',
 								-- Keymap to browse summaries (default: "gbs")
-								browse_summaries_keymap = "gbs",
+								browse_summaries_keymap = 'gbs',
 
 								generation_opts = {
 									adapter = nil, -- defaults to current chat adapter
@@ -1314,7 +1315,7 @@ M.list = {
 								-- Automatically index summaries when they are generated
 								auto_create_memories_on_summary_generation = true,
 								-- Path to the VectorCode executable
-								vectorcode_exe = "vectorcode",
+								vectorcode_exe = 'vectorcode',
 								-- Tool configuration
 								tool_opts = {
 									-- Default number of memories to retrieve
@@ -1334,9 +1335,9 @@ M.list = {
 	},
 
 	{
-		"DamianVCechov/hexview.nvim",
+		'DamianVCechov/hexview.nvim',
 		config = function()
-			require("hexview").setup()
+			require('hexview').setup()
 		end,
 	},
 }
