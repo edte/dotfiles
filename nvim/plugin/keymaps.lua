@@ -194,7 +194,19 @@ wk.add({
 wk.add({
 	{ '<space>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
 	{ '<space>c', '<cmd>bd<CR>', desc = 'close Buffer' },
-	{ '<space>f', '<cmd>lua project_files()<CR>', desc = 'files' },
+	{
+		'<space>f',
+		function()
+			-- Git 项目中使用 git_files，否则使用普通文件选择
+			local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
+			if ret == '' then
+				Snacks.picker.files()
+			else
+				Snacks.picker.git_files()
+			end
+		end,
+		desc = 'files',
+	},
 	{ '<space>p', '<cmd>Lazy<cr>', desc = 'plugins' },
 	{ '<space>q', '<cmd>confirm q<CR>', desc = 'quit' },
 	-- { "<space>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
