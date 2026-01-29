@@ -62,29 +62,6 @@ _G.highlight = function(name, fg, bg)
 	vim.api.nvim_set_hl(0, name, t)
 end
 
---- 与剪贴板内容进行差异比较
-_G.compare_to_clipboard = function()
-	local ftype = vim.api.nvim_eval('&filetype')
-	cmd(string.format(
-		[[
-  execute "normal! \"xy"
-  vsplit
-  enew
-  normal! P
-  setlocal buftype=nowrite
-  set filetype=%s
-  diffthis
-  execute "normal! \<C-w>\<C-w>"
-  enew
-  set filetype=%s
-  normal! "xP
-  diffthis
-  ]],
-		ftype,
-		ftype
-	))
-end
-
 -- ============================ 模块加载工具 ============================
 
 --- 安全地加载模块，避免 require 失败导致崩溃

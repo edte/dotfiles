@@ -185,7 +185,32 @@ wk.add({
 	{ '<space>l', group = 'LSP', desc = 'lsp' },
 	{ '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'code Action' },
 	{ '<space>t', ":'<,'>Translate ZH<cr>", desc = 'translate' },
-	{ '<space>d', ':lua compare_to_clipboard()<cr>', desc = 'diff copy' },
+	{
+		'<space>d',
+		function()
+			-- 与剪贴板内容进行差异比较
+			local ftype = vim.api.nvim_eval('&filetype')
+			cmd(string.format(
+				[[
+  execute "normal! \"xy"
+  vsplit
+  enew
+  normal! P
+  setlocal buftype=nowrite
+  set filetype=%s
+  diffthis
+  execute "normal! \<C-w>\<C-w>"
+  enew
+  set filetype=%s
+  normal! "xP
+  diffthis
+  ]],
+				ftype,
+				ftype
+			))
+		end,
+		desc = 'diff copy',
+	},
 	{ '<space>g', "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = 'git history' },
 	{ '<enter>', ":'<,'>SnipRun<CR>", desc = 'run code' },
 })
