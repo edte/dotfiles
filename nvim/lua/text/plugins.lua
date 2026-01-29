@@ -10,6 +10,10 @@ M.list = {
 			-- 这样 markview 才能正确渲染 markdown 内容
 			vim.treesitter.language.register('markdown', 'codecompanion')
 
+			-- lsp高亮的优先级要低于 treesitter
+			vim.highlight.priorities.semantic_tokens = 95 -- default is 125
+			vim.highlight.priorities.treesitter = 100 -- default is 100
+
 			-- 注册 OXY2DEV 的 comment parser
 			-- 支持注释内 markdown、引号文本、@提及、issue 引用、URL 等高亮
 			require('nvim-treesitter.parsers').comment = {
