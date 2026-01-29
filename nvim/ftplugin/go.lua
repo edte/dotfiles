@@ -2,19 +2,20 @@
 if not vim.g.go_loaded then
 	vim.g.go_loaded = true
 	vim.pack.add({
-		"https://github.com/ray-x/go.nvim.git",
-		"https://github.com/TheNoeTrevino/no-go.nvim.git",
-		"https://github.com/edte/more-go.nvim.git",
-		"https://github.com/olexsmir/gopher.nvim.git",
-		"https://github.com/ray-x/guihua.lua.git",
+		'https://github.com/ray-x/go.nvim.git',
+		'https://github.com/TheNoeTrevino/no-go.nvim.git',
+		'https://github.com/edte/more-go.nvim.git',
+		'https://github.com/olexsmir/gopher.nvim.git',
+		'https://github.com/ray-x/guihua.lua.git',
+		'https://github.com/OXY2DEV/markview.nvim.git',
 	}, { confirm = false })
 
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
-	vim.lsp.config("gopls", {
-		name = "gopls",
-		cmd = { "gopls" },
-		filetypes = { "go", "gomod", "gosum", "gotmpl", "gowork" },
-		root_markers = { ".git", "Makefile" },
+	vim.lsp.config('gopls', {
+		name = 'gopls',
+		cmd = { 'gopls' },
+		filetypes = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' },
+		root_markers = { '.git', 'Makefile' },
 		on_attach = function(client, buf)
 			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 		end,
@@ -30,7 +31,7 @@ if not vim.g.go_loaded then
 				usePlaceholders = true, -- 这个参数打开后，补全的时候会把参数名字和类型一起补全
 				completeUnimported = true,
 				staticcheck = true,
-				directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+				directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
 				semanticTokens = true,
 				gofumpt = true,
 				-- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
@@ -61,39 +62,45 @@ end
 vim.treesitter.start()
 
 -- 确保 go.nvim 的 lua 路径被正确添加到 package.path
-local go_nvim_path = vim.fn.stdpath("data") .. "/site/pack/core/opt/go.nvim/lua"
+local go_nvim_path = vim.fn.stdpath('data') .. '/site/pack/core/opt/go.nvim/lua'
 if not package.path:find(go_nvim_path, 1, true) then
-	package.path = package.path .. ";" .. go_nvim_path .. "/?.lua;" .. go_nvim_path .. "/?/init.lua"
+	package.path = package.path .. ';' .. go_nvim_path .. '/?.lua;' .. go_nvim_path .. '/?/init.lua'
 end
 
-require("go").setup({
+require('go').setup({
 	diagnostic = false,
 })
 
-vim.api.nvim_create_user_command("GoAddTagEmpty", function()
-	vim.api.nvim_command(":GoAddTag json -add-options json=")
-end, { nargs = "*" })
+vim.api.nvim_create_user_command('GoAddTagEmpty', function()
+	vim.api.nvim_command(':GoAddTag json -add-options json=')
+end, { nargs = '*' })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("go_auto_import", { clear = true }),
+vim.api.nvim_create_autocmd('BufWritePost', {
+	group = vim.api.nvim_create_augroup('go_auto_import', { clear = true }),
 	nested = true,
 	callback = function()
-		cmd("GoImports")
+		cmd('GoImports')
 	end,
 })
 
+-- lsp高亮的优先级要低于 treesitter
 vim.highlight.priorities.semantic_tokens = 95 -- default is 125
 vim.highlight.priorities.treesitter = 100 -- default is 100
 
-require("no-go").setup({
-	identifiers = { "err", "error" }, -- Customize which identifiers to collapse
+-- 清除 LSP semantic token 对 comment 的高亮，让 treesitter 的 @comment.todo 等生效
+vim.api.nvim_set_hl(0, '@lsp.type.comment.go', {})
+
+require('no-go').setup({
+	identifiers = { 'err', 'error' }, -- Customize which identifiers to collapse
 	-- look at the default config for more details
-	highlight_group = "LspInlayHint",
+	highlight_group = 'LspInlayHint',
 	fold_imports = true,
 })
 
-require("more-go").setup()
+require('more-go').setup()
 
-require("gopher").setup()
+require('gopher').setup()
 
-vim.lsp.enable("gopls")
+vim.lsp.enable('gopls')
+
+dofile(vim.fn.stdpath('config') .. '/ftplugin/markdown.lua')
