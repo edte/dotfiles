@@ -1,3 +1,5 @@
+"用来增强 `%` 键的功能，使其能够匹配和跳转引号
+
 scriptencoding utf-8
 
 if exists("g:loaded_matchquote") || &cp

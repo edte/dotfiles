@@ -252,6 +252,10 @@ wk.add({
 	{ '<right>', '<c-w>l', desc = 'move right' },
 	{ '<up>', '<c-w>k', desc = 'move up' },
 	{ '<down>', '<c-w>j', desc = 'move down' },
+
+	-- bufferline
+	{ 'gn', '<cmd>BufferLineCycleNext<cr>', desc = 'next buffer' },
+	{ 'gp', '<cmd>BufferLineCyclePrev<cr>', desc = 'prev buffer' },
 })
 
 -- 按f快速跳转
