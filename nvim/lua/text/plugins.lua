@@ -10,6 +10,19 @@ M.list = {
 			-- 这样 markview 才能正确渲染 markdown 内容
 			vim.treesitter.language.register('markdown', 'codecompanion')
 
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'TSUpdate',
+				callback = function()
+					require('nvim-treesitter.parsers').comment = {
+						install_info = {
+							url = 'https://github.com/OXY2DEV/tree-sitter-comment',
+							branch = 'main', -- only needed if different from default branch
+							queries = 'queries/',
+						},
+					}
+				end,
+			})
+
 			require('nvim-treesitter').install({
 				'bash',
 				'c',
@@ -49,19 +62,6 @@ M.list = {
 
 			require('nvim-treesitter').setup({
 				install_dir = vim.fn.stdpath('data') .. '/site',
-			})
-
-			vim.api.nvim_create_autocmd('User', {
-				pattern = 'TSUpdate',
-				callback = function()
-					require('nvim-treesitter.parsers').comment = {
-						install_info = {
-							url = 'https://github.com/OXY2DEV/tree-sitter-comment',
-							branch = 'main', -- only needed if different from default branch
-							queries = 'queries/',
-						},
-					}
-				end,
 			})
 		end,
 	},
