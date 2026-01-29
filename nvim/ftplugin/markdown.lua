@@ -9,6 +9,7 @@ vim.pack.add({
 
 require('markview').setup({
 	preview = {
+		map_gx = false,
 		filetypes = {
 			'markdown',
 			'norg',
