@@ -16,6 +16,7 @@ M.list = {
 
 			-- 移除注释中的标点符号高亮 (如 // 中的斜杠)
 			vim.api.nvim_set_hl(0, '@punctuation.delimiter.comment', {})
+			vim.api.nvim_set_hl(0, '@number.comment', {})
 
 			-- 注册 OXY2DEV 的 comment parser
 			-- 支持注释内 markdown、引号文本、@提及、issue 引用、URL 等高亮
