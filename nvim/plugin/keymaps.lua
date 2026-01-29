@@ -188,26 +188,47 @@ wk.add({
 	{
 		'<space>d',
 		function()
-			-- 与剪贴板内容进行差异比较
 			local ftype = vim.api.nvim_eval('&filetype')
-			cmd(string.format(
-				[[
-  execute "normal! \"xy"
-  vsplit
-  enew
-  normal! P
-  setlocal buftype=nowrite
-  set filetype=%s
-  diffthis
-  execute "normal! \<C-w>\<C-w>"
-  enew
-  set filetype=%s
-  normal! "xP
-  diffthis
-  ]],
-				ftype,
-				ftype
-			))
+			cmd('normal! "xy')
+
+			-- 左侧：剪贴板内容
+			cmd('vsplit')
+			cmd('enew')
+			local left_buf = vim.api.nvim_get_current_buf()
+			cmd('normal! P')
+			cmd('setlocal buftype=nofile bufhidden=wipe nomodifiable')
+			cmd('set filetype=' .. ftype)
+
+			-- 右侧：原始内容
+			cmd('wincmd w')
+			cmd('enew')
+			local right_buf = vim.api.nvim_get_current_buf()
+			cmd('normal! "xP')
+			cmd('setlocal buftype=nofile bufhidden=wipe')
+			cmd('set filetype=' .. ftype)
+
+			-- 最后统一设置 diff 和绑定
+			cmd('wincmd w') -- 切到左窗口
+			cmd('diffthis')
+			cmd('set scrollbind cursorbind')
+
+			cmd('wincmd w') -- 切到右窗口
+			cmd('diffthis')
+			cmd('set scrollbind cursorbind')
+
+			-- 为两个缓冲区都设置退出快捷键
+			local quit_cmd = function()
+				cmd('diffoff!')
+				cmd('bdelete ' .. left_buf)
+				cmd('bdelete ' .. right_buf)
+			end
+
+			vim.keymap.set('n', 'q', quit_cmd, { buffer = left_buf, noremap = true })
+			vim.keymap.set('n', 'q', quit_cmd, { buffer = right_buf, noremap = true })
+			vim.keymap.set('n', '<space>q', quit_cmd, { buffer = left_buf, noremap = true })
+			vim.keymap.set('n', '<space>q', quit_cmd, { buffer = right_buf, noremap = true })
+			vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = left_buf, noremap = true })
+			vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = right_buf, noremap = true })
 		end,
 		desc = 'diff copy',
 	},
