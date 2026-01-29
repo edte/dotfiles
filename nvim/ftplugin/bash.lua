@@ -15,6 +15,4 @@ vim.lsp.config('bashls', {
 
 vim.lsp.enable('bashls')
 
-vim.lsp.start(vim.lsp.config.bashls)
-
 dofile(vim.fn.stdpath('config') .. '/ftplugin/markdown.lua')
