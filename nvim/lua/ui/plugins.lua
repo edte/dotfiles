@@ -1,11 +1,6 @@
 local M = {}
 
 M.list = {
-	{
-		'folke/tokyonight.nvim',
-		lazy = true,
-		opts = { style = 'moon' },
-	},
 
 	{
 		'akinsho/bufferline.nvim',

@@ -624,6 +624,11 @@ M.list = {
 			local function updateMiniWithGit(buf_id, gitStatusMap)
 				local MiniFiles = require('mini.files')
 				vim.schedule(function()
+					-- 检查 buffer 是否有效，防止 buffer 被删除后继续操作
+					if not vim.api.nvim_buf_is_valid(buf_id) then
+						return
+					end
+
 					local nlines = vim.api.nvim_buf_line_count(buf_id)
 					local git_root = vim.fs.root(vim.uv.cwd(), '.git')
 					local escapedcwd = escapePattern(git_root)
