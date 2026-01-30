@@ -62,7 +62,7 @@ setw -g window-status-format ''
 # 仅显示当前窗口的名称，不显示窗口索引
 setw -g window-status-current-format '#[fg=color222,bg=colour238] #W #[fg=colour238,bg=colour235]'
 
-set -g status-right '#[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] %m-%d 周%a %H:%M #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]'
+set -g status-right '#[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] %Y-%m-%d %H:%M #[fg=colour154,bg=colour238,nobold,nounderscore,noitalics]'
 
 # set -g default-command "reattach-to-user-namespace -l $SHELL"
 
