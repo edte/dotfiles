@@ -1,6 +1,6 @@
 all:
 	mv ~/.codebuddy/CODEBUDDY.md ~/.codebuddy/CODEBUDDY.md.bk
-	ln -s ~/dotfiles/claude/CODEBUDDY.md  ~/.codebuddy/rules.md
+	ln -s ~/dotfiles/claude/rules.md  ~/.codebuddy/CODEBUDDY.md
 
 	mv ~/.codebuddy/mcp.json ~/.codebuddy/mcp.json.bk
 	ln -s ~/dotfiles/claude/mcp.json  ~/.codebuddy/mcp.json

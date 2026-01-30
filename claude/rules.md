@@ -1,4 +1,4 @@
-## 通用礼节 (General Etiquette)
+# 通用礼节 (General Etiquette)
 
 - 优先保证代码简洁易懂。
 - 别搞过度设计，简单实用就好。
