@@ -10,3 +10,7 @@ all:
 
 	mv ~/.codebuddy/.lsp.json ~/.codebuddy/.lsp.json.bk
 	ln -s ~/dotfiles/claude/lsp.json  ~/.codebuddy/.lsp.json
+
+	rm -rf ~/.codebuddy/skills
+	mkdir -p ~/.codebuddy/skills
+	stow skills -t ~/.codebuddy/skills

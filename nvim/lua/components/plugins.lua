@@ -1339,12 +1339,12 @@ M.list = {
 		end,
 	},
 
-	{
-		'DamianVCechov/hexview.nvim',
-		config = function()
-			require('hexview').setup()
-		end,
-	},
+	-- {
+	-- 	'DamianVCechov/hexview.nvim',
+	-- 	config = function()
+	-- 		require('hexview').setup()
+	-- 	end,
+	-- },
 }
 
 return M
