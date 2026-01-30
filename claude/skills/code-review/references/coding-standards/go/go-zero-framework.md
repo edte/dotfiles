@@ -14,20 +14,23 @@
 
 ## 审查类别
 
-### 1. API 定义审查（*.api 文件）
+### 1. API 定义审查（\*.api 文件）
 
 **规则标识**: `[category:go-zero-api]`
 
 #### 1.1 API 设计规范
+
 **规则**: `[rule:go-zero-api-design]`
 
 **检查要点**:
+
 - 路由定义是否清晰、符合 RESTful 规范
 - 路由分组是否合理（按业务模块或功能分组）
 - HTTP 方法使用是否正确（GET/POST/PUT/DELETE/PATCH）
 - 路径参数命名是否规范
 
 **示例问题**:
+
 ```api
 // ❌ 不好的设计
 post /getUserInfo (GetUserRequest) returns (GetUserResponse)
@@ -37,15 +40,18 @@ get /api/v1/users/:id (GetUserRequest) returns (GetUserResponse)
 ```
 
 #### 1.2 类型定义
+
 **规则**: `[rule:go-zero-type-definition]`
 
 **检查要点**:
+
 - Request/Response 结构体定义是否完整
 - 字段标签（json、form、path、validate）是否正确
 - 是否有必要的验证标签（required、min、max等）
 - 字段命名是否符合规范（驼峰命名）
 
 **示例问题**:
+
 ```api
 // ❌ 缺少验证标签
 type CreateUserRequest {
@@ -61,14 +67,17 @@ type CreateUserRequest {
 ```
 
 #### 1.3 JWT 和认证配置
+
 **规则**: `[rule:go-zero-auth]`
 
 **检查要点**:
+
 - JWT 配置是否正确（Auth 字段）
 - 需要认证的接口是否都配置了 jwt
 - 认证配置是否一致
 
 **示例问题**:
+
 ```api
 // ❌ 需要认证但未配置
 @server(
@@ -91,9 +100,11 @@ service user-api {
 ```
 
 #### 1.4 中间件配置
+
 **规则**: `[rule:go-zero-middleware]`
 
 **检查要点**:
+
 - 中间件声明是否正确
 - 中间件应用范围是否合理
 - 中间件顺序是否正确
@@ -103,14 +114,17 @@ service user-api {
 **规则标识**: `[category:go-zero-logic]`
 
 #### 2.1 Logic 结构设计
+
 **规则**: `[rule:go-zero-logic-structure]`
 
 **检查要点**:
+
 - Logic 结构体是否正确接收 `svcCtx`
 - 是否正确使用依赖注入
-- 构造函数命名是否符合规范（New*Logic）
+- 构造函数命名是否符合规范（New\*Logic）
 
 **示例问题**:
+
 ```go
 // ❌ 不好的设计
 type GetUserLogic struct {
@@ -135,14 +149,17 @@ func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLo
 ```
 
 #### 2.2 Context 传递
+
 **规则**: `[rule:go-zero-context]`
 
 **检查要点**:
+
 - 是否正确传递和使用 `context.Context`
 - 链路追踪信息是否正确传递
 - 是否在所有外部调用中传递 context
 
 **示例问题**:
+
 ```go
 // ❌ 未传递 context
 func (l *GetUserLogic) GetUser(req *types.GetUserRequest) (*types.GetUserResponse, error) {
@@ -158,15 +175,18 @@ func (l *GetUserLogic) GetUser(req *types.GetUserRequest) (*types.GetUserRespons
 ```
 
 #### 2.3 错误处理
+
 **规则**: `[rule:go-zero-error]`
 
 **检查要点**:
+
 - 是否使用 go-zero 的错误处理机制
 - 错误码定义是否规范
 - 是否正确使用 `errorx` 包
 - 错误信息是否友好且不泄露敏感信息
 
 **示例问题**:
+
 ```go
 // ❌ 直接返回底层错误
 func (l *GetUserLogic) GetUser(req *types.GetUserRequest) (*types.GetUserResponse, error) {
@@ -191,9 +211,11 @@ func (l *GetUserLogic) GetUser(req *types.GetUserRequest) (*types.GetUserRespons
 ```
 
 #### 2.4 数据库操作
+
 **规则**: `[rule:go-zero-db]`
 
 **检查要点**:
+
 - 是否正确使用 sqlx 或 gorm
 - 是否有 SQL 注入风险
 - 事务处理是否正确
@@ -201,6 +223,7 @@ func (l *GetUserLogic) GetUser(req *types.GetUserRequest) (*types.GetUserRespons
 - 是否使用了缓存（如果配置了缓存）
 
 **示例问题**:
+
 ```go
 // ❌ SQL 注入风险
 func (l *GetUserLogic) SearchUsers(keyword string) ([]*User, error) {
@@ -238,9 +261,11 @@ func (l *TransferLogic) Transfer(from, to int64, amount float64) error {
 ```
 
 #### 2.5 缓存使用
+
 **规则**: `[rule:go-zero-cache]`
 
 **检查要点**:
+
 - 是否正确使用 go-zero 的缓存机制
 - 缓存键设计是否合理（避免冲突）
 - 是否有缓存穿透、击穿、雪崩风险
@@ -248,6 +273,7 @@ func (l *TransferLogic) Transfer(from, to int64, amount float64) error {
 - 是否正确处理缓存更新和删除
 
 **示例问题**:
+
 ```go
 // ❌ 缓存键设计不当
 func (l *GetUserLogic) GetUser(id int64) (*User, error) {
@@ -283,15 +309,18 @@ func (l *GetUserLogic) GetUser(id int64) (*User, error) {
 ```
 
 #### 2.6 RPC 调用
+
 **规则**: `[rule:go-zero-rpc]`
 
 **检查要点**:
+
 - RPC 调用是否正确传递 context
 - 是否有超时控制
 - 是否有熔断和降级处理
 - 错误处理是否正确
 
 **示例问题**:
+
 ```go
 // ❌ 未传递 context，无超时控制
 func (l *GetOrderLogic) GetOrder(req *types.GetOrderRequest) (*types.GetOrderResponse, error) {
@@ -305,7 +334,7 @@ func (l *GetOrderLogic) GetOrder(req *types.GetOrderRequest) (*types.GetOrderRes
 func (l *GetOrderLogic) GetOrder(req *types.GetOrderRequest) (*types.GetOrderResponse, error) {
     ctx, cancel := context.WithTimeout(l.ctx, 3*time.Second)
     defer cancel()
-    
+
     order, err := l.svcCtx.OrderRpc.GetOrder(ctx, &order.GetOrderReq{
         Id: req.Id,
     })
@@ -317,20 +346,23 @@ func (l *GetOrderLogic) GetOrder(req *types.GetOrderRequest) (*types.GetOrderRes
 }
 ```
 
-### 3. 配置文件审查（etc/*.yaml）
+### 3. 配置文件审查（etc/\*.yaml）
 
 **规则标识**: `[category:go-zero-config]`
 
 #### 3.1 安全配置
+
 **规则**: `[rule:go-zero-config-security]`
 
 **检查要点**:
+
 - 敏感信息（密码、密钥）是否明文存储
 - JWT 密钥强度是否足够（建议至少32字符）
 - 是否使用环境变量或密钥管理服务
 - Redis 密码是否明文存储
 
 **示例问题**:
+
 ```yaml
 # ❌ 明文存储敏感信息
 Auth:
@@ -350,15 +382,18 @@ Mysql:
 ```
 
 #### 3.2 性能配置
+
 **规则**: `[rule:go-zero-config-performance]`
 
 **检查要点**:
+
 - 超时时间设置是否合理
 - 连接池大小是否合理
 - 缓存配置是否合理
 - 日志级别是否适合生产环境
 
 **示例问题**:
+
 ```yaml
 # ❌ 配置不合理
 Timeout: 100000  # 超时时间过长（100秒）
@@ -378,14 +413,16 @@ LogLevel: info   # 生产环境使用 info 级别
 go-zero 会自动生成部分代码，这些代码通常不需要审查。建议在配置文件中忽略：
 
 **推荐的忽略配置**（在 `.codereview` 中）:
+
 ```yaml
 exclude_paths:
-  - "internal/types/types.go"           # API 类型定义（自动生成）
-  - "internal/handler/**/*handler.go"   # Handler 层（自动生成）
-  - "**/*.pb.go"                        # Protobuf 生成文件
+  - "internal/types/types.go" # API 类型定义（自动生成）
+  - "internal/handler/**/*handler.go" # Handler 层（自动生成）
+  - "**/*.pb.go" # Protobuf 生成文件
 ```
 
 **需要审查的代码**:
+
 - `internal/logic/` - 业务逻辑层（手写）
 - `internal/svc/servicecontext.go` - 服务上下文（部分手写）
 - `internal/config/config.go` - 配置定义（部分手写）
@@ -397,11 +434,13 @@ exclude_paths:
 **规则**: `[rule:go-zero-structure]`
 
 **检查要点**:
+
 - 是否遵循 go-zero 推荐的项目结构
 - 目录命名是否规范
 - 文件组织是否合理
 
 **标准项目结构**:
+
 ```
 .
 ├── api/                    # API 定义文件
@@ -422,21 +461,26 @@ exclude_paths:
 ## 最佳实践
 
 ### 1. 依赖注入
+
 通过 `ServiceContext` 管理所有依赖，便于测试和维护。
 
 ### 2. 错误处理
+
 使用 `errorx` 包统一错误处理，定义清晰的错误码。
 
 ### 3. 日志记录
+
 使用 `logx` 包记录日志，包含必要的上下文信息。
 
 ### 4. 性能优化
+
 - 合理使用缓存
 - 避免 N+1 查询
 - 使用连接池
 - 设置合理的超时时间
 
 ### 5. 安全性
+
 - 输入验证
 - SQL 参数化查询
 - 敏感信息加密存储

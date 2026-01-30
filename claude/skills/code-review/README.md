@@ -80,6 +80,7 @@ Code Review Skill 遵循以下 7 步工作流程：
 #### 0️⃣ 配置读取
 
 自动读取项目根目录的 `.codereview` 配置文件（可选），支持：
+
 - 排除特定文件/目录
 - 忽略特定审查类别或规则
 - 设置审查严格程度
@@ -88,6 +89,7 @@ Code Review Skill 遵循以下 7 步工作流程：
 #### 1️⃣ 需求收集
 
 支持多种需求输入方式：
+
 - **TAPD URL**：通过 TAPD MCP 工具获取需求详情
 - **Word 文档**：使用 `parse_word.py` 解析 `.docx` 文件
 - **Markdown/文本**：直接读取需求文档
@@ -97,10 +99,12 @@ Code Review Skill 遵循以下 7 步工作流程：
 #### 2️⃣ 代码变更分析
 
 **项目检测**：
+
 - 自动识别编程语言（通过 `go.mod`、`pom.xml`、`package.json` 等）
 - 检测框架类型（如 go-zero 通过 `.api` 文件识别）
 
 **Git 变更分析**：
+
 ```bash
 # 使用 analyze_git_diff.py 脚本
 python3 scripts/analyze_git_diff.py --range HEAD~1..HEAD
@@ -116,6 +120,7 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 ```
 
 **执行逻辑**：
+
 1. 优先检测 `Makefile` 中的 `lint:` 目标
 2. 否则按语言选择默认工具：
    - Go: `tencentlint` (golangci-lint)
@@ -126,6 +131,7 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 #### 4️⃣ 架构分析
 
 生成规格文档 `docs/spec-<功能名称>-<日期>.md`，包含：
+
 - 架构概览
 - 数据流分析
 - 关键组件说明
@@ -138,17 +144,18 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 
 基于编码标准文档进行多维度审查：
 
-| 审查类别 | 检查项 |
-|---------|--------|
-| **并发安全** | data-race, goroutine-leak, lock-usage, channel-operation |
-| **安全性** | sql-injection, command-injection, path-traversal, weak-crypto, authentication, authorization |
-| **潜在Bug** | nil-pointer, loop-closure, slice-modification, integer-overflow, boundary-check |
-| **性能** | memory-allocation, string-concatenation, slice-preallocation, struct-copy |
-| **编程规范** | interface-design, error-wrapping, error-checking, context-propagation, naming-convention |
-| **资源管理** | resource-close, context-lifecycle, memory-leak |
-| **框架专项** | go-zero API设计、logic层、配置文件审查 |
+| 审查类别     | 检查项                                                                                       |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| **并发安全** | data-race, goroutine-leak, lock-usage, channel-operation                                     |
+| **安全性**   | sql-injection, command-injection, path-traversal, weak-crypto, authentication, authorization |
+| **潜在Bug**  | nil-pointer, loop-closure, slice-modification, integer-overflow, boundary-check              |
+| **性能**     | memory-allocation, string-concatenation, slice-preallocation, struct-copy                    |
+| **编程规范** | interface-design, error-wrapping, error-checking, context-propagation, naming-convention     |
+| **资源管理** | resource-close, context-lifecycle, memory-leak                                               |
+| **框架专项** | go-zero API设计、logic层、配置文件审查                                                       |
 
 **严重程度分级**：
+
 - 🛑 **严重**：功能缺陷、安全漏洞（必须修复）
 - ⚠️ **重要**：性能问题、质量问题（建议修复）
 - 💡 **建议**：代码风格、最佳实践（可选优化）
@@ -158,6 +165,7 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 使用 `assets/report-template.md` 模板生成报告，保存至 `docs/code-review-<功能名称>-<日期>.md`。
 
 报告包含：
+
 - 基本信息和审查范围
 - 需求符合性分析
 - 代码质量与复杂度
@@ -171,12 +179,15 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 
 ```markdown
 ### 🛑 Critical (必须修复)
+
 - [ ] [Security] 修复SQL注入 (user.go:123)
 
 ### ⚠️ Major (建议修复)
+
 - [ ] [Performance] 预分配slice (processor.go:78)
 
 ### 💡 Minor (可选优化)
+
 - [ ] [Style] 命名规范 (utils.go:234)
 ```
 
@@ -190,7 +201,7 @@ python3 scripts/lint_check.py -l java --repo /path/to/project
 
 ```yaml
 # 审查严格程度
-severity: standard  # strict | standard | loose
+severity: standard # strict | standard | loose
 
 # 排除路径（文件级跳过）
 exclude_paths:
@@ -198,7 +209,7 @@ exclude_paths:
   - "node_modules/"
   - "*.pb.go"
   - "*_test.go"
-  - "internal/types/types.go"  # go-zero 生成的代码
+  - "internal/types/types.go" # go-zero 生成的代码
 
 # 忽略特定审查类别
 ignore_categories:
@@ -269,6 +280,7 @@ python3 scripts/analyze_git_diff.py --range HEAD~1..HEAD --verbose
 ```
 
 **输出示例**：
+
 ```json
 [
   {
@@ -304,11 +316,13 @@ python3 scripts/lint_check.py -l go --repo /path/to/project
 ```
 
 **执行逻辑**：
+
 1. 检测 `Makefile` 中的 `lint:` 目标 → 执行 `make lint`
 2. 否则使用语言默认工具
 3. Go 配置优先级：项目 `.golangci.yml` > skill 内置配置
 
 **输出**：
+
 - 成功：`Lint Success`
 - 失败：输出错误信息
 
@@ -331,6 +345,7 @@ python3 scripts/sync_standards.py --list
 ```
 
 **支持的外部标准**：
+
 - SQL: `https://git.woa.com/standards/sql.git`
 - C#: `https://git.woa.com/standards/csharp.git`
 - ProtoBuf: `https://git.woa.com/standards/protobuf.git`
@@ -346,6 +361,7 @@ python3 scripts/parse_word.py requirement.docx
 ```
 
 **功能**：
+
 - 提取段落文本
 - 提取表格内容
 - 自动安装 `python-docx` 依赖（如未安装）
@@ -405,6 +421,7 @@ python3 scripts/parse_word.py requirement.docx
 ### 框架专项 [framework]
 
 **go-zero 框架**（检测到 `github.com/zeromicro/go-zero` 依赖时）：
+
 - API 定义规范
 - Logic 层实现
 - 配置文件审查
@@ -421,22 +438,22 @@ python3 scripts/parse_word.py requirement.docx
 
 ### 内置标准
 
-| 语言 | 标准文档 | 安全文档 | Lint 工具 |
-|------|---------|---------|----------|
-| **Go** | ✅ | ✅ | tencentlint/golangci-lint |
-| **Java** | ✅ | ✅ | spotless/checkstyle |
-| **Python** | ✅ | ✅ | ruff/flake8 |
-| **C++** | ✅ | ✅ | clang-tidy |
+| 语言       | 标准文档 | 安全文档 | Lint 工具                 |
+| ---------- | -------- | -------- | ------------------------- |
+| **Go**     | ✅       | ✅       | tencentlint/golangci-lint |
+| **Java**   | ✅       | ✅       | spotless/checkstyle       |
+| **Python** | ✅       | ✅       | ruff/flake8               |
+| **C++**    | ✅       | ✅       | clang-tidy                |
 
 ### 其他标准（需同步）
 
-| 语言 | 标准文档 | 同步命令 |
-|------|---------|---------|
-| **SQL** | ✅ | `sync_standards.py --languages sql` |
-| **C#** | ✅ | `sync_standards.py --languages csharp` |
-| **ProtoBuf** | ✅ | `sync_standards.py --languages protobuf` |
-| **Lua** | ✅ | `sync_standards.py --languages lua` |
-| **CSS** | ✅ | `sync_standards.py --languages css` |
+| 语言         | 标准文档 | 同步命令                                 |
+| ------------ | -------- | ---------------------------------------- |
+| **SQL**      | ✅       | `sync_standards.py --languages sql`      |
+| **C#**       | ✅       | `sync_standards.py --languages csharp`   |
+| **ProtoBuf** | ✅       | `sync_standards.py --languages protobuf` |
+| **Lua**      | ✅       | `sync_standards.py --languages lua`      |
+| **CSS**      | ✅       | `sync_standards.py --languages css`      |
 
 ---
 
@@ -460,6 +477,7 @@ codebuddy -y -p "使用code-review这个SKILL对本次提交进行代码审查�
 ### Q1: 如何跳过测试文件的审查？
 
 在 `.codereview` 配置中添加：
+
 ```yaml
 exclude_paths:
   - "*_test.go"
@@ -476,6 +494,7 @@ ignore_rules:
 ```
 
 或针对特定文件：
+
 ```yaml
 file_ignore_rules:
   - file: "internal/legacy/**/*.go"
@@ -492,6 +511,7 @@ file_ignore_rules:
 ### Q4: 如何自定义编码标准？
 
 在 `.codereview` 中指定自定义标准文档：
+
 ```yaml
 coding_standards:
   go: /path/to/custom/go-standard.md
@@ -501,6 +521,7 @@ coding_standards:
 ### Q5: 审查报告保存在哪里？
 
 默认保存在 `docs/code-review-<功能名称>-<日期>.md`，可通过配置自定义：
+
 ```yaml
 output: code-review/CR-${requirement}-${date}.md
 ```

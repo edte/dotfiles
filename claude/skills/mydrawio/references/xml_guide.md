@@ -24,11 +24,11 @@ The root element of a draw.io file.
 
 **Attributes:**
 
--   `host`: The application that created the file (e.g., "app.diagrams.net")
--   `modified`: Last modification timestamp
--   `agent`: Browser / user agent information
--   `version`: Version of the application
--   `type`: File type (usually "device" or "google")
+- `host`: The application that created the file (e.g., "app.diagrams.net")
+- `modified`: Last modification timestamp
+- `agent`: Browser / user agent information
+- `version`: Version of the application
+- `type`: File type (usually "device" or "google")
 
 **Example:**
 
@@ -42,8 +42,8 @@ Each page in your draw.io document is represented by a `<diagram>` element.
 
 **Attributes:**
 
--   `id`: Unique identifier for the diagram
--   `name`: The name of the diagram / page
+- `id`: Unique identifier for the diagram
+- `name`: The name of the diagram / page
 
 **Example:**
 
@@ -57,21 +57,21 @@ Contains the actual diagram data.
 
 **Attributes:**
 
--   `dx`: Grid size in x-direction (usually 1)
--   `dy`: Grid size in y-direction (usually 1)
--   `grid`: Whether grid is enabled (0 or 1)
--   `gridSize`: Grid cell size (usually 10)
--   `guides`: Whether guides are enabled (0 or 1)
--   `tooltips`: Whether tooltips are enabled (0 or 1)
--   `connect`: Whether connections are enabled (0 or 1)
--   `arrows`: Whether arrows are enabled (0 or 1)
--   `fold`: Whether folding is enabled (0 or 1)
--   `page`: Whether page view is enabled (0 or 1)
--   `pageScale`: Scale of the page (usually 1)
--   `pageWidth`: Width of the page (e.g., 850)
--   `pageHeight`: Height of the page (e.g., 1100)
--   `math`: Whether math typesetting is enabled (0 or 1)
--   `shadow`: Whether shadows are enabled (0 or 1)
+- `dx`: Grid size in x-direction (usually 1)
+- `dy`: Grid size in y-direction (usually 1)
+- `grid`: Whether grid is enabled (0 or 1)
+- `gridSize`: Grid cell size (usually 10)
+- `guides`: Whether guides are enabled (0 or 1)
+- `tooltips`: Whether tooltips are enabled (0 or 1)
+- `connect`: Whether connections are enabled (0 or 1)
+- `arrows`: Whether arrows are enabled (0 or 1)
+- `fold`: Whether folding is enabled (0 or 1)
+- `page`: Whether page view is enabled (0 or 1)
+- `pageScale`: Scale of the page (usually 1)
+- `pageWidth`: Width of the page (e.g., 850)
+- `pageHeight`: Height of the page (e.g., 1100)
+- `math`: Whether math typesetting is enabled (0 or 1)
+- `shadow`: Whether shadows are enabled (0 or 1)
 
 **Example:**
 
@@ -100,21 +100,21 @@ The basic building block of diagrams. Cells represent shapes, connectors, text, 
 
 **Attributes for all cells:**
 
--   `id`: Unique identifier for the cell
--   `parent`: ID of the parent cell (typically "1" for most cells)
--   `value`: Text content of the cell
--   `style`: Styling information (see Style section below)
+- `id`: Unique identifier for the cell
+- `parent`: ID of the parent cell (typically "1" for most cells)
+- `value`: Text content of the cell
+- `style`: Styling information (see Style section below)
 
 **Attributes for shapes (vertices):**
 
--   `vertex`: Set to "1" for shapes
-    -   `connectable`: Whether the shape can be connected (0 or 1)
+- `vertex`: Set to "1" for shapes
+  - `connectable`: Whether the shape can be connected (0 or 1)
 
 **Attributes for connectors (edges):**
 
--   `edge`: Set to "1" for connectors
-    -   `source`: ID of the source cell
-    -   `target`: ID of the target cell
+- `edge`: Set to "1" for connectors
+  - `source`: ID of the source cell
+  - `target`: ID of the target cell
 
 **Example (Rectangle shape):**
 
@@ -141,16 +141,16 @@ Defines the position and dimensions of cells.
 
 **Attributes for shapes:**
 
--   `x`: The x-coordinate of the **top-left** point of the shape.
--   `y`: The y-coordinate of the **top-left** point of the shape.
--   `width`: The width of the shape.
--   `height`: The height of the shape.
--   `as`: Specifies the role of this geometry within its parent cell. Typically set to `"geometry"` for the main shape definition.
+- `x`: The x-coordinate of the **top-left** point of the shape.
+- `y`: The y-coordinate of the **top-left** point of the shape.
+- `width`: The width of the shape.
+- `height`: The height of the shape.
+- `as`: Specifies the role of this geometry within its parent cell. Typically set to `"geometry"` for the main shape definition.
 
 **Attributes for connectors:**
 
--   `relative`: Set to "1" for relative geometry
--   `as`: Set to "geometry"
+- `relative`: Set to "1" for relative geometry
+- `as`: Set to "geometry"
 
 **Example for shapes:**
 
@@ -173,28 +173,28 @@ Styles are specified as semicolon-separated `key=value` pairs in the `style` att
 
 ### Shape-specific Styles
 
--   Rectangle: `shape=rectangle`
--   Ellipse: `shape=ellipse`
--   Triangle: `shape=triangle`
--   Rhombus: `shape=rhombus`
--   Hexagon: `shape=hexagon`
--   Cloud: `shape=cloud`
--   Actor: `shape=actor`
--   Cylinder: `shape=cylinder`
--   Document: `shape=document`
--   Note: `shape=note`
--   Card: `shape=card`
--   Parallelogram: `shape=parallelogram`
+- Rectangle: `shape=rectangle`
+- Ellipse: `shape=ellipse`
+- Triangle: `shape=triangle`
+- Rhombus: `shape=rhombus`
+- Hexagon: `shape=hexagon`
+- Cloud: `shape=cloud`
+- Actor: `shape=actor`
+- Cylinder: `shape=cylinder`
+- Document: `shape=document`
+- Note: `shape=note`
+- Card: `shape=card`
+- Parallelogram: `shape=parallelogram`
 
 ### Connector Styles
 
--   `endArrow=classic`: Arrow type at the end (classic, open, oval, diamond, block)
--   `startArrow=none`: Arrow type at the start (none, classic, open, oval, diamond)
--   `curved=1`: Curved connector (0 or 1)
--   `edgeStyle=orthogonalEdgeStyle`: Connector routing style
--   `elbow=vertical`: Elbow direction (vertical, horizontal)
--   `jumpStyle=arc`: Jump style for line crossing (arc, gap)
--   `jumpSize=10`: Size of the jump
+- `endArrow=classic`: Arrow type at the end (classic, open, oval, diamond, block)
+- `startArrow=none`: Arrow type at the start (none, classic, open, oval, diamond)
+- `curved=1`: Curved connector (0 or 1)
+- `edgeStyle=orthogonalEdgeStyle`: Connector routing style
+- `elbow=vertical`: Elbow direction (vertical, horizontal)
+- `jumpStyle=arc`: Jump style for line crossing (arc, gap)
+- `jumpSize=10`: Size of the jump
 
 ## Special Cells
 

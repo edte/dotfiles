@@ -6,13 +6,13 @@
 
 ## 1. 配色策略
 
-| 原则 | 说明 | 示例 |
-|------|------|------|
-| **色彩数量** | 主色 ≤ 7 种，每种组件类型独立语义 | 橙蓝绿紫粉黄灰 |
-| **对比度** | 背景与前景对比度 ≥ 4.5:1 (WCAG AA) | 白底 + `black!70` 文字，不用纯黑 |
-| **语义一致** | 相同类型组件用同色系 | 所有 Attention 层用橙色 |
-| **饱和度** | 学术图饱和度 50-60%，不刺眼 | Material Design 色板 |
-| **透明度微调** | 次要组件降低不透明度 | `green1!70` 让 Norm 层不抢眼 |
+| 原则           | 说明                               | 示例                             |
+| -------------- | ---------------------------------- | -------------------------------- |
+| **色彩数量**   | 主色 ≤ 7 种，每种组件类型独立语义  | 橙蓝绿紫粉黄灰                   |
+| **对比度**     | 背景与前景对比度 ≥ 4.5:1 (WCAG AA) | 白底 + `black!70` 文字，不用纯黑 |
+| **语义一致**   | 相同类型组件用同色系               | 所有 Attention 层用橙色          |
+| **饱和度**     | 学术图饱和度 50-60%，不刺眼        | Material Design 色板             |
+| **透明度微调** | 次要组件降低不透明度               | `green1!70` 让 Norm 层不抢眼     |
 
 ### 推荐配色方案 (Material Design 柔和色)
 
@@ -41,6 +41,7 @@ colors = {
 ```
 
 **推荐配色工具**:
+
 - [Adobe Color](https://color.adobe.com) - 配色轮盘
 - [Coolors](https://coolors.co) - 快速生成调色板
 - [Material Design Colors](https://m2.material.io/design/color) - Google 官方色板
@@ -66,11 +67,11 @@ norm/.style={box, fill=green1!70, minimum height=0.55cm, font=\scriptsize\sffami
 
 ### 尺寸区分原则
 
-| 组件类型 | 高度 | 字体 | 说明 |
-|----------|------|------|------|
-| 主要组件 (Attention/FFN) | 0.7cm | `\footnotesize` | 视觉焦点 |
-| 次要组件 (Norm) | 0.55cm | `\scriptsize` | 辅助层，不抢眼 |
-| 小型组件 (Positional) | 0.5cm | `\scriptsize` | 最小层级 |
+| 组件类型                 | 高度   | 字体            | 说明           |
+| ------------------------ | ------ | --------------- | -------------- |
+| 主要组件 (Attention/FFN) | 0.7cm  | `\footnotesize` | 视觉焦点       |
+| 次要组件 (Norm)          | 0.55cm | `\scriptsize`   | 辅助层，不抢眼 |
+| 小型组件 (Positional)    | 0.5cm  | `\scriptsize`   | 最小层级       |
 
 ---
 
@@ -84,6 +85,7 @@ norm/.style={box, fill=green1!70, minimum height=0.55cm, font=\scriptsize\sffami
 ```
 
 **原则**:
+
 - 同一图表最多 3-4 种字体大小
 - 统一使用无衬线字体 (`\sffamily`)
 - 英文推荐: `Helvetica / Arial / Roboto`
@@ -106,10 +108,12 @@ norm/.style={box, fill=green1!70, minimum height=0.55cm, font=\scriptsize\sffami
 ```
 
 **优点**:
+
 - 全局统一，修改一处即可调整整体
 - 两级间距区分模块内/模块间关系
 
 ### 留白原则
+
 - 左右留白 ≥ 5% 画布宽度
 - 上下留白 ≥ 3% 画布高度
 - `border=15pt` (TikZ standalone) 提供充足边距
@@ -120,13 +124,13 @@ norm/.style={box, fill=green1!70, minimum height=0.55cm, font=\scriptsize\sffami
 
 ### 线条粗细规范
 
-| 元素 | 推荐粗细 | 颜色 | 用途 |
-|------|----------|------|------|
-| 主要连接线 | 0.5pt | `black!70` | 数据流、主要关系 |
-| 次要连接线 | 0.4pt | `black!40` | 残差连接、辅助 |
-| 强调连接线 | 0.7pt | `blue!60` | 跨模块连接 (如 Encoder→Decoder) |
-| 边框 | 0.5pt | `black!70` | 组件边框 |
-| 模块框 | 0.8pt | `black!40` | 分组边框，淡色 |
+| 元素       | 推荐粗细 | 颜色       | 用途                            |
+| ---------- | -------- | ---------- | ------------------------------- |
+| 主要连接线 | 0.5pt    | `black!70` | 数据流、主要关系                |
+| 次要连接线 | 0.4pt    | `black!40` | 残差连接、辅助                  |
+| 强调连接线 | 0.7pt    | `blue!60`  | 跨模块连接 (如 Encoder→Decoder) |
+| 边框       | 0.5pt    | `black!70` | 组件边框                        |
+| 模块框     | 0.8pt    | `black!40` | 分组边框，淡色                  |
 
 ### 箭头样式定义
 
@@ -155,13 +159,13 @@ arrblue/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.7pt, blue!60},  
 
 ### 左右交替绕行
 
-| 残差连接 | 绕行方向 | 原因 |
-|----------|----------|------|
-| Encoder 残差1 | 绕右 | 避免与左侧 Positional Encoding 冲突 |
-| Encoder 残差2 | 绕左 | 与残差1 交替，视觉平衡 |
-| Decoder 残差1 | 绕左 | 避免与右侧 Positional Encoding 冲突 |
-| Decoder 残差2 | 绕右 | 交替 |
-| Decoder 残差3 | 绕左 | 交替 |
+| 残差连接      | 绕行方向 | 原因                                |
+| ------------- | -------- | ----------------------------------- |
+| Encoder 残差1 | 绕右     | 避免与左侧 Positional Encoding 冲突 |
+| Encoder 残差2 | 绕左     | 与残差1 交替，视觉平衡              |
+| Decoder 残差1 | 绕左     | 避免与右侧 Positional Encoding 冲突 |
+| Decoder 残差2 | 绕右     | 交替                                |
+| Decoder 残差3 | 绕左     | 交替                                |
 
 ---
 
@@ -179,6 +183,7 @@ arrblue/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.7pt, blue!60},  
 ```
 
 **原则**:
+
 - `on background layer` 确保框在组件后面
 - 边框颜色比组件淡 (`black!40` vs `black!70`)
 - 圆角比组件大，形成层级感
@@ -190,7 +195,7 @@ arrblue/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.7pt, blue!60},  
 
 ```latex
 % N× 标记 - 右上角
-\node[font=\scriptsize\sffamily, anchor=west] 
+\node[font=\scriptsize\sffamily, anchor=west]
     at ($(enc_box.north east)+(0.1,-0.1)$) {$\times N$};
 
 % 模块标题 - 顶部居中，灰色不抢眼
@@ -198,6 +203,7 @@ arrblue/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.7pt, blue!60},  
 ```
 
 **原则**:
+
 - 数学符号用 `$...$` 模式，专业感
 - 标题用 `gray!80` 淡化，不抢主体
 - 位置用 `anchor` 精确控制
@@ -219,6 +225,7 @@ plt.legend(frameon=False)
 ```
 
 **TikZ 中的体现**:
+
 - 不使用阴影 (`shadow`)
 - 边框用 `black!70` 而非纯黑
 - 模块框用 `black!40` 更淡

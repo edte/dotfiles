@@ -16,6 +16,7 @@ description: 深度代码审查工具：分析 Git 变更，评估逻辑、代�
 ## 步骤 0: 读取配置
 
 检查项目根目录 `.codereview` 配置（参考 `assets/.codereview.example`）：
+
 - `exclude_paths`: 跳过的文件/目录
 - `ignore_categories`/`ignore_rules`: 忽略的审查类别/规则
 - `severity`: 严格程度（strict/normal/relaxed）
@@ -26,22 +27,24 @@ description: 深度代码审查工具：分析 Git 变更，评估逻辑、代�
 
 根据用户输入类型选择操作：
 
-| 输入类型 | 操作                                                           |
-|------|--------------------------------------------------------------|
-| TAPD URL | 使用 TAPD MCP 获取需求（如不可用则提示）                                    |
-| Word 文档 | `python3 scripts/parse_word.py <file.docx>`                  |
-| Markdown/文本 | `read_file` 直接读取                                             |
-| 其他 URL | `curl -s <URL> \| sed 's/<[^>]*>//g'`                        |
-| 口头描述 | 记录并确认理解                                                      |
+| 输入类型      | 操作                                        |
+| ------------- | ------------------------------------------- |
+| TAPD URL      | 使用 TAPD MCP 获取需求（如不可用则提示）    |
+| Word 文档     | `python3 scripts/parse_word.py <file.docx>` |
+| Markdown/文本 | `read_file` 直接读取                        |
+| 其他 URL      | `curl -s <URL> \| sed 's/<[^>]*>//g'`       |
+| 口头描述      | 记录并确认理解                              |
 
 ---
 
 ## 步骤 2: 代码变更分析
 
 ### 2.0 项目检测
+
 检测编程语言（`go.mod`/`pom.xml`/`package.json`/`.sql`/`.cs`/`.proto`/`.lua`/`.css`等）和框架类型（go-zero检查`.api`文件）。
 
 **语言检测规则**：
+
 - Go: `go.mod` 文件
 - Java: `pom.xml` 或 `build.gradle` 文件
 - Python: `requirements.txt` 或 `setup.py` 文件
@@ -53,6 +56,7 @@ description: 深度代码审查工具：分析 Git 变更，评估逻辑、代�
 - CSS: `.css` 文件
 
 ### 2.1 Git Commit 分析
+
 ```bash
 # 单个提交
 python3 scripts/analyze_git_diff.py --range <commit>~1..<commit>
@@ -68,6 +72,7 @@ python3 scripts/analyze_git_diff.py --range HEAD~1..HEAD --output changes.json
 ```
 
 ### 2.2 审查本次版本
+
 触发词："审查本次版本"、"review当前版本"
 
 ```bash
@@ -76,6 +81,7 @@ python3 scripts/analyze_git_diff.py --range <tag>..HEAD
 ```
 
 ### 2.3 审查指定文件
+
 使用 `read_file`/`view_code_item` 读取，应用 `exclude_paths` 过滤。
 
 ---
@@ -87,6 +93,7 @@ python3 scripts/lint_check.py -l <go|java|cpp|python> [--repo <path>]
 ```
 
 **执行逻辑**：
+
 1. 优先检测 `Makefile` 中的 `lint:` 目标 → 执行 `make lint`
 2. 否则按语言选择工具：Go(tencentlint)、Java(spotless/checkstyle)、C++(clang-tidy)、Python(ruff/flake8)
 3. Go配置优先级：项目`.golangci.yml` > skill内置`assets/.golangci.yml`
@@ -98,6 +105,7 @@ python3 scripts/lint_check.py -l <go|java|cpp|python> [--repo <path>]
 ## 步骤 4: 架构分析
 
 生成规格文档 `docs/spec-<功能名称>-<日期>.md`，包含：
+
 - 架构概览、数据流、关键组件、业务逻辑、错误处理
 
 如有需求文档，执行对比分析：✅已实现 / ⚠️部分实现 / ❌缺失
@@ -108,19 +116,20 @@ python3 scripts/lint_check.py -l <go|java|cpp|python> [--repo <path>]
 
 **必须加载** `references/coding-standards/<语言>/` 下的标准和安全文档：
 
-| 语言 | 文档                            |
-|-----|-------------------------------|
-| Go | `standard.md`, `security.md`  |
-| C++ | `standard.md`, `security.md`  |
-| Java | `standard.md`, `security.md`  |
-| Python | `standard.md`, `security.md`  |
-| SQL | `standard.md` |
-| C# | `standard.md` |
-| ProtoBuf | `standard.md` |
-| Lua | `standard.md` |
-| CSS | `standard.md` |
+| 语言     | 文档                         |
+| -------- | ---------------------------- |
+| Go       | `standard.md`, `security.md` |
+| C++      | `standard.md`, `security.md` |
+| Java     | `standard.md`, `security.md` |
+| Python   | `standard.md`, `security.md` |
+| SQL      | `standard.md`                |
+| C#       | `standard.md`                |
+| ProtoBuf | `standard.md`                |
+| Lua      | `standard.md`                |
+| CSS      | `standard.md`                |
 
 **注意**：SQL、C#、ProtoBuf、Lua、CSS的标准文档需要通过 `sync_standards.py` 脚本从外部仓库同步。首次使用前请执行：
+
 ```bash
 python3 scripts/sync_standards.py --all
 ```
@@ -142,11 +151,12 @@ python3 scripts/sync_standards.py --all
 **框架专项 [framework]**：如果检测到当前项目是Go项目并且go.mod中引入了github.com/zeromicro/go-zero，则被判断为go-zero项目，参考`references/coding-standards/go/go-zero-framework.md`对 API定义、logic层、配置文件审查
 
 ### 严重程度
-| 级别 | 说明 | 示例 |
-|------|------|-----|
-| 🛑严重 | 功能缺陷、安全漏洞 | SQL注入、数据竞争 |
-| ⚠️重要 | 性能、质量问题 | 资源未关闭、错误处理不当 |
-| 💡建议 | 代码风格、最佳实践 | 命名规范、预分配slice |
+
+| 级别   | 说明               | 示例                     |
+| ------ | ------------------ | ------------------------ |
+| 🛑严重 | 功能缺陷、安全漏洞 | SQL注入、数据竞争        |
+| ⚠️重要 | 性能、质量问题     | 资源未关闭、错误处理不当 |
+| 💡建议 | 代码风格、最佳实践 | 命名规范、预分配slice    |
 
 ---
 
@@ -162,12 +172,15 @@ python3 scripts/sync_standards.py --all
 
 ```markdown
 ### 🛑 Critical (必须修复)
+
 - [ ] [Security] 修复SQL注入 (file.go:123)
 
 ### ⚠️ Major (建议修复)
+
 - [ ] [Performance] 预分配slice (processor.go:78)
 
 ### 💡 Minor (可选优化)
+
 - [ ] [Style] 命名规范 (utils.go:234)
 ```
 
@@ -187,12 +200,12 @@ python3 scripts/sync_standards.py --all
 
 ## 脚本用法
 
-| 脚本 | 用途 | 命令 |
-|------|------|------|
-| `analyze_git_diff.py` | Git变更分析 | `--range <range> [--files ...] [--output file.json]` |
-| `lint_check.py` | Lint检查 | `-l <go\|java\|cpp\|python> [--repo <path>]` |
-| `parse_word.py` | Word解析 | `<file.docx>` |
-| `sync_standards.py` | 同步外部标准 | `--all [--force]` 或 `--languages <lang1> <lang2>` |
+| 脚本                  | 用途         | 命令                                                 |
+| --------------------- | ------------ | ---------------------------------------------------- |
+| `analyze_git_diff.py` | Git变更分析  | `--range <range> [--files ...] [--output file.json]` |
+| `lint_check.py`       | Lint检查     | `-l <go\|java\|cpp\|python> [--repo <path>]`         |
+| `parse_word.py`       | Word解析     | `<file.docx>`                                        |
+| `sync_standards.py`   | 同步外部标准 | `--all [--force]` 或 `--languages <lang1> <lang2>`   |
 
 ---
 
@@ -229,13 +242,13 @@ python3 scripts/sync_standards.py --all
 
 ### 支持的外部标准
 
-| 语言 | 仓库地址 |
-|------|---------|
-| SQL | https://git.woa.com/standards/sql.git |
-| C# | https://git.woa.com/standards/csharp.git |
+| 语言     | 仓库地址                                   |
+| -------- | ------------------------------------------ |
+| SQL      | https://git.woa.com/standards/sql.git      |
+| C#       | https://git.woa.com/standards/csharp.git   |
 | ProtoBuf | https://git.woa.com/standards/protobuf.git |
-| Lua | https://git.woa.com/standards/Lua.git |
-| CSS | https://git.woa.com/standards/css.git |
+| Lua      | https://git.woa.com/standards/Lua.git      |
+| CSS      | https://git.woa.com/standards/css.git      |
 
 ### 使用方法
 
