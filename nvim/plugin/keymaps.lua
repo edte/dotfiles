@@ -246,17 +246,28 @@ wk.add({
 			-- Git 项目中使用 git_files，否则使用普通文件选择
 			local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
 			if ret == '' then
-				Snacks.picker.files()
+				cmd('Seeker grep')
+				-- Snacks.picker.files()
 			else
-				Snacks.picker.git_files()
+				cmd('Seeker git_files')
+				-- Snacks.picker.git_files()
 			end
 		end,
 		desc = 'files',
 	},
+
+	{
+		'<space>t',
+		function()
+			cmd('Seeker grep')
+			-- Snacks.picker.grep()
+		end,
+		desc = 'Seek Grep',
+	},
+
 	{ '<space>p', '<cmd>Lazy<cr>', desc = 'plugins' },
 	{ '<space>q', '<cmd>confirm q<CR>', desc = 'quit' },
-	-- { "<space>r", "<cmd>lua Snacks.picker.recent()<CR>", desc = "recents" },
-	{ '<space>t', '<cmd>lua Snacks.picker.grep()<CR>', desc = 'text' },
+	{ '<space>r', '<cmd>lua Snacks.picker.recent()<CR>', desc = 'recents' },
 	{ '<space>m', '<cmd>M<CR>', desc = 'log' },
 	{ '<space>n', '<cmd>message<cr>', desc = 'message' },
 	{ '<space>/', 'gcc', desc = 'comment', noremap = false },

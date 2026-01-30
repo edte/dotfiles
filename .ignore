@@ -1,0 +1,34 @@
+# ripgrep 忽略配置
+# 不搜索压缩文件
+*.zip
+*.tar
+*.gz
+*.tar.gz
+*.bz2
+*.xz
+*.7z
+*.rar
+
+# 不搜索二进制文件
+*.so
+*.dylib
+*.dll
+*.exe
+
+# 不搜索图片
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.ico
+*.svg
+
+# 不搜索其他二进制格式
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx

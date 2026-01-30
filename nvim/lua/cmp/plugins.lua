@@ -4,31 +4,31 @@ M.list = {
 
 	-- 自定义代码片段
 	{
-		"L3MON4D3/LuaSnip",
+		'L3MON4D3/LuaSnip',
 		lazy = true,
-		event = "InsertEnter",
+		event = 'InsertEnter',
 		config = function()
-			require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
+			require('luasnip.loaders.from_lua').load({ paths = NEOVIM_CONFIG_PATH .. '/lua/cmp/luasnippets' })
 		end,
 		opts = {
 			history = true,
-			delete_check_events = "TextChanged",
+			delete_check_events = 'TextChanged',
 		},
 	},
 
 	-- 彩色补全
 	{
-		"xzbdmw/colorful-menu.nvim",
-		event = { "InsertEnter" },
-		version = "*",
+		'xzbdmw/colorful-menu.nvim',
+		event = { 'InsertEnter' },
+		version = '*',
 		config = function()
-			require("colorful-menu").setup({})
+			require('colorful-menu').setup({})
 		end,
 	},
 
 	-- ai代码补全
 	{
-		"edte/copilot",
+		'edte/copilot',
 	},
 
 	-- Neovim 插件可快速插入日志语句并捕获日志输出
@@ -39,12 +39,12 @@ M.list = {
 	-- gla      :      将日志目标添加到批处理中
 	-- glb	    :      插入批处理日志语句
 	{
-		"Goose97/timber.nvim",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		'Goose97/timber.nvim',
+		version = '*', -- Use for stability; omit to use `main` branch for the latest features
 		-- event = "VeryLazy",
-		keys = "gl",
+		keys = 'gl',
 		config = function()
-			require("timber").setup({
+			require('timber').setup({
 				log_templates = {
 					default = {
 						lua = [[log.debug("%log_target", %log_target)]],
@@ -63,40 +63,40 @@ M.list = {
 
 	-- cmp 替代品，暂时还是有些问题，一些cmp生态不咋支持，而且没搞懂怎么设置provider的kind
 	{
-		"saghen/blink.cmp",
+		'saghen/blink.cmp',
 
-		event = { "InsertEnter" },
+		event = { 'InsertEnter' },
 
 		dependencies = {
 			{
-				"niuiic/blink-cmp-rg.nvim",
+				'niuiic/blink-cmp-rg.nvim',
 			},
 
-			{ "edte/more-go.nvim" },
+			{ 'edte/more-go.nvim' },
 
 			-- 自定义代码片段
 			{
-				"L3MON4D3/LuaSnip",
-				event = "InsertEnter",
+				'L3MON4D3/LuaSnip',
+				event = 'InsertEnter',
 				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-					require("luasnip.loaders.from_lua").load({ paths = NEOVIM_CONFIG_PATH .. "/lua/cmp/luasnippets" })
+					require('luasnip.loaders.from_vscode').lazy_load()
+					require('luasnip.loaders.from_lua').load({ paths = NEOVIM_CONFIG_PATH .. '/lua/cmp/luasnippets' })
 				end,
 			},
 		},
 
 		config = function()
-			require("blink.cmp").setup({
+			require('blink.cmp').setup({
 				cmdline = { enabled = false },
 
 				keymap = {
-					preset = "default",
-					["<Enter>"] = { "select_and_accept", "fallback" },
-					["<CR>"] = { "select_and_accept", "fallback" },
-					["<Down>"] = { "select_next", "fallback" },
-					["<Up>"] = { "select_prev", "fallback" },
-					["<PageDown>"] = { "scroll_documentation_down" },
-					["<PageUp>"] = { "scroll_documentation_up" },
+					preset = 'default',
+					['<Enter>'] = { 'select_and_accept', 'fallback' },
+					['<CR>'] = { 'select_and_accept', 'fallback' },
+					['<Down>'] = { 'select_next', 'fallback' },
+					['<Up>'] = { 'select_prev', 'fallback' },
+					['<PageDown>'] = { 'scroll_documentation_down' },
+					['<PageUp>'] = { 'scroll_documentation_up' },
 				},
 
 				appearance = {
@@ -106,7 +106,7 @@ M.list = {
 					use_nvim_cmp_as_default = true,
 					-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 					-- Adjusts spacing to ensure icons are aligned
-					nerd_font_variant = "mono",
+					nerd_font_variant = 'mono',
 
 					-- 这里只能写死，能根据source来源和kind类型动态么？
 					kind_icons = icon.kind,
@@ -114,33 +114,33 @@ M.list = {
 
 				sources = {
 					per_filetype = {
-						codecompanion = { "codecompanion" },
+						codecompanion = { 'codecompanion' },
 					},
 
-					default = { "lsp", "path", "snippets", "buffer", "ripgrep", "go_import" },
+					default = { 'lsp', 'path', 'snippets', 'buffer', 'ripgrep', 'go_import' },
 
 					providers = {
 						codecompanion = {
-							name = "CodeCompanion",
-							module = "codecompanion.providers.completion.blink",
+							name = 'CodeCompanion',
+							module = 'codecompanion.providers.completion.blink',
 						},
 						go_import = {
-							name = "Module",
-							module = "more-go.go-pkgs-blink",
+							name = 'Module',
+							module = 'more-go.go-pkgs-blink',
 						},
 						lsp = {
-							name = "LSP",
-							module = "blink.cmp.sources.lsp",
+							name = 'LSP',
+							module = 'blink.cmp.sources.lsp',
 						},
 						snippets = {
 							min_keyword_length = 1, -- don't show when triggered manually, useful for JSON keys
 							score_offset = -1,
 							opts = {
-								search_paths = { NEOVIM_CONFIG_PATH .. "/lua/cmp/snippets/" },
+								search_paths = { NEOVIM_CONFIG_PATH .. '/lua/cmp/snippets/' },
 							},
 							-- 隐藏触发字符后的片段
 							should_show_items = function(ctx)
-								return ctx.trigger.initial_kind ~= "trigger_character"
+								return ctx.trigger.initial_kind ~= 'trigger_character'
 							end,
 						},
 						-- 从 cwd 而不是当前缓冲区的目录完成路径
@@ -158,8 +158,8 @@ M.list = {
 						},
 
 						ripgrep = {
-							module = "blink-cmp-rg",
-							name = "Ripgrep",
+							module = 'blink-cmp-rg',
+							name = 'Ripgrep',
 							-- options below are optional, these are the default values
 							---@type blink-cmp-rg.Options
 							opts = {
@@ -168,18 +168,18 @@ M.list = {
 								prefix_min_len = 3,
 								get_command = function(context, prefix)
 									return {
-										"rg",
-										"--no-config",
-										"--json",
-										"--word-regexp",
-										"--ignore-case",
-										"--",
-										prefix .. "[\\w_-]+",
-										vim.fs.root(0, ".git") or vim.fn.getcwd(),
+										'rg',
+										'--no-config',
+										'--json',
+										'--word-regexp',
+										'--ignore-case',
+										'--',
+										prefix .. '[\\w_-]+',
+										vim.fs.root(0, '.git') or vim.fn.getcwd(),
 									}
 								end,
 								get_prefix = function(context)
-									return context.line:sub(1, context.cursor[2]):match("[%w_-]+$") or ""
+									return context.line:sub(1, context.cursor[2]):match('[%w_-]+$') or ''
 								end,
 							},
 						},
@@ -194,7 +194,7 @@ M.list = {
 						},
 					},
 
-					keyword = { range = "full" },
+					keyword = { range = 'full' },
 					list = { selection = { preselect = true, auto_insert = false } },
 					trigger = {
 						show_on_keyword = true,
@@ -203,30 +203,28 @@ M.list = {
 						show_on_accept_on_trigger_character = true,
 					},
 					menu = {
-						border = "single",
+						border = 'single',
 						draw = {
-							treesitter = { "lsp" },
-							columns = { { "kind_icon" }, { "label", gap = 1 } },
+							treesitter = { 'lsp' },
+							columns = { { 'kind_icon' }, { 'label', gap = 1 } },
 							components = {
 								label = {
-									text = require("colorful-menu").blink_components_text,
-									highlight = require("colorful-menu").blink_components_highlight,
+									text = require('colorful-menu').blink_components_text,
+									highlight = require('colorful-menu').blink_components_highlight,
 								},
 								kind_icon = {
 									ellipsis = false,
 									text = function(ctx)
-										if vim.bo.filetype == "go" then
+										if vim.bo.filetype == 'go' then
 											-- go 中非struct的type都是class，直接把这两都弄成一个icon
-											if ctx.kind == "Struct" or ctx.kind == "Class" then
-												ctx.kind_icon = icon.kind["Type"] or ""
-											elseif
-												ctx.source_name == "nvim_lsp_signature_help" and ctx.kind == "Text"
-											then -- 参数提醒
-												ctx.kind_icon = icon.kind["TypeParameter"] or ""
-											elseif ctx.source_name == "treesitter" and ctx.kind == "Property" then -- treesitter提醒
-												ctx.kind_icon = icon.kind["Treesitter"] or ""
-											elseif ctx.source_name == "cmp_tabnine" then
-												ctx.kind_icon = icon.kind["TabNine"] or ""
+											if ctx.kind == 'Struct' or ctx.kind == 'Class' then
+												ctx.kind_icon = icon.kind['Type'] or ''
+											elseif ctx.source_name == 'nvim_lsp_signature_help' and ctx.kind == 'Text' then -- 参数提醒
+												ctx.kind_icon = icon.kind['TypeParameter'] or ''
+											elseif ctx.source_name == 'treesitter' and ctx.kind == 'Property' then -- treesitter提醒
+												ctx.kind_icon = icon.kind['Treesitter'] or ''
+											elseif ctx.source_name == 'cmp_tabnine' then
+												ctx.kind_icon = icon.kind['TabNine'] or ''
 											end
 										end
 
@@ -236,31 +234,31 @@ M.list = {
 										-- log.error(ctx.source_name, ctx.kind)
 
 										-- cmp icon highlight
-										vim.cmd("highlight CmpItemKindFunction guifg=#CB6460")
-										vim.cmd("highlight CmpItemKindInterface guifg=#659462")
-										vim.cmd("highlight CmpItemKindConstant guifg=#BD805C")
-										vim.cmd("highlight CmpItemKindVariable guifg=#BD805C")
-										vim.cmd("highlight CmpItemKindStruct guifg=#6089EF")
-										vim.cmd("highlight CmpItemKindClass guifg=#6089EF")
-										vim.cmd("highlight CmpItemKindMethod guifg=#A25553")
-										vim.cmd("highlight CmpItemKindField guifg=#BD805C")
+										vim.cmd('highlight CmpItemKindFunction guifg=#CB6460')
+										vim.cmd('highlight CmpItemKindInterface guifg=#659462')
+										vim.cmd('highlight CmpItemKindConstant guifg=#BD805C')
+										vim.cmd('highlight CmpItemKindVariable guifg=#BD805C')
+										vim.cmd('highlight CmpItemKindStruct guifg=#6089EF')
+										vim.cmd('highlight CmpItemKindClass guifg=#6089EF')
+										vim.cmd('highlight CmpItemKindMethod guifg=#A25553')
+										vim.cmd('highlight CmpItemKindField guifg=#BD805C')
 
-										if ctx.kind == "Function" then
-											return "CmpItemKindFunction"
-										elseif ctx.kind == "Interface" then
-											return "CmpItemKindInterface"
-										elseif ctx.kind == "Constant" then
-											return "CmpItemKindConstant"
-										elseif ctx.kind == "Variable" then
-											return "CmpItemKindVariable"
-										elseif ctx.kind == "Struct" then
-											return "CmpItemKindStruct"
-										elseif ctx.kind == "Class" then
-											return "CmpItemKindClass"
-										elseif ctx.kind == "Method" then
-											return "CmpItemKindMethod"
-										elseif ctx.kind == "Field" then
-											return "CmpItemKindField"
+										if ctx.kind == 'Function' then
+											return 'CmpItemKindFunction'
+										elseif ctx.kind == 'Interface' then
+											return 'CmpItemKindInterface'
+										elseif ctx.kind == 'Constant' then
+											return 'CmpItemKindConstant'
+										elseif ctx.kind == 'Variable' then
+											return 'CmpItemKindVariable'
+										elseif ctx.kind == 'Struct' then
+											return 'CmpItemKindStruct'
+										elseif ctx.kind == 'Class' then
+											return 'CmpItemKindClass'
+										elseif ctx.kind == 'Method' then
+											return 'CmpItemKindMethod'
+										elseif ctx.kind == 'Field' then
+											return 'CmpItemKindField'
 										end
 
 										return ctx.kind_hl
@@ -269,12 +267,12 @@ M.list = {
 							},
 						},
 						auto_show = function(ctx)
-							return ctx.mode ~= "cmdline" and not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+							return ctx.mode ~= 'cmdline' and not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
 						end,
 					},
 					documentation = {
 						window = {
-							border = "single",
+							border = 'single',
 						},
 						auto_show = false,
 						auto_show_delay_ms = 200,
@@ -285,7 +283,7 @@ M.list = {
 				signature = {
 					enabled = true,
 					window = {
-						border = "single",
+						border = 'single',
 						show_documentation = false,
 					},
 				},

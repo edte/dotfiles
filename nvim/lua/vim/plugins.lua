@@ -357,6 +357,14 @@ M.list = {
 	-- ui components
 	{ 'MunifTanjim/nui.nvim', lazy = true },
 
+	-- Neovim 的渐进式文件查找器🔍🎯
+	{
+		'2kabhishek/seeker.nvim',
+		dependencies = { 'folke/snacks.nvim' },
+		cmd = { 'Seeker' },
+		opts = {},
+	},
+
 	-- {
 	-- 	"A7Lavinraj/fyler.nvim",
 	-- 	dependencies = { "nvim-mini/mini.icons" },
