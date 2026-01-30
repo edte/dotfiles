@@ -86,6 +86,7 @@ python3 scripts/check_drawio_syntax.py .
 ```
 
 **验证工具功能：**
+
 - ✅ 检查 XML 格式良好性（标签闭合、引号、转义字符）
 - ✅ 验证 draw.io 文件结构（mxfile、diagram、mxGraphModel）
 - ✅ 检查必要元素（root、基础 mxCell id="0" 和 id="1"）
@@ -96,6 +97,7 @@ python3 scripts/check_drawio_syntax.py .
 ## 核心文档
 
 ### [SKILL.md](SKILL.md) - AI 技能文档
+
 - 完整的工作流程（生成、编辑、验证）
 - Draw.io 文件基本结构
 - 样式属性快速参考
@@ -103,6 +105,7 @@ python3 scripts/check_drawio_syntax.py .
 - 完整示例代码
 
 ### [references/xml_guide.md](references/xml_guide.md) - XML 结构详细指南
+
 - Draw.io XML 完整架构说明
 - 所有元素和属性详解
 - 形状和连接线样式参考
@@ -110,6 +113,7 @@ python3 scripts/check_drawio_syntax.py .
 - 自定义属性和样式
 
 ### [references/diagram-examples.md](references/diagram-examples.md) - 完整图表示例
+
 - 简单流程图示例
 - AWS 架构图示例
 - 泳道流程图示例
@@ -123,31 +127,37 @@ python3 scripts/check_drawio_syntax.py .
 ### 常用样式
 
 **矩形框：**
+
 ```
 rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;
 ```
 
 **圆角矩形：**
+
 ```
 rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;
 ```
 
 **菱形：**
+
 ```
 rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;
 ```
 
 **圆形：**
+
 ```
 ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;
 ```
 
 **连接线（正交）：**
+
 ```
 edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;
 ```
 
 **虚线：**
+
 ```
 dashed=1;dashPattern=8 8;endArrow=classic;html=1;
 ```
@@ -177,6 +187,7 @@ dashed=1;dashPattern=8 8;endArrow=classic;html=1;
 ## 工作流程建议
 
 ### 生成新图表
+
 1. 分析需求，确定图表类型
 2. 分析代码结构（如需要）
 3. 设计图表布局和元素
@@ -185,6 +196,7 @@ dashed=1;dashPattern=8 8;endArrow=classic;html=1;
 6. 根据验证结果修复问题
 
 ### 编辑现有图表
+
 1. 读取现有 .drawio 文件
 2. 解析 XML 结构
 3. 执行修改操作

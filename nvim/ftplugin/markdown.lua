@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
-if vim.o.filetype ~= 'markdown' or vim.o.filetype ~= 'codecompanion' then
+if vim.o.filetype ~= 'markdown' and vim.o.filetype ~= 'codecompanion' then
 	return
 end
 
