@@ -101,7 +101,7 @@ M.list = {
 				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
 			format_on_save = {
-				timeout_ms = 200,
+				timeout_ms = 5000,
 			},
 		},
 	},
