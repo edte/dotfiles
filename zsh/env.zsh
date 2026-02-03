@@ -70,9 +70,9 @@ export ESCDELAY=0
 # *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
 
-# 最终确保 PATH 优先级正确:homebrew 工具优先于 /usr/local/bin
-# 移除 /usr/local/bin 和 /opt/homebrew/bin,然后按正确顺序重新添加
-PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | tr '\n' ':' | sed 's/:$//')
-export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
+# 最终确保 PATH 优先级正确:本地 bin 最高优先级,然后 homebrew,然后系统
+# 移除这些路径,然后按正确顺序重新添加
+PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | grep -v "^$HOME/.local/bin$" | grep -v "^/home/edte/.local/bin$" | tr '\n' ':' | sed 's/:$//')
+export PATH=$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
 
 export PATH=$PATH:~/dotfiles/zsh/shell/

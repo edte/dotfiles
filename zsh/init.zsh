@@ -12,9 +12,14 @@
 zmodload zsh/zprof
 
 # ----------------- zinit 基础,不要动 ------------------------------------------------------------------------------------------------------------
-# 优先使用 homebrew 的工具,然后是 /usr/local/bin
-export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
+# 优先使用 .local/bin (包括 uv 等工具),然后是 homebrew,最后是 /usr/local/bin
+export PATH=$HOME/.local/bin:/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
 source ~/.bash_profile
+# bash_profile 可能会修改 PATH,再次确保 .local/bin 在最前面
+if [[ ":$PATH:" == *":$HOME/.local/bin:"* ]]; then
+    PATH=$(echo $PATH | sed "s|$HOME/.local/bin:||g")
+fi
+export PATH=$HOME/.local/bin:$PATH
 # source your own zsh file if exists
 # [ -f ~/.config/.zsh.sh ] && source ~/.config/.zsh.sh
 
