@@ -66,3 +66,7 @@ SOLID 原则
 # 语言要求
 
 Always respond in 中文
+
+# MCP 请求规则
+
+- Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
