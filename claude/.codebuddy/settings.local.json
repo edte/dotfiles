@@ -1,8 +1,0 @@
-{
-  "enabledMcpjsonServers": [
-    "sequential-thinking",
-    "neovim",
-    "context7"
-  ],
-  "disabledMcpjsonServers": []
-}

@@ -629,6 +629,11 @@ M.list = {
 						return
 					end
 
+					-- 二次检查：确保这是一个 mini.files 缓冲区
+					if not isMiniFilesBuffer(buf_id) then
+						return
+					end
+
 					local nlines = vim.api.nvim_buf_line_count(buf_id)
 					local git_root = vim.fs.root(vim.uv.cwd(), '.git')
 					local escapedcwd = escapePattern(git_root)
@@ -754,6 +759,11 @@ M.list = {
 					return
 				end
 
+				-- 首先检查缓冲区是否有效
+				if not vim.api.nvim_buf_is_valid(buf_id) then
+					return
+				end
+
 				if not MiniFiles or not isMiniFilesBuffer(buf_id) then
 					return
 				end
@@ -802,7 +812,10 @@ M.list = {
 				-- pattern = { "minifiles" },
 				callback = function()
 					local bufnr = vim.api.nvim_get_current_buf()
-					updateGitStatus(bufnr)
+					-- 确保缓冲区有效且是 mini.files 缓冲区
+					if vim.api.nvim_buf_is_valid(bufnr) and isMiniFilesBuffer(bufnr) then
+						updateGitStatus(bufnr)
+					end
 				end,
 			})
 
@@ -826,6 +839,11 @@ M.list = {
 				pattern = 'MiniFilesBufferUpdate',
 				callback = function(sii)
 					local bufnr = sii.data.buf_id
+
+					-- 检查缓冲区是否仍然有效
+					if not vim.api.nvim_buf_is_valid(bufnr) then
+						return
+					end
 
 					-- 防抖：取消之前的定时器
 					if debounceTimers[bufnr] then
@@ -894,7 +912,8 @@ M.list = {
 
 					-- 重新更新当前 mini.files 缓冲区的显示
 					local bufnr = (data and data.buf_id) or vim.api.nvim_get_current_buf()
-					if bufnr then
+					-- 确保缓冲区有效
+					if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
 						updateGitStatus(bufnr)
 					end
 				end,

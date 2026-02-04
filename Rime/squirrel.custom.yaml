@@ -32,3 +32,5 @@ patch:
     vim_mode: true
   app_options/com.runningwithcrayons.Alfred:
     ascii_mode: true
+  app_options/com.raycast.macos:
+    ascii_mode: true
