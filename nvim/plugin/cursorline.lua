@@ -50,9 +50,10 @@ local function matchadd()
 		return
 	end
 
-	-- 检查 cursorword 是否为有效的正则表达式
-	if string.find(cursorword, '~') then
-		return -- 如果是无效字符，直接返回
+	-- 检查 cursorword 是否为有效的正则表达式，转义特殊字符
+	cursorword = vim.fn.escape(cursorword, '\\^$.*~[]')
+	if cursorword == '' then
+		return
 	end
 
 	-- 为所有窗口的对应缓冲区添加高亮
@@ -62,8 +63,10 @@ local function matchadd()
 		if vim.bo[buf].filetype ~= '' or vim.bo[buf].buftype ~= '' then
 			-- 添加窗口匹配并记录ID
 			if cursorword and cursorword ~= '' then -- 确保 cursorword 有效
-				local match_id = vim.fn.matchadd('CursorWord', [[\<]] .. cursorword .. [[\>]], -1, -1, { window = win })
-				window_matches[win] = match_id
+				pcall(function()
+					local match_id = vim.fn.matchadd('CursorWord', [[\<]] .. cursorword .. [[\>]], -1, -1, { window = win })
+					window_matches[win] = match_id
+				end)
 			end
 		end
 	end
@@ -84,11 +87,14 @@ Autocmd({ 'WinNew' }, {
 	callback = function(args)
 		local win = vim.fn.win_getid()
 
-		if vim.g.cursorword_global == nil then
+		if vim.g.cursorword_global == nil or vim.g.cursorword_global == '' then
 			return
 		end
 
-		local match_id = vim.fn.matchadd('CursorWord', [[\<]] .. vim.g.cursorword_global .. [[\>]], -1, -1, { window = win })
-		window_matches[win] = match_id
+		local escaped_word = vim.fn.escape(vim.g.cursorword_global, '\\^$.*~[]')
+		if escaped_word ~= '' then
+			local match_id = vim.fn.matchadd('CursorWord', [[\<]] .. escaped_word .. [[\>]], -1, -1, { window = win })
+			window_matches[win] = match_id
+		end
 	end,
 })
