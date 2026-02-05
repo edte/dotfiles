@@ -925,8 +925,19 @@ M.list = {
 			local widths = { 60, 20, 20, 10, 5 }
 
 			local ensure_center_layout = function(ev)
-				local state = MiniFiles.get_explorer_state()
-				if state == nil then
+				-- Check if the buffer still exists before accessing state
+				if not vim.api.nvim_buf_is_valid(ev.data.buf_id) then
+					return
+				end
+
+				-- Check if the window is still valid
+				if not vim.api.nvim_win_is_valid(ev.data.win_id) then
+					return
+				end
+
+				-- 使用 pcall 包装，防止 mini.files 内部错误
+				local ok, state = pcall(MiniFiles.get_explorer_state)
+				if not ok or state == nil then
 					return
 				end
 
