@@ -2,23 +2,9 @@ local M = {}
 
 M.list = {
 
-	-- GitMessenger
-	{
-		"rhysd/git-messenger.vim",
-		config = function()
-			vim.cmd([[
-	               let g:git_messenger_floating_win_opts = { 'border': 'single' }
-	               let g:git_messenger_popup_content_margins = v:false
-	               let g:git_messenger_date_format="%F %H:%M"
-	               let g:git_messenger_no_default_mappings=v:true
-	           ]])
-		end,
-	},
-
 	-- Git blame
-	-- FIX: 大文件会很慢，看异步咋优化，git-messenger.nvim 就很快
 	{
-		"edte/git-blame.nvim",
+		'edte/git-blame.nvim',
 		lazy = true,
 	},
 
@@ -43,21 +29,21 @@ M.list = {
 	-- ] x — 移至上一个冲突
 	-- [ x — 移至下一个冲突
 	{
-		"akinsho/git-conflict.nvim",
-		version = "*",
+		'akinsho/git-conflict.nvim',
+		version = '*',
 		config = function()
 			-- vim.api.nvim_set_hl(0, "DiffText", { fg = "#ffffff", bg = "#1d3b40" })
 			-- vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#ffffff", bg = "#1d3450" })
 
-			vim.api.nvim_set_hl(0, "ConflictCurrent", { fg = "#ffffff", bg = "#1d3b40" })
-			vim.api.nvim_set_hl(0, "ConflictBase", { fg = "#c8d3f5", bg = "#222436" })
-			vim.api.nvim_set_hl(0, "ConflictIncoming", { fg = "#ffffff", bg = "#1d3450" })
+			vim.api.nvim_set_hl(0, 'ConflictCurrent', { fg = '#ffffff', bg = '#1d3b40' })
+			vim.api.nvim_set_hl(0, 'ConflictBase', { fg = '#c8d3f5', bg = '#222436' })
+			vim.api.nvim_set_hl(0, 'ConflictIncoming', { fg = '#ffffff', bg = '#1d3450' })
 
-			require("git-conflict").setup({
+			require('git-conflict').setup({
 				highlights = {
-					current = "ConflictCurrent",
-					ancestor = "ConflictBase", -- base
-					incoming = "ConflictIncoming",
+					current = 'ConflictCurrent',
+					ancestor = 'ConflictBase', -- base
+					incoming = 'ConflictIncoming',
 				},
 			})
 		end,
@@ -65,57 +51,57 @@ M.list = {
 
 	-- Neovim的 lua 插件，用于为 git 主机网站生成可共享文件永久链接（带有行范围）
 	{
-		"linrongbin16/gitlinker.nvim",
-		cmd = "GitLink",
+		'linrongbin16/gitlinker.nvim',
+		cmd = 'GitLink',
 		opts = {
 			router = {
 				browse = {
-					["^git%.woa%.com"] = "https://git.woa.com/{_A.ORG}/{_A.REPO}/blob/{_A.REV}/{_A.FILE}#L{_A.LSTART}{_A.LEND > _A.LSTART and ('-' .. _A.LEND) or ''}",
+					['^git%.woa%.com'] = "https://git.woa.com/{_A.ORG}/{_A.REPO}/blob/{_A.REV}/{_A.FILE}#L{_A.LSTART}{_A.LEND > _A.LSTART and ('-' .. _A.LEND) or ''}",
 				},
 			},
 		},
 		keys = {
-			{ "<space>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-			{ "<space>go", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+			{ '<space>gy', '<cmd>GitLink<cr>', mode = { 'n', 'v' }, desc = 'Yank git link' },
+			{ '<space>go', '<cmd>GitLink!<cr>', mode = { 'n', 'v' }, desc = 'Open git link' },
 		},
 	},
 	{
-		"edte/codediff.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		cmd = "CodeDiff",
+		'edte/codediff.nvim',
+		dependencies = { 'MunifTanjim/nui.nvim' },
+		cmd = 'CodeDiff',
 		opts = {
 			keymaps = {
 				view = {
-					quit = "q", -- Close diff tab
-					toggle_explorer = "<space>e", -- Toggle explorer visibility (explorer mode only)
-					next_hunk = "]h", -- Jump to next change
-					prev_hunk = "[h", -- Jump to previous change
-					next_file = "]f", -- Next file in explorer mode
-					prev_file = "[f", -- Previous file in explorer mode
+					quit = 'q', -- Close diff tab
+					toggle_explorer = '<space>e', -- Toggle explorer visibility (explorer mode only)
+					next_hunk = ']h', -- Jump to next change
+					prev_hunk = '[h', -- Jump to previous change
+					next_file = ']f', -- Next file in explorer mode
+					prev_file = '[f', -- Previous file in explorer mode
 				},
 				explorer = {
-					select = "l", -- Open diff for selected file
-					hover = "K", -- Show file diff preview
-					refresh = "R", -- Refresh git status
+					select = 'l', -- Open diff for selected file
+					hover = 'K', -- Show file diff preview
+					refresh = 'R', -- Refresh git status
 				},
 				conflict = {
-					accept_incoming = "ct", -- Accept incoming (theirs/left) change
-					accept_current = "co", -- Accept current (ours/right) change
-					accept_this = "ca",
-					accept_both = "cb", -- Accept both changes (incoming first)
-					discard = "cx", -- Discard both, keep base
-					next_conflict = "]x", -- Jump to next conflict
-					prev_conflict = "[x", -- Jump to previous conflict
+					accept_incoming = 'ct', -- Accept incoming (theirs/left) change
+					accept_current = 'co', -- Accept current (ours/right) change
+					accept_this = 'ca',
+					accept_both = 'cb', -- Accept both changes (incoming first)
+					discard = 'cx', -- Discard both, keep base
+					next_conflict = ']x', -- Jump to next conflict
+					prev_conflict = '[x', -- Jump to previous conflict
 				},
 			},
 		},
 		keys = {
 			{
-				"<space>d",
+				'<space>d',
 				function()
-					vim.cmd("CodeDiff")
+					vim.cmd('CodeDiff')
 				end,
-				desc = "diff",
+				desc = 'diff',
 			},
 		},
 	},
