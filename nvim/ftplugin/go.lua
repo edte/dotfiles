@@ -3,11 +3,10 @@ if not vim.g.go_loaded then
 	vim.g.go_loaded = true
 	vim.pack.add({
 		'https://github.com/ray-x/go.nvim.git',
+		'https://github.com/ray-x/guihua.lua.git',
 		'https://github.com/TheNoeTrevino/no-go.nvim.git',
 		'https://github.com/edte/more-go.nvim.git',
 		'https://github.com/olexsmir/gopher.nvim.git',
-		'https://github.com/ray-x/guihua.lua.git',
-		'https://github.com/OXY2DEV/markview.nvim.git',
 	}, { confirm = false })
 
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
