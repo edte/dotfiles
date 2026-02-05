@@ -232,7 +232,6 @@ wk.add({
 		end,
 		desc = 'diff copy',
 	},
-	{ '<space>g', "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = 'git history' },
 	{ '<enter>', ":'<,'>SnipRun<CR>", desc = 'run code' },
 })
 
@@ -275,8 +274,6 @@ wk.add({
 	-- git
 	{ '<space>g', group = 'git', desc = 'git' },
 	{ '<space>gb', '<cmd>lua Snacks.picker.git_branches()<cr>', desc = 'branch' },
-	{ '<space>gp', '<cmd>DiffviewFileHistory<cr>', desc = 'project history' },
-	{ '<space>gf', '<cmd>DiffviewFileHistory --follow %<cr>', desc = 'file history' },
 	{ '<space>gs', '<cmd>lua Snacks.picker.git_status()<cr>', desc = 'status' },
 	-- { "<space>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
 	-- { "<space>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },

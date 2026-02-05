@@ -65,6 +65,24 @@ M.list = {
 			{ '<space>go', '<cmd>GitLink!<cr>', mode = { 'n', 'v' }, desc = 'Open git link' },
 		},
 	},
+
+	-- Neovim 插件，用于查看选定行的 Git 历史记录。在可视化模式下选择一个范围，即可查看其提交演变过程。使用 diffview.nvim 浏览提交、复制 SHA 值并打开完整的差异比较。
+	{
+		'lionyxml/gitlineage.nvim',
+		config = function()
+			require('gitlineage').setup({
+				keymap = '<space>gh',
+				keys = {
+					close = '<Esc>',
+					next_commit = '<C-n>',
+					prev_commit = '<C-p>',
+					yank_commit = 'y',
+					open_diff = 'd',
+				},
+			})
+		end,
+	},
+
 	{
 		'edte/codediff.nvim',
 		dependencies = { 'MunifTanjim/nui.nvim' },
