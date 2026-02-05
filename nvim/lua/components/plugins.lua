@@ -980,6 +980,8 @@ M.list = {
 			-- require("mini.cmdline").setup()
 
 			-- require('mini.cursorword').setup()
+
+            require('mini.git').setup()
 		end,
 	},
 
