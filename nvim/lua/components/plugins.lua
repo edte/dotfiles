@@ -105,7 +105,7 @@ M.list = {
 		version = '*', -- or branch = "dev", to use the latest commit
 	},
 
-	{ --${conf, snacks.nvim}
+	{
 		'folke/snacks.nvim',
 		priority = 1000,
 		lazy = false,
