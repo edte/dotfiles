@@ -635,7 +635,15 @@ M.list = {
 					end
 
 					local nlines = vim.api.nvim_buf_line_count(buf_id)
-					local git_root = vim.fs.root(vim.uv.cwd(), '.git')
+					local uv = vim.uv or vim.loop
+					local source = (uv and uv.cwd and uv.cwd()) or vim.fn.getcwd()
+					if not source or source == '' then
+						return
+					end
+					local git_root = vim.fs.root(source, '.git')
+					if not git_root or git_root == '' then
+						return
+					end
 					local escapedcwd = escapePattern(git_root)
 					if vim.fn.has('win32') == 1 then
 						escapedcwd = escapedcwd:gsub('\\', '/')
@@ -768,10 +776,6 @@ M.list = {
 					return
 				end
 
-				if not vim.fs.root(vim.uv.cwd(), '.git') then
-					vim.notify('Not a valid git repo')
-					return
-				end
 				-- 获取 mini.files 正在浏览的真实目录
 				local ok, entry = pcall(MiniFiles.get_fs_entry, buf_id, 1)
 				if not ok or not entry or not entry.path then
@@ -781,6 +785,15 @@ M.list = {
 				local cwd = vim.fn.fnamemodify(entry.path, ':h')
 				if vim.fn.isdirectory(cwd) == 0 then
 					cwd = entry.path
+				end
+				-- Guard against nil/empty source for vim.fs.root()
+				local uv = vim.uv or vim.loop
+				local source = cwd or (uv and uv.cwd and uv.cwd()) or vim.fn.getcwd()
+				if not source or source == '' then
+					return
+				end
+				if not vim.fs.root(source, '.git') then
+					return
 				end
 				local currentTime = os.time()
 				if gitStatusCache[cwd] and currentTime - gitStatusCache[cwd].time < cacheTimeout then
