@@ -58,7 +58,7 @@ local default_options = {
 	foldlevelstart = 99,
 	foldenable = true,
 	foldlevel = 99,
-	foldtext = '',
+	-- foldtext = '',
 	-- 默认treessiter折叠，如果lsp支持换成lsp
 	foldmethod = 'expr',
 	foldexpr = 'v:lua.vim.treesitter.foldexpr()',

@@ -20,6 +20,29 @@ M.list = {
 		},
 	},
 
+	-- Neovim 的动态风格化折叠文本
+	{
+		'OXY2DEV/foldtext.nvim',
+		lazy = false,
+		config = function()
+			require('foldtext').setup({
+				styles = {
+					default = {
+						{ kind = 'bufline', delimiter = '  ⟫  ', hl = 'Comment' },
+						{
+							kind = 'fold_size',
+							icon = ' ',
+							icon_hl = 'WarningMsg',
+							hl = 'IncSearch',
+							padding_left = ' ',
+							padding_right = ' ',
+						},
+					},
+				},
+			})
+		end,
+	},
+
 	-- yanky.nvim的目标是改进 Neovim 的 yank 和 put 功能。
 	{
 		'gbprod/yanky.nvim',

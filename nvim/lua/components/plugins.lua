@@ -4,30 +4,30 @@ M.list = {
 
 	-- Neovim 中人类可读的内联 cron 表达式
 	-- {
-	-- 	"fabridamicelli/cronex.nvim",
+	-- 	'fabridamicelli/cronex.nvim',
 	-- 	opts = {},
-	-- 	ft = { "go" },
+	-- 	ft = { 'go' },
 	-- 	config = function()
-	-- 		require("cronex").setup({
+	-- 		require('cronex').setup({
 	-- 			explainer = {
-	-- 				cmd = "hcron",
-	-- 				args = { "-24-hour", "-locale", "zh_CN" },
+	-- 				cmd = 'hcron',
+	-- 				args = { '-24-hour', '-locale', 'zh_CN' },
 	-- 			},
 	--
 	-- 			format = function(s)
-	-- 				return require("cronex.format").all_after_colon(s)
+	-- 				return require('cronex.format').all_after_colon(s)
 	-- 			end,
 	-- 		})
 	--
-	-- 		cmd([[
-	-- augroup input_method
-	--   autocmd!
-	--   autocmd InsertEnter * :CronExplainedEnable
-	--   autocmd InsertLeave * :CronExplainedEnable
-	-- augroup END
-	-- ]])
+	-- 		-- 		cmd([[
+	-- 		-- augroup input_method
+	-- 		--   autocmd!
+	-- 		--   autocmd InsertEnter * :CronExplainedEnable
+	-- 		--   autocmd InsertLeave * :CronExplainedEnable
+	-- 		-- augroup END
+	-- 		-- ]])
 	--
-	-- 		cmd("CronExplainedEnable")
+	-- 		cmd('CronExplainedEnable')
 	-- 	end,
 	-- },
 
@@ -981,7 +981,7 @@ M.list = {
 
 			-- require('mini.cursorword').setup()
 
-            require('mini.git').setup()
+			require('mini.git').setup()
 		end,
 	},
 
