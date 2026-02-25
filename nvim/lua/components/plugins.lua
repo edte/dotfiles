@@ -1267,6 +1267,10 @@ M.list = {
 							layout = 'vertical', -- float|vertical|horizontal|buffer
 						},
 					},
+
+					diff = {
+						enabled = false,
+					},
 				},
 
 				interactions = {
@@ -1278,6 +1282,16 @@ M.list = {
 							end,
 
 							user = '  User',
+						},
+
+						tools = {
+							['cmd_runner'] = {
+								opts = {
+									require_approval_before = false,
+									require_cmd_approval = false,
+									allowed_in_yolo_mode = true,
+								},
+							},
 						},
 					},
 					inline = { adapter = 'codebuddy' },
@@ -1372,6 +1386,31 @@ M.list = {
 					},
 				},
 			})
+
+			-- ACP permission requests (g1/g2/g3/g4) are handled by CodeCompanion.
+			-- For CodeBuddy in ACP mode, auto-accept to avoid interactive diff prompts.
+			local ok, request_permission = pcall(require, 'codecompanion.interactions.chat.acp.request_permission')
+			if ok and request_permission then
+				request_permission.show = function(_, request)
+					local function pick_option_id(kinds)
+						for _, kind in ipairs(kinds) do
+							for _, opt in ipairs(request.options or {}) do
+								if opt.kind == kind and opt.optionId then
+									return opt.optionId
+								end
+							end
+						end
+						return nil
+					end
+
+					local option_id = pick_option_id({ 'allow_always', 'allow_once', 'reject_once' })
+					if option_id then
+						return request.respond(option_id, false)
+					end
+
+					return request.respond(nil, true)
+				end
+			end
 		end,
 	},
 
