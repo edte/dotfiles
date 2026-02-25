@@ -5008,3 +5008,53 @@ kubesphere.io##.share-1 > .share
 kubesphere.io##.footer
 kubesphere.io##.share-2 > .share
 
+! 2024年11月27日 https://www.json.cn
+www.json.cn##.flex-column.flex-md-row.py-2.justify-content-between.align-items-center.d-flex.footer-container
+www.json.cn##p:nth-of-type(6)
+www.json.cn##.friend-link.card-body
+www.json.cn##.d-lg-block.d-none.mt-3.card > .nav-tabs.nav
+www.json.cn###tabJson1 > .p-0.m-0.row
+www.json.cn##.card-header
+www.json.cn##div.mt-3.card > .card-body
+www.json.cn##.rounded-bottom.border-top.flex-warp.d-flex.show-hide-adv
+www.json.cn##.show.active.pt-2.pb-3.fade.tab-pane
+www.json.cn##.menu-inner
+www.json.cn##.flex-grow-1.align-items-center.d-flex.navbar-nav-right
+www.json.cn##.menu-top
+
+! 2025年9月15日 https://mermaid-live.nodejs.cn
+mermaid-live.nodejs.cn##.mymn-full-ww
+mermaid-live.nodejs.cn##.mymn-full-gg
+mermaid-live.nodejs.cn##.mymn-full > div
+mermaid-live.nodejs.cn##.mymn-full
+mermaid-live.nodejs.cn##.sm\:p-6.p-4.flex.z-50
+
+! 2025年10月29日 https://www.bejson.com
+www.bejson.com##.flex-shrink-0.ExtraDOM > .flex-wrap.w-full.items-center.gap-2.flex
+www.bejson.com##div.border-base-900.border-b.bg-base-100.navbar2 > .flex-wrap.w-full.items-center.gap-2.flex
+www.bejson.com##.flex-wrap.p-1.border-base-900.border-b.bg-base-100.items-center.gap-2.flex.navbar2
+www.bejson.com##.text-gray-500.text-xs.p-1.items-center.justify-between.flex
+
+! 2025年11月7日 https://www.toolnb.com
+www.toolnb.com##div.col-xs-12:nth-of-type(5)
+www.toolnb.com##div.col-xs-12 > label
+||www.toolnb.com/Public/youce/images/reply.png$image
+||www.toolnb.com/Public/youce/images/reply.png$image
+www.toolnb.com##h4
+
+! 2025年12月17日 https://blog.csdn.net
+||gitcode.com/g-hacking?uuid_tt_dd=10_19029230610-1759996780639-421956&isLogin=9&from_id=154805120&user_unique_id=7563224519612318210&web_id=7563224519612318210&ssid=&access_token=&refresh_token=$subdocument
+||raw.gitcode.com/GitHub_Trending/jj/jj/raw/07cc5599299866ed852457dac6210ac9363cf428/demos/git_compat.png?utm_source=gitcode_repo_files$image
+||gitcode.com/g-hacking?uuid_tt_dd=10_19029230610-1759996780639-421956&isLogin=9&from_id=154805120&user_unique_id=7563224519612318210&web_id=7563224519612318210&ssid=&access_token=&refresh_token=$subdocument
+blog.csdn.net###toolbarBox
+||gitcode.com/g-hacking?uuid_tt_dd=10_19029230610-1759996780639-421956&isLogin=9&from_id=154805120&user_unique_id=7563224519612318210&web_id=7563224519612318210&ssid=&access_token=&refresh_token=$subdocument
+blog.csdn.net##.clearfix.align-items-stretch.recommend-right
+||raw.gitcode.com/GitHub_Trending/jj/jj/raw/07cc5599299866ed852457dac6210ac9363cf428/demos/git_compat.png?utm_source=gitcode_repo_files$image
+||raw.gitcode.com/GitHub_Trending/jj/jj/raw/07cc5599299866ed852457dac6210ac9363cf428/demos/git_compat.png?utm_source=gitcode_repo_files$image
+blog.csdn.net##.t2-card-content
+blog.csdn.net##.show.t2-card-container
+
+! 2026年2月2日 https://zhuanlan.zhihu.com
+zhuanlan.zhihu.com##.HotSearchCard-list
+zhuanlan.zhihu.com##.HotSearchCard-header
+
