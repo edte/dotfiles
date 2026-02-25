@@ -44,28 +44,28 @@ M.list = {
 	},
 
 	-- yanky.nvim的目标是改进 Neovim 的 yank 和 put 功能。
-	{
-		'gbprod/yanky.nvim',
-		dependencies = {
-			{ 'kkharji/sqlite.lua' },
-		},
-		opts = {
-			ring = {
-				storage = 'sqlite',
-				update_register_on_cycle = true,
-			},
-			highlight = {
-				on_put = true,
-				on_yank = true,
-				timer = 100,
-			},
-		},
-		keys = {
-			{ 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank text' },
-			-- { "p", "<Plug>(YankyPutAfter)", mode = { "n" }, desc = "Put yanked text after cursor" },
-			{ 'p', '<Plug>(YankyPutBefore)', mode = { 'x' }, desc = 'Put yanked text before cursor' },
-		},
-	},
+	-- {
+	-- 	'gbprod/yanky.nvim',
+	-- 	dependencies = {
+	-- 		{ 'kkharji/sqlite.lua' },
+	-- 	},
+	-- 	opts = {
+	-- 		ring = {
+	-- 			-- storage = 'sqlite',
+	-- 			update_register_on_cycle = true,
+	-- 		},
+	-- 		highlight = {
+	-- 			on_put = true,
+	-- 			on_yank = true,
+	-- 			timer = 100,
+	-- 		},
+	-- 	},
+	-- 	keys = {
+	-- 		{ 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank text' },
+	-- 		-- { "p", "<Plug>(YankyPutAfter)", mode = { "n" }, desc = "Put yanked text after cursor" },
+	-- 		{ 'p', '<Plug>(YankyPutBefore)', mode = { 'x' }, desc = 'Put yanked text before cursor' },
+	-- 	},
+	-- },
 
 	-- 增强 Neovim 中宏的使用。
 	{
