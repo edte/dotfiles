@@ -60,8 +60,8 @@ ascii_composer:
   good_old_caps_lock: true
   switch_key:
     # Shift_R: commit_code
-    Control_L: noop
-    Control_R: noop
+    # Control_L: noop
+    # Control_R: noop
     Caps_Lock: clear
     Eisu_toggle: clear
 
