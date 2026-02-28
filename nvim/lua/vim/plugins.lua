@@ -210,7 +210,7 @@ M.list = {
 		keys = { 's', 'sx' },
 		config = function()
 			require('substitute').setup({
-				on_substitute = require('yanky.integration').substitute(),
+				-- on_substitute = require('yanky.integration').substitute(),
 			})
 
 			-- 交换

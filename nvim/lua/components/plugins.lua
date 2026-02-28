@@ -1163,6 +1163,30 @@ M.list = {
 					language = '中文',
 				},
 
+				interactions = {
+					chat = {
+						adapter = 'codex',
+						roles = {
+							llm = function(adapter)
+								return '  Assistant'
+							end,
+
+							user = '  User',
+						},
+
+						tools = {
+							['cmd_runner'] = {
+								opts = {
+									require_approval_before = false,
+									require_cmd_approval = false,
+									allowed_in_yolo_mode = true,
+								},
+							},
+						},
+					},
+					inline = { adapter = 'codex' },
+				},
+
 				adapters = {
 					acp = {
 						codebuddy = function()
@@ -1241,6 +1265,17 @@ M.list = {
 								},
 							}
 						end,
+
+						codex = function()
+							return require('codecompanion.adapters').extend('codex', {
+								defaults = {
+									auth_method = 'chatgpt', -- "openai-api-key"|"codex-api-key"|"chatgpt"
+								},
+								env = {
+									-- OPENAI_API_KEY = 'my-api-key',
+								},
+							})
+						end,
 					},
 				},
 
@@ -1271,30 +1306,6 @@ M.list = {
 					diff = {
 						enabled = false,
 					},
-				},
-
-				interactions = {
-					chat = {
-						adapter = 'codebuddy',
-						roles = {
-							llm = function(adapter)
-								return '  Assistant'
-							end,
-
-							user = '  User',
-						},
-
-						tools = {
-							['cmd_runner'] = {
-								opts = {
-									require_approval_before = false,
-									require_cmd_approval = false,
-									allowed_in_yolo_mode = true,
-								},
-							},
-						},
-					},
-					inline = { adapter = 'codebuddy' },
 				},
 
 				extensions = {
@@ -1413,13 +1424,6 @@ M.list = {
 			end
 		end,
 	},
-
-	-- {
-	-- 	'DamianVCechov/hexview.nvim',
-	-- 	config = function()
-	-- 		require('hexview').setup()
-	-- 	end,
-	-- },
 }
 
 return M
