@@ -2,6 +2,9 @@ all:
 	mv ~/.codebuddy/CODEBUDDY.md ~/.codebuddy/CODEBUDDY.md.bk
 	ln -s ~/dotfiles/claude/rules.md  ~/.codebuddy/CODEBUDDY.md
 
+	mv ~/.codex/AGENTS.md ~/.codex/AGENTS.md.bk
+	ln -s ~/dotfiles/claude/rules.md ~/.codex/AGENTS.md
+
 	mv ~/.codebuddy/mcp.json ~/.codebuddy/mcp.json.bk
 	ln -s ~/dotfiles/claude/mcp.json  ~/.codebuddy/mcp.json
 
@@ -14,3 +17,4 @@ all:
 	rm -rf ~/.codebuddy/skills
 	mkdir -p ~/.codebuddy/skills
 	stow skills -t ~/.codebuddy/skills
+	stow skills -t ~/.codex/skills
