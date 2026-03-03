@@ -1,0 +1,53 @@
+[projects."/Users/edte/go/src/push/push-manage-console"]
+trust_level = "trusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy/git-messenger.vim"]
+trust_level = "trusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy/git-blame.nvim"]
+trust_level = "trusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy"]
+trust_level = "trusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy/foldtext.nvim"]
+trust_level = "trusted"
+
+[projects."/Users/edte/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/edte"]
+trust_level = "untrusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy/wilder.nvim"]
+trust_level = "trusted"
+
+[projects."/Users/edte/.local/share/nvim/lazy/codecompanion.nvim"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-dispatch-service"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/record/push-record-service"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/test/claudekit-skills"]
+trust_level = "trusted"
+
+[[skills.config]]
+path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/edte/.codex/skills/.system/skill-installer/SKILL.md"
+enabled = false
+
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+
+[mcp_servers.neovim]
+command = "/opt/homebrew/bin/neovim-mcp"
+
+[mcp_servers.neovim.env]
+NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim.sock"

@@ -14,6 +14,9 @@ all:
 	mv ~/.codebuddy/.lsp.json ~/.codebuddy/.lsp.json.bk
 	ln -s ~/dotfiles/claude/lsp.json  ~/.codebuddy/.lsp.json
 
+	test -f ~/.codex/config.toml && mv ~/.codex/config.toml ~/.codex/config.toml.bk || true
+	ln -s ~/dotfiles/claude/codex.toml  ~/.codex/config.toml
+
 	rm -rf ~/.codebuddy/skills
 	mkdir -p ~/.codebuddy/skills
 	stow skills -t ~/.codebuddy/skills
