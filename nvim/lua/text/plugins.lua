@@ -56,6 +56,7 @@ M.list = {
 				'jsdoc',
 				'json',
 				'lua',
+				'latex',
 				'luadoc',
 				'luap',
 				'markdown',
