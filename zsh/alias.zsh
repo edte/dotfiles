@@ -39,6 +39,7 @@ alias df=duf
 # alias tree=yazi
 alias find=fd
 # alias ps=procs
+alias ps='ps aux'
 alias bench=hyperfine
 alias cp="cp -v"
 alias mv="mv -v"
