@@ -40,6 +40,7 @@ alias df=duf
 alias find=fd
 # alias ps=procs
 alias ps='ps aux'
+alias -g g='| _g'
 alias bench=hyperfine
 alias cp="cp -v"
 alias mv="mv -v"

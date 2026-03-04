@@ -1,6 +1,16 @@
 #!/bin/bash
 
 # ----------------- func ------------------------------------------------------------------------------------------------------------
+# pipe grep helper: with pattern use rg, without pattern pass through
+function _g() {
+    if [[ $# -eq 0 ]]; then
+        cat
+        return 0
+    fi
+
+    rg "$@"
+}
+
 # path 复制pwd路径
 function path() {
     realpath | pbcopy
