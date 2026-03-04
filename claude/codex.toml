@@ -47,7 +47,9 @@ command = "npx"
 args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 
 [mcp_servers.neovim]
-command = "/opt/homebrew/bin/neovim-mcp"
+command = "npx"
+args = ["-y", "mcp-neovim-server"]
 
 [mcp_servers.neovim.env]
 NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim.sock"
+ALLOW_SHELL_COMMANDS = "true"

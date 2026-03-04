@@ -8,9 +8,14 @@
             ]
         },
         "neovim": {
-            "command": "/opt/homebrew/bin/neovim-mcp",
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-neovim-server"
+            ],
             "env": {
-                "NVIM_MCP_LISTEN_ADDRESS": "/tmp/nvim.sock"
+                "ALLOW_SHELL_COMMANDS": "true",
+                "NVIM_SOCKET_PATH": "/tmp/nvim.sock"
             }
         }
     }
