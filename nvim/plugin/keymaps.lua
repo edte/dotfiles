@@ -171,6 +171,12 @@ vim.cmd('inoremap <C-N>		<Down>')
 vim.cmd('inoremap <C-P>		<Up>')
 vim.cmd('inoremap <Esc><C-B>	<S-Left>')
 vim.cmd('inoremap <Esc><C-F>	<S-Right>')
+-- 在终端/Neovim中，<C-Space> 常被解释为 <C-@>，默认会触发“重复上次插入”，
+-- 当没有插入历史时会报 E29。这里在输入相关模式下屏蔽该键，避免干扰输入法切换。
+vim.cmd('inoremap <C-Space> <Nop>')
+vim.cmd('inoremap <C-@> <Nop>')
+vim.cmd('cnoremap <C-Space> <Nop>')
+vim.cmd('cnoremap <C-@> <Nop>')
 
 --------------------------------------------------------------which key ------------------------------------------------------------------------
 local wk = require('which-key')
