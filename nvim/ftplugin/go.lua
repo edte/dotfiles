@@ -1,6 +1,10 @@
--- 加载插件 (只需一次)
-if not vim.g.go_loaded then
+-- 避免在 FileType 回调里直接修改 runtimepath，nvim 0.12-dev 下会触发崩溃
+local function setup_go_once()
+	if vim.g.go_loaded then
+		return
+	end
 	vim.g.go_loaded = true
+
 	vim.pack.add({
 		'https://github.com/ray-x/go.nvim.git',
 		'https://github.com/ray-x/guihua.lua.git',
@@ -56,46 +60,45 @@ if not vim.g.go_loaded then
 			},
 		},
 	})
+
+	-- 确保 go.nvim 的 lua 路径被正确添加到 package.path
+	local go_nvim_path = vim.fn.stdpath('data') .. '/site/pack/core/opt/go.nvim/lua'
+	if not package.path:find(go_nvim_path, 1, true) then
+		package.path = package.path .. ';' .. go_nvim_path .. '/?.lua;' .. go_nvim_path .. '/?/init.lua'
+	end
+
+	require('go').setup({
+		diagnostic = false,
+	})
+
+	vim.api.nvim_create_user_command('GoAddTagEmpty', function()
+		vim.api.nvim_command(':GoAddTag json -add-options json=')
+	end, { nargs = '*' })
+
+	vim.api.nvim_create_autocmd('BufWritePost', {
+		group = vim.api.nvim_create_augroup('go_auto_import', { clear = true }),
+		nested = true,
+		callback = function()
+			cmd('GoImports')
+		end,
+	})
+
+	require('no-go').setup({
+		identifiers = { 'err', 'error' }, -- Customize which identifiers to collapse
+		-- look at the default config for more details
+		highlight_group = 'LspInlayHint',
+		fold_imports = true,
+	})
+
+	require('more-go').setup()
+	require('gopher').setup()
+	vim.lsp.enable('gopls')
 end
 
-vim.treesitter.start()
-
--- 确保 go.nvim 的 lua 路径被正确添加到 package.path
-local go_nvim_path = vim.fn.stdpath('data') .. '/site/pack/core/opt/go.nvim/lua'
-if not package.path:find(go_nvim_path, 1, true) then
-	package.path = package.path .. ';' .. go_nvim_path .. '/?.lua;' .. go_nvim_path .. '/?/init.lua'
-end
-
-require('go').setup({
-	diagnostic = false,
-})
-
-vim.api.nvim_create_user_command('GoAddTagEmpty', function()
-	vim.api.nvim_command(':GoAddTag json -add-options json=')
-end, { nargs = '*' })
-
-vim.api.nvim_create_autocmd('BufWritePost', {
-	group = vim.api.nvim_create_augroup('go_auto_import', { clear = true }),
-	nested = true,
-	callback = function()
-		cmd('GoImports')
-	end,
-})
+vim.schedule(setup_go_once)
 
 -- 清除 LSP semantic token 对 comment 的高亮，让 treesitter 的 @comment.todo 等生效
 vim.api.nvim_set_hl(0, '@lsp.type.comment.go', {})
-
-require('no-go').setup({
-	identifiers = { 'err', 'error' }, -- Customize which identifiers to collapse
-	-- look at the default config for more details
-	highlight_group = 'LspInlayHint',
-	fold_imports = true,
-})
-
-require('more-go').setup()
-
-require('gopher').setup()
-
-vim.lsp.enable('gopls')
+vim.treesitter.start()
 
 dofile(vim.fn.stdpath('config') .. '/ftplugin/markdown.lua')
