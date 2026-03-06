@@ -117,7 +117,7 @@ alias tailf="tail -f"
 
 # brew tap universal-ctags/universal-ctags
 # brew install --HEAD universal-ctags
-alias ctags="$(brew --prefix)/bin/ctags"
+alias ctags="$(brew --prefix)/bin/ctags --recurse=yes"
 
 alias cs='cd $(git rev-parse --show-toplevel)'
 # alias pip=pipx
