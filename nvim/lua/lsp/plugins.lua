@@ -4,10 +4,10 @@ M.list = {
 
 	-- 显示更漂亮的诊断消息的 Neovim 插件。在光标所在位置显示诊断消息，并带有图标和颜色。
 	{
-		"rachartier/tiny-inline-diagnostic.nvim",
+		'rachartier/tiny-inline-diagnostic.nvim',
 		-- event = "LspAttach", -- Or `LspAttach`
 		priority = 3000, -- needs to be loaded in first
-		branch = "main",
+		branch = 'main',
 		init = function()
 			vim.diagnostic.config({
 				virtual_text = false,
@@ -20,8 +20,8 @@ M.list = {
 		end,
 		config = function()
 			-- Default configuration
-			require("tiny-inline-diagnostic").setup({
-				preset = "ghost", -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
+			require('tiny-inline-diagnostic').setup({
+				preset = 'ghost', -- Can be: "modern", "classic", "minimal", "ghost", "simple", "nonerdfont", "amongus"
 
 				options = {
 					-- Throttle the update of the diagnostic when moving cursor, in milliseconds.
@@ -50,55 +50,55 @@ M.list = {
 
 	-- 适用于 Neovim 的轻量级但功能强大的格式化程序插件
 	{
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
+		'stevearc/conform.nvim',
+		event = { 'BufWritePre' },
+		cmd = { 'ConformInfo' },
 		lazy = true,
 		opts = {
 			formatters = {
 				kulala = {
-					command = "kulala-fmt",
-					args = { "$FILENAME" },
+					command = 'kulala-fmt',
+					args = { '$FILENAME' },
 					stdin = false,
 				},
 
-				["markdown-toc"] = {
+				['markdown-toc'] = {
 					condition = function(_, ctx)
 						for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
-							if line:find("<!%-%- toc %-%->") then
+							if line:find('<!%-%- toc %-%->') then
 								return true
 							end
 						end
 					end,
 				},
-				["markdownlint-cli2"] = {
+				['markdownlint-cli2'] = {
 					condition = function(_, ctx)
 						local diag = vim.tbl_filter(function(d)
-							return d.source == "markdownlint"
+							return d.source == 'markdownlint'
 						end, vim.diagnostic.get(ctx.buf))
 						return #diag > 0
 					end,
 				},
 			},
 			default_format_opts = {
-				lsp_format = "fallback",
+				lsp_format = 'fallback',
 			},
 			formatters_by_ft = {
-				go = { "goimports-reviser" },
-				lua = { "stylua" },
+				go = { 'goimports-reviser' },
+				lua = { 'stylua' },
 				-- cargo install sleek
-				sql = { "sleek" },
+				sql = { 'sleek' },
 				-- jq -c 压缩
 				-- jq -c . a.json
-				json = { "jq" },
-				cpp = { lsp_format = "never" },
-				zsh = { "shfmt", lsp_format = "never" },
-				bash = { "shfmt", lsp_format = "never" },
-				toml = { "taplo", lsp_format = "never" },
-				http = { "kulala" },
-				rust = { "rustfmt" },
-				["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
-				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+				json = { 'jq' },
+				cpp = { lsp_format = 'never' },
+				zsh = { 'shfmt', lsp_format = 'never' },
+				bash = { 'shfmt', lsp_format = 'never' },
+				toml = { 'taplo', lsp_format = 'never' },
+				http = { 'kulala' },
+				rust = { 'rustfmt' },
+				['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
+				['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
 			},
 			format_on_save = {
 				timeout_ms = 5000,
@@ -108,42 +108,42 @@ M.list = {
 
 	-- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
 	{
-		"edte/codelens.nvim",
-		ft = { "lua", "go", "cpp" },
+		'edte/codelens.nvim',
+		ft = { 'lua', 'go', 'cpp' },
 		opts = {},
 	},
 
 	-- K 的语法高亮插件
 	{
-		"edte/lsp-hover.nvim",
+		'edte/lsp-hover.nvim',
 		-- keys = "K",
 		opts = {},
 	},
 
 	-- 一个漂亮的窗口，用于在一个地方预览、导航和编辑 LSP 位置，其灵感来自于 vscode 的 peek 预览。
 	{
-		"dnlhc/glance.nvim",
+		'dnlhc/glance.nvim',
 		config = function()
-			require("glance").setup()
+			require('glance').setup()
 		end,
-		cmd = "Glance",
+		cmd = 'Glance',
 	},
 
 	-- Neovim 的异步 linter 插件对内置语言服务器协议支持进行了补充
 	{
-		"mfussenegger/nvim-lint",
-		events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+		'mfussenegger/nvim-lint',
+		events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
 		opts = {
 			-- Event to trigger linters
-			events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+			events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
 			linters_by_ft = {
-				fish = { "fish" },
-				sql = { "sqlfluff" },
-				markdown = { "markdownlint-cli2" },
-				cmake = { "cmakelint" },
-				zsh = { "shellcheck" },
-				sh = { "shellcheck" },
-				json = { "jsonlint" },
+				fish = { 'fish' },
+				sql = { 'sqlfluff' },
+				markdown = { 'markdownlint-cli2' },
+				cmake = { 'cmakelint' },
+				zsh = { 'shellcheck' },
+				sh = { 'shellcheck' },
+				json = { 'jsonlint' },
 			},
 			-- LazyVim extension to easily override linter options
 			-- or add custom linters.
@@ -162,11 +162,11 @@ M.list = {
 		config = function(_, opts)
 			local N = {}
 
-			local lint = require("lint")
+			local lint = require('lint')
 			for name, linter in pairs(opts.linters) do
-				if type(linter) == "table" and type(lint.linters[name]) == "table" then
-					lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
-					if type(linter.prepend_args) == "table" then
+				if type(linter) == 'table' and type(lint.linters[name]) == 'table' then
+					lint.linters[name] = vim.tbl_deep_extend('force', lint.linters[name], linter)
+					if type(linter.prepend_args) == 'table' then
 						lint.linters[name].args = lint.linters[name].args or {}
 						vim.list_extend(lint.linters[name].args, linter.prepend_args)
 					end
@@ -199,21 +199,21 @@ M.list = {
 
 				-- Add fallback linters.
 				if #names == 0 then
-					vim.list_extend(names, lint.linters_by_ft["_"] or {})
+					vim.list_extend(names, lint.linters_by_ft['_'] or {})
 				end
 
 				-- Add global linters.
-				vim.list_extend(names, lint.linters_by_ft["*"] or {})
+				vim.list_extend(names, lint.linters_by_ft['*'] or {})
 
 				-- Filter out linters that don't exist or don't match the condition.
 				local ctx = { filename = vim.api.nvim_buf_get_name(0) }
-				ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
+				ctx.dirname = vim.fn.fnamemodify(ctx.filename, ':h')
 				names = vim.tbl_filter(function(name)
 					local linter = lint.linters[name]
 					if not linter then
-						log.error("Linter not found: " .. name, { title = "nvim-lint" })
+						log.error('Linter not found: ' .. name, { title = 'nvim-lint' })
 					end
-					return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+					return linter and not (type(linter) == 'table' and linter.condition and not linter.condition(ctx))
 				end, names)
 
 				-- Run linters.
@@ -223,7 +223,7 @@ M.list = {
 			end
 
 			vim.api.nvim_create_autocmd(opts.events, {
-				group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+				group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
 				callback = N.debounce(100, N.lint),
 			})
 		end,
@@ -231,28 +231,28 @@ M.list = {
 
 	-- 从你的代码库中学习的导入选择器
 	{
-		"piersolenski/import.nvim",
+		'piersolenski/import.nvim',
 		dependencies = {
-			"folke/snacks.nvim",
+			'folke/snacks.nvim',
 		},
 		opts = {
-			picker = "snacks",
+			picker = 'snacks',
 			insert_at_top = false,
 		},
 		keys = {
 			{
-				"<space>i",
+				'<space>i',
 				function()
-					require("import").pick()
+					require('import').pick()
 				end,
-				desc = "Import",
+				desc = 'Import',
 			},
 		},
 	},
 
 	-- 灵活、时尚的模糊选择器、LSP 符号导航器等等。灵感来自zed
 	{
-		"bassamsdata/namu.nvim",
+		'bassamsdata/namu.nvim',
 		opts = {
 			global = {},
 			namu_symbols = { -- Specific Module options
@@ -262,27 +262,33 @@ M.list = {
 
 		keys = {
 			{
-				"<space>ss",
-				":Namu symbols<cr>",
-				desc = "Jump to LSP symbol",
+				'<space>ss',
+				':Namu symbols<cr>',
+				desc = 'Jump to LSP symbol',
 				silent = true,
 			},
 			{
-				"<space>sw",
-				":Namu workspace<cr>",
-				desc = "LSP Symbols - Workspace",
+				'<space>sw',
+				':Namu workspace<cr>',
+				desc = 'LSP Symbols - Workspace',
 				silent = true,
 			},
 			{
-				"<space>sd",
-				":Namu diagnostics<cr>",
-				desc = "LSP Diagnostics",
+				'ss',
+				':Namu workspace<cr>',
+				desc = 'LSP Symbols - Workspace',
 				silent = true,
 			},
 			{
-				"<space>sc",
-				":Namu call both<cr>",
-				desc = "LSP Call Both",
+				'<space>sd',
+				':Namu diagnostics<cr>',
+				desc = 'LSP Diagnostics',
+				silent = true,
+			},
+			{
+				'<space>sc',
+				':Namu call both<cr>',
+				desc = 'LSP Call Both',
 				silent = true,
 			},
 		},
