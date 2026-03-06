@@ -5,6 +5,10 @@ all:
 	mv ~/.codex/AGENTS.md ~/.codex/AGENTS.md.bk
 	ln -s ~/dotfiles/claude/rules.md ~/.codex/AGENTS.md
 
+
+	mv ~/.codex-internal/AGENTS.md ~/.codex-internal/AGENTS.md.bk
+	ln -s ~/dotfiles/claude/rules.md ~/.codex-internal/AGENTS.md
+
 	mv ~/.codebuddy/mcp.json ~/.codebuddy/mcp.json.bk
 	ln -s ~/dotfiles/claude/mcp.json  ~/.codebuddy/mcp.json
 
@@ -17,7 +21,11 @@ all:
 	test -f ~/.codex/config.toml && mv ~/.codex/config.toml ~/.codex/config.toml.bk || true
 	ln -s ~/dotfiles/claude/codex.toml  ~/.codex/config.toml
 
+	test -f ~/.codex-internal/config.toml && mv ~/.codex-internal/config.toml ~/.codex-internal/config.toml.bk || true
+	ln -s ~/dotfiles/claude/codex.toml  ~/.codex-internal/config.toml
+
 	rm -rf ~/.codebuddy/skills
 	mkdir -p ~/.codebuddy/skills
 	stow skills -t ~/.codebuddy/skills
 	stow skills -t ~/.codex/skills
+	stow skills -t ~/.codex-internal/skills
