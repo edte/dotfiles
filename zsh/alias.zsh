@@ -114,6 +114,10 @@ alias vtest='/Users/edte/go/src/test'
 alias zzsh="cd /Users/edte/.config/zsh"
 alias tailf="tail -f"
 
+# brew tap universal-ctags/universal-ctags
+# brew install --HEAD universal-ctags
+alias ctags="$(brew --prefix)/bin/ctags"
+
 alias cs='cd $(git rev-parse --show-toplevel)'
 # alias pip=pipx
 
