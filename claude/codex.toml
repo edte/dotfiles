@@ -55,3 +55,6 @@ args = ["-y", "mcp-neovim-server"]
 [mcp_servers.neovim.env]
 NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim.sock"
 ALLOW_SHELL_COMMANDS = "true"
+
+[notice]
+hide_rate_limit_model_nudge = true
