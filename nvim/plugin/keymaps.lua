@@ -292,7 +292,15 @@ wk.add({
 	{ 'grr', '<cmd>Glance references<cr>', desc = 'go references' },
 	{ 'gI', '<cmd>Glance implementations<cr>', desc = 'go implementations' },
 	{ 'go', ':lua vim.lsp.buf.document_symbol()<cr>', desc = 'document symbol' },
-	{ 'gw', '<cmd>lua Snacks.picker.grep_word()<CR>', desc = 'grep word' },
+
+	{
+		'gw',
+		function()
+			cmd('Seeker grep_word')
+		end,
+		desc = 'Seek Grep Word',
+	},
+
 
 	-- lsp
 	{ '<space>l', group = 'lsp', desc = 'lsp' },

@@ -101,4 +101,6 @@ vim.schedule(setup_go_once)
 vim.api.nvim_set_hl(0, '@lsp.type.comment.go', {})
 vim.treesitter.start()
 
+vim.cmd([[cab goget GoGet]])
+
 dofile(vim.fn.stdpath('config') .. '/ftplugin/markdown.lua')
