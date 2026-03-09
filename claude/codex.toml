@@ -1,5 +1,5 @@
-model = "gpt-5.4"
-model_reasoning_effort = "medium"
+model = "gpt-5.3-codex"
+model_reasoning_effort = "xhigh"
 [projects."/Users/edte/go/src/push/push-manage-console"]
 trust_level = "trusted"
 
