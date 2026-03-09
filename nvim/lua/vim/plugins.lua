@@ -352,6 +352,9 @@ M.list = {
 			highlight('RainbowCyan', '#56B6C2')
 
 			require('rainbow-delimiters.setup').setup({
+				condition = function(bufnr)
+					return vim.bo[bufnr].buftype ~= 'nofile'
+				end,
 				strategy = {
 					[''] = rainbow_delimiters.strategy['global'],
 					vim = rainbow_delimiters.strategy['local'],
