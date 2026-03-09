@@ -1,24 +1,32 @@
 ---
-name: neovim
-description: Interact with the user's running Neovim instance via RPC. Use this skill when you need to execute Lua or Vimscript inside Neovim, query buffer state, send commands, or interact with the Neovim runtime in any way. Triggers when the user asks about their current Neovim session, wants to run something inside Neovim, or when you need to inspect Neovim state (buffers, windows, options, LSP, etc.). Also use when running inside a Neovim terminal and needing to communicate with the parent editor.
+name: neovim-development
+description: Interact with the user's running Neovim instance via RPC. Use this skill when you need to execute Lua or Vimscript inside Neovim, query buffer state, send commands, or interact with the Neovim runtime in any way. Triggers when the user asks about their current Neovim session, wants to run something inside Neovim, or when you need to inspect Neovim state (buffers, windows, options, LSP, etc.). Works both inside a Neovim terminal via `$NVIM` and in a normal terminal when a socket path is provided via `$NVIM_SOCKET_PATH`.
 ---
 
 # Neovim RPC
 
-When Claude Code(Codex, Gemini) runs inside a Neovim terminal, the `$NVIM` environment variable
-points to the parent Neovim's Unix socket. This gives full access to Neovim's
-msgpack-RPC API without any plugins or HTTP servers.
+When Claude Code(Codex, Gemini) needs to talk to a running Neovim instance, it can
+connect over Neovim's msgpack-RPC socket. Inside a Neovim terminal, `$NVIM`
+usually points to the parent Neovim socket automatically. In a normal terminal,
+set `$NVIM_SOCKET_PATH` to the socket path yourself.
 
 ## Prerequisites
 
-Before sending any commands, verify the socket is available:
+First, resolve the server socket you want to use:
 
 ```bash
-echo "$NVIM"
+SERVER="${NVIM:-$NVIM_SOCKET_PATH}"
+printf '%s\n' "$SERVER"
 ```
 
-If `$NVIM` is empty, you are not running inside a Neovim terminal and cannot
-communicate with a Neovim instance.
+If `SERVER` is empty, you are not connected to a Neovim instance yet. Either:
+
+1. Run the agent inside a Neovim terminal so `$NVIM` is set automatically, or
+2. Start Neovim with an explicit socket, for example `nvim --listen /tmp/nvim.sock`,
+   then export `NVIM_SOCKET_PATH=/tmp/nvim.sock` in your normal terminal.
+
+All examples below assume `SERVER="${NVIM:-$NVIM_SOCKET_PATH}"` has already been
+set.
 
 **Important:** When `NVIM_APPNAME` is set, all `nvim --server` commands emit a
 `Warning: Using NVIM_APPNAME=...` message on **stdout** (not stderr). This
@@ -26,12 +34,29 @@ corrupts parsed output (especially JSON). To suppress it, capture the output
 first, then filter:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'EXPR') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'EXPR') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
-**Note:** Piping `nvim` directly (e.g. `nvim --server "$NVIM" ... | grep ...`)
-can fail because `$NVIM` may not expand correctly in pipe contexts. Always use
-command substitution (`$(...)`) as shown above.
+**Note:** Piping `nvim` directly (for example `nvim --server "$SERVER" ... | grep ...`)
+can still leave you with warning-contaminated output. Always capture the command
+output first with command substitution (`$(...)`) as shown above.
+
+## Normal terminal usage
+
+If you are outside Neovim, start or identify a listening Neovim instance and
+point `NVIM_SOCKET_PATH` at it.
+
+```bash
+nvim --listen /tmp/nvim.sock
+```
+
+In another terminal:
+
+```bash
+export NVIM_SOCKET_PATH=/tmp/nvim.sock
+SERVER="${NVIM:-$NVIM_SOCKET_PATH}"
+result=$(nvim --server "$SERVER" --remote-expr 'v:version') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+```
 
 ## Evaluating expressions
 
@@ -39,25 +64,25 @@ All examples below use the command substitution pattern from Prerequisites to
 filter the `NVIM_APPNAME` warning. The shorthand `nvimx EXPR` means:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'EXPR') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'EXPR') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 Use `--remote-expr` to evaluate a Vimscript expression and get the result back:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'v:version') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'v:version') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 For Lua expressions, wrap them in `luaeval()`:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.api.nvim_buf_get_name(0)")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.api.nvim_buf_get_name(0)")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 For multi-statement Lua that returns a value, use an IIFE:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("(function() local x = vim.api.nvim_get_current_win(); return vim.api.nvim_win_get_number(x) end)()")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("(function() local x = vim.api.nvim_get_current_win(); return vim.api.nvim_win_get_number(x) end)()")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 ### Returning tables/lists
@@ -66,7 +91,7 @@ result=$(nvim --server "$NVIM" --remote-expr 'luaeval("(function() local x = vim
 JSON:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_list_bufs())")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_list_bufs())")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 ## Sending commands
@@ -74,7 +99,7 @@ result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.api.n
 Use `--remote-send` to send keystrokes (as if the user typed them):
 
 ```bash
-nvim --server "$NVIM" --remote-send ':echo "hello"<CR>'
+nvim --server "$SERVER" --remote-send ':echo "hello"<CR>'
 ```
 
 Note: `--remote-send` does not return output and does not need the warning
@@ -85,13 +110,13 @@ filter. Use `--remote-expr` when you need a return value.
 Use `--remote` to open files in the running Neovim instance:
 
 ```bash
-nvim --server "$NVIM" --remote file.txt
+nvim --server "$SERVER" --remote file.txt
 ```
 
 Use `--remote-tab` to open files in new tabs:
 
 ```bash
-nvim --server "$NVIM" --remote-tab file1.txt file2.txt
+nvim --server "$SERVER" --remote-tab file1.txt file2.txt
 ```
 
 ## Executing Lua without a return value
@@ -99,7 +124,7 @@ nvim --server "$NVIM" --remote-tab file1.txt file2.txt
 To run Lua that performs side effects (no return value needed):
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'execute("lua vim.notify(\"Hello from Claude\")")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'execute("lua vim.notify(\"Hello from Claude\")")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 The `execute()` Vimscript function runs an Ex command and returns its output as a
@@ -109,22 +134,22 @@ string (empty if the command produces no output).
 
 ```bash
 # Current buffer path
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.api.nvim_buf_get_name(0)")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.api.nvim_buf_get_name(0)")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # List all buffer paths (JSON)
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(b) return vim.api.nvim_buf_get_name(b) end, vim.api.nvim_list_bufs()))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(b) return vim.api.nvim_buf_get_name(b) end, vim.api.nvim_list_bufs()))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Current working directory
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.fn.getcwd()")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.fn.getcwd()")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Current cursor position [row, col] (1-indexed row)
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_win_get_cursor(0))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_win_get_cursor(0))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Get a Neovim option value
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.o.filetype")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.o.filetype")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Check if an LSP client is attached
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({bufnr = 0})))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({bufnr = 0})))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 ## Reading help documentation
@@ -136,10 +161,10 @@ First, get the key paths via RPC (do this once per session):
 
 ```bash
 # Neovim data directory (plugin install root is <data>/lazy/ for lazy.nvim)
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.fn.stdpath(\"data\")")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.fn.stdpath(\"data\")")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Built-in Neovim docs
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.fn.expand(\"$VIMRUNTIME\")")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.fn.expand(\"$VIMRUNTIME\")")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 Then use standard tools (`fd`, `rg`, `Glob`, `Grep`) to search and `Read` to
@@ -149,7 +174,7 @@ view the files. Search `<data>/lazy/*/doc/` for plugin docs and
 **Search help tags** (equivalent to `:h query<Tab>` completion):
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.fn.getcompletion(\"MiniDiff\", \"help\"))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.fn.getcompletion(\"MiniDiff\", \"help\"))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 ## Finding plugin source code
@@ -159,10 +184,10 @@ plugins, and `pack/*/start/*`):
 
 ```bash
 # Find Lua source files matching a keyword (e.g. "codediff", "neotest")
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_get_runtime_file(\"lua/**/neotest*\", true))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_get_runtime_file(\"lua/**/neotest*\", true))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Find any runtime file by pattern (plugin/, autoload/, syntax/, etc.)
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_get_runtime_file(\"**/neotest*\", true))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.api.nvim_get_runtime_file(\"**/neotest*\", true))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 **Note:** `nvim_get_runtime_file` only searches **active** runtime paths.
@@ -188,10 +213,10 @@ The lazy.nvim API knows about all plugins regardless of whether they are loaded:
 
 ```bash
 # Get a specific plugin's directory
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("require(\"lazy.core.config\").plugins[\"neotest\"].dir")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("require(\"lazy.core.config\").plugins[\"neotest\"].dir")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # List all plugins with their paths (JSON)
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(p) return {name = p.name, dir = p.dir, dev = p.dev or false} end, vim.tbl_values(require(\"lazy.core.config\").plugins)))")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(p) return {name = p.name, dir = p.dir, dev = p.dev or false} end, vim.tbl_values(require(\"lazy.core.config\").plugins)))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 You can also search the install directory directly with `fd`/`Glob` using the
@@ -204,10 +229,10 @@ path instead of the install directory.
 
 ```bash
 # Get the dev path from lazy.nvim config
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("require(\"lazy.core.config\").options.dev.path")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("require(\"lazy.core.config\").options.dev.path")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 
 # Check if a specific plugin is using dev mode
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("require(\"lazy.core.config\").plugins[\"codediff.nvim\"].dev")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("require(\"lazy.core.config\").plugins[\"codediff.nvim\"].dev")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 A dev plugin's source lives at `<dev.path>/<plugin-name>` (e.g. if dev.path is
@@ -223,7 +248,7 @@ you need to find how a plugin is configured:
 
 ```bash
 # Find plugin spec files
-result=$(nvim --server "$NVIM" --remote-expr 'luaeval("vim.fn.stdpath(\"config\")")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.fn.stdpath(\"config\")")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 # Then use Glob/Grep to search the returned config path
 ```
 
@@ -236,13 +261,13 @@ already-fixed issues. To refresh:
 1. **Reload the buffer and save** — this forces the LSP to re-analyze:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'execute("lua vim.api.nvim_buf_call(BUFNR, function() vim.cmd(\"edit! | write\") end)")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'execute("lua vim.api.nvim_buf_call(BUFNR, function() vim.cmd(\"edit! | write\") end)")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 1. **Restart the LSP** — if diagnostics are still stale after reloading:
 
 ```bash
-result=$(nvim --server "$NVIM" --remote-expr 'execute("LspRestart")') && echo "$result" | grep -v '^Warning: Using NVIM_APPNAME='
+result=$(nvim --server "$SERVER" --remote-expr 'execute("LspRestart")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
 After restarting, wait ~10 seconds for the LSP server to re-index before
