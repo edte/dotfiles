@@ -13,6 +13,21 @@ end, {
 	desc = 'Displays attached, active, and configured language servers',
 })
 
+-- 全局启用 URL hover LSP（不改动现有 K 映射）
+do
+	local ok_cfg, url_cfg = pcall(require, 'lsp.url')
+	if ok_cfg and type(url_cfg) == 'table' then
+		vim.lsp.config('url', url_cfg)
+	end
+
+	local ok, err = pcall(vim.lsp.enable, 'url')
+	if not ok then
+		vim.schedule(function()
+			vim.notify(string.format('url lsp enable failed: %s', err), vim.log.levels.WARN)
+		end)
+	end
+end
+
 -- workaround for gopls not supporting semanticTokensProvider
 -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
 vim.api.nvim_create_autocmd({ 'LspAttach' }, {
