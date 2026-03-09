@@ -314,7 +314,7 @@ wk.add({
 	{ '<space>s', group = 'search', desc = 'search' },
 	{ '<space>sh', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'highlight' },
 	{ '<space>sa', '<cmd>lua Snacks.picker.autocmds() <cr>', desc = 'autocmds' },
-	{ '<space>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
+	-- { '<space>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
 	{ '<space>sk', '<cmd>lua Snacks.picker.keymaps() <cr>', desc = 'keymaps' },
 	{ '<space>st', '<cmd>lua Snacks.picker.grep()<cr>', desc = 'text' },
 

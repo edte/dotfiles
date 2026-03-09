@@ -274,8 +274,14 @@ M.list = {
 				silent = true,
 			},
 			{
+				'<space>sf',
+				':Namu project_functions<cr>',
+				desc = 'LSP Functions - Project',
+				silent = true,
+			},
+			{
 				'ss',
-				':Namu workspace<cr>',
+				':Namu project_functions<cr>',
 				desc = 'LSP Symbols - Workspace',
 				silent = true,
 			},
