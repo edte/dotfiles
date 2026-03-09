@@ -55,3 +55,6 @@
 	autoSetupRemote = true
 [mergetool "codediff"]
 	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
+[user]
+	name = edte
+	email = zzzzip6@gmail.com

@@ -252,7 +252,7 @@ M.list = {
 
 	-- 灵活、时尚的模糊选择器、LSP 符号导航器等等。灵感来自zed
 	{
-		'bassamsdata/namu.nvim',
+		'edte/namu.nvim',
 		opts = {
 			global = {},
 			namu_symbols = { -- Specific Module options

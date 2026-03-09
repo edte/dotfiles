@@ -1,14 +1,50 @@
 ---
 name: neovim-development
-description: Interact with the user's running Neovim instance via RPC. Use this skill when you need to execute Lua or Vimscript inside Neovim, query buffer state, send commands, or interact with the Neovim runtime in any way. Triggers when the user asks about their current Neovim session, wants to run something inside Neovim, or when you need to inspect Neovim state (buffers, windows, options, LSP, etc.). Works both inside a Neovim terminal via `$NVIM` and in a normal terminal when a socket path is provided via `$NVIM_SOCKET_PATH`.
+description: Help with Neovim development, configuration, plugin setup, and runtime inspection. Use this skill when the user asks to inspect or modify Neovim config files, plugin specs, keymaps, autocmds, options, LSP setup, lazy.nvim configuration, runtime files, help docs, or a currently running Neovim instance via RPC/socket. Works both for config-repo editing and live Neovim session debugging, using `$NVIM` inside a Neovim terminal or `$NVIM_SOCKET_PATH` in a normal terminal.
 ---
 
-# Neovim RPC
+# Neovim Development
+
+Use this skill for both sides of Neovim work:
+
+1. **Config and plugin development** — inspect or edit `init.lua`, `lua/**`, plugin
+   specs, keymaps, autocmds, LSP setup, lazy.nvim config, help docs, and plugin
+   source code.
+2. **Live Neovim inspection** — query the currently running Neovim instance over
+   msgpack-RPC, inspect buffers/windows/options/LSP/runtime state, or execute
+   Lua/Vimscript/Ex commands when a live session is required.
 
 When Claude Code(Codex, Gemini) needs to talk to a running Neovim instance, it can
 connect over Neovim's msgpack-RPC socket. Inside a Neovim terminal, `$NVIM`
 usually points to the parent Neovim socket automatically. In a normal terminal,
 set `$NVIM_SOCKET_PATH` to the socket path yourself.
+
+## Decision workflow
+
+1. If the user asks where Neovim config, plugin specs, keymaps, autocmds, or LSP
+   setup live, inspect the config repo directly with normal file tools first.
+2. If the user asks about the *current* buffer, window, option, diagnostics, LSP
+   clients, or anything that depends on a running session, use RPC against the
+   live Neovim socket.
+3. If the user says a plugin is broken, not loading, or behaving differently than
+   expected, inspect both the config files and the live runtime state.
+4. Do not require a live Neovim instance for pure config-file questions.
+
+## Known local paths
+
+For this machine and user setup, prefer these concrete paths before guessing:
+
+- Neovim config repo source / source of truth: `~/dotfiles/nvim`
+- Standard Neovim config entry path: `~/.config/nvim`
+- When editing repo-managed config, prefer the repo source path above and use the
+  standard config entry path only when you specifically need the active on-disk
+  location that Neovim reads.
+- lazy.nvim plugin install root: `~/.local/share/nvim/lazy/`
+- Built-in package-style optional plugins: `~/.local/share/nvim/site/pack/core/opt/`
+
+When the user asks where their config or plugins live, check these paths first.
+Use runtime or RPC queries only when you need to confirm the active instance's
+view of those paths.
 
 ## Prerequisites
 
@@ -203,9 +239,10 @@ directory layout, separate from Neovim's built-in `pack/` structure.
 
 ### Plugin install directory
 
-Plugins are installed under `stdpath("data")/lazy/` (e.g.
-`~/.local/share/nvim-fredrik/lazy/<plugin-name>/`). This path is **not** part
-of the standard Neovim `packpath`.
+On this machine, lazy.nvim plugins are installed under
+`~/.local/share/nvim/lazy/<plugin-name>/`. In general this corresponds
+to `stdpath("data")/lazy/`. This path is **not** part of the standard Neovim
+`packpath`.
 
 ### Finding plugins (loaded or not)
 
@@ -219,8 +256,11 @@ result=$(nvim --server "$SERVER" --remote-expr 'luaeval("require(\"lazy.core.con
 result=$(nvim --server "$SERVER" --remote-expr 'luaeval("vim.json.encode(vim.tbl_map(function(p) return {name = p.name, dir = p.dir, dev = p.dev or false} end, vim.tbl_values(require(\"lazy.core.config\").plugins)))")') && printf '%s\n' "$result" | grep -v '^Warning: Using NVIM_APPNAME='
 ```
 
-You can also search the install directory directly with `fd`/`Glob` using the
-`stdpath("data")/lazy/` path.
+You can also search the install directory directly with `fd`/`Glob` using
+`~/.local/share/nvim/lazy/` on this machine, or `stdpath("data")/lazy/`
+more generally. For package-style optional plugins installed through Neovim's
+built-in `pack` layout on this machine, also check
+`~/.local/share/nvim/site/pack/core/opt/`.
 
 ### Dev plugins (`dev = true`)
 
@@ -243,8 +283,11 @@ already reflects this.
 ### Plugin specs (lazy config files)
 
 Plugin specifications (the Lua files that configure which plugins to load) live
-in the Neovim config directory, not in the install directory. Search there when
-you need to find how a plugin is configured:
+in the Neovim config directory, not in the install directory. For this user,
+start with `~/dotfiles/nvim` as the preferred repo source of truth.
+If you need the standard live config entry path that Neovim reads from, also
+check `~/.config/nvim`. Search there when you need to find how a
+plugin is configured:
 
 ```bash
 # Find plugin spec files
@@ -287,7 +330,22 @@ querying diagnostics again.
 - Always use command substitution + `grep -v` to suppress the `NVIM_APPNAME`
   warning (see Prerequisites).
 
+## Example prompts
+
+These prompts should strongly match this skill:
+
+- `帮我看看我的 nvim 配置目录和插件配置文件在哪`
+- `帮我修改 lazy.nvim 里这个插件的 spec`
+- `查一下我的 nvim keymap 是在哪个文件里定义的`
+- `帮我排查这个 Neovim 插件为什么没加载`
+- `看看我的 LSP 配置在 nvim 里是怎么组织的`
+- `帮我找一下这个插件的源码和 help 文档`
+- `通过当前 nvim 实例查一下 stdpath("config")`
+- `帮我看看当前 buffer 挂了哪些 LSP client`
+- `在当前 Neovim 里执行一段 lua 看结果`
+- `通过 NVIM_SOCKET_PATH 连上我的 nvim，看看当前窗口和 buffer`
+
 ## Workflows
 
-For common Neovim workflows (LSP interaction, debugging, plugin management),
-see the `references/` directory.
+For common Neovim workflows covering config editing, LSP interaction, debugging,
+plugin management, and runtime inspection, see the `references/` directory.
