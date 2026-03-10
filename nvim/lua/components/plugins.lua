@@ -1354,7 +1354,7 @@ M.list = {
 								duplicate = { n = '<C-y>', i = '<C-y>' },
 							},
 							---Automatically generate titles for new chats
-							auto_generate_title = false, -- ACP 适配器不支持自动生成标题
+							auto_generate_title = true, -- ACP 适配器不支持自动生成标题
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
 								adapter = 'copilot', -- 使用 HTTP 适配器而不是 ACP
@@ -1371,7 +1371,7 @@ M.list = {
 								end,
 							},
 							---On exiting and entering neovim, loads the last chat on opening chat
-							continue_last_chat = false,
+							continue_last_chat = true,
 							---When chat is cleared with `gx` delete the chat from history
 							delete_on_clearing_chat = false,
 							---Directory path to save the chats
