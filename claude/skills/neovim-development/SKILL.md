@@ -1,6 +1,6 @@
 ---
 name: neovim-development
-description: Help with Neovim development, configuration, plugin setup, and runtime inspection. Use this skill when the user asks to inspect or modify Neovim config files, plugin specs, keymaps, autocmds, options, LSP setup, lazy.nvim configuration, runtime files, help docs, or a currently running Neovim instance via RPC/socket. Works both for config-repo editing and live Neovim session debugging, using `$NVIM` inside a Neovim terminal or `$NVIM_SOCKET_PATH` in a normal terminal.
+description: Help with Neovim development, configuration, plugin setup, plugin install locations, and runtime inspection. Use this skill when the user asks to inspect or modify Neovim config files, plugin specs, plugin installation directories, keymaps, autocmds, options, LSP setup, lazy.nvim configuration, runtime files, help docs, or a currently running Neovim instance via RPC/socket. Works both for config-repo editing and live Neovim session debugging, using `$NVIM` inside a Neovim terminal or `$NVIM_SOCKET_PATH` in a normal terminal.
 ---
 
 # Neovim Development
@@ -340,6 +340,9 @@ These prompts should strongly match this skill:
 - `帮我排查这个 Neovim 插件为什么没加载`
 - `看看我的 LSP 配置在 nvim 里是怎么组织的`
 - `帮我找一下这个插件的源码和 help 文档`
+- `我安装的 nvim 插件在哪`
+- `帮我看看我的 Neovim 插件安装目录在哪`
+- `查一下 lazy.nvim 和 pack 插件都装在哪`
 - `通过当前 nvim 实例查一下 stdpath("config")`
 - `帮我看看当前 buffer 挂了哪些 LSP client`
 - `在当前 Neovim 里执行一段 lua 看结果`
