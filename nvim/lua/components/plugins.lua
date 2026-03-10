@@ -1178,6 +1178,8 @@ M.list = {
 			vim.cmd([[cab cc CodeCompanion]])
 		end,
 		config = function()
+			local has_title_api_key = vim.env.OPENAI_API_KEY ~= nil and vim.env.OPENAI_API_KEY ~= ''
+
 			require('codecompanion').setup({
 				opts = {
 					log_level = 'DEBUG', -- TRACE|DEBUG|ERROR|INFO
@@ -1186,7 +1188,7 @@ M.list = {
 
 				interactions = {
 					chat = {
-						adapter = 'codex',
+						adapter = 'codebuddy',
 						roles = {
 							llm = function(adapter)
 								return '  Assistant'
@@ -1205,7 +1207,7 @@ M.list = {
 							},
 						},
 					},
-					inline = { adapter = 'codex' },
+					inline = { adapter = 'codebuddy' },
 				},
 
 				adapters = {
@@ -1298,13 +1300,13 @@ M.list = {
 							})
 						end,
 					},
-						http = {
-							tencent_deepseek = function()
-								local endpoint = vim.env.OPENAI_BASE_URL or ''
-								endpoint = endpoint:gsub('/+$', '')
+					http = {
+						tencent_deepseek = function()
+							local endpoint = vim.env.OPENAI_BASE_URL or ''
+							endpoint = endpoint:gsub('/+$', '')
 
-								return require('codecompanion.adapters').extend('openai', {
-									name = 'tencent_deepseek',
+							return require('codecompanion.adapters').extend('openai', {
+								name = 'tencent_deepseek',
 								formatted_name = 'Tencent DeepSeek',
 								url = endpoint ~= '' and endpoint or 'https://api.lkeap.cloud.tencent.com/v1/chat/completions',
 								env = {
@@ -1374,7 +1376,7 @@ M.list = {
 								duplicate = { n = '<C-y>', i = '<C-y>' },
 							},
 							---Automatically generate titles for new chats
-							auto_generate_title = true, -- ACP 适配器不支持自动生成标题
+							auto_generate_title = has_title_api_key, -- 没有 HTTP API Key 时关闭，避免启动后反复鉴权失败
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
 								adapter = 'tencent_deepseek', -- 使用 HTTP 适配器而不是 ACP
@@ -1391,7 +1393,7 @@ M.list = {
 								end,
 							},
 							---On exiting and entering neovim, loads the last chat on opening chat
-							continue_last_chat = true,
+							continue_last_chat = false,
 							---When chat is cleared with `gx` delete the chat from history
 							delete_on_clearing_chat = false,
 							---Directory path to save the chats
