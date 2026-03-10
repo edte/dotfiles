@@ -313,16 +313,7 @@ M.list = {
 					},
 				},
 			},
-			files = {
-				options = {
-					use_as_default_explorer = true,
-				},
-				windows = {
-					preview = true,
-					width_focus = 30,
-					width_preview = 30,
-				},
-			},
+			files = {},
 		},
 		keys = {
 			{
@@ -487,6 +478,17 @@ M.list = {
 			})
 			require('mini.move').setup()
 			require('mini.splitjoin').setup()
+			require('mini.files').setup({
+				options = {
+					use_as_default_explorer = true,
+				},
+				mappings = {
+					synchronize = '',
+				},
+				windows = {
+					preview = true,
+				},
+			})
 
 			-- mini.files git
 			-- https://www.reddit.com/r/neovim/comments/1c37m7c/is_there_a_way_to_get_the_minifiles_plugin_to/
@@ -935,7 +937,11 @@ M.list = {
 			-- Window width based on the offset from the center, i.e. center window
 			-- is 60, then next over is 20, then the rest are 10.
 			-- Can use more resolution if you want like { 60, 20, 20, 10, 5 }
-			local widths = { 60, 20, 20, 10, 5 }
+			-- 聚焦窗口用亮色边框，非聚焦窗口用暗色边框
+			highlight('MiniFilesBorderFocused', { fg = '#82aaff' })
+			highlight('MiniFilesBorderUnfocused', { fg = '#2f334d' })
+
+			local widths = { 60, 30, 20, 10, 5 }
 
 			local ensure_center_layout = function(ev)
 				-- Check if the buffer still exists before accessing state
@@ -983,11 +989,42 @@ M.list = {
 
 				win_config.height = depth_offset == 0 and 25 or 20
 				win_config.row = math.ceil(0.5 * (vim.o.lines - win_config.height))
-				win_config.border = { '🭽', '▔', '🭾', '▕', '🭿', '▁', '🭼', '▏' }
+				local hl = depth_offset == 0 and 'MiniFilesBorderFocused' or 'MiniFilesBorderUnfocused'
+				win_config.border = {
+					{ '🭽', hl }, { '▔', hl }, { '🭾', hl }, { '▕', hl },
+					{ '🭿', hl }, { '▁', hl }, { '🭼', hl }, { '▏', hl },
+				}
 				vim.api.nvim_win_set_config(ev.data.win_id, win_config)
 			end
 
 			vim.api.nvim_create_autocmd('User', { pattern = 'MiniFilesWindowUpdate', callback = ensure_center_layout })
+
+			-- 让 mini.files buffer 支持 :w / :wq / :q 操作
+			vim.api.nvim_create_autocmd('User', {
+				pattern = 'MiniFilesBufferCreate',
+				callback = function(ev)
+					local buf_id = ev.data.buf_id
+					vim.keymap.set('ca', 'w', function()
+						if vim.fn.getcmdtype() == ':' and vim.fn.getcmdline() == 'w' then
+							-- 绕过 confirm 弹窗，直接应用文件系统操作
+							return 'lua (function() local mf = require("mini.files") local old = vim.fn.confirm vim.fn.confirm = function() return 1 end mf.synchronize() vim.fn.confirm = old end)()'
+						end
+						return 'w'
+					end, { buffer = buf_id, expr = true })
+					vim.keymap.set('ca', 'q', function()
+						if vim.fn.getcmdtype() == ':' and vim.fn.getcmdline() == 'q' then
+							return 'lua require("mini.files").close()'
+						end
+						return 'q'
+					end, { buffer = buf_id, expr = true })
+					vim.keymap.set('ca', 'wq', function()
+						if vim.fn.getcmdtype() == ':' and vim.fn.getcmdline() == 'wq' then
+							return 'lua (function() local mf = require("mini.files") local old = vim.fn.confirm vim.fn.confirm = function() return 1 end mf.synchronize() vim.fn.confirm = old mf.close() end)()'
+						end
+						return 'wq'
+					end, { buffer = buf_id, expr = true })
+				end,
+			})
 
 			-- mini-cmdline
 			-- require("mini.cmdline").setup()
