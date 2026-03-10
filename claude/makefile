@@ -2,6 +2,10 @@ all:
 	mv ~/.codebuddy/CODEBUDDY.md ~/.codebuddy/CODEBUDDY.md.bk
 	ln -s ~/dotfiles/claude/rules.md  ~/.codebuddy/CODEBUDDY.md
 
+
+	mv ~/.claude-internal/AGENTS.md  ~/.claude-internal/AGENTS.md.bk
+	ln -s ~/dotfiles/claude/rules.md  ~/.claude-internal/AGENTS.md
+
 	mv ~/.codex/AGENTS.md ~/.codex/AGENTS.md.bk
 	ln -s ~/dotfiles/claude/rules.md ~/.codex/AGENTS.md
 
@@ -29,3 +33,4 @@ all:
 	stow skills -t ~/.codebuddy/skills
 	stow skills -t ~/.codex/skills
 	stow skills -t ~/.codex-internal/skills
+	stow skills -t ~/.claude-internal/skills
