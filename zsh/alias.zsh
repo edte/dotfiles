@@ -88,7 +88,6 @@ alias task='/Users/edte/asynctasks.vim/bin/asynctask -f'
 alias quit='exit'
 
 alias codex="codex --dangerously-bypass-approvals-and-sandbox"
-alias cc="codex"
 alias codex-internal="codex-internal --dangerously-bypass-approvals-and-sandbox"
 
 alias i="brew install "
