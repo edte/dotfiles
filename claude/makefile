@@ -3,8 +3,8 @@ all:
 	ln -s ~/dotfiles/claude/rules.md  ~/.codebuddy/CODEBUDDY.md
 
 
-	mv ~/.claude-internal/AGENTS.md  ~/.claude-internal/AGENTS.md.bk
-	ln -s ~/dotfiles/claude/rules.md  ~/.claude-internal/AGENTS.md
+	mv ~/.claude-internal/CLAUDE.md  ~/.claude-internal/CLAUDE.md.bk
+	ln -s ~/dotfiles/claude/rules.md  ~/.claude-internal/CLAUDE.md
 
 	mv ~/.codex/AGENTS.md ~/.codex/AGENTS.md.bk
 	ln -s ~/dotfiles/claude/rules.md ~/.codex/AGENTS.md
