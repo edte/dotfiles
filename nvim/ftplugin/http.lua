@@ -1,51 +1,53 @@
 if not vim.g.lua_loaded then
 	vim.g.lua_loaded = true
 
-	vim.pack.add({
-		{ src = 'https://github.com/mistweaverco/kulala.nvim' },
-	}, { confirm = false })
+	vim.schedule(function()
+		vim.pack.add({
+			{ src = 'https://github.com/mistweaverco/kulala.nvim' },
+		}, { confirm = false })
+
+		require('kulala').setup({
+			default_view = 'body',
+			display_mode = 'float',
+			winbar = false,
+			ui = {
+				show_request_summary = false,
+			},
+			infer_content_type = false,
+			contenttypes = {
+				['application/csv'] = {
+					ft = 'csv',
+					formatter = function(body)
+						return body
+					end,
+					pathresolver = function(body, path)
+						return body
+					end,
+				},
+				['text/csv'] = {
+					ft = 'csv',
+					formatter = function(body)
+						return body
+					end,
+					pathresolver = function(body, path)
+						return body
+					end,
+				},
+				['text/tsv'] = {
+					ft = 'tsv',
+					formatter = function(body)
+						return body
+					end,
+					pathresolver = function(body, path)
+						return body
+					end,
+				},
+			},
+		})
+	end)
 end
 
 vim.treesitter.start()
-
-require('kulala').setup({
-	default_view = 'body',
-	display_mode = 'float',
-	winbar = false,
-	ui = {
-		show_request_summary = false,
-	},
-	infer_content_type = false,
-	contenttypes = {
-		['application/csv'] = {
-			ft = 'csv',
-			formatter = function(body)
-				return body
-			end,
-			pathresolver = function(body, path)
-				return body
-			end,
-		},
-		['text/csv'] = {
-			ft = 'csv',
-			formatter = function(body)
-				return body
-			end,
-			pathresolver = function(body, path)
-				return body
-			end,
-		},
-		['text/tsv'] = {
-			ft = 'tsv',
-			formatter = function(body)
-				return body
-			end,
-			pathresolver = function(body, path)
-				return body
-			end,
-		},
-	},
-})
 
 local opts = { buffer = true, silent = true }
 

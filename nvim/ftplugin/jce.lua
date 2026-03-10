@@ -65,9 +65,11 @@ end
 -- 加载插件 (只需一次)
 if not vim.g.jce_loaded then
 	vim.g.jce_loaded = true
-	vim.pack.add({
-		{ src = "https://github.com/edte/jce-highlight.git" },
-	}, { confirm = false })
+	vim.schedule(function()
+		vim.pack.add({
+			{ src = "https://github.com/edte/jce-highlight.git" },
+		}, { confirm = false })
+	end)
 end
 
 -- JCE 语法折叠配置 (每个 buffer 都需要设置)

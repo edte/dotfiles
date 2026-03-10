@@ -3,66 +3,67 @@ if vim.g.md_loaded then
 end
 vim.g.md_loaded = true
 
-vim.pack.add({
-	'https://github.com/OXY2DEV/markview.nvim.git',
-}, { confirm = false })
-
-require('markview').setup({
-	preview = {
-		map_gx = false,
-		filetypes = {
-			'markdown',
-			'norg',
-			'rmd',
-			'org',
-			'vimwiki',
-			'codecompanion',
-			'go',
-			'lua',
-			'python',
-			'javascript',
-			'typescript',
-			'c',
-			'cpp',
-			'rust',
-		},
-		-- 默认 ignore_buftypes = { "nofile" }，但 codecompanion 的 buftype 是 nofile
-		-- 所以需要设置为空，让 condition 函数来控制
-		ignore_buftypes = {},
-		condition = function(buffer)
-			local ft, bt = vim.bo[buffer].ft, vim.bo[buffer].bt
-			-- codecompanion 的 buftype 是 nofile，需要特殊处理
-			if ft == 'codecompanion' then
-				return true
-			elseif bt == 'nofile' then
-				return false
-			else
-				return true
-			end
-		end,
-		-- 关闭 hybrid_mode，使用 conceal 隐藏原始标记
-		hybrid_mode = false,
-		enable_hybrid_mode = false,
-		-- 在这些模式下启用渲染（隐藏 ###  等标记）
-		modes = { 'n', 'no', 'c' },
-		-- 光标所在行显示原始标记，其他行渲染
-		edit_range = { 1, 0 },
-	},
-	max_length = 99999,
-
-	-- 启用实验性功能：在代码文件中渲染 Fancy Comments
-	experimental = {
-		fancy_comments = true,
-	},
-
-	-- comment 渲染配置
-	comment = {
-		enable = true,
-	},
-})
-
--- 修复：懒加载后立即渲染当前 buffer
+-- 延迟加载 markview，避免在嵌套 autocmd 上下文中修改 runtimepath 导致崩溃
 vim.schedule(function()
+	vim.pack.add({
+		'https://github.com/OXY2DEV/markview.nvim.git',
+	}, { confirm = false })
+
+	require('markview').setup({
+		preview = {
+			map_gx = false,
+			filetypes = {
+				'markdown',
+				'norg',
+				'rmd',
+				'org',
+				'vimwiki',
+				'codecompanion',
+				'go',
+				'lua',
+				'python',
+				'javascript',
+				'typescript',
+				'c',
+				'cpp',
+				'rust',
+			},
+			-- 默认 ignore_buftypes = { "nofile" }，但 codecompanion 的 buftype 是 nofile
+			-- 所以需要设置为空，让 condition 函数来控制
+			ignore_buftypes = {},
+			condition = function(buffer)
+				local ft, bt = vim.bo[buffer].ft, vim.bo[buffer].bt
+				-- codecompanion 的 buftype 是 nofile，需要特殊处理
+				if ft == 'codecompanion' then
+					return true
+				elseif bt == 'nofile' then
+					return false
+				else
+					return true
+				end
+			end,
+			-- 关闭 hybrid_mode，使用 conceal 隐藏原始标记
+			hybrid_mode = false,
+			enable_hybrid_mode = false,
+			-- 在这些模式下启用渲染（隐藏 ###  等标记）
+			modes = { 'n', 'no', 'c' },
+			-- 光标所在行显示原始标记，其他行渲染
+			edit_range = { 1, 0 },
+		},
+		max_length = 99999,
+
+		-- 启用实验性功能：在代码文件中渲染 Fancy Comments
+		experimental = {
+			fancy_comments = true,
+		},
+
+		-- comment 渲染配置
+		comment = {
+			enable = true,
+		},
+	})
+
+	-- 懒加载后立即渲染当前 buffer
 	local buf = vim.api.nvim_get_current_buf()
 	if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
 		pcall(require('markview').render, buf)
