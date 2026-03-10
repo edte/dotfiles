@@ -65,6 +65,7 @@ M.list = {
 				'python',
 				'query',
 				'regex',
+				'sql',
 				'toml',
 				'tsx',
 				'typescript',

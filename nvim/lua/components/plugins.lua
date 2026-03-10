@@ -1298,6 +1298,26 @@ M.list = {
 							})
 						end,
 					},
+						http = {
+							tencent_deepseek = function()
+								local endpoint = vim.env.OPENAI_BASE_URL or ''
+								endpoint = endpoint:gsub('/+$', '')
+
+								return require('codecompanion.adapters').extend('openai', {
+									name = 'tencent_deepseek',
+								formatted_name = 'Tencent DeepSeek',
+								url = endpoint ~= '' and endpoint or 'https://api.lkeap.cloud.tencent.com/v1/chat/completions',
+								env = {
+									api_key = 'OPENAI_API_KEY',
+								},
+								schema = {
+									model = {
+										default = 'deepseek-v3',
+									},
+								},
+							})
+						end,
+					},
 				},
 
 				display = {
@@ -1357,9 +1377,9 @@ M.list = {
 							auto_generate_title = true, -- ACP 适配器不支持自动生成标题
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
-								adapter = 'copilot', -- 使用 HTTP 适配器而不是 ACP
+								adapter = 'tencent_deepseek', -- 使用 HTTP 适配器而不是 ACP
 								---Model for generating titles (defaults to current chat model)
-								model = nil, -- "gpt-4o"
+								model = 'deepseek-v3',
 								---Number of user prompts after which to refresh the title (0 to disable)
 								refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
 								---Maximum number of times to refresh the title (default: 3)
