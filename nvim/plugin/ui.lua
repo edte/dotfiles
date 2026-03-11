@@ -237,7 +237,7 @@ StatusLine.active = function()
 	local statusline = {
 		StatusLine.project_name or '',
 		icons.ui.DividerRight,
-		StatusLine.file,
+		StatusLine.file or '',
 		icons.ui.DividerRight,
 		StatusLine.branch or '',
 		'%=',
