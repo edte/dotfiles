@@ -1234,7 +1234,7 @@ M.list = {
 		end,
 		config = function()
 			-- local has_title_api_key = vim.env.DEEPSEEK_API_KEY ~= nil and vim.env.DEEPSEEK_API_KEY ~= ''
-			-- local has_title_api_key = false
+			local has_title_api_key = false
 
 			require('codecompanion').setup({
 				opts = {
@@ -1273,12 +1273,12 @@ M.list = {
 										'interactions.background.builtin.chat_make_title',
 									},
 									-- Enable "on_ready" callback which contains the title generation action
-									enabled = true,
+									enabled = false,
 								},
 							},
 							opts = {
 								-- Enable background interactions generally
-								enabled = true,
+								enabled = false,
 							},
 						},
 					},
