@@ -1519,7 +1519,7 @@ M.list = {
 			-- For CodeBuddy in ACP mode, auto-accept to avoid interactive diff prompts.
 			local ok, request_permission = pcall(require, 'codecompanion.interactions.chat.acp.request_permission')
 			if ok and request_permission then
-				request_permission.show = function(_, request)
+				request_permission.confirm = function(_, request)
 					local function pick_option_id(kinds)
 						for _, kind in ipairs(kinds) do
 							for _, opt in ipairs(request.options or {}) do
