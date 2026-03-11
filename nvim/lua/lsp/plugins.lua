@@ -85,7 +85,7 @@ M.list = {
 			},
 			formatters_by_ft = {
 				go = { 'goimports-reviser' },
-				lua = { lsp_format = 'fallback' },
+				lua = { 'stylua' },
 				-- cargo install sleek
 				sql = { 'sleek' },
 				-- jq -c 压缩
