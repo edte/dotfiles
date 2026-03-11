@@ -1189,7 +1189,7 @@ M.list = {
 		-- You can use `build = "cargo build --release"` if you have `cargo` in your system
 		config = function()
 			require('juanlog').setup({
-				threshold_size = 1024 * 1024 * 1, -- 1MB
+				threshold_size = 1024 * 1024 * 10, -- 1MB
 				mode = 'dynamic',
 				lazy = true, -- background indexing. prevents neovim from freezing on 50GB files
 				patterns = { '*.log', '*.txt', '*.csv', '*.json' }, -- Use the plugin for these filetypes
