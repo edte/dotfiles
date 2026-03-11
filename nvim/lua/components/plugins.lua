@@ -1000,8 +1000,14 @@ M.list = {
 				win_config.row = math.ceil(0.5 * (vim.o.lines - win_config.height))
 				local hl = depth_offset == 0 and 'MiniFilesBorderFocused' or 'MiniFilesBorderUnfocused'
 				win_config.border = {
-					{ '🭽', hl }, { '▔', hl }, { '🭾', hl }, { '▕', hl },
-					{ '🭿', hl }, { '▁', hl }, { '🭼', hl }, { '▏', hl },
+					{ '🭽', hl },
+					{ '▔', hl },
+					{ '🭾', hl },
+					{ '▕', hl },
+					{ '🭿', hl },
+					{ '▁', hl },
+					{ '🭼', hl },
+					{ '▏', hl },
 				}
 				vim.api.nvim_win_set_config(ev.data.win_id, win_config)
 			end
@@ -1227,7 +1233,8 @@ M.list = {
 			vim.cmd([[cab cc CodeCompanion]])
 		end,
 		config = function()
-			local has_title_api_key = vim.env.OPENAI_API_KEY ~= nil and vim.env.OPENAI_API_KEY ~= ''
+			-- local has_title_api_key = vim.env.DEEPSEEK_API_KEY ~= nil and vim.env.DEEPSEEK_API_KEY ~= ''
+			-- local has_title_api_key = false
 
 			require('codecompanion').setup({
 				opts = {
@@ -1257,6 +1264,24 @@ M.list = {
 						},
 					},
 					inline = { adapter = 'codebuddy' },
+
+					background = {
+						chat = {
+							callbacks = {
+								['on_ready'] = {
+									actions = {
+										'interactions.background.builtin.chat_make_title',
+									},
+									-- Enable "on_ready" callback which contains the title generation action
+									enabled = true,
+								},
+							},
+							opts = {
+								-- Enable background interactions generally
+								enabled = true,
+							},
+						},
+					},
 				},
 
 				adapters = {
@@ -1359,7 +1384,7 @@ M.list = {
 								formatted_name = 'Tencent DeepSeek',
 								url = endpoint ~= '' and endpoint or 'https://api.lkeap.cloud.tencent.com/v1/chat/completions',
 								env = {
-									api_key = 'OPENAI_API_KEY',
+									api_key = 'DEEPSEEK_API_KEY',
 								},
 								schema = {
 									model = {
@@ -1425,10 +1450,10 @@ M.list = {
 								duplicate = { n = '<C-y>', i = '<C-y>' },
 							},
 							---Automatically generate titles for new chats
-							auto_generate_title = has_title_api_key, -- 没有 HTTP API Key 时关闭，避免启动后反复鉴权失败
+							auto_generate_title = has_title_api_key, -- 使用 API Key 时启用
 							title_generation_opts = {
 								---Adapter for generating titles (defaults to current chat adapter)
-								adapter = 'tencent_deepseek', -- 使用 HTTP 适配器而不是 ACP
+								adapter = 'tencent_deepseek', -- 使用 HTTP 适配器而不是 ACP，避免加载 Copilot
 								---Model for generating titles (defaults to current chat model)
 								model = 'deepseek-v3',
 								---Number of user prompts after which to refresh the title (0 to disable)
