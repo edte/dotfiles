@@ -1,129 +1,129 @@
 if vim.g.md_loaded then
-	return
+    return
 end
 vim.g.md_loaded = true
 
 -- 延迟加载 markview，避免在嵌套 autocmd 上下文中修改 runtimepath 导致崩溃
 vim.schedule(function()
-	vim.pack.add({
-		'https://github.com/OXY2DEV/markview.nvim.git',
-	}, { confirm = false })
+    vim.pack.add({
+        'https://github.com/OXY2DEV/markview.nvim.git',
+    }, { confirm = false })
 
-	require('markview').setup({
-		preview = {
-			map_gx = false,
-			filetypes = {
-				'markdown',
-				'norg',
-				'rmd',
-				'org',
-				'vimwiki',
-				'codecompanion',
-				'go',
-				'lua',
-				'python',
-				'javascript',
-				'typescript',
-				'c',
-				'cpp',
-				'rust',
-			},
-			-- 默认 ignore_buftypes = { "nofile" }，但 codecompanion 的 buftype 是 nofile
-			-- 所以需要设置为空，让 condition 函数来控制
-			ignore_buftypes = {},
-			condition = function(buffer)
-				local ft, bt = vim.bo[buffer].ft, vim.bo[buffer].bt
-				-- codecompanion 的 buftype 是 nofile，需要特殊处理
-				if ft == 'codecompanion' then
-					return true
-				elseif bt == 'nofile' then
-					return false
-				else
-					return true
-				end
-			end,
-			-- 关闭 hybrid_mode，使用 conceal 隐藏原始标记
-			hybrid_mode = false,
-			enable_hybrid_mode = false,
-			-- 在这些模式下启用渲染（隐藏 ###  等标记）
-			modes = { 'n', 'no', 'c' },
-			-- 光标所在行显示原始标记，其他行渲染
-			edit_range = { 1, 0 },
-		},
-		max_length = 99999,
+    require('markview').setup({
+        preview = {
+            map_gx = false,
+            filetypes = {
+                'markdown',
+                'norg',
+                'rmd',
+                'org',
+                'vimwiki',
+                'codecompanion',
+                'go',
+                'lua',
+                'python',
+                'javascript',
+                'typescript',
+                'c',
+                'cpp',
+                'rust',
+            },
+            -- 默认 ignore_buftypes = { "nofile" }，但 codecompanion 的 buftype 是 nofile
+            -- 所以需要设置为空，让 condition 函数来控制
+            ignore_buftypes = {},
+            condition = function(buffer)
+                local ft, bt = vim.bo[buffer].ft, vim.bo[buffer].bt
+                -- codecompanion 的 buftype 是 nofile，需要特殊处理
+                if ft == 'codecompanion' then
+                    return true
+                elseif bt == 'nofile' then
+                    return false
+                else
+                    return true
+                end
+            end,
+            -- 关闭 hybrid_mode，使用 conceal 隐藏原始标记
+            hybrid_mode = false,
+            enable_hybrid_mode = false,
+            -- 在这些模式下启用渲染（隐藏 ###  等标记）
+            modes = { 'n', 'no', 'c' },
+            -- 光标所在行显示原始标记，其他行渲染
+            edit_range = { 1, 0 },
+        },
+        max_length = 99999,
 
-		-- 启用实验性功能：在代码文件中渲染 Fancy Comments
-		experimental = {
-			fancy_comments = true,
-		},
+        -- 启用实验性功能：在代码文件中渲染 Fancy Comments
+        experimental = {
+            fancy_comments = true,
+        },
 
-		-- comment 渲染配置
-		comment = {
-			enable = true,
-		},
-	})
+        -- comment 渲染配置
+        comment = {
+            enable = true,
+        },
+    })
 
-	-- 懒加载后立即渲染当前 buffer
-	local buf = vim.api.nvim_get_current_buf()
-	if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
-		pcall(require('markview').render, buf)
-	end
+    -- 懒加载后立即渲染当前 buffer
+    local buf = vim.api.nvim_get_current_buf()
+    if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
+        pcall(require('markview').render, buf)
+    end
 end)
 
 -- 修复：对后续创建的 codecompanion buffer 也进行 attach 和渲染
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'codecompanion',
-	callback = function(ev)
-		-- 延迟执行，等 buffer 完全初始化
-		vim.defer_fn(function()
-			local buf = ev.buf
-			if not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_buf_is_loaded(buf) then
-				return
-			end
+    pattern = 'codecompanion',
+    callback = function(ev)
+        -- 延迟执行，等 buffer 完全初始化
+        vim.defer_fn(function()
+            local buf = ev.buf
+            if not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_buf_is_loaded(buf) then
+                return
+            end
 
-			local ok, state = pcall(require, 'markview.state')
-			if not ok then
-				return
-			end
+            local ok, state = pcall(require, 'markview.state')
+            if not ok then
+                return
+            end
 
-			-- 如果还没有 attach，手动 attach
-			if not state.vars.attached_buffers[buf] then
-				pcall(state.attach, buf)
-			end
+            -- 如果还没有 attach，手动 attach
+            if not state.vars.attached_buffers[buf] then
+                pcall(state.attach, buf)
+            end
 
-			-- 安全渲染
-			pcall(require('markview').render, buf)
+            -- 安全渲染
+            pcall(require('markview').render, buf)
 
-			-- 设置 conceallevel 以隐藏原始标记
-			local wins = vim.fn.win_findbuf(buf)
-			for _, win in ipairs(wins) do
-				if vim.api.nvim_win_is_valid(win) then
-					vim.wo[win].conceallevel = 2
-					vim.wo[win].concealcursor = 'nc'
-				end
-			end
-		end, 100)
-	end,
+            -- 设置 conceallevel 以隐藏原始标记
+            local wins = vim.fn.win_findbuf(buf)
+            for _, win in ipairs(wins) do
+                if vim.api.nvim_win_is_valid(win) then
+                    vim.wo[win].conceallevel = 2
+                    vim.wo[win].concealcursor = 'nc'
+                end
+            end
+        end, 100)
+    end,
 })
 
 if vim.o.filetype ~= 'markdown' and vim.o.filetype ~= 'codecompanion' then
-	return
+    return
 end
 
 vim.lsp.config('marksman', {
-	name = 'marksman',
-	cmd = { 'marksman', 'server' },
-	filetypes = { 'markdown', 'codecompanion' },
-	single_file_support = true,
-	root_markers = { '.git', 'Makefile' },
+    name = 'marksman',
+    cmd = { 'marksman', 'server' },
+    filetypes = { 'markdown', 'codecompanion' },
+    single_file_support = true,
+    root_markers = { '.git', 'Makefile' },
 })
 
 vim.lsp.config('markdown-oxide', {
-	name = 'markdown-oxide',
-	cmd = { 'markdown-oxide' },
-	filetypes = { 'markdown', 'codecompanion' },
-	single_file_support = true,
-	root_markers = { '.git', 'Makefile' },
+    name = 'markdown-oxide',
+    cmd = { 'markdown-oxide' },
+    filetypes = { 'markdown', 'codecompanion' },
+    single_file_support = true,
+    root_markers = { '.git', 'Makefile' },
 })
 
 vim.lsp.enable('marksman')
@@ -131,16 +131,16 @@ vim.lsp.enable('markdown-oxide')
 
 -- 手动为当前 buffer 启动 LSP（因为 enable 只对新打开的 buffer 生效）
 vim.schedule(function()
-	local buf = vim.api.nvim_get_current_buf()
-	for _, name in ipairs({ 'marksman', 'markdown-oxide' }) do
-		local config = vim.lsp.config[name]
-		if config then
-			vim.lsp.start(
-				vim.tbl_extend('force', config, {
-					root_dir = vim.fs.root(buf, config.root_markers or { '.git' }) or vim.fn.getcwd(),
-				}),
-				{ bufnr = buf }
-			)
-		end
-	end
+    local buf = vim.api.nvim_get_current_buf()
+    for _, name in ipairs({ 'marksman', 'markdown-oxide' }) do
+        local config = vim.lsp.config[name]
+        if config then
+            vim.lsp.start(
+                vim.tbl_extend('force', config, {
+                    root_dir = vim.fs.root(buf, config.root_markers or { '.git' }) or vim.fn.getcwd(),
+                }),
+                { bufnr = buf }
+            )
+        end
+    end
 end)

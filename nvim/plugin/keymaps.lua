@@ -1,8 +1,8 @@
 if not vim.g.keymap_loaded then
-	vim.g.keymap_loaded = true
-	vim.pack.add({
-		'https://github.com/folke/which-key.nvim.git',
-	}, { confirm = false })
+    vim.g.keymap_loaded = true
+    vim.pack.add({
+        'https://github.com/folke/which-key.nvim.git',
+    }, { confirm = false })
 end
 
 nmap('}', '}w')
@@ -25,26 +25,26 @@ imap('jk', '<Esc><right>')
 nmap('<esc>', '<cmd>noh<cr>')
 
 nmap('<esc>', function()
-	local function isModuleAvailable(name)
-		if package.loaded[name] then
-			return true
-		else
-			for _, searcher in ipairs(package.searchers or package.loaders) do
-				local loader = searcher(name)
-				if type(loader) == 'function' then
-					package.preload[name] = loader
-					return true
-				end
-			end
-			return false
-		end
-	end
+    local function isModuleAvailable(name)
+        if package.loaded[name] then
+            return true
+        else
+            for _, searcher in ipairs(package.searchers or package.loaders) do
+                local loader = searcher(name)
+                if type(loader) == 'function' then
+                    package.preload[name] = loader
+                    return true
+                end
+            end
+            return false
+        end
+    end
 
-	cmd(':nohlsearch')
-	if isModuleAvailable('clever-f') then
-		cmd(':call clever_f#reset()')
-		return
-	end
+    cmd(':nohlsearch')
+    if isModuleAvailable('clever-f') then
+        cmd(':call clever_f#reset()')
+        return
+    end
 end)
 
 nmap('<C-i>', '<C-i>zz')
@@ -60,15 +60,15 @@ nmap('U', '<c-r>')
 nmap('<C-]>', '<C-]>zz')
 
 nmap('<c-n>', function()
-	vim.diagnostic.goto_next()
-	-- vim.diagnostic.jump({ count = 1, float = true })
-	zz()
+    vim.diagnostic.goto_next()
+    -- vim.diagnostic.jump({ count = 1, float = true })
+    zz()
 end)
 
 nmap('<c-p>', function()
-	vim.diagnostic.goto_prev()
-	-- vim.diagnostic.jump({ count = -1, float = true })
-	zz()
+    vim.diagnostic.goto_prev()
+    -- vim.diagnostic.jump({ count = -1, float = true })
+    zz()
 end)
 
 -- gqn/gqj 自带的格式化
@@ -116,7 +116,7 @@ cmd('command! Pwd !ls %:p')
 cmd('command! Cwd lua print(vim.uv.cwd())')
 
 vim.api.nvim_create_user_command('LiteralSearch', function(opts)
-	cmd('normal! /\\V' .. vim.fn.escape(opts.args, '\\'))
+    cmd('normal! /\\V' .. vim.fn.escape(opts.args, '\\'))
 end, { nargs = 1 })
 
 nmap('<space>/', 'gcc', { noremap = false, silent = true, desc = 'comment' })
@@ -144,12 +144,12 @@ vmap('<space>/', 'gc', { noremap = false, silent = true, desc = 'comment' })
 vim.keymap.set('x', '/', '<Esc>/\\%V') --search within visual selection - this is magic
 
 vim.keymap.set('n', 'md', function()
-	require('marks'):delete_line_marks()
-	require('bookmarks').delete_bookmark()
+    require('marks'):delete_line_marks()
+    require('bookmarks').delete_bookmark()
 end, { desc = 'bookmarks delete', silent = true })
 
 Command('JsonCompress', function()
-	vim.api.nvim_command(':%!jq -c')
+    vim.api.nvim_command(':%!jq -c')
 end, { nargs = '*' })
 
 -- cmdline 模式下的emacs键位
@@ -181,161 +181,161 @@ vim.cmd('cnoremap <C-@> <Nop>')
 --------------------------------------------------------------which key ------------------------------------------------------------------------
 local wk = require('which-key')
 wk.setup({
-	delay = 100,
+    delay = 100,
 })
 
 -- visual
 wk.add({
-	mode = { 'v' },
-	-- lsp
-	{ '<space>l', group = 'LSP', desc = 'lsp' },
-	{ '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'code Action' },
-	{ '<space>t', ":'<,'>Translate ZH<cr>", desc = 'translate' },
-	{
-		'<space>d',
-		function()
-			local ftype = vim.api.nvim_eval('&filetype')
-			cmd('normal! "xy')
+    mode = { 'v' },
+    -- lsp
+    { '<space>l',  group = 'LSP',                            desc = 'lsp' },
+    { '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'code Action' },
+    { '<space>t',  ":'<,'>Translate ZH<cr>",                 desc = 'translate' },
+    {
+        '<space>d',
+        function()
+            local ftype = vim.api.nvim_eval('&filetype')
+            cmd('normal! "xy')
 
-			-- 左侧：剪贴板内容
-			cmd('vsplit')
-			cmd('enew')
-			local left_buf = vim.api.nvim_get_current_buf()
-			cmd('normal! P')
-			cmd('setlocal buftype=nofile bufhidden=wipe nomodifiable')
-			cmd('set filetype=' .. ftype)
+            -- 左侧：剪贴板内容
+            cmd('vsplit')
+            cmd('enew')
+            local left_buf = vim.api.nvim_get_current_buf()
+            cmd('normal! P')
+            cmd('setlocal buftype=nofile bufhidden=wipe nomodifiable')
+            cmd('set filetype=' .. ftype)
 
-			-- 右侧：原始内容
-			cmd('wincmd w')
-			cmd('enew')
-			local right_buf = vim.api.nvim_get_current_buf()
-			cmd('normal! "xP')
-			cmd('setlocal buftype=nofile bufhidden=wipe')
-			cmd('set filetype=' .. ftype)
+            -- 右侧：原始内容
+            cmd('wincmd w')
+            cmd('enew')
+            local right_buf = vim.api.nvim_get_current_buf()
+            cmd('normal! "xP')
+            cmd('setlocal buftype=nofile bufhidden=wipe')
+            cmd('set filetype=' .. ftype)
 
-			-- 最后统一设置 diff 和绑定
-			cmd('wincmd w') -- 切到左窗口
-			cmd('diffthis')
-			cmd('set scrollbind cursorbind')
+            -- 最后统一设置 diff 和绑定
+            cmd('wincmd w') -- 切到左窗口
+            cmd('diffthis')
+            cmd('set scrollbind cursorbind')
 
-			cmd('wincmd w') -- 切到右窗口
-			cmd('diffthis')
-			cmd('set scrollbind cursorbind')
+            cmd('wincmd w') -- 切到右窗口
+            cmd('diffthis')
+            cmd('set scrollbind cursorbind')
 
-			-- 为两个缓冲区都设置退出快捷键
-			local quit_cmd = function()
-				cmd('diffoff!')
-				cmd('bdelete ' .. left_buf)
-				cmd('bdelete ' .. right_buf)
-			end
+            -- 为两个缓冲区都设置退出快捷键
+            local quit_cmd = function()
+                cmd('diffoff!')
+                cmd('bdelete ' .. left_buf)
+                cmd('bdelete ' .. right_buf)
+            end
 
-			vim.keymap.set('n', 'q', quit_cmd, { buffer = left_buf, noremap = true })
-			vim.keymap.set('n', 'q', quit_cmd, { buffer = right_buf, noremap = true })
-			vim.keymap.set('n', '<space>q', quit_cmd, { buffer = left_buf, noremap = true })
-			vim.keymap.set('n', '<space>q', quit_cmd, { buffer = right_buf, noremap = true })
-			vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = left_buf, noremap = true })
-			vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = right_buf, noremap = true })
-		end,
-		desc = 'diff copy',
-	},
-	{ '<enter>', ":'<,'>SnipRun<CR>", desc = 'run code' },
+            vim.keymap.set('n', 'q', quit_cmd, { buffer = left_buf, noremap = true })
+            vim.keymap.set('n', 'q', quit_cmd, { buffer = right_buf, noremap = true })
+            vim.keymap.set('n', '<space>q', quit_cmd, { buffer = left_buf, noremap = true })
+            vim.keymap.set('n', '<space>q', quit_cmd, { buffer = right_buf, noremap = true })
+            vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = left_buf, noremap = true })
+            vim.keymap.set('n', '<Esc>', quit_cmd, { buffer = right_buf, noremap = true })
+        end,
+        desc = 'diff copy',
+    },
+    { '<enter>', ":'<,'>SnipRun<CR>", desc = 'run code' },
 })
 
 -- normal
 wk.add({
-	{ '<space>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
-	{ '<space>c', '<cmd>bd<CR>', desc = 'close Buffer' },
-	{
-		'<space>f',
-		function()
-			-- Git 项目中使用 git_files，否则使用普通文件选择
-			local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
-			if ret == '' then
-				cmd('Seeker grep')
-				-- Snacks.picker.files()
-			else
-				cmd('Seeker git_files')
-				-- Snacks.picker.git_files()
-			end
-		end,
-		desc = 'files',
-	},
+    { '<space>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
+    { '<space>c', '<cmd>bd<CR>',         desc = 'close Buffer' },
+    {
+        '<space>f',
+        function()
+            -- Git 项目中使用 git_files，否则使用普通文件选择
+            local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
+            if ret == '' then
+                cmd('Seeker grep')
+                -- Snacks.picker.files()
+            else
+                cmd('Seeker git_files')
+                -- Snacks.picker.git_files()
+            end
+        end,
+        desc = 'files',
+    },
 
-	{
-		'<space>t',
-		function()
-			cmd('Seeker grep')
-			-- Snacks.picker.grep()
-		end,
-		desc = 'Seek Grep',
-	},
+    {
+        '<space>t',
+        function()
+            cmd('Seeker grep')
+            -- Snacks.picker.grep()
+        end,
+        desc = 'Seek Grep',
+    },
 
-	{ '<space>p', '<cmd>Lazy<cr>', desc = 'plugins' },
-	{ '<space>q', '<cmd>confirm q<CR>', desc = 'quit' },
-	{ '<space>r', '<cmd>lua Snacks.picker.recent()<CR>', desc = 'recents' },
-	{ '<space>m', '<cmd>M<CR>', desc = 'log' },
-	{ '<space>n', '<cmd>message<cr>', desc = 'message' },
-	{ '<space>/', 'gcc', desc = 'comment', noremap = false },
+    { '<space>p',  '<cmd>Lazy<cr>',                                 desc = 'plugins' },
+    { '<space>q',  '<cmd>confirm q<CR>',                            desc = 'quit' },
+    { '<space>r',  '<cmd>lua Snacks.picker.recent()<CR>',           desc = 'recents' },
+    { '<space>m',  '<cmd>M<CR>',                                    desc = 'log' },
+    { '<space>n',  '<cmd>message<cr>',                              desc = 'message' },
+    { '<space>/',  'gcc',                                           desc = 'comment',           noremap = false },
 
-	-- git
-	{ '<space>g', group = 'git', desc = 'git' },
-	{ '<space>gb', '<cmd>lua Snacks.picker.git_branches()<cr>', desc = 'branch' },
-	{ '<space>gs', '<cmd>lua Snacks.picker.git_status()<cr>', desc = 'status' },
-	-- { "<space>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
-	-- { "<space>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
-	{ '<space>gl', "<cmd>lua require('git-blame.view').show()<cr>", desc = 'blame line' },
-	-- { "<space>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
+    -- git
+    { '<space>g',  group = 'git',                                   desc = 'git' },
+    { '<space>gb', '<cmd>lua Snacks.picker.git_branches()<cr>',     desc = 'branch' },
+    { '<space>gs', '<cmd>lua Snacks.picker.git_status()<cr>',       desc = 'status' },
+    -- { "<space>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "diff head" },
+    -- { "<space>gd", "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",        desc = "diff origin" },
+    { '<space>gl', "<cmd>lua require('git-blame.view').show()<cr>", desc = 'blame line' },
+    -- { "<space>gL", "<cmd>BlameToggle<cr>", desc = "blame file" },
 
-	-- jump
-	{ 'g', group = 'jump', desc = 'jump' },
-	{ 'gd', '<C-]>zz', desc = 'go define' },
-	{ 'grr', '<cmd>Glance references<cr>', desc = 'go references' },
-	{ 'gI', '<cmd>Glance implementations<cr>', desc = 'go implementations' },
-	{ 'go', ':lua vim.lsp.buf.document_symbol()<cr>', desc = 'document symbol' },
+    -- jump
+    { 'g',         group = 'jump',                                  desc = 'jump' },
+    { 'gd',        '<C-]>zz',                                       desc = 'go define' },
+    { 'grr',       '<cmd>Glance references<cr>',                    desc = 'go references' },
+    { 'gI',        '<cmd>Glance implementations<cr>',               desc = 'go implementations' },
+    { 'go',        ':lua vim.lsp.buf.document_symbol()<cr>',        desc = 'document symbol' },
 
-	{
-		'gw',
-		function()
-			cmd('Seeker grep_word')
-		end,
-		desc = 'Seek Grep Word',
-	},
+    {
+        'gw',
+        function()
+            cmd('Seeker grep_word')
+        end,
+        desc = 'Seek Grep Word',
+    },
 
 
-	-- lsp
-	{ '<space>l', group = 'lsp', desc = 'lsp' },
-	{ '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'Code Action' },
-	{ '<space>lf', '<cmd>lua vim.lsp.buf.format()<cr>', desc = 'Format' },
-	{ '<space>li', '<cmd>LspInfo<cr>', desc = 'Info' },
-	{ '<space>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
-	{ '<space>ls', '<cmd>lua Snacks.picker.lsp_symbols()<cr>', desc = 'Document Symbols' },
+    -- lsp
+    { '<space>l',  group = 'lsp',                              desc = 'lsp' },
+    { '<space>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',   desc = 'Code Action' },
+    { '<space>lf', '<cmd>lua vim.lsp.buf.format()<cr>',        desc = 'Format' },
+    { '<space>li', '<cmd>LspInfo<cr>',                         desc = 'Info' },
+    { '<space>lr', '<cmd>lua vim.lsp.buf.rename()<cr>',        desc = 'Rename' },
+    { '<space>ls', '<cmd>lua Snacks.picker.lsp_symbols()<cr>', desc = 'Document Symbols' },
 
-	-- search
-	{ '<space>s', group = 'search', desc = 'search' },
-	{ '<space>sh', '<cmd>lua Snacks.picker.highlights()<cr>', desc = 'highlight' },
-	{ '<space>sa', '<cmd>lua Snacks.picker.autocmds() <cr>', desc = 'autocmds' },
-	-- { '<space>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
-	{ '<space>sk', '<cmd>lua Snacks.picker.keymaps() <cr>', desc = 'keymaps' },
-	{ '<space>st', '<cmd>lua Snacks.picker.grep()<cr>', desc = 'text' },
+    -- search
+    { '<space>s',  group = 'search',                           desc = 'search' },
+    { '<space>sh', '<cmd>lua Snacks.picker.highlights()<cr>',  desc = 'highlight' },
+    { '<space>sa', '<cmd>lua Snacks.picker.autocmds() <cr>',   desc = 'autocmds' },
+    -- { '<space>sf', '<cmd>lua Snacks.picker.git_files()<cr>', desc = 'file' },
+    { '<space>sk', '<cmd>lua Snacks.picker.keymaps() <cr>',    desc = 'keymaps' },
+    -- { '<space>st', '<cmd>lua Snacks.picker.grep()<cr>', desc = 'text' },
 
-	-- window
-	{ 's', group = 'window', desc = 'window' },
-	{ 'sv', '<cmd>vsp<CR>', desc = 'split vertical' },
-	{ 'sh', '<cmd>sp<CR>', desc = 'split horizontal' },
-	{ 'sc', '<C-w>c', desc = 'close window' },
-	{ 'so', '<C-w>o', desc = 'close other' },
-	{ 's,', '<cmd>vertical resize +20<CR>', desc = 'resize right' },
-	{ 's.', '<cmd>vertical resize -20<CR>', desc = 'resize left' },
-	{ 'sm', '<C-w>|', desc = 'maximize' },
-	{ 'sn', '<C-w>=', desc = 'normalize' },
-	{ '<left>', '<c-w>h', desc = 'move left' },
-	{ '<right>', '<c-w>l', desc = 'move right' },
-	{ '<up>', '<c-w>k', desc = 'move up' },
-	{ '<down>', '<c-w>j', desc = 'move down' },
+    -- window
+    { 's',         group = 'window',                           desc = 'window' },
+    { 'sv',        '<cmd>vsp<CR>',                             desc = 'split vertical' },
+    { 'sh',        '<cmd>sp<CR>',                              desc = 'split horizontal' },
+    { 'sc',        '<C-w>c',                                   desc = 'close window' },
+    { 'so',        '<C-w>o',                                   desc = 'close other' },
+    { 's,',        '<cmd>vertical resize +20<CR>',             desc = 'resize right' },
+    { 's.',        '<cmd>vertical resize -20<CR>',             desc = 'resize left' },
+    { 'sm',        '<C-w>|',                                   desc = 'maximize' },
+    { 'sn',        '<C-w>=',                                   desc = 'normalize' },
+    { '<left>',    '<c-w>h',                                   desc = 'move left' },
+    { '<right>',   '<c-w>l',                                   desc = 'move right' },
+    { '<up>',      '<c-w>k',                                   desc = 'move up' },
+    { '<down>',    '<c-w>j',                                   desc = 'move down' },
 
-	-- bufferline
-	{ 'gn', '<cmd>BufferLineCycleNext<cr>', desc = 'next buffer' },
-	{ 'gp', '<cmd>BufferLineCyclePrev<cr>', desc = 'prev buffer' },
+    -- bufferline
+    { 'gn',        '<cmd>BufferLineCycleNext<cr>',             desc = 'next buffer' },
+    { 'gp',        '<cmd>BufferLineCyclePrev<cr>',             desc = 'prev buffer' },
 })
 
 -- 按f快速跳转
@@ -343,97 +343,97 @@ local EASYMOTION_NS = vim.api.nvim_create_namespace('EASYMOTION_NS')
 local EM_CHARS = vim.split('fjdkslgha;rueiwotyqpvbcnxmzFJDKSLGHARUEIWOTYQPVBCNXMZ', '')
 
 local function easy_motion()
-	local char1 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
-	local char2 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
-	local line_idx_start, line_idx_end = vim.fn.line('w0'), vim.fn.line('w$')
-	local bufnr = vim.api.nvim_get_current_buf()
-	vim.api.nvim_buf_clear_namespace(bufnr, EASYMOTION_NS, 0, -1)
+    local char1 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
+    local char2 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
+    local line_idx_start, line_idx_end = vim.fn.line('w0'), vim.fn.line('w$')
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_clear_namespace(bufnr, EASYMOTION_NS, 0, -1)
 
-	local char_idx = 1
-	---@type table<string, {line: integer, col: integer, id: integer}>
-	local extmarks = {}
-	local lines = vim.api.nvim_buf_get_lines(bufnr, line_idx_start - 1, line_idx_end, false)
-	local needle = char1 .. char2
+    local char_idx = 1
+    ---@type table<string, {line: integer, col: integer, id: integer}>
+    local extmarks = {}
+    local lines = vim.api.nvim_buf_get_lines(bufnr, line_idx_start - 1, line_idx_end, false)
+    local needle = char1 .. char2
 
-	local is_case_sensitive = needle ~= string.lower(needle)
+    local is_case_sensitive = needle ~= string.lower(needle)
 
-	for lines_i, line_text in ipairs(lines) do
-		if not is_case_sensitive then
-			line_text = string.lower(line_text)
-		end
-		local line_idx = lines_i + line_idx_start - 1
-		-- skip folded lines
-		if vim.fn.foldclosed(line_idx) == -1 then
-			for i = 1, #line_text do
-				if line_text:sub(i, i + 1) == needle and char_idx <= #EM_CHARS then
-					local overlay_char = EM_CHARS[char_idx]
-					local linenr = line_idx_start + lines_i - 2
-					local col = i - 1
-					local id = vim.api.nvim_buf_set_extmark(bufnr, EASYMOTION_NS, linenr, col + 2, {
-						virt_text = { { overlay_char, 'CurSearch' } },
-						virt_text_pos = 'overlay',
-						hl_mode = 'replace',
-					})
-					extmarks[overlay_char] = { line = linenr, col = col, id = id }
-					char_idx = char_idx + 1
-					if char_idx > #EM_CHARS then
-						goto break_outer
-					end
-				end
-			end
-		end
-	end
-	::break_outer::
+    for lines_i, line_text in ipairs(lines) do
+        if not is_case_sensitive then
+            line_text = string.lower(line_text)
+        end
+        local line_idx = lines_i + line_idx_start - 1
+        -- skip folded lines
+        if vim.fn.foldclosed(line_idx) == -1 then
+            for i = 1, #line_text do
+                if line_text:sub(i, i + 1) == needle and char_idx <= #EM_CHARS then
+                    local overlay_char = EM_CHARS[char_idx]
+                    local linenr = line_idx_start + lines_i - 2
+                    local col = i - 1
+                    local id = vim.api.nvim_buf_set_extmark(bufnr, EASYMOTION_NS, linenr, col + 2, {
+                        virt_text = { { overlay_char, 'CurSearch' } },
+                        virt_text_pos = 'overlay',
+                        hl_mode = 'replace',
+                    })
+                    extmarks[overlay_char] = { line = linenr, col = col, id = id }
+                    char_idx = char_idx + 1
+                    if char_idx > #EM_CHARS then
+                        goto break_outer
+                    end
+                end
+            end
+        end
+    end
+    ::break_outer::
 
-	-- if only one match, jump directly
-	local extmarks_count = 0
-	local single_pos = nil
-	for _, pos in pairs(extmarks) do
-		extmarks_count = extmarks_count + 1
-		single_pos = pos
-	end
+    -- if only one match, jump directly
+    local extmarks_count = 0
+    local single_pos = nil
+    for _, pos in pairs(extmarks) do
+        extmarks_count = extmarks_count + 1
+        single_pos = pos
+    end
 
-	if extmarks_count == 1 and single_pos then
-		vim.schedule(function()
-			-- to make <C-o> work
-			vim.cmd("normal! m'")
-			vim.api.nvim_win_set_cursor(0, { single_pos.line + 1, single_pos.col })
-			-- clear extmarks
-			vim.api.nvim_buf_clear_namespace(0, EASYMOTION_NS, 0, -1)
-		end)
-		return
-	end
+    if extmarks_count == 1 and single_pos then
+        vim.schedule(function()
+            -- to make <C-o> work
+            vim.cmd("normal! m'")
+            vim.api.nvim_win_set_cursor(0, { single_pos.line + 1, single_pos.col })
+            -- clear extmarks
+            vim.api.nvim_buf_clear_namespace(0, EASYMOTION_NS, 0, -1)
+        end)
+        return
+    end
 
-	-- otherwise setting extmarks and waiting for next char is on the same frame
-	vim.schedule(function()
-		local next_char = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
-		if extmarks[next_char] then
-			local pos = extmarks[next_char]
-			-- to make <C-o> work
-			vim.cmd("normal! m'")
-			vim.api.nvim_win_set_cursor(0, { pos.line + 1, pos.col })
-		end
-		-- clear extmarks
-		vim.api.nvim_buf_clear_namespace(0, EASYMOTION_NS, 0, -1)
-	end)
+    -- otherwise setting extmarks and waiting for next char is on the same frame
+    vim.schedule(function()
+        local next_char = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
+        if extmarks[next_char] then
+            local pos = extmarks[next_char]
+            -- to make <C-o> work
+            vim.cmd("normal! m'")
+            vim.api.nvim_win_set_cursor(0, { pos.line + 1, pos.col })
+        end
+        -- clear extmarks
+        vim.api.nvim_buf_clear_namespace(0, EASYMOTION_NS, 0, -1)
+    end)
 end
 
 vim.keymap.set({ 'n', 'x' }, 'f', easy_motion, { desc = 'Jump to 2 characters' })
 
 -- Close on "q"
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = {
-		'help',
-		'startuptime',
-		'qf',
-		'lspinfo',
-		'man',
-		'checkhealth',
-		'neotest-output-panel',
-		'neotest-summary',
-		'lazy',
-	},
-	command = [[
+    pattern = {
+        'help',
+        'startuptime',
+        'qf',
+        'lspinfo',
+        'man',
+        'checkhealth',
+        'neotest-output-panel',
+        'neotest-summary',
+        'lazy',
+    },
+    command = [[
           nnoremap <buffer><silent> q :close<CR>
           nnoremap <buffer><silent> <ESC> :close<CR>
           set nobuflisted

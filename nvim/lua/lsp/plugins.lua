@@ -85,7 +85,7 @@ M.list = {
 			},
 			formatters_by_ft = {
 				go = { 'goimports-reviser' },
-				lua = { 'stylua' },
+				lua = { lsp_format = 'fallback' },
 				-- cargo install sleek
 				sql = { 'sleek' },
 				-- jq -c 压缩
@@ -97,8 +97,8 @@ M.list = {
 				toml = { 'taplo', lsp_format = 'never' },
 				http = { 'kulala' },
 				rust = { 'rustfmt' },
-				['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
-				['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
+				['markdown'] = { 'prettier' },
+				['markdown.mdx'] = { 'prettier' },
 			},
 			format_on_save = {
 				timeout_ms = 5000,
