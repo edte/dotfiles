@@ -59,7 +59,17 @@ alias ga="git add"
 alias gco="git checkout"
 alias gb="git branch"
 alias gcm="git commit -m"
-alias gd="git diff --relative"
+gd() {
+  local cdup prefix
+  cdup=$(git rev-parse --show-cdup 2>/dev/null)
+  prefix=$(git rev-parse --show-prefix 2>/dev/null)
+  if [[ -z "$prefix" ]]; then
+    git diff "$@"
+  else
+    git -c core.pager="sed 's|${cdup}${prefix}||g' | delta" diff \
+      --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@"
+  fi
+}
 alias gpl="git pull"
 alias gps="git push"
 alias merge='git mergetool'
