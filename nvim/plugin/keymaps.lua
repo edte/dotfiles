@@ -248,15 +248,16 @@ wk.add({
 	{
 		'<space>f',
 		function()
-			-- Git 项目中使用 git_files，否则使用普通文件选择
-			local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
-			if ret == '' then
-				cmd('Seeker grep')
-				-- Snacks.picker.files()
-			else
-				cmd('Seeker git_files')
-				-- Snacks.picker.git_files()
-			end
+			cmd('Seeker')
+			-- -- Git 项目中使用 git_files，否则使用普通文件选择
+			-- local ret = vim.fn.system('git rev-parse --show-toplevel 2> /dev/null')
+			-- if ret == '' then
+			-- 	cmd('Seeker grep')
+			-- 	-- Snacks.picker.files()
+			-- else
+			-- 	cmd('Seeker git_files')
+			-- 	-- Snacks.picker.git_files()
+			-- end
 		end,
 		desc = 'files',
 	},
