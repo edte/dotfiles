@@ -335,18 +335,13 @@ M.list = {
 				function()
 					local mf = require('mini.files')
 					if not mf.close() then
-						-- 优先用上次的 anchor 恢复浏览状态
-						if _G._mini_files_last_anchor then
-							mf.open(_G._mini_files_last_anchor, true)
+						local n = api.nvim_buf_get_name(0)
+						if n ~= '' and vim.uv.fs_stat(n) then
+							mf.open(n)
 						else
-							local n = api.nvim_buf_get_name(0)
-							if n ~= '' and vim.uv.fs_stat(n) then
-								mf.open(n)
-							else
-								mf.open(vim.uv.cwd())
-							end
-							mf.reveal_cwd()
+							mf.open(vim.uv.cwd())
 						end
+						mf.reveal_cwd()
 					end
 				end,
 				desc = 'explorer',
@@ -842,11 +837,6 @@ M.list = {
 				group = augroup('close'),
 				pattern = 'MiniFilesExplorerClose',
 				callback = function()
-					-- 保存当前浏览的 anchor，用于下次恢复
-					local state = require('mini.files').get_explorer_state()
-					if state then
-						_G._mini_files_last_anchor = state.anchor
-					end
 					clearCache()
 					-- 清理所有防抖定时器
 					for bufnr, timer_id in pairs(debounceTimers) do
