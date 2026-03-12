@@ -14,15 +14,33 @@ local function setup_go_once()
 	}, { confirm = false })
 
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#custom-configuration
+	local gomodcache = vim.fn.trim(vim.fn.system('go env GOMODCACHE'))
+
 	vim.lsp.config('gopls', {
 		name = 'gopls',
 		cmd = { 'gopls' },
 		filetypes = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' },
-		root_markers = { '.git', 'Makefile' },
+		root_dir = function(bufnr, on_dir)
+			local bufname = vim.api.nvim_buf_get_name(bufnr)
+			-- 模块缓存中的文件：复用已有 gopls 的 root，避免启动新实例
+			if gomodcache ~= '' and bufname:find(gomodcache, 1, true) then
+				for _, client in ipairs(vim.lsp.get_clients({ name = 'gopls' })) do
+					if client.root_dir then
+						on_dir(client.root_dir)
+						return
+					end
+				end
+			end
+			-- 普通文件：标准查找 go.mod
+			local root = vim.fs.root(bufnr, { 'go.mod', '.git', 'Makefile' })
+			if root then
+				on_dir(root)
+			end
+		end,
 		on_attach = function(client, buf)
 			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 		end,
-		single_file_support = true,
+		single_file_support = false,
 		settings = {
 			gopls = {
 				analyses = {
