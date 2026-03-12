@@ -87,8 +87,7 @@ M.list = {
 				go = { 'goimports-reviser' },
 				lua = { 'stylua' },
 				-- cargo install sleek
-				sql = { 'sleek' },
-				-- jq -c 压缩
+				-- sql = { 'sleek' }, jq -c 压缩
 				-- jq -c . a.json
 				json = { 'jq' },
 				cpp = { lsp_format = 'never' },

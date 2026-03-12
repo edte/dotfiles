@@ -109,8 +109,8 @@ nmap('yc', 'yy<cmd>normal gcc<CR>p')
 nmap('<C-c>', 'ciw')
 nmap('cr', 'ciw')
 
-vmap('J', ":m '>+1<CR>gv=gv")
-vmap('K', ":m '<-2<CR>gv=gv")
+-- vmap('J', ":m '>+1<CR>gv=gv")
+-- vmap('K', ":m '<-2<CR>gv=gv")
 
 cmd('command! Pwd !ls %:p')
 cmd('command! Cwd lua print(vim.uv.cwd())')
