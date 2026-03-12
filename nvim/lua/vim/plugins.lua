@@ -394,6 +394,13 @@ M.list = {
 					frecency = true,
 					sort_empty = true,
 				},
+				sort = {
+					fields = {
+						{ name = 'frecency', desc = true },
+						{ name = 'score', desc = true },
+						'idx',
+					},
+				},
 			},
 		},
 	},
