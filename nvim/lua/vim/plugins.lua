@@ -388,7 +388,14 @@ M.list = {
 		'2kabhishek/seeker.nvim',
 		dependencies = { 'folke/snacks.nvim' },
 		cmd = { 'Seeker' },
-		opts = {},
+		opts = {
+			picker_opts = {
+				matcher = {
+					frecency = true,
+					sort_empty = true,
+				},
+			},
+		},
 	},
 
 	-- {
