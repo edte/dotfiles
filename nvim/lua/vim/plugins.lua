@@ -391,9 +391,11 @@ M.list = {
 		opts = {
 			picker_opts = {
 				matcher = {
+					fuzzy = false,
 					frecency = true,
 					sort_empty = true,
 				},
+				regex = false,
 				sort = {
 					fields = {
 						{ name = 'frecency', desc = true },
