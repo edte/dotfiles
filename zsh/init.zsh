@@ -53,3 +53,4 @@ source $HOME/dotfiles/zsh/func.zsh
 source $HOME/dotfiles/zsh/keymap.zsh
 source $HOME/dotfiles/zsh/eval.zsh
 source $HOME/dotfiles/zsh/private/config.zsh # 本机的一些私密配置，不同步到github
+source $HOME/dotfiles/zsh/fzf-git.sh

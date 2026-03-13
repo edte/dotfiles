@@ -56,7 +56,16 @@ alias gc="git clone"
 # alias gs="git status -s"
 alias gst="git status"
 alias ga="git add"
-alias gco="git checkout"
+# alias gco="git checkout"
+
+glog() {
+    _fzf_git_hashes
+}
+
+gco() {
+    _fzf_git_each_ref --no-multi | xargs git checkout
+}
+
 alias gb="git branch"
 alias gcm="git commit -m"
 gd() {
@@ -106,7 +115,7 @@ alias i="brew install "
 alias gsh="git show --date=format-local:'%Y-%m-%d %H:%M:%S'"
 alias gshow="git show --date=format-local:'%Y-%m-%d %H:%M:%S'"
 # https://devhints.io/git-log-format
-alias glog="git log --graph --pretty=format:'%>|(12,trunc)%Cred%h%Creset  -  %C(yellow)%<(60,trunc)%s%Creset %Cgreen%<(30,trunc)%d %C(bold blue)%<(15,trunc)%an%Creset%>(1)%>(50)%cd' --date=format-local:'%Y-%m-%d %H:%M:%S'"
+# alias glog="git log --graph --pretty=format:'%>|(12,trunc)%Cred%h%Creset  -  %C(yellow)%<(60,trunc)%s%Creset %Cgreen%<(30,trunc)%d %C(bold blue)%<(15,trunc)%an%Creset%>(1)%>(50)%cd' --date=format-local:'%Y-%m-%d %H:%M:%S'"
 # alias glog=serie
 # alias gwch="git whatchanged -p --abbrev-commit --pretty=medium --date=format-local:'%Y-%m-%d %H:%M:%S'"
 alias gwch="git whatchanged --date=format-local:'%Y-%m-%d %H:%M:%S'"
