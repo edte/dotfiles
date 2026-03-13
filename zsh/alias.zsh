@@ -44,7 +44,7 @@ alias -g g='| _g'
 alias bench=hyperfine
 alias cp="cp -v"
 alias mv="mv -v"
-alias tree="eza --tree --icons"
+# alias tree="eza --tree --icons"
 
 alias ch=cheat
 alias list=cheat
