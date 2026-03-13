@@ -179,7 +179,9 @@ gm() {
 }
 
 gw() {
-    git status -s | awk '{print $2}' | fzf -m --cycle \
+    local files=$(git status -s | awk '{print $2}')
+    [[ -z "$files" ]] && return
+    local selected=(${(f)"$(echo "$files" | fzf -m --cycle \
         --layout=reverse \
         --bind 'start:disable-search' \
         --bind 'j:down,k:up' \
@@ -189,5 +191,7 @@ gw() {
         --bind 'esc:abort' \
         --bind 'q:abort' \
         --preview 'git diff -- {} | DELTA_FEATURES=+ delta --width=$FZF_PREVIEW_COLUMNS' \
-        --preview-window=left:87% | xargs nvim
+        --preview-window=left:87%)"})
+    [[ ${#selected} -eq 0 ]] && return
+    nvim ${selected}
 }
