@@ -60,15 +60,15 @@ alias gco="git checkout"
 alias gb="git branch"
 alias gcm="git commit -m"
 gd() {
-  local cdup prefix
-  cdup=$(git rev-parse --show-cdup 2>/dev/null)
-  prefix=$(git rev-parse --show-prefix 2>/dev/null)
-  if [[ -z "$prefix" ]]; then
-    git diff "$@"
-  else
-    git -c core.pager="sed 's|${cdup}${prefix}||g' | delta" diff \
-      --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@"
-  fi
+    local cdup prefix
+    cdup=$(git rev-parse --show-cdup 2>/dev/null)
+    prefix=$(git rev-parse --show-prefix 2>/dev/null)
+    if [[ -z "$prefix" ]]; then
+        git diff "$@"
+    else
+        git -c core.pager="sed 's|${cdup}${prefix}||g' | delta" diff \
+            --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@"
+    fi
 }
 alias gpl="git pull"
 alias gps="git push"
@@ -141,10 +141,3 @@ alias benchrawzsh='for i in $(seq 1 20); do /usr/bin/time /bin/zsh --no-rcs -i -
 alias benchplugin='zprof | less'
 
 alias icat="kitty +kitten icat"
-
-alias ztest="z /Users/edte/go/src/login/test"
-
-# alias cmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
-# alias cmdtop="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
-# alias topcmd="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
-# alias gittop="history | awk '{ if (\$2 == \"git\") { CMD[\$2 \" \" \$3]++; } else { CMD[\$2]++; } count++; } END { for (a in CMD) print CMD[a] \" \" CMD[a]/count*100 \"% \" a; }' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl | head -n20"
