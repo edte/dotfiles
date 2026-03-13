@@ -177,7 +177,14 @@ else
       --border-label-pos 2 \
       --color 'label:blue' \
       --preview-window 'right,50%' --preview-border line \
-      --bind 'ctrl-/:change-preview-window(down,50%|hidden|)' "$@"
+      --bind 'ctrl-/:change-preview-window(down,50%|hidden|)' \
+      --bind 'start:disable-search' \
+      --bind 'j:down,k:up' \
+      --bind 'ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up' \
+      --bind 'tab:toggle+down' \
+      --bind '/:enable-search' \
+      --bind 'esc:abort' \
+      --bind 'q:abort' "$@"
   }
 fi
 
