@@ -21,3 +21,6 @@ single_char_only = require("candidate_sorting.single_char_only")
 -- unicode_input: Unicode 输入
 -- 详见 `lua/candidate_sorting/unicode_input.lua`
 unicode_input = require("unicode_input")
+
+-- vim_mode: Esc 自动切英文，进入 insert mode 恢复中文
+vim_mode = require("vim_mode")

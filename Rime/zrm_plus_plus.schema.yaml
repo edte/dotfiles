@@ -34,6 +34,7 @@ switches:
 engine:
   #控制输入引擎，比如 英文输入引擎、反查、按键绑定 等涉及到输入引擎的「开关」，引入新的引擎需要在这儿添加激活
   processors:
+    - lua_processor@vim_mode
     - ascii_composer  # Windows 用户请解除此行注释，否则将会无法切换到英文输入
     - recognizer
     - key_binder
