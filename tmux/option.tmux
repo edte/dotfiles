@@ -72,8 +72,7 @@ setw -g automatic-rename off
 setw -g allow-rename off
 
 set -g history-limit 100000
-# set-option -g mouse on # 等同于以上4个指令的效果
-# setw -g mouse on
+set-option -g mouse on
 set-option -g prefix2 ^ # 设置一个不常用的`键作为指令前缀，按键更快些
 
 # https://github.com/3rd/image.nvim
