@@ -6,16 +6,22 @@ end
 
 vim.cmd.source(vim.fn.stdpath('config') .. '/lua/vim/match.vim')
 
--- 启动 nvim mcp：固定地址给面板实例用；冲突时不阻断普通编辑启动
-if vim.v.servername == '' then
+-- 启动固定 socket 给外部客户端连接。
+-- Neovim 0.12 即使未显式 --listen，也会先分配一个临时 servername，
+-- 所以不能再用空字符串判断是否需要注册固定地址。
+do
 	local mcp_server_addr = '/tmp/nvim.sock'
-	local ok, err = pcall(vim.fn.serverstart, mcp_server_addr)
+	local current_server = vim.v.servername
+	local ok, result = pcall(vim.fn.serverstart, mcp_server_addr)
+
 	if not ok then
 		vim.schedule(function()
-			vim.notify(
-				string.format('nvim mcp server start skipped: %s (%s)', mcp_server_addr, tostring(err)),
-				vim.log.levels.WARN
-			)
+			-- vim.notify(
+			-- 	string.format('nvim mcp server start skipped: %s (%s)', mcp_server_addr, tostring(result)),
+			-- 	vim.log.levels.WARN
+			-- )
 		end)
+	elseif result == mcp_server_addr and current_server ~= mcp_server_addr then
+		vim.g.mcp_server_addr = mcp_server_addr
 	end
 end
