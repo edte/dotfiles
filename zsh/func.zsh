@@ -126,12 +126,7 @@ function github_config {
 
 function gs() {
     if git status &>/dev/null; then
-        local output=$(git status -s)
-        if [[ -n "$output" ]]; then
-            git status -s
-        else
-            ls
-        fi
+        git status -s
     else
         ls
     fi
