@@ -62,6 +62,22 @@ if not _G.JceFoldExpr then
 	end
 end
 
+local function refresh_jce_syntax(bufnr)
+	if not vim.api.nvim_buf_is_valid(bufnr) then
+		return
+	end
+
+	if vim.bo[bufnr].filetype ~= 'jce' then
+		return
+	end
+
+	vim.api.nvim_buf_call(bufnr, function()
+		vim.b.current_syntax = nil
+		vim.bo.syntax = 'OFF'
+		vim.bo.syntax = 'jce'
+	end)
+end
+
 -- 加载插件 (只需一次)
 if not vim.g.jce_loaded then
 	vim.g.jce_loaded = true
@@ -69,8 +85,14 @@ if not vim.g.jce_loaded then
 		vim.pack.add({
 			{ src = "https://github.com/edte/jce-highlight.git" },
 		}, { confirm = false })
+
+		for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+			refresh_jce_syntax(bufnr)
+		end
 	end)
 end
+
+refresh_jce_syntax(0)
 
 -- JCE 语法折叠配置 (每个 buffer 都需要设置)
 -- 使用 vim.schedule 确保在所有其他初始化之后执行
