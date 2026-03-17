@@ -10,7 +10,7 @@ vim.cmd.source(vim.fn.stdpath('config') .. '/lua/vim/match.vim')
 -- Neovim 0.12 即使未显式 --listen，也会先分配一个临时 servername，
 -- 所以不能再用空字符串判断是否需要注册固定地址。
 do
-	local mcp_server_addr = '/tmp/nvim.sock'
+	local mcp_server_addr = '/tmp/nvim'
 	local current_server = vim.v.servername
 	local ok, result = pcall(vim.fn.serverstart, mcp_server_addr)
 
