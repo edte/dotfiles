@@ -15,7 +15,7 @@
             ],
             "env": {
                 "ALLOW_SHELL_COMMANDS": "true",
-                "NVIM_SOCKET_PATH": "/tmp/nvim.sock"
+                "NVIM_SOCKET_PATH": "/tmp/nvim"
             }
         }
     }

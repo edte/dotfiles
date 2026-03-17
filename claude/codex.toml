@@ -59,7 +59,7 @@ command = "npx"
 args = ["-y", "mcp-neovim-server"]
 
 [mcp_servers.neovim.env]
-NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim.sock"
+NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim"
 ALLOW_SHELL_COMMANDS = "true"
 
 [notice]
