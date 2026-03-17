@@ -77,4 +77,4 @@ export PATH=$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
 
 export PATH=$PATH:~/dotfiles/zsh/shell/
 
-export NVIM_SOCKET_PATH=/tmp/nvim.sock
+export NVIM_SOCKET_PATH=/tmp/nvim
