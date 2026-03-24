@@ -12,6 +12,13 @@ if not vim.g.lua_loaded then
 			winbar = false,
 			ui = {
 				show_request_summary = false,
+				win_opts = {
+					width = vim.o.columns,
+					height = vim.o.lines - 1,
+					row = 0,
+					col = 0,
+					border = 'none',
+				},
 			},
 			infer_content_type = false,
 			contenttypes = {

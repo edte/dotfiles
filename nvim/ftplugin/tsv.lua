@@ -3,36 +3,25 @@ vim.api.nvim_buf_set_keymap(0, "n", "t", ":q<cr>", { noremap = true, silent = tr
 local NuiTable = require("nui.table")
 
 function render_tsv_as_table()
-	local lines = {}
-	local headers = {}
+	local bufnr = vim.api.nvim_get_current_buf()
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+	if #lines <= 1 then
+		return
+	end
+
+	local headers = vim.split(lines[1], "\t")
 	local data = {}
 
-	-- Get the current buffer number
-	local bufnr = vim.api.nvim_get_current_buf()
-
-	-- Get the lines from the current buffer
-	lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-
-	if #lines == 1 then
-		return
-	end
-
-	if #lines > 0 then
-		headers = vim.split(lines[1], "\t")
-		for i = 2, #lines do
-			local row = {}
-			local values = vim.split(lines[i], "\t")
-			for j, header in ipairs(headers) do
-				row[header] = values[j]
-			end
-			table.insert(data, row)
+	for i = 2, #lines do
+		local row = {}
+		local values = vim.split(lines[i], "\t")
+		for j, header in ipairs(headers) do
+			row[header] = values[j] or ""
 		end
-	else
-		log.error("Error: Current buffer is empty.")
-		return
+		table.insert(data, row)
 	end
 
-	-- Clear the current buffer
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})
 
 	local tbl = NuiTable({
@@ -48,6 +37,13 @@ function render_tsv_as_table()
 	})
 
 	tbl:render()
+
+	-- 允许横向滚动查看所有列
+	vim.schedule(function()
+		for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
+			vim.api.nvim_set_option_value("wrap", false, { win = win })
+		end
+	end)
 end
 
 render_tsv_as_table()
