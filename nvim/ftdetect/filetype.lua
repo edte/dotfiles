@@ -9,6 +9,9 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 
 vim.filetype.add({
+	filename = {
+		['kitty.conf'] = 'kitty',
+	},
 	extension = {
 		jce = 'jce',
 		tmux = 'bash',
@@ -16,5 +19,8 @@ vim.filetype.add({
 		zsh = 'bash',
 		codecompanion = 'codecompanion',
 		log = 'log',
+	},
+	pattern = {
+		['.*/kitty/.*%.conf'] = 'kitty',
 	},
 })
