@@ -265,6 +265,12 @@ M.list = {
 				input = {
 					relative = 'cursor',
 				},
+				terminal = {
+					width = 0,
+					height = 0,
+					border = 'none',
+					position = 'float',
+				},
 			},
 			terminal = {
 				enabled = true,
