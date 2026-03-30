@@ -57,6 +57,9 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/wns_project"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/flow/push-feedback"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false

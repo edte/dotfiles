@@ -39,7 +39,9 @@ vim.schedule(function()
                 elseif bt == 'nofile' then
                     return false
                 else
-                    return true
+                    -- 其余 buffer 交回给 markview 自己的 filetypes 白名单判断，
+                    -- 避免 snacks_picker_input 之类的临时 buffer 被误 attach
+                    return nil
                 end
             end,
             -- 关闭 hybrid_mode，使用 conceal 隐藏原始标记

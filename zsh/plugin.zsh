@@ -46,8 +46,9 @@ zinit load atuinsh/atuin
 # zinit light ael-code/zsh-colored-man-pages
 
 # 快速目录跳转
-zinit ice lucid wait='1'
-zinit light skywind3000/z.lua.git
+# 改用 oh-my-zsh 内置 z 插件，避免 z.lua 在 Lua 5.5 下启动时报错
+# 这里不走延迟加载，确保交互 shell 一启动就有 z 命令
+zinit snippet OMZ::plugins/z/z.plugin.zsh
 
 # 双击esc给上一个命令加sudo
 # zinit ice lucid wait='1'

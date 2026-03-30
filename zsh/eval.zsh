@@ -24,7 +24,6 @@ eval "$(atuin init zsh)"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(lua /Users/edte/.oh-my-zsh/plugins/z.lua/z.lua --init zsh)"
 
 # pnpm
 # export PNPM_HOME="/Users/edte/Library/pnpm"
