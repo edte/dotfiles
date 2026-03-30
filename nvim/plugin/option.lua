@@ -84,7 +84,17 @@ vim.diagnostic.config({
     update_in_insert = false,
     virtual_lines = false,
     jump = {
-        float = true,
+        on_jump = function(diagnostic, bufnr)
+            if not diagnostic then
+                return
+            end
+
+            vim.diagnostic.open_float({
+                bufnr = bufnr,
+                scope = 'cursor',
+                focus = false,
+            })
+        end,
     },
 })
 
