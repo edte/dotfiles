@@ -95,7 +95,9 @@ function unset_gitproxy() {
 }
 
 function gt() {
-    go test -v -run "$1" .
+    local root
+    root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "Not a git repo"; return 1; }
+    go test -v -run "$1" "$root/..."
 }
 
 function difffile() {
