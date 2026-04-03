@@ -90,7 +90,8 @@ M.list = {
 				-- sql = { 'sleek' }, jq -c 压缩
 				-- jq -c . a.json
 				json = { 'jq' },
-				cpp = { lsp_format = 'never' },
+				jce = { lsp_format = 'never' },
+			cpp = { lsp_format = 'never' },
 				zsh = { 'shfmt', lsp_format = 'never' },
 				bash = { 'shfmt', lsp_format = 'never' },
 				toml = { 'taplo', lsp_format = 'never' },
@@ -108,7 +109,7 @@ M.list = {
 	-- Neovim 插件，用于显示 JB 的 IDEA 等函数的引用和定义信息。
 	{
 		'edte/codelens.nvim',
-		ft = { 'lua', 'go', 'cpp' },
+		ft = { 'lua', 'go', 'cpp', 'jce' },
 		opts = {},
 	},
 
