@@ -80,9 +80,16 @@ M.list = {
 				'gitattributes',
 			})
 
-			require('nvim-treesitter').setup({
-				install_dir = vim.fn.stdpath('data') .. '/site',
-			})
+		require('nvim-treesitter').setup({
+			install_dir = vim.fn.stdpath('data') .. '/site',
+		})
+
+		local sel = require('nvim-treesitter.incremental_selection')
+		-- Cmd+I (kitty 发送 \x1b[73;9u) → 初始化/扩大选择
+		vim.keymap.set('n', '\x1b[73;9u', sel.init_selection, { desc = 'TS: init selection' })
+		vim.keymap.set('x', '\x1b[73;9u', sel.node_incremental, { desc = 'TS: expand selection' })
+		-- Cmd+O (kitty 发送 \x1b[79;9u) → 缩小选择
+		vim.keymap.set('x', '\x1b[79;9u', sel.node_decremental, { desc = 'TS: shrink selection' })
 		end,
 	},
 
