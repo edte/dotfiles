@@ -19,6 +19,7 @@ if not vim.g.lua_loaded then
 					col = 0,
 					border = 'none',
 				},
+				disable_news_popup = true,
 			},
 			infer_content_type = false,
 			contenttypes = {
