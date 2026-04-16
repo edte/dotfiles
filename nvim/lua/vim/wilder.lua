@@ -1,23 +1,94 @@
 local M = {}
 
+local function get_tiny_cmdline_win_config()
+	local ok, ui2 = pcall(require, 'vim._core.ui2')
+	if not ok or type(ui2) ~= 'table' or type(ui2.wins) ~= 'table' then
+		return nil
+	end
+
+	local win = ui2.wins.cmd
+	if not win or not vim.api.nvim_win_is_valid(win) then
+		return nil
+	end
+
+	local config = vim.api.nvim_win_get_config(win)
+	local row = tonumber(config.row)
+	local col = tonumber(config.col)
+	if row == nil or col == nil then
+		return nil
+	end
+
+	return {
+		row = row,
+		col = col,
+	}
+end
+
+local function tiny_cmdline_popup_position(_, pos, dimensions)
+	local anchor = vim.g.ui_cmdline_pos
+	local cols = vim.o.columns
+	local lines = vim.o.lines
+	local cmdline_win = get_tiny_cmdline_win_config()
+
+	if cmdline_win ~= nil then
+		local cmdline_height = 1
+		local ok, ui2 = pcall(require, 'vim._core.ui2')
+		if ok and type(ui2) == 'table' and type(ui2.wins) == 'table' then
+			local win = ui2.wins.cmd
+			if win and vim.api.nvim_win_is_valid(win) then
+				cmdline_height = vim.api.nvim_win_get_height(win)
+			end
+		end
+		local row = cmdline_win.row + cmdline_height + 1
+		local col = cmdline_win.col
+		if col + dimensions.width > cols then
+			col = cols - dimensions.width
+		end
+
+		return {
+			math.max(0, row),
+			math.max(0, col),
+		}
+	end
+
+	if type(anchor) ~= 'table' or #anchor < 2 then
+		local cmdheight = vim.o.cmdheight
+		local row = lines - cmdheight - dimensions.height
+		local col = math.min(pos % cols, math.max(0, cols - dimensions.width))
+		return { math.max(0, row), math.max(0, col) }
+	end
+
+	local row = anchor[1] + 1
+	local col = anchor[2] - 4
+
+	if col + dimensions.width > cols then
+		col = cols - dimensions.width
+	end
+
+	return {
+		math.max(0, row),
+		math.max(0, col),
+	}
+end
+
 M.setup = function()
-	local wilder = Require("wilder")
+	local wilder = Require('wilder')
 	if wilder == nil then
 		return
 	end
-	wilder.event = "CmdlineEnter" -- 懒加载：首次进入cmdline时载入
+	wilder.event = 'CmdlineEnter' -- 懒加载：首次进入cmdline时载入
 
 	wilder.setup({
-		modes = { ":", "/", "?" },
+		modes = { ':', '/', '?' },
 		next_key = 0,
 		previous_key = 0,
 		reject_key = 0,
 		accept_key = 0,
 	})
-	api.nvim_command("silent! UpdateRemotePlugins") -- 需要载入一次py依赖 不然模糊过滤等失效
+	api.nvim_command('silent! UpdateRemotePlugins') -- 需要载入一次py依赖 不然模糊过滤等失效
 
 	-- 设置source
-	wilder.set_option("pipeline", {
+	wilder.set_option('pipeline', {
 		wilder.branch(
 			-- 在替换命令中为搜索部分提供搜索建议
 			wilder.substitute_pipeline({
@@ -32,14 +103,14 @@ M.setup = function()
 			-- 当输入文件名时 展示文件名
 			wilder.python_file_finder_pipeline({
 				file_command = function(ctx, arg)
-					if string.find(arg, ".") ~= nil then
-						return { "fd", "-tf", "-H" }
+					if string.find(arg, '.') ~= nil then
+						return { 'fd', '-tf', '-H' }
 					else
-						return { "fd", "-tf" }
+						return { 'fd', '-tf' }
 					end
 				end,
-				dir_command = { "fd", "-td" },
-				filters = { "fuzzy_filter" },
+				dir_command = { 'fd', '-td' },
+				filters = { 'fuzzy_filter' },
 			}),
 
 			-- 当默认无输入时 展示10条历史记录
@@ -70,18 +141,27 @@ M.setup = function()
 	})
 	-- 设置样式
 	wilder.set_option(
-		"renderer",
+		'renderer',
 		wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
+			position = tiny_cmdline_popup_position,
+			border = 'single',
 			-- 设置特定高亮
 			highlights = {
-				accent = "WilderAccent",
-				selected_accent = "WilderSelectedAccent",
+				default = 'WilderThemeNormal',
+				selected = 'WilderThemeSelection',
+				border = 'WilderThemeBorder',
+				accent = 'WilderAccent',
+				selected_accent = 'WilderSelectedAccent',
 			},
 			highlighter = wilder.basic_highlighter(),
-			left = { " ", wilder.popupmenu_devicons() },
-			-- left = { " " }, -- 临时禁用 devicons，避免 Lua 回调错误
-			right = { " ", wilder.popupmenu_scrollbar() }, -- 右侧加入滚动条
-			border = "rounded",
+			left = { ' ', wilder.popupmenu_devicons() },
+			right = {
+				' ',
+				wilder.popupmenu_scrollbar({
+					thumb_hl = 'WilderThemeThumb',
+					scrollbar_hl = 'WilderThemeScrollbar',
+				}),
+			},
 			max_height = 17, -- 最大高度限制 因为要计算上下 所以17支持最多15个选项
 			pumblend = 0,
 		}))
@@ -113,11 +193,12 @@ M.setup = function()
 	-- )
 
 	-- 设置快捷键
-	cmap("<tab>", [[wilder#in_context() ? wilder#next() : '<tab>']], { noremap = true, expr = true })
-	cmap("<Down>", [[wilder#in_context() ? wilder#next() : '<down>']], { noremap = true, expr = true })
-	cmap("<up>", [[wilder#in_context() ? wilder#previous() : '<up>']], { noremap = true, expr = true })
+	cmap('<tab>', [[wilder#in_context() ? wilder#next() : '<tab>']], { noremap = true, expr = true })
+	cmap('<Down>', [[wilder#in_context() ? wilder#next() : '<down>']], { noremap = true, expr = true })
+	cmap('<up>', [[wilder#in_context() ? wilder#previous() : '<up>']], { noremap = true, expr = true })
+	vim.cmd([[cnoremap <Esc> <C-C>]])
 
-	cmap("0", "0", {}) -- 不清楚原因导致0无法使用 强制覆盖
+	cmap('0', '0', {}) -- 不清楚原因导致0无法使用 强制覆盖
 
 	-- 禁用纯数字输入时的wilder补全
 	cmd([[
@@ -153,11 +234,11 @@ M.setup = function()
 		endfunction
 	]])
 
-	-- 设置高亮
-	highlight("WilderAccent", "#FF4500")
-	highlight("WilderSelectedAccent", "#FF4500", "#4e4e4e")
+	-- 保留你原来的红色匹配高亮，只去掉边框，不改匹配色。
+	highlight('WilderAccent', '#FF4500')
+	highlight('WilderSelectedAccent', '#FF4500', '#4e4e4e')
 
-	cmd("call wilder#set_option('noselect', 0)")
+	cmd("call wilder#set_option('noselect', 1)")
 end
 
 return M

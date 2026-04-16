@@ -2,10 +2,11 @@ local M = {}
 
 M.list = {
 
-	-- wilder.nvim 插件，用于命令行补全，和 noice.nvim 冲突
+	-- wilder.nvim 插件，用于命令行补全
 	{
-		'edte/wilder.nvim',
-		event = 'CmdlineEnter', -- 懒加载：首次进入cmdline时载入
+		'gelguy/wilder.nvim',
+		event = 'CmdlineEnter',
+		build = ':UpdateRemotePlugins',
 		config = function()
 			Setup('vim.wilder')
 		end,

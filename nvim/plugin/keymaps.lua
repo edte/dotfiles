@@ -159,8 +159,6 @@ vim.cmd('cnoremap <C-E>		<End>')
 vim.cmd('cnoremap <C-F>		<Right>')
 vim.cmd('cnoremap <C-N>		<Down>')
 vim.cmd('cnoremap <C-P>		<Up>')
-vim.cmd('cnoremap <Esc><C-B>	<S-Left>')
-vim.cmd('cnoremap <Esc><C-F>	<S-Right>')
 
 -- insert 模式下的emacs键位
 vim.cmd('inoremap <C-A>		<Home>')
@@ -169,8 +167,6 @@ vim.cmd('inoremap <C-E>		<End>')
 vim.cmd('inoremap <C-F>		<Right>')
 vim.cmd('inoremap <C-N>		<Down>')
 vim.cmd('inoremap <C-P>		<Up>')
-vim.cmd('inoremap <Esc><C-B>	<S-Left>')
-vim.cmd('inoremap <Esc><C-F>	<S-Right>')
 -- 在终端/Neovim中，<C-Space> 常被解释为 <C-@>，默认会触发“重复上次插入”，
 -- 当没有插入历史时会报 E29。这里在输入相关模式下屏蔽该键，避免干扰输入法切换。
 vim.cmd('inoremap <C-Space> <Nop>')

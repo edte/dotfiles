@@ -10,6 +10,33 @@ vim.pack.add({
 
 vim.cmd.colorscheme('tokyonight')
 
+-- tiny-cmdline 维持自己的颜色，wilder 单独用下面几组高亮。
+highlight('TinyCmdlineNormal', { fg = '#c8d3f5', bg = '#1f2335' })
+highlight('TinyCmdlineBorder', { fg = '#7aa2f7', bg = '#1f2335' })
+highlight('TinyCmdlineSelection', { fg = '#ffffff', bg = '#3b4261', bold = true })
+highlight('TinyCmdlineScrollbar', { bg = '#2a2e42' })
+highlight('TinyCmdlineThumb', { bg = '#7aa2f7' })
+
+local function get_hl_hex(names, key, fallback)
+	for _, name in ipairs(names) do
+		local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+		if ok and type(hl) == 'table' and hl[key] then
+			return string.format('#%06x', hl[key])
+		end
+	end
+
+	return fallback
+end
+
+local wilder_bg = get_hl_hex({ 'NormalFloat', 'Pmenu', 'Normal' }, 'bg', '#24283b')
+local wilder_border = get_hl_hex({ 'FloatBorder', 'WinSeparator' }, 'fg', '#414868')
+
+highlight('WilderThemeNormal', { fg = '#c8d3f5', bg = wilder_bg })
+highlight('WilderThemeSelection', { fg = '#ffffff', bg = '#3b4261', bold = true })
+highlight('WilderThemeScrollbar', { bg = '#2a2e42' })
+highlight('WilderThemeThumb', { bg = '#7aa2f7' })
+highlight('WilderThemeBorder', { fg = wilder_border, bg = wilder_bg })
+
 -- 统一设置行号颜色
 for _, hl_group in ipairs({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }) do
 	vim.api.nvim_set_hl(0, hl_group, { fg = '#808080' })
@@ -304,4 +331,11 @@ require('satellite').setup({
 			enable = false,
 		},
 	},
+})
+
+require('vim._core.ui2').enable({})
+vim.o.cmdheight = 0
+vim.pack.add({ 'https://github.com/rachartier/tiny-cmdline.nvim' })
+require('tiny-cmdline').setup({
+	native_types = {},
 })
