@@ -144,19 +144,6 @@ M.list = {
 		end,
 	},
 
-	-- Neovim 中 vimdoc/帮助文件的装饰
-	-- https://github.com/OXY2DEV/helpview.nvim
-	{
-		'OXY2DEV/helpview.nvim',
-		lazy = true,
-		event = 'CmdlineEnter',
-		-- ft = "help",
-
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-		},
-	},
-
 	-- 扩展递增/递减 ctrl+x/a
 	{
 		'monaqa/dial.nvim',
