@@ -340,80 +340,239 @@ require('tiny-cmdline').setup({
 	native_types = {},
 })
 
-require('vim._core.ui2').enable({
+-- ── ui2 消息系统（仿 snacks.notifier 样式）───────────────────────────
+
+local ui2 = require('vim._core.ui2')
+local ui2_msgs = require('vim._core.ui2.messages')
+
+-- 不需要在 msg 窗口显示的消息类型
+local IGNORED_KINDS = {
+	bufwrite = true,
+	[''] = true,
+	empty = true,
+}
+
+-- 跳过匹配这些模式的消息（文件写入、undo 行数等噪音）
+local SKIP_PATTERNS = {
+	'%d+L, %d+B',
+	'; after #%d+',
+	'; before #%d+',
+	'%d fewer lines',
+	'%d more lines',
+	'%d lines yanked',
+}
+
+-- kind → { title_text, highlight_group }
+local KIND_TITLES = {
+	emsg = { '  ', 'DiagnosticError' },
+	echoerr = { '  ', 'DiagnosticError' },
+	lua_error = { '  ', 'DiagnosticError' },
+	rpc_error = { '  ', 'DiagnosticError' },
+	wmsg = { '  ', 'DiagnosticWarn' },
+	echo = { '  ', 'DiagnosticInfo' },
+	echomsg = { '  ', 'DiagnosticInfo' },
+	lua_print = { '  ', 'DiagnosticInfo' },
+	search_cmd = { '  ', 'DiagnosticInfo' },
+	search_count = { '  ', 'DiagnosticInfo' },
+	undo = { '  ', 'DiagnosticInfo' },
+	shell_out = { '  ', 'DiagnosticInfo' },
+	shell_err = { '  ', 'DiagnosticError' },
+	shell_cmd = { '  ', 'DiagnosticInfo' },
+	quickfix = { '  ', 'DiagnosticInfo' },
+	progress = { '  ', 'DiagnosticInfo' },
+	typed_cmd = { '  ', 'DiagnosticInfo' },
+	list_cmd = { '  ', 'DiagnosticInfo' },
+	verbose = { '  ', 'DiagnosticInfo' },
+}
+
+local last_title = nil
+local last_hl = 'DiagnosticInfo'
+
+local function content_to_text(content)
+	if type(content) ~= 'table' then
+		return tostring(content or '')
+	end
+	local parts = {}
+	for _, chunk in ipairs(content) do
+		if type(chunk) == 'table' and chunk[2] then
+			parts[#parts + 1] = chunk[2]
+		end
+	end
+	return table.concat(parts)
+end
+
+local function should_skip(kind, content)
+	if IGNORED_KINDS[kind] then
+		return true
+	end
+	local text = content_to_text(content)
+	for _, pat in ipairs(SKIP_PATTERNS) do
+		if text:find(pat) then
+			return true
+		end
+	end
+	return false
+end
+
+local function resolve_title(kind, content)
+	local entry = KIND_TITLES[kind]
+	if entry then
+		return entry[1], entry[2]
+	end
+	local text = vim.trim(content_to_text(content)):gsub('\n.*', '')
+	if #text > 40 then
+		text = text:sub(1, 37) .. '…'
+	end
+	return text ~= '' and '  ' or '  ', 'DiagnosticInfo'
+end
+
+local function override_msg_win()
+	local win = ui2.wins and ui2.wins.msg
+	if not (win and vim.api.nvim_win_is_valid(win)) then
+		return
+	end
+	if vim.api.nvim_win_get_config(win).hide then
+		return
+	end
+	pcall(vim.api.nvim_win_set_config, win, {
+		relative = 'editor',
+		anchor = 'NE',
+		row = 1,
+		col = vim.o.columns - 1,
+		border = 'rounded',
+		style = 'minimal',
+		title = last_title and { { last_title, last_hl } } or nil,
+		title_pos = last_title and 'center' or nil,
+	})
+end
+
+local function override_pager_win()
+	local win = ui2.wins and ui2.wins.pager
+	if not (win and vim.api.nvim_win_is_valid(win)) then
+		return
+	end
+	if vim.api.nvim_win_get_config(win).hide then
+		return
+	end
+	local height = vim.api.nvim_win_get_height(win)
+	pcall(vim.api.nvim_win_set_config, win, {
+		border = 'rounded',
+		height = height,
+		style = 'minimal',
+		title = last_title and { { last_title, last_hl } } or nil,
+		title_pos = last_title and 'center' or nil,
+	})
+end
+
+local function override_dialog_win()
+	local win = ui2.wins and ui2.wins.dialog
+	if not (win and vim.api.nvim_win_is_valid(win)) then
+		return
+	end
+	if vim.api.nvim_win_get_config(win).hide then
+		return
+	end
+	local height = vim.api.nvim_win_get_height(win)
+	pcall(vim.api.nvim_win_set_config, win, {
+		border = 'rounded',
+		height = height,
+		style = 'minimal',
+		title = last_title and { { last_title, last_hl } } or nil,
+		title_pos = last_title and 'center' or nil,
+	})
+end
+
+ui2.enable({
 	enable = true,
 	msg = {
 		targets = {
 			[''] = 'msg',
-			empty = 'cmd',
+			empty = 'msg',
 			bufwrite = 'msg',
-			confirm = 'cmd',
-			emsg = 'pager',
 			echo = 'msg',
 			echomsg = 'msg',
-			echoerr = 'pager',
-			completion = 'cmd',
-			list_cmd = 'pager',
-			lua_error = 'pager',
-			lua_print = 'msg',
-			progress = 'pager',
-			rpc_error = 'pager',
-			quickfix = 'msg',
-			search_cmd = 'cmd',
-			search_count = 'cmd',
-			shell_cmd = 'pager',
-			shell_err = 'pager',
-			shell_out = 'pager',
 			shell_ret = 'msg',
 			undo = 'msg',
-			verbose = 'pager',
-			wildlist = 'cmd',
 			wmsg = 'msg',
-			typed_cmd = 'cmd',
+			completion = 'msg',
+			confirm = 'dialog',
+			confirm_sub = 'dialog',
+			echoerr = 'msg',
+			emsg = 'msg',
+			list_cmd = 'pager',
+			lua_error = 'msg',
+			lua_print = 'msg',
+			progress = 'msg',
+			quickfix = 'msg',
+			rpc_error = 'msg',
+			search_cmd = 'msg',
+			search_count = 'msg',
+			shell_cmd = 'msg',
+			shell_err = 'msg',
+			shell_out = 'msg',
+			typed_cmd = 'msg',
+			verbose = 'pager',
+			wildlist = 'msg',
 		},
-		cmd = {
-			height = 0.5,
-		},
-		dialog = {
-			height = 0.5,
-		},
-		msg = {
-			height = 0.3,
-			timeout = 5000,
-		},
-		pager = {
-			height = 0.5,
-		},
+		cmd = { height = 0.5 },
+		dialog = { height = 0.5 },
+		msg = { height = 0.5, timeout = 5000 },
+		pager = { height = 0.8 },
 	},
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = 'msg',
-	callback = function()
-		local ui2 = require('vim._core.ui2')
-		local win = ui2.wins and ui2.wins.msg
-		if win and vim.api.nvim_win_is_valid(win) then
-			vim.api.nvim_set_option_value(
-				'winhighlight',
-				'Normal:NormalFloat,FloatBorder:FloatBorder',
-				{ scope = 'local', win = win }
-			)
-		end
-	end,
-})
-
-local ui2 = require('vim._core.ui2')
-local msgs = require('vim._core.ui2.messages')
-local orig_set_pos = msgs.set_pos
-msgs.set_pos = function(tgt)
+-- wrap set_pos: 所有窗口位置/样式的唯一入口
+local orig_set_pos = ui2_msgs.set_pos
+ui2_msgs.set_pos = function(tgt)
 	orig_set_pos(tgt)
-	if (tgt == 'msg' or tgt == nil) and vim.api.nvim_win_is_valid(ui2.wins.msg) then
-		pcall(vim.api.nvim_win_set_config, ui2.wins.msg, {
-			relative = 'editor',
-			anchor = 'NE',
-			row = 1,
-			col = vim.o.columns - 1,
-			border = 'rounded',
-		})
+	if tgt == 'msg' or tgt == nil then
+		override_msg_win()
+		return
 	end
+	if tgt == 'pager' then
+		override_pager_win()
+		return
+	end
+	if tgt == 'dialog' then
+		override_dialog_win()
+	end
+end
+
+-- wrap msg_show: 消息过滤 + title 跟踪
+local orig_msg_show = ui2_msgs.msg_show
+ui2_msgs.msg_show = function(kind, content, replace_last, history, append, id, trigger)
+	if should_skip(kind, content) then
+		return
+	end
+	local title, hl = resolve_title(kind, content)
+	last_title, last_hl = title, hl
+
+	local tgt = ui2.cfg.msg.targets[kind]
+		or (trigger ~= '' and ui2.cfg.msg.targets[trigger])
+		or ui2.cfg.msg.targets[trigger]
+		or ui2.cfg.msg.target
+
+	ui2_msgs.show_msg(tgt, kind, content, replace_last, append, id)
+	ui2_msgs.set_pos(tgt)
+end
+
+-- wrap show_msg: 大消息自动转 pager
+local orig_show_msg = ui2_msgs.show_msg
+ui2_msgs.show_msg = function(tgt, kind, content, replace_last, append, id)
+	if tgt == 'msg' then
+		local text = content_to_text(content)
+		local width = 0
+		for _, line in ipairs(vim.split(text, '\n')) do
+			width = math.max(width, vim.api.nvim_strwidth(line))
+		end
+		local lines = #vim.split(text, '\n')
+		if width > math.floor(vim.o.columns * 0.75) or lines > 20 then
+			vim.schedule(function()
+				ui2_msgs.show_msg('pager', kind, content, replace_last, append, id)
+				ui2_msgs.set_pos('pager')
+			end)
+			return
+		end
+	end
+	orig_show_msg(tgt, kind, content, replace_last, append, id)
 end
