@@ -426,6 +426,14 @@ local function resolve_title(kind, content)
 	return text ~= '' and '  ' or '  ', 'DiagnosticInfo'
 end
 
+local function set_msg_winhighlight(win)
+	vim.api.nvim_set_option_value(
+		'winhighlight',
+		('Normal:Normal,NormalNC:Normal,NormalFloat:Normal,FloatBorder:%s,FloatTitle:%s'):format(last_hl, last_hl),
+		{ scope = 'local', win = win }
+	)
+end
+
 local function override_msg_win()
 	local win = ui2.wins and ui2.wins.msg
 	if not (win and vim.api.nvim_win_is_valid(win)) then
@@ -444,6 +452,7 @@ local function override_msg_win()
 		title = last_title and { { last_title, last_hl } } or nil,
 		title_pos = last_title and 'center' or nil,
 	})
+	set_msg_winhighlight(win)
 end
 
 local function override_pager_win()
@@ -462,6 +471,7 @@ local function override_pager_win()
 		title = last_title and { { last_title, last_hl } } or nil,
 		title_pos = last_title and 'center' or nil,
 	})
+	set_msg_winhighlight(win)
 end
 
 local function override_dialog_win()
@@ -480,6 +490,7 @@ local function override_dialog_win()
 		title = last_title and { { last_title, last_hl } } or nil,
 		title_pos = last_title and 'center' or nil,
 	})
+	set_msg_winhighlight(win)
 end
 
 ui2.enable({
