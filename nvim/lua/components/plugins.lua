@@ -182,14 +182,14 @@ M.list = {
 				ft = 'snacks_terminal',
 				desc = 'Toggle terminal',
 			},
-			{
-				'<space>h',
-				mode = 'n',
-				function()
-					Snacks.notifier.show_history()
-				end,
-				desc = 'show history',
-			},
+			-- {
+			-- 	'<space>h',
+			-- 	mode = 'n',
+			-- 	function()
+			-- 		Snacks.notifier.show_history()
+			-- 	end,
+			-- 	desc = 'show history',
+			-- },
 		},
 		opts = {
 			animate = { enabled = false },
@@ -213,7 +213,7 @@ M.list = {
 			input = { enabled = true },
 			layout = { enable = true },
 			lazygit = { enabled = false },
-			notifier = { enabled = true },
+			notifier = { enabled = false },
 			-- Snacks.notifier.show_history() 查询snacks notify history历史
 			notify = { enabled = true },
 			picker = {
