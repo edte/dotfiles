@@ -330,6 +330,9 @@ require('satellite').setup({
 		gitsigns = {
 			enable = false,
 		},
+		search = {
+			enable = false,
+		},
 	},
 })
 
@@ -350,6 +353,8 @@ local IGNORED_KINDS = {
 	bufwrite = true,
 	[''] = true,
 	empty = true,
+	search_count = true,
+	search_cmd = true,
 }
 
 -- 跳过匹配这些模式的消息（文件写入、undo 行数等噪音）
