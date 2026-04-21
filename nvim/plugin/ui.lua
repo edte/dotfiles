@@ -480,22 +480,9 @@ local function override_pager_win()
 end
 
 local function override_dialog_win()
-	local win = ui2.wins and ui2.wins.dialog
-	if not (win and vim.api.nvim_win_is_valid(win)) then
-		return
-	end
-	if vim.api.nvim_win_get_config(win).hide then
-		return
-	end
-	local height = vim.api.nvim_win_get_height(win)
-	pcall(vim.api.nvim_win_set_config, win, {
-		border = 'rounded',
-		height = height,
-		style = 'minimal',
-		title = last_title and { { last_title, last_hl } } or nil,
-		title_pos = last_title and 'center' or nil,
-	})
-	set_msg_winhighlight(win)
+	-- 故意留空：dialog 窗口（confirm/askyesno 等 modal 提示）的位置、高度、
+	-- border 由 ui2 原生 set_pos 计算（见 messages.lua 的 win_row_height / set_top_bot_spill），
+	-- 这里再覆盖一次会导致 cmdline 的 prompt 文本和 confirm_sub 的按钮拆分到不同窗口。
 end
 
 ui2.enable({
@@ -541,6 +528,10 @@ ui2.enable({
 local orig_set_pos = ui2_msgs.set_pos
 ui2_msgs.set_pos = function(tgt)
 	orig_set_pos(tgt)
+	-- dialog 窗口（confirm 等 modal）完全由 ui2 原生定位，这里不做任何覆盖
+	if tgt == 'dialog' then
+		return
+	end
 	if tgt == 'msg' or tgt == nil then
 		override_msg_win()
 		return
@@ -549,14 +540,17 @@ ui2_msgs.set_pos = function(tgt)
 		override_pager_win()
 		return
 	end
-	if tgt == 'dialog' then
-		override_dialog_win()
-	end
 end
 
 -- wrap msg_show: 消息过滤 + title 跟踪
 local orig_msg_show = ui2_msgs.msg_show
 ui2_msgs.msg_show = function(kind, content, replace_last, history, append, id, trigger)
+	-- confirm / confirm_sub 是 ui2 已经在内部路由到 dialog 的 modal 消息（见 messages.lua:412）
+	-- 直接交给原生实现，避免被 should_skip 过滤或走我们自定义的 title/路由逻辑
+	if kind == 'confirm' or kind == 'confirm_sub' then
+		return orig_msg_show(kind, content, replace_last, history, append, id, trigger)
+	end
+
 	if should_skip(kind, content) then
 		return
 	end
@@ -575,6 +569,10 @@ end
 -- wrap show_msg: 大消息自动转 pager
 local orig_show_msg = ui2_msgs.show_msg
 ui2_msgs.show_msg = function(tgt, kind, content, replace_last, append, id)
+	-- dialog 目标（confirm 等）保持原生渲染，不做尺寸重路由
+	if tgt == 'dialog' then
+		return orig_show_msg(tgt, kind, content, replace_last, append, id)
+	end
 	if tgt == 'msg' then
 		local text = content_to_text(content)
 		local width = 0
