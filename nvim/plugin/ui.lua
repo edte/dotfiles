@@ -365,6 +365,9 @@ local SKIP_PATTERNS = {
 	'%d fewer lines',
 	'%d more lines',
 	'%d lines yanked',
+	'%d+ buffers? deleted',
+	'%d+ buffers? unloaded',
+	'%d+ buffers? wiped out',
 }
 
 -- kind → { title_text, highlight_group }

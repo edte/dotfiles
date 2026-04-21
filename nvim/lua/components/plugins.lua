@@ -1392,12 +1392,25 @@ M.list = {
 					},
 				},
 
+				-- slash command 的 picker 统一走 snacks，避免 codecompanion 自动探测到 mini.pick
+				-- （默认优先级：telescope > fzf_lua > mini_pick > snacks，我们只装了 mini.nvim 和 snacks）
+				strategies = {
+					chat = {
+						slash_commands = {
+							buffer = { opts = { provider = 'snacks' } },
+							file = { opts = { provider = 'snacks' } },
+							help = { opts = { provider = 'snacks' } },
+							symbols = { opts = { provider = 'snacks' } },
+						},
+					},
+				},
+
 				display = {
 					action_palette = {
 						width = 95,
 						height = 10,
 						prompt = 'Prompt ', -- Prompt used for interactive LLM calls
-						provider = 'default', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+						provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
 						opts = {
 							show_preset_actions = true, -- Show the default actions in the action palette?
 							show_default_prompt_library = true, -- Show the default prompt library in the action palette?
