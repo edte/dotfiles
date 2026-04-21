@@ -58,6 +58,58 @@ M.list = {
 					},
 				},
 			})
+
+			-- Patch: Nvim 0.11+ 下 treesitter query directive 的 `match` 参数类型从
+			-- `table<integer, TSNode>` 改为 `table<integer, TSNode[]>`（节点数组）。
+			-- timber.nvim 在 treesitter.lua 里为 predicate 写了 get_match_node 帮助函数来兼容新 API，
+			-- 但 `make-logable-range!` / `make-log-target-range!` 两个 directive handler 漏掉了处理，
+			-- 直接 match[id] 拿到的是数组，后续 node:range() 会抛
+			-- "attempt to call method 'range' (a nil value)"。
+			-- 这里在 setup 之后重新注册两个 handler，兼容新 API。
+			-- 参考：~/.local/share/nvim/lazy/timber.nvim/lua/timber/actions/treesitter.lua:207-247
+			local function get_node(match, id)
+				local node = match[id]
+				if type(node) == 'table' then
+					node = node[1]
+				end
+				return node
+			end
+
+			vim.treesitter.query.add_directive('make-logable-range!', function(match, _, _, predicate, metadata)
+				local node = get_node(match, predicate[2])
+				if not node then
+					return
+				end
+				local range_type = predicate[3]
+				local start_adjust = tonumber(predicate[4]) or 0
+				local end_adjust = tonumber(predicate[5]) or 0
+
+				local start_row, _, end_row, _ = node:range()
+				local adjusted_start_row = math.max(0, start_row + start_adjust)
+				local adjusted_end_row = math.max(adjusted_start_row, end_row + 1 + end_adjust)
+
+				local logable_ranges = metadata.logable_ranges or {}
+				if range_type == 'outer' then
+					table.insert(logable_ranges, { 0, adjusted_start_row })
+					table.insert(logable_ranges, { adjusted_end_row, math.huge })
+				elseif range_type == 'inner' then
+					table.insert(logable_ranges, { adjusted_start_row, adjusted_end_row })
+				elseif range_type == 'before' then
+					table.insert(logable_ranges, { 0, adjusted_start_row })
+				elseif range_type == 'after' then
+					table.insert(logable_ranges, { adjusted_end_row, math.huge })
+				end
+				metadata.logable_ranges = logable_ranges
+			end, { force = true })
+
+			vim.treesitter.query.add_directive('make-log-target-range!', function(match, _, _, predicate, metadata)
+				local start_node = get_node(match, predicate[2])
+				local end_node = get_node(match, predicate[3])
+				if not start_node or not end_node then
+					return
+				end
+				metadata.log_target_range = { start_node, end_node }
+			end, { force = true })
 		end,
 	},
 
