@@ -1,46 +1,46 @@
-local NuiTable = require("nui.table")
-
-function render_tsv_as_table()
-	local bufnr = vim.api.nvim_get_current_buf()
-	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-
-	if #lines <= 1 then
-		return
-	end
-
-	local headers = vim.split(lines[1], "\t")
-	local data = {}
-
-	for i = 2, #lines do
-		local row = {}
-		local values = vim.split(lines[i], "\t")
-		for j, header in ipairs(headers) do
-			row[header] = values[j] or ""
-		end
-		table.insert(data, row)
-	end
-
-	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})
-
-	local col_count = #headers
-	local win_width = vim.api.nvim_win_get_width(0)
-	local separator_width = col_count + 1
-	local max_col_width = col_count > 0 and math.floor((win_width - separator_width) / col_count) or win_width
-
-	local tbl = NuiTable({
-		bufnr = bufnr,
-		columns = vim.tbl_map(function(header)
-			return {
-				align = "center",
-				accessor_key = header,
-				header = header,
-				max_width = max_col_width,
-			}
-		end, headers),
-		data = data,
-	})
-
-	tbl:render()
-end
-
-render_tsv_as_table()
+-- local NuiTable = require("nui.table")
+--
+-- function render_tsv_as_table()
+-- 	local bufnr = vim.api.nvim_get_current_buf()
+-- 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+--
+-- 	if #lines <= 1 then
+-- 		return
+-- 	end
+--
+-- 	local headers = vim.split(lines[1], "\t")
+-- 	local data = {}
+--
+-- 	for i = 2, #lines do
+-- 		local row = {}
+-- 		local values = vim.split(lines[i], "\t")
+-- 		for j, header in ipairs(headers) do
+-- 			row[header] = values[j] or ""
+-- 		end
+-- 		table.insert(data, row)
+-- 	end
+--
+-- 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {})
+--
+-- 	local col_count = #headers
+-- 	local win_width = vim.api.nvim_win_get_width(0)
+-- 	local separator_width = col_count + 1
+-- 	local max_col_width = col_count > 0 and math.floor((win_width - separator_width) / col_count) or win_width
+--
+-- 	local tbl = NuiTable({
+-- 		bufnr = bufnr,
+-- 		columns = vim.tbl_map(function(header)
+-- 			return {
+-- 				align = "center",
+-- 				accessor_key = header,
+-- 				header = header,
+-- 				max_width = max_col_width,
+-- 			}
+-- 		end, headers),
+-- 		data = data,
+-- 	})
+--
+-- 	tbl:render()
+-- end
+--
+-- render_tsv_as_table()
