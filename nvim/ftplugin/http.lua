@@ -1,78 +1,96 @@
-if not vim.g.lua_loaded then
-	vim.g.lua_loaded = true
+if not vim.g.kulala_loaded then
+	vim.g.kulala_loaded = true
 
-	vim.schedule(function()
-		vim.pack.add({
-			{ src = 'https://github.com/mistweaverco/kulala.nvim' },
-		}, { confirm = false })
+	-- 同步加载，避免 keymap 触发时 kulala 还没进 package.path 的 race
+	vim.pack.add({
+		{ src = 'https://github.com/mistweaverco/kulala.nvim' },
+	}, { confirm = false })
 
-		require('kulala').setup({
-			default_view = 'body',
-			display_mode = 'float',
-			winbar = false,
-			ui = {
-				show_request_summary = false,
-				win_opts = {
-					width = vim.o.columns,
-					height = vim.o.lines - 1,
-					row = 0,
-					col = 0,
-					border = 'none',
-				},
-				disable_news_popup = true,
+	require('kulala').setup({
+		default_view = 'body',
+		display_mode = 'float',
+		winbar = false,
+		ui = {
+			show_request_summary = false,
+			win_opts = {
+				width = vim.o.columns,
+				height = vim.o.lines - 1,
+				row = 0,
+				col = 0,
+				border = 'none',
 			},
-			infer_content_type = false,
-			contenttypes = {
-				['application/csv'] = {
-					ft = 'csv',
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
-				['text/csv'] = {
-					ft = 'csv',
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
-				['text/tsv'] = {
-					ft = 'tsv',
-					formatter = function(body)
-						return body
-					end,
-					pathresolver = function(body, path)
-						return body
-					end,
-				},
+			disable_news_popup = true,
+		},
+		infer_content_type = false,
+		contenttypes = {
+			['application/csv'] = {
+				ft = 'csv',
+				formatter = function(body)
+					return body
+				end,
+				pathresolver = function(body, path)
+					return body
+				end,
 			},
-		})
-	end)
+			['text/csv'] = {
+				ft = 'csv',
+				formatter = function(body)
+					return body
+				end,
+				pathresolver = function(body, path)
+					return body
+				end,
+			},
+			['text/tsv'] = {
+				ft = 'tsv',
+				formatter = function(body)
+					return body
+				end,
+				pathresolver = function(body, path)
+					return body
+				end,
+			},
+		},
+	})
 end
 
 vim.treesitter.start()
 
 local opts = { buffer = true, silent = true }
 
-vim.keymap.set('n', '<CR>', function()
-	require('kulala').run()
-end, vim.tbl_extend('force', opts, { desc = 'Execute the request' }))
+-- 安全调用 kulala，即便偶发加载异常也能给出明确提示而不是 stacktrace
+local function safe_call(mod, fn)
+	return function()
+		local ok, m = pcall(require, mod)
+		if not ok then
+			vim.notify('kulala not loaded yet, retry in a moment', vim.log.levels.WARN)
+			return
+		end
+		m[fn]()
+	end
+end
 
-vim.keymap.set('n', '[[', function()
-	require('kulala').jump_prev()
-end, vim.tbl_extend('force', opts, { desc = 'Jump to the previous request' }))
+vim.keymap.set('n', '<CR>', safe_call('kulala', 'run'), vim.tbl_extend('force', opts, { desc = 'Execute the request' }))
+vim.keymap.set('n', '[[', safe_call('kulala', 'jump_prev'), vim.tbl_extend('force', opts, { desc = 'Jump to the previous request' }))
+vim.keymap.set('n', ']]', safe_call('kulala', 'jump_next'), vim.tbl_extend('force', opts, { desc = 'Jump to the next request' }))
 
-vim.keymap.set('n', ']]', function()
-	require('kulala').jump_next()
-end, vim.tbl_extend('force', opts, { desc = 'Jump to the next request' }))
-
+-- t: 展示响应 body。必须真有响应才打开，否则 kulala 会渲染空壳 + 内部 nil 崩。
+-- t: 展示响应 body。
+-- tsv.kulala_ui buffer 里再按 t 会销毁响应 buffer（见 ftplugin/tsv.lua），
+-- 所以这里 t 一定是"首次/重新打开"，直接走 show_body。
 vim.keymap.set('n', 't', function()
-	require('kulala.ui').show_body()
+	local ok_ui, ui = pcall(require, 'kulala.ui')
+	local ok_db, db = pcall(require, 'kulala.db')
+	if not (ok_ui and ok_db) then
+		vim.notify('kulala not loaded yet', vim.log.levels.WARN)
+		return
+	end
+	local responses = db.global_update().responses or {}
+	if #responses == 0 then
+		vim.notify('No response yet, press <CR> to send request first', vim.log.levels.INFO)
+		return
+	end
+	ui.show_body()
 end, vim.tbl_extend('force', opts, { desc = 'Show response body' }))
 
 -- 设置折叠 - 使用手动折叠
@@ -112,8 +130,10 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 			vim.opt_local.foldmethod = 'manual'
 			vim.opt_local.foldenable = true
 			create_http_folds()
-			-- 折叠创建完成后，设置 foldlevel 为 99 以展开所有折叠
+			-- 折叠创建完成后，强制展开所有折叠
 			vim.opt_local.foldlevel = 99
+			-- 兜底：用 normal! zR 强制打开所有折叠（即便被其它 autocmd 改过）
+			pcall(vim.cmd, 'normal! zR')
 		end, 50)
 	end,
 })

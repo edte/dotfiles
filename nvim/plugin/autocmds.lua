@@ -190,3 +190,18 @@ vim.api.nvim_create_autocmd("TabClosed", {
 		end
 	end,
 })
+
+-- :FdDiagnostic  诊断 fd 泄漏
+-- 正常 nvim: channels < 50, fds < 100
+-- 异常: fds 上千通常意味着插件 socket 泄漏 (如 CodeCompanion ACP 未回收)
+vim.api.nvim_create_user_command('FdDiagnostic', function()
+	local chans = vim.api.nvim_list_chans()
+	local pid = vim.fn.getpid()
+	local fd_count = tonumber(vim.fn.system('lsof -p ' .. pid .. ' 2>/dev/null | wc -l')) or -1
+	local unix_count = tonumber(vim.fn.system("lsof -p " .. pid .. " 2>/dev/null | awk 'NR>1 && $5==\"unix\"' | wc -l")) or -1
+	local msg = string.format(
+		'nvim pid=%d\nchannels=%d\nfds=%d  (unix sockets: %d)',
+		pid, #chans, fd_count, unix_count
+	)
+	vim.notify(msg, vim.log.levels.INFO, { title = 'FD diagnostic' })
+end, { desc = 'Show nvim channel / fd count for leak diagnosis' })

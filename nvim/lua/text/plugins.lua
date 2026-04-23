@@ -181,6 +181,24 @@ M.list = {
 			require('hlargs').setup()
 		end,
 	},
+	-- CSV/TSV 表格渲染
+	-- 注意：TSV 启用逻辑见 ftplugin/tsv.lua（kulala 响应 buffer 需特殊处理）
+	{
+		'hat0uma/csvview.nvim',
+		cmd = { 'CsvViewEnable', 'CsvViewDisable', 'CsvViewToggle' },
+		ft = { 'csv', 'tsv' },
+		opts = {
+			view = {
+				display_mode = 'border',
+				header_lnum = 1,
+				sticky_header = {
+					enabled = true,
+					separator = '─',
+				},
+			},
+		},
+	},
+
 	{
 		'aaronik/treewalker.nvim',
 
