@@ -5,7 +5,12 @@ vim.schedule(function()
 	if not ok then return end
 
 	local bufnr = vim.api.nvim_get_current_buf()
-	if csvview.is_enabled(bufnr) then return end
+
+	-- kulala 会在 set_buffer_contents 里重设 filetype，触发 ftplugin 再跑。
+	-- csvview.is_enabled 判的是异步 attach 完成后的状态，attach 过程中它仍是 false，
+	-- 所以要自己加个 flag 防止重入。
+	if vim.b[bufnr]._csvview_setup_done then return end
+	vim.b[bufnr]._csvview_setup_done = true
 
 	local ft = vim.bo[bufnr].filetype or ''
 	local is_kulala = ft:find('kulala_ui', 1, true) ~= nil
@@ -62,11 +67,15 @@ vim.schedule(function()
 		vim.opt_local.cursorline = true
 	end
 
-	csvview.enable(bufnr, {
-		parser = { delimiter = '\t' },
-		view = {
-			header_lnum = 1,
-			sticky_header = { enabled = true, separator = '─' },
-		},
-	})
+	-- kulala show_body 里 `vim.bo[buf].filetype = filetype` 会再次触发 ftplugin，
+	-- 此处再判一次防止重复 enable 弹 "already attached" 通知
+	if not csvview.is_enabled(bufnr) then
+		csvview.enable(bufnr, {
+			parser = { delimiter = '\t' },
+			view = {
+				header_lnum = 1,
+				sticky_header = { enabled = true, separator = '─' },
+			},
+		})
+	end
 end)
