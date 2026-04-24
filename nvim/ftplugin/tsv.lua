@@ -35,6 +35,31 @@ vim.schedule(function()
 				end
 			end,
 		})
+
+		-- 浮窗真正显示时开启整行高亮
+		-- 原因：
+		-- 1. kulala 浮窗 style=minimal，Neovim 默认关 cursorline
+		-- 2. plugin/autocmds.lua 的 WinLeave 里会主动把 cursorline 关掉
+		-- 对策：同时监听 BufWinEnter/WinEnter/CursorMoved，只要光标在这个 buffer 里
+		-- 且 cursorline 是关的，就强制打开。CursorMoved 作为兜底确保不被覆盖。
+		local function force_cursorline()
+			local win = vim.api.nvim_get_current_win()
+			if vim.api.nvim_win_get_buf(win) ~= bufnr then return end
+			if not vim.wo[win].cursorline then
+				vim.wo[win].cursorline = true
+			end
+		end
+
+		vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter', 'CursorMoved' }, {
+			group = group,
+			buffer = bufnr,
+			callback = force_cursorline,
+		})
+	end
+
+	-- 普通 .tsv 文件：直接开 cursorline
+	if not is_kulala then
+		vim.opt_local.cursorline = true
 	end
 
 	csvview.enable(bufnr, {
