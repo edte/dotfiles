@@ -41,6 +41,20 @@ vim.schedule(function()
 			end,
 		})
 
+		-- 离开 kulala buffer 时（例如 :Select 把当前窗口切到结果 buffer）
+		-- 记录完整视图（光标 + topline + leftcol），方便后续从结果 buffer 按 q 时
+		-- 恢复到完全一样的屏幕状态。
+		vim.api.nvim_create_autocmd('BufLeave', {
+			group = group,
+			buffer = bufnr,
+			callback = function()
+				local win = vim.api.nvim_get_current_win()
+				if vim.api.nvim_win_get_buf(win) == bufnr then
+					vim.b[bufnr]._kulala_view = vim.fn.winsaveview()
+				end
+			end,
+		})
+
 		-- 浮窗真正显示时开启整行高亮
 		-- 原因：
 		-- 1. kulala 浮窗 style=minimal，Neovim 默认关 cursorline

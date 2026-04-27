@@ -76,7 +76,9 @@ if not vim.g.kulala_loaded then
 	-- 结果路径：
 	--   - 源表：~/.rainbow_csv_storage/tmp_table_*.txt
 	--   - 查询结果：$TMPDIR/tmp_table_*.txt.txt  (vim_rbql.py 用 tempfile.gettempdir)
-	-- 这里 hook：打开结果 buffer 后转 scratch (nofile) 并删磁盘文件。
+	-- 这里 hook：
+	--   - 打开结果 buffer 后转 scratch (nofile) 并删磁盘文件
+	--   - 绑 buffer-local q：关结果 + 重新弹 kulala 响应浮窗
 	local storage_dir = vim.fn.expand('$HOME') .. '/.rainbow_csv_storage/*.txt'
 	local tmpdir = vim.fn.resolve(vim.fn.expand('$TMPDIR')):gsub('/$', '')
 	vim.api.nvim_create_autocmd('BufReadPost', {
@@ -88,6 +90,36 @@ if not vim.g.kulala_loaded then
 			vim.bo[args.buf].bufhidden = 'wipe'
 			vim.bo[args.buf].swapfile = false
 			pcall(vim.fn.delete, path)
+
+			-- q = 关结果 buffer 并重新打开 kulala 响应浮窗
+			vim.keymap.set('n', 'q', function()
+				-- 拿 kulala 响应 buffer 上次离开时的完整视图状态
+				-- （winsaveview 包括光标 + topline + leftcol + curswant，恢复后屏幕位置一致）
+				local saved_view
+				local ok_ui, ui = pcall(require, 'kulala.ui')
+				if ok_ui then
+					local kbuf = ui.get_kulala_buffer()
+					if kbuf and vim.api.nvim_buf_is_valid(kbuf) then
+						saved_view = vim.b[kbuf]._kulala_view
+					end
+				end
+
+				vim.api.nvim_buf_delete(args.buf, { force = true })
+				if ok_ui then pcall(ui.show_body) end
+
+				-- 恢复视图（覆盖 kulala 硬编码的 4G）
+				if saved_view and ok_ui then
+					vim.schedule(function()
+						local kbuf = ui.get_kulala_buffer()
+						local win = kbuf and vim.fn.win_findbuf(kbuf)[1]
+						if win and vim.api.nvim_win_is_valid(win) then
+							vim.api.nvim_win_call(win, function()
+								vim.fn.winrestview(saved_view)
+							end)
+						end
+					end)
+				end
+			end, { buffer = args.buf, silent = true, nowait = true, desc = 'Close query result and return to kulala' })
 		end,
 	})
 end
