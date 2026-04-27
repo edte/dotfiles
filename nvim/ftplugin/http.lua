@@ -14,10 +14,15 @@ if not vim.g.kulala_loaded then
 			show_request_summary = false,
 			win_opts = {
 				width = vim.o.columns,
-				height = vim.o.lines - 1,
+				-- 撑满 editor 区。vim.o.lines 是整屏高，laststatus=3 的 lualine
+				-- 本身在 editor 区之外；实际 editor 区 = lines - (cmdheight ~= 0 and cmdheight or 0) - 1
+				-- 但实测 height = lines - 1 会露底一行（http buffer 当前行），用 lines 让 nvim 自动 clamp
+				height = vim.o.lines,
 				row = 0,
 				col = 0,
 				border = 'none',
+				-- zindex 调高避免被其他浮窗/插件的 UI 元素叠加
+				zindex = 100,
 			},
 			disable_news_popup = true,
 		},

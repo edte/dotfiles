@@ -79,10 +79,17 @@ vim.schedule(function()
 		})
 	end
 
-	-- rainbow_csv 分色：
-	-- - kulala 复合 filetype (tsv.kulala_ui) 不会被自动识别
-	-- - 自动嗅探偶尔会把分隔符认成数字（比如 '1'），强制指定 tab 最保险
+	-- rainbow_csv 分色 + :Select 支持
+	-- 不能直接调 :RainbowDelim（会改 filetype 成 rcsv_XX_simple_，和 csvview 的
+	-- sticky_header/对齐撞车导致首行错位）。
+	-- 改为只跑 syntax 规则：rainbow_csv 启动时已经注册好 column0..N 的高亮链接，
+	-- 我们只需要给 buffer 加上 "按 tab 切列" 的 syntax match 规则即可。
 	pcall(function()
-		require('rainbow_csv').set_rainbow_filetype('\t', 'simple', '')
+		local rb = require('rainbow_csv.fns')
+		local syntax_lines = rb.generate_rainbow_syntax('\t')
+		vim.cmd('syntax clear')
+		for _, line in ipairs(syntax_lines) do
+			vim.cmd(line)
+		end
 	end)
 end)
