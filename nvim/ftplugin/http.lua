@@ -72,13 +72,16 @@ if not vim.g.kulala_loaded then
 		return eval_value
 	end
 
-	-- rainbow_csv 查询结果默认写磁盘 ~/.rainbow_csv_storage/*.txt 并 :edit，
-	-- 会越积越多。这里 hook：查询打开结果 buffer 后，把它转 scratch (nofile)
-	-- 并删掉磁盘文件。关窗即销毁，不着磁盘。
-	-- 只处理 *.txt（查询结果），不动 *.rbql（查询脚本）
+	-- rainbow_csv 查询结果默认写磁盘并 :edit，会越积越多。
+	-- 结果路径：
+	--   - 源表：~/.rainbow_csv_storage/tmp_table_*.txt
+	--   - 查询结果：$TMPDIR/tmp_table_*.txt.txt  (vim_rbql.py 用 tempfile.gettempdir)
+	-- 这里 hook：打开结果 buffer 后转 scratch (nofile) 并删磁盘文件。
+	local storage_dir = vim.fn.expand('$HOME') .. '/.rainbow_csv_storage/*.txt'
+	local tmpdir = vim.fn.resolve(vim.fn.expand('$TMPDIR')):gsub('/$', '')
 	vim.api.nvim_create_autocmd('BufReadPost', {
 		group = vim.api.nvim_create_augroup('rainbow_csv_scratch', { clear = true }),
-		pattern = vim.fn.expand('$HOME') .. '/.rainbow_csv_storage/*.txt',
+		pattern = { storage_dir, tmpdir .. '/tmp_table_*.txt*' },
 		callback = function(args)
 			local path = vim.api.nvim_buf_get_name(args.buf)
 			vim.bo[args.buf].buftype = 'nofile'
