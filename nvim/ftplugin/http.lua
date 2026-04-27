@@ -71,6 +71,22 @@ if not vim.g.kulala_loaded then
 	rb.set_statusline_columns = function(eval_value)
 		return eval_value
 	end
+
+	-- rainbow_csv 查询结果默认写磁盘 ~/.rainbow_csv_storage/*.txt 并 :edit，
+	-- 会越积越多。这里 hook：查询打开结果 buffer 后，把它转 scratch (nofile)
+	-- 并删掉磁盘文件。关窗即销毁，不着磁盘。
+	-- 只处理 *.txt（查询结果），不动 *.rbql（查询脚本）
+	vim.api.nvim_create_autocmd('BufReadPost', {
+		group = vim.api.nvim_create_augroup('rainbow_csv_scratch', { clear = true }),
+		pattern = vim.fn.expand('$HOME') .. '/.rainbow_csv_storage/*.txt',
+		callback = function(args)
+			local path = vim.api.nvim_buf_get_name(args.buf)
+			vim.bo[args.buf].buftype = 'nofile'
+			vim.bo[args.buf].bufhidden = 'wipe'
+			vim.bo[args.buf].swapfile = false
+			pcall(vim.fn.delete, path)
+		end,
+	})
 end
 
 vim.treesitter.start()
