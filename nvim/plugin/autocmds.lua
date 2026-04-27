@@ -197,11 +197,187 @@ vim.api.nvim_create_autocmd("TabClosed", {
 vim.api.nvim_create_user_command('FdDiagnostic', function()
 	local chans = vim.api.nvim_list_chans()
 	local pid = vim.fn.getpid()
-	local fd_count = tonumber(vim.fn.system('lsof -p ' .. pid .. ' 2>/dev/null | wc -l')) or -1
-	local unix_count = tonumber(vim.fn.system("lsof -p " .. pid .. " 2>/dev/null | awk 'NR>1 && $5==\"unix\"' | wc -l")) or -1
+
+	-- 用 systemlist 拿每一行，自己在 lua 里过滤，避免 shell 引号转义坑
+	local lines = vim.fn.systemlist('lsof -p ' .. pid .. ' 2>/dev/null')
+	local fd_count, unix_count = 0, 0
+	for i, line in ipairs(lines) do
+		if i > 1 and line ~= '' then -- 跳过 header
+			fd_count = fd_count + 1
+			-- lsof 输出第 5 列是 TYPE，列间用若干空格分隔
+			local _, _, _, _, typ = line:match('^(%S+)%s+(%S+)%s+(%S+)%s+(%S+)%s+(%S+)')
+			if typ == 'unix' then
+				unix_count = unix_count + 1
+			end
+		end
+	end
+
 	local msg = string.format(
 		'nvim pid=%d\nchannels=%d\nfds=%d  (unix sockets: %d)',
 		pid, #chans, fd_count, unix_count
 	)
 	vim.notify(msg, vim.log.levels.INFO, { title = 'FD diagnostic' })
 end, { desc = 'Show nvim channel / fd count for leak diagnosis' })
+
+-- :FdSnap  拍快照，记录当前 fd 列表
+-- :FdDiff  对比当前与上次快照的差异，输出新增的 fd（带类型和 peer 信息）
+-- 用法: :FdSnap -> 切一次 buffer -> :FdDiff  就能看到新增 socket 来自哪里
+local fd_snapshot = nil
+
+local function list_fds()
+	local pid = vim.fn.getpid()
+	local lines = vim.fn.systemlist('lsof -p ' .. pid .. ' 2>/dev/null')
+	local set = {}
+	for i, line in ipairs(lines) do
+		if i > 1 and line ~= '' then
+			-- 用 FD 列（第 4 列）作为 key，整行作为 value
+			local _, _, _, fd = line:match('^(%S+)%s+(%S+)%s+(%S+)%s+(%S+)')
+			if fd then
+				set[fd] = line
+			end
+		end
+	end
+	return set
+end
+
+vim.api.nvim_create_user_command('FdSnap', function()
+	fd_snapshot = list_fds()
+	local n = 0
+	for _ in pairs(fd_snapshot) do n = n + 1 end
+	vim.notify('Snapshot taken: ' .. n .. ' fds', vim.log.levels.INFO, { title = 'FD snap' })
+end, { desc = 'Take a snapshot of current fds' })
+
+vim.api.nvim_create_user_command('FdDiff', function()
+	if not fd_snapshot then
+		vim.notify('Run :FdSnap first', vim.log.levels.WARN)
+		return
+	end
+	local now = list_fds()
+	local added = {}
+	for fd, line in pairs(now) do
+		if not fd_snapshot[fd] then
+			table.insert(added, line)
+		end
+	end
+	if #added == 0 then
+		vim.notify('No new fds since last snapshot', vim.log.levels.INFO)
+		return
+	end
+	-- 按类型分组统计 + 列出前 20 条详情
+	local by_type = {}
+	for _, line in ipairs(added) do
+		local _, _, _, _, typ = line:match('^(%S+)%s+(%S+)%s+(%S+)%s+(%S+)%s+(%S+)')
+		typ = typ or '?'
+		by_type[typ] = (by_type[typ] or 0) + 1
+	end
+	local summary = { '=== Added fds: ' .. #added .. ' ===' }
+	for typ, cnt in pairs(by_type) do
+		table.insert(summary, string.format('  %s: %d', typ, cnt))
+	end
+	table.insert(summary, '--- sample (first 20) ---')
+	for i = 1, math.min(20, #added) do
+		table.insert(summary, added[i])
+	end
+	-- 写到新 buffer 方便查看
+	vim.cmd('new')
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, summary)
+	vim.bo.buftype = 'nofile'
+end, { desc = 'Diff fds against last snapshot' })
+
+-- :SpawnTraceOn  / :SpawnTraceOff  / :SpawnTraceShow
+-- 拦截 vim.fn.jobstart / vim.system / vim.uv.spawn，把每次调用的命令+调用栈记录下来
+-- 诊断步骤:
+--   :SpawnTraceOn   -> 切一次 buffer -> :SpawnTraceShow
+local spawn_trace = {
+	enabled = false,
+	events = {},
+	orig = {},
+}
+
+local function record(label, arg)
+	if not spawn_trace.enabled then return end
+	-- 取简短调用栈（跳过我们自己的 wrapper 层）
+	local stack = debug.traceback('', 3)
+	table.insert(spawn_trace.events, {
+		label = label,
+		arg = arg,
+		stack = stack,
+		time = os.time(),
+	})
+end
+
+local function stringify_cmd(cmd)
+	if type(cmd) == 'string' then return cmd end
+	if type(cmd) == 'table' then return table.concat(cmd, ' ') end
+	return tostring(cmd)
+end
+
+vim.api.nvim_create_user_command('SpawnTraceOn', function()
+	if spawn_trace.enabled then
+		vim.notify('Already on', vim.log.levels.WARN)
+		return
+	end
+	spawn_trace.events = {}
+	spawn_trace.orig.jobstart = vim.fn.jobstart
+	spawn_trace.orig.system = vim.system
+	spawn_trace.orig.uv_spawn = vim.uv.spawn
+
+	vim.fn.jobstart = function(cmd, opts)
+		record('jobstart', stringify_cmd(cmd))
+		return spawn_trace.orig.jobstart(cmd, opts)
+	end
+	vim.system = function(cmd, opts, on_exit)
+		record('vim.system', stringify_cmd(cmd))
+		return spawn_trace.orig.system(cmd, opts, on_exit)
+	end
+	vim.uv.spawn = function(path, opts, on_exit)
+		record('uv.spawn', path .. ' ' .. (opts and opts.args and table.concat(opts.args, ' ') or ''))
+		return spawn_trace.orig.uv_spawn(path, opts, on_exit)
+	end
+
+	spawn_trace.enabled = true
+	vim.notify('Spawn trace ON', vim.log.levels.INFO)
+end, { desc = 'Start tracing process spawns' })
+
+vim.api.nvim_create_user_command('SpawnTraceOff', function()
+	if not spawn_trace.enabled then return end
+	vim.fn.jobstart = spawn_trace.orig.jobstart
+	vim.system = spawn_trace.orig.system
+	vim.uv.spawn = spawn_trace.orig.uv_spawn
+	spawn_trace.enabled = false
+	vim.notify('Spawn trace OFF (events captured: ' .. #spawn_trace.events .. ')', vim.log.levels.INFO)
+end, { desc = 'Stop tracing' })
+
+vim.api.nvim_create_user_command('SpawnTraceShow', function()
+	if #spawn_trace.events == 0 then
+		vim.notify('No events. Run :SpawnTraceOn first', vim.log.levels.WARN)
+		return
+	end
+	-- 统计每个命令出现次数
+	local counts = {}
+	for _, e in ipairs(spawn_trace.events) do
+		local key = e.label .. '  ' .. (e.arg or '')
+		counts[key] = (counts[key] or 0) + 1
+	end
+	local lines = { '=== Spawn Trace (' .. #spawn_trace.events .. ' events) ===', '' }
+	table.insert(lines, '--- Command frequency ---')
+	local sorted = {}
+	for k, v in pairs(counts) do table.insert(sorted, { cmd = k, n = v }) end
+	table.sort(sorted, function(a, b) return a.n > b.n end)
+	for _, item in ipairs(sorted) do
+		table.insert(lines, string.format('  %4d x  %s', item.n, item.cmd))
+	end
+	table.insert(lines, '')
+	table.insert(lines, '--- Sample stacks (first 5 events) ---')
+	for i = 1, math.min(5, #spawn_trace.events) do
+		local e = spawn_trace.events[i]
+		table.insert(lines, string.format('[%d] %s: %s', i, e.label, e.arg or ''))
+		for stackline in (e.stack or ''):gmatch('[^\n]+') do
+			table.insert(lines, '    ' .. stackline)
+		end
+		table.insert(lines, '')
+	end
+	vim.cmd('new')
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+	vim.bo.buftype = 'nofile'
+end, { desc = 'Show spawn trace results' })

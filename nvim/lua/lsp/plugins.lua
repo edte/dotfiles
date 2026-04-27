@@ -91,7 +91,7 @@ M.list = {
 				-- jq -c . a.json
 				json = { 'jq' },
 				jce = { lsp_format = 'never' },
-			cpp = { lsp_format = 'never' },
+				cpp = { lsp_format = 'never' },
 				zsh = { 'shfmt', lsp_format = 'never' },
 				bash = { 'shfmt', lsp_format = 'never' },
 				toml = { 'taplo', lsp_format = 'never' },
@@ -279,12 +279,12 @@ M.list = {
 				desc = 'LSP Functions - Project',
 				silent = true,
 			},
-			{
-				'ss',
-				':Namu project_functions<cr>',
-				desc = 'LSP Symbols - Workspace',
-				silent = true,
-			},
+			-- {
+			-- 	'ss',
+			-- 	':Namu project_functions<cr>',
+			-- 	desc = 'LSP Symbols - Workspace',
+			-- 	silent = true,
+			-- },
 			{
 				'<space>sd',
 				':Namu diagnostics<cr>',

@@ -199,6 +199,23 @@ M.list = {
 		},
 	},
 
+	-- CSV/TSV 分色 + RBQL SQL 查询
+	-- 和 csvview.nvim 共存：csvview 负责对齐/sticky，rainbow_csv 负责颜色/查询
+	-- 关掉 hover：ClickHouse TSV 第 2 行类型声明 Nullable(Int64) 里的括号会被
+	-- 识别成列数不一致，光标动一下就喷 WARN，很吵
+	{
+		'cameron-wags/rainbow_csv.nvim',
+		ft = { 'csv', 'tsv', 'csv_semicolon', 'csv_whitespace', 'csv_pipe', 'rfc_csv', 'rfc_semicolon' },
+		cmd = { 'RainbowDelim', 'RainbowDelimSimple', 'RainbowDelimQuoted', 'RainbowMultiDelim' },
+		init = function()
+			-- 关 hover：ClickHouse TSV 第 2 行类型声明里的括号会被识成列数不一致
+			vim.g.disable_rainbow_hover = 1
+			-- 开 header 模式：第 1 行作为列名，RBQL 里可以直接用 :Select AA from a
+			vim.g.rbql_with_headers = 1
+		end,
+		config = true,
+	},
+
 	{
 		'aaronik/treewalker.nvim',
 

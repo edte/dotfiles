@@ -78,4 +78,11 @@ vim.schedule(function()
 			},
 		})
 	end
+
+	-- rainbow_csv 分色：
+	-- - kulala 复合 filetype (tsv.kulala_ui) 不会被自动识别
+	-- - 自动嗅探偶尔会把分隔符认成数字（比如 '1'），强制指定 tab 最保险
+	pcall(function()
+		require('rainbow_csv').set_rainbow_filetype('\t', 'simple', '')
+	end)
 end)
