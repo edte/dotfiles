@@ -25,6 +25,10 @@ vim.schedule(function()
 			require('kulala.ui').close_kulala_buffer()
 		end, { buffer = bufnr, silent = true, nowait = true, desc = 'Close kulala response' })
 
+		-- kulala 默认 <CR> 会 "跳回 http buffer 同时关浮窗"（jump_to_response），
+		-- 用不上还容易误触——禁掉（用 <Nop>）
+		vim.keymap.set('n', '<CR>', '<Nop>', { buffer = bufnr, silent = true, nowait = true, desc = 'Disabled kulala jump' })
+
 		-- csvview sticky_header 子浮窗关闭不要删主 buffer（kulala 默认的 WinClosed
 		-- 按 buffer 绑定，子浮窗关掉也会触发，导致主 buffer 被误删）
 		vim.api.nvim_create_autocmd('WinClosed', {
