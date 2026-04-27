@@ -62,6 +62,15 @@ if not vim.g.kulala_loaded then
 	-- 把 toggle_winbar_tab 替换成空实现彻底关掉
 	local winbar_mod = require('kulala.ui.winbar')
 	winbar_mod.toggle_winbar_tab = function() end
+
+	-- 关掉 rainbow_csv 的 :Select / :Update 命令行列名提示条
+	-- （输入 Select 后底部弹的 NR a1 a2 ... 提示）
+	-- 注意：这个函数既有改 statusline 的副作用，又负责返回命令名给 cnoreabbrev 展开，
+	-- 所以不能返回空字符串（会把 Select 吃掉），只返回 eval_value 跳过副作用即可
+	local rb = require('rainbow_csv.fns')
+	rb.set_statusline_columns = function(eval_value)
+		return eval_value
+	end
 end
 
 vim.treesitter.start()
