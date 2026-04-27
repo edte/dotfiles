@@ -146,8 +146,9 @@ vim.keymap.set('n', ']]', safe_call('kulala', 'jump_next'), vim.tbl_extend('forc
 
 -- t: 展示响应 body。必须真有响应才打开，否则 kulala 会渲染空壳 + 内部 nil 崩。
 -- t: 展示响应 body。
--- tsv.kulala_ui buffer 里再按 t 会销毁响应 buffer（见 ftplugin/tsv.lua），
--- 所以这里 t 一定是"首次/重新打开"，直接走 show_body。
+-- 已有 kulala buffer → 直接开新浮窗复用（不调 show_body 重写内容，
+-- csvview 状态/metrics/sticky header 全保留，瞬间可见）。
+-- 没 buffer 才调 show_body 建。
 vim.keymap.set('n', 't', function()
 	local ok_ui, ui = pcall(require, 'kulala.ui')
 	local ok_db, db = pcall(require, 'kulala.db')
@@ -160,8 +161,51 @@ vim.keymap.set('n', 't', function()
 		vim.notify('No response yet, press <CR> to send request first', vim.log.levels.INFO)
 		return
 	end
+
+	-- 有 kulala buffer 且合法：复用
+	local buf = ui.get_kulala_buffer()
+	if buf and vim.api.nvim_buf_is_valid(buf) then
+		-- 如果已经有浮窗在展示，直接聚焦过去
+		local existing_win = vim.fn.win_findbuf(buf)[1]
+		if existing_win and vim.api.nvim_win_is_valid(existing_win) then
+			vim.api.nvim_set_current_win(existing_win)
+			return
+		end
+
+		-- 没浮窗 → 新开一个 minimal float 指向这个 buf（和 kulala 默认浮窗配置一致）
+		local width = vim.o.columns
+		local height = vim.o.lines
+		local win = vim.api.nvim_open_win(buf, true, {
+			relative = 'editor',
+			width = width,
+			height = height,
+			row = 0,
+			col = 0,
+			style = 'minimal',
+			border = 'none',
+			zindex = 50,
+		})
+
+		-- 恢复上次视图位置（winsaveview 包含 cursor/topline/leftcol）
+		local view = vim.b[buf]._kulala_view
+		if view then
+			vim.api.nvim_win_call(win, function()
+				vim.fn.winrestview(view)
+			end)
+		end
+
+		-- 触发 csvview sticky_header 按新 winid 重绘
+		vim.schedule(function()
+			pcall(function()
+				require('csvview.sticky_header').redraw()
+			end)
+		end)
+		return
+	end
+
+	-- 首次展示
 	ui.show_body()
-end, vim.tbl_extend('force', opts, { desc = 'Show response body' }))
+end, vim.tbl_extend('force', opts, { desc = 'Show / reuse kulala response body' }))
 
 -- 设置折叠 - 使用手动折叠
 vim.opt_local.foldmethod = 'manual'

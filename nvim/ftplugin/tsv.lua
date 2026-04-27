@@ -18,12 +18,22 @@ vim.schedule(function()
 	if is_kulala then
 		local group = vim.api.nvim_create_augroup('kulala_window_closed', { clear = true })
 
-		-- t 键：完全销毁响应 buffer（等价于 kulala 默认的 q）
-		-- 下次从 http buffer 按 t 时走 show_body 完全重建，避免复用 buffer 导致
-		-- csvview 渲染状态和新浮窗 winid 对不上的错乱。
+		-- t 键：关闭响应浮窗但保留 buffer（不销毁 csvview 状态）
+		-- 下次从 http 按 t 时直接用新浮窗复用这个 buffer，对齐/高亮瞬间可见
 		vim.keymap.set('n', 't', function()
-			require('kulala.ui').close_kulala_buffer()
-		end, { buffer = bufnr, silent = true, nowait = true, desc = 'Close kulala response' })
+			-- 保存视图位置，下次复用时恢复
+			local win = vim.api.nvim_get_current_win()
+			if vim.api.nvim_win_get_buf(win) == bufnr then
+				vim.b[bufnr]._kulala_view = vim.fn.winsaveview()
+			end
+			-- 标记本次关窗是主动 "隐藏"，WinClosed autocmd 不要删 buffer
+			vim.b[bufnr]._kulala_hide = true
+			-- 顺便关掉 csvview 的 sticky 子浮窗（避免残留干扰下次 redraw）
+			pcall(function()
+				require('csvview.sticky_header').close_header_win_for(win)
+			end)
+			pcall(vim.api.nvim_win_close, win, false)
+		end, { buffer = bufnr, silent = true, nowait = true, desc = 'Hide kulala response (keep buffer)' })
 
 		-- kulala 默认 <CR> 会 "跳回 http buffer 同时关浮窗"（jump_to_response），
 		-- 用不上还容易误触——禁掉（用 <Nop>）
@@ -31,12 +41,17 @@ vim.schedule(function()
 
 		-- csvview sticky_header 子浮窗关闭不要删主 buffer（kulala 默认的 WinClosed
 		-- 按 buffer 绑定，子浮窗关掉也会触发，导致主 buffer 被误删）
+		-- 另外：t 键的 "隐藏不销毁" 也靠 vim.b._kulala_hide 标记跳过删除
 		vim.api.nvim_create_autocmd('WinClosed', {
 			group = group,
 			buffer = bufnr,
 			callback = function(args)
 				local winid = tonumber(args.match)
 				if winid and vim.w[winid].csvview_sticky_header_win then
+					return
+				end
+				if vim.b[bufnr]._kulala_hide then
+					vim.b[bufnr]._kulala_hide = nil
 					return
 				end
 				if vim.fn.bufexists(bufnr) > 0 then
