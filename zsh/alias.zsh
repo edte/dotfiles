@@ -56,6 +56,9 @@ alias gc="git clone"
 # alias gs="git status -s"
 alias gst="git status"
 alias ga="git add"
+alias gr="git remote -v"
+
+alias gmt="go mod tidy"
 # alias gco="git checkout"
 
 glog() {

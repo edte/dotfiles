@@ -527,11 +527,61 @@ ui2.enable({
 	},
 })
 
+-- ── shell 输出防重入保护 ──────────────────────────────────────────────
+-- :make / :! 执行期间，shell 输出由 out_data_cb → ui_flush 同步触发，
+-- 此时事件循环已处于 loop_poll_events 中。
+-- 原生 ui2 的 set_pos 内部调用 fn.win_execute(win, 'norm! Gzb')，
+-- 而 win_execute 触发 ModeChanged → 再次 loop_poll_events → 重入 → SIGABRT。
+--
+-- 解法：用 in_shell_output 标志标记 shell 回调上下文，
+-- set_pos 在此期间跳过原生实现（含危险的 fn.win_execute），
+-- 改为自己做安全的窗口定位（纯 API 调用，不触发 autocmd）。
+local SHELL_KINDS = {
+	shell_out = true,
+	shell_err = true,
+	shell_cmd = true,
+	shell_ret = true,
+}
+local in_shell_output = false
+
 -- wrap set_pos: 所有窗口位置/样式的唯一入口
 local orig_set_pos = ui2_msgs.set_pos
 ui2_msgs.set_pos = function(tgt)
+	if in_shell_output then
+		-- shell 输出期间：跳过 orig_set_pos（内含 fn.win_execute 会导致重入崩溃），
+		-- 自己用纯 API 调用完成窗口显示和定位。
+		if tgt == 'msg' or tgt == nil then
+			local win = ui2.wins and ui2.wins.msg
+			if win and vim.api.nvim_win_is_valid(win) then
+				local ok_texth, texth = pcall(vim.api.nvim_win_text_height, win, {})
+				if ok_texth and texth.all > 0 then
+					local height = math.min(texth.all, math.floor(vim.o.lines * 0.5))
+					pcall(vim.api.nvim_win_set_config, win, {
+						hide = false,
+						relative = 'editor',
+						anchor = 'NE',
+						row = 1,
+						col = vim.o.columns - 1,
+						height = math.max(1, height),
+						border = 'rounded',
+						style = 'minimal',
+						title = last_title and { { last_title, last_hl } } or nil,
+						title_pos = last_title and 'center' or nil,
+					})
+					-- winhighlight 延迟到下一个安全的事件循环设置
+					-- （nvim_set_option_value 会触发 OptionSet autocmd → 重入崩溃）
+					vim.schedule(function()
+						if vim.api.nvim_win_is_valid(win) then
+							set_msg_winhighlight(win)
+						end
+					end)
+				end
+			end
+		end
+		return
+	end
 	orig_set_pos(tgt)
-	-- dialog 窗口（confirm 等 modal）完全由 ui2 原生定位，这里不做任何覆盖
+	-- dialog 窗口完全由 ui2 原生定位
 	if tgt == 'dialog' then
 		return
 	end
@@ -548,10 +598,23 @@ end
 -- wrap msg_show: 消息过滤 + title 跟踪
 local orig_msg_show = ui2_msgs.msg_show
 ui2_msgs.msg_show = function(kind, content, replace_last, history, append, id, trigger)
-	-- confirm / confirm_sub 是 ui2 已经在内部路由到 dialog 的 modal 消息（见 messages.lua:412）
-	-- 直接交给原生实现，避免被 should_skip 过滤或走我们自定义的 title/路由逻辑
+	-- confirm / confirm_sub 直接交给原生实现
 	if kind == 'confirm' or kind == 'confirm_sub' then
 		return orig_msg_show(kind, content, replace_last, history, append, id, trigger)
+	end
+
+	-- shell 输出：设置 title 样式，然后在 in_shell_output 保护下走原生路径。
+	-- 原生 msg_show 内部调 M.show_msg → M.set_pos（已被我们的 wrapper 拦截，安全）。
+	if SHELL_KINDS[kind] then
+		local title, hl = resolve_title(kind, content)
+		last_title, last_hl = title, hl
+		in_shell_output = true
+		local ok, err = pcall(orig_msg_show, kind, content, replace_last, history, append, id, trigger)
+		in_shell_output = false
+		if not ok then
+			error(err)
+		end
+		return
 	end
 
 	if should_skip(kind, content) then
@@ -572,7 +635,11 @@ end
 -- wrap show_msg: 大消息自动转 pager
 local orig_show_msg = ui2_msgs.show_msg
 ui2_msgs.show_msg = function(tgt, kind, content, replace_last, append, id)
-	-- dialog 目标（confirm 等）保持原生渲染，不做尺寸重路由
+	-- shell 输出期间直接走原生路径
+	if in_shell_output then
+		return orig_show_msg(tgt, kind, content, replace_last, append, id)
+	end
+	-- dialog 目标保持原生渲染
 	if tgt == 'dialog' then
 		return orig_show_msg(tgt, kind, content, replace_last, append, id)
 	end
