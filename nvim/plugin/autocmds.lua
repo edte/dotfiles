@@ -8,13 +8,19 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 })
 
 -- 在打开文件时跳转到上次编辑的位置
+-- mini.sessions 恢复会话时跳过 zz 居中，保留 session 保存的原始视图位置
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = vim.api.nvim_create_augroup("edit_cache", { clear = true }),
 	callback = function(args)
 		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
 		local line_count = vim.api.nvim_buf_line_count(args.buf)
 		if mark[1] > 0 and mark[1] <= line_count then
-			vim.cmd('normal! g`"zz')
+			-- vim.g.SessionLoad 在 :source session.vim 过程中为 1
+			if vim.g.SessionLoad == 1 then
+				vim.cmd('normal! g`"')
+			else
+				vim.cmd('normal! g`"zz')
+			end
 		end
 	end,
 })

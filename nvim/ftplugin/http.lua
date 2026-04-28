@@ -241,6 +241,9 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 	callback = function()
 		-- 延迟执行以确保 kulala 初始化完成，并重新设置 foldmethod
 		vim.defer_fn(function()
+			-- 保存当前视图（包括 loadview 刚恢复的 topline/cursor）
+			local view = vim.fn.winsaveview()
+
 			vim.opt_local.foldmethod = 'manual'
 			vim.opt_local.foldenable = true
 			create_http_folds()
@@ -248,6 +251,9 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 			vim.opt_local.foldlevel = 99
 			-- 兜底：用 normal! zR 强制打开所有折叠（即便被其它 autocmd 改过）
 			pcall(vim.cmd, 'normal! zR')
+
+			-- 折叠操作会改 topline，恢复到折叠前的视图位置
+			vim.fn.winrestview(view)
 		end, 50)
 	end,
 })

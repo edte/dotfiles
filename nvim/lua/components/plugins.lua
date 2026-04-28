@@ -48,16 +48,49 @@ M.list = {
 				return dir
 			end
 
+			-- 对所有正常 buffer 的 window 各自 mkview（保存光标+topline+leftcol+folds）
+			-- mkview 只对当前 window 生效，必须逐个切过去才能存全
+			local function save_all_views()
+				local cur = vim.api.nvim_get_current_win()
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					local buf = vim.api.nvim_win_get_buf(win)
+					-- 只对有磁盘文件的普通 buffer mkview
+					if vim.bo[buf].buftype == '' and vim.api.nvim_buf_get_name(buf) ~= '' then
+						pcall(function()
+							vim.api.nvim_win_call(win, function()
+								vim.cmd('silent! mkview')
+							end)
+						end)
+					end
+				end
+				pcall(vim.api.nvim_set_current_win, cur)
+			end
+
+			-- 恢复时对所有 window 各自 loadview
+			local function load_all_views()
+				local cur = vim.api.nvim_get_current_win()
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					local buf = vim.api.nvim_win_get_buf(win)
+					if vim.bo[buf].buftype == '' and vim.api.nvim_buf_get_name(buf) ~= '' then
+						pcall(function()
+							vim.api.nvim_win_call(win, function()
+								vim.cmd('silent! loadview')
+							end)
+						end)
+					end
+				end
+				pcall(vim.api.nvim_set_current_win, cur)
+			end
+
 			vim.api.nvim_create_autocmd('VimEnter', {
 				callback = function()
 					if vim.fn.argc(-1) == 0 then
 						local session_name = GetPath()
 						if MiniSessions.detected[session_name] then
-							-- Session exists, read it
 							MiniSessions.read(session_name)
-							vim.cmd([[silent! loadview]])
+							-- session 恢复后再逐 window 恢复视图
+							vim.schedule(load_all_views)
 						else
-							-- First time in this directory, create empty session
 							MiniSessions.write(session_name)
 						end
 					end
@@ -66,18 +99,16 @@ M.list = {
 			})
 			vim.api.nvim_create_autocmd('VimLeavePre', {
 				callback = function()
-					-- Set flag to prevent slow operations during exit
 					vim.g.is_exiting = true
 					if vim.fn.argc(-1) > 0 then
 						cmd('argdelete *')
 					end
 
-					-- Save session asynchronously to avoid blocking exit
+					-- 先保存所有 window 的视图（同步），再异步写 session
+					save_all_views()
 					vim.schedule(function()
 						MiniSessions.write(GetPath())
 					end)
-					-- Save view to restore cursor position
-					vim.cmd([[silent! mkview]])
 				end,
 			})
 		end,
