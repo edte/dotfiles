@@ -92,7 +92,8 @@ M.list = {
 			keymaps = {
 				view = {
 					quit = 'q', -- Close diff tab
-					toggle_explorer = '<space>e', -- Toggle explorer visibility (explorer mode only)
+					toggle_explorer = '<space>e', -- Toggle + focus explorer
+					focus_explorer = false, -- 禁用，toggle 自带 focus
 					next_hunk = ']h', -- Jump to next change
 					prev_hunk = '[h', -- Jump to previous change
 					next_file = ']f', -- Next file in explorer mode
@@ -118,6 +119,23 @@ M.list = {
 			{
 				'<space>d',
 				function()
+					-- 监听 diff 打开事件，自动隐藏 explorer
+					local group = vim.api.nvim_create_augroup('CodeDiffAutoHideExplorer', { clear = true })
+					vim.api.nvim_create_autocmd('User', {
+						group = group,
+						pattern = 'CodeDiffOpen',
+						once = true,
+						callback = function(ev)
+							vim.schedule(function()
+								local tabpage = ev.data and ev.data.tabpage or vim.api.nvim_get_current_tabpage()
+								local lifecycle = require('codediff.ui.lifecycle')
+								local explorer = lifecycle.get_explorer(tabpage)
+								if explorer and not explorer.is_hidden then
+									require('codediff.ui.explorer').toggle_visibility(explorer)
+								end
+							end)
+						end,
+					})
 					vim.cmd('CodeDiff')
 				end,
 				desc = 'diff',
