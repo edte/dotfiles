@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	end,
 -- })
 
--- Show cursorline only on active windows
+-- Show cursorline only on active windows (skip codediff diff windows)
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
 	callback = function()
 		if vim.w.auto_cursorline then
@@ -101,6 +101,10 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 	callback = function()
+		-- Keep cursorline on in codediff diff windows
+		if vim.w.codediff_restore then
+			return
+		end
 		if vim.wo.cursorline then
 			vim.w.auto_cursorline = true
 			vim.wo.cursorline = false
