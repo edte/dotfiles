@@ -8,7 +8,7 @@ local function setup_go_once()
 	vim.pack.add({
 		'https://github.com/ray-x/go.nvim.git',
 		'https://github.com/ray-x/guihua.lua.git',
-		'https://github.com/TheNoeTrevino/no-go.nvim.git',
+		'https://github.com/edte/no-go.nvim.git',
 		'https://github.com/edte/more-go.nvim.git',
 		'https://github.com/olexsmir/gopher.nvim.git',
 	}, { confirm = false })
