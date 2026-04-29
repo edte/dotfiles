@@ -89,6 +89,9 @@ M.list = {
 		dependencies = { 'MunifTanjim/nui.nvim' },
 		cmd = 'CodeDiff',
 		opts = {
+			explorer = {
+				focus_on_select = true, -- 按 l 选文件后自动跳到 diff buffer
+			},
 			keymaps = {
 				view = {
 					quit = 'q', -- Close diff tab
