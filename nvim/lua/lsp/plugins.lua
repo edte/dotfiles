@@ -97,6 +97,7 @@ M.list = {
 				toml = { 'taplo', lsp_format = 'never' },
 				http = { 'kulala' },
 				rust = { 'rustfmt' },
+				python = { 'ruff_format' },
 				['markdown'] = { 'prettier' },
 				['markdown.mdx'] = { 'prettier' },
 			},
@@ -144,6 +145,7 @@ M.list = {
 				zsh = { 'shellcheck' },
 				sh = { 'shellcheck' },
 				json = { 'jsonlint' },
+				python = { 'ruff' },
 			},
 			-- LazyVim extension to easily override linter options
 			-- or add custom linters.
