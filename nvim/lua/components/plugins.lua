@@ -434,6 +434,16 @@ M.list = {
 					-- Highlight hex color strings (`#rrggbb`) using that color
 					hex_color = hipatterns.gen_highlighter.hex_color(),
 				},
+				-- Disable in codediff diff windows
+				disable = function(buf_id)
+					local wins = vim.fn.win_findbuf(buf_id)
+					for _, win in ipairs(wins) do
+						if vim.w[win].codediff_restore then
+							return true
+						end
+					end
+					return false
+				end,
 			})
 
 			-- mini.pairs
