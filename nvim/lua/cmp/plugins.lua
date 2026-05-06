@@ -118,6 +118,9 @@ M.list = {
 		'saghen/blink.cmp',
 
 		event = { 'InsertEnter' },
+		build = function()
+			require('blink.cmp').build():wait(60000)
+		end,
 
 		dependencies = {
 			{

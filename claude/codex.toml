@@ -78,6 +78,12 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-engine-service"]
 trust_level = "trusted"
 
+[projects."/Users/edte/Desktop/workspace"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/ratelimit/push-ratelimit-service"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -104,3 +110,6 @@ hide_rate_limit_model_nudge = true
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 "gpt-5.2-codex" = "gpt-5.3-codex"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
