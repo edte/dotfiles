@@ -32,4 +32,6 @@ case "$first_kw" in
   *)  echo "ascii.sh: diagram type '$first_kw' not supported by mermaid-ascii" >&2; exit 4 ;;
 esac
 
-"$BIN" --file "$INPUT" 2>/dev/null || { echo "ascii.sh: mermaid-ascii failed (likely unsupported syntax)" >&2; exit 5; }
+OUTPUT="$(mktemp -t mermaid-ascii-out).txt"
+"$BIN" --file "$INPUT" > "$OUTPUT" 2>/dev/null || { echo "ascii.sh: mermaid-ascii failed (likely unsupported syntax)" >&2; rm -f "$OUTPUT"; exit 5; }
+echo "$OUTPUT"
