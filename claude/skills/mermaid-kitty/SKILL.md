@@ -1,6 +1,6 @@
 ---
 name: mermaid-kitty
-description: Render Mermaid flowcharts and sequence diagrams as plain ASCII art inline in Claude Code responses. Invoke whenever the answer would include a Mermaid diagram. Pipe source via STDIN. The script writes ASCII to a temp file and prints only the path on stdout — read the file with the Read tool and embed its contents in the assistant message body. Do NOT print the original mermaid source block in the reply. If rendering fails (unsupported type, render failure), state the reason in one line and skip the diagram. User explicitly does not want image/overlay/PNG rendering or the raw mermaid source.
+description: Render Mermaid flowcharts and sequence diagrams as plain ASCII art inline in Claude Code responses. Invoke whenever the answer would include a Mermaid diagram or when the user asks for mermaid / mermiad examples, flowcharts, sequence diagrams, architecture diagrams, or says things like “来个 mermaid 例子”, “画个流程图”, “给个时序图”, “最好有图”. Pipe source via STDIN. The script writes ASCII to a temp file and prints only the path on stdout — read the file and embed its contents in the assistant message body. Do NOT print the original mermaid source block in the reply. If rendering fails (unsupported type, render failure), state the reason in one line and skip the diagram. User explicitly does not want image/overlay/PNG rendering or the raw mermaid source.
 ---
 
 # Mermaid ASCII Renderer
