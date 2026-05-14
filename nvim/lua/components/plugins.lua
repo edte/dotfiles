@@ -1281,7 +1281,7 @@ M.list = {
 
 				interactions = {
 					chat = {
-						adapter = 'codebuddy',
+						adapter = 'codex',
 						roles = {
 							llm = function(adapter)
 								return '  Assistant'
@@ -1308,7 +1308,7 @@ M.list = {
 							symbols = { opts = { provider = 'snacks' } },
 						},
 					},
-					inline = { adapter = 'codebuddy' },
+					inline = { adapter = 'codex' },
 
 					background = {
 						chat = {
@@ -1387,21 +1387,21 @@ M.list = {
 										return helpers.form_messages(self, messages, capabilities)
 									end,
 									on_exit = function(self, code)
-									-- 防 fd 泄漏：ACP 子进程退出时主动回收 job / pipe
-									-- 否则长寿命 nvim 会累积大量 unix socket，最终 libuv kqueue EMFILE
-									if self.job then
-										pcall(vim.fn.jobstop, self.job)
-										self.job = nil
-									end
-									if self.handle and type(self.handle.is_closing) == 'function' then
-										pcall(function()
-											if not self.handle:is_closing() then
-												self.handle:close()
-											end
-										end)
-										self.handle = nil
-									end
-								end,
+										-- 防 fd 泄漏：ACP 子进程退出时主动回收 job / pipe
+										-- 否则长寿命 nvim 会累积大量 unix socket，最终 libuv kqueue EMFILE
+										if self.job then
+											pcall(vim.fn.jobstop, self.job)
+											self.job = nil
+										end
+										if self.handle and type(self.handle.is_closing) == 'function' then
+											pcall(function()
+												if not self.handle:is_closing() then
+													self.handle:close()
+												end
+											end)
+											self.handle = nil
+										end
+									end,
 								},
 								-- 修复 Inline 策略崩溃的问题：添加缺失的方法
 								map_schema_to_params = function(self)
