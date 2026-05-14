@@ -1,4 +1,4 @@
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 [projects."/Users/edte/go/src/push/push-manage-console"]
 trust_level = "trusted"
@@ -84,6 +84,12 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/ratelimit/push-ratelimit-service"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/device/push-device"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/wns_project/jce/push"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -92,24 +98,21 @@ enabled = false
 path = "/Users/edte/.codex/skills/.system/skill-installer/SKILL.md"
 enabled = false
 
-[mcp_servers.sequential-thinking]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+# [mcp_servers.sequential-thinking]
+# command = "npx"
+# args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 
-[mcp_servers.neovim]
-command = "npx"
-args = ["-y", "mcp-neovim-server"]
-
-[mcp_servers.neovim.env]
-NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim"
-ALLOW_SHELL_COMMANDS = "true"
+# [mcp_servers.neovim]
+# command = "npx"
+# args = ["-y", "mcp-neovim-server"]
+#
+# [mcp_servers.neovim.env]
+# NVIM_MCP_LISTEN_ADDRESS = "/tmp/nvim"
+# ALLOW_SHELL_COMMANDS = "true"
 
 [notice]
 hide_rate_limit_model_nudge = true
 
-[notice.model_migrations]
-"gpt-5.3-codex" = "gpt-5.4"
-"gpt-5.2-codex" = "gpt-5.3-codex"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
