@@ -90,6 +90,15 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/wns_project/jce/push"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/push-gateway"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/logic/push-logic"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/offline/push-apns"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
