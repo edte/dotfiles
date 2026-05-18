@@ -1,5 +1,5 @@
 model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "medium"
 [projects."/Users/edte/go/src/push/push-manage-console"]
 trust_level = "trusted"
 
@@ -97,6 +97,18 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/edte/go/src/push/offline/push-apns"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-dynamic-island-dispatch"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-dynamic-island-gateway"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-island-device"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/tpush/tpush-server"]
 trust_level = "trusted"
 
 [[skills.config]]
