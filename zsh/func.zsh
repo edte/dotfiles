@@ -63,10 +63,6 @@ function update() {
     cd $tmp
 }
 
-function tpushbuild() {
-    epc build -b -r https://git.woa.com/tme/push/tpush/server --path "$1"
-}
-
 # http proxy
 function unset_httpproxy() {
     unset https_proxy
