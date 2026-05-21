@@ -63,6 +63,51 @@ if not vim.g.kulala_loaded then
 	local winbar_mod = require('kulala.ui.winbar')
 	winbar_mod.toggle_winbar_tab = function() end
 
+	-- Kulala 新版把 body 视图统一包成 markdown；这里恢复旧行为，方便 tsv/csv/json 响应按真实 filetype 打开。
+	local ui = require('kulala.ui')
+	if ui._plain_body_view_patch_version ~= 2 then
+		ui._plain_body_view_original_show_body = ui._plain_body_view_original_show_body or ui.show_body
+		local original_show_body = ui._plain_body_view_original_show_body
+		local int_processing = require('kulala.internal_processing')
+		local formatter = require('kulala.formatter')
+		local config = require('kulala.config')
+
+		ui._plain_body_view_patch_version = 2
+		ui.show_body = function(...)
+			original_show_body(...)
+
+			local response = ui.get_current_response()
+			local buf = ui.get_kulala_buffer()
+			if not response or not buf or not vim.api.nvim_buf_is_valid(buf) then
+				return
+			end
+
+			local contenttype = int_processing.get_config_contenttype(response.headers)
+			local body = response.body or ''
+			local json_contenttype = config.get().contenttypes['application/json']
+			if type(json_contenttype) == 'string' then
+				json_contenttype = config.get().contenttypes[json_contenttype]
+			end
+			local ok_json, decoded_json = pcall(vim.json.decode, body, { luanil = { object = true, array = true } })
+			if json_contenttype and (response._kulala_body_type == 'json' or (ok_json and decoded_json ~= nil)) then
+				contenttype = json_contenttype
+			end
+
+			local ft = contenttype.ft or 'text'
+
+			if contenttype.formatter then
+				body = formatter.format(ft, contenttype.formatter, body, { verbose = false })
+			end
+
+			vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(body, '\n'))
+			vim.bo[buf].filetype = ft .. '.kulala_ui'
+
+			if response.filter then
+				ui.toggle_filter()
+			end
+		end
+	end
+
 	-- 关掉 rainbow_csv 的 :Select / :Update 命令行列名提示条
 	-- （输入 Select 后底部弹的 NR a1 a2 ... 提示）
 	-- 注意：这个函数既有改 statusline 的副作用，又负责返回命令名给 cnoreabbrev 展开，
