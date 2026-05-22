@@ -15,7 +15,51 @@ end, {
 
 -- URL hover LSP 已关闭。
 
--- workaround for gopls not supporting semanticTokensProvider
+local gopls_semantic_tokens_provider = {
+    full = true,
+    legend = {
+        tokenTypes = {
+            'namespace',
+            'type',
+            'typeParameter',
+            'parameter',
+            'property',
+            'variable',
+            'function',
+            'method',
+            'macro',
+            'keyword',
+            'comment',
+            'string',
+            'number',
+            'operator',
+            'label',
+        },
+        tokenModifiers = {
+            'definition',
+            'readonly',
+            'defaultLibrary',
+            'static',
+            'array',
+            'bool',
+            'chan',
+            'format',
+            'interface',
+            'map',
+            'number',
+            'pointer',
+            'signature',
+            'slice',
+            'string',
+            'struct',
+            'shadowing',
+        },
+    },
+    range = true,
+}
+
+-- gopls can respond to semantic token requests without advertising a provider.
+-- This legend must match gopls' own encoding, not Neovim's client capabilities.
 -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
 vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     group = vim.api.nvim_create_augroup('go_semanticTokens', { clear = true }),
@@ -23,15 +67,17 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
     pattern = { '*.go' },
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client == nil then
+            return
+        end
 
         if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
-            local semantic = client.config.capabilities.textDocument.semanticTokens
-            client.server_capabilities.semanticTokensProvider = {
-                full = true,
-                legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-                range = true,
-            }
-            client.capabilities.textDocument.onTypeFormatting = { dynamicRegistration = false }
+            client.server_capabilities.semanticTokensProvider = gopls_semantic_tokens_provider
+
+            local text_document = vim.tbl_get(client, 'capabilities', 'textDocument')
+            if text_document ~= nil then
+                text_document.onTypeFormatting = { dynamicRegistration = false }
+            end
         end
     end,
 })

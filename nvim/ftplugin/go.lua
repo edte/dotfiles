@@ -41,6 +41,9 @@ local function setup_go_once()
 			vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 		end,
 		single_file_support = false,
+		init_options = {
+			semanticTokens = true,
+		},
 		settings = {
 			gopls = {
 				analyses = {
