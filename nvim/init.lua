@@ -1,5 +1,5 @@
 -- 核心模块加载
-local modules = { 'alias', 'lazys' }
+local modules = { 'alias', 'lazys', 'ui.pack_interface' }
 for _, module in ipairs(modules) do
 	require(module)
 end
