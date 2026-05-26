@@ -4,25 +4,89 @@ local M = {}
 
 local ns = api.nvim_create_namespace('pack_float_ui')
 local max_commits = 12
+local has_ffi, ffi = pcall(require, 'ffi')
+
+local startup = {
+	start = _G.PACK_FLOAT_STARTUP_START or vim.uv.hrtime(),
+	startuptime = nil,
+	real_cputime = false,
+}
 
 local state = {
 	bufnr = nil,
 	winid = nil,
 	autocmd = nil,
-	check_timer = nil,
-	check_dot_count = 0,
 	checking = false,
 	check_id = 0,
 	status = '',
 	plugins = {},
 	pending = {},
-	clean = {},
 	not_loaded = {},
 	commits = {},
 	expanded = {},
 	line_to_name = {},
 	name_to_line = {},
 }
+
+local function ensure_ffi_types()
+	if not has_ffi or not jit then
+		return false
+	end
+
+	if pcall(ffi.typeof, 'nanotime[1]') then
+		return true
+	end
+
+	local ok = pcall(
+		ffi.cdef,
+		[[
+		typedef int clockid_t;
+		typedef struct timespec {
+			int64_t tv_sec;
+			long tv_nsec;
+		} nanotime;
+		int clock_gettime(clockid_t clk_id, struct timespec *tp);
+	]]
+	)
+
+	return ok
+end
+
+local function fallback_startuptime()
+	return (vim.uv.hrtime() - startup.start) / 1e6
+end
+
+local function cputime()
+	if ensure_ffi_types() then
+		local ok, ret = pcall(function()
+			local timespec = ffi.new('nanotime[1]')
+			local clock_process_cputime_id = jit.os == 'OSX' and 12 or 2
+
+			if ffi.C.clock_gettime(clock_process_cputime_id, timespec) ~= 0 then
+				error('clock_gettime failed')
+			end
+
+			return tonumber(timespec[0].tv_sec) * 1e3 + tonumber(timespec[0].tv_nsec) / 1e6
+		end)
+
+		if ok then
+			startup.real_cputime = true
+			return ret
+		end
+	end
+
+	startup.real_cputime = false
+	return fallback_startuptime()
+end
+
+local function startup_label()
+	if not startup.startuptime then
+		return nil
+	end
+
+	local source = startup.real_cputime and 'cpu' or 'time'
+	return ('%.2fms %s'):format(startup.startuptime, source)
+end
 
 local function setup_highlights()
 	local links = {
@@ -35,6 +99,7 @@ local function setup_highlights()
 		PackFloatHash = 'Number',
 		PackFloatKey = 'Function',
 		PackFloatError = 'DiagnosticError',
+		PackFloatLabel = 'Identifier',
 	}
 
 	for group, link in pairs(links) do
@@ -86,7 +151,6 @@ end
 local function set_plugins(plugins)
 	state.plugins = plugins
 	state.pending = {}
-	state.clean = {}
 	state.not_loaded = {}
 
 	for _, plugin in ipairs(state.plugins) do
@@ -96,14 +160,11 @@ local function set_plugins(plugins)
 
 		if not plugin.active then
 			state.not_loaded[#state.not_loaded + 1] = plugin
-		elseif not is_pending(plugin) then
-			state.clean[#state.clean + 1] = plugin
 		end
 	end
 
 	sort_by_name(state.plugins)
 	sort_by_name(state.pending)
-	sort_by_name(state.clean)
 	sort_by_name(state.not_loaded)
 end
 
@@ -125,7 +186,6 @@ end
 local function reset_data()
 	state.plugins = {}
 	state.pending = {}
-	state.clean = {}
 	state.not_loaded = {}
 	state.commits = {}
 	state.expanded = {}
@@ -146,37 +206,22 @@ end
 
 local render
 
-local function checking_label()
-	local dots = string.rep('.', math.max(1, state.check_dot_count))
-	return '  checking' .. dots
-end
-
-local function stop_check_animation()
-	if state.check_timer then
-		state.check_timer:stop()
-		state.check_timer:close()
-		state.check_timer = nil
+local function track_startup()
+	if startup.startuptime then
+		return
 	end
 
-	state.check_dot_count = 0
+	startup.startuptime = cputime()
+
+	if valid_buffer() then
+		render()
+	end
 end
 
-local function start_check_animation()
-	stop_check_animation()
-	state.check_dot_count = 1
-	state.check_timer = vim.uv.new_timer()
-
-	state.check_timer:start(350, 350, function()
-		vim.schedule(function()
-			if not state.checking or not valid_buffer() then
-				return
-			end
-
-			state.check_dot_count = state.check_dot_count % 3 + 1
-			render()
-		end)
-	end)
-end
+api.nvim_create_autocmd('UIEnter', {
+	once = true,
+	callback = track_startup,
+})
 
 local function set_lines(lines, hls)
 	if not valid_buffer() then
@@ -224,18 +269,46 @@ local function build_content()
 		name_to_line[name] = name_to_line[name] or row + 1
 	end
 
-	local header = (' vim.pack  %d plugins  %d updates'):format(#state.plugins, #state.pending)
+	local loaded_count = vim
+		.iter(state.plugins)
+		:filter(function(plugin)
+			return plugin.active
+		end)
+		:fold(0, function(count)
+			return count + 1
+		end)
+	local status = state.status ~= '' and state.status or 'ready'
+	local startup_text = startup_label() or 'pending'
 
 	if state.checking then
-		header = header .. '  checking...'
-	elseif state.status ~= '' then
-		header = header .. '  ' .. state.status
+		status = state.status ~= '' and state.status or 'checking remote updates'
 	end
 
-	add(header, 'PackFloatTitle')
+	local summary_left = (' Status   %-18s Plugins  %d total / %d loaded / %d not loaded'):format(
+		status,
+		#state.plugins,
+		loaded_count,
+		#state.plugins - loaded_count
+	)
+	local summary_right = (' Updates  %-18s Startup  %s'):format(('%d pending'):format(#state.pending), startup_text)
 
-	local help = ' [r] refresh  [u] update plugin  [U] update all  [Enter] details  [q] close'
-	local help_row = add(help)
+	local function add_summary(text, labels)
+		local row = add(text, 'PackFloatMuted')
+
+		for _, label in ipairs(labels) do
+			local start_col = text:find(label, 1, true)
+
+			if start_col then
+				add_hl(row, start_col - 1, start_col - 1 + #label, 'PackFloatLabel')
+			end
+		end
+	end
+
+	add_summary(summary_left, { 'Status', 'Plugins' })
+	add_summary(summary_right, { 'Updates', 'Startup' })
+
+	local help = ' Keys     [r] refresh   [u] update   [U] update all   [Enter] details   [q] close'
+	local help_row = add(help, 'PackFloatMuted')
 
 	for start_pos, end_pos in help:gmatch('()%b[]()') do
 		add_hl(help_row, start_pos - 1, end_pos - 1, 'PackFloatKey')
@@ -248,24 +321,38 @@ local function build_content()
 		max_name = math.max(max_name, #plugin.spec.name)
 	end
 
-	local function add_plugin(plugin, pending)
+	local function add_revision_hl(row, line, rev)
+		local rev_text = short_rev(rev)
+		local hash_start = line:find(rev_text, 1, true)
+
+		if hash_start then
+			add_hl(row, hash_start - 1, hash_start - 1 + #rev_text, 'PackFloatHash')
+		end
+	end
+
+	local function add_plugin(plugin, mode)
 		local name = plugin.spec.name
 		local commits = state.commits[name]
 		local commit_count = commits and #commits or 0
-		local status = pending and (' +' .. commit_count) or ' ok'
-		local revs = pending and (' ' .. short_rev(plugin.rev) .. ' -> ' .. short_rev(plugin.rev_to))
-			or (' ' .. short_rev(plugin.rev))
-		local active = plugin.active and 'loaded' or 'inactive'
 		local pad = string.rep(' ', math.max(0, max_name - #name))
-		local line = ('  %s%s  %-8s %s%s'):format(name, pad, active, status, revs)
+		local line
+
+		if mode == 'pending' then
+			line = ('  %s%s  +%-3d  %s -> %s'):format(name, pad, commit_count, short_rev(plugin.rev), short_rev(plugin.rev_to))
+		else
+			line = ('  %s%s  %s'):format(name, pad, short_rev(plugin.rev))
+		end
+
 		local row = add(line)
 
 		mark_plugin(row, name)
-		add_hl(row, 2, 2 + #name, pending and 'PackFloatPending' or 'PackFloatClean')
+		add_hl(row, 2, 2 + #name, mode == 'pending' and 'PackFloatPending' or 'PackFloatClean')
 
-		local hash_start = line:find(short_rev(plugin.rev), 1, true)
-		if hash_start then
-			add_hl(row, hash_start - 1, #line, 'PackFloatHash')
+		if mode == 'pending' then
+			add_revision_hl(row, line, plugin.rev)
+			add_revision_hl(row, line, plugin.rev_to)
+		else
+			add_revision_hl(row, line, plugin.rev)
 		end
 
 		if not state.expanded[name] then
@@ -277,7 +364,7 @@ local function build_content()
 		add(('    src:  %s'):format(plugin.spec.src), 'PackFloatMuted')
 		mark_plugin(#lines - 1, name)
 
-		if not pending then
+		if mode ~= 'pending' then
 			return
 		end
 
@@ -312,28 +399,21 @@ local function build_content()
 		end
 	end
 
-	local loaded_pending = vim
-		.iter(state.pending)
+	local loaded = vim
+		.iter(state.plugins)
 		:filter(function(plugin)
 			return plugin.active
 		end)
 		:totable()
 
-	add((' Updates (%d)'):format(#loaded_pending), 'PackFloatSection')
+	add((' Loaded (%d)'):format(#loaded), 'PackFloatSection')
 
-	if #loaded_pending == 0 then
-		add(state.checking and checking_label() or '  no pending updates', 'PackFloatMuted')
+	if #loaded == 0 then
+		add('  no loaded plugins', 'PackFloatMuted')
 	else
-		for _, plugin in ipairs(loaded_pending) do
-			add_plugin(plugin, true)
+		for _, plugin in ipairs(loaded) do
+			add_plugin(plugin, is_pending(plugin) and 'pending' or 'clean')
 		end
-	end
-
-	add('')
-	add((' Up to date (%d)'):format(#state.clean), 'PackFloatSection')
-
-	for _, plugin in ipairs(state.clean) do
-		add_plugin(plugin, false)
 	end
 
 	add('')
@@ -343,7 +423,7 @@ local function build_content()
 		add('  no inactive plugins', 'PackFloatMuted')
 	else
 		for _, plugin in ipairs(state.not_loaded) do
-			add_plugin(plugin, is_pending(plugin))
+			add_plugin(plugin, is_pending(plugin) and 'pending' or 'inactive')
 		end
 	end
 
@@ -391,7 +471,6 @@ local function finish_refresh(check_id, failures)
 		return
 	end
 
-	stop_check_animation()
 	state.checking = false
 	state.status = failures > 0 and ('ready, %d fetch failed'):format(failures) or 'ready'
 	render()
@@ -433,7 +512,6 @@ local function refresh_fetch_async()
 	local failures = 0
 
 	state.commits = {}
-	start_check_animation()
 	render()
 
 	if total == 0 then
@@ -510,7 +588,6 @@ local function close()
 	state.bufnr = nil
 	state.check_id = state.check_id + 1
 	state.checking = false
-	stop_check_animation()
 end
 
 local function update_plugins(names)
@@ -688,7 +765,6 @@ function M.open(opts)
 				state.bufnr = nil
 				state.check_id = state.check_id + 1
 				state.checking = false
-				stop_check_animation()
 			end
 		end,
 	})

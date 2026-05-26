@@ -1,4 +1,6 @@
 -- 核心模块加载
+_G.PACK_FLOAT_STARTUP_START = _G.PACK_FLOAT_STARTUP_START or vim.uv.hrtime()
+
 local modules = { 'alias', 'lazys', 'ui.pack_interface' }
 for _, module in ipairs(modules) do
 	require(module)
