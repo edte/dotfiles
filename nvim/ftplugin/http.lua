@@ -58,6 +58,10 @@ if not vim.g.kulala_loaded then
 		},
 	})
 
+	-- setup runs during the first FileType event, after Kulala's own FileType
+	-- autocmd could observe that buffer. Attach its LSP for the initial file.
+	require('kulala.cmd.lsp').start(vim.api.nvim_get_current_buf(), 'http')
+
 	-- kulala 在响应 buffer 顶部加 "? - help" 虚拟文本（即便 winbar=false 也加）
 	-- 把 toggle_winbar_tab 替换成空实现彻底关掉
 	local winbar_mod = require('kulala.ui.winbar')

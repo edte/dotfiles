@@ -56,12 +56,6 @@ M.list = {
 		lazy = true,
 		opts = {
 			formatters = {
-				kulala = {
-					command = 'kulala-fmt',
-					args = { '$FILENAME' },
-					stdin = false,
-				},
-
 				['markdown-toc'] = {
 					condition = function(_, ctx)
 						for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
@@ -95,7 +89,7 @@ M.list = {
 				zsh = { 'shfmt', lsp_format = 'never' },
 				bash = { 'shfmt', lsp_format = 'never' },
 				toml = { 'taplo', lsp_format = 'never' },
-				http = { 'kulala' },
+				http = { lsp_format = 'fallback' },
 				rust = { 'rustfmt' },
 				python = { 'ruff_format' },
 				['markdown'] = { 'prettier' },
