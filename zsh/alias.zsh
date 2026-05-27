@@ -73,13 +73,17 @@ alias gb="git branch"
 alias gcm="git commit -m"
 gd() {
     local cdup prefix
+    local ignored_pathspecs=(
+        ':(top,exclude,glob)**/go.mod'
+        ':(top,exclude,glob)**/go.sum'
+    )
     cdup=$(git rev-parse --show-cdup 2>/dev/null)
     prefix=$(git rev-parse --show-prefix 2>/dev/null)
     if [[ -z "$prefix" ]]; then
-        git diff "$@"
+        git diff "$@" "${ignored_pathspecs[@]}"
     else
         git -c core.pager="sed 's|${cdup}${prefix}||g' | delta" diff \
-            --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@"
+            --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@" "${ignored_pathspecs[@]}"
     fi
 }
 alias gpl="git pull"
