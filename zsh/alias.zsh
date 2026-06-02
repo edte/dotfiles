@@ -76,6 +76,7 @@ gd() {
     local ignored_pathspecs=(
         ':(top,exclude,glob)**/go.mod'
         ':(top,exclude,glob)**/go.sum'
+        ':(top,exclude,glob)**/*_test.go'
     )
     cdup=$(git rev-parse --show-cdup 2>/dev/null)
     prefix=$(git rev-parse --show-prefix 2>/dev/null)
