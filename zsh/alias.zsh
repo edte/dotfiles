@@ -72,7 +72,7 @@ gco() {
 alias gb="git branch"
 alias gcm="git commit -m"
 gd() {
-    local cdup prefix arg file show_untracked after_pathspecs i pager_width
+    local cdup prefix arg file show_untracked after_pathspecs i pager_width diff_file render_status
     local ignored_pathspecs=(
         ':(top,exclude,glob)**/go.mod'
         ':(top,exclude,glob)**/go.sum'
@@ -117,6 +117,8 @@ gd() {
     if (( ${pager_width:-0} <= 0 )); then
         pager_width=80
     fi
+
+    diff_file=$(mktemp "${TMPDIR:-/tmp}/gd.XXXXXX") || return
     {
         if [[ -z "$prefix" ]]; then
             git --no-pager diff "$@" "${ignored_pathspecs[@]}"
@@ -129,11 +131,18 @@ gd() {
                     git --no-pager diff --no-index "${untracked_diff_args[@]}" -- /dev/null "$file" 2>/dev/null || true
                 done
         fi
-    } | {
+    } > "$diff_file"
+
+    if [[ ! -s "$diff_file" ]]; then
+        command rm -f "$diff_file"
+        return
+    fi
+
+    {
         if [[ -z "$prefix" ]]; then
-            cat
+            cat "$diff_file"
         else
-            sed "s|${cdup}${prefix}||g"
+            sed "s|${cdup}${prefix}||g" "$diff_file"
         fi
     } | {
         if [[ -t 1 ]]; then
@@ -142,6 +151,9 @@ gd() {
             delta --paging=never
         fi
     }
+    render_status=$?
+    command rm -f "$diff_file"
+    return "$render_status"
 }
 alias gpl="git pull"
 alias gps="git push"
