@@ -72,20 +72,76 @@ gco() {
 alias gb="git branch"
 alias gcm="git commit -m"
 gd() {
-    local cdup prefix
+    local cdup prefix arg file show_untracked after_pathspecs i pager_width
     local ignored_pathspecs=(
         ':(top,exclude,glob)**/go.mod'
         ':(top,exclude,glob)**/go.sum'
         ':(top,exclude,glob)**/*_test.go'
     )
+    local untracked_diff_args=()
+    local untracked_pathspecs=()
+
+    show_untracked=1
+    after_pathspecs=0
+    for (( i = 1; i <= $#argv; i++ )); do
+        arg="${argv[$i]}"
+        if (( after_pathspecs )); then
+            untracked_pathspecs+=("$arg")
+            continue
+        fi
+
+        case "$arg" in
+            --)
+                after_pathspecs=1
+                ;;
+            --cached|--staged)
+                show_untracked=0
+                ;;
+            --stat*|--name-only|--name-status|--numstat|--shortstat|--summary|--check|--compact-summary|--no-compact-summary|--color|--color=*|--no-color|-p|--patch|-s|--no-patch|-u|-U*|--unified*|--word-diff*|--color-words*)
+                untracked_diff_args+=("$arg")
+                ;;
+            *)
+                if [[ "$arg" != -* && -e "$arg" ]]; then
+                    untracked_pathspecs+=("$arg")
+                fi
+                ;;
+        esac
+    done
+
     cdup=$(git rev-parse --show-cdup 2>/dev/null)
     prefix=$(git rev-parse --show-prefix 2>/dev/null)
-    if [[ -z "$prefix" ]]; then
-        git diff "$@" "${ignored_pathspecs[@]}"
-    else
-        git -c core.pager="sed 's|${cdup}${prefix}||g' | delta" diff \
-            --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@" "${ignored_pathspecs[@]}"
+    pager_width=${COLUMNS:-0}
+    if (( pager_width <= 0 )); then
+        pager_width=$(tput cols 2>/dev/null)
     fi
+    if (( ${pager_width:-0} <= 0 )); then
+        pager_width=80
+    fi
+    {
+        if [[ -z "$prefix" ]]; then
+            git --no-pager diff "$@" "${ignored_pathspecs[@]}"
+        else
+            git --no-pager diff --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@" "${ignored_pathspecs[@]}"
+        fi
+        if (( show_untracked )); then
+            git ls-files -z --others --exclude-standard -- "${untracked_pathspecs[@]}" "${ignored_pathspecs[@]}" |
+                while IFS= read -r -d '' file; do
+                    git --no-pager diff --no-index "${untracked_diff_args[@]}" -- /dev/null "$file" 2>/dev/null || true
+                done
+        fi
+    } | {
+        if [[ -z "$prefix" ]]; then
+            cat
+        else
+            sed "s|${cdup}${prefix}||g"
+        fi
+    } | {
+        if [[ -t 1 ]]; then
+            delta --paging=never --width="$pager_width" | LESS= less -R
+        else
+            delta --paging=never
+        fi
+    }
 }
 alias gpl="git pull"
 alias gps="git push"
