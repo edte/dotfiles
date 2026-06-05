@@ -85,17 +85,17 @@ M.list = {
 	},
 
 	{
-		'esmuellert/codediff.nvim',
+		'edte/codediff.nvim',
 		dependencies = { 'MunifTanjim/nui.nvim' },
 		cmd = 'CodeDiff',
 		opts = {
 			highlights = {
-				line_delete = "#460000",       -- 删除行背景 (70,0,0)
-				line_insert = "#002900",       -- 新增行背景 (0,41,0)
-				line_delete_emph = "#460000",  -- 纯删除行背景（跟 line_delete 一样）
-				line_insert_emph = "#002900",  -- 纯新增行背景（跟 line_insert 一样）
-				char_delete = "#9e0001",       -- 字符级删除高亮 (158,0,1)
-				char_insert = "#006200",       -- 字符级新增高亮 (0,98,0)
+				line_delete = '#460000', -- 删除行背景 (70,0,0)
+				line_insert = '#002900', -- 新增行背景 (0,41,0)
+				line_delete_emph = '#460000', -- 纯删除行背景（跟 line_delete 一样）
+				line_insert_emph = '#002900', -- 纯新增行背景（跟 line_insert 一样）
+				char_delete = '#9e0001', -- 字符级删除高亮 (158,0,1)
+				char_insert = '#006200', -- 字符级新增高亮 (0,98,0)
 			},
 			explorer = {
 				focus_on_select = true, -- 按 l 选文件后自动跳到 diff buffer
