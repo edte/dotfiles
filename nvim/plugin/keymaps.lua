@@ -15,6 +15,8 @@ nmap('<C-d>', '<C-d>zz')
 nmap('n', 'nzzzv')
 nmap('N', 'Nzzzv')
 
+nmap('<space>w', '<cmd>w<cr>')
+
 -- 保存文件
 nmap('<C-s>', '<cmd>w<cr>')
 
