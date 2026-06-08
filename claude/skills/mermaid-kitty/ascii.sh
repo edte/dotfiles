@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render a Mermaid diagram as ASCII art to stdout (inline-friendly).
+# Render a Mermaid diagram as terminal text to a temp file.
 # Only `graph`/`flowchart` and `sequenceDiagram` are supported by mermaid-ascii.
 #
 # Usage:
@@ -11,7 +11,7 @@ set -euo pipefail
 BIN="$(command -v mermaid-ascii || true)"
 [[ -z "$BIN" && -x "$HOME/go/bin/mermaid-ascii" ]] && BIN="$HOME/go/bin/mermaid-ascii"
 [[ -n "$BIN" ]] || {
-  echo "ascii.sh: mermaid-ascii missing. install: GOPROXY=https://proxy.golang.org,direct go install github.com/AlexanderGrooff/mermaid-ascii@latest" >&2
+  echo "ascii.sh: mermaid-ascii missing. install patched fork: gh repo clone edte/mermaid-ascii /tmp/mermaid-ascii-edte && cd /tmp/mermaid-ascii-edte && go install ." >&2
   exit 3
 }
 
@@ -33,5 +33,13 @@ case "$first_kw" in
 esac
 
 OUTPUT="$(mktemp -t mermaid-ascii-out).txt"
-"$BIN" --file "$INPUT" > "$OUTPUT" 2>/dev/null || { echo "ascii.sh: mermaid-ascii failed (likely unsupported syntax)" >&2; rm -f "$OUTPUT"; exit 5; }
+ERR="$(mktemp -t mermaid-ascii-err).txt"
+if ! "$BIN" --file "$INPUT" > "$OUTPUT" 2>"$ERR"; then
+  reason="$(sed -n '1,3p' "$ERR" | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
+  [[ -n "$reason" ]] || reason="likely unsupported syntax"
+  echo "ascii.sh: mermaid-ascii failed: $reason" >&2
+  rm -f "$OUTPUT" "$ERR"
+  exit 5
+fi
+rm -f "$ERR"
 echo "$OUTPUT"
