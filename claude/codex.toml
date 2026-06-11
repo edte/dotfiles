@@ -185,8 +185,8 @@ source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-06-08T07:17:53Z"
-last_revision = "1b46aa6d4a11b7f781a0aa8a0ba976d9cbf7eb74"
+last_updated = "2026-06-10T06:51:13Z"
+last_revision = "de573bd84695c6657b28f05ffe32c37bb54d1f55"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
