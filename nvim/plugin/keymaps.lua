@@ -241,39 +241,9 @@ wk.add({
 
 -- normal
 wk.add({
-	{
-		'<space>C',
-		function()
-			-- 不删的 buftype 集合
-			local skip_buftype = {
-				terminal = true,
-				quickfix = true,
-				help = true,
-				nofile = true, -- 各种插件浮窗/面板（neo-tree、trouble 等）
-				prompt = true,
-			}
-			-- 不删的 filetype 集合（有些插件 buftype 是空的，只能靠 filetype 判断）
-			local skip_filetype = {
-				['neo-tree'] = true,
-				['NvimTree'] = true,
-				['toggleterm'] = true,
-				qf = true,
-				codecompanion = true,
-			}
 
-			local cur = vim.api.nvim_get_current_buf()
-			for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-				if buf ~= cur and vim.api.nvim_buf_is_loaded(buf) then
-					local bt = vim.bo[buf].buftype
-					local ft = vim.bo[buf].filetype
-					if not skip_buftype[bt] and not skip_filetype[ft] then
-						pcall(vim.api.nvim_buf_delete, buf, {})
-					end
-				end
-			end
-		end,
-		desc = 'Close Other Buffer',
-	},
+	{ '<space>C', '<cmd>%bd|e#|bd#<CR>', desc = 'Close Other Buffer' },
+
 	{ '<space>c', '<cmd>bd<CR>', desc = 'close Buffer' },
 	{
 		'<space>f',
