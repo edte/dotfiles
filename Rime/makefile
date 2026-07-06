@@ -5,11 +5,12 @@ RIME_DICT_MANAGER := /Library/Input Methods/Squirrel.app/Contents/MacOS/rime_dic
 
 .PHONY: all bootstrap userdb restore-userdb
 
+bootstrap: all restore-userdb
+
 all:
 	mkdir -p $(RIME_HOME)
 	stow . -t $(RIME_HOME)
 
-bootstrap: all restore-userdb
 
 userdb:
 	"$(SQUIRREL)" --sync
