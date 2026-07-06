@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.edte.rime-userdb-backup</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/make</string>
+    <string>-C</string>
+    <string>/Users/edte/dotfiles/Rime</string>
+    <string>userdb</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/edte/dotfiles/Rime</string>
+
+  <key>StartInterval</key>
+  <integer>1800</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/edte/Library/Logs/rime-userdb-backup.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/edte/Library/Logs/rime-userdb-backup.err.log</string>
+</dict>
+</plist>
