@@ -1,0 +1,3 @@
+# Rime generated build artifacts live in ~/Library/Rime/build.
+^build($|/)
+
