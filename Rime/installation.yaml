@@ -1,8 +1,7 @@
 distribution_code_name: Squirrel
 distribution_name: "鼠鬚管"
 distribution_version: 1.1.2
-install_time: "Mon Jul 28 17:04:44 2025"
-installation_id: mac
+install_time: "Fri Jul  3 11:57:03 2026"
+installation_id: "current"
 rime_version: 1.16.0
-sync_dir: "/Users/edte/dotfiles/rime/syncs"
-update_time: "Wed Jan 14 14:25:41 2026"
+sync_dir: "/Users/edte/dotfiles/Rime/sync"

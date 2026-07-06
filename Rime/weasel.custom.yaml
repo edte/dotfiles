@@ -20,13 +20,13 @@ patch:
     powershell.exe:
       ascii_mode: true
     explorer.exe:
-      ascii_mode: true 
+      ascii_mode: true
     code.exe:
-      ascii_mode: true 
+      ascii_mode: true
     gvim.exe:
-      ascii_mode: true 
+      ascii_mode: true
     cmd.exe:
-      ascii_mode: true 
+      ascii_mode: true
 
   # 皮肤主题
   preset_color_schemes:
