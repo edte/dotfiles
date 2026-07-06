@@ -12,6 +12,7 @@ dist/
 *.zip
 
 build/
+tmp/**
 *.userdb/
 sync/**
 !sync/
