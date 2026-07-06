@@ -388,6 +388,7 @@ speller:
   delimiter: " '"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
   algebra:
     - erase/^xx$/
+    - erase/^[b-df-hj-np-tv-z]$/  # 双拼不需要单字母辅音音节，避免 n -> 𠮾 这类生僻字参与造句。
     - derive/^([jqxy])u$/$1v/
     - derive/^([aoe])([ioun])$/$1$1$2/
     - xform/^([aoe])(ng)?$/$1$1$2/
