@@ -204,13 +204,13 @@ source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-07-07T02:27:14Z"
-last_revision = "6d5f79446b996d64c87f1bedf0e13eb4dda542d2"
+last_updated = "2026-07-09T03:05:16Z"
+last_revision = "8d9e142e4ec5665f6561efef0ec10b3955e747dd"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-06T12:22:56Z"
+last_updated = "2026-07-09T02:23:09Z"
 source_type = "local"
 source = "/Users/edte/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
