@@ -3,3 +3,4 @@
 source $HOME/dotfiles/zsh/init.zsh
 
 eval "$(atuin init zsh)"
+alias timeout=gtimeout

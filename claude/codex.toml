@@ -1,5 +1,5 @@
 model = "gpt-5.6-sol"
-model_reasoning_effort = "ultra"
+model_reasoning_effort = "medium"
 notify = ["/Users/edte/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 service_tier = "default"
 
@@ -188,7 +188,7 @@ status_line_use_colors = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-"gpt-5.6-sol" = 2
+"gpt-5.6-sol" = 4
 
 [hooks.state]
 
@@ -199,13 +199,13 @@ trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a5
 trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1b7a5a7c"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-10T07:16:12Z"
+last_updated = "2026-07-13T06:13:13Z"
 source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-07-10T01:57:02Z"
-last_revision = "a5c7fb5d86a4cd34c4f47819658654c3d8f08dda"
+last_updated = "2026-07-13T06:56:28Z"
+last_revision = "108f8f429d6e334578bf51d14776b6753a386214"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
