@@ -36,3 +36,5 @@ patch:
     ascii_mode: true
   app_options/com.cmuxterm.app:
     ascii_mode: true
+  app_options/com.apple.loginwindow:
+    ascii_mode: true

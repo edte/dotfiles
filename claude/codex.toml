@@ -199,7 +199,7 @@ trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a5
 trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1b7a5a7c"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-13T06:13:13Z"
+last_updated = "2026-07-13T08:10:36Z"
 source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
