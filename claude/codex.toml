@@ -1,6 +1,9 @@
 model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
-notify = ["/Users/edte/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+notify = [
+  "/Users/edte/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+  "turn-ended",
+]
 service_tier = "default"
 
 [projects."/Users/edte/go/src/push/push-manage-console"]
@@ -159,6 +162,21 @@ trust_level = "trusted"
 [projects."/Users/edte/Library/Rime"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/push-offline-scheduler"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-offline-router"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/cmd"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-prefetch-service"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/task/push-task-scheduler"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -199,18 +217,18 @@ trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a5
 trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1b7a5a7c"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-13T08:10:36Z"
+last_updated = "2026-07-21T08:14:07Z"
 source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-07-13T06:56:28Z"
-last_revision = "108f8f429d6e334578bf51d14776b6753a386214"
+last_updated = "2026-07-21T03:26:55Z"
+last_revision = "9ddfad2e999789e0220cacaf359b64dd873e7d72"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-10T07:22:49Z"
+last_updated = "2026-07-16T08:22:57Z"
 source_type = "local"
 source = "/Users/edte/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
