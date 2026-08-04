@@ -56,4 +56,5 @@
 [mergetool "codediff"]
 	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
 [user]
-	email = zzzzip6@gmail.com
+	email = orzorzzhang@tencent.com
+	name = orzorzzhang

@@ -57,6 +57,7 @@ export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 export ESCDELAY=0
+export EDITOR=nvim
 
 # export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 

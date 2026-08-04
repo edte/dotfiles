@@ -1,0 +1,56 @@
+# tuicr dark theme with delta-inspired diff contrast.
+# delta uses #002800/#3f0001 for changed rows and #006000/#901011
+# for changed words.
+
+panel_bg = "#000000"
+bg_highlight = "#464646"
+fg_primary = "#ffffff"
+fg_secondary = "#d2d2d2"
+fg_dim = "#444444"
+syntax_theme = "Monokai Extended"
+
+diff_add = "#50dc78"
+diff_add_bg = "#002800"
+diff_del = "#f05a5a"
+diff_del_bg = "#3f0001"
+diff_context = "#ffffff"
+diff_hunk_header = "#0087d7"
+expanded_context_fg = "#8c8c8c"
+
+syntax_add_bg = "#002800"
+syntax_del_bg = "#3f0001"
+diff_add_emph_bg = "#006000"
+diff_del_emph_bg = "#901011"
+
+file_added = "#50dc78"
+file_modified = "#ffd25a"
+file_deleted = "#f05a5a"
+file_renamed = "#ff8cdc"
+
+reviewed = "#50dc78"
+pending = "#ffd25a"
+
+comment_note = "#5aaaff"
+comment_suggestion = "#5adcf0"
+comment_issue = "#f05a5a"
+comment_praise = "#50dc78"
+
+border_focused = "#0087d7"
+border_unfocused = "#6e6e6e"
+status_bar_bg = "#000000"
+cursor_color = "#ffd25a"
+cursor_line_bg = "#28282d"
+branch_name = "#5adcf0"
+help_indicator = "#6e6e6e"
+
+message_info_fg = "#000000"
+message_info_bg = "#00ffff"
+message_warning_fg = "#000000"
+message_warning_bg = "#ffd25a"
+message_error_fg = "#ffffff"
+message_error_bg = "#f05a5a"
+update_badge_fg = "#000000"
+update_badge_bg = "#ffd25a"
+
+mode_fg = "#000000"
+mode_bg = "#0087d7"

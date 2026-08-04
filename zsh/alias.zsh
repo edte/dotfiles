@@ -13,6 +13,7 @@ alias cle=clear
 alias clewa=clear
 alias clera=clear
 alias ear=clear
+alias pdw=pwd
 alias lear=clear
 alias l=lsd
 alias ls=lsd
@@ -71,90 +72,100 @@ gco() {
 
 alias gb="git branch"
 alias gcm="git commit -m"
-gd() {
-    local cdup prefix arg file show_untracked after_pathspecs i pager_width diff_file render_status
-    local ignored_pathspecs=(
-        ':(top,exclude,glob)**/go.mod'
-        ':(top,exclude,glob)**/go.sum'
-        ':(top,exclude,glob)**/*_test.go'
-    )
-    local untracked_diff_args=()
-    local untracked_pathspecs=()
 
-    show_untracked=1
-    after_pathspecs=0
-    for (( i = 1; i <= $#argv; i++ )); do
-        arg="${argv[$i]}"
-        if (( after_pathspecs )); then
-            untracked_pathspecs+=("$arg")
-            continue
-        fi
-
-        case "$arg" in
-            --)
-                after_pathspecs=1
-                ;;
-            --cached|--staged)
-                show_untracked=0
-                ;;
-            --stat*|--name-only|--name-status|--numstat|--shortstat|--summary|--check|--compact-summary|--no-compact-summary|--color|--color=*|--no-color|-p|--patch|-s|--no-patch|-u|-U*|--unified*|--word-diff*|--color-words*)
-                untracked_diff_args+=("$arg")
-                ;;
-            *)
-                if [[ "$arg" != -* && -e "$arg" ]]; then
-                    untracked_pathspecs+=("$arg")
-                fi
-                ;;
-        esac
-    done
-
-    cdup=$(git rev-parse --show-cdup 2>/dev/null)
-    prefix=$(git rev-parse --show-prefix 2>/dev/null)
-    pager_width=${COLUMNS:-0}
-    if (( pager_width <= 0 )); then
-        pager_width=$(tput cols 2>/dev/null)
-    fi
-    if (( ${pager_width:-0} <= 0 )); then
-        pager_width=80
-    fi
-
-    diff_file=$(mktemp "${TMPDIR:-/tmp}/gd.XXXXXX") || return
-    {
-        if [[ -z "$prefix" ]]; then
-            git --no-pager diff "$@" "${ignored_pathspecs[@]}"
-        else
-            git --no-pager diff --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@" "${ignored_pathspecs[@]}"
-        fi
-        if (( show_untracked )); then
-            git ls-files -z --others --exclude-standard -- "${untracked_pathspecs[@]}" "${ignored_pathspecs[@]}" |
-                while IFS= read -r -d '' file; do
-                    git --no-pager diff --no-index "${untracked_diff_args[@]}" -- /dev/null "$file" 2>/dev/null || true
-                done
-        fi
-    } > "$diff_file"
-
-    if [[ ! -s "$diff_file" ]]; then
-        command rm -f "$diff_file"
+tuicr() {
+    if (($# == 0)); then
+        command tuicr -w
         return
     fi
 
-    {
-        if [[ -z "$prefix" ]]; then
-            cat "$diff_file"
-        else
-            sed "s|${cdup}${prefix}||g" "$diff_file"
-        fi
-    } | {
-        if [[ -t 1 ]]; then
-            delta --paging=never --width="$pager_width" | LESS= less -R
-        else
-            delta --paging=never
-        fi
-    }
-    render_status=$?
-    command rm -f "$diff_file"
-    return "$render_status"
+    command tuicr "$@"
 }
+
+# gd() {
+#     local cdup prefix arg file show_untracked after_pathspecs i pager_width diff_file render_status
+#     local ignored_pathspecs=(
+#         ':(top,exclude,glob)**/go.mod'
+#         ':(top,exclude,glob)**/go.sum'
+#         ':(top,exclude,glob)**/*_test.go'
+#     )
+#     local untracked_diff_args=()
+#     local untracked_pathspecs=()
+#
+#     show_untracked=1
+#     after_pathspecs=0
+#     for ((i = 1; i <= $#argv; i++)); do
+#         arg="${argv[$i]}"
+#         if ((after_pathspecs)); then
+#             untracked_pathspecs+=("$arg")
+#             continue
+#         fi
+#
+#         case "$arg" in
+#         --)
+#             after_pathspecs=1
+#             ;;
+#         --cached | --staged)
+#             show_untracked=0
+#             ;;
+#         --stat* | --name-only | --name-status | --numstat | --shortstat | --summary | --check | --compact-summary | --no-compact-summary | --color | --color=* | --no-color | -p | --patch | -s | --no-patch | -u | -U* | --unified* | --word-diff* | --color-words*)
+#             untracked_diff_args+=("$arg")
+#             ;;
+#         *)
+#             if [[ "$arg" != -* && -e "$arg" ]]; then
+#                 untracked_pathspecs+=("$arg")
+#             fi
+#             ;;
+#         esac
+#     done
+#
+#     cdup=$(git rev-parse --show-cdup 2>/dev/null)
+#     prefix=$(git rev-parse --show-prefix 2>/dev/null)
+#     pager_width=${COLUMNS:-0}
+#     if ((pager_width <= 0)); then
+#         pager_width=$(tput cols 2>/dev/null)
+#     fi
+#     if ((${pager_width:-0} <= 0)); then
+#         pager_width=80
+#     fi
+#
+#     diff_file=$(mktemp "${TMPDIR:-/tmp}/gd.XXXXXX") || return
+#     {
+#         if [[ -z "$prefix" ]]; then
+#             git --no-pager diff "$@" "${ignored_pathspecs[@]}"
+#         else
+#             git --no-pager diff --src-prefix="a/${cdup}" --dst-prefix="b/${cdup}" "$@" "${ignored_pathspecs[@]}"
+#         fi
+#         if ((show_untracked)); then
+#             git ls-files -z --others --exclude-standard -- "${untracked_pathspecs[@]}" "${ignored_pathspecs[@]}" |
+#                 while IFS= read -r -d '' file; do
+#                     git --no-pager diff --no-index "${untracked_diff_args[@]}" -- /dev/null "$file" 2>/dev/null || true
+#                 done
+#         fi
+#     } >"$diff_file"
+#
+#     if [[ ! -s "$diff_file" ]]; then
+#         command rm -f "$diff_file"
+#         return
+#     fi
+#
+#     {
+#         if [[ -z "$prefix" ]]; then
+#             cat "$diff_file"
+#         else
+#             sed "s|${cdup}${prefix}||g" "$diff_file"
+#         fi
+#     } | {
+#         if [[ -t 1 ]]; then
+#             delta --paging=never --width="$pager_width" | LESS= less -R
+#         else
+#             delta --paging=never
+#         fi
+#     }
+#     render_status=$?
+#     command rm -f "$diff_file"
+#     return "$render_status"
+# }
 alias gpl="git pull"
 alias gps="git push"
 alias merge='git mergetool'
@@ -226,3 +237,5 @@ alias benchrawzsh='for i in $(seq 1 20); do /usr/bin/time /bin/zsh --no-rcs -i -
 alias benchplugin='zprof | less'
 
 alias icat="kitty +kitten icat"
+
+alias gd=tuicr

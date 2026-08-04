@@ -43,6 +43,28 @@ for _, ext in ipairs(open_files) do
 	})
 end
 
+-- Git loose object 文件经过 zlib 压缩，打开时用 cat-file 展示实际内容
+vim.api.nvim_create_autocmd('BufReadCmd', {
+	group = vim.api.nvim_create_augroup('git_object_viewer', { clear = true }),
+	pattern = '*.git/objects/??/*',
+	callback = function(args)
+		local path = vim.fs.normalize(vim.api.nvim_buf_get_name(args.buf))
+		local object, read_error = require('utils.git_object').read(path)
+		if not object then
+			error(read_error or 'Invalid Git object path: ' .. path)
+		end
+
+		vim.api.nvim_buf_set_lines(args.buf, 0, -1, false, object.lines)
+
+		vim.bo[args.buf].buftype = 'nofile'
+		vim.bo[args.buf].swapfile = false
+		vim.bo[args.buf].endofline = object.ends_with_newline
+		vim.bo[args.buf].readonly = true
+		vim.bo[args.buf].modifiable = false
+		vim.bo[args.buf].modified = false
+	end,
+})
+
 -- -- 这些文件用xxd打开
 -- local xxd_files = {
 -- 	"bin",

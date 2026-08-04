@@ -1,0 +1,5 @@
+theme = "delta-dark"
+diff_view = "side-by-side"
+minimal_ui = true
+show_file_list = false
+leader = " "

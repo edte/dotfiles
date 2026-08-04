@@ -543,6 +543,7 @@ M.list = {
 			local nsMiniFiles = vim.api.nvim_create_namespace('mini_files_git')
 			local autocmd = vim.api.nvim_create_autocmd
 			local _, MiniFiles = pcall(require, 'mini.files')
+			local GitObject = require('utils.git_object')
 
 			-- Cache for git status
 			local gitStatusCache = {}
@@ -866,6 +867,30 @@ M.list = {
 			local function augroup(name)
 				return vim.api.nvim_create_augroup('MiniFiles_' .. name, { clear = true })
 			end
+
+			autocmd('User', {
+				group = augroup('git_object_preview'),
+				pattern = 'MiniFilesBufferUpdate',
+				callback = function(event)
+					local buf_id = event.data.buf_id
+					if not vim.api.nvim_buf_is_valid(buf_id) then
+						return
+					end
+
+					local path = vim.api.nvim_buf_get_name(buf_id):match('^minifiles://%d+/(.*)$')
+					local object, read_error = GitObject.read(path or '')
+					if not object then
+						if read_error then
+							vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, { read_error })
+						end
+						return
+					end
+
+					local last_line = math.min(#object.lines, vim.o.lines)
+					local lines = vim.list_slice(object.lines, 1, last_line)
+					vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, lines)
+				end,
+			})
 
 			autocmd('User', {
 				group = augroup('start'),

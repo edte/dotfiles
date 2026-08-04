@@ -116,6 +116,8 @@ M.list = {
 	-- cmp 替代品，暂时还是有些问题，一些cmp生态不咋支持，而且没搞懂怎么设置provider的kind
 	{
 		'saghen/blink.cmp',
+		-- 临时避开 f187527 引入的 Neovim 0.13 vim.Pos 回归
+		commit = 'cfe100ccac24b0a622d7b9f04aa8c9f3e7624a16',
 
 		event = { 'InsertEnter' },
 		build = function()
