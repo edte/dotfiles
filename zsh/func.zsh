@@ -179,20 +179,20 @@ gm() {
     git push
 }
 
-# gw() {
-#     local files=$(git status -s | awk '{print $2}')
-#     [[ -z "$files" ]] && return
-#     local selected=(${(f)"$(echo "$files" | fzf -m --cycle \
-#         --layout=reverse \
-#         --bind 'start:disable-search' \
-#         --bind 'j:down,k:up' \
-#         --bind 'ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up' \
-#         --bind 'tab:toggle+down' \
-#         --bind '/:enable-search' \
-#         --bind 'esc:abort' \
-#         --bind 'q:abort' \
-#         --preview 'git diff -- {} | DELTA_FEATURES=+ delta --width=$FZF_PREVIEW_COLUMNS' \
-#         --preview-window=left:87%)"})
-#     [[ ${#selected} -eq 0 ]] && return
-#     nvim ${selected}
-# }
+gw() {
+    local files=$(git status -s | awk '{print $2}')
+    [[ -z "$files" ]] && return
+    local selected=(${(f)"$(echo "$files" | fzf -m --cycle \
+        --layout=reverse \
+        --bind 'start:disable-search' \
+        --bind 'j:down,k:up' \
+        --bind 'ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up' \
+        --bind 'tab:toggle+down' \
+        --bind '/:enable-search' \
+        --bind 'esc:abort' \
+        --bind 'q:abort' \
+        --preview 'git diff -- {} | DELTA_FEATURES=+ delta --width=$FZF_PREVIEW_COLUMNS' \
+        --preview-window=left:87%)"})
+    [[ ${#selected} -eq 0 ]] && return
+    nvim ${selected}
+}

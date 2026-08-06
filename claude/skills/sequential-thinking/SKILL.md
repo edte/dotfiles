@@ -18,7 +18,7 @@ Enables structured problem-solving through iterative reasoning with revision and
 
 ## When to Use
 
-Use `mcp__reasoning__sequentialthinking` when:
+Use `mcp__sequential-thinking__sequentialthinking` when:
 
 - Problem requires multiple interconnected reasoning steps
 - Initial scope or approach is uncertain
@@ -30,7 +30,7 @@ Use `mcp__reasoning__sequentialthinking` when:
 
 ## Basic Usage
 
-The MCP tool `mcp__reasoning__sequentialthinking` accepts these parameters:
+The MCP tool `mcp__sequential-thinking__sequentialthinking` accepts these parameters:
 
 ### Required Parameters
 

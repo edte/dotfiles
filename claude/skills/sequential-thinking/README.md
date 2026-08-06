@@ -52,7 +52,7 @@ cp -r sequential-thinking /path/to/your/project/.claude/skills/
 
 ### Step 3: Verify Installation
 
-Restart Claude and check that the `mcp__reasoning__sequentialthinking` tool is available.
+Restart Claude and check that the `mcp__sequential-thinking__sequentialthinking` tool is available.
 
 ## Usage
 
