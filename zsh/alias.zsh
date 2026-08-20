@@ -60,15 +60,15 @@ alias ga="git add"
 alias gr="git remote -v"
 
 alias gmt="go mod tidy"
-# alias gco="git checkout"
+alias gco="git checkout"
 
 glog() {
     _fzf_git_hashes
 }
 
-gco() {
-    _fzf_git_each_ref --no-multi | xargs git checkout
-}
+# gco() {
+#     _fzf_git_each_ref --no-multi | xargs git checkout
+# }
 
 alias gb="git branch"
 alias gcm="git commit -m"
