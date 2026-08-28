@@ -189,6 +189,15 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-offline-channel"]
 trust_level = "trusted"
 
+[projects."/Users/edte/.local/share/nvim/lazy/nvim-treesitter"]
+trust_level = "trusted"
+
+[projects."/Users/edte/dotfiles/claude/skills/push-engineering"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-dashboard-sync"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -234,8 +243,8 @@ source_type = "local"
 source = "/Users/edte/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-08-20T01:47:25Z"
-last_revision = "0fc2bb13a805969c14b0fe9398bad41db346d84e"
+last_updated = "2026-08-27T09:22:24Z"
+last_revision = "b819188d2eea14e0400556ca29dbd1179a7c595b"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
