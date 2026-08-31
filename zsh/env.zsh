@@ -71,10 +71,10 @@ export EDITOR=nvim
 # *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
 
-# 最终确保 PATH 优先级正确:本地 bin 最高优先级,然后 homebrew,然后系统
+# 最终确保 PATH 优先级正确:本地 bin 和独立安装的 Atuin 优先,然后 homebrew,最后系统
 # 移除这些路径,然后按正确顺序重新添加
-PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | grep -v "^$HOME/.local/bin$" | grep -v "^/home/edte/.local/bin$" | tr '\n' ':' | sed 's/:$//')
-export PATH=$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
+PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | grep -v "^$HOME/.local/bin$" | grep -v "^$HOME/.atuin/bin$" | grep -v "^/home/edte/.local/bin$" | tr '\n' ':' | sed 's/:$//')
+export PATH=$HOME/.local/bin:$HOME/.atuin/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
 
 export PATH=$PATH:~/dotfiles/zsh/shell/
 

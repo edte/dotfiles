@@ -488,6 +488,8 @@ local function override_dialog_win()
 	-- 这里再覆盖一次会导致 cmdline 的 prompt 文本和 confirm_sub 的按钮拆分到不同窗口。
 end
 
+vim.opt.messagesopt:append({ 'maxheight:50', 'timeout:5000' })
+
 ui2.enable({
 	enable = true,
 	msg = {
@@ -520,9 +522,8 @@ ui2.enable({
 			verbose = 'pager',
 			wildlist = 'msg',
 		},
-		cmd = { height = 0.5 },
 		dialog = { height = 0.5 },
-		msg = { height = 0.5, timeout = 5000 },
+		msg = { height = 0.5 },
 		pager = { height = 0.8 },
 	},
 })
