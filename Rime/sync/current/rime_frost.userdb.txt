@@ -2,9 +2,9 @@
 #@/db_name	rime_frost
 #@/db_type	userdb
 #@/rime_version	1.16.0
-#@/tick	63072
+#@/tick	64772
 #@/user_id	current
-a 	啊	c=2406 d=2.01296 t=62942
+a 	啊	c=2414 d=1.25059 t=64719
 a 	阿	c=4 d=1.13177e-15 t=8035
 a kang 	阿康	c=1 d=1 t=8361
 a la si jia zhou 	阿拉斯加州	c=1 d=1.03511e-24 t=8035
@@ -16,7 +16,7 @@ a san 	阿三	c=1 d=1.03511e-24 t=8035
 a yi 	阿姨	c=4 d=5.18264e-09 t=8035
 a zhe 	啊这	c=72 d=1 t=11780
 ai 	哀	c=1 d=1.03511e-24 t=8035
-ai 	哎	c=2646 d=1.45148 t=62592
+ai 	哎	c=2648 d=1.22856 t=63904
 ai 	挨	c=2 d=1.55267e-24 t=8035
 ai 	爱	c=36 d=1.91495e-23 t=8035
 ai 	矮	c=7 d=1 t=10211
@@ -40,7 +40,7 @@ ai ye 	艾叶	c=7 d=4.14044e-24 t=8035
 ai zhe 	挨着	c=9 d=5.17556e-24 t=8035
 ai zheng 	癌症	c=3 d=1 t=46977
 an 	安	c=382 d=1.98223e-22 t=8035
-an 	按	c=653 d=1.00001 t=62465
+an 	按	c=655 d=1.84961 t=63383
 an 	暗	c=7 d=4.14044e-24 t=8035
 an 	鞍	c=2 d=1.55267e-24 t=8035
 an chang 	暗娼	c=0 d=0 t=8035
@@ -70,7 +70,7 @@ an yi xia 	按一下	c=1 d=1.03511e-24 t=8035
 an zhao 	按照	c=7 d=1 t=19518
 an zhuang 	安装	c=111 d=1 t=62500
 an zhuang bao 	安装包	c=4 d=1 t=62545
-an zhuo 	安卓	c=333 d=1.81501 t=62490
+an zhuo 	安卓	c=335 d=1.26728 t=63574
 an zhuo 	案桌	c=6 d=3.62288e-24 t=8035
 an zuo 	按左	c=2 d=1.55267e-24 t=8035
 ang 	昻	c=1 d=1.03511e-24 t=8035
@@ -89,9 +89,9 @@ ao te man 	奥特曼	c=4 d=5.64545e-10 t=8035
 ao tu 	凹凸	c=2 d=1.55267e-24 t=8035
 ao ye 	熬夜	c=9 d=5.17556e-24 t=8035
 ba 	八	c=5 d=3.10534e-24 t=8035
-ba 	吧	c=8110 d=3.46466 t=63058
+ba 	吧	c=8141 d=3.63277 t=64772
 ba 	巴	c=4 d=2.58777e-24 t=8035
-ba 	把	c=1152 d=2.68149 t=62685
+ba 	把	c=1157 d=1.15342 t=64332
 ba 	拔	c=12 d=6.72822e-24 t=8035
 ba 	爸	c=1 d=1.03511e-24 t=8035
 ba 	罢	c=5 d=3.10534e-24 t=8035
@@ -163,12 +163,12 @@ bai wan 	百万	c=16 d=1 t=36088
 bai wei shu 	白位数	c=1 d=1.03511e-24 t=8035
 bai xue bing 	白血病	c=1 d=1.03511e-24 t=8035
 bai ye 	白页	c=1 d=1.03511e-24 t=8035
-bai yi 	百亿	c=2 d=1.55267e-24 t=8035
+bai yi 	百亿	c=3 d=1 t=63773
 bai yong 	白用	c=1 d=1 t=8071
 bai zi 	摆子	c=1 d=1.03511e-24 t=8035
 ban 	伴	c=6 d=3.62288e-24 t=8035
 ban 	办	c=36 d=1 t=55504
-ban 	半	c=71 d=1 t=26509
+ban 	半	c=72 d=1 t=64354
 ban 	拌	c=1 d=1.03511e-24 t=8035
 ban 	搬	c=47 d=2.48426e-23 t=8035
 ban 	板	c=23 d=1 t=14170
@@ -178,13 +178,13 @@ ban ban 	斑斑	c=19 d=1 t=14491
 ban ban 	板板	c=2 d=1.55267e-24 t=8035
 ban bei jiu 	半杯酒	c=6 d=3.62288e-24 t=8035
 ban bei zi 	半辈子	c=1 d=1.03511e-24 t=8035
-ban ben 	版本	c=1303 d=1 t=61859
+ban ben 	版本	c=1308 d=2.87363 t=64153
 ban cheng pin 	半成品	c=1 d=1.03511e-24 t=8035
 ban cun 	半寸	c=1 d=1.03511e-24 t=8035
 ban dao ti 	半导体	c=1 d=1.03511e-24 t=8035
 ban deng 	板凳	c=1 d=1.03511e-24 t=8035
 ban dian 	半点	c=1 d=1.03511e-24 t=8035
-ban fa 	办法	c=143 d=1 t=60491
+ban fa 	办法	c=144 d=1 t=63919
 ban ge 	半个	c=8 d=4.658e-24 t=8035
 ban ge duo xiao shi 	半个多小时	c=1 d=1 t=38712
 ban ge duo yue 	半个多月	c=1 d=1.03511e-24 t=8035
@@ -238,7 +238,7 @@ bang gua o 	帮挂哦	c=1 d=1.03511e-24 t=8035
 bang guo 	帮过	c=1 d=1.03511e-24 t=8035
 bang jia 	绑架	c=1 d=1.03511e-24 t=8035
 bang ke 	棒客	c=1 d=1.03511e-24 t=8035
-bang mang 	帮忙	c=745 d=1 t=61800
+bang mang 	帮忙	c=748 d=1.03474 t=64258
 bang ni 	帮你	c=4 d=2.58777e-24 t=8035
 bang shang 	绑上	c=1 d=1.03511e-24 t=8035
 bang shou 	帮手	c=1 d=1.03511e-24 t=8035
@@ -251,7 +251,7 @@ bao 	保	c=3 d=2.07022e-24 t=8035
 bao 	包	c=797 d=2.26334 t=62840
 bao 	堡	c=1 d=1.03511e-24 t=8035
 bao 	宝	c=18 d=0.0337087 t=8035
-bao 	报	c=671 d=5.07918 t=62643
+bao 	报	c=674 d=1.17959 t=64075
 bao 	爆	c=15 d=6.32038e-15 t=8035
 bao 	褒	c=1 d=1.03511e-24 t=8035
 bao 	饱	c=1 d=1.03511e-24 t=8035
@@ -302,7 +302,7 @@ bao lei 	暴雷	c=3 d=2.07022e-24 t=8035
 bao li 	暴力	c=2 d=1 t=33704
 bao liu 	保留	c=15 d=8.2809e-24 t=8035
 bao long 	暴龙	c=2 d=1.55267e-24 t=8035
-bao lu 	暴露	c=38 d=1 t=22090
+bao lu 	暴露	c=40 d=1.79453 t=63544
 bao lu le 	暴露了	c=1 d=1.03511e-24 t=8035
 bao mi 	保密	c=7 d=1 t=61462
 bao ming 	包名	c=9 d=1 t=38853
@@ -341,7 +341,7 @@ bei 	北	c=6 d=3.62288e-24 t=8035
 bei 	呗	c=21 d=1 t=62027
 bei 	备	c=1 d=1 t=18062
 bei 	背	c=11 d=1 t=12419
-bei 	被	c=534 d=1 t=62799
+bei 	被	c=535 d=1.00102 t=64177
 bei 	贝	c=6 d=3.62288e-24 t=8035
 bei 	辈	c=1 d=1.03511e-24 t=8035
 bei ai 	悲哀	c=1 d=1.03511e-24 t=8035
@@ -384,7 +384,7 @@ bei zi 	被子	c=2 d=1.55267e-24 t=8035
 bei zi 	辈子	c=0 d=0 t=8035
 ben 	本	c=29 d=1.55267e-23 t=8035
 ben ci 	本次	c=2 d=1.55267e-24 t=8035
-ben di 	本地	c=308 d=1.035 t=57904
+ben di 	本地	c=310 d=1.05642 t=64052
 ben di bian yi 	本地编译	c=1 d=1.03511e-24 t=8035
 ben di hua 	本地化	c=1 d=1.03511e-24 t=8035
 ben fu 	奔赴	c=1 d=1.03511e-24 t=8035
@@ -394,7 +394,7 @@ ben ji 	本机	c=16 d=1 t=39428
 ben jin 	本金	c=17 d=1.97045 t=61194
 ben ke 	本科	c=6 d=1 t=54623
 ben ke sheng 	本科生	c=1 d=1.03511e-24 t=8035
-ben lai 	本来	c=188 d=1.00195 t=62348
+ben lai 	本来	c=191 d=1.14961 t=64100
 ben miao 	本秒	c=1 d=1 t=17379
 ben neng 	本能	c=3 d=2.07022e-24 t=8035
 ben qun 	本群	c=3 d=2.07022e-24 t=8035
@@ -419,7 +419,7 @@ beng kai 	崩开	c=1 d=1.03511e-24 t=8035
 beng kuai 	崩快	c=1 d=1.03511e-24 t=8035
 beng kui 	崩溃	c=6 d=3.62288e-24 t=8035
 beng zhu 	绷住	c=37 d=1 t=51453
-bi 	币	c=22 d=1.19038e-23 t=8035
+bi 	币	c=23 d=1 t=63775
 bi 	必	c=10 d=5.69312e-24 t=8035
 bi 	比	c=267 d=1.01841 t=56370
 bi 	毕	c=3 d=2.07022e-24 t=8035
@@ -467,7 +467,7 @@ bi ni 	比你	c=9 d=5.17556e-24 t=8035
 bi qi lai 	比起来	c=1 d=1.03511e-24 t=8035
 bi ran 	必然	c=6 d=3.62288e-24 t=8035
 bi ren 	逼人	c=1 d=1.03511e-24 t=8035
-bi ru 	比如	c=747 d=1.68074 t=61898
+bi ru 	比如	c=748 d=1.0003 t=63625
 bi ru shuo 	比如说	c=4 d=1.21981 t=26995
 bi sai 	比赛	c=2 d=1.55267e-24 t=8035
 bi she 	必设	c=1 d=1.03511e-24 t=8035
@@ -580,7 +580,7 @@ bian zao 	编造	c=1 d=1.03511e-24 t=8035
 bian zhi 	编制	c=1 d=1 t=31881
 bian zhi 	贬值	c=4 d=2.58777e-24 t=8035
 biao 	标	c=13 d=7.24582e-24 t=8035
-biao 	表	c=562 d=1.50338 t=61790
+biao 	表	c=566 d=2.20204 t=64121
 biao biao 	表表	c=1 d=1.03511e-24 t=8035
 biao ceng 	表层	c=1 d=1.03511e-24 t=8035
 biao da 	表达	c=4 d=2.58777e-24 t=8035
@@ -588,7 +588,7 @@ biao da shi 	表达式	c=5 d=3.10534e-24 t=8035
 biao dan 	表单	c=3 d=2.07022e-24 t=8035
 biao di 	表弟	c=1 d=1.03511e-24 t=8035
 biao dian 	标点	c=1 d=1.03511e-24 t=8035
-biao ge 	表格	c=104 d=1.72615 t=29722
+biao ge 	表格	c=105 d=1 t=64393
 biao guang 	表光	c=1 d=1.03511e-24 t=8035
 biao hong 	标红	c=2 d=1.55267e-24 t=8035
 biao ji 	标记	c=2 d=1.55267e-24 t=8035
@@ -606,10 +606,10 @@ biao qian jiu 	标签就	c=1 d=1 t=56975
 biao qian ye 	标签页	c=14 d=7.7633e-24 t=8035
 biao qing 	表情	c=14 d=7.7633e-24 t=8035
 biao qing bao 	表情报	c=1 d=1.03511e-24 t=8035
-biao shi 	标识	c=20 d=1 t=41581
+biao shi 	标识	c=21 d=1 t=64160
 biao shi 	表示	c=162 d=1 t=56943
 biao shi fu 	标识符	c=1 d=1.03511e-24 t=8035
-biao ti 	标题	c=379 d=1.1029 t=58388
+biao ti 	标题	c=383 d=1.20591 t=64018
 biao tou 	表头	c=4 d=2.58777e-24 t=8035
 biao xian 	表现	c=29 d=1.73712 t=54576
 biao yan 	表演	c=4 d=2.58777e-24 t=8035
@@ -680,7 +680,7 @@ bing bu yi yang 	并不一样	c=1 d=1.03511e-24 t=8035
 bing bu zai 	并不在	c=1 d=1.03511e-24 t=8035
 bing du 	病毒	c=10 d=5.69312e-24 t=8035
 bing dui 	兵队	c=1 d=1.03511e-24 t=8035
-bing fa 	并发	c=26 d=1.03321 t=46762
+bing fa 	并发	c=27 d=1 t=64749
 bing gong 	兵工	c=1 d=1.03511e-24 t=8035
 bing gun 	冰棍	c=1 d=1.03511e-24 t=8035
 bing jia 	病假	c=4 d=2.58777e-24 t=8035
@@ -723,7 +723,7 @@ bo lv 	博旅	c=1 d=1.03511e-24 t=8035
 bo qi 	勃起	c=1 d=1.03511e-24 t=8035
 bo shi 	博士	c=2 d=1.55267e-24 t=8035
 bo zi 	脖子	c=1 d=1.03511e-24 t=8035
-bu 	不	c=1314 d=1.00001 t=58996
+bu 	不	c=1317 d=1.12384 t=64120
 bu 	布	c=2 d=1.55267e-24 t=8035
 bu 	捕	c=1 d=1.03511e-24 t=8035
 bu 	步	c=15 d=8.2809e-24 t=8035
@@ -773,7 +773,7 @@ bu chu 	不出	c=11 d=1.27298e-16 t=8035
 bu chu fa 	不触发	c=1 d=1.03511e-24 t=8035
 bu chu lai 	不出来	c=58 d=1.98511 t=62432
 bu chu qu 	不出区	c=2 d=1.55267e-24 t=8035
-bu chuan 	不传	c=14 d=1 t=53811
+bu chuan 	不传	c=15 d=1 t=63101
 bu chuan 	不穿	c=3 d=2.07022e-24 t=8035
 bu chuan zhi 	不穿值	c=1 d=1.03511e-24 t=8035
 bu chuang kou 	不窗口	c=1 d=1.03511e-24 t=8035
@@ -814,6 +814,7 @@ bu dong 	不懂	c=93 d=1 t=47740
 bu dou 	不都	c=19 d=1.43802e-09 t=8035
 bu dou 	布兜	c=11 d=6.21069e-24 t=8035
 bu dou hui 	不都会	c=1 d=1.03511e-24 t=8035
+bu dou jiao 	不都叫	c=1 d=1 t=64106
 bu dou shi 	不都是	c=62 d=1 t=61047
 bu dou yao 	不都要	c=1 d=1.03511e-24 t=8035
 bu dou yao dai 	不都要带	c=1 d=1.03511e-24 t=8035
@@ -831,7 +832,7 @@ bu duo 	不多	c=53 d=1 t=49364
 bu duo shuo 	不多说	c=1 d=1.03511e-24 t=8035
 bu e 	不饿	c=1 d=1.03511e-24 t=8035
 bu fa 	不发	c=46 d=1.93239 t=41366
-bu fa 	补发	c=105 d=1 t=55116
+bu fa 	补发	c=107 d=1.43605 t=64751
 bu fa song 	不发送	c=1 d=1.03511e-24 t=8035
 bu fan hui 	不返回	c=7 d=4.14044e-24 t=8035
 bu fan kui 	不反馈	c=1 d=1.03511e-24 t=8035
@@ -847,7 +848,7 @@ bu fen 	部分	c=57 d=1 t=43626
 bu fen dou 	不奋斗	c=1 d=1.03511e-24 t=8035
 bu fen lei 	不分类	c=1 d=1.03511e-24 t=8035
 bu feng 	不封	c=1 d=1.03511e-24 t=8035
-bu fu 	不服	c=1 d=1.03511e-24 t=8035
+bu fu 	不服	c=2 d=1 t=64098
 bu fu cun zai 	不复存在	c=1 d=1 t=56311
 bu fu gai 	不覆盖	c=1 d=1.03511e-24 t=8035
 bu fu he 	不符合	c=13 d=1 t=57091
@@ -935,7 +936,7 @@ bu hua suan 	不划算	c=2 d=1.55267e-24 t=8035
 bu huai 	不坏	c=1 d=1.03511e-24 t=8035
 bu huan 	不换	c=6 d=3.62288e-24 t=8035
 bu huang 	不慌	c=9 d=5.17556e-24 t=8035
-bu hui 	不会	c=1050 d=1.00276 t=63034
+bu hui 	不会	c=1051 d=1.35799 t=63240
 bu hui 	不回	c=10 d=5.69312e-24 t=8035
 bu hui ba 	不会吧	c=2 d=1 t=23113
 bu hui gei 	不会给	c=1 d=1.03511e-24 t=8035
@@ -947,7 +948,7 @@ bu hui you 	不会有	c=3 d=2.07022e-24 t=8035
 bu huo 	捕获	c=3 d=2.07022e-24 t=8035
 bu huo qu 	不活去	c=1 d=1.03511e-24 t=8035
 bu huo yue 	不活月	c=4 d=1 t=50331
-bu ji 	不急	c=40 d=1.00011 t=55558
+bu ji 	不急	c=41 d=1 t=64073
 bu ji 	补给	c=1 d=1.03511e-24 t=8035
 bu ji de 	不记得	c=1 d=1.03511e-24 t=8035
 bu ji shi 	不及时	c=3 d=2.07022e-24 t=8035
@@ -981,10 +982,11 @@ bu jin lai 	不进来	c=2 d=1.55267e-24 t=8035
 bu jin qu 	不进去	c=5 d=3.10534e-24 t=8035
 bu jin ru 	不进入	c=2 d=1.55267e-24 t=8035
 bu jiu 	不久	c=17 d=9.31597e-24 t=8035
-bu jiu 	不就	c=70 d=1.01882 t=62374
+bu jiu 	不就	c=70 d=0.108727 t=63326
 bu jiu cha 	不就查	c=1 d=1 t=62041
-bu jiu shi 	不就是	c=91 d=1.74583 t=57663
+bu jiu shi 	不就是	c=92 d=1 t=63224
 bu jiu xing 	不就行	c=7 d=1.14808 t=39701
+bu jiu yao 	不就要	c=1 d=1 t=63327
 bu ju 	布局	c=9 d=0.1 t=18805
 bu ju bei 	不具备	c=1 d=1.03511e-24 t=8035
 bu ju cha 	布局查	c=1 d=1 t=18806
@@ -1021,7 +1023,7 @@ bu leng 	不冷	c=1 d=1.03511e-24 t=8035
 bu li 	不理	c=2 d=1.55267e-24 t=8035
 bu li jie 	不理解	c=4 d=2.58777e-24 t=8035
 bu lian 	不练	c=1 d=1.03511e-24 t=8035
-bu liao 	不了	c=568 d=2.30211 t=62553
+bu liao 	不了	c=569 d=1.00618 t=63737
 bu ling 	不灵	c=1 d=1.03511e-24 t=8035
 bu ling huo 	不灵活	c=1 d=1.03511e-24 t=8035
 bu long 	布隆	c=5 d=3.10534e-24 t=8035
@@ -1046,7 +1048,7 @@ bu na 	不拿	c=1 d=1.03511e-24 t=8035
 bu nan 	不难	c=3 d=2.07022e-24 t=8035
 bu nan shou 	不难受	c=1 d=1 t=32367
 bu nei zhi 	不内置	c=1 d=1.03511e-24 t=8035
-bu neng 	不能	c=898 d=1.67622 t=62034
+bu neng 	不能	c=900 d=1.33636 t=63910
 bu neng bi 	不能比	c=1 d=1.03511e-24 t=8035
 bu neng gai 	不能改	c=1 d=1 t=36466
 bu neng shang 	不能上	c=2 d=1.55267e-24 t=8035
@@ -1087,7 +1089,7 @@ bu quan 	不全	c=30 d=1 t=44519
 bu quan 	补全	c=214 d=1 t=62013
 bu que 	不缺	c=6 d=9.19609e-15 t=8035
 bu que ding 	不确定	c=15 d=8.2809e-24 t=8035
-bu ran 	不然	c=364 d=1.16053 t=60905
+bu ran 	不然	c=366 d=1.15567 t=64122
 bu ran jiu 	不然就	c=1 d=1.2662e-12 t=8035
 bu rang 	不让	c=46 d=1 t=29971
 bu rang gai 	不让改	c=1 d=1 t=36484
@@ -1131,7 +1133,7 @@ bu sheng cheng 	不生成	c=1 d=1.03511e-24 t=8035
 bu sheng ji 	不升级	c=4 d=2.58777e-24 t=8035
 bu sheng xiao 	不生小	c=7 d=4.14044e-24 t=8035
 bu sheng xiao 	不生效	c=1 d=3.31548e-13 t=8035
-bu shi 	不是	c=4595 d=1.17459 t=63069
+bu shi 	不是	c=4607 d=1.91043 t=64634
 bu shi 	步石	c=1 d=1.03511e-24 t=8035
 bu shi ba 	不是叭	c=2 d=1.55267e-24 t=8035
 bu shi cheng 	不是成	c=1 d=1.03511e-24 t=8035
@@ -1163,7 +1165,7 @@ bu si kao 	不思考	c=1 d=1.03511e-24 t=8035
 bu suan 	不算	c=52 d=1 t=51133
 bu suan gao 	不算高	c=1 d=1.03511e-24 t=8035
 bu suan zai 	不算在	c=1 d=1.03511e-24 t=8035
-bu tai 	不太	c=334 d=1.09163 t=57268
+bu tai 	不太	c=336 d=1.63128 t=64320
 bu tai dong 	不太懂	c=4 d=6.62841e-16 t=8035
 bu tai dui 	不太对	c=24 d=1 t=58221
 bu tai fang bian 	不太方便	c=1 d=1.03511e-24 t=8035
@@ -1254,7 +1256,7 @@ bu xiu 	不修	c=1 d=1.03511e-24 t=8035
 bu xu 	不许	c=12 d=6.72822e-24 t=8035
 bu xu 	不需	c=1 d=1.03511e-24 t=8035
 bu xu die 	不许跌	c=1 d=1.03511e-24 t=8035
-bu xu yao 	不需要	c=295 d=1.00064 t=62897
+bu xu yao 	不需要	c=298 d=1.79725 t=64157
 bu xu yao 	补虚药	c=12 d=6.72822e-24 t=8035
 bu xu yue 	不续约	c=4 d=2.58777e-24 t=8035
 bu xu zou 	不许走	c=1 d=1.03511e-24 t=8035
@@ -1264,9 +1266,9 @@ bu xue 	不学	c=4 d=1 t=19780
 bu yan 	不严	c=1 d=1.03511e-24 t=8035
 bu yan zhong 	不严重	c=1 d=1.03511e-24 t=8035
 bu yang wei 	不阳痿	c=1 d=1.03511e-24 t=8035
-bu yao 	不要	c=222 d=1.08101 t=61474
+bu yao 	不要	c=223 d=1 t=64066
 bu yao fa 	不要发	c=5 d=3.10534e-24 t=8035
-bu yao gai 	不要改	c=1 d=1.25382e-14 t=8035
+bu yao gai 	不要改	c=2 d=1 t=64453
 bu yao qian 	不要钱	c=1 d=1.03511e-24 t=8035
 bu yao tan xin 	不要贪心	c=1 d=1 t=42323
 bu yao wan quan 	不要完全	c=1 d=1 t=44805
@@ -1281,21 +1283,22 @@ bu ye shi 	不也是	c=3 d=2.07022e-24 t=8035
 bu ye yao 	不也要	c=5 d=1.04016 t=59716
 bu ye you 	不也有	c=1 d=1.03511e-24 t=8035
 bu yi 	不以	c=1 d=1 t=61208
-bu yi ding 	不一定	c=89 d=1.00007 t=56875
+bu yi ding 	不一定	c=90 d=1 t=64062
 bu yi hui 	不一会	c=3 d=2.07022e-24 t=8035
 bu yi lai 	不依赖	c=7 d=1 t=33362
-bu yi yang 	不一样	c=462 d=2.20956 t=62442
+bu yi yang 	不一样	c=463 d=1.00009 t=64473
 bu yi yu 	不抑郁	c=1 d=1.03511e-24 t=8035
 bu yi zhi 	不一直	c=2 d=1.55267e-24 t=8035
 bu yi zhi 	不一致	c=10 d=5.69312e-24 t=8035
 bu ying 	不应	c=2 d=1 t=29786
 bu ying gai 	不应该	c=184 d=1 t=59619
 bu ying xiang 	不影响	c=74 d=1 t=61716
-bu yong 	不用	c=1303 d=1.03169 t=62987
+bu yong 	不用	c=1305 d=1.0632 t=63788
 bu yong bao 	不用报	c=1 d=1.03511e-24 t=8035
 bu yong diao 	不用调	c=1 d=1 t=18083
 bu yong gai 	不用改	c=10 d=1 t=52685
 bu yong guan 	不用管	c=15 d=1 t=62125
+bu yong jiu xing 	不用就行	c=1 d=1 t=63233
 bu yong kan 	不用看	c=1 d=1.03511e-24 t=8035
 bu yong pa 	不用怕	c=1 d=1.03511e-24 t=8035
 bu yong shang ban 	不用上班	c=1 d=1 t=51845
@@ -1330,15 +1333,15 @@ bu zheng chong 	不争宠	c=3 d=2.07022e-24 t=8035
 bu zheng jing 	不正经	c=1 d=1.03511e-24 t=8035
 bu zheng que 	不正确	c=5 d=3.10534e-24 t=8035
 bu zheng shi 	不正是	c=1 d=1.03511e-24 t=8035
-bu zhi 	不只	c=58 d=1.58275 t=58213
+bu zhi 	不只	c=59 d=1 t=64365
 bu zhi 	不止	c=3 d=2.07022e-24 t=8035
 bu zhi 	不知	c=1 d=1.03511e-24 t=8035
 bu zhi 	布置	c=1 d=1.03511e-24 t=8035
 bu zhi chi 	不支持	c=317 d=1.9803 t=59285
-bu zhi dao 	不知道	c=664 d=1.08014 t=62188
+bu zhi dao 	不知道	c=666 d=1.00323 t=64418
 bu zhi ding shi 	不知定时	c=1 d=1.03511e-24 t=8035
 bu zhi shi 	不只是	c=13 d=1 t=41354
-bu zhi yu 	不至于	c=48 d=1 t=63054
+bu zhi yu 	不至于	c=49 d=1.03707 t=63713
 bu zhong 	不重	c=2 d=1.55267e-24 t=8035
 bu zhong yao 	不重要	c=27 d=1 t=40757
 bu zhou 	步骤	c=56 d=1.53538e-16 t=8035
@@ -1365,7 +1368,7 @@ bu zuo wei 	不作为	c=1 d=1.03511e-24 t=8035
 ca 	擦	c=2 d=1 t=51186
 ca bian 	擦边	c=4 d=2.58777e-24 t=8035
 cai 	彩	c=30 d=1 t=40004
-cai 	才	c=639 d=1.14562 t=63006
+cai 	才	c=641 d=1.98961 t=63806
 cai 	猜	c=14 d=1 t=46875
 cai 	菜	c=35 d=1 t=47170
 cai 	裁	c=164 d=1 t=56880
@@ -1437,12 +1440,13 @@ cai suan 	才算	c=3 d=1 t=49275
 cai wan 	才玩	c=1 d=1.03511e-24 t=8035
 cai wu 	财务	c=2 d=1.55267e-24 t=8035
 cai xiang 	猜想	c=1 d=1 t=8169
-cai xing 	才行	c=170 d=1.00001 t=60011
+cai xing 	才行	c=171 d=1 t=64468
+cai xu yao 	才需要	c=1 d=1 t=63107
 cai yang 	采样	c=2 d=1.55267e-24 t=8035
 cai yao 	菜肴	c=1 d=1.03511e-24 t=8035
 cai yong 	才用	c=1 d=1.03511e-24 t=8035
 cai yong 	采用	c=5 d=1 t=63005
-cai you 	才有	c=84 d=1 t=34438
+cai you 	才有	c=85 d=1 t=64280
 cai you yong 	才有用	c=1 d=1.03511e-24 t=8035
 cai yuan 	裁员	c=42 d=1 t=56876
 cai zhi dao 	才知道	c=18 d=1 t=52164
@@ -1459,14 +1463,14 @@ can guan 	参观	c=1 d=1.03511e-24 t=8035
 can guan 	餐馆	c=1 d=1.03511e-24 t=8035
 can jia 	参加	c=4 d=1 t=21635
 can jiao 	惨叫	c=1 d=1.03511e-24 t=8035
-can kao 	参考	c=98 d=1 t=60852
+can kao 	参考	c=100 d=1.30119 t=64677
 can kao xi 	参考系	c=1 d=1.03511e-24 t=8035
 can ku 	残酷	c=1 d=1.03511e-24 t=8035
 can pin 	参聘	c=1 d=1.03511e-24 t=8035
 can shu 	参数	c=603 d=1 t=62385
 can si 	蚕丝	c=1 d=1.03511e-24 t=8035
 can xuan 	参选	c=1 d=1.03511e-24 t=8035
-can yu 	参与	c=11 d=1 t=62885
+can yu 	参与	c=12 d=1.05756 t=63456
 can zhan 	参战	c=1 d=5.08447e-14 t=8035
 cang 	仓	c=7 d=4.14044e-24 t=8035
 cang 	藏	c=4 d=2.58777e-24 t=8035
@@ -1490,7 +1494,7 @@ cao zuo 	操作	c=94 d=1.00899 t=60776
 ce 	侧	c=1 d=1.03511e-24 t=8035
 ce 	恻	c=1 d=1.03511e-24 t=8035
 ce 	憡	c=1 d=1.03511e-24 t=8035
-ce 	测	c=1047 d=3.67143 t=62782
+ce 	测	c=1049 d=1.98434 t=63292
 ce bian 	侧边	c=3 d=2.07022e-24 t=8035
 ce bian lan 	侧边栏	c=2 d=1.55267e-24 t=8035
 ce chu 	测出	c=8 d=4.658e-24 t=8035
@@ -1503,7 +1507,7 @@ ce hui 	测绘	c=2 d=1.55267e-24 t=8035
 ce lue 	策略	c=336 d=1 t=51352
 ce lv 	策虑	c=1 d=1.03511e-24 t=8035
 ce ping 	测评	c=2 d=1.55267e-24 t=8035
-ce shi 	测试	c=2523 d=1.0456 t=60813
+ce shi 	测试	c=2526 d=1.4468 t=64087
 ce shi huan jing 	测试环境	c=3 d=1 t=46207
 ce shi me 	测试么	c=1 d=1.03511e-24 t=8035
 ce shi qian 	测试前	c=1 d=1.03511e-24 t=8035
@@ -1522,7 +1526,7 @@ ceng mian 	层面	c=3 d=1 t=26882
 ceng zhuang 	层状	c=1 d=1.03511e-24 t=8035
 cha 	差	c=66 d=1 t=60441
 cha 	插	c=25 d=1 t=13974
-cha 	查	c=1027 d=1.03716 t=62238
+cha 	查	c=1029 d=1.46072 t=64479
 cha 	茶	c=1 d=1.03511e-24 t=8035
 cha ba 	插拔	c=3 d=2.07022e-24 t=8035
 cha bian 	插边	c=1 d=1 t=51184
@@ -1532,7 +1536,7 @@ cha bo 	插播	c=1 d=1.03511e-24 t=8035
 cha bu chu lai 	差不出来	c=1 d=1.03511e-24 t=8035
 cha bu dai 	查不带	c=1 d=1.03511e-24 t=8035
 cha bu dao 	查不到	c=33 d=1.00025 t=37337
-cha bu duo 	差不多	c=323 d=1.00004 t=62322
+cha bu duo 	差不多	c=324 d=1.00001 t=64650
 cha bu guo 	差不过	c=1 d=1.03511e-24 t=8035
 cha bu ka 	差不卡	c=1 d=1.03511e-24 t=8035
 cha bu liao 	差不了	c=2 d=1.55267e-24 t=8035
@@ -1568,7 +1572,7 @@ cha tou 	插头	c=1 d=1.03511e-24 t=8035
 cha wu ci ren 	查无此人	c=1 d=1.03511e-24 t=8035
 cha xia 	差下	c=8 d=4.658e-24 t=8035
 cha xia 	查下	c=1 d=1 t=24844
-cha xun 	查询	c=370 d=1 t=58752
+cha xun 	查询	c=374 d=2.32771 t=64771
 cha xun kong 	查询空	c=1 d=1.03511e-24 t=8035
 cha yang 	插秧	c=1 d=1.03511e-24 t=8035
 cha yi 	差异	c=9 d=2.57865 t=61169
@@ -1591,7 +1595,7 @@ chai quan 	柴犬	c=1 d=1.03511e-24 t=8035
 chan 	产	c=11 d=1.00035 t=32143
 chan chu 	产出	c=2 d=1.55267e-24 t=8035
 chan mian 	缠绵	c=1 d=1.03511e-24 t=8035
-chan pin 	产品	c=332 d=1.00048 t=61705
+chan pin 	产品	c=334 d=1.88694 t=63907
 chan quan 	产权	c=1 d=1.03511e-24 t=8035
 chan sheng 	产生	c=4 d=2.58777e-24 t=8035
 chan wu 	产物	c=1 d=1.03511e-24 t=8035
@@ -1606,7 +1610,7 @@ chang 	长	c=166 d=1 t=44507
 chang an 	长按	c=3 d=2.07022e-24 t=8035
 chang ci 	场次	c=1 d=1.03511e-24 t=8035
 chang cun 	长存	c=1 d=1.03511e-24 t=8035
-chang du 	长度	c=91 d=1.79852 t=61522
+chang du 	长度	c=93 d=1.99051 t=63177
 chang duan 	长短	c=1 d=1.03511e-24 t=8035
 chang fa 	长发	c=1 d=1.03511e-24 t=8035
 chang fen 	肠粉	c=2 d=1.5599 t=25309
@@ -1626,7 +1630,7 @@ chang liang 	常量	c=10 d=5.69312e-24 t=8035
 chang nei 	场内	c=2 d=1 t=19615
 chang qi 	长期	c=5 d=1 t=28521
 chang sha 	长沙	c=3 d=1 t=59636
-chang shang 	厂商	c=1308 d=1.45579 t=62867
+chang shang 	厂商	c=1312 d=1.31546 t=64124
 chang shi 	尝试	c=96 d=1 t=58886
 chang shi 	常识	c=4 d=1 t=46899
 chang shi jian 	长时间	c=3 d=2.07022e-24 t=8035
@@ -1649,7 +1653,7 @@ chao 	炒	c=7 d=4.14044e-24 t=8035
 chao 	超	c=70 d=0.531337 t=8035
 chao bi 	钞币	c=1 d=1.03511e-24 t=8035
 chao biao 	超标	c=3 d=2.07022e-24 t=8035
-chao chang 	超长	c=12 d=1 t=45150
+chao chang 	超长	c=13 d=1 t=63171
 chao chu 	超出	c=7 d=1 t=37924
 chao da 	超大	c=2 d=0.000303539 t=8035
 chao di 	抄底	c=2 d=1.55267e-24 t=8035
@@ -1704,7 +1708,7 @@ chen nian 	陈年	c=1 d=1.03511e-24 t=8035
 chen zhi 	称职	c=1 d=1.03511e-24 t=8035
 cheng 	乘	c=1 d=1.03511e-24 t=8035
 cheng 	城	c=38 d=1 t=25413
-cheng 	成	c=523 d=1.00001 t=61447
+cheng 	成	c=524 d=1 t=64681
 cheng 	撑	c=11 d=6.21069e-24 t=8035
 cheng 	称	c=8 d=4.658e-24 t=8035
 cheng 	程	c=5 d=3.10534e-24 t=8035
@@ -1718,7 +1722,7 @@ cheng er 	程耳	c=4 d=0.1 t=24505
 cheng fa 	惩罚	c=6 d=3.62288e-24 t=8035
 cheng fen 	成分	c=1 d=1 t=47061
 cheng geng geng 	成更更	c=1 d=1.03511e-24 t=8035
-cheng gong 	成功	c=895 d=1 t=61453
+cheng gong 	成功	c=901 d=3.14972 t=64574
 cheng gong lv 	成功率	c=3 d=2.07022e-24 t=8035
 cheng guo 	成果	c=7 d=4.14044e-24 t=8035
 cheng hu 	称呼	c=2 d=1.55267e-24 t=8035
@@ -1812,7 +1816,7 @@ chong dong 	冲动	c=1 d=5.18806e-16 t=8035
 chong fa 	重发	c=65 d=1 t=23426
 chong fang 	重放	c=1 d=1.03511e-24 t=8035
 chong feng 	冲锋	c=1 d=8.90121e-14 t=8035
-chong fu 	重复	c=271 d=1 t=55321
+chong fu 	重复	c=273 d=1.38674 t=64750
 chong gou 	重构	c=49 d=1 t=53914
 chong gou xia 	重构下	c=1 d=1.03511e-24 t=8035
 chong he 	重合	c=11 d=6.21069e-24 t=8035
@@ -1855,7 +1859,7 @@ chong zu 	重组	c=1 d=1.03511e-24 t=8035
 chong zuo 	重做	c=6 d=3.62288e-24 t=8035
 chou 	丑	c=63 d=1.53259 t=62344
 chou 	仇	c=1 d=1.03511e-24 t=8035
-chou 	抽	c=55 d=1.53031 t=62346
+chou 	抽	c=56 d=1.00003 t=64523
 chou 	臭	c=1 d=1.03511e-24 t=8035
 chou bu zhong 	抽不中	c=1 d=1.03511e-24 t=8035
 chou cha 	抽查	c=3 d=2.07022e-24 t=8035
@@ -1864,7 +1868,7 @@ chou jiang 	抽奖	c=6 d=3.62288e-24 t=8035
 chou jiao 	臭脚	c=3 d=2.07022e-24 t=8035
 chou kong 	抽空	c=1 d=1.03511e-24 t=8035
 chou ti 	抽屉	c=4 d=1 t=11483
-chou xiang 	抽象	c=20 d=1.98543 t=62431
+chou xiang 	抽象	c=21 d=1.00291 t=63736
 chou xue 	抽血	c=4 d=2.58777e-24 t=8035
 chou yan 	抽烟	c=1 d=1.03511e-24 t=8035
 chou yang 	抽样	c=4 d=1 t=19628
@@ -1907,7 +1911,7 @@ chu jue 	处决	c=20 d=0.0584859 t=8035
 chu kong ban 	触控板	c=49 d=2.58777e-23 t=8035
 chu kou 	出口	c=18 d=4.06847e-09 t=8035
 chu ku 	出库	c=9 d=5.17556e-24 t=8035
-chu lai 	出来	c=408 d=1.02499 t=62345
+chu lai 	出来	c=412 d=1.78902 t=64729
 chu lai le 	出来了	c=4 d=1 t=48487
 chu le 	出了	c=2 d=1.55267e-24 t=8035
 chu le 	除了	c=18 d=9.83357e-24 t=8035
@@ -1951,12 +1955,13 @@ chu zu ce 	出祖册	c=1 d=1.03511e-24 t=8035
 chu zu wu 	出租屋	c=4 d=1 t=35923
 chuai san 	揣三	c=1 d=1.03511e-24 t=8035
 chuan 	串	c=75 d=1.00006 t=52442
-chuan 	传	c=743 d=2.27583 t=62389
+chuan 	传	c=748 d=1.12245 t=64463
 chuan 	喘	c=1 d=1.03511e-24 t=8035
 chuan 	川	c=8 d=4.658e-24 t=8035
 chuan 	穿	c=13 d=1 t=21495
 chuan 	船	c=7 d=4.14044e-24 t=8035
 chuan bo 	传播	c=2 d=1.55267e-24 t=8035
+chuan chui 	传锤	c=1 d=1 t=64720
 chuan da 	川大	c=1 d=1.03511e-24 t=8035
 chuan dao 	传到	c=1 d=1.03511e-24 t=8035
 chuan di 	传递	c=2 d=1.55267e-24 t=8035
@@ -2022,7 +2027,7 @@ chun xiao mai 	春小麦	c=1 d=1.03511e-24 t=8035
 chuo 	戳	c=37 d=3.28955 t=61993
 chuo chuo you yu 	绰绰有余	c=1 d=1.03511e-24 t=8035
 ci 	刺	c=2 d=1.55267e-24 t=8035
-ci 	次	c=173 d=1 t=27625
+ci 	次	c=174 d=1 t=64735
 ci 	此	c=5 d=1 t=26425
 ci 	词	c=22 d=1 t=24674
 ci bei 	慈悲	c=1 d=6.28989e-17 t=8035
@@ -2080,7 +2085,7 @@ cui sheng 	催生	c=1 d=1.03511e-24 t=8035
 cun 	存	c=267 d=1.00255 t=59042
 cun 	寸	c=16 d=8.79843e-24 t=8035
 cun 	村	c=14 d=1 t=61734
-cun chu 	存储	c=213 d=1.00151 t=61003
+cun chu 	存储	c=214 d=1 t=64219
 cun dang 	存档	c=3 d=2.07022e-24 t=8035
 cun fang 	存放	c=5 d=3.10534e-24 t=8035
 cun hao 	存好	c=1 d=1 t=56798
@@ -2383,7 +2388,7 @@ dai kuan 	带宽	c=2 d=1.55267e-24 t=8035
 dai kuan 	贷款	c=3 d=2.07022e-24 t=8035
 dai lai 	带来	c=4 d=1 t=30326
 dai li 	代理	c=41 d=1 t=18850
-dai ma 	代码	c=784 d=1.67706 t=61510
+dai ma 	代码	c=790 d=4.59592 t=64434
 dai ren 	待人	c=1 d=1.03511e-24 t=8035
 dai ru 	带入	c=1 d=1.03511e-24 t=8035
 dai shang 	带上	c=38 d=1 t=61714
@@ -2419,7 +2424,7 @@ dan da 	单打	c=1 d=1.03511e-24 t=8035
 dan dian 	单点	c=2 d=1 t=59036
 dan diao 	单调	c=1 d=1.03511e-24 t=8035
 dan diao zhan 	单调栈	c=2 d=1.55267e-24 t=8035
-dan du 	单独	c=144 d=1.03166 t=59399
+dan du 	单独	c=145 d=1 t=64222
 dan du de 	单独的	c=1 d=1.03511e-24 t=8035
 dan fa 	单发	c=1 d=1.03511e-24 t=8035
 dan ge 	单个	c=30 d=1 t=40423
@@ -2438,7 +2443,7 @@ dan qu 	单曲	c=133 d=1.94674 t=60679
 dan ren 	单人	c=1 d=1.03511e-24 t=8035
 dan shen 	单身	c=5 d=3.10534e-24 t=8035
 dan sheng 	诞生	c=2 d=1.55267e-24 t=8035
-dan shi 	但是	c=2827 d=3.53659 t=62894
+dan shi 	但是	c=2835 d=1.21517 t=64419
 dan shi bing 	单士兵	c=1 d=1.03511e-24 t=8035
 dan shi mei you 	但是没有	c=1 d=1.03511e-24 t=8035
 dan shi wo 	但是我	c=2 d=1 t=44339
@@ -2463,7 +2468,7 @@ dan zhang 	单张	c=1 d=1.03511e-24 t=8035
 dan zhi shi 	但只是	c=1 d=0.000155323 t=8035
 dan zi 	单子	c=63 d=1 t=57887
 dang 	党	c=4 d=2.58777e-24 t=8035
-dang 	当	c=129 d=1.99005 t=62522
+dang 	当	c=130 d=1.03737 t=63317
 dang 	挡	c=9 d=5.17556e-24 t=8035
 dang 	档	c=23 d=1 t=61721
 dang bing 	当兵	c=5 d=2.70984e-12 t=8035
@@ -2491,7 +2496,7 @@ dang zhen 	当真	c=1 d=1.03511e-24 t=8035
 dang zuo 	当作	c=5 d=3.10534e-24 t=8035
 dao 	倒	c=67 d=1 t=48315
 dao 	刀	c=70 d=1 t=63062
-dao 	到	c=1984 d=1.22767 t=62183
+dao 	到	c=1988 d=1.74248 t=63721
 dao 	导	c=37 d=1 t=47622
 dao 	岛	c=80 d=1.94393 t=59645
 dao 	道	c=7 d=4.14044e-24 t=8035
@@ -2534,7 +2539,7 @@ dao ru 	导入	c=42 d=2.38147e-12 t=8035
 dao ru guo lai 	导入过来	c=1 d=1.51592e-12 t=8035
 dao shi 	倒是	c=110 d=1.07847 t=62732
 dao shi 	导师	c=102 d=1 t=24539
-dao shi hou 	到时候	c=65 d=1.00223 t=58278
+dao shi hou 	到时候	c=66 d=1 t=63914
 dao shou 	到手	c=9 d=5.17556e-24 t=8035
 dao shu 	倒数	c=4 d=2.58777e-24 t=8035
 dao tai 	倒台	c=2 d=1.55267e-24 t=8035
@@ -2557,11 +2562,11 @@ dao zhang 	到账	c=5 d=3.10534e-24 t=8035
 dao zhe 	倒着	c=1 d=1 t=39439
 dao zhe 	到这	c=1 d=1 t=13616
 dao zhi 	到职	c=1 d=1.03511e-24 t=8035
-dao zhi 	导致	c=431 d=1.16774 t=62860
+dao zhi 	导致	c=433 d=1.00747 t=64586
 dao zhi de 	导致的	c=2 d=1 t=17123
-de 	得	c=1241 d=1.03434 t=62891
+de 	得	c=1245 d=1.35632 t=64685
 de 	德	c=7 d=4.14044e-24 t=8035
-de 	的	c=26877 d=6.98533 t=63063
+de 	的	c=26991 d=13.9824 t=64738
 de bu dao 	得不到	c=1 d=1.03511e-24 t=8035
 de chu 	得出	c=2 d=1.55267e-24 t=8035
 de dao 	得到	c=62 d=1 t=55931
@@ -2573,7 +2578,7 @@ de xin ying shou 	得心应手	c=1 d=1.03511e-24 t=8035
 den 	扽	c=2 d=1.55267e-24 t=8035
 deng 	灯	c=17 d=1 t=14157
 deng 	登	c=190 d=1 t=61286
-deng 	等	c=491 d=1.84326 t=62448
+deng 	等	c=492 d=1.00006 t=64509
 deng 	邓	c=3 d=2.07022e-24 t=8035
 deng bu 	邓埠	c=1 d=1.03511e-24 t=8035
 deng chang 	登场	c=1 d=1.03511e-24 t=8035
@@ -2651,7 +2656,7 @@ di er lun 	第二轮	c=1 d=1.03511e-24 t=8035
 di er tian 	第二天	c=19 d=1 t=43691
 di er xiang 	第二项	c=1 d=1 t=16695
 di er zhong 	第二种	c=5 d=1.5886 t=55909
-di fang 	地方	c=213 d=1.00342 t=62790
+di fang 	地方	c=214 d=1.10629 t=63239
 di fu 	地府	c=3 d=2.07022e-24 t=8035
 di gui 	递归	c=6 d=3.62288e-24 t=8035
 di guo 	帝国	c=14 d=7.7633e-24 t=8035
@@ -2665,7 +2670,7 @@ di ka er 	笛卡尔	c=1 d=1.03511e-24 t=8035
 di li 	地理	c=2 d=1.55267e-24 t=8035
 di qiu 	地球	c=1 d=1.62639e-16 t=8035
 di qu 	地区	c=107 d=2.13051e-16 t=8035
-di que 	的确	c=847 d=1.36573 t=62858
+di que 	的确	c=850 d=1.83304 t=64109
 di ren 	敌人	c=3 d=3.21699e-09 t=8035
 di san fang 	第三方	c=1 d=1.03511e-24 t=8035
 di san ge 	第三个	c=1 d=1.03511e-24 t=8035
@@ -2773,7 +2778,7 @@ dian xing 	典型	c=5 d=3.10534e-24 t=8035
 dian yi ci 	点一次	c=2 d=1.55267e-24 t=8035
 dian yi ge 	点一个	c=1 d=1 t=11559
 dian yi xia 	点一下	c=19 d=1 t=47240
-dian ying 	电影	c=2 d=1.55267e-24 t=8035
+dian ying 	电影	c=3 d=1 t=63185
 dian yuan 	电源	c=10 d=1 t=39129
 dian zan 	点赞	c=2 d=1.55267e-24 t=8035
 dian zha 	电闸	c=1 d=1.03511e-24 t=8035
@@ -2787,7 +2792,7 @@ diao 	刁	c=2 d=1.55267e-24 t=8035
 diao 	吊	c=14 d=7.7633e-24 t=8035
 diao 	屌	c=11 d=6.21069e-24 t=8035
 diao 	掉	c=206 d=1 t=58671
-diao 	调	c=547 d=1.4066 t=62287
+diao 	调	c=549 d=1.53796 t=64611
 diao 	雕	c=3 d=2.07022e-24 t=8035
 diao bao 	调包	c=1 d=1.03511e-24 t=8035
 diao cha wen juan 	调查问卷	c=1 d=1.03511e-24 t=8035
@@ -2805,7 +2810,7 @@ diao xian 	掉线	c=1 d=1.03511e-24 t=8035
 diao yan 	调研	c=13 d=1.7788 t=62366
 diao yi ci 	调一次	c=1 d=0.0101528 t=8035
 diao yi ge 	调一个	c=1 d=0.128093 t=8035
-diao yong 	调用	c=190 d=1.46708 t=58914
+diao yong 	调用	c=192 d=1.01984 t=64266
 diao yu 	钓鱼	c=2 d=0.000620488 t=8035
 die 	叠	c=7 d=4.14044e-24 t=8035
 die 	爹	c=13 d=0.239309 t=8035
@@ -2829,6 +2834,7 @@ ding dian 	顶点	c=1 d=1.03511e-24 t=8035
 ding dong 	叮咚	c=2 d=1.55267e-24 t=8035
 ding dong ji 	叮咚鸡	c=6 d=3.62288e-24 t=8035
 ding duo 	顶多	c=31 d=1.0637 t=60500
+ding ge 	定个	c=1 d=1 t=63120
 ding ge 	顶个	c=1 d=1.03511e-24 t=8035
 ding ji 	顶级	c=1 d=4.84818e-13 t=8035
 ding ji zhuang 	顶级装	c=1 d=1.03511e-24 t=8035
@@ -2841,11 +2847,11 @@ ding shi qi 	定时器	c=4 d=2.58777e-24 t=8035
 ding shi ren wu 	定时任务	c=1 d=1.03511e-24 t=8035
 ding si 	顶死	c=1 d=1.03511e-24 t=8035
 ding tou 	定投	c=3 d=2.07022e-24 t=8035
-ding wei 	定位	c=108 d=1 t=44952
+ding wei 	定位	c=110 d=1.00563 t=64737
 ding xiang 	定向	c=2 d=1.55267e-24 t=8035
 ding xing 	定性	c=1 d=1.03511e-24 t=8035
 ding yi 	定义	c=66 d=1.0099 t=60876
-ding yue 	订阅	c=199 d=1 t=59256
+ding yue 	订阅	c=202 d=1.36149 t=63953
 ding ze 	定责	c=1 d=1.03511e-24 t=8035
 ding zhe 	盯着	c=1 d=1.03511e-24 t=8035
 ding zhen 	丁真	c=2 d=1.55267e-24 t=8035
@@ -2888,11 +2894,11 @@ dong qi 	冬祺	c=1 d=1.03511e-24 t=8035
 dong ruan 	东软	c=1 d=1.03511e-24 t=8035
 dong shou 	动手	c=2 d=1.55267e-24 t=8035
 dong ta 	动他	c=1 d=1 t=9823
-dong tai 	动态	c=75 d=1 t=51059
+dong tai 	动态	c=76 d=1 t=64379
 dong tian 	冬天	c=1 d=1.03511e-24 t=8035
 dong tu 	动图	c=1 d=1.03511e-24 t=8035
 dong wu 	动物	c=4 d=2.58777e-24 t=8035
-dong xi 	东西	c=327 d=1.98518 t=62340
+dong xi 	东西	c=328 d=1.00049 t=64002
 dong xue 	冬雪	c=1 d=1.03511e-24 t=8035
 dong xue lian 	东雪莲	c=3 d=2.07022e-24 t=8035
 dong ya 	东亚	c=0 d=0 t=8035
@@ -2904,7 +2910,7 @@ dou 	兜	c=1 d=1.03511e-24 t=8035
 dou 	抖	c=14 d=7.7633e-24 t=8035
 dou 	斗	c=11 d=6.21069e-24 t=8035
 dou 	豆	c=3 d=2.07022e-24 t=8035
-dou 	都	c=3223 d=1.89851 t=62440
+dou 	都	c=3229 d=1.08256 t=64527
 dou ba 	都把	c=1 d=1.03511e-24 t=8035
 dou ban 	豆瓣	c=7 d=4.14044e-24 t=8035
 dou bao 	豆包	c=2 d=1.55267e-24 t=8035
@@ -2986,7 +2992,7 @@ dou gua 	都挂	c=1 d=1.03511e-24 t=8035
 dou guo 	都过	c=1 d=1.03511e-24 t=8035
 dou hai 	都还	c=9 d=5.17556e-24 t=8035
 dou hai hao 	都还好	c=4 d=2.58777e-24 t=8035
-dou hai mei 	都还没	c=13 d=7.24582e-24 t=8035
+dou hai mei 	都还没	c=14 d=1 t=63312
 dou hai mei lai 	都还没来	c=1 d=1.03511e-24 t=8035
 dou hai you 	都还有	c=1 d=1.03511e-24 t=8035
 dou hai zai 	都还在	c=2 d=1.55267e-24 t=8035
@@ -3006,7 +3012,7 @@ dou jia 	抖加	c=1 d=1.03511e-24 t=8035
 dou jia 	都加	c=11 d=6.21069e-24 t=8035
 dou jia yi ge 	都加一个	c=1 d=1.03511e-24 t=8035
 dou jiang 	豆浆	c=4 d=2.58777e-24 t=8035
-dou jiao 	都叫	c=5 d=1 t=8359
+dou jiao 	都叫	c=5 d=0.1 t=64105
 dou jie 	都接	c=1 d=1.03511e-24 t=8035
 dou ka 	都卡	c=1 d=1.03511e-24 t=8035
 dou kai 	都开	c=3 d=1 t=46677
@@ -3023,7 +3029,7 @@ dou la ji 	都垃圾	c=1 d=1.03511e-24 t=8035
 dou lai 	都来	c=7 d=4.14044e-24 t=8035
 dou mai 	都买	c=2 d=1.55267e-24 t=8035
 dou mai lai 	都买来	c=1 d=1.03511e-24 t=8035
-dou mei 	都没	c=499 d=1 t=57652
+dou mei 	都没	c=501 d=1.00108 t=64736
 dou mei ba 	都没把	c=1 d=1.03511e-24 t=8035
 dou mei fa 	都没发	c=1 d=1 t=53089
 dou mei kong 	都没空	c=1 d=1.03511e-24 t=8035
@@ -3060,7 +3066,7 @@ dou sha yi si 	都啥意思	c=1 d=1 t=17053
 dou shan 	都删	c=1 d=1 t=36132
 dou shang 	都上	c=5 d=1 t=35192
 dou she zhi 	都设置	c=1 d=1.03511e-24 t=8035
-dou shi 	都是	c=1859 d=2.10041 t=61879
+dou shi 	都是	c=1863 d=1.04673 t=64712
 dou shi chang 	都市场	c=1 d=1.03511e-24 t=8035
 dou shi sha 	都是啥	c=1 d=1 t=26707
 dou shi zhi 	都是只	c=1 d=1.03511e-24 t=8035
@@ -3087,7 +3093,7 @@ dou xiu 	都修	c=1 d=1.03511e-24 t=8035
 dou xu yao 	都需要	c=5 d=3.10534e-24 t=8035
 dou xuan 	都选	c=1 d=1 t=51308
 dou ya 	豆芽	c=1 d=1.03511e-24 t=8035
-dou yao 	都要	c=252 d=1 t=62101
+dou yao 	都要	c=253 d=1.00004 t=64126
 dou yi ge 	都一个	c=1 d=1.03511e-24 t=8035
 dou yi jing 	都已经	c=1 d=1.03511e-24 t=8035
 dou yi yang 	都一样	c=29 d=1.00001 t=36115
@@ -3096,7 +3102,7 @@ dou yong bu wan 	都用不完	c=1 d=1.03511e-24 t=8035
 dou yong dao 	都用到	c=1 d=1.03511e-24 t=8035
 dou you 	都有	c=348 d=1 t=62951
 dou you dian 	都有点	c=3 d=2.07022e-24 t=8035
-dou zai 	都在	c=110 d=0.127324 t=54274
+dou zai 	都在	c=111 d=1 t=63858
 dou zai jia 	都在家	c=1 d=1 t=36444
 dou zai kan 	都在看	c=1 d=1.03511e-24 t=8035
 dou zai suan 	都在算	c=1 d=1 t=54275
@@ -3119,7 +3125,7 @@ du 	堵	c=7 d=1 t=25813
 du 	度	c=69 d=1 t=51608
 du 	毒	c=1 d=1.03511e-24 t=8035
 du 	独	c=1 d=1.03511e-24 t=8035
-du 	读	c=164 d=1 t=61223
+du 	读	c=165 d=1.00001 t=63462
 du 	赌	c=1 d=1.03511e-24 t=8035
 du bo 	赌博	c=5 d=3.10534e-24 t=8035
 du cai 	独裁	c=1 d=1.03511e-24 t=8035
@@ -3130,7 +3136,7 @@ du dong 	读懂	c=1 d=1 t=28116
 du du 	肚肚	c=3 d=2.07022e-24 t=8035
 du gu 	独孤	c=1 d=1.03511e-24 t=8035
 du guo 	度过	c=1 d=1.03511e-24 t=8035
-du li 	独立	c=2 d=1.55267e-24 t=8035
+du li 	独立	c=3 d=1 t=64450
 du qu 	读取	c=30 d=1 t=38688
 du ri ru nian 	度日如年	c=2 d=1 t=33624
 du shen 	独身	c=1 d=1.03511e-24 t=8035
@@ -3146,9 +3152,9 @@ du zhe 	读者	c=3 d=2.07022e-24 t=8035
 du zi 	肚子	c=7 d=4.14044e-24 t=8035
 du zi teng 	肚子疼	c=1 d=1.03511e-24 t=8035
 duan 	断	c=132 d=1 t=55112
-duan 	段	c=83 d=1.00184 t=28672
+duan 	段	c=85 d=1.9802 t=64621
 duan 	短	c=73 d=1 t=40681
-duan 	端	c=271 d=1 t=62370
+duan 	端	c=273 d=1.00767 t=64287
 duan 	葮	c=1 d=1.03511e-24 t=8035
 duan 	锻	c=1 d=1.03511e-24 t=8035
 duan bi wei na si 	断臂维纳斯	c=1 d=8.44818e-17 t=8035
@@ -3186,11 +3192,11 @@ duan yu 	短语	c=3 d=9.08103e-14 t=8035
 duan zhang qu yi 	断章取义	c=1 d=1.03511e-24 t=8035
 duan zi 	段子	c=2 d=1.55267e-24 t=8035
 dui 	堆	c=23 d=1 t=28118
-dui 	对	c=1757 d=1.46673 t=62836
+dui 	对	c=1760 d=1.24692 t=64525
 dui 	队	c=2 d=1 t=40188
 dui a 	对啊	c=15 d=8.2809e-24 t=8035
 dui ba 	对吧	c=93 d=1 t=29601
-dui bi 	对比	c=125 d=1 t=62435
+dui bi 	对比	c=126 d=1.00003 t=64517
 dui biao 	对标	c=1 d=1.03511e-24 t=8035
 dui biao 	队标	c=1 d=1.03511e-24 t=8035
 dui bu 	对不	c=1 d=1.03511e-24 t=8035
@@ -3208,7 +3214,7 @@ dui huan 	兑换	c=2 d=1.55267e-24 t=8035
 dui huan 	对换	c=1 d=1.03511e-24 t=8035
 dui ji 	堆积	c=45 d=0.1 t=44059
 dui ji liang 	堆积量	c=1 d=1 t=44060
-dui jie 	对接	c=122 d=6.36594e-23 t=8035
+dui jie 	对接	c=123 d=1 t=64744
 dui kang 	对抗	c=1 d=1.03511e-24 t=8035
 dui kang lu 	对抗路	c=4 d=2.58777e-24 t=8035
 dui kou 	对口	c=1 d=1.03511e-24 t=8035
@@ -3238,7 +3244,7 @@ dui ya 	对呀	c=1 d=1.03511e-24 t=8035
 dui yi 	对已	c=2 d=1.55267e-24 t=8035
 dui yi xia 	兑一下	c=2 d=1 t=28628
 dui yin 	对印	c=12 d=9.03424e-12 t=8035
-dui ying 	对应	c=160 d=1.31127 t=62381
+dui ying 	对应	c=164 d=2.24177 t=63622
 dui you 	队友	c=3 d=2.07022e-24 t=8035
 dui yu 	对于	c=44 d=1.00005 t=59328
 dui yuan 	队员	c=1 d=1.03511e-24 t=8035
@@ -3256,7 +3262,7 @@ dun hao 	顿号	c=2 d=1.55267e-24 t=8035
 dun zai 	蹲在	c=0 d=0.1 t=36419
 dun zai na 	蹲在那	c=1 d=1 t=36420
 dun zhe 	蹲着	c=1 d=1 t=39158
-duo 	多	c=1315 d=1.03514 t=62077
+duo 	多	c=1316 d=1.00005 t=64074
 duo 	夺	c=2 d=1.55267e-24 t=8035
 duo 	躲	c=1 d=1.03511e-24 t=8035
 duo an 	多按	c=1 d=1.03511e-24 t=8035
@@ -3342,7 +3348,7 @@ duo shuo 	多说	c=8 d=4.658e-24 t=8035
 duo tai 	多台	c=1 d=1.03511e-24 t=8035
 duo tao 	多套	c=2 d=1 t=28920
 duo tian 	多天	c=5 d=2.09266e-11 t=8035
-duo tiao 	多条	c=15 d=8.2809e-24 t=8035
+duo tiao 	多条	c=16 d=1 t=64308
 duo tui 	多推	c=40 d=1 t=61747
 duo xi 	多细	c=1 d=1.03511e-24 t=8035
 duo xi tong 	多系统	c=1 d=1.03511e-24 t=8035
@@ -3372,7 +3378,7 @@ e 	恶	c=2 d=1.55267e-24 t=8035
 e 	额	c=10 d=1 t=38378
 e 	饿	c=8 d=1 t=40210
 e 	鹅	c=53 d=1.00098 t=61321
-e du 	额度	c=159 d=1.59414 t=56225
+e du 	额度	c=160 d=1 t=64346
 e du yong guang 	额度用光	c=1 d=1 t=32461
 e e e 	鹅鹅鹅	c=1 d=1.03511e-24 t=8035
 e gao 	恶搞	c=1 d=1.03511e-24 t=8035
@@ -3431,7 +3437,7 @@ er mai 	而买	c=1 d=1 t=45692
 er mian 	二面	c=2 d=1.55267e-24 t=8035
 er nv 	儿女	c=1 d=1.03511e-24 t=8035
 er qi 	二期	c=4 d=2.58777e-24 t=8035
-er qie 	而且	c=293 d=1.03908 t=61098
+er qie 	而且	c=294 d=1 t=64400
 er sai 	耳塞	c=1 d=1.03511e-24 t=8035
 er shi 	二世	c=1 d=1.03511e-24 t=8035
 er shi 	二是	c=3 d=1 t=11308
@@ -3452,14 +3458,14 @@ er wo 	而我	c=3 d=2.07022e-24 t=8035
 er xian 	二线	c=1 d=1.03511e-24 t=8035
 er xuan yi 	二选一	c=1 d=1 t=30423
 er yan 	而言	c=2 d=1.55267e-24 t=8035
-er yi 	而已	c=115 d=1.03741 t=58817
+er yi 	而已	c=116 d=1 t=63712
 er ying gai 	而应该	c=1 d=1 t=36982
 er yong 	而用	c=2 d=1 t=39374
 er you 	二游	c=2 d=0.000294568 t=8035
 er zai 	而在	c=1 d=1.03511e-24 t=8035
 er zi 	儿子	c=11 d=6.21069e-24 t=8035
 er zu 	二组	c=1 d=1.03511e-24 t=8035
-fa 	发	c=5477 d=3.11877 t=62843
+fa 	发	c=5482 d=1.27329 t=64605
 fa 	法	c=20 d=0.063609 t=8035
 fa 	罚	c=3 d=2.07022e-24 t=8035
 fa ban 	发版	c=4 d=1 t=53392
@@ -3591,7 +3597,7 @@ fan dian 	饭店	c=2 d=1.55267e-24 t=8035
 fan du 	反读	c=1 d=1.03511e-24 t=8035
 fan dui 	反对	c=2 d=1.55267e-24 t=8035
 fan dui wo 	反对我	c=1 d=1.03511e-24 t=8035
-fan er 	反而	c=58 d=1 t=59087
+fan er 	反而	c=59 d=1 t=64319
 fan fan 	泛泛	c=1 d=1.03511e-24 t=8035
 fan fu 	反复	c=1 d=1.03511e-24 t=8035
 fan gai 	翻盖	c=1 d=1.03511e-24 t=8035
@@ -3600,7 +3606,7 @@ fan guang 	反光	c=1 d=1.03511e-24 t=8035
 fan guo 	翻过	c=1 d=1.03511e-24 t=8035
 fan guo lai 	反过来	c=11 d=6.21069e-24 t=8035
 fan hou 	饭后	c=2 d=1.55267e-24 t=8035
-fan hui 	返回	c=655 d=2.53273 t=60259
+fan hui 	返回	c=656 d=1 t=64396
 fan hui cha 	返回查	c=1 d=1.03511e-24 t=8035
 fan hui shi 	返回是	c=1 d=1.03511e-24 t=8035
 fan hui zhi 	返回值	c=23 d=1.24214e-23 t=8035
@@ -3633,7 +3639,7 @@ fan xiu 	返修	c=1 d=1.03511e-24 t=8035
 fan xu lie 	反序列	c=6 d=1 t=25640
 fan xu lie hua 	反序列化	c=4 d=2.58777e-24 t=8035
 fan ye 	翻页	c=2 d=5.65107e-14 t=8035
-fan yi 	翻译	c=82 d=1.51685 t=62033
+fan yi 	翻译	c=86 d=2.15313 t=63688
 fan ying 	反应	c=56 d=0.0485578 t=8035
 fan za 	繁杂	c=1 d=1 t=43747
 fan zao 	烦躁	c=3 d=2.07022e-24 t=8035
@@ -3641,17 +3647,17 @@ fan zhan 	反战	c=1 d=1 t=27992
 fan zhang 	反掌	c=5 d=1 t=35645
 fan zhe 	反者	c=1 d=1.03511e-24 t=8035
 fan zhe 	翻着	c=2 d=1.55267e-24 t=8035
-fan zheng 	反正	c=166 d=1 t=34385
+fan zheng 	反正	c=167 d=1 t=64071
 fan zheng o 	反正哦	c=1 d=1.03511e-24 t=8035
 fan zhuan 	翻转	c=2 d=1.55267e-24 t=8035
 fan zi 	贩子	c=8 d=4.658e-24 t=8035
 fan zui 	犯罪	c=3 d=1 t=14082
 fang 	房	c=69 d=1 t=40001
-fang 	放	c=349 d=1 t=62922
+fang 	放	c=350 d=1.18268 t=63262
 fang 	方	c=38 d=1 t=33342
 fang 	防	c=8 d=4.658e-24 t=8035
 fang an 	方案	c=135 d=1.08772 t=59294
-fang bian 	方便	c=207 d=1.73345 t=61533
+fang bian 	方便	c=208 d=1 t=64229
 fang bian dian 	方便点	c=2 d=1.55267e-24 t=8035
 fang bian kan 	方便看	c=1 d=1 t=11980
 fang bian mian 	方便面	c=1 d=1.03511e-24 t=8035
@@ -3663,7 +3669,7 @@ fang cuo 	放错	c=2 d=1 t=34491
 fang da 	放大	c=20 d=2.07403 t=20947
 fang da jing 	放大镜	c=5 d=3.10534e-24 t=8035
 fang dai 	房贷	c=5 d=1 t=26600
-fang dao 	放到	c=91 d=1.52729 t=60800
+fang dao 	放到	c=94 d=1.04719 t=64221
 fang di 	放低	c=1 d=1.03511e-24 t=8035
 fang dian 	放电	c=1 d=1.03511e-24 t=8035
 fang dong 	房东	c=11 d=1 t=38120
@@ -3691,7 +3697,7 @@ fang mian 	方面	c=17 d=1 t=38495
 fang qi 	放弃	c=42 d=2.22549e-23 t=8035
 fang ru 	放入	c=2 d=1.55267e-24 t=8035
 fang shang qu 	放上去	c=1 d=1.03511e-24 t=8035
-fang shi 	方式	c=213 d=1.00003 t=62469
+fang shi 	方式	c=217 d=1.03807 t=64649
 fang shou 	防守	c=1 d=1.03511e-24 t=8035
 fang si 	放肆	c=1 d=1.03511e-24 t=8035
 fang song 	放松	c=1 d=1.03511e-24 t=8035
@@ -3724,7 +3730,7 @@ fang zu 	房租	c=28 d=1 t=56183
 fei 	废	c=22 d=1.19038e-23 t=8035
 fei 	菲	c=1 d=1.03511e-24 t=8035
 fei 	费	c=5 d=1 t=38052
-fei 	非	c=190 d=1 t=53122
+fei 	非	c=191 d=1 t=63559
 fei 	飞	c=9 d=5.17556e-24 t=8035
 fei chang 	非常	c=55 d=1.41478 t=62072
 fei chang di 	非常低	c=1 d=1 t=51798
@@ -3793,8 +3799,8 @@ fen hong 	分红	c=7 d=4.14044e-24 t=8035
 fen hong 	粉红	c=1 d=1.03511e-24 t=8035
 fen ji 	分级	c=1 d=1.03511e-24 t=8035
 fen jia 	分家	c=2 d=1.55267e-24 t=8035
-fen kai 	分开	c=229 d=1.42826 t=59917
-fen lei 	分类	c=169 d=5.20802 t=54606
+fen kai 	分开	c=230 d=1 t=63580
+fen lei 	分类	c=173 d=1.64734 t=63706
 fen lei xing 	分类型	c=1 d=1.03511e-24 t=8035
 fen li 	分离	c=10 d=2.25813 t=18176
 fen li 	分立	c=1 d=1.03511e-24 t=8035
@@ -3817,7 +3823,7 @@ fen qing 	分清	c=1 d=1.03511e-24 t=8035
 fen qu 	分区	c=85 d=4.36576 t=44774
 fen qu bie 	分区别	c=1 d=1.03511e-24 t=8035
 fen qun 	分群	c=5 d=3.10534e-24 t=8035
-fen san 	分散	c=3 d=2.07022e-24 t=8035
+fen san 	分散	c=4 d=1 t=63681
 fen se 	粉色	c=1 d=1.03511e-24 t=8035
 fen shen 	分身	c=3 d=2.07022e-24 t=8035
 fen shu 	分数	c=4 d=2.58777e-24 t=8035
@@ -3837,10 +3843,10 @@ fen ye 	分页	c=41 d=1.86502 t=37942
 fen ye qi 	分页起	c=1 d=1.03511e-24 t=8035
 fen zhe me 	分这么	c=1 d=1.03511e-24 t=8035
 fen zhi 	分支	c=172 d=1 t=56531
-fen zhong 	分钟	c=327 d=1 t=61261
+fen zhong 	分钟	c=328 d=1 t=64726
 fen zi 	分子	c=5 d=3.10534e-24 t=8035
 fen zong 	分鬃	c=6 d=1 t=55513
-fen zu 	分组	c=45 d=2.38076e-23 t=8035
+fen zu 	分组	c=46 d=1 t=64405
 feng 	丰	c=54 d=2.50592 t=61635
 feng 	封	c=54 d=1 t=58726
 feng 	峰	c=15 d=8.2809e-24 t=8035
@@ -3948,11 +3954,12 @@ fu qian 	付钱	c=2 d=1.55267e-24 t=8035
 fu qu 	府区	c=1 d=1.03511e-24 t=8035
 fu shi 	辅食	c=1 d=1.03511e-24 t=8035
 fu shu 	负数	c=10 d=5.69312e-24 t=8035
+fu shua 	服刷	c=1 d=1 t=64083
 fu tian 	福田	c=2 d=1.55267e-24 t=8035
 fu tu 	附图	c=15 d=1 t=43453
 fu wen ben 	富文本	c=1 d=1.03511e-24 t=8035
 fu weng 	富翁	c=4 d=2.58777e-24 t=8035
-fu wu 	服务	c=1123 d=3.46397 t=62241
+fu wu 	服务	c=1137 d=2.76979 t=64290
 fu wu chuang 	服务窗	c=2 d=1.55267e-24 t=8035
 fu wu duan 	服务端	c=12 d=1 t=59241
 fu wu li 	服务里	c=1 d=1.03511e-24 t=8035
@@ -3992,7 +3999,7 @@ fu zong tong 	副总统	c=1 d=1.03511e-24 t=8035
 fu zui 	负罪	c=1 d=1.03511e-24 t=8035
 ga ga 	嘎嘎	c=1 d=1.03511e-24 t=8035
 gai 	丐	c=1 d=1.03511e-24 t=8035
-gai 	改	c=2130 d=1.53144 t=62350
+gai 	改	c=2141 d=1.74351 t=64680
 gai 	盖	c=7 d=4.14044e-24 t=8035
 gai 	该	c=181 d=1.01608 t=62291
 gai ba 	改吧	c=3 d=1 t=47782
@@ -4004,12 +4011,12 @@ gai biao 	改表	c=1 d=1 t=33266
 gai bu hui 	该不会	c=4 d=2.58777e-24 t=8035
 gai bu liao 	改不了	c=9 d=5.17556e-24 t=8035
 gai cha 	改查	c=4 d=1.84366 t=34776
-gai cheng 	改成	c=198 d=1.26061 t=55326
+gai cheng 	改成	c=199 d=1 t=64625
 gai cuo 	改错	c=6 d=3.62288e-24 t=8035
 gai dai ma 	该代码	c=1 d=1.03511e-24 t=8035
 gai dao 	改到	c=1 d=1.03511e-24 t=8035
 gai de 	改得	c=1 d=1.03511e-24 t=8035
-gai dong 	改动	c=374 d=1.03289 t=60142
+gai dong 	改动	c=375 d=1 t=64764
 gai dong dian 	改动点	c=7 d=0.000249763 t=8035
 gai fa 	该法	c=1 d=1.03511e-24 t=8035
 gai gai 	改改	c=13 d=7.24582e-24 t=8035
@@ -4031,6 +4038,7 @@ gai neng 	该能	c=1 d=1.03511e-24 t=8035
 gai nian 	概念	c=35 d=1.00024 t=56914
 gai nian ban 	概念版	c=9 d=1.00081 t=56929
 gai qu 	该去	c=1 d=1.03511e-24 t=8035
+gai ri 	改日	c=1 d=1 t=64102
 gai sha 	改啥	c=5 d=3.10534e-24 t=8035
 gai shan 	改善	c=1 d=1.03511e-24 t=8035
 gai si 	该死	c=14 d=7.7633e-24 t=8035
@@ -4040,7 +4048,7 @@ gai wen jian 	该文件	c=1 d=1.03511e-24 t=8035
 gai xia 	改下	c=36 d=1.01089 t=19647
 gai xia ban 	该下班	c=6 d=3.62288e-24 t=8035
 gai xie 	改写	c=3 d=2.07022e-24 t=8035
-gai yi xia 	改一下	c=19 d=1.5886 t=36845
+gai yi xia 	改一下	c=20 d=1 t=64533
 gai zao 	改造	c=17 d=0.0699482 t=8035
 gai zhang 	盖章	c=1 d=1 t=54245
 gan 	凲	c=4 d=2.58777e-24 t=8035
@@ -4068,7 +4076,7 @@ gan hei 	感黑	c=2 d=1.55267e-24 t=8035
 gan huo 	干活	c=15 d=1.29083 t=61596
 gan jin 	赶紧	c=10 d=1 t=42316
 gan jing 	干净	c=4 d=2.58777e-24 t=8035
-gan jue 	感觉	c=1414 d=1.12962 t=62746
+gan jue 	感觉	c=1422 d=1.11023 t=64759
 gan kai 	感慨	c=1 d=1.03511e-24 t=8035
 gan kai 	敢开	c=1 d=1.03511e-24 t=8035
 gan le 	干了	c=1 d=1.03511e-24 t=8035
@@ -4123,7 +4131,7 @@ gang ge 	刚个	c=1 d=1 t=58432
 gang gu 	港股	c=1 d=1.03511e-24 t=8035
 gang hao 	刚好	c=25 d=1 t=40791
 gang jia 	刚加	c=3 d=2.07022e-24 t=8035
-gang kai shi 	刚开始	c=9 d=1 t=23315
+gang kai shi 	刚开始	c=10 d=1 t=63976
 gang kan 	刚看	c=1 d=1.03511e-24 t=8035
 gang kou 	港口	c=1 d=1.03511e-24 t=8035
 gang lai 	刚来	c=2 d=1 t=26277
@@ -4210,14 +4218,14 @@ gao you xian ji 	高优先级	c=3 d=1.42528 t=21464
 gao zhi 	告知	c=1 d=1.03511e-24 t=8035
 gao zhong 	高中	c=8 d=1.29083 t=54383
 gao zhong di 	高中低	c=1 d=0.156453 t=8035
-ge 	个	c=4007 d=2.7511 t=63056
+ge 	个	c=4019 d=1.81149 t=64731
 ge 	割	c=4 d=1 t=26273
-ge 	各	c=30 d=1 t=53863
-ge 	哥	c=328 d=1.02349 t=62570
+ge 	各	c=31 d=1 t=63310
+ge 	哥	c=330 d=1.02304 t=64257
 ge 	哿	c=1 d=1.03511e-24 t=8035
 ge 	搁	c=19 d=1.03511e-23 t=8035
 ge 	格	c=5 d=3.10534e-24 t=8035
-ge 	歌	c=1322 d=4.0844 t=62726
+ge 	歌	c=1326 d=1.50723 t=64746
 ge 	隔	c=1 d=1.03511e-24 t=8035
 ge bi 	隔壁	c=71 d=1 t=34308
 ge bi qun 	隔壁群	c=1 d=0.0405589 t=8035
@@ -4232,7 +4240,7 @@ ge duo 	戈多	c=1 d=1 t=52521
 ge fang 	各方	c=2 d=1.55267e-24 t=8035
 ge fang mian 	各方面	c=3 d=2.07022e-24 t=8035
 ge ge 	个个	c=5 d=3.10534e-24 t=8035
-ge ge 	各个	c=111 d=1 t=60037
+ge ge 	各个	c=112 d=1 t=63656
 ge ge 	哥哥	c=1 d=1.03511e-24 t=8035
 ge ji 	各级	c=1 d=1.03511e-24 t=8035
 ge ji tian 	隔几天	c=1 d=1 t=14374
@@ -4242,6 +4250,7 @@ ge ju 	格局	c=18 d=9.83357e-24 t=8035
 ge li 	隔离	c=62 d=0.1 t=39091
 ge lie 	割裂	c=2 d=1.00001 t=30288
 ge lv 	格律	c=1 d=1.03511e-24 t=8035
+ge me 	个么	c=1 d=1 t=63718
 ge men 	哥们	c=24 d=1.29389e-23 t=8035
 ge ming 	革命	c=1 d=1.03511e-24 t=8035
 ge qu 	歌曲	c=188 d=1 t=61928
@@ -4261,7 +4270,7 @@ ge wei 	各位	c=2 d=1.55267e-24 t=8035
 ge wei shu 	个位数	c=6 d=2.15529e-05 t=8035
 ge xin 	革新	c=3 d=2.07022e-24 t=8035
 ge xing 	个性	c=8 d=4.658e-24 t=8035
-ge xing hua 	个性化	c=450 d=1 t=60078
+ge xing hua 	个性化	c=451 d=1 t=64638
 ge yang 	各样	c=1 d=1 t=9829
 ge yang xian 	郃阳县	c=1 d=1 t=40503
 ge yi 	个亿	c=1 d=1.03511e-24 t=8035
@@ -4270,10 +4279,10 @@ ge you 	各有	c=2 d=1.55267e-24 t=8035
 ge yue 	个月	c=81 d=1.2013 t=50675
 ge zhe 	隔着	c=9 d=5.17556e-24 t=8035
 ge zhe ge 	个这个	c=1 d=1.03511e-24 t=8035
-ge zhong 	各种	c=167 d=1.00514 t=60815
+ge zhong 	各种	c=168 d=1 t=64363
 ge zhong wo 	各种我	c=1 d=1 t=9509
 ge zi 	各自	c=5 d=1 t=35792
-gei 	给	c=1295 d=1.01768 t=62624
+gei 	给	c=1299 d=1.30786 t=64203
 gei chu 	给出	c=7 d=4.14044e-24 t=8035
 gei chu lai 	给出来	c=1 d=1.03511e-24 t=8035
 gei cuo 	给错	c=3 d=2.07022e-24 t=8035
@@ -4283,7 +4292,7 @@ gei gui 	给贵	c=1 d=1.03511e-24 t=8035
 gei guo 	给过	c=3 d=2.07022e-24 t=8035
 gei ji ge 	给几个	c=1 d=1.03511e-24 t=8035
 gei lv 	给绿	c=2 d=1.55267e-24 t=8035
-gei ni 	给你	c=492 d=1.00105 t=62020
+gei ni 	给你	c=497 d=1.16392 t=64710
 gei ni ge 	给你个	c=2 d=1.55267e-24 t=8035
 gei ni jia 	给你加	c=1 d=2.19352e-06 t=8035
 gei ni ma 	给你吗	c=4 d=2.58777e-24 t=8035
@@ -4291,12 +4300,13 @@ gei ni shuo 	给你说	c=2 d=1.55267e-24 t=8035
 gei o 	给哦	c=3 d=2.07022e-24 t=8035
 gei qian 	给钱	c=4 d=1 t=46668
 gei ren 	给人	c=4 d=2.58777e-24 t=8035
-gei ta 	给他	c=23 d=1 t=38148
+gei ta 	给他	c=24 d=1 t=64725
 gei ta 	给她	c=2 d=1.55267e-24 t=8035
 gei ta 	给它	c=1 d=1.03511e-24 t=8035
 gei ta men 	给他们	c=2 d=1.55267e-24 t=8035
-gei wo 	给我	c=411 d=1.5652 t=62544
+gei wo 	给我	c=412 d=1.00193 t=63884
 gei wo kan 	给我看	c=2 d=1.55267e-24 t=8035
+gei wo kan kan 	给我看看	c=1 d=1 t=64531
 gei wo men 	给我们	c=7 d=4.14044e-24 t=8035
 gei wo shuo 	给我说	c=2 d=1.55267e-24 t=8035
 gei wo zhe li 	给我这里	c=2 d=1.55267e-24 t=8035
@@ -4309,8 +4319,8 @@ gei yi xia 	给一下	c=10 d=1 t=60854
 gei yi xie 	给一些	c=2 d=1 t=9403
 gei zi ji 	给自己	c=1 d=1.03511e-24 t=8035
 gen 	根	c=19 d=1.03511e-23 t=8035
-gen 	跟	c=149 d=1.74453 t=61023
-gen ben 	根本	c=65 d=1 t=53541
+gen 	跟	c=150 d=1 t=63924
+gen ben 	根本	c=66 d=1 t=64156
 gen bu shang 	跟不上	c=5 d=1 t=24307
 gen ce 	跟测	c=26 d=1.3974e-23 t=8035
 gen de shang 	跟的上	c=1 d=1.03511e-24 t=8035
@@ -4336,7 +4346,7 @@ gen zhe 	跟着	c=22 d=1.94176 t=44453
 gen zhe ni 	跟着你	c=1 d=1.03511e-24 t=8035
 gen zhi 	根治	c=1 d=1.03511e-24 t=8035
 gen zong 	跟踪	c=5 d=3.10534e-24 t=8035
-geng 	更	c=176 d=1.58567 t=56496
+geng 	更	c=177 d=1 t=63735
 geng 	梗	c=2 d=1.55267e-24 t=8035
 geng an quan 	更安全	c=1 d=1.03511e-24 t=8035
 geng bao lu 	更暴露	c=1 d=1.03511e-24 t=8035
@@ -4529,19 +4539,19 @@ gu 	故	c=40 d=1 t=57416
 gu 	股	c=9 d=1 t=19621
 gu bao 	鼓包	c=1 d=1.03511e-24 t=8035
 gu cheng 	古城	c=4 d=1 t=14690
-gu ding 	固定	c=191 d=1 t=62300
+gu ding 	固定	c=193 d=1.0071 t=64510
 gu ding de 	固定的	c=1 d=1 t=34409
 gu ding le 	固定了	c=1 d=1.03511e-24 t=8035
 gu dong 	古董	c=9 d=5.17556e-24 t=8035
 gu ei 	古欸	c=1 d=1.03511e-24 t=8035
 gu fa 	古法	c=4 d=2.58777e-24 t=8035
-gu ge 	谷歌	c=77 d=1 t=62036
+gu ge 	谷歌	c=78 d=1.00328 t=63180
 gu gu 	咕咕	c=1 d=1.03511e-24 t=8035
 gu gu ga ga 	咕咕嘎嘎	c=2 d=1.55267e-24 t=8035
 gu gua en 	古挂嗯	c=1 d=1.03511e-24 t=8035
 gu hua 	固化	c=1 d=1 t=47147
 gu hui he 	骨灰盒	c=1 d=1.03511e-24 t=8035
-gu ji 	估计	c=584 d=1.1707 t=58691
+gu ji 	估计	c=587 d=1.067 t=64532
 gu ji 	顾忌	c=1 d=1.03511e-24 t=8035
 gu ji chang 	股机场	c=1 d=1.03511e-24 t=8035
 gu ji shi 	估计是	c=1 d=1.03511e-24 t=8035
@@ -4584,7 +4594,7 @@ gua zai 	挂载	c=6 d=1 t=57891
 gua zhe 	挂着	c=6 d=3.62288e-24 t=8035
 gua zi 	瓜子	c=2 d=1.55267e-24 t=8035
 guai 	乖	c=1 d=1.03511e-24 t=8035
-guai 	怪	c=246 d=1.04783 t=62855
+guai 	怪	c=247 d=1.08431 t=63359
 guai bao bao 	乖宝宝	c=1 d=1.03511e-24 t=8035
 guai bu de 	怪不得	c=23 d=1.24214e-23 t=8035
 guai guai 	怪怪	c=15 d=1 t=49131
@@ -4595,7 +4605,7 @@ guai shou 	怪兽	c=1 d=1.03511e-24 t=8035
 guan 	关	c=194 d=1.36164 t=62871
 guan 	官	c=6 d=3.62288e-24 t=8035
 guan 	惯	c=1 d=1.03511e-24 t=8035
-guan 	管	c=131 d=1 t=61277
+guan 	管	c=133 d=1.80261 t=63136
 guan 	观	c=2 d=1.55267e-24 t=8035
 guan an 	关按	c=1 d=1.03511e-24 t=8035
 guan bi 	关闭	c=242 d=1 t=62721
@@ -4621,10 +4631,10 @@ guan ka 	关卡	c=4 d=5.35898e-15 t=8035
 guan kai 	关开	c=1 d=1.03511e-24 t=8035
 guan kan 	观看	c=1 d=1.03511e-24 t=8035
 guan kong 	管控	c=5 d=3.10534e-24 t=8035
-guan li 	管理	c=328 d=1 t=53928
+guan li 	管理	c=334 d=2.90136 t=64174
 guan li ceng 	管理层	c=1 d=1 t=26562
 guan li duan 	管理段	c=8 d=1 t=43877
-guan li duan 	管理端	c=2 d=1.98511 t=48636
+guan li duan 	管理端	c=4 d=1.94649 t=64432
 guan li qi 	管理器	c=31 d=1 t=43526
 guan li yuan 	管理员	c=21 d=1 t=42319
 guan lian 	关联	c=77 d=1.85429 t=61662
@@ -4642,7 +4652,7 @@ guan wo 	关我	c=1 d=1 t=12660
 guan xi 	关系	c=182 d=1 t=60215
 guan xi du 	关系度	c=1 d=1.03511e-24 t=8035
 guan xia 	管辖	c=1 d=1.03511e-24 t=8035
-guan xin 	关心	c=39 d=1.00004 t=61460
+guan xin 	关心	c=40 d=1 t=64175
 guan yu 	关于	c=5 d=3.10534e-24 t=8035
 guan yuan 	官员	c=2 d=1 t=33566
 guan ze 	关则	c=1 d=1 t=39221
@@ -4714,7 +4724,7 @@ gun dong 	滚动	c=23 d=1 t=24920
 gun dong tiao 	滚动条	c=2 d=1.55267e-24 t=8035
 guo 	国	c=18 d=1 t=35989
 guo 	果	c=3 d=2.07022e-24 t=8035
-guo 	过	c=1019 d=2.9359 t=62796
+guo 	过	c=1020 d=1.00605 t=64033
 guo 	锅	c=7 d=4.14044e-24 t=8035
 guo bu liao 	过不了	c=2 d=1 t=16395
 guo bu qu 	过不去	c=1 d=1.03511e-24 t=8035
@@ -4755,7 +4765,7 @@ guo lai 	过来	c=239 d=1 t=62274
 guo lai de 	过来的	c=1 d=1.03511e-24 t=8035
 guo le 	过了	c=1 d=1.03511e-24 t=8035
 guo liang tian 	过两天	c=2 d=1.55267e-24 t=8035
-guo lv 	过滤	c=1038 d=1.00579 t=57748
+guo lv 	过滤	c=1042 d=1.69795 t=64283
 guo me 	过么	c=1 d=1.03511e-24 t=8035
 guo min 	国民	c=1 d=1 t=13207
 guo min 	过敏	c=6 d=3.62288e-24 t=8035
@@ -4800,7 +4810,7 @@ ha shuo 	哈说	c=16 d=8.79843e-24 t=8035
 ha xi 	哈希	c=2 d=1.74082 t=23231
 hai 	害	c=3 d=2.07022e-24 t=8035
 hai 	海	c=4 d=1 t=48598
-hai 	还	c=472 d=0.756339 t=62923
+hai 	还	c=474 d=1.69659 t=63342
 hai 	還	c=1 d=1.03511e-24 t=8035
 hai ba 	还把	c=2 d=1.55267e-24 t=8035
 hai bei 	还被	c=6 d=3.62288e-24 t=8035
@@ -4890,7 +4900,7 @@ hai lu chu 	还露出	c=11 d=1 t=59363
 hai ma 	海马	c=0 d=0 t=8035
 hai ma ti 	海马体	c=1 d=1.03511e-24 t=8035
 hai man 	海满	c=1 d=1.03511e-24 t=8035
-hai mei 	还没	c=754 d=1.92706 t=60524
+hai mei 	还没	c=755 d=1 t=63972
 hai mei dao 	还没到	c=17 d=1 t=37359
 hai mei ding 	还没定	c=1 d=1.03511e-24 t=8035
 hai mei dong 	还没动	c=1 d=1.03511e-24 t=8035
@@ -4907,8 +4917,9 @@ hai mei zhuang 	还没装	c=1 d=1.03511e-24 t=8035
 hai mei zou 	还没走	c=1 d=1.03511e-24 t=8035
 hai nan shou 	还难受	c=1 d=1.03511e-24 t=8035
 hai nei 	海内	c=1 d=1.03511e-24 t=8035
-hai neng 	还能	c=114 d=1.02559 t=62938
+hai neng 	还能	c=114 d=0.100152 t=64701
 hai neng bu neng 	还能不能	c=2 d=1.55267e-24 t=8035
+hai neng kan 	还能看	c=1 d=1 t=64702
 hai neng rang 	还能让	c=1 d=1.03511e-24 t=8035
 hai neng xuan 	还能选	c=1 d=1.03511e-24 t=8035
 hai neng yong 	还能用	c=5 d=3.10534e-24 t=8035
@@ -4927,7 +4938,7 @@ hai shang 	海上	c=7 d=1.96079 t=49316
 hai shang 	还上	c=1 d=1.03511e-24 t=8035
 hai shao 	还少	c=2 d=1.55267e-24 t=8035
 hai sheng 	还剩	c=2 d=1.55267e-24 t=8035
-hai shi 	还是	c=2342 d=2.19925 t=63027
+hai shi 	还是	c=2346 d=1.36824 t=64054
 hai shi chang 	还市场	c=1 d=1.03511e-24 t=8035
 hai shi dei 	还是得	c=1 d=1 t=59743
 hai shi kan 	还是看	c=1 d=1.03511e-24 t=8035
@@ -4944,7 +4955,7 @@ hai shuo sha 	还说啥	c=1 d=1.03511e-24 t=8035
 hai song 	还送	c=0 d=3.1751e-05 t=8035
 hai song ka 	还送卡	c=1 d=0.000319102 t=8035
 hai suan 	还算	c=1 d=1.03511e-24 t=8035
-hai ting 	还挺	c=7 d=4.14044e-24 t=8035
+hai ting 	还挺	c=8 d=1 t=63996
 hai ting duo 	还挺多	c=2 d=1.55267e-24 t=8035
 hai ting hao yong 	还挺好用	c=2 d=1.55267e-24 t=8035
 hai wai 	海外	c=32 d=1 t=50774
@@ -4977,7 +4988,7 @@ hai yong 	还用	c=12 d=1 t=51811
 hai yong bi 	还用比	c=1 d=1 t=41400
 hai yong ge 	还用个	c=1 d=1.03511e-24 t=8035
 hai yong sha 	还用啥	c=1 d=1.03511e-24 t=8035
-hai you 	还有	c=1054 d=1.00687 t=63059
+hai you 	还有	c=1055 d=1.00146 t=64366
 hai you dian 	还有点	c=10 d=5.69312e-24 t=8035
 hai you ge 	还有个	c=37 d=1 t=27366
 hai you hua 	还有话	c=1 d=1.03511e-24 t=8035
@@ -5056,10 +5067,10 @@ hang shu 	行数	c=4 d=2.58777e-24 t=8035
 hang wei 	行尾	c=5 d=3.10534e-24 t=8035
 hang ye 	行业	c=13 d=1 t=40775
 hang zhou 	杭州	c=3 d=2.07022e-24 t=8035
-hao 	号	c=630 d=1.18637 t=57695
-hao 	好	c=2234 d=1.20911 t=63028
+hao 	号	c=635 d=2.30231 t=64154
+hao 	好	c=2244 d=2.54096 t=64577
 hao 	耗	c=6 d=3.62288e-24 t=8035
-hao 	薅	c=4 d=2.58777e-24 t=8035
+hao 	薅	c=5 d=1 t=64364
 hao an 	毫安	c=1 d=1.03511e-24 t=8035
 hao ba 	好吧	c=265 d=1.38868 t=57279
 hao bai 	好白	c=1 d=1.03511e-24 t=8035
@@ -5088,7 +5099,7 @@ hao dong xi 	好东西	c=4 d=2.58777e-24 t=8035
 hao du 	好读	c=1 d=1.03511e-24 t=8035
 hao du 	豪赌	c=1 d=1.03511e-24 t=8035
 hao dui 	好对	c=4 d=2.58777e-24 t=8035
-hao duo 	好多	c=136 d=1 t=53744
+hao duo 	好多	c=137 d=1 t=64001
 hao duo ci 	好多次	c=5 d=3.10534e-24 t=8035
 hao duo ge 	好多个	c=3 d=2.07022e-24 t=8035
 hao duo nian 	好多年	c=2 d=1.55267e-24 t=8035
@@ -5173,7 +5184,7 @@ hao tong 	好痛	c=1 d=1.03511e-24 t=8035
 hao wan 	好玩	c=12 d=6.72822e-24 t=8035
 hao wen ti 	好问题	c=1 d=1.03511e-24 t=8035
 hao wu liao 	好无聊	c=1 d=1.03511e-24 t=8035
-hao xiang 	好像	c=1987 d=1.88261 t=62874
+hao xiang 	好像	c=1992 d=1.88576 t=64664
 hao xiang 	好象	c=1 d=1.03511e-24 t=8035
 hao xiang jiao 	好香蕉	c=1 d=1.03511e-24 t=8035
 hao xiang mei 	好像没	c=2 d=1 t=22329
@@ -5199,8 +5210,8 @@ hao zhan 	好战	c=1 d=1 t=51874
 hao zhao 	好找	c=1 d=1.03511e-24 t=8035
 hao zhao li 	号召力	c=1 d=1.03511e-24 t=8035
 he 	何	c=1 d=1.03511e-24 t=8035
-he 	合	c=107 d=1.00911 t=61327
-he 	和	c=3803 d=1.80208 t=62436
+he 	合	c=110 d=1.06903 t=64594
+he 	和	c=3814 d=2.57454 t=64760
 he 	喝	c=46 d=1 t=40715
 he 	核	c=15 d=8.2809e-24 t=8035
 he 	河	c=8 d=0.0154643 t=8035
@@ -5226,7 +5237,7 @@ he jiu 	喝酒	c=5 d=3.10534e-24 t=8035
 he kuang 	何况	c=7 d=1 t=46985
 he li 	合理	c=37 d=1 t=62115
 he li 	河里	c=2 d=1.55267e-24 t=8035
-he liu 	合流	c=14 d=1.18825 t=57696
+he liu 	合流	c=15 d=1 t=63333
 he ni 	和你	c=20 d=1.18637 t=58941
 he ni na 	和你那	c=1 d=1.03511e-24 t=8035
 he ni shi 	和你是	c=1 d=1.03511e-24 t=8035
@@ -5300,7 +5311,7 @@ hen da 	很大	c=45 d=1 t=59891
 hen dan teng 	很淡疼	c=2 d=1.55267e-24 t=8035
 hen di 	很低	c=19 d=1.03511e-23 t=8035
 hen duan 	很短	c=5 d=3.10534e-24 t=8035
-hen duo 	很多	c=671 d=1 t=61516
+hen duo 	很多	c=673 d=1.02317 t=64734
 hen duo ci 	很多次	c=5 d=3.10534e-24 t=8035
 hen duo de 	很多的	c=1 d=1.03511e-24 t=8035
 hen duo ge 	很多个	c=3 d=5.39889e-14 t=8035
@@ -5324,7 +5335,7 @@ hen hao 	很好	c=60 d=1.0009 t=49600
 hen hao an 	很好按	c=1 d=1 t=27781
 hen hao kan 	很好看	c=2 d=1 t=26408
 hen hao qi 	很好起	c=1 d=1.03511e-24 t=8035
-hen hao yong 	很好用	c=27 d=1 t=36303
+hen hao yong 	很好用	c=28 d=1 t=63209
 hen he li 	很合理	c=4 d=2.48002e-09 t=8035
 hen hen 	狠狠	c=13 d=7.24582e-24 t=8035
 hen hou 	很厚	c=2 d=1.55267e-24 t=8035
@@ -5363,7 +5374,7 @@ hen rong yi 	很容易	c=7 d=1 t=15854
 hen ruo 	很弱	c=1 d=1.03511e-24 t=8035
 hen ruo zhi 	很弱智	c=1 d=1 t=49011
 hen sha bi 	很傻逼	c=1 d=1 t=47261
-hen shao 	很少	c=120 d=1 t=62341
+hen shao 	很少	c=121 d=1.00592 t=63367
 hen shao yong 	很少用	c=4 d=2.58777e-24 t=8035
 hen shen ke 	很深刻	c=1 d=1 t=36401
 hen shi 	很是	c=1 d=1 t=25229
@@ -5406,7 +5417,7 @@ hong 	红	c=27 d=0.000271921 t=8035
 hong 	虹	c=0 d=0 t=8035
 hong bao 	红包	c=17 d=9.31597e-24 t=8035
 hong deng qu 	红灯区	c=1 d=1.03511e-24 t=8035
-hong dian 	红点	c=154 d=5.05901 t=63036
+hong dian 	红点	c=155 d=1.00097 t=64747
 hong guan 	宏观	c=1 d=1.03511e-24 t=8035
 hong guang 	红光	c=1 d=1.03511e-24 t=8035
 hong hong lie lie 	轰轰烈烈	c=1 d=1.03511e-24 t=8035
@@ -5415,7 +5426,7 @@ hong liu 	洪流	c=1 d=1.03511e-24 t=8035
 hong lou meng 	红楼梦	c=1 d=1.03511e-24 t=8035
 hong lv 	红绿	c=1 d=1.03511e-24 t=8035
 hong lv deng 	红绿灯	c=5 d=1.96079 t=25823
-hong meng 	鸿蒙	c=400 d=3.73569 t=62727
+hong meng 	鸿蒙	c=402 d=1.0011 t=64745
 hong meng ban 	鸿蒙版	c=1 d=1 t=47828
 hong mi 	红米	c=15 d=8.2809e-24 t=8035
 hong se 	红色	c=15 d=1.04328 t=34961
@@ -5445,11 +5456,11 @@ hou long 	喉咙	c=2 d=1.55267e-24 t=8035
 hou lu 	后路	c=3 d=2.07022e-24 t=8035
 hou lve 	后略	c=1 d=1.03511e-24 t=8035
 hou men 	后门	c=2 d=1.55267e-24 t=8035
-hou mian 	后面	c=709 d=1.03707 t=62363
+hou mian 	后面	c=711 d=1.07186 t=63893
 hou nian 	后年	c=1 d=1.03511e-24 t=8035
 hou nian 	猴年	c=1 d=1.03511e-24 t=8035
 hou qi 	后期	c=11 d=6.21069e-24 t=8035
-hou tai 	后台	c=1178 d=1.30689 t=61148
+hou tai 	后台	c=1185 d=5.68169 t=64462
 hou tai fa 	后台法	c=1 d=1.03511e-24 t=8035
 hou tai ma 	后台吗	c=1 d=1 t=57185
 hou teng le 	后疼了	c=1 d=1.03511e-24 t=8035
@@ -5490,7 +5501,7 @@ hu lian wang 	互联网	c=43 d=1 t=56777
 hu liao 	湖寮	c=1 d=1.03511e-24 t=8035
 hu lu 	葫芦	c=1 d=1.03511e-24 t=8035
 hu lu wa 	葫芦娃	c=2 d=1.55267e-24 t=8035
-hu lue 	忽略	c=178 d=1.41336 t=62124
+hu lue 	忽略	c=183 d=1.62646 t=64564
 hu nan 	湖南	c=2 d=1.55267e-24 t=8035
 hu nian 	虎年	c=1 d=1.03511e-24 t=8035
 hu nong 	糊弄	c=1 d=1.03511e-24 t=8035
@@ -5513,7 +5524,7 @@ hua 	化	c=53 d=1 t=60083
 hua 	华	c=6 d=3.62288e-24 t=8035
 hua 	画	c=436 d=2.87491 t=56137
 hua 	花	c=72 d=1 t=55507
-hua 	话	c=1640 d=1.38305 t=61139
+hua 	话	c=1644 d=1.07341 t=64593
 hua ban 	滑板	c=1 d=1.03511e-24 t=8035
 hua ban 	画板	c=1 d=1.03511e-24 t=8035
 hua bei 	花呗	c=5 d=3.10534e-24 t=8035
@@ -5525,7 +5536,7 @@ hua ding 	划定	c=1 d=1.03511e-24 t=8035
 hua dong 	滑动	c=4 d=1.72615 t=17383
 hua fei 	花费	c=1 d=1.03511e-24 t=8035
 hua fei 	话费	c=4 d=1 t=24695
-hua fen 	划分	c=4 d=2.58777e-24 t=8035
+hua fen 	划分	c=5 d=1 t=63572
 hua feng 	画风	c=2 d=1.55267e-24 t=8035
 hua hua 	画画	c=1 d=1.03511e-24 t=8035
 hua li 	话李	c=1 d=1.03511e-24 t=8035
@@ -5535,7 +5546,7 @@ hua qian 	花钱	c=26 d=1 t=55534
 hua qiang 	华强	c=1 d=1.03511e-24 t=8035
 hua qiang bei 	华强北	c=3 d=1 t=25630
 hua shao 	花哨	c=2 d=1.55267e-24 t=8035
-hua shuo 	话说	c=204 d=1 t=38165
+hua shuo 	话说	c=205 d=1 t=64661
 hua suan 	划算	c=5 d=1 t=56390
 hua tai 	华泰	c=1 d=1.03511e-24 t=8035
 hua teng 	花藤	c=2 d=1 t=38587
@@ -5572,12 +5583,12 @@ huan bu huan 	换不换	c=1 d=1 t=62222
 huan cheng 	换成	c=109 d=1 t=61526
 huan chong 	缓冲	c=4 d=1 t=9405
 huan chong qu 	缓冲区	c=1 d=1.03511e-24 t=8035
-huan cun 	缓存	c=288 d=1 t=58045
+huan cun 	缓存	c=292 d=1.0601 t=64762
 huan cun li 	缓存里	c=1 d=1.03511e-24 t=8035
 huan dao 	换到	c=2 d=1.55267e-24 t=8035
 huan diao 	换掉	c=1 d=1.03511e-24 t=8035
 huan gang 	换岗	c=1 d=1.03511e-24 t=8035
-huan ge 	换个	c=46 d=1 t=54644
+huan ge 	换个	c=47 d=1 t=64544
 huan gong zuo 	换工作	c=2 d=1.55267e-24 t=8035
 huan guo 	换过	c=5 d=3.10534e-24 t=8035
 huan hang 	换行	c=58 d=1 t=15575
@@ -5591,7 +5602,7 @@ huan ji qi 	换机器	c=1 d=1.03511e-24 t=8035
 huan jia ou 	换假偶	c=1 d=1.03511e-24 t=8035
 huan jian 	缓建	c=1 d=1.03511e-24 t=8035
 huan jie 	环节	c=2 d=1 t=14504
-huan jing 	环境	c=1743 d=1.01624 t=61020
+huan jing 	环境	c=1745 d=1.9802 t=64092
 huan ju hua 	换句话	c=2 d=1.55267e-24 t=8035
 huan le 	欢乐	c=3 d=2.07022e-24 t=8035
 huan lu 	环路	c=1 d=1.03511e-24 t=8035
@@ -5632,7 +5643,7 @@ huang wu 	荒芜	c=1 d=1 t=38384
 huang ye 	荒野	c=5 d=3.10534e-24 t=8035
 huang you 	黄油	c=5 d=3.10534e-24 t=8035
 huang zi 	幌子	c=1 d=1.03511e-24 t=8035
-hui 	会	c=2145 d=1.22133 t=62609
+hui 	会	c=2150 d=2.1893 t=64603
 hui 	回	c=139 d=1 t=54264
 hui 	汇	c=4 d=2.98187e-12 t=8035
 hui 	灰	c=257 d=1.8311 t=33756
@@ -5647,7 +5658,7 @@ hui bian 	会变	c=7 d=4.14044e-24 t=8035
 hui bian 	汇编	c=14 d=1 t=50623
 hui bian cheng 	会变成	c=1 d=1.03511e-24 t=8035
 hui bu 	回补	c=1 d=1.03511e-24 t=8035
-hui bu hui 	会不会	c=91 d=1.00657 t=49022
+hui bu hui 	会不会	c=92 d=1 t=63598
 hui bu qu 	回不去	c=3 d=2.07022e-24 t=8035
 hui ce 	回测	c=1 d=1 t=30516
 hui chan 	灰产	c=6 d=1 t=32184
@@ -5750,7 +5761,7 @@ huo che piao 	火车票	c=2 d=1.55267e-24 t=8035
 huo che zhan 	火车站	c=1 d=1.03511e-24 t=8035
 huo dao 	活到	c=1 d=1.03511e-24 t=8035
 huo de 	获得	c=1 d=1.03511e-24 t=8035
-huo dong 	活动	c=78 d=2.40362 t=57574
+huo dong 	活动	c=79 d=1 t=63324
 huo er 	活儿	c=1 d=1.03511e-24 t=8035
 huo gan 	活干	c=1 d=3.95846e-10 t=8035
 huo ge 	或个	c=1 d=1.03511e-24 t=8035
@@ -5781,7 +5792,7 @@ huo zai 	活在	c=4 d=2.58777e-24 t=8035
 huo zang 	火葬	c=1 d=1.03511e-24 t=8035
 huo ze 	或则	c=1 d=1.03511e-24 t=8035
 huo zhai 	火宅	c=1 d=1.03511e-24 t=8035
-huo zhe 	或者	c=831 d=1 t=59495
+huo zhe 	或者	c=833 d=1.96561 t=63444
 huo zhe 	活着	c=9 d=5.17556e-24 t=8035
 ji 	冀	c=2 d=1.55267e-24 t=8035
 ji 	几	c=50 d=2.63953e-23 t=8035
@@ -5804,6 +5815,7 @@ ji ba 	几把	c=8 d=4.658e-24 t=8035
 ji ba 	吉坝	c=1 d=1.03511e-24 t=8035
 ji bai 	几百	c=21 d=1.13862e-23 t=8035
 ji bai 	击败	c=1 d=1.03511e-24 t=8035
+ji bai ci 	几百次	c=1 d=1 t=64607
 ji bai ge 	几百个	c=9 d=1 t=40993
 ji bai hang 	几百行	c=2 d=1.55267e-24 t=8035
 ji bai kuai 	几百块	c=8 d=1 t=38626
@@ -5818,7 +5830,7 @@ ji ben mian 	基本面	c=1 d=1.03511e-24 t=8035
 ji ben pan 	基本盘	c=1 d=1.03511e-24 t=8035
 ji ben shang 	基本上	c=10 d=1 t=33987
 ji bian 	几遍	c=1 d=1.03511e-24 t=8035
-ji bie 	级别	c=56 d=1 t=47769
+ji bie 	级别	c=57 d=1 t=63319
 ji bing 	疾病	c=4 d=2.58777e-24 t=8035
 ji bu 	既不	c=1 d=1.03511e-24 t=8035
 ji bu 	记不	c=2 d=1.55267e-24 t=8035
@@ -5830,7 +5842,7 @@ ji cheng 	集成	c=69 d=1 t=12572
 ji chu 	基础	c=177 d=1 t=60437
 ji chu shu 	基础书	c=1 d=1.03511e-24 t=8035
 ji chuang 	机床	c=1 d=1.03511e-24 t=8035
-ji ci 	几次	c=119 d=1.0754 t=50432
+ji ci 	几次	c=120 d=1 t=64076
 ji cun qi 	寄存器	c=11 d=6.21069e-24 t=8035
 ji cuo 	记错	c=3 d=1 t=24437
 ji dan 	鸡蛋	c=8 d=1 t=51034
@@ -5889,7 +5901,7 @@ ji lai shuo 	级来说	c=2 d=1.55267e-24 t=8035
 ji le 	寄了	c=3 d=2.07022e-24 t=8035
 ji le 	极了	c=1 d=1.03511e-24 t=8035
 ji lei 	几类	c=1 d=1.03511e-24 t=8035
-ji lei 	积累	c=29 d=1.81465 t=55455
+ji lei 	积累	c=30 d=1 t=63511
 ji li 	集里	c=0 d=0 t=8035
 ji li gu lu 	集里咕噜	c=1 d=1.03511e-24 t=8035
 ji lie 	激烈	c=1 d=1.03511e-24 t=8035
@@ -5943,7 +5955,8 @@ ji shi ge 	几十个	c=22 d=1 t=37560
 ji shi kuai 	几十块	c=1 d=1 t=40363
 ji shi nian 	几十年	c=7 d=1 t=47308
 ji shi nian qian 	几十年前	c=1 d=1.03511e-24 t=8035
-ji shi tiao 	几十条	c=1 d=1 t=17217
+ji shi tiao 	几十条	c=2 d=1 t=63364
+ji shi tong xin 	即时通信	c=1 d=1 t=63626
 ji shi wan 	几十万	c=10 d=1 t=38671
 ji shu 	技术	c=84 d=1.01837 t=56997
 ji shu ce 	技术测	c=1 d=1.03511e-24 t=8035
@@ -5978,7 +5991,7 @@ ji xiao shi 	机小时	c=4 d=1 t=12731
 ji xie 	机械	c=6 d=3.62288e-24 t=8035
 ji xing 	机型	c=26 d=1.3974e-23 t=8035
 ji xiu 	机修	c=1 d=1.03511e-24 t=8035
-ji xu 	继续	c=253 d=1.04607 t=61179
+ji xu 	继续	c=260 d=3.54924 t=64660
 ji xu shuo 	继续说	c=1 d=1.03511e-24 t=8035
 ji xu yong 	继续用	c=1 d=0.000241172 t=8035
 ji ya 	挤压	c=1 d=1.03511e-24 t=8035
@@ -6011,7 +6024,7 @@ ji zi 	机子	c=17 d=9.31597e-24 t=8035
 jia 	价	c=14 d=1 t=25102
 jia 	伽	c=2 d=1.55267e-24 t=8035
 jia 	假	c=66 d=1 t=18761
-jia 	加	c=2732 d=1.01569 t=62583
+jia 	加	c=2744 d=1.10531 t=64761
 jia 	夹	c=3 d=2.07022e-24 t=8035
 jia 	嫁	c=5 d=3.10534e-24 t=8035
 jia 	家	c=136 d=1 t=47072
@@ -6084,9 +6097,10 @@ jia xia 	加下	c=1 d=1.03511e-24 t=8035
 jia xia 	甲下	c=1 d=1.03511e-24 t=8035
 jia xin 	加薪	c=3 d=2.07022e-24 t=8035
 jia ya 	加压	c=2 d=1.55267e-24 t=8035
-jia yi 	甲乙	c=2 d=1.55267e-24 t=8035
+jia yi 	甲乙	c=3 d=1 t=64425
 jia yi dian 	加一点	c=4 d=1 t=30804
 jia yi ge 	夹一个	c=7 d=1.22878 t=8432
+jia yi xia 	加一下	c=1 d=1 t=64426
 jia yi xia 	家一下	c=1 d=1.03511e-24 t=8035
 jia yi xie 	加一些	c=1 d=1.03511e-24 t=8035
 jia you 	加油	c=1 d=1.03511e-24 t=8035
@@ -6162,7 +6176,7 @@ jian qu 	减去	c=1 d=1.03511e-24 t=8035
 jian quan 	健全	c=9 d=5.17556e-24 t=8035
 jian quan 	鉴权	c=20 d=1.48432 t=52093
 jian ren 	兼任	c=1 d=1.03511e-24 t=8035
-jian rong 	兼容	c=176 d=1 t=61226
+jian rong 	兼容	c=177 d=1.00005 t=63199
 jian rong xing 	兼容性	c=1 d=1.03511e-24 t=8035
 jian ru 	键入	c=1 d=1.03511e-24 t=8035
 jian ru jia jing 	渐入佳境	c=1 d=1.03511e-24 t=8035
@@ -6225,7 +6239,7 @@ jiang xia 	降下	c=1 d=1.03511e-24 t=8035
 jiang xu 	降序	c=4 d=2.58777e-24 t=8035
 jiang yong 	将用	c=1 d=1.03511e-24 t=8035
 jiao 	交	c=43 d=1.0003 t=47318
-jiao 	叫	c=203 d=1.00025 t=59788
+jiao 	叫	c=206 d=2.13657 t=63814
 jiao 	教	c=7 d=4.14044e-24 t=8035
 jiao 	绞	c=1 d=1.03511e-24 t=8035
 jiao 	胶	c=1 d=1.03511e-24 t=8035
@@ -6288,7 +6302,7 @@ jiao xing 	侥幸	c=1 d=1.03511e-24 t=8035
 jiao xing 	叫醒	c=1 d=1.03511e-24 t=8035
 jiao xue 	教学	c=3 d=2.07022e-24 t=8035
 jiao xun 	教训	c=3 d=2.07022e-24 t=8035
-jiao yan 	校验	c=107 d=1 t=59515
+jiao yan 	校验	c=108 d=1 t=63749
 jiao yi 	交易	c=9 d=5.17556e-24 t=8035
 jiao yi suo 	交易所	c=3 d=2.07022e-24 t=8035
 jiao yu 	教育	c=9 d=5.17556e-24 t=8035
@@ -6303,7 +6317,7 @@ jie 	借	c=6 d=3.62288e-24 t=8035
 jie 	姐	c=8 d=4.06074e-16 t=8035
 jie 	届	c=25 d=1 t=24496
 jie 	幯	c=1 d=1.03511e-24 t=8035
-jie 	接	c=364 d=1.12682 t=60347
+jie 	接	c=366 d=1.03707 t=64636
 jie 	杰	c=4 d=1.99005 t=13789
 jie 	界	c=4 d=2.58777e-24 t=8035
 jie 	结	c=4 d=1 t=33413
@@ -6325,7 +6339,7 @@ jie fei 	劫匪	c=1 d=3.34882e-13 t=8035
 jie feng 	解封	c=1 d=1.03511e-24 t=8035
 jie ge 	借个	c=1 d=1.03511e-24 t=8035
 jie ge tu 	截个图	c=1 d=1 t=16146
-jie gou 	结构	c=277 d=1.956 t=61100
+jie gou 	结构	c=278 d=1 t=64461
 jie gou hua 	结构化	c=2 d=1.55267e-24 t=8035
 jie gou ti 	结构体	c=41 d=1 t=53639
 jie gou tu 	结构图	c=2 d=1.55267e-24 t=8035
@@ -6348,7 +6362,7 @@ jie jue 	解决	c=234 d=1 t=50532
 jie ke 	结课	c=1 d=1.03511e-24 t=8035
 jie ke xun 	杰克逊	c=1 d=1.03511e-24 t=8035
 jie kou 	借口	c=1 d=1.03511e-24 t=8035
-jie kou 	接口	c=1017 d=1.15367 t=61609
+jie kou 	接口	c=1023 d=2.83739 t=64262
 jie lun 	杰伦	c=1 d=1.03511e-24 t=8035
 jie lun 	结论	c=24 d=1 t=52028
 jie lve 	劫掠	c=1 d=3.87203e-15 t=8035
@@ -6367,7 +6381,7 @@ jie qu 	截取	c=1 d=1.03511e-24 t=8035
 jie qu 	街区	c=1 d=1.03511e-24 t=8035
 jie ri 	节日	c=1 d=1.03511e-24 t=8035
 jie ru 	介入	c=2 d=1.55267e-24 t=8035
-jie ru 	接入	c=474 d=1.00199 t=60553
+jie ru 	接入	c=476 d=1.5886 t=64754
 jie ru ceng 	接入层	c=2 d=1.91393 t=40683
 jie ru wo 	接入我	c=1 d=1.03511e-24 t=8035
 jie san 	解散	c=1 d=1.03511e-24 t=8035
@@ -6388,7 +6402,7 @@ jie suo 	解锁	c=9 d=0.0446009 t=8035
 jie tong 	接通	c=1 d=1.03511e-24 t=8035
 jie tu 	截图	c=49 d=2.58777e-23 t=8035
 jie wei 	结尾	c=3 d=2.07022e-24 t=8035
-jie xi 	解析	c=97 d=1.21331 t=54730
+jie xi 	解析	c=98 d=1 t=64472
 jie xia lai 	接下来	c=9 d=1.96079 t=41139
 jie ya 	解压	c=18 d=2.76253 t=53651
 jie yao 	解药	c=1 d=1.03511e-24 t=8035
@@ -6438,7 +6452,7 @@ jin kuai 	尽快	c=10 d=5.69312e-24 t=8035
 jin lai 	进来	c=67 d=1 t=48376
 jin lai le 	进来了	c=1 d=1.03511e-24 t=8035
 jin li 	尽力	c=1 d=1.03511e-24 t=8035
-jin liang 	尽量	c=29 d=1 t=51788
+jin liang 	尽量	c=30 d=1 t=63344
 jin men 	进门	c=2 d=1.55267e-24 t=8035
 jin mian 	进面	c=2 d=1.55267e-24 t=8035
 jin ming 	今明	c=2 d=1.55267e-24 t=8035
@@ -6463,7 +6477,7 @@ jin shi 	金狮	c=0 d=0 t=8035
 jin shi zi 	金狮子	c=1 d=1.03511e-24 t=8035
 jin shou zhi 	金手指	c=2 d=1.55267e-24 t=8035
 jin sui 	紧随	c=1 d=1.03511e-24 t=8035
-jin tian 	今天	c=561 d=1 t=61771
+jin tian 	今天	c=562 d=1 t=64598
 jin tian bu fa 	今天补发	c=1 d=1.03511e-24 t=8035
 jin tian you 	今天又	c=1 d=1 t=47510
 jin tou 	尽头	c=1 d=1.03511e-24 t=8035
@@ -6550,7 +6564,7 @@ jing zheng li 	竞争力	c=1 d=1.03511e-24 t=8035
 jing zhui 	颈椎	c=4 d=2.58777e-24 t=8035
 jing zhun 	精准	c=7 d=1.00003 t=37471
 jiu 	久	c=107 d=1 t=49983
-jiu 	就	c=5937 d=4.22066 t=62935
+jiu 	就	c=5948 d=2.25871 t=64769
 jiu 	救	c=28 d=1.50091e-23 t=8035
 jiu 	旧	c=38 d=1 t=62119
 jiu 	舅	c=1 d=1.03511e-24 t=8035
@@ -6627,7 +6641,7 @@ jiu ren 	救人	c=1 d=1.03511e-24 t=8035
 jiu ren 	旧人	c=1 d=1.03511e-24 t=8035
 jiu rong yi 	就容易	c=1 d=1.03511e-24 t=8035
 jiu ru 	九如	c=1 d=1.03511e-24 t=8035
-jiu shi 	就是	c=1676 d=1.36247 t=62430
+jiu shi 	就是	c=1682 d=2.07796 t=64627
 jiu shi e yu 	就是鳄鱼	c=1 d=1.03511e-24 t=8035
 jiu shi ge 	就是个	c=4 d=2.58777e-24 t=8035
 jiu shi zhe ge 	就是这个	c=1 d=1.03511e-24 t=8035
@@ -6644,7 +6658,7 @@ jiu wo zhe li 	就我这里	c=1 d=1.03511e-24 t=8035
 jiu xiang 	就像	c=11 d=0.00148848 t=8035
 jiu xiang 	就想	c=5 d=3.10534e-24 t=8035
 jiu xie 	就写	c=3 d=1 t=53537
-jiu xing 	就行	c=1455 d=1.03583 t=62817
+jiu xing 	就行	c=1468 d=2.00461 t=64679
 jiu xu 	就绪	c=1 d=1.03511e-24 t=8035
 jiu xu yao 	就需要	c=1 d=1.03511e-24 t=8035
 jiu xuan 	就选	c=1 d=1.03511e-24 t=8035
@@ -6709,7 +6723,7 @@ ju shi 	局势	c=1 d=1.03511e-24 t=8035
 ju shuo 	据说	c=21 d=1.13862e-23 t=8035
 ju tan 	巨贪	c=1 d=1.03511e-24 t=8035
 ju tang 	聚糖	c=1 d=1.03511e-24 t=8035
-ju ti 	具体	c=496 d=2.74279 t=62199
+ju ti 	具体	c=497 d=1.0252 t=63137
 ju ti de 	具体的	c=1 d=1.03511e-24 t=8035
 ju tuo 	句脱	c=2 d=1.55267e-24 t=8035
 ju wo 	据我	c=1 d=1.03511e-24 t=8035
@@ -6787,10 +6801,10 @@ kai chuang 	开窗	c=2 d=1.55267e-24 t=8035
 kai dao 	开刀	c=1 d=1.03511e-24 t=8035
 kai deng 	开灯	c=5 d=3.10534e-24 t=8035
 kai duo 	开多	c=2 d=1.55267e-24 t=8035
-kai fa 	开发	c=434 d=1.9326 t=62321
+kai fa 	开发	c=436 d=1.71535 t=64741
 kai fa ji 	开发机	c=12 d=2.86042 t=39432
 kai fa liang 	开发量	c=3 d=1 t=47999
-kai fa wan 	开发完	c=1 d=1 t=59253
+kai fa wan 	开发完	c=2 d=1 t=63892
 kai fa wang 	开发网	c=1 d=1 t=45822
 kai fa zhe 	开发者	c=19 d=1 t=28452
 kai fa zhong 	开发中	c=1 d=1.03511e-24 t=8035
@@ -6818,7 +6832,7 @@ kai nian 	开年	c=1 d=1.03511e-24 t=8035
 kai ping 	开屏	c=2 d=1.55267e-24 t=8035
 kai qi 	开启	c=30 d=1.01441 t=18257
 kai shai cha 	开筛查	c=1 d=1.03511e-24 t=8035
-kai shi 	开始	c=488 d=2.78966 t=62997
+kai shi 	开始	c=491 d=2.02318 t=64241
 kai shou 	开售	c=1 d=1.03511e-24 t=8035
 kai shou 	开首	c=1 d=1.03511e-24 t=8035
 kai shui 	开水	c=1 d=1.03511e-24 t=8035
@@ -6843,12 +6857,12 @@ kai zhe ge 	开这个	c=1 d=1.03511e-24 t=8035
 kai zhi 	开支	c=1 d=1.03511e-24 t=8035
 kai zhou hui 	开周会	c=1 d=1.03511e-24 t=8035
 kan 	坎	c=2 d=1.55267e-24 t=8035
-kan 	看	c=9316 d=4.83251 t=62847
+kan 	看	c=9323 d=2.32581 t=64701
 kan 	砍	c=61 d=1 t=51897
 kan ba 	看吧	c=2 d=1.55267e-24 t=8035
 kan ban 	看板	c=5 d=3.10534e-24 t=8035
 kan bu 	看不	c=1 d=1.03511e-24 t=8035
-kan bu chu 	看不出	c=1 d=1 t=27801
+kan bu chu 	看不出	c=2 d=1 t=63776
 kan bu chu lai 	看不出来	c=2 d=1 t=13419
 kan bu dao 	看不到	c=3 d=2.07022e-24 t=8035
 kan bu dong 	看不懂	c=9 d=1 t=53542
@@ -6856,9 +6870,9 @@ kan bu jian 	看不见	c=2 d=1 t=47121
 kan bu liao 	看不了	c=5 d=1 t=44727
 kan bu qi 	看不起	c=1 d=1.03511e-24 t=8035
 kan chu lai 	看出来	c=2 d=1.55267e-24 t=8035
-kan cuo 	看错	c=5 d=1 t=37146
+kan cuo 	看错	c=6 d=1 t=64414
 kan cuo wu 	看错误	c=1 d=1.03511e-24 t=8035
-kan dao 	看到	c=38 d=1.74826 t=47300
+kan dao 	看到	c=39 d=1 t=63673
 kan de 	看得	c=1 d=1.03511e-24 t=8035
 kan dong 	看懂	c=8 d=1 t=56443
 kan duo 	看多	c=2 d=1 t=27716
@@ -6866,7 +6880,7 @@ kan guo 	看过	c=8 d=1 t=34255
 kan hao 	看好	c=1 d=1 t=25842
 kan jian 	看见	c=5 d=1 t=9388
 kan jian guo 	看见过	c=2 d=1 t=33421
-kan kan 	看看	c=1111 d=1.09692 t=63019
+kan kan 	看看	c=1127 d=3.85015 t=64654
 kan kan jiu 	看看就	c=5 d=3.10534e-24 t=8035
 kan kan kan 	看看看	c=5 d=3.10534e-24 t=8035
 kan kan zhe ge 	看看这个	c=1 d=1 t=19208
@@ -6878,7 +6892,7 @@ kan ni 	看你	c=2 d=1.55267e-24 t=8035
 kan qi lai 	看起来	c=1 d=1.03511e-24 t=8035
 kan ren 	看人	c=1 d=1.03511e-24 t=8035
 kan sha 	砍杀	c=3 d=2.07022e-24 t=8035
-kan shang qu 	看上去	c=177 d=1.96497 t=62215
+kan shang qu 	看上去	c=180 d=1.18981 t=64078
 kan shang qu mei 	看上去没	c=1 d=1.03511e-24 t=8035
 kan shang qu shi 	看上去是	c=2 d=1.55267e-24 t=8035
 kan shang qu you 	看上去有	c=1 d=1.03511e-24 t=8035
@@ -6917,7 +6931,7 @@ kao kao kao kao kao 	靠靠靠靠靠	c=1 d=1.03511e-24 t=8035
 kao kao kao kao kao kao kao 	考考靠靠靠靠靠	c=1 d=1.03511e-24 t=8035
 kao kao kao kao kao kao kao kao kao kao kao kao 	靠靠靠靠靠靠靠靠靠靠靠靠	c=1 d=1.03511e-24 t=8035
 kao kao kao kao kao kao kao kao kao kao kao kao kao kao 	考考考考靠靠靠靠靠靠靠靠靠靠	c=1 d=1.03511e-24 t=8035
-kao lv 	考虑	c=73 d=1.08848 t=40270
+kao lv 	考虑	c=74 d=1 t=63213
 kao lv le 	考虑了	c=1 d=1 t=15356
 kao qian 	靠前	c=1 d=1.03511e-24 t=8035
 kao qin 	考勤	c=5 d=3.10534e-24 t=8035
@@ -6960,7 +6974,7 @@ ke guan 	客观	c=1 d=1.03511e-24 t=8035
 ke hai xing 	可还行	c=6 d=3.62288e-24 t=8035
 ke han 	可汗	c=9 d=5.17556e-24 t=8035
 ke hu 	客户	c=33 d=1.75969e-23 t=8035
-ke hu duan 	客户端	c=1272 d=2.49085 t=62898
+ke hu duan 	客户端	c=1276 d=1.74987 t=64666
 ke huang shang 	可皇上	c=1 d=1 t=29224
 ke ji 	科技	c=6 d=3.62288e-24 t=8035
 ke ji gu 	科技股	c=2 d=1 t=19618
@@ -6977,7 +6991,7 @@ ke lian 	可怜	c=3 d=2.07022e-24 t=8035
 ke lin 	科林	c=4 d=2.58777e-24 t=8035
 ke long 	克隆	c=2 d=1.55267e-24 t=8035
 ke mei 	可没	c=1 d=1.03511e-24 t=8035
-ke neng 	可能	c=993 d=1.00001 t=62865
+ke neng 	可能	c=997 d=3.76502 t=64583
 ke nu chi 	可怒斥	c=1 d=1.03511e-24 t=8035
 ke pa 	可怕	c=2 d=1.55267e-24 t=8035
 ke pei zhi 	可配置	c=4 d=2.58777e-24 t=8035
@@ -6997,7 +7011,7 @@ ke xuan 	可选	c=17 d=1 t=51502
 ke xue 	科学	c=23 d=2.65273 t=47067
 ke xue jia 	科学家	c=2 d=1 t=8187
 ke yi 	刻意	c=1 d=1.03511e-24 t=8035
-ke yi 	可以	c=4079 d=2.08124 t=62876
+ke yi 	可以	c=4110 d=3.7788 t=64739
 ke yi 	可疑	c=2 d=1.55267e-24 t=8035
 ke yi hai xing 	可以还行	c=1 d=1.03511e-24 t=8035
 ke yi kan 	可以看	c=1 d=1.03511e-24 t=8035
@@ -7014,7 +7028,7 @@ ke zhi xing 	可执行	c=3 d=2.07022e-24 t=8035
 ke zi 	壳子	c=1 d=1.03511e-24 t=8035
 ken 	啃	c=6 d=3.62288e-24 t=8035
 ken de ji 	肯德基	c=2 d=1.55267e-24 t=8035
-ken ding 	肯定	c=522 d=1.22781 t=62759
+ken ding 	肯定	c=525 d=1.94507 t=64398
 ken ni 	肯尼	c=1 d=1.03511e-24 t=8035
 keng 	坑	c=31 d=1.65618e-23 t=8035
 keng die 	坑爹	c=1 d=1.03511e-24 t=8035
@@ -7022,7 +7036,7 @@ keng ren 	坑人	c=2 d=1.55267e-24 t=8035
 kong 	孔	c=2 d=1.70822 t=38188
 kong 	恐	c=1 d=1.03511e-24 t=8035
 kong 	控	c=1178 d=1.00003 t=53880
-kong 	空	c=689 d=1 t=62805
+kong 	空	c=691 d=1.65761 t=63665
 kong bai 	空白	c=17 d=9.31597e-24 t=8035
 kong bai ye 	空白页	c=1 d=1.03511e-24 t=8035
 kong biao 	空表	c=1 d=1.03511e-24 t=8035
@@ -7114,6 +7128,7 @@ kuai shou 	快手	c=1 d=1.03511e-24 t=8035
 kuai shu 	快书	c=1 d=1.03511e-24 t=8035
 kuai su 	快速	c=105 d=1.90484 t=59101
 kuai yi dian 	快一点	c=4 d=2.58777e-24 t=8035
+kuai zhao 	快照	c=1 d=1 t=64159
 kuan 	宽	c=5 d=3.10534e-24 t=8035
 kuan du 	宽度	c=15 d=8.2809e-24 t=8035
 kuang 	框	c=41 d=2.17373e-23 t=8035
@@ -7170,7 +7185,7 @@ la kuang 	拉框	c=3 d=1.00024 t=31312
 la la 	拉拉	c=1 d=1.03511e-24 t=8035
 la man 	拉满	c=8 d=0.062718 t=8035
 la piao 	拉票	c=1 d=1.03511e-24 t=8035
-la qi 	拉起	c=85 d=3.19274 t=59052
+la qi 	拉起	c=88 d=1.21237 t=63588
 la qi de 	拉起的	c=1 d=1.03511e-24 t=8035
 la qi lai 	拉起来	c=1 d=1.03511e-24 t=8035
 la qi ling dong dao 	拉起灵动岛	c=1 d=1 t=58952
@@ -7189,12 +7204,12 @@ la xia lai 	拉下来	c=4 d=2.58777e-24 t=8035
 la yi ci 	啦一次	c=1 d=1.03511e-24 t=8035
 la zhe 	拉着	c=1 d=1.03511e-24 t=8035
 lai 	庲	c=1 d=1.03511e-24 t=8035
-lai 	来	c=1295 d=2.7098 t=63024
+lai 	来	c=1296 d=1.44569 t=63385
 lai 	莱	c=2 d=1.55267e-24 t=8035
 lai 	赖	c=1 d=1.03511e-24 t=8035
 lai ba 	来吧	c=1 d=1.03511e-24 t=8035
 lai ba 	来把	c=1 d=1.03511e-24 t=8035
-lai bu ji 	来不及	c=29 d=1 t=60667
+lai bu ji 	来不及	c=31 d=1.04221 t=63940
 lai cha 	来查	c=2 d=1.55267e-24 t=8035
 lai chuang 	赖床	c=1 d=1.03511e-24 t=8035
 lai de 	来得	c=5 d=3.10534e-24 t=8035
@@ -7207,7 +7222,7 @@ lai duo shao 	来多少	c=1 d=1.03511e-24 t=8035
 lai fa 	来发	c=2 d=1.55267e-24 t=8035
 lai fen zhong 	来分钟	c=1 d=1.44473e-05 t=8035
 lai feng 	来凤	c=1 d=1.03511e-24 t=8035
-lai ge 	来个	c=164 d=1 t=62590
+lai ge 	来个	c=165 d=1.00044 t=64137
 lai gei ni 	来给你	c=1 d=1 t=52596
 lai gong si 	来公司	c=1 d=1.03511e-24 t=8035
 lai hui 	来回	c=8 d=1 t=38711
@@ -7254,13 +7269,13 @@ lan gou 	蓝够	c=7 d=4.14044e-24 t=8035
 lan guang 	蓝光	c=1 d=1.03511e-24 t=8035
 lan jia zai 	懒加载	c=23 d=1.24214e-23 t=8035
 lan jiao 	懒觉	c=4 d=2.58777e-24 t=8035
-lan jie 	拦截	c=630 d=1 t=59016
+lan jie 	拦截	c=633 d=1.17803 t=64756
 lan jie lv 	拦截率	c=1 d=1.03511e-24 t=8035
 lan jie qi 	拦截器	c=2 d=1.55267e-24 t=8035
 lan jing 	蓝鲸	c=2 d=1 t=13123
 lan liang 	懒量	c=1 d=1.03511e-24 t=8035
 lan qiu 	篮球	c=1 d=1.03511e-24 t=8035
-lan ren 	懒人	c=437 d=1.01587 t=59251
+lan ren 	懒人	c=439 d=1.57984 t=64742
 lan se 	蓝色	c=19 d=1 t=27257
 lan shou 	滥收	c=1 d=1.03511e-24 t=8035
 lan wei lou 	烂尾楼	c=1 d=1.03511e-24 t=8035
@@ -7273,7 +7288,7 @@ lang hao 	狼毫	c=1 d=1.03511e-24 t=8035
 lang ni 	朗尼	c=6 d=3.62288e-24 t=8035
 lao 	佬	c=7 d=1 t=32549
 lao 	捞	c=268 d=2.64153 t=43260
-lao 	老	c=1201 d=2.047 t=61308
+lao 	老	c=1204 d=1.00908 t=64646
 lao bai xing 	老百姓	c=2 d=1 t=47123
 lao ban 	老板	c=105 d=1.64517 t=62517
 lao ban ban 	老班办	c=4 d=2.58777e-24 t=8035
@@ -7342,7 +7357,7 @@ lao xiang 	老想	c=1 d=1.03511e-24 t=8035
 lao xiang mu 	老项目	c=2 d=1.55267e-24 t=8035
 lao xue zhang 	老学长	c=1 d=1 t=30139
 lao yang 	老杨	c=1 d=1.03511e-24 t=8035
-lao ye 	老爷	c=18 d=1.1108 t=56015
+lao ye 	老爷	c=19 d=1 t=63315
 lao ye men 	老爷们	c=2 d=1 t=45486
 lao you tiao 	老油条	c=1 d=1 t=40764
 lao you xi 	老游戏	c=1 d=1 t=39654
@@ -7351,7 +7366,7 @@ lao yuan gong 	老员工	c=1 d=1.03511e-24 t=8035
 lao zhong 	老中	c=4 d=2.58777e-24 t=8035
 lao zong 	老总	c=1 d=1.03511e-24 t=8035
 le 	乐	c=24 d=1.99501 t=53033
-le 	了	c=20825 d=10.1701 t=63064
+le 	了	c=20866 d=6.71565 t=64766
 le guan 	乐观	c=4 d=2.58777e-24 t=8035
 le ji sheng bei 	乐极生悲	c=1 d=1.03511e-24 t=8035
 le qu 	乐趣	c=1 d=1.03511e-24 t=8035
@@ -7359,7 +7374,7 @@ le shi 	乐视	c=1 d=1 t=25195
 le zi 	乐子	c=1 d=1.03511e-24 t=8035
 lei 	泪	c=3 d=2.07022e-24 t=8035
 lei 	磊	c=2 d=1.55267e-24 t=8035
-lei 	类	c=171 d=1.31119 t=54775
+lei 	类	c=173 d=1.06329 t=63954
 lei 	累	c=40 d=1 t=45869
 lei 	雷	c=7 d=4.14044e-24 t=8035
 lei bie 	类别	c=73 d=1.80255 t=54698
@@ -7397,7 +7412,7 @@ li 	礼	c=6 d=3.62288e-24 t=8035
 li 	离	c=35 d=1 t=38703
 li 	立	c=6 d=3.62288e-24 t=8035
 li 	莉	c=4 d=2.58777e-24 t=8035
-li 	里	c=1644 d=1.87963 t=61511
+li 	里	c=1650 d=1.74186 t=63842
 li bao 	礼包	c=8 d=1 t=61985
 li biao 	立标	c=1 d=1.03511e-24 t=8035
 li bu kai 	离不开	c=4 d=2.58777e-24 t=8035
@@ -7418,7 +7433,7 @@ li jia 	离家	c=6 d=3.62288e-24 t=8035
 li jie 	理解	c=89 d=1.03159 t=61054
 li kai 	离开	c=11 d=1 t=40052
 li ke 	理科	c=5 d=3.10534e-24 t=8035
-li ke 	立刻	c=78 d=1 t=27213
+li ke 	立刻	c=79 d=1 t=64349
 li kou 	沥口	c=1 d=1.03511e-24 t=8035
 li li 	莉莉	c=15 d=8.2809e-24 t=8035
 li li zai mu 	历历在目	c=1 d=1.03511e-24 t=8035
@@ -7430,7 +7445,7 @@ li lun shang 	理论上	c=8 d=1 t=46819
 li lv 	利率	c=2 d=1 t=35957
 li man 	黎曼	c=1 d=1 t=19785
 li mi tang 	里米糖	c=2 d=1.55267e-24 t=8035
-li mian 	里面	c=443 d=1.13269 t=61619
+li mian 	里面	c=447 d=1.34587 t=64224
 li nian 	理念	c=1 d=1.03511e-24 t=8035
 li pin 	礼品	c=14 d=7.7633e-24 t=8035
 li pu 	离谱	c=91 d=1 t=14171
@@ -7446,7 +7461,7 @@ li ti 	立体	c=1 d=1.03511e-24 t=8035
 li wo 	理我	c=2 d=1.55267e-24 t=8035
 li wu 	礼物	c=3 d=2.07022e-24 t=8035
 li xi 	利息	c=11 d=1 t=35937
-li xian 	离线	c=2281 d=1.13344 t=62879
+li xian 	离线	c=2285 d=1.40595 t=63861
 li xian he 	离线和	c=1 d=1 t=11840
 li xiang 	理想	c=1 d=1.03511e-24 t=8035
 li xiang zhu yi 	理想主义	c=1 d=1.03511e-24 t=8035
@@ -7459,7 +7474,7 @@ li yong lv 	利用率	c=1 d=1.03511e-24 t=8035
 li you 	理由	c=2 d=1.55267e-24 t=8035
 li yu 	俚语	c=1 d=1.03511e-24 t=8035
 li zhi 	离职	c=26 d=1 t=54259
-li zi 	例子	c=54 d=1.12063 t=59989
+li zi 	例子	c=58 d=3.19074 t=64631
 lian 	恋	c=2 d=1.55267e-24 t=8035
 lian 	练	c=11 d=1 t=36421
 lian 	联	c=7 d=4.14044e-24 t=8035
@@ -7483,13 +7498,13 @@ lian hua 	炼化	c=3 d=2.07022e-24 t=8035
 lian ji 	联机	c=5 d=3.10534e-24 t=8035
 lian jia 	廉价	c=3 d=1 t=25718
 lian jie 	连接	c=80 d=1.01414 t=39540
-lian jie 	链接	c=564 d=1.00044 t=61696
+lian jie 	链接	c=568 d=1.98074 t=64536
 lian jie chi 	连接池	c=5 d=1 t=23601
 lian jie ku 	链接库	c=1 d=1.03511e-24 t=8035
 lian jie qi 	连接器	c=1 d=1.03511e-24 t=8035
 lian jin shu 	炼金术	c=1 d=1 t=58420
 lian lai shuo 	连来说	c=3 d=2.07022e-24 t=8035
-lian lu 	链路	c=338 d=3.02151 t=62180
+lian lu 	链路	c=340 d=1.20405 t=64193
 lian meng 	联盟	c=1 d=1.03511e-24 t=8035
 lian nian 	连年	c=1 d=1.03511e-24 t=8035
 lian pi 	脸皮	c=1 d=1.03511e-24 t=8035
@@ -7539,7 +7554,7 @@ liang fang 	两方	c=3 d=2.07022e-24 t=8035
 liang fen 	两份	c=4 d=2.58777e-24 t=8035
 liang fen 	凉粉	c=1 d=1 t=25361
 liang ge 	两个	c=829 d=1.07394 t=62948
-liang ge ren 	两个人	c=2 d=1.55267e-24 t=8035
+liang ge ren 	两个人	c=3 d=1 t=63183
 liang ge yue 	两个月	c=16 d=1 t=61672
 liang ge zi 	两个字	c=1 d=1.03511e-24 t=8035
 liang gen 	两根	c=1 d=1.03511e-24 t=8035
@@ -7635,7 +7650,7 @@ ling dao 	领导	c=15 d=1 t=51508
 ling dao men 	领导们	c=1 d=1.03511e-24 t=8035
 ling di 	领地	c=2 d=5.59214e-16 t=8035
 ling dong 	灵动	c=47 d=1 t=55062
-ling dong dao 	灵动岛	c=155 d=1.9383 t=61642
+ling dong dao 	灵动岛	c=164 d=2.35399 t=64758
 ling gan 	灵感	c=2 d=1.55267e-24 t=8035
 ling guang 	灵光	c=0 d=0 t=8035
 ling guang yi 	灵光一	c=1 d=1.03511e-24 t=8035
@@ -7673,7 +7688,7 @@ ling zu 	零族	c=1 d=1.03511e-24 t=8035
 liu 	六	c=4 d=2.58777e-24 t=8035
 liu 	刘	c=3 d=2.07022e-24 t=8035
 liu 	流	c=39 d=1.00163 t=33844
-liu 	留	c=18 d=1 t=44759
+liu 	留	c=19 d=1 t=63336
 liu bei 	刘备	c=1 d=1.03511e-24 t=8035
 liu bi 	流弊	c=34 d=1.81145e-23 t=8035
 liu bi ti 	流鼻涕	c=1 d=1.03511e-24 t=8035
@@ -7699,7 +7714,7 @@ liu ping 	刘平	c=1 d=1.03511e-24 t=8035
 liu shen me 	留什么	c=1 d=1.03511e-24 t=8035
 liu shi 	流失	c=11 d=6.21069e-24 t=8035
 liu shou 	留守	c=1 d=1.03511e-24 t=8035
-liu shui 	流水	c=1139 d=1.2019 t=49879
+liu shui 	流水	c=1140 d=1 t=64753
 liu shui xian 	流水线	c=18 d=1 t=62591
 liu tu 	流图	c=1 d=1.03511e-24 t=8035
 liu xia 	留下	c=3 d=2.07022e-24 t=8035
@@ -7743,7 +7758,7 @@ lu chu 	露出	c=2 d=1.55267e-24 t=8035
 lu dan 	卤蛋	c=2 d=1.55267e-24 t=8035
 lu guo 	路过	c=4 d=5.89307e-15 t=8035
 lu jin 	陆金	c=2 d=1.55267e-24 t=8035
-lu jing 	路径	c=39 d=1 t=39230
+lu jing 	路径	c=40 d=1 t=64688
 lu lu 	露露	c=2 d=1.55267e-24 t=8035
 lu qiao 	路桥	c=1 d=1.03511e-24 t=8035
 lu ren 	路人	c=1 d=1.03511e-24 t=8035
@@ -7789,7 +7804,7 @@ luo bo 	萝卜	c=0 d=0 t=8035
 luo hou 	落后	c=6 d=1 t=54195
 luo hu 	落户	c=4 d=2.58777e-24 t=8035
 luo ji 	罗技	c=3 d=1 t=63065
-luo ji 	逻辑	c=609 d=1.09094 t=62724
+luo ji 	逻辑	c=610 d=1.00007 t=64667
 luo kao 	裸考	c=1 d=1.03511e-24 t=8035
 luo ke 	洛克	c=1 d=1.03511e-24 t=8035
 luo lei 	落泪	c=2 d=1.55267e-24 t=8035
@@ -7817,8 +7832,8 @@ lv xin 	滤芯	c=1 d=1.03511e-24 t=8035
 lv xing 	旅行	c=1 d=1.03511e-24 t=8035
 lv you 	旅游	c=17 d=9.31597e-24 t=8035
 lve guo 	略过	c=2 d=1 t=10063
-ma 	吗	c=4867 d=4.56112 t=63026
-ma 	嘛	c=1759 d=1.00013 t=62714
+ma 	吗	c=4888 d=3.56249 t=64715
+ma 	嘛	c=1761 d=1.23953 t=63523
 ma 	妈	c=13 d=7.24582e-24 t=8035
 ma 	码	c=194 d=1 t=46184
 ma 	马	c=11 d=6.21069e-24 t=8035
@@ -7827,7 +7842,7 @@ ma 	麻	c=86 d=3.86424e-13 t=8035
 ma bi 	麻痹	c=1 d=1.03511e-24 t=8035
 ma chao 	马超	c=1 d=1.03511e-24 t=8035
 ma de 	骂得	c=1 d=1.03511e-24 t=8035
-ma fan 	麻烦	c=170 d=1 t=56238
+ma fan 	麻烦	c=171 d=1 t=63997
 ma hua 	麻花	c=0 d=0 t=8035
 ma hua teng 	麻花腾	c=1 d=1.03511e-24 t=8035
 ma jiang 	麻将	c=2 d=1 t=47758
@@ -7917,10 +7932,10 @@ mao xian 	毛线	c=3 d=2.07022e-24 t=8035
 mao xian dao 	冒险岛	c=1 d=1.03511e-24 t=8035
 mao yi 	贸易	c=1 d=1.03511e-24 t=8035
 mao zi 	帽子	c=1 d=1.03511e-24 t=8035
-me 	么	c=6456 d=3.52071 t=62925
+me 	么	c=6470 d=4.45635 t=64703
 mei 	妹	c=3 d=2.07022e-24 t=8035
 mei 	每	c=32 d=1 t=37506
-mei 	没	c=6970 d=4.28131 t=62899
+mei 	没	c=6977 d=2.19105 t=64556
 mei 	美	c=19 d=1.03511e-23 t=8035
 mei ba 	没吧	c=11 d=6.21069e-24 t=8035
 mei ba 	没把	c=1 d=1.03511e-24 t=8035
@@ -7950,7 +7965,7 @@ mei di fang 	没地方	c=1 d=1.03511e-24 t=8035
 mei dian 	没电	c=6 d=3.62288e-24 t=8035
 mei diao 	没调	c=1 d=1.03511e-24 t=8035
 mei dong 	没动	c=18 d=1 t=35825
-mei dong 	没懂	c=4 d=1 t=57601
+mei dong 	没懂	c=5 d=1 t=63606
 mei duo 	没多	c=1 d=1.03511e-24 t=8035
 mei duo chang 	没多长	c=1 d=1.03511e-24 t=8035
 mei duo da 	没多大	c=2 d=1.55267e-24 t=8035
@@ -7964,7 +7979,7 @@ mei gai guo 	没改过	c=1 d=1.03511e-24 t=8035
 mei gan 	没干	c=4 d=2.58777e-24 t=8035
 mei gan jue 	没感觉	c=4 d=2.58777e-24 t=8035
 mei gao 	没高	c=1 d=1.03511e-24 t=8035
-mei ge 	每个	c=200 d=2.03596 t=62961
+mei ge 	每个	c=201 d=1.0061 t=64123
 mei ge ren 	每个人	c=12 d=1 t=35745
 mei ge yue 	每个月	c=14 d=1 t=24426
 mei gei 	没给	c=14 d=1 t=33906
@@ -7991,7 +8006,7 @@ mei jian li 	没建立	c=1 d=1.03511e-24 t=8035
 mei jiao wo 	没叫我	c=1 d=1.03511e-24 t=8035
 mei jie 	没接	c=5 d=3.10534e-24 t=8035
 mei jin 	美金	c=1 d=1.03511e-24 t=8035
-mei ju 	枚举	c=40 d=1 t=60878
+mei ju 	枚举	c=41 d=1.00001 t=63121
 mei ju hua 	每句话	c=1 d=1.03511e-24 t=8035
 mei kai 	没开	c=37 d=5.67184e-06 t=8035
 mei kai tong 	没开通	c=1 d=1.03511e-24 t=8035
@@ -8104,7 +8119,7 @@ mei yong dao 	没用到	c=8 d=1 t=34909
 mei yong guo 	没用过	c=7 d=4.14044e-24 t=8035
 mei yong hu 	没用户	c=1 d=1.03511e-24 t=8035
 mei yong wan 	没用完	c=2 d=1 t=33552
-mei you 	没有	c=1339 d=1.00077 t=62926
+mei you 	没有	c=1343 d=1.04637 t=64285
 mei you ren 	没有人	c=1 d=1.03511e-24 t=8035
 mei yu dao 	没遇到	c=1 d=1.03511e-24 t=8035
 mei yuan 	美元	c=10 d=1 t=33404
@@ -8190,7 +8205,7 @@ mian da rao 	面打扰	c=10 d=5.69312e-24 t=8035
 mian de 	免得	c=2 d=1.55267e-24 t=8035
 mian dian 	缅甸	c=10 d=5.69312e-24 t=8035
 mian dian yu 	缅甸语	c=2 d=1.55267e-24 t=8035
-mian fei 	免费	c=63 d=0.000257768 t=8035
+mian fei 	免费	c=64 d=1 t=63818
 mian guo 	面过	c=2 d=1.55267e-24 t=8035
 mian hua 	棉花	c=0 d=0.1 t=35184
 mian hua wa wa 	棉花娃娃	c=1 d=1 t=35185
@@ -8241,7 +8256,7 @@ ming ci 	名词	c=2 d=1 t=41547
 ming dan 	名单	c=6 d=3.62288e-24 t=8035
 ming e 	名额	c=8 d=1 t=54271
 ming guo 	明国	c=1 d=1.03511e-24 t=8035
-ming hou tian 	明后天	c=6 d=1 t=47706
+ming hou tian 	明后天	c=7 d=1 t=63880
 ming liao 	明了	c=1 d=1.03511e-24 t=8035
 ming ling 	命令	c=217 d=1.29523 t=62138
 ming ling hang 	命令行	c=53 d=1 t=26351
@@ -8256,7 +8271,7 @@ ming pin tang 	名品堂	c=1 d=1 t=50846
 ming que 	明确	c=10 d=1.00155 t=59455
 ming shou 	名手	c=1 d=1.03511e-24 t=8035
 ming tai 	明台	c=11 d=6.21069e-24 t=8035
-ming tian 	明天	c=247 d=1 t=60251
+ming tian 	明天	c=248 d=1 t=63909
 ming wan 	明晚	c=3 d=2.07022e-24 t=8035
 ming wen 	铭文	c=3 d=2.07022e-24 t=8035
 ming xian 	明显	c=63 d=1 t=34973
@@ -8268,7 +8283,7 @@ ming zheng 	明证	c=1 d=1.03511e-24 t=8035
 ming zhong 	命中	c=194 d=1.90484 t=56993
 ming zhong de 	命中的	c=1 d=1.03511e-24 t=8035
 ming zhong lv 	命中率	c=3 d=2.07022e-24 t=8035
-ming zi 	名字	c=356 d=1 t=62244
+ming zi 	名字	c=361 d=2.0182 t=64105
 ming zi chuang jian 	名字创建	c=1 d=1.03511e-24 t=8035
 ming zi jiao 	名字叫	c=1 d=1.03511e-24 t=8035
 ming zi me 	名字么	c=1 d=1.03511e-24 t=8035
@@ -8280,11 +8295,11 @@ mo 	莫	c=2 d=1.55267e-24 t=8035
 mo 	魔	c=7 d=1 t=46269
 mo 	麽	c=1 d=1.03511e-24 t=8035
 mo bai 	膜拜	c=1 d=1.03511e-24 t=8035
-mo ban 	模板	c=336 d=3.28733 t=62383
+mo ban 	模板	c=337 d=1.02294 t=63376
 mo ban jiu 	模板就	c=1 d=1 t=52255
 mo dao 	摸到	c=1 d=1.03511e-24 t=8035
 mo dao shi 	魔导师	c=1 d=1.03511e-24 t=8035
-mo diao 	模调	c=123 d=1 t=45388
+mo diao 	模调	c=124 d=1 t=64255
 mo fa 	魔法	c=39 d=1.97147e-15 t=8035
 mo fang 	模仿	c=1 d=1.03511e-24 t=8035
 mo gai 	魔改	c=9 d=5.17556e-24 t=8035
@@ -8359,7 +8374,7 @@ na 	哪	c=182 d=1.00075 t=49055
 na 	娜	c=9 d=5.17556e-24 t=8035
 na 	拿	c=134 d=1 t=61984
 na 	纳	c=3 d=2.07022e-24 t=8035
-na 	那	c=3621 d=1.58886 t=63053
+na 	那	c=3637 d=2.32591 t=64676
 na bang 	那帮	c=1 d=1.03511e-24 t=8035
 na ben 	那本	c=1 d=1.03511e-24 t=8035
 na bian 	那边	c=2 d=1.55267e-24 t=8035
@@ -8378,15 +8393,15 @@ na cha bu duo 	那差不多	c=1 d=6.36303e-06 t=8035
 na chu 	拿出	c=1 d=1.03511e-24 t=8035
 na ci 	哪次	c=1 d=1.03511e-24 t=8035
 na ci 	那次	c=9 d=5.17556e-24 t=8035
-na dao 	拿到	c=30 d=1.63128 t=61640
+na dao 	拿到	c=31 d=1.00012 t=63547
 na de 	那得	c=10 d=1 t=49905
 na dian 	那点	c=5 d=3.10534e-24 t=8035
 na dou 	纳豆	c=1 d=1.03511e-24 t=8035
 na fen 	那份	c=2 d=1 t=9412
 na gan jue 	那感觉	c=2 d=1 t=11185
-na ge 	哪个	c=720 d=1.08571 t=58509
+na ge 	哪个	c=723 d=1.75557 t=64558
 na ge 	拿个	c=5 d=1 t=26215
-na ge 	那个	c=2092 d=1.01848 t=62585
+na ge 	那个	c=2098 d=1.4817 t=64640
 na ge jiu 	那个就	c=1 d=1.03511e-24 t=8035
 na ge ren 	那个人	c=1 d=1.03511e-24 t=8035
 na ge shi hou 	那个时候	c=1 d=1 t=39437
@@ -8414,7 +8429,7 @@ na ji ge 	那几个	c=39 d=1 t=55048
 na ji wan 	那几万	c=1 d=1.03511e-24 t=8035
 na jia 	哪家	c=1 d=1.03511e-24 t=8035
 na jiao 	那叫	c=2 d=1.55267e-24 t=8035
-na jiu 	那就	c=69 d=1.01906 t=49092
+na jiu 	那就	c=71 d=1.94176 t=63561
 na jiu kan 	那就看	c=1 d=1.03511e-24 t=8035
 na jiu shi 	那就是	c=90 d=1 t=54426
 na jiu xing 	那就行	c=3 d=2.07022e-24 t=8035
@@ -8430,11 +8445,11 @@ na ken ding 	那肯定	c=7 d=4.14044e-24 t=8035
 na kuai 	那块	c=1 d=1.03511e-24 t=8035
 na lai 	哪来	c=26 d=1 t=8667
 na lai 	拿来	c=4 d=2.58777e-24 t=8035
-na li 	哪里	c=75 d=1 t=48609
+na li 	哪里	c=76 d=1 t=63438
 na li 	那里	c=98 d=1 t=55885
 na liang 	那两	c=18 d=1 t=21009
 na liang ge 	那两个	c=6 d=3.62288e-24 t=8035
-na me 	那么	c=337 d=1 t=62975
+na me 	那么	c=338 d=1.19398 t=63303
 na me duo 	那么多	c=13 d=1 t=8385
 na me hao 	那么好	c=1 d=1.03511e-24 t=8035
 na me qiang 	那么强	c=1 d=1.03511e-24 t=8035
@@ -8449,7 +8464,7 @@ na na 	娜娜	c=1 d=1.03511e-24 t=8035
 na ne 	哪呢	c=1 d=1.03511e-24 t=8035
 na neng 	哪能	c=1 d=2.39553e-13 t=8035
 na ni 	纳尼	c=1 d=1.03511e-24 t=8035
-na ni 	那你	c=94 d=1.0259 t=56374
+na ni 	那你	c=95 d=1 t=63485
 na ni kan 	那你看	c=1 d=1.03511e-24 t=8035
 na ni men 	那你们	c=3 d=1 t=51202
 na ni yong 	那你用	c=1 d=1.03511e-24 t=8035
@@ -8523,7 +8538,7 @@ na za 	那咋	c=7 d=4.14044e-24 t=8035
 na za ce 	那咋测	c=1 d=1.03511e-24 t=8035
 na zai 	那在	c=1 d=1.03511e-24 t=8035
 na zhang 	哪张	c=1 d=1.03511e-24 t=8035
-na zhang 	那张	c=16 d=8.79843e-24 t=8035
+na zhang 	那张	c=17 d=1 t=64040
 na zhang biao 	那张表	c=4 d=2.58777e-24 t=8035
 na zhe 	拿着	c=1 d=1.03511e-24 t=8035
 na zhe ge 	那这个	c=3 d=2.07022e-24 t=8035
@@ -8534,7 +8549,7 @@ na zhi 	那只	c=1 d=1.03511e-24 t=8035
 na zhi hou 	那之后	c=1 d=1.03511e-24 t=8035
 na zhi shi 	那只是	c=1 d=1.03511e-24 t=8035
 na zhong 	哪种	c=29 d=1 t=54803
-na zhong 	那种	c=407 d=1 t=60080
+na zhong 	那种	c=408 d=1 t=64275
 na zhu 	拿住	c=1 d=1 t=19606
 na zi ran 	那自然	c=1 d=1.03511e-24 t=8035
 nai 	奶	c=3 d=2.07022e-24 t=8035
@@ -8589,7 +8604,7 @@ nao ma le 	闹麻了	c=1 d=0.00663761 t=8035
 nao tan 	脑瘫	c=1 d=1.03511e-24 t=8035
 nao zhong 	闹钟	c=6 d=3.62288e-24 t=8035
 nao zi 	脑子	c=2 d=1.55267e-24 t=8035
-ne 	呢	c=2008 d=1.90161 t=62603
+ne 	呢	c=2017 d=1.71269 t=64693
 ne 	哪	c=1 d=1.03511e-24 t=8035
 ne 	眲	c=1 d=1.03511e-24 t=8035
 ne er 	呢而	c=1 d=1 t=22629
@@ -8612,7 +8627,7 @@ nei li 	内力	c=1 d=1.03511e-24 t=8035
 nei men 	内门	c=1 d=1.03511e-24 t=8035
 nei mu 	内幕	c=1 d=1.03511e-24 t=8035
 nei qian 	内嵌	c=4 d=2.58777e-24 t=8035
-nei rong 	内容	c=534 d=1.00014 t=61923
+nei rong 	内容	c=538 d=1.20581 t=64019
 nei rong yuan 	内容源	c=17 d=1.98569 t=60891
 nei rou 	内柔	c=1 d=1.03511e-24 t=8035
 nei tou 	内投	c=1 d=1.03511e-24 t=8035
@@ -8622,12 +8637,12 @@ nei yi 	内衣	c=1 d=0.0332068 t=8035
 nei zhan 	内战	c=9 d=1 t=25389
 nei zheng 	内政	c=1 d=4.17359e-15 t=8035
 nei zhi 	内置	c=65 d=3.41588e-23 t=8035
-neng 	能	c=1116 d=3.17674 t=62838
+neng 	能	c=1118 d=1.0092 t=64457
 neng ba 	能把	c=2 d=1 t=19919
 neng bao 	能保	c=1 d=1.03511e-24 t=8035
 neng bi 	能比	c=2 d=1 t=23925
 neng bu 	能不	c=2 d=1.55267e-24 t=8035
-neng bu neng 	能不能	c=303 d=1.9913 t=62848
+neng bu neng 	能不能	c=304 d=1.00046 t=64522
 neng bu neng huan 	能不能换	c=1 d=1 t=13423
 neng bu yong 	能不用	c=1 d=1.03511e-24 t=8035
 neng cha 	能查	c=1 d=1.03511e-24 t=8035
@@ -8676,7 +8691,7 @@ neng zai 	能在	c=1 d=1.03511e-24 t=8035
 neng zhao 	能找	c=1 d=0.0518189 t=8035
 neng zhuan 	能赚	c=1 d=1.03511e-24 t=8035
 neng zuo 	能做	c=2 d=1.55267e-24 t=8035
-ni 	你	c=4395 d=3.58436 t=63023
+ni 	你	c=4409 d=2.51118 t=64588
 ni 	尼	c=1 d=1.03511e-24 t=8035
 ni 	腻	c=15 d=8.2809e-24 t=8035
 ni 	蚭	c=8 d=4.658e-24 t=8035
@@ -8780,20 +8795,20 @@ ni ma 	你妈	c=3 d=2.07022e-24 t=8035
 ni ma 	妮马	c=1 d=1.03511e-24 t=8035
 ni mai 	你买	c=3 d=2.07022e-24 t=8035
 ni mai luo 	你脉络	c=1 d=1.03511e-24 t=8035
-ni mei 	你没	c=27 d=1 t=60351
+ni mei 	你没	c=28 d=1 t=64372
 ni mei chuan 	你没传	c=1 d=1.03511e-24 t=8035
 ni mei yong 	你没用	c=1 d=1.03511e-24 t=8035
 ni mei zai 	你没在	c=1 d=1.03511e-24 t=8035
-ni men 	你们	c=1546 d=3.12278 t=62205
+ni men 	你们	c=1547 d=1.00003 t=64485
 ni mi 	你米	c=1 d=1.03511e-24 t=8035
 ni mian 	你面	c=2 d=1 t=60068
 ni ming 	匿名	c=6 d=3.62288e-24 t=8035
 ni na 	你哪	c=16 d=8.79843e-24 t=8035
-ni na 	你那	c=1054 d=1.00723 t=62671
+ni na 	你那	c=1056 d=1.51175 t=64672
 ni na ge 	你那个	c=12 d=1 t=54560
 ni na li 	你那里	c=28 d=1.50091e-23 t=8035
 ni na mian 	你那面	c=28 d=1.50091e-23 t=8035
-ni neng 	你能	c=49 d=2.58777e-23 t=8035
+ni neng 	你能	c=50 d=1 t=63615
 ni neng yong 	你能用	c=1 d=1.03511e-24 t=8035
 ni nv er 	你女儿	c=1 d=1.03511e-24 t=8035
 ni pei zhi 	你配置	c=3 d=2.07022e-24 t=8035
@@ -8860,7 +8875,7 @@ ni yao yong 	你要用	c=1 d=1.03511e-24 t=8035
 ni ye 	你也	c=24 d=1.71303e-09 t=8035
 ni ye de 	你也得	c=3 d=2.07022e-24 t=8035
 ni ye ke yi 	你也可以	c=1 d=1.03511e-24 t=8035
-ni ye neng 	你也能	c=3 d=2.07022e-24 t=8035
+ni ye neng 	你也能	c=4 d=1 t=63672
 ni ye pei 	你也配	c=1 d=1.03511e-24 t=8035
 ni ye shi 	你也是	c=7 d=4.14044e-24 t=8035
 ni ye zai 	你也在	c=3 d=2.07022e-24 t=8035
@@ -8893,7 +8908,7 @@ ni zai yong 	你在用	c=1 d=1.03511e-24 t=8035
 ni zen me 	你怎么	c=35 d=1.8632e-23 t=8035
 ni zhao 	你找	c=2 d=1.55267e-24 t=8035
 ni zhao zhao 	你找找	c=1 d=1.03511e-24 t=8035
-ni zhe 	你这	c=57 d=1 t=58926
+ni zhe 	你这	c=59 d=1.91393 t=63152
 ni zhe ge 	你这个	c=39 d=4.9804e-06 t=8035
 ni zhe jiao 	你这叫	c=1 d=1.03511e-24 t=8035
 ni zhe li 	你这里	c=2 d=1.55267e-24 t=8035
@@ -8958,7 +8973,7 @@ niu rou 	牛肉	c=1 d=1.03511e-24 t=8035
 niu rou gan 	牛肉干	c=1 d=1.03511e-24 t=8035
 niu rou mian 	牛肉面	c=1 d=1.03511e-24 t=8035
 nong 	农	c=4 d=2.58777e-24 t=8035
-nong 	弄	c=853 d=1.10636 t=62313
+nong 	弄	c=854 d=1.00079 t=63763
 nong 	浓	c=1 d=1.03511e-24 t=8035
 nong chang 	农场	c=1 d=1.03511e-24 t=8035
 nong cheng 	弄成	c=57 d=1.00006 t=62140
@@ -8966,11 +8981,11 @@ nong chu lai 	弄出来	c=2 d=1 t=36006
 nong chun 	弄春	c=1 d=1.03511e-24 t=8035
 nong cun 	农村	c=6 d=1 t=38374
 nong cuo 	弄错	c=4 d=1 t=30889
-nong dao 	弄到	c=18 d=1 t=27463
+nong dao 	弄到	c=20 d=1.33121 t=63869
 nong dian 	弄点	c=2 d=1.55267e-24 t=8035
 nong diao 	弄掉	c=2 d=1.55267e-24 t=8035
 nong dong 	弄懂	c=2 d=1.55267e-24 t=8035
-nong ge 	弄个	c=17 d=1 t=32165
+nong ge 	弄个	c=18 d=1 t=64051
 nong gei 	弄给	c=1 d=0.00379147 t=8035
 nong guo 	弄过	c=1 d=1.03511e-24 t=8035
 nong hao 	弄好	c=2 d=1.55267e-24 t=8035
@@ -9052,7 +9067,7 @@ pai 	派	c=22 d=2.43091e-09 t=8035
 pai 	牌	c=7 d=4.14044e-24 t=8035
 pai ban 	排版	c=2 d=1.55267e-24 t=8035
 pai bu shang 	排不上	c=1 d=1 t=39151
-pai cha 	排查	c=570 d=1.01354 t=62765
+pai cha 	排查	c=571 d=1.00005 t=64733
 pai cha dian 	排查点	c=1 d=1 t=44254
 pai cha zhong 	排查中	c=2 d=1.55267e-24 t=8035
 pai chu 	排除	c=27 d=1 t=27006
@@ -9073,7 +9088,7 @@ pai qi 	排气	c=2 d=1.54446e-15 t=8035
 pai qi ma 	排期吗	c=1 d=1 t=13827
 pai qian 	派遣	c=0 d=0 t=8035
 pai ren 	派人	c=1 d=3.95025e-15 t=8035
-pai shang 	排上	c=9 d=1 t=47156
+pai shang 	排上	c=11 d=1.80654 t=64012
 pai shang 	派上	c=3 d=2.07022e-24 t=8035
 pai song 	派送	c=1 d=1.03511e-24 t=8035
 pai wei 	排位	c=3 d=2.07022e-24 t=8035
@@ -9089,7 +9104,7 @@ pai zi 	牌子	c=6 d=3.62288e-24 t=8035
 pan 	判	c=16 d=1 t=51609
 pan 	盘	c=13 d=1 t=51610
 pan bian 	叛变	c=13 d=7.24582e-24 t=8035
-pan duan 	判断	c=569 d=1.00001 t=62277
+pan duan 	判断	c=570 d=1.00048 t=63805
 pan jun 	叛军	c=2 d=1.55267e-24 t=8035
 pan tao 	叛逃	c=1 d=1.03511e-24 t=8035
 pan tou 	盼头	c=2 d=1 t=36374
@@ -9104,7 +9119,7 @@ pang zi 	胖子	c=1 d=1.03511e-24 t=8035
 pao 	抛	c=1 d=1.03511e-24 t=8035
 pao 	泡	c=3 d=2.07022e-24 t=8035
 pao 	炮	c=2 d=1.55267e-24 t=8035
-pao 	跑	c=352 d=1.00001 t=60698
+pao 	跑	c=353 d=1 t=64359
 pao bu 	跑步	c=1 d=1.03511e-24 t=8035
 pao bu chu lai 	跑不出来	c=2 d=1.55267e-24 t=8035
 pao bu ji 	跑步机	c=1 d=1.03511e-24 t=8035
@@ -9149,7 +9164,7 @@ pei se 	配色	c=3 d=2.07022e-24 t=8035
 pei xun 	培训	c=13 d=1 t=56781
 pei yang 	培养	c=7 d=4.14044e-24 t=8035
 pei zhe 	陪着	c=1 d=1.03511e-24 t=8035
-pei zhi 	配置	c=2913 d=2.67661 t=62143
+pei zhi 	配置	c=2924 d=2.91878 t=64571
 pei zhi cheng 	配置成	c=1 d=1 t=52543
 pei zhi cuo 	配置错	c=1 d=1.03511e-24 t=8035
 pei zhi dan 	配置单	c=2 d=1.55267e-24 t=8035
@@ -9179,7 +9194,7 @@ pi lao du 	疲劳度	c=108 d=5.64137e-23 t=8035
 pi liang 	批量	c=175 d=1 t=59797
 pi mei 	媲美	c=3 d=2.07022e-24 t=8035
 pi ni 	皮你	c=1 d=1.03511e-24 t=8035
-pi pei 	匹配	c=114 d=2.74617 t=52527
+pi pei 	匹配	c=115 d=1 t=64467
 pi qi 	脾气	c=2 d=1.55267e-24 t=8035
 pi sa 	批萨	c=1 d=1.03511e-24 t=8035
 pi shi 	屁事	c=2 d=1.55267e-24 t=8035
@@ -9215,15 +9230,15 @@ piao piao 	飘飘	c=0 d=2.07684e-11 t=8035
 piao wu 	票务	c=44 d=3.70252e-10 t=8035
 piao yi 	飘逸	c=1 d=1.03511e-24 t=8035
 pin 	品	c=7 d=4.14044e-24 t=8035
-pin 	拼	c=85 d=1.00007 t=62206
+pin 	拼	c=86 d=1.00013 t=64000
 pin 	聘	c=2 d=1.55267e-24 t=8035
 pin 	频	c=1219 d=1.00003 t=53879
 pin ci 	频次	c=10 d=5.69312e-24 t=8035
-pin fan 	频繁	c=31 d=1 t=35446
+pin fan 	频繁	c=32 d=1 t=64589
 pin ji 	贫瘠	c=1 d=1.03511e-24 t=8035
 pin jie 	拼接	c=22 d=1 t=59471
 pin kong 	品控	c=1 d=1.03511e-24 t=8035
-pin kong 	频控	c=12 d=1 t=56322
+pin kong 	频控	c=13 d=1 t=64542
 pin kun 	贫困	c=1 d=1.03511e-24 t=8035
 pin lv 	频率	c=21 d=1 t=51797
 pin pai 	品牌	c=4 d=2.58777e-24 t=8035
@@ -9253,7 +9268,7 @@ ping gai 	瓶盖	c=3 d=2.07022e-24 t=8035
 ping geng 	平更	c=1 d=1.03511e-24 t=8035
 ping gu 	评估	c=23 d=1 t=36455
 ping gu chuan 	评估传	c=2 d=1.55267e-24 t=8035
-ping guo 	苹果	c=511 d=1.0036 t=62295
+ping guo 	苹果	c=513 d=1.16865 t=64573
 ping heng 	平衡	c=5 d=3.10534e-24 t=8035
 ping hua 	平滑	c=13 d=1 t=21667
 ping huan 	平缓	c=2 d=1 t=22357
@@ -9274,7 +9289,7 @@ ping qian 	平迁	c=1 d=1.03511e-24 t=8035
 ping shen 	评审	c=7 d=1 t=48497
 ping shen me 	凭什么	c=4 d=2.58777e-24 t=8035
 ping shi 	平时	c=54 d=1 t=51452
-ping tai 	平台	c=663 d=1.0133 t=61062
+ping tai 	平台	c=664 d=1 t=63597
 ping tan 	平坦	c=1 d=1 t=40624
 ping tan 	平摊	c=1 d=1 t=40626
 ping ti 	平题	c=1 d=1.03511e-24 t=8035
@@ -9304,7 +9319,7 @@ pu ping 	铺平	c=1 d=1 t=12734
 pu sa 	菩萨	c=2 d=1.55267e-24 t=8035
 pu sang 	普桑	c=3 d=1.99541e-10 t=8035
 pu tiao 	普调	c=1 d=1 t=24467
-pu tong 	普通	c=319 d=1.05141 t=60077
+pu tong 	普通	c=321 d=1.02535 t=64016
 pu tong de 	普通的	c=1 d=1.03511e-24 t=8035
 pu tong hua 	普通话	c=1 d=1.03511e-24 t=8035
 pu tong ren 	普通人	c=5 d=3.10534e-24 t=8035
@@ -9320,7 +9335,7 @@ qi 	旗	c=1 d=1.03511e-24 t=8035
 qi 	期	c=37 d=1 t=45123
 qi 	气	c=25 d=1.34564e-23 t=8035
 qi 	琦	c=1 d=1.03511e-24 t=8035
-qi 	起	c=69 d=1.00006 t=27741
+qi 	起	c=70 d=1 t=63780
 qi 	骑	c=4 d=2.58777e-24 t=8035
 qi 	齐	c=4 d=2.58777e-24 t=8035
 qi ao 	淇澳	c=1 d=1.03511e-24 t=8035
@@ -9340,7 +9355,7 @@ qi dai 	期待	c=3 d=2.07022e-24 t=8035
 qi de 	起得	c=1 d=1.03511e-24 t=8035
 qi dian 	七点	c=1 d=1.03511e-24 t=8035
 qi dian 	起点	c=5 d=3.10534e-24 t=8035
-qi dong 	启动	c=335 d=1.14299 t=62991
+qi dong 	启动	c=338 d=1.40021 t=63584
 qi dong de 	启动的	c=2 d=1.55267e-24 t=8035
 qi dong qi 	启动起	c=1 d=1.03511e-24 t=8035
 qi dou 	器都	c=1 d=1.03511e-24 t=8035
@@ -9367,14 +9382,14 @@ qi kan 	骑砍	c=5 d=1 t=39124
 qi lai 	起来	c=150 d=0.197296 t=61662
 qi lai le 	起来了	c=2 d=1.55267e-24 t=8035
 qi li 	气力	c=1 d=1.03511e-24 t=8035
-qi ma 	起码	c=110 d=1.05756 t=60122
+qi ma 	起码	c=111 d=1 t=63334
 qi ma 	骑马	c=4 d=1.7573e-15 t=8035
 qi miao 	奇妙	c=2 d=1.55267e-24 t=8035
 qi qi 	琪琪	c=1 d=1 t=25523
 qi quan 	齐全	c=1 d=1.03511e-24 t=8035
 qi she 	骑射	c=2 d=1.55267e-24 t=8035
 qi shi 	七十	c=1 d=1.03511e-24 t=8035
-qi shi 	其实	c=1117 d=1.014 t=62334
+qi shi 	其实	c=1123 d=1.43312 t=64622
 qi shi 	歧视	c=1 d=1.03511e-24 t=8035
 qi shi 	起始	c=5 d=3.10534e-24 t=8035
 qi shi 	骑士	c=1 d=1.03511e-24 t=8035
@@ -9383,7 +9398,7 @@ qi shou 	起手	c=2 d=1.55267e-24 t=8035
 qi shou 	骑手	c=1 d=1.03511e-24 t=8035
 qi shui 	汽水	c=2 d=1.55267e-24 t=8035
 qi si 	气死	c=3 d=2.07022e-24 t=8035
-qi ta 	其他	c=1314 d=1.17913 t=62178
+qi ta 	其他	c=1315 d=1.00034 t=63808
 qi ta 	其它	c=3 d=2.07022e-24 t=8035
 qi ta di fang 	其他地方	c=1 d=1 t=42708
 qi ta qun 	其他群	c=1 d=1.03511e-24 t=8035
@@ -9429,7 +9444,7 @@ qian che zhi jian 	前车之鉴	c=1 d=1.03511e-24 t=8035
 qian chui bai lian 	千锤百炼	c=1 d=1.03511e-24 t=8035
 qian dao 	签到	c=2 d=1.55267e-24 t=8035
 qian duan 	前段	c=1 d=1.03511e-24 t=8035
-qian duan 	前端	c=367 d=1 t=60833
+qian duan 	前端	c=380 d=5.60407 t=64478
 qian duo 	钱多	c=3 d=2.07022e-24 t=8035
 qian fan 	遣返	c=2 d=1.55267e-24 t=8035
 qian fei 	欠费	c=1 d=1.03511e-24 t=8035
@@ -9439,7 +9454,7 @@ qian guo lai 	迁过来	c=1 d=2.67964e-08 t=8035
 qian hai 	前海	c=1 d=1.03511e-24 t=8035
 qian hou 	前后	c=11 d=6.21069e-24 t=8035
 qian hou duan 	前后端	c=1 d=1.03511e-24 t=8035
-qian hou tai 	前后台	c=55 d=2.8983e-23 t=8035
+qian hou tai 	前后台	c=56 d=1 t=64591
 qian ji tian 	前几天	c=44 d=2.329e-23 t=8035
 qian ji zhou 	前几周	c=1 d=1.03511e-24 t=8035
 qian jin 	前进	c=1 d=1.03511e-24 t=8035
@@ -9491,7 +9506,7 @@ qian zi fei 	签字费	c=1 d=1 t=24402
 qian zou 	迁走	c=1 d=1.03511e-24 t=8035
 qian zui 	愆罪	c=3 d=2.07022e-24 t=8035
 qiang 	墙	c=2 d=1.55267e-24 t=8035
-qiang 	强	c=96 d=1 t=61594
+qiang 	强	c=97 d=1 t=64718
 qiang 	抢	c=13 d=1.00001 t=23103
 qiang 	枪	c=4 d=2.58777e-24 t=8035
 qiang da 	强大	c=28 d=1.70822 t=47111
@@ -9528,7 +9543,7 @@ qiao men 	敲门	c=1 d=1.03511e-24 t=8035
 qiao mi mi 	敲秘密	c=1 d=1.03511e-24 t=8035
 qiao qiao 	悄悄	c=23 d=0.0492917 t=8035
 qie 	且	c=16 d=6.57939e-17 t=8035
-qie 	切	c=626 d=1.00004 t=63039
+qie 	切	c=627 d=1.00043 t=64590
 qie cuo 	切磋	c=1 d=1.03511e-24 t=8035
 qie dao 	切到	c=3 d=8.67559e-06 t=8035
 qie ge 	切割	c=4 d=2.58777e-24 t=8035
@@ -9629,7 +9644,7 @@ qiu zhi yu 	求知欲	c=1 d=1.03511e-24 t=8035
 qiu zhu 	求助	c=5 d=3.10534e-24 t=8035
 qiu zu 	求租	c=1 d=1.03511e-24 t=8035
 qu 	区	c=27 d=2.62354 t=56246
-qu 	去	c=782 d=1.00014 t=61978
+qu 	去	c=786 d=1.09196 t=64471
 qu 	取	c=719 d=1.00002 t=61620
 qu 	娶	c=15 d=8.2809e-24 t=8035
 qu 	曲	c=24 d=1.29389e-23 t=8035
@@ -9642,12 +9657,12 @@ qu chu 	去除	c=23 d=1.00048 t=56865
 qu chu 	取出	c=1 d=1 t=56866
 qu cuo 	取错	c=1 d=1.03511e-24 t=8035
 qu dai 	取代	c=2 d=1.55267e-24 t=8035
-qu dao 	取到	c=12 d=6.72822e-24 t=8035
-qu dao 	渠道	c=21 d=1 t=54677
+qu dao 	取到	c=13 d=1 t=63617
+qu dao 	渠道	c=22 d=1 t=63616
 qu diao 	去掉	c=100 d=1.0153 t=34735
 qu dong 	驱动	c=9 d=5.17556e-24 t=8035
 qu fan 	取反	c=1 d=1.03511e-24 t=8035
-qu fen 	区分	c=456 d=1.00041 t=59386
+qu fen 	区分	c=457 d=1 t=63242
 qu fen kai 	区分开	c=1 d=1.03511e-24 t=8035
 qu ge 	取个	c=3 d=2.07022e-24 t=8035
 qu ge 	娶个	c=1 d=1.03511e-24 t=8035
@@ -9662,7 +9677,7 @@ qu le 	去了	c=2 d=1 t=21633
 qu lv 	曲率	c=1 d=1.03511e-24 t=8035
 qu mian 	曲面	c=4 d=2.58777e-24 t=8035
 qu ming 	取名	c=1 d=1.03511e-24 t=8035
-qu na 	去哪	c=8 d=1 t=62915
+qu na 	去哪	c=9 d=1.22425 t=63214
 qu nian 	去年	c=45 d=1 t=18601
 qu qiao 	取巧	c=2 d=1.55267e-24 t=8035
 qu shi 	去世	c=1 d=1.03511e-24 t=8035
@@ -9672,9 +9687,9 @@ qu xian 	曲线	c=14 d=1 t=30319
 qu xiao 	取消	c=38 d=1 t=45895
 qu yu 	区域	c=3 d=2.07022e-24 t=8035
 qu zhi 	取值	c=31 d=1.65618e-23 t=8035
-quan 	全	c=580 d=1.10383 t=59548
+quan 	全	c=581 d=1 t=64689
 quan 	劝	c=2 d=1.55267e-24 t=8035
-quan 	圈	c=62 d=1 t=41514
+quan 	圈	c=63 d=1 t=63568
 quan 	拳	c=1 d=1.03511e-24 t=8035
 quan 	权	c=38 d=1 t=26260
 quan 	泉	c=1 d=1.03511e-24 t=8035
@@ -9731,7 +9746,7 @@ quan qiu 	全球	c=5 d=3.10534e-24 t=8035
 quan qiu hua 	全球化	c=1 d=1.03511e-24 t=8035
 quan qu 	全取	c=1 d=1.03511e-24 t=8035
 quan quan 	圈圈	c=6 d=3.62288e-24 t=8035
-quan ren 	圈人	c=1 d=1.03511e-24 t=8035
+quan ren 	圈人	c=3 d=1.8781 t=63591
 quan shan 	全删	c=1 d=1 t=8665
 quan shen 	全身	c=5 d=3.10534e-24 t=8035
 quan shen xin 	全身心	c=1 d=1.03511e-24 t=8035
@@ -9766,7 +9781,7 @@ que 	雀	c=1 d=1.03511e-24 t=8035
 que 	鹊	c=1 d=1.03511e-24 t=8035
 que bao 	确保	c=2 d=1.55267e-24 t=8035
 que dian 	缺点	c=1 d=1.03511e-24 t=8035
-que ding 	确定	c=74 d=1.00001 t=59965
+que ding 	确定	c=75 d=1 t=63330
 que qian 	缺钱	c=3 d=1 t=40358
 que ren 	确认	c=43 d=1 t=48297
 que ren 	缺人	c=2 d=1.55267e-24 t=8035
@@ -9792,7 +9807,7 @@ ran 	然	c=3 d=2.07022e-24 t=8035
 ran 	髥	c=3 d=2.07022e-24 t=8035
 ran bang 	然帮	c=3 d=1 t=42280
 ran heng 	然横	c=1 d=1 t=16962
-ran hou 	然后	c=2216 d=2.84979 t=62954
+ran hou 	然后	c=2224 d=1.66902 t=64626
 ran shi 	然是	c=1 d=1.03511e-24 t=8035
 rang 	让	c=268 d=2.81911 t=63017
 rang ni 	让你	c=62 d=1 t=61313
@@ -9858,7 +9873,7 @@ ren li 	人力	c=14 d=7.7633e-24 t=8035
 ren ling 	认领	c=1 d=1.03511e-24 t=8035
 ren mai 	人脉	c=1 d=1.03511e-24 t=8035
 ren men 	人们	c=3 d=2.07022e-24 t=8035
-ren min 	人民	c=9 d=1 t=62050
+ren min 	人民	c=10 d=1.00018 t=63774
 ren min bi 	人民币	c=4 d=2.58777e-24 t=8035
 ren ming bi 	人明比	c=1 d=1.03511e-24 t=8035
 ren mo 	仁模	c=1 d=1.03511e-24 t=8035
@@ -9911,7 +9926,7 @@ ri bi 	日币	c=6 d=3.62288e-24 t=8035
 ri bu 	日不	c=1 d=0.1 t=35885
 ri chang 	日常	c=15 d=8.2809e-24 t=8035
 ri cheng 	日程	c=4 d=2.58777e-24 t=8035
-ri chui 	日吹	c=13 d=1 t=42965
+ri chui 	日吹	c=14 d=1 t=64721
 ri guang 	日光	c=1 d=1.03511e-24 t=8035
 ri huan bi 	日环比	c=3 d=2.07022e-24 t=8035
 ri jian 	日渐	c=1 d=1 t=50129
@@ -9928,7 +9943,7 @@ ri ye 	日夜	c=1 d=1.03511e-24 t=8035
 ri yong pin 	日用品	c=1 d=1.03511e-24 t=8035
 ri yuan 	日元	c=5 d=1 t=56259
 ri zhao 	日照	c=1 d=1.03511e-24 t=8035
-ri zhi 	日志	c=1397 d=1.89162 t=62763
+ri zhi 	日志	c=1401 d=3.74279 t=64722
 ri zhi de 	日志的	c=1 d=1 t=15476
 ri zhi kan 	日志看	c=1 d=1.03511e-24 t=8035
 ri zhi me 	日志么	c=1 d=1 t=55102
@@ -9961,7 +9976,7 @@ ru 	入	c=24 d=1 t=40187
 ru 	如	c=75 d=1.00102 t=43867
 ru 	曘	c=2 d=1.55267e-24 t=8035
 ru ci 	如此	c=5 d=3.10534e-24 t=8035
-ru guo 	如果	c=1301 d=1.81177 t=62655
+ru guo 	如果	c=1302 d=1.07312 t=63297
 ru hang 	入行	c=1 d=1.03511e-24 t=8035
 ru he 	如何	c=11 d=1 t=62250
 ru huai en 	入怀嗯	c=1 d=1.03511e-24 t=8035
@@ -10068,11 +10083,11 @@ se tu 	涩图	c=2 d=1 t=47716
 se tu 	色图	c=12 d=1 t=19675
 se zhi 	色纸	c=2 d=1.55267e-24 t=8035
 sha 	傻	c=26 d=1.3974e-23 t=8035
-sha 	啥	c=3581 d=2.47445 t=62757
+sha 	啥	c=3587 d=1.14837 t=64158
 sha 	杀	c=316 d=1 t=62812
 sha 	沙	c=3 d=2.07022e-24 t=8035
 sha ban ben 	啥版本	c=1 d=1.03511e-24 t=8035
-sha bi 	傻逼	c=330 d=1.0728 t=62406
+sha bi 	傻逼	c=332 d=1.914 t=64361
 sha bi 	煞笔	c=20 d=1.08687e-23 t=8035
 sha bi ba 	傻逼吧	c=2 d=4.23156e-12 t=8035
 sha biao 	啥表	c=1 d=1.03511e-24 t=8035
@@ -10107,7 +10122,7 @@ sha sha sha 	傻傻傻	c=1 d=1.03511e-24 t=8035
 sha sha sha 	杀杀杀	c=4 d=2.58777e-24 t=8035
 sha she bei 	啥设备	c=1 d=1.03511e-24 t=8035
 sha shi 	啥事	c=8 d=1 t=54298
-sha shi hou 	啥时候	c=324 d=1.16613 t=62803
+sha shi hou 	啥时候	c=326 d=1.06553 t=64448
 sha shi jian 	啥时间	c=2 d=1.55267e-24 t=8035
 sha shou 	杀手	c=1 d=1.03511e-24 t=8035
 sha shou ji 	啥手机	c=2 d=1.55267e-24 t=8035
@@ -10116,11 +10131,11 @@ sha shu zu 	啥数组	c=1 d=1.03511e-24 t=8035
 sha si 	杀死	c=4 d=1 t=55182
 sha te 	沙特	c=1 d=1.03511e-24 t=8035
 sha wan 	沙湾	c=0 d=0 t=8035
-sha wan yi 	啥玩意	c=6 d=1 t=61575
+sha wan yi 	啥玩意	c=7 d=1 t=64286
 sha wan yi 	沙湾一	c=6 d=3.62288e-24 t=8035
 sha wen ti 	啥问题	c=3 d=2.07022e-24 t=8035
 sha yang 	啥样	c=35 d=1 t=34556
-sha yi si 	啥意思	c=198 d=1.00035 t=60145
+sha yi si 	啥意思	c=200 d=1.09027 t=64015
 sha yong 	沙涌	c=2 d=1 t=25209
 sha you xian ji 	啥优先级	c=1 d=1.03511e-24 t=8035
 sha yuan yin 	啥原因	c=3 d=2.07022e-24 t=8035
@@ -10129,14 +10144,14 @@ shai 	筛	c=3 d=2.07022e-24 t=8035
 shai cha 	筛查	c=0 d=0 t=8035
 shai xia 	晒下	c=1 d=1.03511e-24 t=8035
 shai xuan 	筛选	c=31 d=2.08655e-06 t=8035
-shan 	删	c=259 d=1.95123 t=62697
+shan 	删	c=260 d=1.00009 t=64690
 shan 	山	c=99 d=1 t=55537
 shan 	扇	c=3 d=2.07022e-24 t=8035
 shan 	衫	c=2 d=1.55267e-24 t=8035
 shan 	闪	c=9 d=1 t=18180
 shan biao 	删表	c=1 d=1 t=34725
 shan chang 	擅长	c=1 d=1.03511e-24 t=8035
-shan chu 	删除	c=207 d=1 t=58955
+shan chu 	删除	c=209 d=1.02305 t=64261
 shan chu 	闪出	c=1 d=1.03511e-24 t=8035
 shan chu xian 	删除线	c=2 d=1.55267e-24 t=8035
 shan cun 	山村	c=1 d=1.03511e-24 t=8035
@@ -10169,7 +10184,7 @@ shang ban ma 	上班吗	c=1 d=1.03511e-24 t=8035
 shang ban nian 	上半年	c=2 d=1.55267e-24 t=8035
 shang ban shi ba 	上班是吧	c=1 d=1.03511e-24 t=8035
 shang bang 	上榜	c=1 d=1.03511e-24 t=8035
-shang bao 	上报	c=2309 d=1.4342 t=62753
+shang bao 	上报	c=2313 d=1.20514 t=64554
 shang bao 	商报	c=1 d=1.03511e-24 t=8035
 shang bao kan 	上报看	c=1 d=4.19095e-05 t=8035
 shang bao ma 	上报吗	c=1 d=1.03511e-24 t=8035
@@ -10232,7 +10247,7 @@ shang lu 	上路	c=1 d=1.03511e-24 t=8035
 shang mai 	上麦	c=4 d=2.58777e-24 t=8035
 shang me 	上么	c=1 d=1.03511e-24 t=8035
 shang men 	上门	c=4 d=2.58777e-24 t=8035
-shang mian 	上面	c=269 d=1 t=46505
+shang mian 	上面	c=270 d=1 t=63196
 shang nian 	上年	c=1 d=1.03511e-24 t=8035
 shang ping 	上屏	c=4 d=1.74453 t=24678
 shang qian 	上千	c=1 d=1.03511e-24 t=8035
@@ -10266,7 +10281,7 @@ shang xia xian 	上下先	c=1 d=1.03511e-24 t=8035
 shang xia you 	上下游	c=6 d=3.62288e-24 t=8035
 shang xia zuo you 	上下左右	c=2 d=3.61774e-10 t=8035
 shang xian 	上线	c=122 d=1.00014 t=53942
-shang xian 	上限	c=41 d=1.00045 t=17255
+shang xian 	上限	c=44 d=2.32745 t=63722
 shang xian ba 	上限吧	c=1 d=1 t=9885
 shang xue 	上学	c=6 d=1.00095 t=8077
 shang ye 	商业	c=2 d=1.55267e-24 t=8035
@@ -10284,7 +10299,7 @@ shang yi xia 	上一下	c=1 d=1.03511e-24 t=8035
 shang yi zhou 	上一周	c=2 d=1.55267e-24 t=8035
 shang yin 	上瘾	c=3 d=2.07022e-24 t=8035
 shang yong 	商用	c=2 d=1.55267e-24 t=8035
-shang you 	上游	c=115 d=1 t=59015
+shang you 	上游	c=116 d=1 t=63790
 shang yuan 	伤员	c=1 d=2.2787e-13 t=8035
 shang yue 	上月	c=2 d=1.55267e-24 t=8035
 shang zhang 	上涨	c=12 d=6.72822e-24 t=8035
@@ -10302,6 +10317,7 @@ shao gai dong 	少改动	c=1 d=1 t=9542
 shao ji 	烧鸡	c=1 d=1.03511e-24 t=8035
 shao jian 	少见	c=4 d=1 t=14591
 shao kan 	少看	c=1 d=1 t=18811
+shao kan dian 	少看点	c=1 d=1 t=63182
 shao kao 	烧烤	c=1 d=1 t=26241
 shao liang 	少量	c=1 d=1 t=50941
 shao lin si 	少林寺	c=2 d=1.55267e-24 t=8035
@@ -10319,7 +10335,7 @@ she 	舍	c=3 d=2.07022e-24 t=8035
 she 	蛇	c=3 d=2.07022e-24 t=8035
 she 	设	c=3 d=2.07022e-24 t=8035
 she bao 	社保	c=3 d=2.07022e-24 t=8035
-she bei 	设备	c=1913 d=2.7368 t=62751
+she bei 	设备	c=1917 d=2.4085 t=64559
 she bi 	涉笔	c=5 d=3.10534e-24 t=8035
 she bu de 	舍不得	c=4 d=2.58777e-24 t=8035
 she cheng 	射程	c=1 d=1.03511e-24 t=8035
@@ -10329,7 +10345,7 @@ she de 	舍得	c=1 d=1.03511e-24 t=8035
 she ding 	设定	c=3 d=2.07022e-24 t=8035
 she hui 	社会	c=6 d=3.62288e-24 t=8035
 she ji 	涉及	c=40 d=1.00035 t=61439
-she ji 	设计	c=202 d=1.03788 t=62163
+she ji 	设计	c=203 d=1.00062 t=63647
 she ji jiang 	设计奖	c=1 d=1 t=40099
 she ji yuan 	设计院	c=1 d=1.03511e-24 t=8035
 she jiao 	社交	c=5 d=3.10534e-24 t=8035
@@ -10344,7 +10360,7 @@ she xiang tou 	摄像头	c=4 d=2.58777e-24 t=8035
 she zhan chang 	社战场	c=2 d=1.55267e-24 t=8035
 she zhao 	社招	c=10 d=5.69312e-24 t=8035
 she zheng 	摄政	c=2 d=1.55267e-24 t=8035
-she zhi 	设置	c=1015 d=1.97046 t=62729
+she zhi 	设置	c=1016 d=1.03233 t=63551
 she zhi li mian 	设置里面	c=1 d=1.03511e-24 t=8035
 shen 	审	c=4 d=1 t=62771
 shen 	深	c=7 d=4.14044e-24 t=8035
@@ -10357,7 +10373,7 @@ shen du 	深度	c=5 d=3.10534e-24 t=8035
 shen fen 	身份	c=6 d=5.54798e-11 t=8035
 shen fen zheng 	身份证	c=6 d=3.62288e-24 t=8035
 shen gao 	身高	c=1 d=1.03511e-24 t=8035
-shen he 	审核	c=246 d=4.16766 t=51600
+shen he 	审核	c=249 d=1.05531 t=64031
 shen he zhong 	审核中	c=2 d=1 t=36677
 shen hua 	神话	c=2 d=1.55267e-24 t=8035
 shen ji 	审计	c=1 d=1.03511e-24 t=8035
@@ -10367,14 +10383,14 @@ shen jing bing 	神经病	c=1 d=1 t=19736
 shen kong 	深空	c=1 d=1.03511e-24 t=8035
 shen lun 	申论	c=1 d=1.03511e-24 t=8035
 shen lve 	神略	c=1 d=1.03511e-24 t=8035
-shen me 	什么	c=501 d=1.00588 t=61461
+shen me 	什么	c=503 d=1.00348 t=64705
 shen mi 	神秘	c=3 d=2.07022e-24 t=8035
 shen pan 	审判	c=2 d=1.55267e-24 t=8035
 shen pi 	审批	c=62 d=1.42263 t=51828
 shen pi ren 	审批人	c=1 d=1 t=51400
 shen qi 	神奇	c=3 d=2.07022e-24 t=8035
 shen qian 	深浅	c=1 d=1.03511e-24 t=8035
-shen qing 	申请	c=445 d=1.99802 t=62793
+shen qing 	申请	c=449 d=1.56646 t=64032
 shen qu 	身躯	c=6 d=3.62288e-24 t=8035
 shen ren 	神人	c=3 d=2.07022e-24 t=8035
 shen ru 	深入	c=1 d=1.03511e-24 t=8035
@@ -10473,7 +10489,7 @@ shi 	市	c=5 d=3.10534e-24 t=8035
 shi 	师	c=6 d=3.62288e-24 t=8035
 shi 	式	c=22 d=1 t=43817
 shi 	时	c=331 d=1 t=61458
-shi 	是	c=17069 d=3.00332 t=63066
+shi 	是	c=17126 d=10.5025 t=64665
 shi 	湿	c=2 d=1.55267e-24 t=8035
 shi 	石	c=1 d=1.03511e-24 t=8035
 shi 	絁	c=5 d=3.10534e-24 t=8035
@@ -10482,9 +10498,9 @@ shi 	试	c=222 d=1.00032 t=59649
 shi 	食	c=1 d=1.03511e-24 t=8035
 shi a 	是啊	c=14 d=7.7633e-24 t=8035
 shi an 	是按	c=2 d=1.55267e-24 t=8035
-shi ba 	是吧	c=717 d=1.5746 t=61799
+shi ba 	是吧	c=719 d=1.53272 t=63674
 shi ba 	是把	c=2 d=1.55267e-24 t=8035
-shi bai 	失败	c=1018 d=2.37313 t=59182
+shi bai 	失败	c=1020 d=1.37719 t=64477
 shi bei 	是被	c=3 d=2.07022e-24 t=8035
 shi ben 	十本	c=1 d=1.03511e-24 t=8035
 shi bie 	识别	c=52 d=1 t=47981
@@ -10496,7 +10512,7 @@ shi bu chu 	是不出	c=1 d=1.03511e-24 t=8035
 shi bu hui 	是不会	c=1 d=1.03511e-24 t=8035
 shi bu sheng 	是不胜	c=1 d=1.03511e-24 t=8035
 shi bu shi 	时不时	c=8 d=0.000916504 t=8035
-shi bu shi 	是不是	c=1271 d=1.89299 t=63020
+shi bu shi 	是不是	c=1274 d=1.64836 t=64055
 shi bu shu 	是不数	c=3 d=1 t=10611
 shi bu shu chu 	是不输出	c=1 d=1.03511e-24 t=8035
 shi bu xing 	是不行	c=1 d=1.03511e-24 t=8035
@@ -10529,7 +10545,7 @@ shi fang 	释放	c=1 d=1 t=38594
 shi fei fen ming 	是非分明	c=1 d=1.03511e-24 t=8035
 shi fen 	时分	c=1 d=1.03511e-24 t=8035
 shi fen zhong 	十分钟	c=2 d=2.26033e-06 t=8035
-shi fou 	是否	c=259 d=1 t=59506
+shi fou 	是否	c=260 d=1 t=64049
 shi fu 	师傅	c=3 d=2.07022e-24 t=8035
 shi gan sha 	是干啥	c=3 d=2.07022e-24 t=8035
 shi ge 	是个	c=35 d=1 t=14484
@@ -10540,7 +10556,7 @@ shi gong 	施工	c=1 d=1.03511e-24 t=8035
 shi gu 	事故	c=63 d=2.97025 t=47083
 shi guo 	试过	c=56 d=1 t=42680
 shi he 	适合	c=9 d=1 t=42668
-shi hou 	时候	c=1236 d=1.12148 t=62989
+shi hou 	时候	c=1241 d=1.09265 t=64227
 shi hu 	石斛	c=5 d=3.10534e-24 t=8035
 shi hua 	实话	c=2 d=1.55267e-24 t=8035
 shi hua 	石化	c=1 d=1.03511e-24 t=8035
@@ -10608,15 +10624,15 @@ shi rong yi 	是容易	c=1 d=1.03511e-24 t=8035
 shi ruo 	示弱	c=1 d=1.03511e-24 t=8035
 shi ruo wu du 	视若无睹	c=1 d=1.03511e-24 t=8035
 shi san 	十三	c=0 d=0 t=8035
-shi sha 	是啥	c=730 d=1.0014 t=61094
+shi sha 	是啥	c=732 d=1.21225 t=64451
 shi sha shi hou 	是啥时候	c=1 d=1.03511e-24 t=8035
 shi shan 	屎山	c=30 d=1 t=40759
 shi shao 	事少	c=1 d=1.03511e-24 t=8035
 shi shen me 	是什么	c=5 d=3.10534e-24 t=8035
 shi shi 	事实	c=3 d=2.07022e-24 t=8035
-shi shi 	实时	c=184 d=2.07598 t=57573
+shi shi 	实时	c=186 d=1.98511 t=64770
 shi shi 	时时	c=1 d=1.03511e-24 t=8035
-shi shi 	试试	c=1170 d=1.71477 t=62877
+shi shi 	试试	c=1174 d=1.96567 t=64692
 shi shi hou 	是时候	c=11 d=6.21069e-24 t=8035
 shi shi shang 	事实上	c=2 d=1.55267e-24 t=8035
 shi shou 	是受	c=1 d=1.03511e-24 t=8035
@@ -10649,7 +10665,7 @@ shi xi 	实习	c=93 d=1.96561 t=45651
 shi xi huan 	是喜欢	c=1 d=1.03511e-24 t=8035
 shi xi shang 	是喜上	c=1 d=1.03511e-24 t=8035
 shi xi sheng 	实习生	c=43 d=1 t=56896
-shi xia 	试下	c=159 d=1 t=57820
+shi xia 	试下	c=160 d=1 t=63287
 shi xian 	实现	c=325 d=1.89693 t=62153
 shi xiang 	是想	c=6 d=3.62288e-24 t=8035
 shi xiang shuo 	是想说	c=1 d=1.03511e-24 t=8035
@@ -10681,7 +10697,7 @@ shi yi 	是以	c=2 d=1.55267e-24 t=8035
 shi yi ge 	是一个	c=4 d=2.58777e-24 t=8035
 shi yin wei 	是因为	c=4 d=2.58777e-24 t=8035
 shi ying 	适应	c=6 d=6.94434e-05 t=8035
-shi yong 	使用	c=389 d=1.28365 t=55904
+shi yong 	使用	c=391 d=1.89137 t=63403
 shi yong 	实用	c=8 d=4.658e-24 t=8035
 shi yong 	是用	c=4 d=1 t=55591
 shi yong 	试用	c=2 d=1.55267e-24 t=8035
@@ -10709,7 +10725,7 @@ shi zhe yang de 	是这样的	c=1 d=1.03511e-24 t=8035
 shi zhen 	失真	c=3 d=2.07022e-24 t=8035
 shi zheng 	市政	c=1 d=1 t=38163
 shi zhi 	市值	c=1 d=1.03511e-24 t=8035
-shi zhi 	是指	c=296 d=1.00011 t=60636
+shi zhi 	是指	c=297 d=1 t=64194
 shi zhi 	食指	c=1 d=1.03511e-24 t=8035
 shi zhi chi 	是支持	c=1 d=1.03511e-24 t=8035
 shi zhi jie 	是直接	c=1 d=1.03511e-24 t=8035
@@ -10741,7 +10757,7 @@ shou cheng 	守城	c=4 d=1 t=61930
 shou ci 	首次	c=13 d=1 t=62601
 shou dan 	收单	c=1 d=1.03511e-24 t=8035
 shou dao 	受到	c=6 d=3.62288e-24 t=8035
-shou dao 	收到	c=802 d=1.1495 t=63031
+shou dao 	收到	c=806 d=1.91039 t=64329
 shou dao ma 	收到吗	c=1 d=1.03511e-24 t=8035
 shou dao me 	收到么	c=1 d=1 t=56327
 shou di 	手帝	c=1 d=1.03511e-24 t=8035
@@ -10760,7 +10776,7 @@ shou gan 	手感	c=5 d=1 t=10215
 shou ge 	收割	c=1 d=1 t=40990
 shou gong 	收工	c=2 d=1.55267e-24 t=8035
 shou gou 	收购	c=3 d=1 t=36049
-shou gui 	收归	c=26 d=1 t=53918
+shou gui 	收归	c=27 d=1 t=64115
 shou guo 	受过	c=1 d=1.03511e-24 t=8035
 shou hai zhe 	受害者	c=4 d=2.58777e-24 t=8035
 shou hang 	首行	c=8 d=4.658e-24 t=8035
@@ -10804,7 +10820,7 @@ shou wan 	手腕	c=2 d=1.55267e-24 t=8035
 shou wei 	收尾	c=34 d=1 t=55548
 shou wei 	首位	c=1 d=1.03511e-24 t=8035
 shou xian 	受限	c=1 d=1.03511e-24 t=8035
-shou xian 	首先	c=54 d=3.76787 t=59594
+shou xian 	首先	c=55 d=1 t=64060
 shou xiao 	瘦小	c=1 d=1.03511e-24 t=8035
 shou xie 	手写	c=11 d=1 t=44009
 shou yang 	收养	c=1 d=1.03511e-24 t=8035
@@ -10844,7 +10860,7 @@ shu huang 	书荒	c=1 d=1.03511e-24 t=8035
 shu ji 	书记	c=2 d=1 t=13239
 shu jia 	暑假	c=10 d=5.69312e-24 t=8035
 shu jian she 	书建设	c=1 d=1.03511e-24 t=8035
-shu ju 	数据	c=2677 d=2.04947 t=62214
+shu ju 	数据	c=2679 d=1.00182 t=64724
 shu ju kai shi 	数据开始	c=1 d=1.03511e-24 t=8035
 shu ju ku 	数据库	c=177 d=1.22993 t=41740
 shu ju liang 	数据量	c=2 d=1.55267e-24 t=8035
@@ -10891,7 +10907,7 @@ shu zhi 	数值	c=28 d=0.576973 t=8035
 shu zhi 	述职	c=2 d=1.55267e-24 t=8035
 shu zhu 	属猪	c=1 d=1.03511e-24 t=8035
 shu zi 	数字	c=177 d=1.00003 t=56941
-shu zu 	数组	c=49 d=2.58777e-23 t=8035
+shu zu 	数组	c=50 d=1 t=64381
 shua 	刷	c=141 d=1.9802 t=55726
 shua dao 	刷到	c=1 d=0.1 t=10500
 shua dao guo 	刷到过	c=1 d=1 t=10501
@@ -10943,7 +10959,7 @@ shuang ying 	双赢	c=1 d=1.03511e-24 t=8035
 shui 	水	c=45 d=1 t=26868
 shui 	睡	c=166 d=1 t=62933
 shui 	税	c=31 d=1.86071 t=56342
-shui 	谁	c=164 d=1.0662 t=62485
+shui 	谁	c=166 d=1.9917 t=63779
 shui a 	谁啊	c=1 d=1.03511e-24 t=8035
 shui bei 	水杯	c=1 d=1.03511e-24 t=8035
 shui bian 	水边	c=5 d=3.10534e-24 t=8035
@@ -10975,8 +10991,8 @@ shui zhao 	睡着	c=3 d=2.07022e-24 t=8035
 shui zhe 	睡着	c=1 d=1.03511e-24 t=8035
 shui zhi dao 	谁知道	c=3 d=2.07022e-24 t=8035
 shui zhun 	水准	c=1 d=1.03511e-24 t=8035
-shun 	顺	c=22 d=1.91851 t=59122
-shun bian 	顺便	c=234 d=1.00147 t=62623
+shun 	顺	c=24 d=1.02282 t=64256
+shun bian 	顺便	c=235 d=1.04887 t=63227
 shun jian 	瞬间	c=3 d=2.07022e-24 t=8035
 shun kou 	顺口	c=1 d=1.03511e-24 t=8035
 shun li 	顺利	c=2 d=1.55267e-24 t=8035
@@ -10990,7 +11006,7 @@ shun xun 	顺讯	c=1 d=1.03511e-24 t=8035
 shun yi 	瞬移	c=1 d=0.000269215 t=8035
 shun zi 	顺子	c=1 d=1 t=56545
 shuo 	硕	c=1 d=1.03511e-24 t=8035
-shuo 	说	c=1112 d=1.00001 t=62634
+shuo 	说	c=1113 d=1.00021 t=64331
 shuo ba 	说吧	c=1 d=1.03511e-24 t=8035
 shuo bu chu 	说不出	c=1 d=1.03511e-24 t=8035
 shuo bu chu lai 	说不出来	c=1 d=1.03511e-24 t=8035
@@ -11012,7 +11028,7 @@ shuo hua 	说话	c=80 d=1 t=32807
 shuo ju 	说句	c=1 d=1.03511e-24 t=8035
 shuo lou 	说漏	c=1 d=1 t=31797
 shuo mei 	说媒	c=1 d=1.03511e-24 t=8035
-shuo ming 	说明	c=221 d=1.00017 t=58194
+shuo ming 	说明	c=222 d=1 t=64427
 shuo ni men 	说你们	c=1 d=1.03511e-24 t=8035
 shuo qi lai 	说起来	c=2 d=1 t=24505
 shuo qing chu 	说清楚	c=2 d=1 t=57439
@@ -11132,7 +11148,7 @@ su zhou 	苏州	c=2 d=1.55267e-24 t=8035
 su zhu 	宿主	c=0 d=0 t=8035
 su zhu ji 	宿主机	c=1 d=1.03511e-24 t=8035
 su zu 	素族	c=1 d=1.03511e-24 t=8035
-suan 	算	c=424 d=1.00012 t=62403
+suan 	算	c=425 d=1.00085 t=63816
 suan 	酸	c=3 d=2.07022e-24 t=8035
 suan chu lai 	算出来	c=1 d=1.03511e-24 t=8035
 suan da 	算大	c=1 d=1.03511e-24 t=8035
@@ -11153,7 +11169,7 @@ suan zai 	算在	c=1 d=1 t=31972
 sui 	岁	c=43 d=1 t=27997
 sui 	碎	c=2 d=1.55267e-24 t=8035
 sui 	随	c=2 d=1.55267e-24 t=8035
-sui bian 	随便	c=308 d=1 t=61892
+sui bian 	随便	c=311 d=1.05095 t=64301
 sui bian mai 	随便买	c=1 d=1.03511e-24 t=8035
 sui bian zhuang 	随便装	c=1 d=0.229925 t=8035
 sui di 	随地	c=1 d=1.03511e-24 t=8035
@@ -11201,7 +11217,7 @@ suo xiao 	缩小	c=10 d=1 t=40982
 suo xie 	所写	c=1 d=1.03511e-24 t=8035
 suo xu 	所需	c=1 d=1.03511e-24 t=8035
 suo xu yao 	所需要	c=1 d=1 t=9506
-suo yi 	所以	c=960 d=2.2275 t=62689
+suo yi 	所以	c=961 d=1.00044 t=64395
 suo yi bu zhi dao 	所以不知道	c=1 d=1.03511e-24 t=8035
 suo yi shuo 	所以说	c=2 d=1.55267e-24 t=8035
 suo yin 	索引	c=33 d=1 t=8776
@@ -11225,7 +11241,7 @@ ta jia 	他家	c=1 d=1.03511e-24 t=8035
 ta jiao 	它叫	c=1 d=1.03511e-24 t=8035
 ta jiu 	他就	c=2 d=1.55267e-24 t=8035
 ta mei 	他没	c=1 d=1.03511e-24 t=8035
-ta men 	他们	c=266 d=1 t=57603
+ta men 	他们	c=267 d=1 t=63203
 ta men 	她们	c=4 d=1 t=28658
 ta men 	它们	c=1 d=1 t=28659
 ta na ge 	他那个	c=1 d=1.03511e-24 t=8035
@@ -11242,7 +11258,7 @@ ta zhe ge 	他这个	c=3 d=2.07022e-24 t=8035
 ta zhe zhong 	他这中	c=1 d=1.03511e-24 t=8035
 tai 	台	c=91 d=1 t=24546
 tai 	太	c=338 d=1 t=59753
-tai 	态	c=36 d=1.91495e-23 t=8035
+tai 	态	c=37 d=1 t=64249
 tai 	抬	c=1 d=1.03511e-24 t=8035
 tai 	泰	c=1 d=1.03511e-24 t=8035
 tai bu 	太不	c=1 d=1.03511e-24 t=8035
@@ -11254,14 +11270,14 @@ tai chang jian 	太常见	c=1 d=1.03511e-24 t=8035
 tai chao 	太吵	c=1 d=1.03511e-24 t=8035
 tai chi 	太迟	c=2 d=1.55267e-24 t=8035
 tai chou 	太丑	c=4 d=2.58777e-24 t=8035
-tai da 	太大	c=81 d=1.12599 t=61064
+tai da 	太大	c=82 d=1 t=63960
 tai dao 	台岛	c=1 d=1.03511e-24 t=8035
 tai di 	太低	c=23 d=1 t=16608
 tai dong 	台东	c=1 d=1.03511e-24 t=8035
 tai du 	态度	c=3 d=2.07022e-24 t=8035
 tai duan 	太短	c=13 d=1 t=40449
 tai dui 	太对	c=1 d=1.03511e-24 t=8035
-tai duo 	太多	c=191 d=1 t=59656
+tai duo 	太多	c=192 d=1 t=64765
 tai e xin 	太恶心	c=1 d=1.03511e-24 t=8035
 tai feng 	台风	c=8 d=4.658e-24 t=8035
 tai fu za 	太复杂	c=3 d=1 t=52514
@@ -11272,7 +11288,7 @@ tai guai 	太怪	c=5 d=3.10534e-24 t=8035
 tai gui 	太贵	c=24 d=1 t=45597
 tai guo 	太过	c=3 d=2.07022e-24 t=8035
 tai guo 	泰国	c=5 d=3.10534e-24 t=8035
-tai hao 	太好	c=4 d=2.58777e-24 t=8035
+tai hao 	太好	c=5 d=1 t=64763
 tai hei 	太黑	c=1 d=1.03511e-24 t=8035
 tai heng 	太哼	c=2 d=1.55267e-24 t=8035
 tai hu 	太湖	c=1 d=1.03511e-24 t=8035
@@ -11301,7 +11317,7 @@ tai leng 	太冷	c=2 d=1 t=49075
 tai li pu 	太离谱	c=2 d=1.55267e-24 t=8035
 tai liang 	太亮	c=1 d=1.03511e-24 t=8035
 tai luan 	太乱	c=2 d=1 t=8343
-tai ma fan 	太麻烦	c=15 d=1 t=52489
+tai ma fan 	太麻烦	c=16 d=1 t=64128
 tai man 	太慢	c=33 d=1 t=23610
 tai mang 	太忙	c=5 d=3.10534e-24 t=8035
 tai meng 	太猛	c=1 d=1.03511e-24 t=8035
@@ -11377,7 +11393,7 @@ tang 	躺	c=59 d=1 t=62916
 tang er 	唐二	c=1 d=1.03511e-24 t=8035
 tang ge 	汤哥	c=18 d=9.83357e-24 t=8035
 tang niao bing 	糖尿病	c=3 d=2.07022e-24 t=8035
-tang ping 	躺平	c=33 d=1 t=63042
+tang ping 	躺平	c=34 d=1.42105 t=63215
 tang san 	唐三	c=2 d=1.55267e-24 t=8035
 tang tang 	堂堂	c=2 d=0.1 t=8239
 tang tang fu huo 	堂堂复活	c=1 d=1 t=8240
@@ -11463,7 +11479,7 @@ ti gang 	提纲	c=1 d=1.03511e-24 t=8035
 ti gao 	提高	c=138 d=1 t=20150
 ti ge 	提个	c=20 d=1.00028 t=58958
 ti gei 	提给	c=1 d=1.03511e-24 t=8035
-ti gong 	提供	c=169 d=1.0422 t=60165
+ti gong 	提供	c=170 d=1 t=64202
 ti guo 	提过	c=7 d=4.14044e-24 t=8035
 ti huan 	替换	c=193 d=2.17775 t=58410
 ti ji 	提及	c=1 d=1.03511e-24 t=8035
@@ -11507,8 +11523,8 @@ ti zhi nei 	体质内	c=2 d=1 t=62005
 ti zhong 	体重	c=2 d=1.55267e-24 t=8035
 ti zi 	屉子	c=1 d=1.03511e-24 t=8035
 ti zi 	梯子	c=3 d=3.96803e-09 t=8035
-tian 	填	c=510 d=1.8851 t=62273
-tian 	天	c=550 d=3.70785 t=62932
+tian 	填	c=516 d=2.1076 t=64302
+tian 	天	c=552 d=2.44541 t=63337
 tian 	添	c=1 d=1.03511e-24 t=8035
 tian 	甜	c=3 d=2.07022e-24 t=8035
 tian 	田	c=1 d=1.03511e-24 t=8035
@@ -11565,8 +11581,8 @@ tian yi yun 	天翼云	c=1 d=1 t=24192
 tian zai 	天灾	c=1 d=1.03511e-24 t=8035
 tian zi 	天子	c=3 d=2.07022e-24 t=8035
 tiao 	挑	c=1 d=1.03511e-24 t=8035
-tiao 	条	c=226 d=1 t=62845
-tiao 	调	c=320 d=2.32197 t=62539
+tiao 	条	c=227 d=1.00066 t=64310
+tiao 	调	c=328 d=2.35836 t=64656
 tiao 	跳	c=230 d=1 t=24421
 tiao ban 	跳板	c=7 d=4.14044e-24 t=8035
 tiao ban ji 	跳板机	c=17 d=1 t=12607
@@ -11597,7 +11613,7 @@ tiao xiu ma 	调休吗	c=1 d=1.03511e-24 t=8035
 tiao yue 	跳跃	c=1 d=1.03511e-24 t=8035
 tiao zhan 	挑战	c=8 d=4.658e-24 t=8035
 tiao zheng 	调整	c=86 d=1.68096 t=11039
-tiao zhuan 	跳转	c=600 d=1 t=60150
+tiao zhuan 	跳转	c=603 d=1.90147 t=64535
 tiao zhuan lian jie 	跳转链接	c=1 d=6.93113e-12 t=8035
 tiao zhuan ma 	跳转吗	c=1 d=1.03511e-24 t=8035
 tie 	聑	c=2 d=1.55267e-24 t=8035
@@ -11611,7 +11627,7 @@ tie ren 	铁人	c=1 d=1 t=26580
 tie tu 	贴图	c=8 d=4.658e-24 t=8035
 tie zhe 	贴着	c=1 d=1.03511e-24 t=8035
 tie zi 	帖子	c=4 d=2.58777e-24 t=8035
-ting 	停	c=35 d=2.02404 t=17689
+ting 	停	c=36 d=1 t=64351
 ting 	厅	c=16 d=8.79843e-24 t=8035
 ting 	听	c=28 d=1 t=10161
 ting 	婷	c=1 d=1.03511e-24 t=8035
@@ -11642,6 +11658,7 @@ ting jiu 	挺久	c=2 d=1.55267e-24 t=8035
 ting ke 	听课	c=1 d=1.03511e-24 t=8035
 ting kuai 	挺快	c=7 d=4.14044e-24 t=8035
 ting li 	听力	c=1 d=1.03511e-24 t=8035
+ting luan 	挺乱	c=1 d=1 t=63730
 ting ma fan 	听麻烦	c=1 d=0.1 t=49121
 ting mei 	挺没	c=1 d=1.03511e-24 t=8035
 ting nan 	挺难	c=1 d=1.03511e-24 t=8035
@@ -11659,7 +11676,7 @@ ting you 	挺有	c=1 d=1.03511e-24 t=8035
 ting yuan 	挺远	c=1 d=1.03511e-24 t=8035
 ting zao 	挺早	c=1 d=1 t=27439
 ting zhi 	停止	c=10 d=1 t=20574
-tong 	同	c=64 d=1 t=31654
+tong 	同	c=65 d=1 t=63683
 tong 	桶	c=16 d=8.79843e-24 t=8035
 tong 	痛	c=18 d=9.83357e-24 t=8035
 tong 	瞳	c=7 d=4.14044e-24 t=8035
@@ -11677,9 +11694,9 @@ tong feng 	痛风	c=1 d=1.03511e-24 t=8035
 tong feng 	通风	c=2 d=1.55267e-24 t=8035
 tong gong si 	同公司	c=1 d=1.03511e-24 t=8035
 tong guan 	通关	c=3 d=2.07022e-24 t=8035
-tong guo 	通过	c=127 d=1 t=58452
+tong guo 	通过	c=128 d=1 t=63302
 tong hao 	同好	c=1 d=1.03511e-24 t=8035
-tong hua 	童话	c=2 d=1.55267e-24 t=8035
+tong hua 	童话	c=4 d=1.98511 t=64314
 tong hua 	通话	c=12 d=6.72822e-24 t=8035
 tong hua shun 	同花顺	c=1 d=1.03511e-24 t=8035
 tong huo peng zhang 	通货膨胀	c=1 d=1 t=34839
@@ -11730,7 +11747,7 @@ tong yi tai 	同一台	c=1 d=1.03511e-24 t=8035
 tong yi tao 	同一套	c=1 d=1.03511e-24 t=8035
 tong yi tian 	同一天	c=4 d=1 t=14594
 tong yi tiao 	同一条	c=2 d=1.55267e-24 t=8035
-tong yong 	通用	c=90 d=1 t=62328
+tong yong 	通用	c=92 d=1.33 t=63871
 tong zhan bu 	统战部	c=1 d=5.46538e-11 t=8035
 tong zhi 	统治	c=1 d=1.03511e-24 t=8035
 tong zhi 	通知	c=226 d=1.00016 t=54500
@@ -11739,7 +11756,7 @@ tou 	偷	c=10 d=5.69312e-24 t=8035
 tou 	头	c=45 d=1.0056 t=43310
 tou 	投	c=25 d=1 t=22413
 tou 	透	c=1 d=1.03511e-24 t=8035
-tou chuan 	透传	c=377 d=1.10141 t=62467
+tou chuan 	透传	c=383 d=1.0077 t=64539
 tou dai 	头戴	c=2 d=1.55267e-24 t=8035
 tou du 	偷渡	c=1 d=1.03511e-24 t=8035
 tou fa 	头发	c=6 d=1 t=48843
@@ -11873,7 +11890,7 @@ tuo xie 	拖鞋	c=5 d=3.10534e-24 t=8035
 tuo yan 	拖延	c=1 d=1.03511e-24 t=8035
 tuo zhan 	拓展	c=2 d=1.55267e-24 t=8035
 wa 	娃	c=3 d=2.07022e-24 t=8035
-wa 	挖	c=7 d=1 t=26129
+wa 	挖	c=8 d=1 t=64728
 wa 	瓦	c=32 d=1.70793e-23 t=8035
 wa ge 	挖个	c=1 d=1.03511e-24 t=8035
 wa jue 	挖掘	c=1 d=1.03511e-24 t=8035
@@ -11917,7 +11934,7 @@ wai zhe 	歪着	c=1 d=1.03511e-24 t=8035
 wai zhi 	外置	c=2 d=1.55267e-24 t=8035
 wan 	万	c=47 d=2.48426e-23 t=8035
 wan 	丸	c=1 d=1.03511e-24 t=8035
-wan 	完	c=592 d=2.94125 t=62317
+wan 	完	c=593 d=1.00007 t=64445
 wan 	弯	c=4 d=2.58777e-24 t=8035
 wan 	挽	c=1 d=1.03511e-24 t=8035
 wan 	晚	c=60 d=1 t=52847
@@ -11950,7 +11967,7 @@ wan mei 	完美	c=32 d=1 t=63010
 wan ni 	玩腻	c=1 d=1.03511e-24 t=8035
 wan ou 	玩偶	c=2 d=1 t=47055
 wan qian 	万千	c=1 d=1.03511e-24 t=8035
-wan quan 	完全	c=329 d=1.70158 t=63000
+wan quan 	完全	c=331 d=1.00476 t=64466
 wan sha 	完啥	c=1 d=1.03511e-24 t=8035
 wan shan 	完善	c=3 d=2.07022e-24 t=8035
 wan shang 	晚上	c=151 d=1.96079 t=49088
@@ -12059,7 +12076,7 @@ wei fan 	违反	c=1 d=1.03511e-24 t=8035
 wei fu 	为辅	c=1 d=0.1 t=49624
 wei fu qu 	为辅去	c=1 d=1.03511e-24 t=8035
 wei fu shua 	为辅刷	c=1 d=1 t=49625
-wei fu wu 	微服务	c=198 d=1.00144 t=62137
+wei fu wu 	微服务	c=200 d=1.82698 t=64292
 wei gui 	违规	c=18 d=1 t=54101
 wei hao 	为好	c=1 d=1.03511e-24 t=8035
 wei hao 	尾号	c=4 d=2.58777e-24 t=8035
@@ -12073,7 +12090,7 @@ wei hun 	未婚	c=1 d=1.03511e-24 t=8035
 wei huo yue 	未活跃	c=1 d=1.03511e-24 t=8035
 wei ji 	危机	c=1 d=1.03511e-24 t=8035
 wei ji 	微机	c=3 d=2.07022e-24 t=8035
-wei kong 	为空	c=36 d=1.81898 t=37339
+wei kong 	为空	c=37 d=1 t=64397
 wei kong 	唯恐	c=1 d=1.03511e-24 t=8035
 wei kou 	胃口	c=1 d=1.03511e-24 t=8035
 wei lai 	未来	c=40 d=1 t=50857
@@ -12088,7 +12105,7 @@ wei qi 	未启	c=1 d=1.03511e-24 t=8035
 wei quan 	维权	c=2 d=1 t=10740
 wei rao 	围绕	c=1 d=1.03511e-24 t=8035
 wei ruan 	微软	c=14 d=7.91108e-09 t=8035
-wei sha 	为啥	c=837 d=1 t=58704
+wei sha 	为啥	c=842 d=2.3143 t=64609
 wei sha 	尾杀	c=1 d=1.03511e-24 t=8035
 wei sha shuo 	为啥说	c=1 d=1.03511e-24 t=8035
 wei shen 	为什	c=6 d=1 t=46447
@@ -12110,7 +12127,7 @@ wei xin 	微信	c=116 d=1 t=29730
 wei xin 	维新	c=5 d=3.10534e-24 t=8035
 wei xin le 	微信了	c=1 d=1.03511e-24 t=8035
 wei yi 	位移	c=2 d=1.55267e-24 t=8035
-wei yi 	唯一	c=87 d=1.00001 t=61660
+wei yi 	唯一	c=88 d=1 t=64391
 wei yu 	位于	c=2 d=1.55267e-24 t=8035
 wei yue 	违约	c=2 d=1.55267e-24 t=8035
 wei yue jin 	违约金	c=1 d=1.03511e-24 t=8035
@@ -12121,12 +12138,12 @@ wei zhi 	为止	c=3 d=2.07022e-24 t=8035
 wei zhi 	位置	c=87 d=4.5545e-23 t=8035
 wei zhi 	未知	c=48 d=2.53603e-23 t=8035
 wei zhu 	为主	c=4 d=1 t=44813
-wei zhun 	为准	c=2 d=1.55267e-24 t=8035
+wei zhun 	为准	c=3 d=1 t=64069
 wen 	文	c=17 d=1 t=42109
 wen 	温	c=1 d=1.03511e-24 t=8035
 wen 	稳	c=28 d=1.50091e-23 t=8035
 wen 	蚊	c=11 d=6.21069e-24 t=8035
-wen 	问	c=758 d=1 t=62284
+wen 	问	c=759 d=1.01062 t=63193
 wen ai 	温蔼	c=1 d=1.03511e-24 t=8035
 wen an 	文案	c=887 d=1 t=57080
 wen an ni 	文案你	c=1 d=1.03511e-24 t=8035
@@ -12137,7 +12154,7 @@ wen ben 	文本	c=116 d=1.00009 t=27237
 wen bi 	文笔	c=1 d=1.03511e-24 t=8035
 wen cha 	温差	c=1 d=1 t=24753
 wen da 	问答	c=4 d=2.58777e-24 t=8035
-wen dang 	文档	c=390 d=1.00012 t=62263
+wen dang 	文档	c=393 d=2.28714 t=64068
 wen dang kan 	文档看	c=1 d=1.03511e-24 t=8035
 wen dao 	问到	c=2 d=1.55267e-24 t=8035
 wen dao 	闻到	c=2 d=1.55267e-24 t=8035
@@ -12153,7 +12170,7 @@ wen hao 	问好	c=2 d=1.55267e-24 t=8035
 wen hua 	文化	c=16 d=8.79843e-24 t=8035
 wen hua 	问话	c=1 d=1.03511e-24 t=8035
 wen hua shan 	文化衫	c=1 d=1.03511e-24 t=8035
-wen jian 	文件	c=879 d=1 t=58642
+wen jian 	文件	c=880 d=1 t=63440
 wen jian 	稳健	c=3 d=2.07022e-24 t=8035
 wen jian li 	文件里	c=4 d=2.58777e-24 t=8035
 wen jian ming 	文件名	c=6 d=1.14156 t=25533
@@ -12170,7 +12187,7 @@ wen nuan 	温暖	c=2 d=1.55267e-24 t=8035
 wen quan 	温泉	c=0 d=0 t=8035
 wen shen 	瘟神	c=1 d=1.03511e-24 t=8035
 wen ta 	问他	c=2 d=1.55267e-24 t=8035
-wen ti 	问题	c=3697 d=1.0213 t=62976
+wen ti 	问题	c=3703 d=1.31816 t=64572
 wen ti bu da 	问题不大	c=8 d=1 t=27972
 wen ti cheng 	问题成	c=1 d=1.03511e-24 t=8035
 wen ti ma 	问题吗	c=4 d=1 t=23239
@@ -12178,7 +12195,7 @@ wen ti me 	问题么	c=3 d=1 t=42881
 wen ti shi 	问题是	c=2 d=1.55267e-24 t=8035
 wen tu 	文图	c=1 d=1.03511e-24 t=8035
 wen tuo 	稳妥	c=1 d=1.03511e-24 t=8035
-wen wen 	问问	c=221 d=1.99005 t=56685
+wen wen 	问问	c=222 d=1 t=63906
 wen wen ti 	问问题	c=1 d=1.03511e-24 t=8035
 wen wo 	问我	c=16 d=1 t=48306
 wen xia 	文下	c=2 d=1.55267e-24 t=8035
@@ -12193,7 +12210,7 @@ wen zhang 	纹章	c=2 d=1.55267e-24 t=8035
 wen zhu 	稳住	c=4 d=2.58777e-24 t=8035
 wen zi 	文字	c=61 d=3.20885e-23 t=8035
 wen zi 	蚊子	c=4 d=2.58777e-24 t=8035
-wo 	我	c=8423 d=3.89336 t=63046
+wo 	我	c=8433 d=1.16835 t=64682
 wo 	窝	c=1 d=1.03511e-24 t=8035
 wo 	肟	c=3 d=2.07022e-24 t=8035
 wo an 	我按	c=3 d=2.07022e-24 t=8035
@@ -12280,12 +12297,12 @@ wo fu jin 	我附近	c=1 d=1.03511e-24 t=8035
 wo fu zhi 	我复制	c=3 d=2.07022e-24 t=8035
 wo gai 	我该	c=14 d=7.7633e-24 t=8035
 wo gan 	我干	c=1 d=1.03511e-24 t=8035
-wo gan jue 	我感觉	c=78 d=1.20291 t=27922
+wo gan jue 	我感觉	c=79 d=1 t=63260
 wo gang 	我刚	c=11 d=6.21069e-24 t=8035
 wo gang gang 	我刚刚	c=3 d=2.07022e-24 t=8035
 wo gang kai shi 	我刚开始	c=1 d=0.000850232 t=8035
 wo gei 	我给	c=10 d=5.69312e-24 t=8035
-wo gei ni 	我给你	c=31 d=1.22202 t=62814
+wo gei ni 	我给你	c=33 d=1.19123 t=64629
 wo gen 	我跟	c=2 d=1.55267e-24 t=8035
 wo gen ni 	我跟你	c=1 d=1.03511e-24 t=8035
 wo gu ji 	我估计	c=33 d=1 t=53458
@@ -12298,7 +12315,7 @@ wo hai mei kai 	我还没开	c=1 d=1.03511e-24 t=8035
 wo hai mei man 	我还没满	c=1 d=1.03511e-24 t=8035
 wo hai mei you 	我还没有	c=2 d=1.55267e-24 t=8035
 wo hai neng 	我还能	c=2 d=1.55267e-24 t=8035
-wo hai shi 	我还是	c=48 d=1 t=57157
+wo hai shi 	我还是	c=49 d=1 t=63604
 wo hai shou dao 	我还收到	c=1 d=1.03511e-24 t=8035
 wo hai wei yi 	我还唯一	c=1 d=1.03511e-24 t=8035
 wo hai xiang 	我还想	c=1 d=1.03511e-24 t=8035
@@ -12320,7 +12337,7 @@ wo hui lai 	我回来	c=1 d=1.03511e-24 t=8035
 wo ji 	我寄	c=5 d=3.10534e-24 t=8035
 wo ji 	我急	c=3 d=2.07022e-24 t=8035
 wo ji ben 	我基本	c=1 d=1.03511e-24 t=8035
-wo ji de 	我记得	c=288 d=1 t=62882
+wo ji de 	我记得	c=289 d=1.24908 t=63160
 wo ji xiang 	我机箱	c=1 d=1.03511e-24 t=8035
 wo jia 	我家	c=5 d=3.10534e-24 t=8035
 wo jian yi 	我建议	c=1 d=1.03511e-24 t=8035
@@ -12342,8 +12359,8 @@ wo jue ding 	我决定	c=1 d=1.03511e-24 t=8035
 wo kai 	我开	c=3 d=2.07022e-24 t=8035
 wo kai fa 	我开发	c=1 d=1.03511e-24 t=8035
 wo kai shi 	我开始	c=3 d=1 t=61666
-wo kan 	我看	c=1580 d=2.49131 t=59969
-wo kan kan 	我看看	c=142 d=1.00633 t=62873
+wo kan 	我看	c=1582 d=1.66698 t=64341
+wo kan kan 	我看看	c=143 d=1.37021 t=63073
 wo kan wo men 	我看我们	c=1 d=1 t=40294
 wo kan wo zhe 	我看我这	c=1 d=1 t=52044
 wo kao jin 	我靠近	c=1 d=1.03511e-24 t=8035
@@ -12356,7 +12373,7 @@ wo lao 	我捞	c=2 d=1 t=61778
 wo lao jia 	我老家	c=1 d=1.03511e-24 t=8035
 wo li jie 	我理解	c=1 d=1 t=51375
 wo li mian 	我里面	c=1 d=1.03511e-24 t=8035
-wo liang 	我两	c=14 d=1.00021 t=62537
+wo liang 	我两	c=15 d=1.00211 t=63769
 wo liang ge 	我两个	c=1 d=1.03511e-24 t=8035
 wo long 	卧龙	c=1 d=1.03511e-24 t=8035
 wo mai 	我买	c=7 d=1 t=37012
@@ -12368,7 +12385,7 @@ wo mei mai 	我没买	c=1 d=1.03511e-24 t=8035
 wo mei sha 	我没啥	c=4 d=2.58777e-24 t=8035
 wo mei yong 	我没用	c=4 d=2.58777e-24 t=8035
 wo mei zhong 	我没中	c=1 d=1.03511e-24 t=8035
-wo men 	我们	c=1598 d=1.616 t=62065
+wo men 	我们	c=1599 d=1.00019 t=63870
 wo men zhe 	我们这	c=1 d=1.03511e-24 t=8035
 wo ming tian 	我明天	c=3 d=2.07022e-24 t=8035
 wo na 	我那	c=8 d=4.658e-24 t=8035
@@ -12379,7 +12396,7 @@ wo neng 	我能	c=11 d=1 t=28464
 wo neng kan 	我能看	c=1 d=1 t=49634
 wo niu 	蜗牛	c=1 d=1.03511e-24 t=8035
 wo nong 	我弄	c=1 d=1.03511e-24 t=8035
-wo pa 	我怕	c=9 d=1 t=35496
+wo pa 	我怕	c=10 d=1 t=63719
 wo pei zhi 	我配置	c=4 d=2.58777e-24 t=8035
 wo ping chang 	我平常	c=1 d=1.03511e-24 t=8035
 wo ping shi 	我平时	c=1 d=1.03511e-24 t=8035
@@ -12486,7 +12503,7 @@ wo yi dian 	我一点	c=1 d=1.03511e-24 t=8035
 wo yi ge 	我一个	c=1 d=1.03511e-24 t=8035
 wo yi gong 	我一公	c=1 d=1.03511e-24 t=8035
 wo yi hou 	我以后	c=1 d=1.03511e-24 t=8035
-wo yi jing 	我已经	c=63 d=1 t=40762
+wo yi jing 	我已经	c=64 d=1 t=63211
 wo yi ju 	我一句	c=1 d=1.03511e-24 t=8035
 wo yi kan 	我一看	c=3 d=2.07022e-24 t=8035
 wo yi qian 	我一前	c=2 d=1 t=36331
@@ -12496,7 +12513,7 @@ wo yi wei 	我以为	c=10 d=5.69312e-24 t=8035
 wo yi yong 	我一用	c=1 d=1.03511e-24 t=8035
 wo yi zhi 	我一直	c=3 d=2.07022e-24 t=8035
 wo ying gai 	我应该	c=1 d=1.03511e-24 t=8035
-wo yong 	我用	c=43 d=1 t=50247
+wo yong 	我用	c=44 d=1 t=64201
 wo yong dao 	我用到	c=1 d=1.03511e-24 t=8035
 wo yong de 	我用的	c=1 d=1.03511e-24 t=8035
 wo you 	我又	c=36 d=1 t=36625
@@ -12511,14 +12528,14 @@ wo you yao 	我又要	c=2 d=1.55267e-24 t=8035
 wo yu dao 	我遇到	c=3 d=2.07022e-24 t=8035
 wo za 	我咋	c=64 d=1 t=58504
 wo za shi 	我咋是	c=2 d=1.55267e-24 t=8035
-wo zai 	我再	c=89 d=1 t=45131
+wo zai 	我再	c=90 d=1 t=64516
 wo zai 	我在	c=62 d=1 t=24215
 wo zai hai 	我在还	c=1 d=1.03511e-24 t=8035
 wo zai jia 	我在家	c=1 d=1.03511e-24 t=8035
 wo zai kan 	我在看	c=1 d=1.03511e-24 t=8035
 wo zai na 	我在哪	c=1 d=1.03511e-24 t=8035
 wo zai xia mian 	我在下面	c=1 d=1.03511e-24 t=8035
-wo zai xiang 	我在想	c=25 d=1 t=58155
+wo zai xiang 	我在想	c=26 d=1 t=63865
 wo zai xie 	我在些	c=1 d=1.03511e-24 t=8035
 wo zai zhe 	我在这	c=1 d=1.03511e-24 t=8035
 wo zai zhuang 	我在装	c=1 d=1.03511e-24 t=8035
@@ -12530,10 +12547,11 @@ wo zhao dai 	我找带	c=1 d=1.03511e-24 t=8035
 wo zhao dao 	我找到	c=9 d=5.17556e-24 t=8035
 wo zhao ge 	我找个	c=2 d=1.55267e-24 t=8035
 wo zhao zhao 	我找找	c=8 d=4.658e-24 t=8035
-wo zhe 	我这	c=1152 d=1.00595 t=62647
+wo zhe 	我这	c=1156 d=1.38668 t=64442
 wo zhe 	握着	c=1 d=1.03511e-24 t=8035
 wo zhe bei zi 	我这辈子	c=1 d=1.03511e-24 t=8035
 wo zhe chai 	我这拆	c=3 d=1 t=57229
+wo zhe ci 	我这次	c=1 d=1 t=63642
 wo zhe ge 	我这个	c=44 d=1 t=45245
 wo zhe li 	我这里	c=1200 d=2.16838 t=62463
 wo zhe li cha 	我这里查	c=1 d=1 t=55638
@@ -12551,7 +12569,7 @@ wo zheng zai 	我正在	c=1 d=1.03511e-24 t=8035
 wo zhi 	卧治	c=1 d=1.03511e-24 t=8035
 wo zhi 	我只	c=22 d=1.19038e-23 t=8035
 wo zhi dai 	我只带	c=1 d=1.03511e-24 t=8035
-wo zhi dao 	我知道	c=134 d=1.40252 t=36848
+wo zhi dao 	我知道	c=135 d=1 t=63519
 wo zhi dao er 	我知道而	c=1 d=1.03511e-24 t=8035
 wo zhi dao le 	我知道了	c=3 d=2.81798e-12 t=8035
 wo zhi hao 	我只好	c=1 d=1.03511e-24 t=8035
@@ -12714,7 +12732,7 @@ xi shuo 	细说	c=38 d=1 t=58245
 xi su 	习俗	c=2 d=1.55267e-24 t=8035
 xi suan 	细算	c=1 d=1 t=24396
 xi tang 	喜糖	c=1 d=1.03511e-24 t=8035
-xi tong 	系统	c=293 d=1.37908 t=62889
+xi tong 	系统	c=294 d=1.00019 t=64668
 xi wang 	希望	c=27 d=1 t=46921
 xi xi 	西西	c=1 d=1.03511e-24 t=8035
 xi xian 	细线	c=1 d=1.03511e-24 t=8035
@@ -12733,7 +12751,7 @@ xi zang 	西藏	c=2 d=1 t=54198
 xi zao 	洗澡	c=3 d=2.07022e-24 t=8035
 xi zhuai 	系拽	c=1 d=1 t=12861
 xi zi 	戏子	c=1 d=1.03511e-24 t=8035
-xia 	下	c=3092 d=1.77841 t=62779
+xia 	下	c=3097 d=2.24131 t=64518
 xia 	侠	c=1 d=1.03511e-24 t=8035
 xia 	吓	c=2 d=1.55267e-24 t=8035
 xia 	夏	c=1 d=1.03511e-24 t=8035
@@ -12761,7 +12779,7 @@ xia diao 	下掉	c=17 d=9.31597e-24 t=8035
 xia diao 	下调	c=3 d=2.07022e-24 t=8035
 xia die 	下跌	c=3 d=2.07022e-24 t=8035
 xia du 	下毒	c=1 d=1.03511e-24 t=8035
-xia fa 	下发	c=532 d=1 t=62755
+xia fa 	下发	c=535 d=1.01749 t=64377
 xia fa liang 	下发量	c=2 d=1.55267e-24 t=8035
 xia fa lv 	下发率	c=2 d=1.55267e-24 t=8035
 xia fa zhong 	下发中	c=3 d=2.07022e-24 t=8035
@@ -12770,7 +12788,7 @@ xia fang 	下方	c=12 d=6.72822e-24 t=8035
 xia fen a 	下分啊	c=2 d=1.55267e-24 t=8035
 xia ga 	下噶	c=1 d=1.03511e-24 t=8035
 xia gang 	下岗	c=2 d=1.55267e-24 t=8035
-xia ge 	下个	c=56 d=1.47567 t=54012
+xia ge 	下个	c=58 d=1.84366 t=63933
 xia ge yue 	下个月	c=5 d=3.10534e-24 t=8035
 xia gei wo 	下给我	c=1 d=1.03511e-24 t=8035
 xia guan zi 	下馆子	c=2 d=1.91851 t=18668
@@ -12796,7 +12814,7 @@ xia ling 	夏令	c=1 d=1.03511e-24 t=8035
 xia liu shui 	下流水	c=1 d=1.03511e-24 t=8035
 xia lou 	下楼	c=4 d=2.58777e-24 t=8035
 xia mi 	虾米	c=1 d=1.03511e-24 t=8035
-xia mian 	下面	c=536 d=1 t=61588
+xia mian 	下面	c=543 d=3.70453 t=63689
 xia o 	下哦	c=1 d=1 t=43090
 xia pao 	吓跑	c=3 d=2.07022e-24 t=8035
 xia pian 	下片	c=1 d=1.03511e-24 t=8035
@@ -12848,7 +12866,7 @@ xia zhou 	下周	c=153 d=3.47861 t=57885
 xia zhou yi 	下周一	c=6 d=0.0039462 t=8035
 xia zou 	瞎走	c=2 d=1.55267e-24 t=8035
 xian 	仙	c=1 d=1.03511e-24 t=8035
-xian 	先	c=1245 d=1.66809 t=62870
+xian 	先	c=1254 d=1.9339 t=64563
 xian 	县	c=1 d=1.03511e-24 t=8035
 xian 	显	c=6 d=3.62288e-24 t=8035
 xian 	暹	c=1 d=1.03511e-24 t=8035
@@ -12931,7 +12949,7 @@ xian you 	现有	c=151 d=1 t=60219
 xian yu 	咸鱼	c=12 d=6.72822e-24 t=8035
 xian yu 	闲鱼	c=4 d=2.58777e-24 t=8035
 xian yu 	限于	c=1 d=1.03511e-24 t=8035
-xian zai 	现在	c=4367 d=2.10145 t=63029
+xian zai 	现在	c=4391 d=2.35469 t=64694
 xian zai de 	现在的	c=1 d=1.03511e-24 t=8035
 xian zai jiu 	现在就	c=1 d=1.03511e-24 t=8035
 xian zhang 	县长	c=1 d=1.03511e-24 t=8035
@@ -12945,7 +12963,7 @@ xiang 	乡	c=1 d=1.03511e-24 t=8035
 xiang 	像	c=154 d=1 t=32808
 xiang 	向	c=27 d=1.44916e-23 t=8035
 xiang 	响	c=7 d=4.14044e-24 t=8035
-xiang 	想	c=629 d=1 t=57579
+xiang 	想	c=630 d=1 t=64114
 xiang 	相	c=2 d=1.55267e-24 t=8035
 xiang 	箱	c=1 d=1.03511e-24 t=8035
 xiang 	项	c=9 d=5.17556e-24 t=8035
@@ -12975,7 +12993,7 @@ xiang gai 	想改	c=2 d=1.55267e-24 t=8035
 xiang gan ma 	想干嘛	c=1 d=1.03511e-24 t=8035
 xiang gang 	香港	c=72 d=1 t=45871
 xiang gao 	想搞	c=2 d=1.55267e-24 t=8035
-xiang gei 	想给	c=2 d=1.55267e-24 t=8035
+xiang gei 	想给	c=3 d=1 t=64230
 xiang guan 	相关	c=173 d=1.06419 t=59654
 xiang guan du 	相关度	c=1 d=1.03511e-24 t=8035
 xiang guang 	祥光	c=3 d=2.07022e-24 t=8035
@@ -13120,7 +13138,7 @@ xiao long 	小龙	c=1 d=1.03511e-24 t=8035
 xiao lv 	效率	c=28 d=1 t=33528
 xiao ma 	小马	c=19 d=1 t=38589
 xiao mao 	小猫	c=2 d=1.55267e-24 t=8035
-xiao mi 	小米	c=1074 d=2.43716 t=62437
+xiao mi 	小米	c=1079 d=1.03171 t=64757
 xiao mi chong 	小米虫	c=1 d=1.03511e-24 t=8035
 xiao mi mi 	笑眯眯	c=2 d=1 t=59684
 xiao mian 	小面	c=2 d=1.55267e-24 t=8035
@@ -13162,7 +13180,7 @@ xiao ting 	消停	c=1 d=1.03511e-24 t=8035
 xiao tou 	小偷	c=1 d=1.03511e-24 t=8035
 xiao tu 	小图	c=7 d=4.14044e-24 t=8035
 xiao wen ti 	小问题	c=11 d=6.21069e-24 t=8035
-xiao xi 	消息	c=1267 d=1.06383 t=62392
+xiao xi 	消息	c=1278 d=2.02353 t=64714
 xiao xian cheng 	小县城	c=1 d=1.03511e-24 t=8035
 xiao xiao 	小小	c=2 d=1.55267e-24 t=8035
 xiao xiao 	笑笑	c=1 d=1.03511e-24 t=8035
@@ -13197,7 +13215,7 @@ xiao zu jian 	小组件	c=1 d=1.03511e-24 t=8035
 xiao zu zhang 	小组长	c=1 d=1 t=24173
 xiao zuo fang 	小作坊	c=2 d=1.55267e-24 t=8035
 xie 	些	c=81 d=1 t=51143
-xie 	写	c=1147 d=1.76977 t=62259
+xie 	写	c=1149 d=1.6424 t=63442
 xie 	斜	c=2 d=1.55267e-24 t=8035
 xie 	谢	c=4 d=2.58777e-24 t=8035
 xie 	鞋	c=2 d=1.55267e-24 t=8035
@@ -13210,7 +13228,7 @@ xie cuo 	写错	c=18 d=1 t=23062
 xie dai 	携带	c=2 d=1.55267e-24 t=8035
 xie dai ma 	些代码	c=1 d=1.03511e-24 t=8035
 xie dai ma 	写代码	c=1 d=1 t=25277
-xie dao 	写到	c=20 d=1 t=43356
+xie dao 	写到	c=21 d=1 t=63839
 xie de 	写得	c=2 d=1.55267e-24 t=8035
 xie dian 	写点	c=2 d=1.55267e-24 t=8035
 xie ding 	谢顶	c=2 d=1.55267e-24 t=8035
@@ -13220,7 +13238,7 @@ xie fa 	写法	c=1 d=1.03511e-24 t=8035
 xie gang 	斜杠	c=1 d=1.03511e-24 t=8035
 xie ge 	写个	c=18 d=1 t=44967
 xie guo 	写过	c=9 d=1 t=40494
-xie hao 	写好	c=3 d=1 t=44028
+xie hao 	写好	c=4 d=1 t=63448
 xie hou 	邂逅	c=1 d=1.03511e-24 t=8035
 xie jin qu 	些进去	c=1 d=1.03511e-24 t=8035
 xie ju kuan 	携巨款	c=1 d=1.03511e-24 t=8035
@@ -13242,7 +13260,7 @@ xie wan 	写完	c=12 d=1 t=62470
 xie wo 	写我	c=1 d=1.03511e-24 t=8035
 xie xie 	写写	c=3 d=2.07022e-24 t=8035
 xie xie 	谢谢	c=0 d=0 t=8035
-xie yi 	协议	c=199 d=1.80194 t=61082
+xie yi 	协议	c=200 d=1 t=64152
 xie yi ge 	写一个	c=8 d=1 t=19567
 xie yi zai 	协议在	c=1 d=1.03511e-24 t=8035
 xie yi zhan 	协议栈	c=3 d=2.07022e-24 t=8035
@@ -13253,7 +13271,7 @@ xie zhu 	协助	c=1 d=1.03511e-24 t=8035
 xie zi lou 	写字楼	c=1 d=1.03511e-24 t=8035
 xin 	信	c=53 d=1 t=18795
 xin 	心	c=11 d=6.21069e-24 t=8035
-xin 	新	c=1279 d=1.02418 t=63032
+xin 	新	c=1280 d=1.31471 t=63268
 xin 	芯	c=1 d=1.03511e-24 t=8035
 xin 	薪	c=12 d=6.72822e-24 t=8035
 xin an li de 	心安理得	c=1 d=1.03511e-24 t=8035
@@ -13278,7 +13296,7 @@ xin gong neng 	新功能	c=2 d=1 t=25606
 xin gui 	新规	c=1 d=1.03511e-24 t=8035
 xin hao 	信号	c=25 d=1 t=55464
 xin hui 	新会	c=1 d=1.03511e-24 t=8035
-xin jia 	新加	c=60 d=1.00004 t=59508
+xin jia 	新加	c=61 d=1 t=63751
 xin jia 	新家	c=4 d=2.58777e-24 t=8035
 xin jia po 	新加坡	c=4 d=2.58777e-24 t=8035
 xin jian 	新建	c=81 d=2.32548 t=62253
@@ -13298,7 +13316,7 @@ xin li 	心里	c=1 d=1.03511e-24 t=8035
 xin li hua 	心里话	c=1 d=1.03511e-24 t=8035
 xin li ji tuo 	心理寄托	c=1 d=1.03511e-24 t=8035
 xin lian lu 	新链路	c=1 d=0.759572 t=8035
-xin ling 	信令	c=339 d=1.22497 t=57650
+xin ling 	信令	c=340 d=1 t=63560
 xin lv 	心率	c=1 d=1.03511e-24 t=8035
 xin ni 	新拟	c=1 d=1.03511e-24 t=8035
 xin nian 	新年	c=1 d=1.03511e-24 t=8035
@@ -13348,8 +13366,8 @@ xing 	姓	c=7 d=4.14044e-24 t=8035
 xing 	幸	c=2 d=1.55267e-24 t=8035
 xing 	形	c=10 d=5.69312e-24 t=8035
 xing 	性	c=28 d=1 t=30671
-xing 	星	c=551 d=1 t=60575
-xing 	行	c=267 d=1 t=54557
+xing 	星	c=552 d=1 t=63191
+xing 	行	c=269 d=1.37719 t=63387
 xing 	醒	c=28 d=1.50091e-23 t=8035
 xing bie 	性别	c=9 d=5.17556e-24 t=8035
 xing bu 	行不	c=2 d=1.55267e-24 t=8035
@@ -13405,18 +13423,18 @@ xiong di 	兄弟	c=5 d=3.10534e-24 t=8035
 xiong di men 	兄弟们	c=5 d=3.10534e-24 t=8035
 xiong hun 	雄浑	c=1 d=1.03511e-24 t=8035
 xiu 	休	c=15 d=1 t=16216
-xiu 	修	c=220 d=1 t=54633
+xiu 	修	c=221 d=1 t=63896
 xiu 	秀	c=2 d=5.60685e-09 t=8035
 xiu 	袖	c=2 d=1 t=34612
 xiu chang 	秀场	c=2 d=1.55267e-24 t=8035
 xiu che 	修车	c=1 d=1.03511e-24 t=8035
 xiu chi 	羞耻	c=1 d=1.03511e-24 t=8035
-xiu fu 	修复	c=136 d=1 t=63014
+xiu fu 	修复	c=137 d=1.00017 t=64748
 xiu fu le 	修复了	c=2 d=1.55267e-24 t=8035
 xiu gai 	修改	c=234 d=1 t=51247
 xiu guo 	修过	c=5 d=3.10534e-24 t=8035
 xiu hao 	修好	c=2 d=1.55267e-24 t=8035
-xiu jia 	休假	c=21 d=1 t=61946
+xiu jia 	休假	c=22 d=1.00005 t=63930
 xiu mian 	休眠	c=4 d=2.58777e-24 t=8035
 xiu shi 	修饰	c=1 d=1.03511e-24 t=8035
 xiu xi 	休息	c=2 d=1.55267e-24 t=8035
@@ -13430,7 +13448,7 @@ xu 	续	c=1 d=1.03511e-24 t=8035
 xu 	许	c=4 d=1 t=54081
 xu 	需	c=12 d=1 t=50370
 xu biao 	虚表	c=1 d=1.03511e-24 t=8035
-xu bu xu yao 	需不需要	c=7 d=1 t=14526
+xu bu xu yao 	需不需要	c=8 d=1 t=63453
 xu ding 	续订	c=1 d=1 t=60506
 xu duo 	许多	c=7 d=1 t=41762
 xu fei 	续费	c=8 d=1.99005 t=57135
@@ -13456,7 +13474,7 @@ xu qiu 	需求	c=726 d=2.00007 t=60962
 xu qu 	序曲	c=11 d=6.21069e-24 t=8035
 xu tou 	虚头	c=1 d=1.55752e-07 t=8035
 xu xian 	虚线	c=3 d=1 t=25198
-xu yao 	需要	c=1095 d=1.91406 t=62778
+xu yao 	需要	c=1101 d=1.40085 t=64704
 xu yao de 	需要的	c=2 d=1 t=35558
 xu yao gei 	需要给	c=1 d=1 t=31455
 xu yao sha 	需要啥	c=1 d=1.03511e-24 t=8035
@@ -13553,7 +13571,7 @@ xun zhao 	寻找	c=1 d=1.03511e-24 t=8035
 xun zhi 	寻址	c=9 d=1 t=21237
 ya 	亚	c=5 d=3.10534e-24 t=8035
 ya 	压	c=14 d=7.7633e-24 t=8035
-ya 	呀	c=794 d=1.00156 t=62351
+ya 	呀	c=795 d=1.00001 t=64576
 ya 	牙	c=8 d=4.658e-24 t=8035
 ya 	雅	c=1 d=1.03511e-24 t=8035
 ya ce 	压测	c=10 d=1 t=30515
@@ -13593,7 +13611,7 @@ yan cha 	严查	c=1 d=1.03511e-24 t=8035
 yan chang 	延长	c=3 d=2.07022e-24 t=8035
 yan chang 	演唱	c=1 d=1.03511e-24 t=8035
 yan chang hui 	演唱会	c=1 d=1.03511e-24 t=8035
-yan chi 	延迟	c=240 d=1 t=61759
+yan chi 	延迟	c=241 d=1.00001 t=64148
 yan chu 	演出	c=22 d=0.0170175 t=8035
 yan di 	炎帝	c=4 d=2.58777e-24 t=8035
 yan fa 	研发	c=6 d=3.62288e-24 t=8035
@@ -13652,15 +13670,16 @@ yang li 	杨笠	c=1 d=1 t=55729
 yang li 	样例	c=1 d=1.03511e-24 t=8035
 yang mao 	样貌	c=2 d=1.55267e-24 t=8035
 yang mao 	羊毛	c=3 d=2.07022e-24 t=8035
+yang mao dang 	羊毛党	c=2 d=1.91393 t=64362
 yang sheng 	养生	c=3 d=2.07022e-24 t=8035
-yang shi 	样式	c=249 d=1.86345 t=62354
+yang shi 	样式	c=250 d=1.00241 t=63684
 yang wei 	阳痿	c=11 d=6.21069e-24 t=8035
 yang xing 	阳性	c=1 d=1.03511e-24 t=8035
 yang zhe 	养着	c=1 d=1 t=45811
 yang zi 	样子	c=80 d=1 t=27737
 yao 	咬	c=2 d=1.55267e-24 t=8035
 yao 	药	c=6 d=1.57407 t=46949
-yao 	要	c=3235 d=1.26212 t=62914
+yao 	要	c=3238 d=2.27081 t=63999
 yao 	遥	c=1 d=1.03511e-24 t=8035
 yao an 	要按	c=3 d=2.07022e-24 t=8035
 yao ba 	要把	c=7 d=1.72253 t=48833
@@ -13668,11 +13687,11 @@ yao bei 	要被	c=6 d=3.62288e-24 t=8035
 yao bi 	要比	c=4 d=2.58777e-24 t=8035
 yao bi ye 	要毕业	c=1 d=1.03511e-24 t=8035
 yao bian 	要变	c=3 d=2.07022e-24 t=8035
-yao bu 	要不	c=40 d=5.01916e-09 t=8035
+yao bu 	要不	c=41 d=1 t=63354
 yao bu liao 	要不了	c=5 d=1.01203 t=23014
 yao bu ran 	要不然	c=1 d=1.03511e-24 t=8035
 yao bu shi 	要不是	c=1 d=1.03511e-24 t=8035
-yao bu yao 	要不要	c=53 d=1 t=58156
+yao bu yao 	要不要	c=54 d=1 t=63866
 yao bu yao jia 	要不要加	c=1 d=1.03511e-24 t=8035
 yao bu yao ye 	要不要也	c=1 d=1.03511e-24 t=8035
 yao ce shi 	要测试	c=1 d=1.03511e-24 t=8035
@@ -13780,7 +13799,7 @@ yao zi 	腰子	c=3 d=1.67706 t=26274
 yao zou 	要走	c=4 d=2.58777e-24 t=8035
 yao zuo 	要做	c=4 d=1 t=61376
 ye 	业	c=5 d=3.10534e-24 t=8035
-ye 	也	c=2225 d=1.27359 t=62990
+ye 	也	c=2229 d=1.87204 t=64234
 ye 	夜	c=15 d=8.2809e-24 t=8035
 ye 	爷	c=207 d=1 t=32387
 ye 	野	c=13 d=7.24582e-24 t=8035
@@ -13808,7 +13827,7 @@ ye bu gui 	也不贵	c=2 d=1.55267e-24 t=8035
 ye bu hao 	也不好	c=12 d=1 t=62737
 ye bu hao shuo 	也不好说	c=9 d=1 t=38123
 ye bu he li 	也不合理	c=1 d=1.03511e-24 t=8035
-ye bu hui 	也不会	c=19 d=1 t=18879
+ye bu hui 	也不会	c=20 d=1 t=63747
 ye bu ji 	也不急	c=1 d=1 t=11001
 ye bu jiao 	也不叫	c=1 d=1.03511e-24 t=8035
 ye bu ka 	也不卡	c=2 d=1.55267e-24 t=8035
@@ -13830,7 +13849,7 @@ ye bu xiang 	也不想	c=3 d=2.07022e-24 t=8035
 ye bu xiao 	也不小	c=1 d=1.03511e-24 t=8035
 ye bu xing 	也不行	c=44 d=1 t=55562
 ye bu xu yao 	也不需要	c=6 d=1 t=17208
-ye bu yao 	也不要	c=2 d=1 t=8380
+ye bu yao 	也不要	c=3 d=1 t=63812
 ye bu yao qiu 	也不要求	c=1 d=1.03511e-24 t=8035
 ye bu yi de 	也不一的	c=1 d=1.03511e-24 t=8035
 ye bu yi ding 	也不一定	c=5 d=1 t=18891
@@ -13842,7 +13861,7 @@ ye bu zhi dao 	也不知道	c=22 d=1.19038e-23 t=8035
 ye bu zhi yu 	也不至于	c=4 d=1 t=25511
 ye cai 	也才	c=6 d=1 t=25580
 ye chu 	也出	c=1 d=1.03511e-24 t=8035
-ye de 	也得	c=38 d=1.06788 t=57738
+ye de 	也得	c=39 d=1 t=63753
 ye de 	页的	c=6 d=3.62288e-24 t=8035
 ye diao 	也掉	c=1 d=1.03511e-24 t=8035
 ye dou 	也都	c=2 d=1.55267e-24 t=8035
@@ -13886,7 +13905,7 @@ ye jie 	业界	c=3 d=1 t=17248
 ye jie 	也接	c=1 d=1 t=13256
 ye jie shi 	也解释	c=1 d=1 t=16789
 ye jiu 	也就	c=51 d=1 t=45657
-ye jiu shi 	也就是	c=80 d=1 t=53120
+ye jiu shi 	也就是	c=81 d=1 t=64330
 ye jiu shi shuo 	也就是说	c=2 d=1.55267e-24 t=8035
 ye jiu shuo 	也就说	c=3 d=2.19712 t=18073
 ye jiu you 	也就有	c=1 d=1.03511e-24 t=8035
@@ -13916,7 +13935,7 @@ ye mei ge 	也没个	c=2 d=1.55267e-24 t=8035
 ye mei ji ge 	也没几个	c=1 d=1.03511e-24 t=8035
 ye mei jian 	也没见	c=1 d=1.03511e-24 t=8035
 ye mei ren 	也没人	c=8 d=1 t=28009
-ye mei sha 	也没啥	c=37 d=1 t=50673
+ye mei sha 	也没啥	c=38 d=1 t=63230
 ye mei sha yong 	也没啥用	c=1 d=1.03511e-24 t=8035
 ye mei shuo 	也没说	c=7 d=1 t=21664
 ye mei yong 	也没用	c=19 d=1 t=35014
@@ -13931,7 +13950,7 @@ ye nong 	也弄	c=1 d=1.03511e-24 t=8035
 ye qu 	夜曲	c=1 d=1.03511e-24 t=8035
 ye qu 	野区	c=2 d=1.55267e-24 t=8035
 ye ren 	野人	c=1 d=1.03511e-24 t=8035
-ye shi 	也是	c=906 d=1.00025 t=62694
+ye shi 	也是	c=908 d=1.09602 t=64161
 ye shi 	夜视	c=1 d=1.03511e-24 t=8035
 ye shi chang 	也市场	c=1 d=1.03511e-24 t=8035
 ye shi ge 	也是个	c=2 d=1.55267e-24 t=8035
@@ -13939,14 +13958,14 @@ ye shi zhe ge 	也是这个	c=1 d=1.03511e-24 t=8035
 ye shu xi 	也熟悉	c=1 d=1 t=36353
 ye shuo 	也说	c=5 d=3.10534e-24 t=8035
 ye si 	噎死	c=2 d=1.55267e-24 t=8035
-ye suan 	也算	c=39 d=1 t=41214
+ye suan 	也算	c=40 d=1 t=64170
 ye ting 	也挺	c=9 d=1 t=29684
 ye ting gui 	也挺贵	c=1 d=1.03511e-24 t=8035
 ye ting hao 	也挺好	c=1 d=1.03511e-24 t=8035
 ye ting ma fan 	也听麻烦	c=1 d=1 t=49122
 ye wan 	也玩	c=3 d=1.98511 t=36094
 ye wan 	夜晚	c=3 d=2.07022e-24 t=8035
-ye wu 	业务	c=1264 d=2.36717 t=62388
+ye wu 	业务	c=1277 d=1.94427 t=64204
 ye wu 	也无	c=6 d=3.62288e-24 t=8035
 ye wu dao 	业务到	c=1 d=1 t=54658
 ye xian 	掖县	c=1 d=1.03511e-24 t=8035
@@ -13984,12 +14003,12 @@ ye zou 	也走	c=3 d=2.07022e-24 t=8035
 yi 	一	c=159 d=1 t=61906
 yi 	义	c=5 d=3.10534e-24 t=8035
 yi 	亿	c=66 d=1.95123 t=30123
-yi 	以	c=41 d=1 t=44810
+yi 	以	c=42 d=1 t=64067
 yi 	伊	c=2 d=1.55267e-24 t=8035
 yi 	医	c=1 d=1.03511e-24 t=8035
 yi 	咦	c=16 d=1 t=58081
 yi 	姨	c=3 d=5.31801e-12 t=8035
-yi 	已	c=329 d=1 t=60546
+yi 	已	c=330 d=1 t=63833
 yi 	异	c=2 d=1.55267e-24 t=8035
 yi 	意	c=2 d=1.55267e-24 t=8035
 yi 	易	c=109 d=5.69312e-23 t=8035
@@ -14088,7 +14107,7 @@ yi fen zhong 	一分钟	c=19 d=1.03511e-23 t=8035
 yi fen zhong kan 	一分钟看	c=1 d=1.03511e-24 t=8035
 yi fu 	衣服	c=10 d=1 t=39577
 yi gan 	乙肝	c=5 d=3.10534e-24 t=8035
-yi ge 	一个	c=3179 d=1.07095 t=63004
+yi ge 	一个	c=3184 d=1.02468 t=64730
 yi ge dian 	一个点	c=2 d=1.55267e-24 t=8035
 yi ge duo 	一个多	c=1 d=1 t=54807
 yi ge duo yue 	一个多月	c=1 d=1 t=49304
@@ -14115,12 +14134,12 @@ yi he 	一盒	c=1 d=1.03511e-24 t=8035
 yi he 	义和	c=1 d=1.03511e-24 t=8035
 yi hou 	以后	c=145 d=2.49824 t=62093
 yi huan 	一环	c=1 d=1.03511e-24 t=8035
-yi hui 	一会	c=136 d=1 t=57954
+yi hui 	一会	c=139 d=1.41286 t=63720
 yi hui shi 	一回事	c=6 d=3.62288e-24 t=8035
 yi huo 	疑惑	c=10 d=5.69312e-24 t=8035
 yi ji 	一级	c=43 d=2.27725e-23 t=8035
 yi ji 	一集	c=1 d=1.03511e-24 t=8035
-yi ji 	以及	c=127 d=1 t=59284
+yi ji 	以及	c=128 d=1 t=64048
 yi jia 	一家	c=6 d=1.80354e-11 t=8035
 yi jia 	一架	c=2 d=1.55267e-24 t=8035
 yi jia luan zhen 	以假乱真	c=1 d=1.03511e-24 t=8035
@@ -14136,7 +14155,7 @@ yi jie 	一节	c=2 d=1.55267e-24 t=8035
 yi jie duan 	一阶段	c=1 d=1.03511e-24 t=8035
 yi jin 	一进	c=1 d=1.03511e-24 t=8035
 yi jing 	一惊	c=0 d=0 t=8035
-yi jing 	已经	c=1526 d=3.55632 t=63048
+yi jing 	已经	c=1530 d=1.81562 t=64494
 yi jing yi zha 	一惊一炸	c=1 d=1.03511e-24 t=8035
 yi ju 	一句	c=16 d=8.79843e-24 t=8035
 yi ju 	宜居	c=1 d=1.03511e-24 t=8035
@@ -14194,7 +14213,7 @@ yi ping 	一平	c=3 d=1 t=28003
 yi ping 	一瓶	c=1 d=1.03511e-24 t=8035
 yi ping guo 	一瓶过	c=1 d=1.03511e-24 t=8035
 yi qi 	一期	c=8 d=4.658e-24 t=8035
-yi qi 	一起	c=147 d=1.04689 t=61338
+yi qi 	一起	c=148 d=1.00007 t=63263
 yi qi de 	一起的	c=1 d=1.03511e-24 t=8035
 yi qi dong 	一起动	c=1 d=1.03511e-24 t=8035
 yi qi fa 	一起发	c=2 d=1 t=44464
@@ -14206,7 +14225,7 @@ yi qi ting 	一起听	c=11 d=0.000119762 t=8035
 yi qi yong 	一起用	c=1 d=1.03511e-24 t=8035
 yi qian 	一千	c=5 d=3.10534e-24 t=8035
 yi qian 	一牵	c=1 d=1.03511e-24 t=8035
-yi qian 	以前	c=905 d=1.52994 t=61845
+yi qian 	以前	c=908 d=1.38176 t=64732
 yi qian duo 	一千多	c=1 d=1.03511e-24 t=8035
 yi qian wan 	一千万	c=1 d=1 t=57591
 yi qian ye shi 	以前也是	c=1 d=1 t=26515
@@ -14242,7 +14261,7 @@ yi shu 	艺术	c=1 d=1.03511e-24 t=8035
 yi shun jian 	一瞬间	c=10 d=5.69312e-24 t=8035
 yi shuo 	一说	c=10 d=5.69312e-24 t=8035
 yi si 	已死	c=1 d=1.03511e-24 t=8035
-yi si 	意思	c=726 d=1.00567 t=62893
+yi si 	意思	c=728 d=1.29954 t=63524
 yi si 	疑似	c=1 d=1.03511e-24 t=8035
 yi si shi 	意思是	c=1 d=1 t=39460
 yi suan 	一算	c=1 d=1.03511e-24 t=8035
@@ -14254,7 +14273,7 @@ yi ti ji 	一体机	c=2 d=1.55267e-24 t=8035
 yi tian 	一天	c=399 d=1 t=62473
 yi tian qian 	一天前	c=1 d=1.03511e-24 t=8035
 yi tian tian 	一天天	c=2 d=1.55267e-24 t=8035
-yi tiao 	一条	c=158 d=2.52758 t=53163
+yi tiao 	一条	c=159 d=1 t=63078
 yi tiao 	一跳	c=3 d=2.07022e-24 t=8035
 yi tiao long 	一条龙	c=2 d=1.55267e-24 t=8035
 yi tiao tiao 	一条条	c=1 d=1.03511e-24 t=8035
@@ -14281,7 +14300,7 @@ yi wei 	移位	c=1 d=1.03511e-24 t=8035
 yi wen 	一问	c=5 d=3.10534e-24 t=8035
 yi wen 	疑问	c=1 d=1.03511e-24 t=8035
 yi wu jiao yu 	义务教育	c=1 d=1.03511e-24 t=8035
-yi xia 	一下	c=2000 d=1.04299 t=62993
+yi xia 	一下	c=2002 d=1.33985 t=64657
 yi xia 	以下	c=23 d=1 t=43480
 yi xia ba 	一下吧	c=1 d=1 t=30880
 yi xia wu 	一下无	c=1 d=1.03511e-24 t=8035
@@ -14292,18 +14311,19 @@ yi xiang 	一想	c=1 d=1.03511e-24 t=8035
 yi xiang 	一箱	c=4 d=2.58777e-24 t=8035
 yi xiao bu fen 	一小部分	c=1 d=1 t=46371
 yi xiao shi 	一小时	c=53 d=2.75233e-10 t=8035
-yi xie 	一些	c=415 d=1 t=63060
+yi xie 	一些	c=416 d=1.00279 t=64236
 yi xing qi 	一星期	c=1 d=1.03511e-24 t=8035
 yi xiong 	疑凶	c=1 d=1.03511e-24 t=8035
 yi xu qiu 	一需求	c=1 d=1.03511e-24 t=8035
 yi yan 	一眼	c=29 d=1.85214 t=35145
 yi yan nan jin 	一言难尽	c=3 d=2.07022e-24 t=8035
 yi yan tang 	一言堂	c=1 d=1.03511e-24 t=8035
-yi yang 	一样	c=891 d=1.23021 t=61217
+yi yang 	一样	c=892 d=1 t=64528
 yi yao 	医药	c=1 d=1 t=46857
 yi ye 	一页	c=5 d=3.10534e-24 t=8035
 yi ye zhang mu 	一叶障目	c=1 d=1.03511e-24 t=8035
 yi yi 	意义	c=43 d=1 t=60771
+yi yi dui ying 	一一对应	c=1 d=1 t=63628
 yi yin 	意淫	c=1 d=1 t=47150
 yi yong 	医用	c=1 d=1.03511e-24 t=8035
 yi you 	已有	c=67 d=1 t=61185
@@ -14318,7 +14338,7 @@ yi zhao 	一招	c=1 d=1.03511e-24 t=8035
 yi zheng ge 	一整个	c=2 d=1.55267e-24 t=8035
 yi zheng nian 	一整年	c=3 d=2.07022e-24 t=8035
 yi zheng tian 	一整天	c=7 d=4.14044e-24 t=8035
-yi zhi 	一直	c=635 d=1 t=61022
+yi zhi 	一直	c=636 d=1 t=64264
 yi zhi 	一致	c=31 d=1.96561 t=57334
 yi zhi 	已知	c=14 d=7.7633e-24 t=8035
 yi zhi 	意志	c=1 d=1.56639e-15 t=8035
@@ -14337,7 +14357,7 @@ yi zu 	一组	c=2 d=1.55267e-24 t=8035
 yi zuo 	一座	c=1 d=1.03511e-24 t=8035
 yin 	因	c=1 d=1.03511e-24 t=8035
 yin 	隐	c=1 d=1.03511e-24 t=8035
-yin 	音	c=1521 d=2.4983 t=62700
+yin 	音	c=1528 d=2.33055 t=64755
 yin biao 	音标	c=1 d=1.03511e-24 t=8035
 yin cang 	隐藏	c=59 d=1 t=59640
 yin ci 	因此	c=20 d=1.99501 t=42240
@@ -14362,7 +14382,7 @@ yin shen 	隐身	c=1 d=1.03511e-24 t=8035
 yin shi 	饮食	c=1 d=1.03511e-24 t=8035
 yin si 	隐私	c=14 d=1.956 t=18318
 yin su 	因素	c=3 d=2.07022e-24 t=8035
-yin wei 	因为	c=792 d=1.05835 t=62331
+yin wei 	因为	c=793 d=1.00005 t=64322
 yin wo 	引我	c=1 d=1.03511e-24 t=8035
 yin xian 	阴险	c=1 d=1.03511e-24 t=8035
 yin xiang 	印象	c=33 d=1.75969e-23 t=8035
@@ -14387,7 +14407,7 @@ ying chang ba 	应玚吧	c=1 d=1 t=28711
 ying chou 	应酬	c=1 d=1.03511e-24 t=8035
 ying de 	应得	c=3 d=1 t=47162
 ying er 	婴儿	c=2 d=1.55267e-24 t=8035
-ying gai 	应该	c=4137 d=2.2925 t=63030
+ying gai 	应该	c=4150 d=2.26219 t=64619
 ying gai mei 	应该没	c=1 d=1.03511e-24 t=8035
 ying gai shi 	应该是	c=5 d=3.10534e-24 t=8035
 ying ge lan 	英格兰	c=3 d=2.07022e-24 t=8035
@@ -14404,7 +14424,7 @@ ying mei 	英美	c=1 d=1.03511e-24 t=8035
 ying pan 	硬盘	c=7 d=4.14044e-24 t=8035
 ying pan jie 	营盘街	c=1 d=1.03511e-24 t=8035
 ying rao 	萦绕	c=2 d=1.55267e-24 t=8035
-ying she 	映射	c=224 d=1 t=59738
+ying she 	映射	c=226 d=1.15259 t=63804
 ying sheng sheng 	硬生生	c=3 d=2.07022e-24 t=8035
 ying wei 	应为	c=1 d=1.03511e-24 t=8035
 ying wei da 	英伟达	c=1 d=1.03511e-24 t=8035
@@ -14424,15 +14444,15 @@ ying yu 	盈余	c=1 d=1.03511e-24 t=8035
 ying yu 	英语	c=39 d=1 t=61026
 yong 	勇	c=1 d=1.03511e-24 t=8035
 yong 	永	c=3 d=2.07022e-24 t=8035
-yong 	用	c=3619 d=2.98793 t=63007
+yong 	用	c=3627 d=2.71418 t=64402
 yong ai 	用爱	c=1 d=1.03511e-24 t=8035
 yong bao 	拥抱	c=1 d=1.03511e-24 t=8035
 yong bu 	永不	c=2 d=1.55267e-24 t=8035
 yong bu 	用不	c=3 d=2.07022e-24 t=8035
-yong bu dao 	用不到	c=43 d=1.00001 t=53748
+yong bu dao 	用不到	c=44 d=1 t=63104
 yong bu gao 	用不高	c=1 d=1.03511e-24 t=8035
 yong bu liao 	用不了	c=27 d=1.44916e-23 t=8035
-yong bu shang 	用不上	c=17 d=1 t=37194
+yong bu shang 	用不上	c=18 d=1 t=63810
 yong bu tai 	用不太	c=1 d=1.03511e-24 t=8035
 yong bu tai shang 	用不太上	c=1 d=1.03511e-24 t=8035
 yong bu wan 	用不完	c=8 d=1 t=33602
@@ -14448,7 +14468,7 @@ yong duo 	勇夺	c=2 d=1.55267e-24 t=8035
 yong fa 	用法	c=3 d=2.07022e-24 t=8035
 yong guang 	用光	c=0 d=0.1 t=32460
 yong guo 	用过	c=80 d=1 t=43092
-yong hu 	用户	c=1051 d=1.36533 t=63018
+yong hu 	用户	c=1052 d=1.58649 t=63187
 yong hu liang 	用户量	c=2 d=1.55267e-24 t=8035
 yong hu ming 	用户名	c=2 d=1.55267e-24 t=8035
 yong hu shu 	用户数	c=1 d=1.03511e-24 t=8035
@@ -14459,7 +14479,7 @@ yong jiu 	永久	c=5 d=3.10534e-24 t=8035
 yong ju 	用具	c=1 d=1.03511e-24 t=8035
 yong ku 	泳裤	c=1 d=1.03511e-24 t=8035
 yong kuang 	用狂	c=1 d=1.03511e-24 t=8035
-yong lai 	用来	c=149 d=1 t=58966
+yong lai 	用来	c=150 d=1 t=63951
 yong li 	用例	c=13 d=1 t=53710
 yong li 	用力	c=2 d=1.55267e-24 t=8035
 yong liang 	用量	c=1 d=1.04981e-13 t=8035
@@ -14475,7 +14495,7 @@ yong shang le 	用上了	c=1 d=1.03511e-24 t=8035
 yong shen me 	用什么	c=3 d=2.07022e-24 t=8035
 yong shi 	勇士	c=1 d=1.03511e-24 t=8035
 yong tu 	用途	c=5 d=3.10534e-24 t=8035
-yong wan 	用完	c=27 d=1 t=63003
+yong wan 	用完	c=28 d=1.00121 t=64347
 yong wu ning ri 	永无宁日	c=3 d=2.07022e-24 t=8035
 yong xin 	用心	c=2 d=0.000407692 t=8035
 yong yi ci 	用一次	c=1 d=1.03511e-24 t=8035
@@ -14494,7 +14514,7 @@ you 	又	c=737 d=1.97304 t=62963
 you 	友	c=15 d=8.2809e-24 t=8035
 you 	右	c=41 d=2.17373e-23 t=8035
 you 	幼	c=1 d=1.03511e-24 t=8035
-you 	有	c=7530 d=3.99095 t=63035
+you 	有	c=7537 d=2.80047 t=64673
 you 	油	c=2 d=1.55267e-24 t=8035
 you 	游	c=2 d=1.55267e-24 t=8035
 you 	由	c=42 d=1.397 t=59096
@@ -14524,7 +14544,7 @@ you de 	又得	c=5 d=3.10534e-24 t=8035
 you de 	有的	c=19 d=1.03511e-23 t=8035
 you di fang 	有地方	c=1 d=1.03511e-24 t=8035
 you dian 	优点	c=13 d=7.24582e-24 t=8035
-you dian 	有点	c=1110 d=1.11964 t=62246
+you dian 	有点	c=1112 d=1.29209 t=63605
 you dian 	有电	c=62 d=3.2606e-23 t=8035
 you dian 	邮电	c=1 d=1.03511e-24 t=8035
 you dian da 	有点大	c=1 d=1.03511e-24 t=8035
@@ -14545,7 +14565,7 @@ you er yuan 	幼儿园	c=1 d=1.03511e-24 t=8035
 you fei 	邮费	c=6 d=3.62288e-24 t=8035
 you gai 	有改	c=2 d=1.55267e-24 t=8035
 you gan yu 	有感于	c=1 d=1.03511e-24 t=8035
-you ge 	有个	c=253 d=1 t=58740
+you ge 	有个	c=254 d=1 t=63161
 you ge er 	有个儿	c=1 d=1.03511e-24 t=8035
 you ge ren 	有个人	c=1 d=1.03511e-24 t=8035
 you gei 	又给	c=1 d=1.03511e-24 t=8035
@@ -14592,7 +14612,7 @@ you mei 	优美	c=11 d=6.21069e-24 t=8035
 you mei 	又没	c=5 d=1 t=26596
 you mei ruan 	有没软	c=1 d=1.03511e-24 t=8035
 you mei sha 	有没啥	c=1 d=1 t=23440
-you mei you 	有没有	c=268 d=1.00043 t=57977
+you mei you 	有没有	c=269 d=1 t=63077
 you meng 	友盟	c=3 d=2.07022e-24 t=8035
 you ming zi 	有名字	c=1 d=1.03511e-24 t=8035
 you mo 	幽默	c=10 d=1.8311 t=47031
@@ -14623,7 +14643,7 @@ you sha yi si 	有啥意思	c=1 d=1.03511e-24 t=8035
 you sha yong 	有啥用	c=12 d=1 t=25478
 you shang jiao 	右上角	c=5 d=3.10534e-24 t=8035
 you shao 	又少	c=1 d=1.03511e-24 t=8035
-you shen me 	有什么	c=11 d=1.21226 t=34607
+you shen me 	有什么	c=12 d=1 t=64046
 you shi 	优势	c=11 d=1 t=23916
 you shi 	又是	c=33 d=1 t=37042
 you shi 	有事	c=3 d=2.07022e-24 t=8035
@@ -14647,7 +14667,7 @@ you tiao 	油条	c=2 d=1.55267e-24 t=8035
 you tu 	右图	c=2 d=1.55267e-24 t=8035
 you wan zheng 	有完整	c=1 d=1.03511e-24 t=8035
 you wang 	有望	c=1 d=0.0243554 t=8035
-you wen ti 	有问题	c=36 d=1 t=47003
+you wen ti 	有问题	c=37 d=1 t=64399
 you wen ti me 	有问题么	c=1 d=1.03511e-24 t=8035
 you wo 	有我	c=2 d=1.55267e-24 t=8035
 you wu 	有无	c=1 d=1.03511e-24 t=8035
@@ -14677,12 +14697,12 @@ you yi bo 	有一波	c=2 d=1.55267e-24 t=8035
 you yi ci 	有一次	c=5 d=3.10534e-24 t=8035
 you yi dian 	有一点	c=18 d=1 t=57312
 you yi dian dian 	有一点点	c=1 d=1.03511e-24 t=8035
-you yi ge 	有一个	c=91 d=1.07208 t=61818
+you yi ge 	有一个	c=92 d=1.00002 t=64003
 you yi ge yue 	有一个月	c=1 d=1.03511e-24 t=8035
 you yi nian 	有一年	c=1 d=1 t=54140
 you yi shuo yi 	有一说一	c=6 d=3.62288e-24 t=8035
 you yi tian 	有一天	c=5 d=3.10534e-24 t=8035
-you yi xie 	有一些	c=70 d=1.05156 t=56071
+you yi xie 	有一些	c=71 d=1 t=63853
 you yi yi 	有意义	c=1 d=1.03511e-24 t=8035
 you yi zhang 	有一张	c=1 d=1.03511e-24 t=8035
 you yong 	有用	c=47 d=1 t=32008
@@ -14830,7 +14850,7 @@ yuan xin 	圆心	c=1 d=1.03511e-24 t=8035
 yuan xing 	原型	c=1 d=1.03511e-24 t=8035
 yuan xing 	圆形	c=3 d=2.07022e-24 t=8035
 yuan xing tu 	原型图	c=2 d=1.55267e-24 t=8035
-yuan yang 	原样	c=1 d=1.03511e-24 t=8035
+yuan yang 	原样	c=2 d=1 t=63661
 yuan yi 	愿意	c=3 d=1 t=36018
 yuan yi dian 	远一点	c=1 d=1 t=40025
 yuan yin 	原因	c=633 d=1.00006 t=49397
@@ -14847,7 +14867,7 @@ yuan zi dan 	原子弹	c=3 d=2.07022e-24 t=8035
 yuan zui 	原罪	c=2 d=1.55267e-24 t=8035
 yuan zuo zhe 	原作者	c=1 d=1.03511e-24 t=8035
 yue 	乐	c=2 d=1.55267e-24 t=8035
-yue 	月	c=412 d=1.00274 t=63051
+yue 	月	c=414 d=1.9585 t=63936
 yue 	粤	c=1 d=1.03511e-24 t=8035
 yue 	约	c=7 d=4.14044e-24 t=8035
 yue 	越	c=98 d=1 t=61831
@@ -14910,10 +14930,10 @@ yun xu 	允许	c=9 d=1 t=38126
 yun yin 	韵音	c=1 d=1.03511e-24 t=8035
 yun ying 	运营	c=448 d=1.02999 t=52708
 yun ying shang 	运营商	c=4 d=2.58777e-24 t=8035
-za 	咋	c=1430 d=1.62136 t=61781
+za 	咋	c=1432 d=1.0032 t=64655
 za 	杂	c=1 d=1.03511e-24 t=8035
 za 	砸	c=2 d=1.55267e-24 t=8035
-za ban 	咋办	c=49 d=1 t=61187
+za ban 	咋办	c=50 d=1 t=63916
 za ban jiu 	咋办就	c=1 d=1 t=52529
 za bao 	咋报	c=5 d=1 t=48095
 za bu 	咋不	c=1 d=1.03511e-24 t=8035
@@ -14960,7 +14980,7 @@ za long 	咋龙	c=1 d=1.03511e-24 t=8035
 za mai 	咋卖	c=1 d=1 t=56221
 za men 	咱们	c=2 d=1.55267e-24 t=8035
 za neng 	咋能	c=1 d=1.03511e-24 t=8035
-za nong 	咋弄	c=65 d=1 t=54011
+za nong 	咋弄	c=66 d=1 t=63322
 za pai cha 	咋排查	c=2 d=1 t=16062
 za pan duan 	咋判断	c=2 d=1.55267e-24 t=8035
 za pao 	咋跑	c=1 d=1.03511e-24 t=8035
@@ -14974,7 +14994,7 @@ za shang bao 	咋上报	c=1 d=1.03511e-24 t=8035
 za she zhi 	咋设置	c=1 d=1.03511e-24 t=8035
 za shi 	杂事	c=10 d=0.00319874 t=8035
 za shi xian 	咋实现	c=2 d=1.55267e-24 t=8035
-za shuo 	咋说	c=336 d=1.4957 t=63072
+za shuo 	咋说	c=337 d=2.38071 t=63088
 za suan 	咋算	c=13 d=1 t=31956
 za tan 	杂谈	c=1 d=1.03511e-24 t=8035
 za tian 	咋填	c=8 d=1 t=21174
@@ -14983,9 +15003,10 @@ za wan yi 	咋玩意	c=1 d=1.03511e-24 t=8035
 za wo shi 	砸我是	c=1 d=1.03511e-24 t=8035
 za xiang 	杂项	c=1 d=1.03511e-24 t=8035
 za xie 	咋些	c=3 d=2.07022e-24 t=8035
+za xiu 	咋修	c=1 d=1 t=64740
 za xuan 	咋选	c=5 d=3.10534e-24 t=8035
 za yan 	杂言	c=1 d=1.03511e-24 t=8035
-za yang 	咋样	c=242 d=1 t=57773
+za yang 	咋样	c=243 d=1 t=63294
 za yang le 	咋样了	c=1 d=1.03511e-24 t=8035
 za yong 	咋用	c=35 d=1 t=55757
 za you 	杂优	c=1 d=1.03511e-24 t=8035
@@ -14996,8 +15017,8 @@ za zhuang 	咋装	c=3 d=2.07022e-24 t=8035
 za zou 	咋走	c=2 d=1.55267e-24 t=8035
 za zuo 	咋做	c=5 d=3.10534e-24 t=8035
 zai 	仔	c=1 d=1.03511e-24 t=8035
-zai 	再	c=1741 d=2.0192 t=63016
-zai 	在	c=2328 d=2.83898 t=61030
+zai 	再	c=1745 d=1.30787 t=64512
+zai 	在	c=2333 d=2.47563 t=63668
 zai 	载	c=58 d=1 t=18934
 zai bian 	在变	c=3 d=1 t=36791
 zai bu zai 	在不在	c=5 d=1 t=45878
@@ -15059,7 +15080,7 @@ zai wen 	在问	c=1 d=1.03511e-24 t=8035
 zai wo 	在我	c=4 d=2.58777e-24 t=8035
 zai wo zhe 	在我这	c=3 d=2.07022e-24 t=8035
 zai wo zhe li 	在我这里	c=3 d=2.07022e-24 t=8035
-zai xian 	在线	c=1822 d=1.00027 t=61494
+zai xian 	在线	c=1824 d=1.14662 t=63797
 zai xian o 	在线哦	c=1 d=1.03511e-24 t=8035
 zai xiang 	再想	c=1 d=1.03511e-24 t=8035
 zai xiang 	在想	c=14 d=1 t=58140
@@ -15069,9 +15090,9 @@ zai ye 	再也	c=3 d=1 t=35916
 zai yi 	在意	c=5 d=3.10534e-24 t=8035
 zai yi qi 	在一起	c=2 d=1.55267e-24 t=8035
 zai yong 	再用	c=3 d=2.07022e-24 t=8035
-zai yong 	在用	c=75 d=1 t=58760
+zai yong 	在用	c=77 d=1.37908 t=63835
 zai yu 	在于	c=1 d=1.03511e-24 t=8035
-zai zhe 	在这	c=25 d=1 t=60182
+zai zhe 	在这	c=27 d=1.94176 t=63562
 zai zhe li 	在这里	c=4 d=1 t=43737
 zai zhi 	在职	c=1 d=1.03511e-24 t=8035
 zai zuo 	在做	c=1 d=1.03511e-24 t=8035
@@ -15133,7 +15154,7 @@ zei 	贼	c=1 d=1.03511e-24 t=8035
 zei la 	贼拉	c=1 d=1 t=26299
 zei zhan 	贼战	c=1 d=1.03511e-24 t=8035
 zen 	怎	c=4 d=2.58777e-24 t=8035
-zen me 	怎么	c=1283 d=1.14086 t=62292
+zen me 	怎么	c=1288 d=1.52808 t=64615
 zen me 	谮么	c=1 d=1.03511e-24 t=8035
 zen me ban 	怎么办	c=1 d=1.03511e-24 t=8035
 zen mi 	怎密	c=1 d=1.03511e-24 t=8035
@@ -15201,7 +15222,7 @@ zhan qi lai 	站起来	c=1 d=1.03511e-24 t=8035
 zhan sha 	斩杀	c=1 d=1.03511e-24 t=8035
 zhan sha xian 	斩杀线	c=1 d=1 t=34435
 zhan shen 	战神	c=1 d=1.03511e-24 t=8035
-zhan shi 	展示	c=1195 d=1.00228 t=62756
+zhan shi 	展示	c=1201 d=2.06191 t=64669
 zhan shi 	战士	c=2 d=1.55267e-24 t=8035
 zhan shi 	战时	c=1 d=1.03511e-24 t=8035
 zhan shi lv 	展示率	c=1 d=1.03511e-24 t=8035
@@ -15259,7 +15280,7 @@ zhao 	爫	c=1 d=1.03511e-24 t=8035
 zhao 	着	c=2 d=1 t=62940
 zhao 	赵	c=3 d=2.07022e-24 t=8035
 zhao bing 	招兵	c=2 d=1.55267e-24 t=8035
-zhao bu dao 	找不到	c=94 d=1 t=50923
+zhao bu dao 	找不到	c=95 d=1 t=64085
 zhao cha 	找茬	c=1 d=1.03511e-24 t=8035
 zhao chang 	照常	c=1 d=1 t=25168
 zhao chao 	照抄	c=1 d=1.03511e-24 t=8035
@@ -15343,7 +15364,7 @@ zhe fang mian 	这方面	c=2 d=1.55267e-24 t=8035
 zhe fen 	这份	c=2 d=1.55267e-24 t=8035
 zhe feng 	这封	c=1 d=1.03511e-24 t=8035
 zhe feng en 	这封嗯	c=6 d=3.62288e-24 t=8035
-zhe ge 	这个	c=12186 d=4.25608 t=62305
+zhe ge 	这个	c=12240 d=8.80437 t=64713
 zhe ge 	这歌	c=1 d=1 t=11752
 zhe ge fen 	这个分	c=1 d=1.03511e-24 t=8035
 zhe ge ma 	这个吗	c=1 d=1.03511e-24 t=8035
@@ -15380,7 +15401,7 @@ zhe ji ge 	这几个	c=144 d=1.34646 t=59587
 zhe ji jia 	这几家	c=1 d=1.03511e-24 t=8035
 zhe ji lei 	这几类	c=1 d=1.03511e-24 t=8035
 zhe ji nian 	这几年	c=2 d=1.55267e-24 t=8035
-zhe ji tian 	这几天	c=21 d=1.00024 t=54968
+zhe ji tian 	这几天	c=23 d=1.23224 t=63368
 zhe ji tiao 	这几条	c=1 d=1.03511e-24 t=8035
 zhe ji zhang 	这几张	c=1 d=1.03511e-24 t=8035
 zhe jia 	这价	c=1 d=1.03511e-24 t=8035
@@ -15398,22 +15419,22 @@ zhe ju hua 	这句话	c=4 d=2.58777e-24 t=8035
 zhe kuai 	这块	c=5 d=3.10534e-24 t=8035
 zhe kuan 	这款	c=1 d=1.03511e-24 t=8035
 zhe lei 	这类	c=1 d=1 t=43503
-zhe li 	这里	c=2267 d=1.0423 t=61953
+zhe li 	这里	c=2277 d=1.73239 t=64549
 zhe li cha 	这里查	c=1 d=1 t=42603
 zhe li cheng 	这里成	c=1 d=1.03511e-24 t=8035
 zhe li mian 	这里面	c=11 d=6.21069e-24 t=8035
-zhe liang 	这两	c=452 d=1.0216 t=61075
+zhe liang 	这两	c=453 d=1 t=63944
 zhe liang ge 	这两个	c=69 d=8.52436e-05 t=8035
 zhe liang hang 	这两行	c=3 d=2.07022e-24 t=8035
 zhe liang ji tian 	这两几天	c=1 d=1.03511e-24 t=8035
-zhe liang tian 	这两天	c=30 d=1.60443e-23 t=8035
+zhe liang tian 	这两天	c=31 d=1 t=63298
 zhe liang tiao 	这两条	c=3 d=2.07022e-24 t=8035
 zhe liang zhang 	这两张	c=1 d=1 t=41795
 zhe liang zhang biao 	这两张表	c=1 d=1.03511e-24 t=8035
 zhe liang zhong 	这两种	c=7 d=1 t=41451
 zhe liang zhou 	这两周	c=2 d=1.55267e-24 t=8035
 zhe lie 	这列	c=2 d=1.55267e-24 t=8035
-zhe me 	这么	c=833 d=1.02183 t=62854
+zhe me 	这么	c=834 d=1.01643 t=63680
 zhe me duo 	这么多	c=17 d=9.31597e-24 t=8035
 zhe me kuai 	这么快	c=4 d=2.58777e-24 t=8035
 zhe me zao 	这么早	c=1 d=1.03511e-24 t=8035
@@ -15464,12 +15485,12 @@ zhe xia 	这下	c=11 d=6.21069e-24 t=8035
 zhe xia mian 	这下面	c=2 d=1.55267e-24 t=8035
 zhe xian 	折线	c=99 d=5.17556e-23 t=8035
 zhe xian tu 	折线图	c=50 d=2.63953e-23 t=8035
-zhe xie 	这些	c=420 d=1.18925 t=62480
+zhe xie 	这些	c=422 d=1.00859 t=64628
 zhe xie xie 	这谢谢	c=1 d=1.03511e-24 t=8035
 zhe xu qiu 	这需求	c=2 d=1.55267e-24 t=8035
 zhe xue 	哲学	c=3 d=2.07022e-24 t=8035
 zhe xue qi 	这学期	c=1 d=1.03511e-24 t=8035
-zhe yang 	这样	c=1525 d=2.56392 t=62396
+zhe yang 	这样	c=1527 d=1.01159 t=64651
 zhe yang bu shi 	这样不是	c=1 d=1.03511e-24 t=8035
 zhe yang de 	这样的	c=1 d=1.03511e-24 t=8035
 zhe yang hui 	这样会	c=2 d=1.55267e-24 t=8035
@@ -15504,13 +15525,13 @@ zhe zhe 	浙浙	c=1 d=1.03511e-24 t=8035
 zhe zhe yan yan 	遮遮掩掩	c=2 d=1.55267e-24 t=8035
 zhe zhi hou 	这之后	c=1 d=1.03511e-24 t=8035
 zhe zhi xing li 	这执行力	c=1 d=1 t=47323
-zhe zhong 	这种	c=1478 d=1.92025 t=61754
+zhe zhong 	这种	c=1480 d=1.03066 t=64317
 zhe zhou 	这周	c=49 d=1.02024 t=54400
 zhe zhu 	遮住	c=1 d=1.03511e-24 t=8035
 zhe zu 	这组	c=1 d=1.03511e-24 t=8035
 zhen 	侦	c=1 d=1.03511e-24 t=8035
 zhen 	帧	c=6 d=3.62288e-24 t=8035
-zhen 	真	c=655 d=1.00246 t=62408
+zhen 	真	c=656 d=1.00001 t=64717
 zhen 	镇	c=12 d=6.72822e-24 t=8035
 zhen bu hao shuo 	真不好说	c=1 d=1.03511e-24 t=8035
 zhen bu jie jue 	真不解决	c=1 d=0.000280202 t=8035
@@ -15546,7 +15567,7 @@ zhen neng 	真能	c=1 d=1.03511e-24 t=8035
 zhen ni 	珍妮	c=1 d=1.03511e-24 t=8035
 zhen ren 	真人	c=4 d=1 t=21492
 zhen shang 	镇上	c=1 d=1.03511e-24 t=8035
-zhen shi 	真实	c=45 d=1 t=39476
+zhen shi 	真实	c=46 d=1 t=64580
 zhen suo 	诊所	c=2 d=1.55267e-24 t=8035
 zhen yao 	真要	c=7 d=1 t=46159
 zhen ying 	阵营	c=1 d=1.03511e-24 t=8035
@@ -15554,7 +15575,7 @@ zhen yong 	真用	c=1 d=1.03511e-24 t=8035
 zhen you 	真有	c=17 d=1 t=26258
 zhen you ren 	真有人	c=4 d=1 t=51777
 zhen zhao 	朕兆	c=1 d=1.03511e-24 t=8035
-zhen zheng 	真正	c=55 d=1.00003 t=34180
+zhen zheng 	真正	c=56 d=1 t=64176
 zheng 	争	c=1 d=1.03511e-24 t=8035
 zheng 	凧	c=1 d=1.03511e-24 t=8035
 zheng 	整	c=15 d=8.2809e-24 t=8035
@@ -15568,7 +15589,7 @@ zheng bian 	政变	c=1 d=1.03511e-24 t=8035
 zheng bu zheng chang 	正不正常	c=1 d=1.03511e-24 t=8035
 zheng bu zheng que 	正不正确	c=1 d=1.03511e-24 t=8035
 zheng ce 	政策	c=11 d=1.01869 t=25354
-zheng chang 	正常	c=2015 d=1.29839 t=61083
+zheng chang 	正常	c=2016 d=1 t=64618
 zheng chao 	争吵	c=1 d=1.03511e-24 t=8035
 zheng da 	正大	c=3 d=2.07022e-24 t=8035
 zheng dian 	整点	c=1 d=1.03511e-24 t=8035
@@ -15578,7 +15599,7 @@ zheng fang xing 	正方形	c=15 d=8.2809e-24 t=8035
 zheng fu 	政府	c=15 d=1 t=33565
 zheng fu 	正负	c=1 d=1.03511e-24 t=8035
 zheng gai 	整改	c=11 d=1 t=60419
-zheng ge 	整个	c=178 d=1.0154 t=54107
+zheng ge 	整个	c=179 d=1 t=63646
 zheng gui 	正规	c=4 d=2.58777e-24 t=8035
 zheng guo 	正果	c=1 d=1.03511e-24 t=8035
 zheng hang 	整行	c=5 d=3.10534e-24 t=8035
@@ -15592,7 +15613,7 @@ zheng jing 	正经	c=11 d=1 t=47325
 zheng jiu 	拯救	c=1 d=1.03511e-24 t=8035
 zheng ju 	证据	c=6 d=1.00002 t=45725
 zheng juan 	证卷	c=2 d=1.55267e-24 t=8035
-zheng li 	整理	c=56 d=1 t=60138
+zheng li 	整理	c=57 d=1 t=63373
 zheng li bao 	整理包	c=1 d=0.000145549 t=8035
 zheng lun 	争论	c=5 d=3.10534e-24 t=8035
 zheng mian 	正面	c=1 d=1.03511e-24 t=8035
@@ -15626,13 +15647,13 @@ zheng zhi 	整治	c=1 d=1.03511e-24 t=8035
 zheng zhi huo dong 	政治活动	c=1 d=1.03511e-24 t=8035
 zheng zu 	整组	c=2 d=1.55267e-24 t=8035
 zhi 	之	c=32 d=1.70793e-23 t=8035
-zhi 	值	c=387 d=1 t=43586
+zhi 	值	c=388 d=1 t=63139
 zhi 	制	c=1 d=1.03511e-24 t=8035
 zhi 	只	c=946 d=1.01871 t=62434
 zhi 	吱	c=2 d=1.55267e-24 t=8035
 zhi 	帜	c=1 d=1.03511e-24 t=8035
 zhi 	戠	c=1 d=1.03511e-24 t=8035
-zhi 	指	c=417 d=1.54882 t=61701
+zhi 	指	c=419 d=1.05905 t=63825
 zhi 	支	c=2 d=1.55267e-24 t=8035
 zhi 	旨	c=1 d=1.03511e-24 t=8035
 zhi 	智	c=2 d=1.55267e-24 t=8035
@@ -15658,7 +15679,7 @@ zhi cai 	制裁	c=4 d=2.58777e-24 t=8035
 zhi chang 	直肠	c=1 d=1.03511e-24 t=8035
 zhi cheng 	职称	c=3 d=2.07022e-24 t=8035
 zhi chi 	只吃	c=1 d=1.03511e-24 t=8035
-zhi chi 	支持	c=1299 d=1.00002 t=61904
+zhi chi 	支持	c=1300 d=1 t=64548
 zhi chi 	智齿	c=12 d=6.72822e-24 t=8035
 zhi chi du 	支持度	c=1 d=1.03511e-24 t=8035
 zhi chu 	支出	c=3 d=1.00002 t=26221
@@ -15692,7 +15713,7 @@ zhi fen 	之分	c=1 d=1.03511e-24 t=8035
 zhi fu 	支付	c=20 d=1.09031 t=59171
 zhi fu bao 	支付宝	c=8 d=1 t=38152
 zhi fu wan 	支付完	c=1 d=1 t=59172
-zhi gai 	只改	c=22 d=1 t=19175
+zhi gai 	只改	c=23 d=1 t=63792
 zhi gan 	只敢	c=1 d=0.0290133 t=8035
 zhi ge 	之歌	c=3 d=2.07022e-24 t=8035
 zhi gei 	只给	c=8 d=4.658e-24 t=8035
@@ -15703,7 +15724,7 @@ zhi guan 	直观	c=16 d=1 t=52805
 zhi guan xin 	只关心	c=1 d=1 t=37972
 zhi hao 	治好	c=1 d=1.03511e-24 t=8035
 zhi he 	纸盒	c=1 d=1.03511e-24 t=8035
-zhi hou 	之后	c=1241 d=1.69734 t=63033
+zhi hou 	之后	c=1245 d=1.49937 t=64511
 zhi hou 	滞后	c=1 d=1 t=26458
 zhi hu 	知乎	c=23 d=1 t=55723
 zhi hua 	只花	c=1 d=1.03511e-24 t=8035
@@ -15713,7 +15734,7 @@ zhi hui 	知会	c=1 d=1.03511e-24 t=8035
 zhi ji 	职级	c=1 d=1 t=24475
 zhi jia 	之家	c=1 d=1.03511e-24 t=8035
 zhi jian 	之间	c=67 d=1.00001 t=46245
-zhi jie 	直接	c=2709 d=2.07049 t=62684
+zhi jie 	直接	c=2712 d=1.00322 t=64687
 zhi jie 	肢解	c=4 d=2.58777e-24 t=8035
 zhi jie jiu 	直接就	c=1 d=1 t=41209
 zhi kai 	只开	c=1 d=1.03511e-24 t=8035
@@ -15738,7 +15759,7 @@ zhi ming 	知名	c=4 d=2.58777e-24 t=8035
 zhi ming du 	知名度	c=4 d=2.58777e-24 t=8035
 zhi nan 	指南	c=1 d=1.03511e-24 t=8035
 zhi nei 	之内	c=11 d=1 t=25781
-zhi neng 	只能	c=677 d=1.00009 t=62742
+zhi neng 	只能	c=679 d=1.97729 t=63739
 zhi neng 	智能	c=29 d=1.00063e-11 t=8035
 zhi neng kan 	只能看	c=1 d=1.03511e-24 t=8035
 zhi neng shi 	只能是	c=1 d=1 t=56132
@@ -15748,7 +15769,7 @@ zhi neng suan 	只能算	c=1 d=1.03511e-24 t=8035
 zhi neng yong 	只能用	c=5 d=1 t=56148
 zhi neng zai 	只能在	c=1 d=1.03511e-24 t=8035
 zhi nou 	之耨	c=1 d=1.03511e-24 t=8035
-zhi qian 	之前	c=855 d=1.98918 t=62581
+zhi qian 	之前	c=858 d=1.51874 t=64635
 zhi qian 	值钱	c=1 d=1.03511e-24 t=8035
 zhi qian shi 	之前是	c=1 d=1 t=56357
 zhi qian ye 	之前也	c=1 d=1.03511e-24 t=8035
@@ -15758,7 +15779,7 @@ zhi shang zhi xia 	直上直下	c=1 d=1.03511e-24 t=8035
 zhi shao 	至少	c=15 d=8.2809e-24 t=8035
 zhi sheng 	只剩	c=3 d=1 t=11337
 zhi sheng ji 	直升机	c=1 d=1.03511e-24 t=8035
-zhi shi 	只是	c=737 d=1.86095 t=61254
+zhi shi 	只是	c=740 d=1.91942 t=63708
 zhi shi 	指示	c=1 d=1.03511e-24 t=8035
 zhi shi 	直视	c=1 d=1.03511e-24 t=8035
 zhi shi 	知识	c=12 d=6.72822e-24 t=8035
@@ -15793,15 +15814,15 @@ zhi xing 	执行	c=155 d=1 t=61891
 zhi xing li 	执行力	c=0 d=0.1 t=47322
 zhi xing qi 	执行器	c=5 d=2.4829 t=13302
 zhi xu 	只需	c=2 d=1.55267e-24 t=8035
-zhi xu yao 	只需要	c=23 d=1 t=39278
+zhi xu yao 	只需要	c=24 d=1 t=64173
 zhi yang 	止痒	c=1 d=1.03511e-24 t=8035
-zhi yao 	只要	c=139 d=1 t=61317
+zhi yao 	只要	c=140 d=1 t=64056
 zhi ye 	职业	c=8 d=4.658e-24 t=8035
 zhi yi 	之一	c=7 d=4.14044e-24 t=8035
 zhi ying 	止盈	c=1 d=1 t=61174
 zhi yong 	只用	c=36 d=1 t=35393
 zhi yong dao 	只用到	c=1 d=1.03511e-24 t=8035
-zhi you 	只有	c=988 d=1.58093 t=61776
+zhi you 	只有	c=991 d=1.00782 t=64698
 zhi you 	挚友	c=1 d=1.03511e-24 t=8035
 zhi you ge 	只有个	c=1 d=1.03511e-24 t=8035
 zhi you yi ge 	只有一个	c=1 d=1.03511e-24 t=8035
@@ -15824,7 +15845,7 @@ zhi zuo 	制作	c=3 d=1 t=57140
 zhi zuo 	只做	c=1 d=1.03511e-24 t=8035
 zhong 	中	c=789 d=1.00007 t=61257
 zhong 	众	c=2 d=1.55267e-24 t=8035
-zhong 	种	c=78 d=2.62119 t=56508
+zhong 	种	c=79 d=1 t=63982
 zhong 	重	c=20 d=1.08687e-23 t=8035
 zhong 	钟	c=6 d=3.62288e-24 t=8035
 zhong ben 	中本	c=1 d=1.03511e-24 t=8035
@@ -15849,9 +15870,10 @@ zhong hang 	中行	c=1 d=1.03511e-24 t=8035
 zhong he 	中和	c=1 d=1.03511e-24 t=8035
 zhong ji 	中级	c=1 d=1.03511e-24 t=8035
 zhong ji 	终极	c=3 d=2.07022e-24 t=8035
-zhong jian 	中间	c=200 d=1 t=60691
+zhong jian 	中间	c=201 d=1 t=64247
 zhong jian biao 	中建表	c=1 d=1.03511e-24 t=8035
 zhong jian jian 	中间件	c=1 d=1 t=12280
+zhong jian tai 	中间态	c=1 d=1 t=64171
 zhong jiang 	中奖	c=6 d=3.62288e-24 t=8035
 zhong jie 	中介	c=1 d=1.03511e-24 t=8035
 zhong lei 	种类	c=4 d=2.58777e-24 t=8035
@@ -15873,6 +15895,7 @@ zhong tian 	种田	c=1 d=1.03511e-24 t=8035
 zhong tu 	中途	c=2 d=1.85214 t=9013
 zhong wei shu 	中位数	c=5 d=3.10534e-24 t=8035
 zhong wen 	中文	c=166 d=1 t=48733
+zhong wen ming 	中文名	c=1 d=1 t=63624
 zhong wen xie 	中文写	c=1 d=1 t=39878
 zhong wen zhan 	中文战	c=2 d=0.00013845 t=8035
 zhong wu 	中午	c=70 d=1.00225 t=11786
@@ -15881,7 +15904,7 @@ zhong xing 	中兴	c=1 d=1.03511e-24 t=8035
 zhong xue 	中学	c=2 d=1.55267e-24 t=8035
 zhong xun 	中旬	c=13 d=7.24582e-24 t=8035
 zhong yao 	中药	c=4 d=2.0783 t=47057
-zhong yao 	重要	c=110 d=1.97045 t=62338
+zhong yao 	重要	c=111 d=1.0001 t=64321
 zhong yao xing 	重要性	c=1 d=1.03511e-24 t=8035
 zhong yi 	中医	c=3 d=2.76508 t=47010
 zhong ying wen 	中英文	c=9 d=5.17556e-24 t=8035
@@ -15891,7 +15914,7 @@ zhong zhe 	重者	c=1 d=1.03511e-24 t=8035
 zhong zhi 	中指	c=2 d=1 t=24690
 zhong zhi 	中止	c=6 d=1 t=24688
 zhong zhuan 	中专	c=3 d=2.07022e-24 t=8035
-zhong zhuan 	中转	c=26 d=1.87372 t=40196
+zhong zhuan 	中转	c=27 d=1 t=63466
 zhong zhuan zhan 	中转战	c=5 d=3.10534e-24 t=8035
 zhong zi 	种子	c=4 d=2.58777e-24 t=8035
 zhong zu 	种族	c=1 d=1.03511e-24 t=8035
@@ -15973,8 +15996,8 @@ zhu ti 	主体	c=3 d=2.07022e-24 t=8035
 zhu ti 	主题	c=76 d=1 t=25846
 zhu tu 	主图	c=3 d=2.07022e-24 t=8035
 zhu xiao 	注销	c=15 d=1 t=24707
-zhu yao 	主要	c=1129 d=1.11275 t=62846
-zhu yao shi 	主要是	c=71 d=1.00282 t=40760
+zhu yao 	主要	c=1137 d=2.14842 t=64503
+zhu yao shi 	主要是	c=72 d=1 t=64270
 zhu ye 	主页	c=12 d=1 t=27944
 zhu yi 	主义	c=2 d=1.55267e-24 t=8035
 zhu yi 	注意	c=68 d=1 t=61121
@@ -16068,7 +16091,7 @@ zhuang kuang 	状况	c=1 d=1.03511e-24 t=8035
 zhuang le 	撞了	c=2 d=1.55267e-24 t=8035
 zhuang liang ge 	装两个	c=1 d=1.03511e-24 t=8035
 zhuang shang 	装上	c=1 d=1.03511e-24 t=8035
-zhuang tai 	状态	c=169 d=2.65854 t=46357
+zhuang tai 	状态	c=170 d=1 t=64380
 zhuang tai lan 	状态栏	c=17 d=1 t=36339
 zhuang wan 	装完	c=1 d=1.03511e-24 t=8035
 zhuang xi tong 	装系统	c=1 d=1.03511e-24 t=8035
@@ -16083,7 +16106,7 @@ zhui xing 	追星	c=1 d=1 t=39400
 zhui zhe 	追着	c=3 d=2.37089e-09 t=8035
 zhui zong 	追踪	c=4 d=1.03526 t=42108
 zhun 	准	c=27 d=1.44916e-23 t=8035
-zhun bei 	准备	c=170 d=1 t=62501
+zhun bei 	准备	c=171 d=1.0033 t=63644
 zhun qing 	准请	c=1 d=1.03511e-24 t=8035
 zhun que 	准确	c=1 d=1.03511e-24 t=8035
 zhun que du 	准确度	c=1 d=1.03511e-24 t=8035
@@ -16107,7 +16130,7 @@ zi ben 	资本	c=2 d=1.55267e-24 t=8035
 zi ben jia 	资本家	c=4 d=2.58777e-24 t=8035
 zi ben zhu yi 	资本主义	c=1 d=1.03511e-24 t=8035
 zi biao 	字表	c=2 d=1.55267e-24 t=8035
-zi ce 	自测	c=130 d=1 t=62730
+zi ce 	自测	c=131 d=1.00156 t=64023
 zi cha 	自查	c=5 d=3.10534e-24 t=8035
 zi chan 	资产	c=41 d=1 t=29782
 zi cong 	自从	c=1 d=1.03511e-24 t=8035
@@ -16120,10 +16143,10 @@ zi ding yi 	自定义	c=117 d=1 t=60325
 zi dong 	自动	c=449 d=1.29865 t=63038
 zi dong hua 	自动化	c=8 d=1 t=12559
 zi du 	自渎	c=1 d=1.03511e-24 t=8035
-zi duan 	字段	c=1057 d=1.616 t=62686
+zi duan 	字段	c=1069 d=1.43581 t=64474
 zi fa 	自发	c=1 d=1.03511e-24 t=8035
 zi fei 	自费	c=4 d=1 t=63044
-zi fu 	字符	c=102 d=2.97025 t=48125
+zi fu 	字符	c=103 d=1 t=63174
 zi fu cai 	自福彩	c=1 d=1.03511e-24 t=8035
 zi fu che 	字符车	c=1 d=1.03511e-24 t=8035
 zi fu chuan 	字符串	c=88 d=1 t=42300
@@ -16131,7 +16154,7 @@ zi ge 	资格	c=1 d=1.03511e-24 t=8035
 zi hao 	自豪	c=1 d=1.03511e-24 t=8035
 zi hou 	字后	c=1 d=1.03511e-24 t=8035
 zi ji 	子集	c=4 d=2.58777e-24 t=8035
-zi ji 	自己	c=1043 d=2.12502 t=62523
+zi ji 	自己	c=1048 d=3.31564 t=63856
 zi ji chi 	自己吃	c=3 d=2.07022e-24 t=8035
 zi ji jiu 	自己就	c=2 d=1 t=24201
 zi jia 	自家	c=1 d=1.03511e-24 t=8035
@@ -16309,7 +16332,7 @@ zui duo 	最多	c=55 d=1 t=48150
 zui gao 	最高	c=55 d=1.96079 t=54121
 zui guang 	最广	c=1 d=1.03511e-24 t=8035
 zui gui 	最贵	c=3 d=2.07022e-24 t=8035
-zui hao 	最好	c=290 d=1.01964 t=62747
+zui hao 	最好	c=291 d=1.00107 t=64119
 zui hao wan 	最好玩	c=1 d=1.03511e-24 t=8035
 zui hao yong 	最好用	c=3 d=2.07022e-24 t=8035
 zui hou 	最后	c=222 d=1.00048 t=55825
@@ -16358,7 +16381,7 @@ zui ying 	嘴硬	c=1 d=1.03511e-24 t=8035
 zui you 	最优	c=2 d=1.55267e-24 t=8035
 zui you bian 	最右边	c=1 d=1.03511e-24 t=8035
 zui yuan shi 	最原始	c=1 d=1.03511e-24 t=8035
-zui zao 	最早	c=12 d=1 t=62443
+zui zao 	最早	c=13 d=1.00001 t=64695
 zui zhong 	最终	c=160 d=1.00029 t=57342
 zui zhong yao 	最重要	c=3 d=2.07022e-24 t=8035
 zui zhu yao 	最主要	c=2 d=1.55267e-24 t=8035
@@ -16417,7 +16440,7 @@ zuo tian ya 	昨天呀	c=1 d=1.03511e-24 t=8035
 zuo tu 	左图	c=2 d=1.55267e-24 t=8035
 zuo wan 	做完	c=10 d=5.69312e-24 t=8035
 zuo wan 	昨晚	c=54 d=1 t=33516
-zuo wei 	作为	c=62 d=1 t=61103
+zuo wei 	作为	c=63 d=1 t=64390
 zuo wei 	座位	c=13 d=7.24582e-24 t=8035
 zuo wen 	作文	c=1 d=1.03511e-24 t=8035
 zuo xi 	作息	c=23 d=1 t=56206
@@ -16429,7 +16452,7 @@ zuo ye wu 	做业务	c=1 d=1.03511e-24 t=8035
 zuo yi ge 	做一个	c=1 d=1 t=36261
 zuo yong 	作用	c=41 d=2.17373e-23 t=8035
 zuo yong yu 	作用域	c=3 d=2.07022e-24 t=8035
-zuo you 	左右	c=122 d=1 t=49107
+zuo you 	左右	c=123 d=1 t=64699
 zuo you xi 	做游戏	c=1 d=1.03511e-24 t=8035
 zuo zai 	做在	c=1 d=1.03511e-24 t=8035
 zuo zai 	坐在	c=1 d=1.03511e-24 t=8035
