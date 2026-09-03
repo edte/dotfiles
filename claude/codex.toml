@@ -218,9 +218,9 @@ enabled = false
 path = "/Users/edte/.codex/skills/.system/skill-installer/SKILL.md"
 enabled = false
 
-# [mcp_servers.sequential-thinking]
-# command = "npx"
-# args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 
 # [mcp_servers.neovim]
 # command = "npx"
