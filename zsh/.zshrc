@@ -14,3 +14,5 @@ eval "$(atuin init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$PATH:$HOME/.ft"
+
+export PATH="/root/background_agent_cli/bin:$PATH" # background_agent_cli PATH

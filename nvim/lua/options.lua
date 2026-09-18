@@ -131,3 +131,5 @@ vim.diagnostic.config({
 vim.g.clipboard = "xclip"
 
 vim.cmd("syntax on")
+
+vim.cmd("set mouse=r")
