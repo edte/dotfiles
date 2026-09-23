@@ -239,3 +239,7 @@ alias benchplugin='zprof | less'
 alias icat="kitty +kitten icat"
 
 # alias gd=tuicr
+
+# Yoink（GUI 应用，无 CLI 二进制，只能通过 open 唤起；参数会自动拼在后面，可跟文件路径）
+alias yoink='open -a Yoink'
+alias copy='open -a Yoink'
