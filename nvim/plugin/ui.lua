@@ -8,6 +8,14 @@ vim.pack.add({
 	{ src = 'https://github.com/folke/tokyonight.nvim.git' },
 }, { confirm = false })
 
+-- 多光标统一为白色，重载主题时也保留。
+vim.api.nvim_create_autocmd('ColorScheme', {
+	group = vim.api.nvim_create_augroup('multicursor_color', { clear = true }),
+	callback = function()
+		vim.api.nvim_set_hl(0, 'MCursor', { fg = '#1f2335', bg = '#ffffff' })
+	end,
+})
+
 vim.cmd.colorscheme('tokyonight')
 
 -- tiny-cmdline 维持自己的颜色，wilder 单独用下面几组高亮。

@@ -4,6 +4,7 @@ local default_options = {
 	completeopt = { 'menuone', 'noselect' },
 	conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = 'utf-8', -- the encoding written to a file
+	follow = true, -- 多光标默认同步移动，无需按 q=。
 	hidden = true, -- required to keep multiple buffers and open multiple buffers
 	hlsearch = true, -- highlight all matches on previous search pattern
 	ignorecase = true, -- ignore case in search patterns

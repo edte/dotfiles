@@ -193,7 +193,7 @@ alias task='/Users/edte/asynctasks.vim/bin/asynctask -f'
 # alias q='exit'
 alias quit='exit'
 
-alias codex="codex --dangerously-bypass-approvals-and-sandbox"
+alias codex="codex --dangerously-bypass-approvals-and-sandbox --no-alt-screen"
 alias codex-internal="codex-internal --dangerously-bypass-approvals-and-sandbox"
 
 alias i="brew install "

@@ -1,5 +1,5 @@
-model = "gpt-5.6-sol"
-model_reasoning_effort = "xhigh"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "low"
 # model_context_window = 1000000
 # model_auto_compact_token_limit = 900000
 
@@ -237,6 +237,9 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-record-service"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/push-and"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -284,11 +287,14 @@ hide_rate_limit_model_nudge = true
 [tui]
 status_line = ["model-with-reasoning", "current-dir"]
 status_line_use_colors = true
+screen_reader_detection_done = true
+fullscreen_transcript = false
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 4
 gpt-6-astra = 4
+"gpt-6.1-sol" = 4
 
 [hooks.state]
 

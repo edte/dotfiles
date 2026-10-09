@@ -23,10 +23,12 @@ nmap('<C-s>', '<cmd>w<cr>')
 -- 设置 jj、jk 为 ESC,避免频繁按 esc
 imap('jk', '<Esc><right>')
 
--- 按 esc 消除上一次的高亮
-nmap('<esc>', '<cmd>noh<cr>')
+-- 先退出插入/可视模式，再清除多光标，确保最后一次输入同步完成。
+vim.keymap.set({ 'i', 'x' }, '<Esc>',
+	'<Esc><Cmd>lua vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_create_namespace("nvim.multicursor"), 0, -1)<CR>')
 
 nmap('<esc>', function()
+	vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_create_namespace('nvim.multicursor'), 0, -1)
 	local function isModuleAvailable(name)
 		if package.loaded[name] then
 			return true
