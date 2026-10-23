@@ -1,5 +1,5 @@
-model = "gpt-6.1-sol"
-model_reasoning_effort = "low"
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
 # model_context_window = 1000000
 # model_auto_compact_token_limit = 900000
 
@@ -240,6 +240,15 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-and"]
 trust_level = "trusted"
 
+[projects."/Users/edte/go/src/push/tpush-server"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-strategy-console"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-feedback"]
+trust_level = "trusted"
+
 [[skills.config]]
 path = "/Users/edte/.codex/skills/.system/skill-creator/SKILL.md"
 enabled = false
@@ -333,9 +342,6 @@ enabled = true
 [plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
-[plugins."sites@openai-bundled"]
-enabled = true
-
 [plugins."visualize@openai-bundled"]
 enabled = true
 
@@ -343,6 +349,9 @@ enabled = true
 enabled = true
 
 [plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
 enabled = true
 
 [features]
