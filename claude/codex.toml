@@ -1,5 +1,5 @@
 model = "gpt-6-astra"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 # model_context_window = 1000000
 # model_auto_compact_token_limit = 900000
 
@@ -247,6 +247,12 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/edte/go/src/push/push-feedback"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-bill-consumer"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/push-bill-producer"]
 trust_level = "trusted"
 
 [[skills.config]]
