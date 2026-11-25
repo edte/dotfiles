@@ -261,7 +261,15 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-apns"]
 trust_level = "trusted"
 
+<<<<<<< HEAD
 [projects."/Users/edte/.local/share/nvim/site/pack/core/opt/nvim-treesitter-textobjects"]
+||||||| bb2456c
+=======
+[projects."/Users/edte/go/src/push/push-task-scheduler"]
+trust_level = "trusted"
+
+[projects."/Users/edte/go/src/push/wns_go_plib"]
+>>>>>>> a81f8f4e2bf6a67d3aba4393596017c0b3b14dfb
 trust_level = "trusted"
 
 [[skills.config]]
@@ -294,8 +302,8 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1029.61003"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/edte/.codex/plugins/cache/openai-bundled/browser/26.1029.61003/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1106.51428"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/edte/.codex/plugins/cache/openai-bundled/browser/26.1106.51428/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/edte/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
