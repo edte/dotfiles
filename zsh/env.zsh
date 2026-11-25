@@ -29,8 +29,6 @@ export GOPATH=/Users/edte/go
 export GOBIN=/Users/edte/go/bin
 export PATH=$PATH:$GOPATH/bin
 
-export PATH=$PATH:/Users/edte/nvim-macos-arm64/bin
-
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
@@ -71,10 +69,9 @@ export EDITOR=nvim
 # *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
 
-# 最终确保 PATH 优先级正确:本地 bin 和独立安装的 Atuin 优先,然后 homebrew,最后系统
-# 移除这些路径,然后按正确顺序重新添加
-PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | grep -v "^$HOME/.local/bin$" | grep -v "^$HOME/.atuin/bin$" | grep -v "^/home/edte/.local/bin$" | tr '\n' ':' | sed 's/:$//')
-export PATH=$HOME/.local/bin:$HOME/.atuin/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
+# 优先使用本地 bin、独立安装的 Atuin 和官方 Neovim Nightly，然后是 Homebrew 和 /usr/local/bin。
+PATH_CLEANED=$(echo $PATH | tr ':' '\n' | grep -v "^/usr/local/bin$" | grep -v "^/opt/homebrew/bin$" | grep -v "^$HOME/.local/bin$" | grep -v "^$HOME/.atuin/bin$" | grep -Fvx "$HOME/nvim-macos-arm64/bin" | grep -v "^/home/edte/.local/bin$" | tr '\n' ':' | sed 's/:$//')
+export PATH=$HOME/.local/bin:$HOME/.atuin/bin:$HOME/nvim-macos-arm64/bin:/opt/homebrew/bin:/usr/local/bin:$PATH_CLEANED
 
 export PATH=$PATH:~/dotfiles/zsh/shell/
 
