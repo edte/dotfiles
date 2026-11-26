@@ -261,15 +261,12 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-apns"]
 trust_level = "trusted"
 
-<<<<<<< HEAD
 [projects."/Users/edte/.local/share/nvim/site/pack/core/opt/nvim-treesitter-textobjects"]
-||||||| bb2456c
-=======
+trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-task-scheduler"]
 trust_level = "trusted"
 
 [projects."/Users/edte/go/src/push/wns_go_plib"]
->>>>>>> a81f8f4e2bf6a67d3aba4393596017c0b3b14dfb
 trust_level = "trusted"
 
 [[skills.config]]
@@ -287,7 +284,12 @@ args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
-env_vars = ["BROWSER_USE_ACCESS_EXECUTOR_ID", "BROWSER_USE_ACCESS_PIPE_PATH", "BROWSER_USE_ACCESS_VERIFYING_IDENTITY", "CODEX_APP_RUNTIME_CLI_PATH"]
+env_vars = [
+  "BROWSER_USE_ACCESS_EXECUTOR_ID",
+  "BROWSER_USE_ACCESS_PIPE_PATH",
+  "BROWSER_USE_ACCESS_VERIFYING_IDENTITY",
+  "CODEX_APP_RUNTIME_CLI_PATH",
+]
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
