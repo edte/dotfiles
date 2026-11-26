@@ -284,12 +284,7 @@ args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
-env_vars = [
-  "BROWSER_USE_ACCESS_EXECUTOR_ID",
-  "BROWSER_USE_ACCESS_PIPE_PATH",
-  "BROWSER_USE_ACCESS_VERIFYING_IDENTITY",
-  "CODEX_APP_RUNTIME_CLI_PATH",
-]
+env_vars = ["BROWSER_USE_ACCESS_EXECUTOR_ID", "BROWSER_USE_ACCESS_PIPE_PATH", "BROWSER_USE_ACCESS_VERIFYING_IDENTITY", "CODEX_APP_RUNTIME_CLI_PATH"]
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
@@ -304,8 +299,8 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1120.41243"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/edte/.codex/plugins/cache/openai-bundled/browser/26.1120.41243/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1120.50957"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/edte/.codex/plugins/cache/openai-bundled/browser/26.1120.50957/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/edte/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 NODE_REPL_LAZY_TRUSTED_WORKER = "0"
@@ -383,6 +378,9 @@ enabled = true
 enabled = true
 
 [plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."plan@openai-bundled"]
 enabled = true
 
 [features]
