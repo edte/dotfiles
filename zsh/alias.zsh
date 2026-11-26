@@ -195,6 +195,7 @@ alias quit='exit'
 
 alias codex="codex --dangerously-bypass-approvals-and-sandbox --no-alt-screen"
 alias codex-internal="codex-internal --dangerously-bypass-approvals-and-sandbox"
+alias agy="agy --dangerously-skip-permissions"
 
 alias i="brew install "
 
