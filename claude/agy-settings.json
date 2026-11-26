@@ -1,0 +1,10 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/settings.json",
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/edte/dotfiles/claude/agy-statusline.sh",
+    "enabled": true,
+    "padding": 0,
+    "stack_with_default": false
+  }
+}

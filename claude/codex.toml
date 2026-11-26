@@ -261,10 +261,15 @@ trust_level = "trusted"
 [projects."/Users/edte/go/src/push/push-apns"]
 trust_level = "trusted"
 
+<<<<<<< HEAD
+[projects."/Users/edte/.local/share/nvim/site/pack/core/opt/nvim-treesitter-textobjects"]
+||||||| bb2456c
+=======
 [projects."/Users/edte/go/src/push/push-task-scheduler"]
 trust_level = "trusted"
 
 [projects."/Users/edte/go/src/push/wns_go_plib"]
+>>>>>>> a81f8f4e2bf6a67d3aba4393596017c0b3b14dfb
 trust_level = "trusted"
 
 [[skills.config]]
@@ -329,10 +334,10 @@ gpt-6-astra = 4
 [hooks.state]
 
 [hooks.state."/Users/edte/.codex/hooks.json:pre_tool_use:0:0"]
-trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a52fe2a47"
+trusted_hash = "sha256:5dcd2d8e47fbbb09f2b33022f0af2e0397c250dc059be68b1ae6b883dd1bfeda"
 
 [hooks.state."/Users/edte/.codex/hooks.json:post_tool_use:0:0"]
-trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1b7a5a7c"
+trusted_hash = "sha256:9ffa7e3a16508301964a505608cf6ef7b0ea21ea5cd513928a373486aa8d0fa2"
 
 [marketplaces.openai-bundled]
 source_type = "local"
